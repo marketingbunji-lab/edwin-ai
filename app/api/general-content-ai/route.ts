@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-const webhookUrl = "https://n8n.crisnnino.com/webhook/general-content-ai";
-//const webhookUrl = "https://n8n.crisnnino.com/webhook-test/general-content-ai";
+//const webhookUrl = "https://n8n.crisnnino.com/webhook/general-content-ai";
+const webhookUrl = "https://n8n.crisnnino.com/webhook-test/general-content-ai";
 
 export async function POST(request: Request) {
   try {

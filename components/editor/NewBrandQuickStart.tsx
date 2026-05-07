@@ -17,12 +17,19 @@ const defaultSecondaryColor = "#F8D74A";
 
 type BrandAgentPreview = {
   title: string;
+  siteName: string;
   content: string;
+  abstract: string;
+  keywords: string[];
   officialWebsite: string;
+  robots: string;
+  generator: string;
+  images: string[];
+  mainImage: string;
   slug: string;
 };
 
-type BrandAgentStep = "identity" | "content" | "visual";
+type BrandAgentStep = "identity" | "visual";
 
 type GeneralContentAnalysis = {
   title: string;
@@ -55,6 +62,15 @@ function getCleanString(value: unknown) {
   return trimmedValue;
 }
 
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function getBrandAgentPreview(data: unknown): BrandAgentPreview | null {
   const firstValue = Array.isArray(data) ? data[0] : data;
 
@@ -64,18 +80,41 @@ function getBrandAgentPreview(data: unknown): BrandAgentPreview | null {
 
   const record = firstValue as Record<string, unknown>;
   const title = getCleanString(record.title);
-  const content = getCleanString(record.content);
+  const siteName = getCleanString(record.site_name);
+  const content =
+    getCleanString(record.content) || getCleanString(record.description);
+  const abstract = getCleanString(record.abstract);
+  const keywords = Array.isArray(record.keywords)
+    ? record.keywords
+        .map(getCleanString)
+        .filter((keyword) => keyword.length > 0)
+    : [];
   const officialWebsite = getCleanString(record.official_website);
-  const slug = getCleanString(record.slug);
+  const robots = getCleanString(record.robots);
+  const generator = getCleanString(record.generator);
+  const images = Array.isArray(record.images)
+    ? record.images
+        .map(getCleanString)
+        .filter((image) => image.length > 0)
+    : [];
+  const mainImage = getCleanString(record.main_image);
+  const slug = getCleanString(record.slug) || slugify(title || siteName);
 
-  if (!title && !content && !officialWebsite && !slug) {
+  if (!title && !siteName && !content && !officialWebsite && !mainImage) {
     return null;
   }
 
   return {
     title,
+    siteName,
     content,
+    abstract,
+    keywords,
     officialWebsite,
+    robots,
+    generator,
+    images,
+    mainImage,
     slug,
   };
 }
@@ -164,7 +203,7 @@ export default function NewBrandQuickStart() {
     const trimmedName = name.trim();
 
     if (!trimmedName) {
-      setError("Escribe el nombre de la universidad o institucion.");
+      setError("Escribe la URL del sitio web de la universidad o institucion.");
       return;
     }
 
@@ -244,7 +283,7 @@ export default function NewBrandQuickStart() {
     const brandData: Brand = {
       slug: agentPreview.slug,
       name: agentPreview.title,
-      shortName: agentPreview.title,
+      shortName: agentPreview.siteName || agentPreview.title,
       logo: "",
       logos: {
         light: "",
@@ -257,7 +296,14 @@ export default function NewBrandQuickStart() {
       primaryColor: defaultPrimaryColor,
       secondaryColor: defaultSecondaryColor,
       description: agentPreview.content,
+      siteName: agentPreview.siteName,
+      abstract: agentPreview.abstract,
+      keywords: agentPreview.keywords,
       officialWebsite: agentPreview.officialWebsite,
+      robots: agentPreview.robots,
+      generator: agentPreview.generator,
+      images: agentPreview.images,
+      imageBrand: agentPreview.mainImage || agentPreview.images[0] || "",
       legalLinks: agentPreview.officialWebsite
         ? [
             {
@@ -295,7 +341,8 @@ export default function NewBrandQuickStart() {
         ...brandData,
         slug: data.slug || brandData.slug,
       });
-      setCurrentStep("content");
+      setAnalysisComplete(true);
+      setCurrentStep("visual");
     } catch (createError) {
       setError(
         createError instanceof Error
@@ -547,7 +594,7 @@ export default function NewBrandQuickStart() {
             <span className="block max-w-4xl text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-5xl lg:text-6xl">
               {agentPreview
                 ? "¿Esta es tu universidad?"
-                : "Cual es el nombre de tu universidad o institucion?"}
+                : "Dejanos aqui la url del sitio web de tu universidad o institucion"}
             </span>
 
             {agentPreview ? (
@@ -581,7 +628,7 @@ export default function NewBrandQuickStart() {
                   value={name}
                   onChange={(event) => setName(event.target.value)}
                   autoFocus
-                  placeholder="Ej. Universidad EDwin"
+                  placeholder="Ej. https://www.universidad.edu"
                   className="min-w-0 flex-1 border-0 bg-transparent px-0 py-5 text-3xl font-semibold text-slate-950 outline-none placeholder:text-slate-300 dark:text-slate-50 dark:placeholder:text-slate-700 sm:text-4xl"
                 />
               <button
@@ -603,7 +650,7 @@ export default function NewBrandQuickStart() {
           <p className="mt-5 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400">
             {agentPreview
               ? "Confirma la institucion encontrada por el agente o vuelve a buscar con otro nombre."
-              : "Con este primer dato buscaremos la institucion y prepararemos su informacion base."}
+              : "Con esta URL buscaremos la institucion y prepararemos su informacion base."}
           </p>
 
           {error ? (
@@ -641,11 +688,6 @@ function BrandAgentProgress({
       id: "identity",
       label: "Quien eres",
       description: "Encuentra y confirma la institucion.",
-    },
-    {
-      id: "content",
-      label: "Contenido General",
-      description: "Completa la informacion base de la universidad.",
     },
     {
       id: "visual",
@@ -725,6 +767,11 @@ function BrandPreviewCard({
   brand?: Brand | null;
 }) {
   const description = brand?.description || agentPreview?.content || "";
+  const previewImage =
+    brand?.imageBrand ||
+    agentPreview?.mainImage ||
+    agentPreview?.images[0] ||
+    "";
 
   return (
     <aside className="border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
@@ -751,12 +798,12 @@ function BrandPreviewCard({
 
         {agentPreview ? (
           <div className="mt-10 space-y-5">
-            {brand?.imageBrand ? (
+            {previewImage ? (
               <div className="overflow-hidden border border-white/10 bg-white/[0.04]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={brand.imageBrand}
-                  alt={brand.name}
+                  src={previewImage}
+                  alt={brand?.name || agentPreview.title}
                   className="h-40 w-full object-cover"
                 />
               </div>
