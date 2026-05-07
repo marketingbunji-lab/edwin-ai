@@ -1,0 +1,117 @@
+{
+  "slug": "ingenieria-electronica",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-23",
+  "title": "Ingeniería Electrónica",
+  "fullTitle": "Ingeniería Electrónica",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Ingeniería",
+    "title": "Electrónica",
+    "description": "Diseña soluciones inteligentes, domina nuevas tecnologías y lidera proyectos de automatización, energía y sistemas electrónicos.",
+    "supportText": "Programa profesional presencial con enfoque práctico, innovación y alta proyección laboral.",
+    "modality": "Presencial",
+    "semesterPrice": "$7.348.000",
+    "backgroundImage": "https://www.autonoma.edu.co/sites/default/files/2025-12/ingenieria-electronica.png",
+    "personImage": ""
+  },
+  "programInfo": [
+    "Ingeniero Electrónico",
+    "160 Créditos académicos",
+    "9 Semestres",
+    "SNIES 19546"
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Ingeniería Electrónica en la UAM?",
+    "description": "Prepárate para crear tecnología aplicada a la industria y la sociedad. Desarrolla competencias en automatización, inteligencia artificial, robótica, energías renovables y diseño de sistemas electrónicos.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Alta empleabilidad",
+        "content": "Perfil demandado en sectores tecnológicos, industriales y energéticos."
+      },
+      {
+        "title": "Aprendizaje práctico",
+        "content": "Fortalece habilidades en laboratorios, proyectos y retos reales."
+      },
+      {
+        "title": "Tecnologías emergentes",
+        "content": "Explora IA, sistemas embebidos, robótica y automatización."
+      },
+      {
+        "title": "Innovación constante",
+        "content": "Convierte ideas en soluciones funcionales y escalables."
+      },
+      {
+        "title": "Visión integral",
+        "content": "Integra software, hardware, datos y operación industrial."
+      },
+      {
+        "title": "Ruta profesional",
+        "content": "Accede a crecimiento laboral y estudios de posgrado."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "La UAM impulsa tu futuro tecnológico",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Experiencia internacional",
+        "text": "Accede a movilidad académica y oportunidades globales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Conexión con la industria",
+        "text": "Desarrolla competencias alineadas con necesidades reales del mercado.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y apoyo financiero",
+        "text": "Conoce alternativas para facilitar el acceso a tu formación.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios de estudiar este programa",
+    "items": [
+      {
+        "title": "Perfil innovador",
+        "text": "Aprende a crear soluciones con impacto tecnológico.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Competencias del futuro",
+        "text": "Desarrolla habilidades valiosas para industrias en evolución.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Proyección profesional",
+        "text": "Abre oportunidades en liderazgo técnico y gestión de proyectos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para convertir ideas en tecnología real?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Ingeniería Electrónica",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284446.js\"></script>"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}

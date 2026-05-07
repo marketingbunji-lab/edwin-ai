@@ -1,0 +1,110 @@
+{
+  "slug": "especializacion-en-administracion-financiera",
+  "brand": "universidad-ean",
+  "template": "renderLandingTemplate",
+  "status": "draft",
+  "updatedAt": "2026-04-30",
+  "logoMode": "dark",
+  "title": "Administración Financiera",
+  "fullTitle": "Especialización en Administración Financiera",
+  "programType": "Especialización",
+  "schedule": "diurna",
+  "hero": {
+    "eyebrow": "Inscripciones abiertas 2026",
+    "highlight": "¡Maximiza el valor de las empresas!",
+    "title": "Especialización en Administración Financiera",
+    "description": "Fortalece tus competencias en comprensión y aplicación del lenguaje financiero y en gestión de estrategias que contribuyan al mejoramiento de una compañía.",
+    "supportText": "Recibe más información y conoce las condiciones del beneficio para posgrado.",
+    "modality": "Presencial",
+    "semesterPrice": "",
+    "backgroundImage": "",
+    "personImage": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    "Especialización en Administración Financiera"
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar esta especialización?",
+    "description": "Programa orientado a desarrollar habilidades en lenguaje financiero y en la gestión de estrategias que aumenten el valor de las organizaciones.",
+    "image": "",
+    "items": [
+      {
+        "title": "Comprensión financiera",
+        "content": "Fortalece competencias en comprensión y aplicación del lenguaje financiero."
+      },
+      {
+        "title": "Gestión estratégica",
+        "content": "Aprende a diseñar y gestionar estrategias que contribuyan al mejoramiento de la compañía."
+      },
+      {
+        "title": "Impacto en el valor empresarial",
+        "content": "Enfocado en maximizar el valor de las empresas mediante decisiones financieras informadas."
+      },
+      {
+        "title": "Formación especializada",
+        "content": "Programa de posgrado con enfoque práctico en áreas clave de administración financiera."
+      },
+      {
+        "title": "Oportunidades de networking",
+        "content": "Modalidad presencial que facilita el intercambio con docentes y profesionales del sector."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Condiciones y cómo acceder",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Beneficio de descuento",
+        "text": "El presente beneficio corresponde a un 45% de descuento para el primer semestre de posgrado, aplicable sobre el valor de la matrícula. Aplica para estudiantes nuevos que formalicen admisión y matrícula en las fechas establecidas.",
+        "icon": ""
+      },
+      {
+        "title": "Condiciones de aplicación",
+        "text": "El descuento es personal, intransferible y no acumulable con otros beneficios. No es retroactivo y la institución se reserva el derecho de modificar o suspender el beneficio.",
+        "icon": ""
+      },
+      {
+        "title": "Modalidad y aplicación escalonada",
+        "text": "Modalidad presencial: el 30% aplica solo para el primer semestre. El beneficio aplica de manera escalonada en los semestres 2026-2 (45%), 2027-1 (35%), 2027-2 (25%) y, para maestrías que apliquen, 2028-2 (25%).",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Descuento para primer semestre",
+        "text": "Hasta 45% de descuento para el primer semestre, sujeto a condiciones y fechas de matrícula.",
+        "icon": ""
+      },
+      {
+        "title": "Desarrollo de competencias financieras",
+        "text": "Formación enfocada en el uso del lenguaje financiero y la gestión estratégica para mejorar el desempeño empresarial.",
+        "icon": ""
+      },
+      {
+        "title": "Modalidad presencial",
+        "text": "Aprendizaje presencial que facilita el contacto directo con docentes y colegas para intercambio profesional.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Interesado en la especialización?",
+    "button": "Recibe más información"
+  },
+  "form": {
+    "scriptUrl": "",
+    "scriptCode": "",
+    "programName": "Especialización en Administración Financiera"
+  },
+  "footerScripts": [],
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}

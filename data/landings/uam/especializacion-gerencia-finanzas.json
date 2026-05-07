@@ -1,0 +1,117 @@
+{
+  "slug": "especializacion-gerencia-finanzas",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Especialización en Gerencia de Finanzas",
+  "fullTitle": "Especialización en Gerencia de Finanzas",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Especialización en",
+    "title": "Gerencia de Finanzas",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "100% virtual",
+    "semesterPrice": "$7.784.500",
+    "backgroundImage": "https://assets.unlayer.com/projects/0/1762877136666-Rectangle%201.jpg",
+    "personImage": "https://assets.unlayer.com/projects/0/1762951537424-modelo-gerencia-finanzas.png"
+  },
+  "programInfo": [
+    "Especialista en Gerencia de Finanzas",
+    "24 Créditos académicos",
+    "2 Semestres de duración",
+    "SNIES 116539 Res. 024108 - 2023 - 7 años"
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Especialización en Gerencia de Finanzas en la UAM?",
+    "description": "",
+    "image": "https://assets.unlayer.com/projects/0/1762887836825-chico-U.png",
+    "items": [
+      {
+        "title": "Desarrolla una gestión financiera estratégica",
+        "content": "Aprende a dirigir estructuras de inversión y financiamiento que impulsen el crecimiento empresarial con una visión estratégica y analítica."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "content": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      },
+      {
+        "title": "Toma decisiones ágiles y precisas",
+        "content": "Adquiere herramientas para evaluar riesgos, analizar indicadores y responder con eficacia ante entornos cambiantes."
+      },
+      {
+        "title": "Desarrolla liderazgo financiero",
+        "content": "Adquiere herramientas para evaluar riesgos, analizar indicadores y responder con eficacia ante entornos cambiantes."
+      },
+      {
+        "title": "Optimiza estructuras de inversión y financiamiento",
+        "content": "Analiza y mejora la gestión de capital, maximizando el valor corporativo y minimizando los riesgos financieros."
+      },
+      {
+        "title": "Proyéctate como consultor o asesor financiero",
+        "content": "Prepárate para liderar procesos de consultoría y asesoramiento en inversiones dentro del mundo financiero actual."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu carrera",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "text": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
+      },
+      {
+        "title": "Becas",
+        "text": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
+      },
+      {
+        "title": "Beneficios",
+        "text": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "text": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "icon": "https://assets.unlayer.com/projects/0/1762889493926-icon-premanencia.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "text": "Formación práctica con expertos del sector",
+        "icon": "https://assets.unlayer.com/projects/0/1762889555571-icon-habilidades.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "text": "Conexiones con profesionales y empresas líderes",
+        "icon": "https://assets.unlayer.com/projects/0/1762889575677-icon-networking.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Esp. en Gerencia de Finanzas - Virtual",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/264965.js\"></script>"
+  },
+  "programType": "Especialización",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "flexible",
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}

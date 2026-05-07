@@ -1,0 +1,127 @@
+{
+  "slug": "odontologia",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Odontología",
+  "fullTitle": "Odontología",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Pregrado en",
+    "title": "Odontología",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "Presencial",
+    "semesterPrice": "$13.888.800",
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/odontologia-uam-pregrado-diurno.jpg",
+    "personImage": "",
+    "overlayColor": "#758795"
+  },
+  "programInfo": [
+    "Pregrado en Odontología",
+    "183 Créditos académicos",
+    "10 semestres de duración",
+    "SNIES 1916"
+  ],
+  "whyStudy": {
+    "title": "Transforma tu futuro con el Pregrado en Odontología en la UAM",
+    "description": "Forma parte de un programa que no solo se enfoca en la salud bucal, sino en mejorar la calidad de vida de las personas mediante diagnósticos, tratamientos y prevención. Prepárate para ser un profesional comprometido con el bienestar de la comunidad.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Formación clínica integral",
+        "content": "Aprende a diagnosticar, tratar y rehabilitar enfermedades bucales, integrando conocimientos biomédicos y sociales para una atención de calidad."
+      },
+      {
+        "title": "Acreditación ARCU-SUR: Calidad avalada a nivel latinoamericano",
+        "content": "Certificación que avala la calidad académica del programa bajo estándares rigurosos del Mercosur, facilitando el reconocimiento del título en Argentina, Brasil, Chile, Paraguay, Uruguay y Bolivia."
+      },
+      {
+        "title": "Uso de tecnología y evidencia científica",
+        "content": "Tu formación incluye el uso de tecnología con un enfoque en evidencia científica, realizando prácticas actualizadas y efectivas en odontología."
+      },
+      {
+        "title": "Compromiso social y ético",
+        "content": "Prepárate para actuar con responsabilidad social, liderazgo y ética profesional, impactando positivamente la salud bucal de comunidades."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "content": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu formación",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "text": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "text": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "text": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "text": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "text": "Formación práctica con expertos del sector.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "text": "Conexiones con profesionales y empresas líderes.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Odontología",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284402.js\"></script>"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": true,
+    "resolutionText": "",
+    "items": [
+      {
+        "name": "Acreditación de alta Calidad",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "Resolución 024205 diciembre 23 de 2022 - 6 años"
+      },
+      {
+        "name": "Acreditación Internacional ARCU-SUR",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "Acuerdo 008 junio15 de 2022 - 6 años"
+      }
+    ]
+  }
+}

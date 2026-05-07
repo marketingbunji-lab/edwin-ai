@@ -1,0 +1,118 @@
+{
+  "slug": "diseno-de-modas",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-23",
+  "title": "Diseño de Modas",
+  "fullTitle": "Diseño de Modas",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Diseño de Modas",
+    "title": "",
+    "description": "Haz moda que mueve ideas, no solo tendencias. Diseña desde la creatividad, la cultura y el propósito profesional.",
+    "supportText": "Programa profesional presencial con enfoque en diseño, producción, emprendimiento e innovación en la industria de la moda.",
+    "modality": "Presencial",
+    "semesterPrice": "$5.380.000",
+    "backgroundImage": "https://www.autonoma.edu.co/sites/default/files/2025-12/diseno-de-modas.png",
+    "personImage": "",
+    "overlayColor": "#c32c8d"
+  },
+  "programInfo": [
+    "Diseñador de Modas",
+    "170 Créditos académicos",
+    "10 Semestres",
+    "SNIES 19726"
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Diseño de Modas en la UAM?",
+    "description": "Desarrolla propuestas creativas con visión estratégica para una industria dinámica. Fórmate en diseño, patronaje, textiles, producción, tendencias y gestión de marca para transformar ideas en proyectos reales.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Creatividad aplicada",
+        "content": "Convierte conceptos en colecciones con identidad propia."
+      },
+      {
+        "title": "Industria real",
+        "content": "Aprende procesos de producción y comercialización."
+      },
+      {
+        "title": "Emprendimiento",
+        "content": "Prepárate para lanzar tu marca o negocio de moda."
+      },
+      {
+        "title": "Tendencias y cultura",
+        "content": "Analiza contextos sociales para diseñar con propósito."
+      },
+      {
+        "title": "Herramientas técnicas",
+        "content": "Domina patronaje, confección, textiles e ilustración."
+      },
+      {
+        "title": "Proyección global",
+        "content": "Comprende mercados y oportunidades internacionales."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "La UAM impulsa tu crecimiento creativo",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Experiencia internacional",
+        "text": "Accede a movilidad e inspiración global para tu carrera.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Aprendizaje práctico",
+        "text": "Desarrolla proyectos, colecciones y portafolio real.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y apoyo",
+        "text": "Opciones para facilitar tu formación profesional.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios de estudiar este programa",
+    "items": [
+      {
+        "title": "Perfil competitivo",
+        "text": "Combina creatividad, técnica y visión empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Marca personal",
+        "text": "Construye identidad profesional y portafolio sólido.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Red de oportunidades",
+        "text": "Conecta con la industria creativa y empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para convertir tu talento en una carrera con estilo?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Diseño de Modas",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284463.js\"></script>"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}

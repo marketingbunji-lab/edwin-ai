@@ -1,0 +1,18 @@
+{
+  "slug": "omi",
+  "name": "OMI",
+  "shortName": "Orlando Medical Institute",
+  "logo": "https://omi.edu/wp-content/uploads/2023/03/logo.png",
+  "logos": {
+    "light": "https://omi.edu/wp-content/uploads/2026/03/omi-orlando-medical-institute.png",
+    "dark": "https://aquinas.a2hosted.com/omi/wp-content/uploads/2025/05/logo-OMI-gold.svg"
+  },
+  "typography": {
+    "fontFamily": "\"Lato\", sans-serif",
+    "googleFontHref": "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+  },
+  "primaryColor": "#000000",
+  "secondaryColor": "#e0af5c",
+  "description": "Orlando Medical Institute",
+  "legalLinks": []
+}

@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --bunji-primary: #3e3989;
+  --bunji-primary-dark: #2f2b69;
+  --bunji-primary-darker: #24204f;
+  --bunji-primary-light: #eeedfa;
+  --bunji-primary-soft: #d9d7f3;
+  --bunji-primary-muted: #b7b3e3;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #e5edf8;
+  --bunji-primary-light: #1b1738;
+  --bunji-primary-soft: #26214d;
+  --bunji-primary-muted: #8f89cb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.bunji-text-primary {
+  color: var(--bunji-primary);
+}
+
+.bunji-text-muted {
+  color: var(--bunji-primary-muted);
+}
+
+.bunji-bg-primary {
+  background-color: var(--bunji-primary);
+}
+
+.bunji-bg-primary-dark {
+  background-color: var(--bunji-primary-dark);
+}
+
+.bunji-button-primary {
+  background-color: var(--bunji-primary);
+  color: #fff;
+}
+
+.bunji-button-primary:hover {
+  background-color: var(--bunji-primary-dark);
+}
+
+.bunji-button-secondary {
+  background-color: var(--bunji-primary-dark);
+  color: #fff;
+}
+
+.bunji-button-secondary:hover {
+  background-color: var(--bunji-primary-darker);
+}
+
+.bunji-bg-primary-light {
+  background-color: var(--bunji-primary-light);
+}
+
+.bunji-border-soft {
+  border-color: var(--bunji-primary-soft);
+}
+
+.bunji-ring-soft {
+  --tw-ring-color: var(--bunji-primary-soft);
+}

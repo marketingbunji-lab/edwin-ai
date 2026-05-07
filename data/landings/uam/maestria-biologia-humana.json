@@ -1,0 +1,125 @@
+{
+  "slug": "maestria-biologia-humana",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Maestría en Biología Humana",
+  "fullTitle": "Maestría en Biología Humana",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Maestría en",
+    "title": "Biología Humana",
+    "description": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "100% virtual",
+    "semesterPrice": "$9.691.500",
+    "backgroundImage": "https://assets.unlayer.com/projects/0/1762877136666-Rectangle%201.jpg",
+    "personImage": "https://assets.unlayer.com/projects/0/1764346868795-modelo-biologia.png"
+  },
+  "programInfo": [
+    "Magíster en Biología Humana",
+    "50 Créditos académicos",
+    "4 Semestres de duración",
+    "SNIES 111024"
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Maestría en Biología Humana en la UAM?",
+    "description": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
+    "image": "https://assets.unlayer.com/projects/0/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Aborda los retos de la salud y el entorno",
+        "content": "Analiza las interacciones del ser humano con su medio ambiente y contribuye al desarrollo de estrategias que mejoren la salud y la calidad de vida."
+      },
+      {
+        "title": "Profundiza en los procesos biológicos humanos",
+        "content": "Explora los mecanismos que sustentan la vida humana desde una perspectiva celular, genética y fisiológica."
+      },
+      {
+        "title": "Contribuye al avance científico",
+        "content": "Participa en proyectos de investigación que impactan positivamente el conocimiento y las prácticas biomédicas."
+      },
+      {
+        "title": "Forma parte de una comunidad investigadora",
+        "content": "Integra redes de investigación con docentes y expertos reconocidos por su trayectoria académica y científica."
+      },
+      {
+        "title": "Aumenta tu impacto profesional",
+        "content": "Aplica tu conocimiento en sectores como salud, biotecnología, docencia o investigación, fortaleciendo tu perfil como “magíster”."
+      },
+      {
+        "title": "Construye un futuro en la ciencia aplicada",
+        "content": "Obtén herramientas metodológicas y analíticas para desarrollar estudios que aporten soluciones reales en el campo de la biología humana."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "content": "Comprende las dinámicas del entorno económico global y toma decisiones que impulsen la competitividad y sostenibilidad empresarial."
+      },
+      {
+        "title": "Estudio de homologación",
+        "content": "Al graduarte podrás escalar en tu formación académica con los programas que ofrece la Universidad mediante el proceso de reconocimiento de créditos."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu carrera",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "text": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
+      },
+      {
+        "title": "Becas",
+        "text": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
+      },
+      {
+        "title": "Beneficios",
+        "text": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "text": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "icon": "https://assets.unlayer.com/projects/0/1762889493926-icon-premanencia.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "text": "Formación práctica con expertos del sector",
+        "icon": "https://assets.unlayer.com/projects/0/1762889555571-icon-habilidades.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "text": "Conexiones con profesionales y empresas líderes",
+        "icon": "https://assets.unlayer.com/projects/0/1762889575677-icon-networking.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Maestría en Biología Humana  - Virtual",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/264965.js\"></script>"
+  },
+  "programType": "Maestría",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "flexible",
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}

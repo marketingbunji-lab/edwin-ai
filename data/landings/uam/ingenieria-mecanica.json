@@ -1,0 +1,127 @@
+{
+  "slug": "ingenieria-mecanica",
+  "brand": "uam",
+  "template": "UamProgramLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Ingeniería Mecánica",
+  "fullTitle": "Ingeniería Mecánica",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Pregrado en",
+    "title": "Ingeniería Mecánica",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "Presencial",
+    "semesterPrice": "$10.144.100",
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/ingeniera-mecanica-uam-pregrado.jpg",
+    "personImage": "",
+    "overlayColor": "#034592"
+  },
+  "programInfo": [
+    "Pregrado en Ingeniería Mecánica",
+    "180 Créditos académicos",
+    "10 Semestres de duración",
+    "SNIES 1919"
+  ],
+  "whyStudy": {
+    "title": "Transforma tu futuro con el Pregrado en Ingeniería Mecánica en la UAM",
+    "description": "Únete a los profesionales que crean y transforman la tecnología que mueve al mundo. Aprende a diseñar sistemas mecánicos avanzados, implementar manufactura inteligente y desarrollar soluciones energéticas sostenibles con un enfoque innovador y técnico.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Diseño y creación de tecnología avanzada",
+        "content": "Desarrolla habilidades para fabricar máquinas, herramientas y sistemas complejos utilizando herramientas computacionales de última generación y principios de ingeniería de precisión."
+      },
+      {
+        "title": "Enfoque en energías renovables y sostenibilidad",
+        "content": "Prepárate para diseñar sistemas térmicos y mecánicos que optimicen el uso de recursos y minimicen el impacto ambiental en la industria."
+      },
+      {
+        "title": "Experimentación en laboratorios de alta especialidad",
+        "content": "Fortalece tu perfil profesional con práctica constante en talleres y laboratorios de materiales, termofluidos y procesos de manufactura, donde aplicarás tus conocimientos en entornos industriales reales."
+      },
+      {
+        "title": "Formación integral para la industria 4.0",
+        "content": "Desarrolla una visión sistémica para gestionar proyectos de ingeniería que respondan a las exigencias de la transformación digital global."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "content": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu formación",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "text": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "text": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "text": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "text": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "text": "Formación práctica con expertos del sector.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "text": "Conexiones con profesionales y empresas líderes.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "button": "¡Inscríbete ahora!"
+  },
+  "form": {
+    "scriptUrl": "",
+    "programName": "Ingeniería Mecánica",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284307.js\"></script>"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": true,
+    "resolutionText": "",
+    "items": [
+      {
+        "name": "Acreditación de alta Calidad",
+        "url": "",
+        "resolutionText": "Resolución 014479 julio 25 de 2022 - 6 años",
+        "enabled": true
+      },
+      {
+        "name": "Acreditación Internacional ARCU-SUR",
+        "url": "",
+        "enabled": false,
+        "resolutionText": ""
+      }
+    ]
+  }
+}

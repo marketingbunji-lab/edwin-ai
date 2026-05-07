@@ -1,0 +1,113 @@
+{
+  "slug": "orlando-emt-program",
+  "brand": "omi",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-27",
+  "logoMode": "dark",
+  "title": "EMT Program",
+  "fullTitle": "Emergency Medical Technician (EMT) Training Program",
+  "programType": "Tecnología",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Transforming Tomorrow's Heroes",
+    "highlight": "Comprehensive EMT Training in Orlando",
+    "title": "Become a Certified Emergency Medical Technician",
+    "description": "Prepare for Florida State and National EMT Certification with hands-on, interactive training designed for working professionals.",
+    "supportText": "Flexible schedules including day, night and weekend classes to fit your lifestyle.",
+    "modality": "In-person with flipped classroom model",
+    "semesterPrice": "",
+    "backgroundImage": "",
+    "personImage": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    "Total Hours: 300 hours",
+    "Classroom Time: 176 hours",
+    "Lab Time: 52 hours",
+    "Hands-On Experience: 72 hours"
+  ],
+  "whyStudy": {
+    "title": "Why Study EMT at Orlando Medical Institute?",
+    "description": "A progressive program designed with experienced instructors and a flipped classroom to maximize your learning and readiness for emergency medical careers.",
+    "image": "",
+    "items": [
+      {
+        "title": "Expert Faculty",
+        "content": "Highly qualified instructors committed to student success."
+      },
+      {
+        "title": "Flipped Classroom Model",
+        "content": "Learn theory at home and practice actively in class for better understanding."
+      },
+      {
+        "title": "Comprehensive Curriculum",
+        "content": "Includes simulations, clinical rotations, and real-world field experience."
+      },
+      {
+        "title": "Flexible Scheduling",
+        "content": "Day, night, and weekend options to accommodate working professionals."
+      },
+      {
+        "title": "Certification Eligibility",
+        "content": "Prepare to take Florida State and National EMT certification exams."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support and Resources",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Clinical Compliance",
+        "text": "Health, immunization and background checks ensure safe clinical experiences.",
+        "icon": "medical-check"
+      },
+      {
+        "title": "CPR Certification Included",
+        "text": "American Heart Association CPR certification provided during the program.",
+        "icon": "heart-pulse"
+      },
+      {
+        "title": "Admissions Assistance",
+        "text": "Dedicated advisors ready to guide you through application and financial aid.",
+        "icon": "headset"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Hands-On Training",
+        "text": "Gain practical skills through labs, simulations, and field experience.",
+        "icon": "hands-helping"
+      },
+      {
+        "title": "Career Readiness",
+        "text": "Be prepared for critical decision making in emergency situations.",
+        "icon": "briefcase-medical"
+      },
+      {
+        "title": "Flexible Learning",
+        "text": "Flipped classroom and multiple schedule options enhance learning convenience.",
+        "icon": "clock"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Start Your EMT Career?",
+    "button": "Get a Callback"
+  },
+  "form": {
+    "scriptUrl": "",
+    "scriptCode": "",
+    "programName": "Emergency Medical Technician (EMT)"
+  },
+  "footerScripts": [],
+  "certifications": {
+    "enabled": false,
+    "resolutionText": "",
+    "items": []
+  }
+}
