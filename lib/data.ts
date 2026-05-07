@@ -17,6 +17,14 @@ export type Brand = {
   primaryColor: string;
   secondaryColor: string;
   description?: string;
+  officialWebsite?: string;
+  siteName?: string;
+  abstract?: string;
+  keywords?: string[];
+  robots?: string;
+  generator?: string;
+  imageBrand?: string;
+  images?: string[];
   legalLinks?: LegalLink[];
   certifications?: BrandCertification[];
 };

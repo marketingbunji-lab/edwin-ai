@@ -10,11 +10,9 @@ import {
   FolderKanban,
   LayoutDashboard,
   Menu,
-  Moon,
   Pencil,
   Plus,
   Sparkles,
-  Sun,
   X,
 } from "lucide-react";
 import AdminUserMenu from "@/components/dashboard/AdminUserMenu";
@@ -190,29 +188,6 @@ export default function DashboardShell({
     return children;
   }
 
-  const toggleTheme = () => {
-    const nextTheme: ThemeMode = theme === "dark" ? "light" : "dark";
-    saveTheme(nextTheme);
-  };
-
-  const themeToggle = (
-    <button
-      type="button"
-      onClick={toggleTheme}
-      className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
-      aria-label={
-        theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
-      }
-    >
-      {theme === "dark" ? (
-        <Sun className="h-4 w-4" />
-      ) : (
-        <Moon className="h-4 w-4" />
-      )}
-      {theme === "dark" ? "Light mode" : "Dark mode"}
-    </button>
-  );
-
   return (
     <div
       className={`min-h-screen bg-[#f3f5f9] text-slate-900 dark:bg-[#020617] dark:text-slate-100 ${
@@ -226,6 +201,17 @@ export default function DashboardShell({
           className="fixed inset-0 z-40 bg-slate-950/45 lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
+      ) : null}
+
+      {!mobileOpen ? (
+        <button
+          type="button"
+          aria-label="Abrir menu lateral"
+          onClick={() => setMobileOpen(true)}
+          className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 lg:hidden"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
       ) : null}
 
       <aside
@@ -244,12 +230,12 @@ export default function DashboardShell({
               priority
             />
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-                Bunji
-              </p>
               <h1 className="text-base font-semibold text-slate-900 dark:text-white">
-                Landing Engine
+                EDwin
               </h1>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
+                AI
+              </p>
             </div>
           </div>
 
@@ -261,17 +247,6 @@ export default function DashboardShell({
           >
             <X className="h-5 w-5" />
           </button>
-        </div>
-
-        <div className="px-4 py-4">
-          <Link
-            href="/admin/brands/new"
-            onClick={() => setMobileOpen(false)}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#3e3989] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-[color:rgba(62,57,137,0.28)] transition hover:bg-[#2f2b69] dark:bg-[#3e3989] dark:hover:bg-[#2f2b69]"
-          >
-            <Plus className="h-4 w-4" />
-            Crear marca
-          </Link>
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-5">
@@ -335,38 +310,13 @@ export default function DashboardShell({
             </div>
           </div>
         </div>
+
+        <div className="border-t border-slate-200 p-3 dark:border-white/10">
+          <AdminUserMenu theme={theme} onThemeChange={saveTheme} />
+        </div>
       </aside>
 
       <div className="lg:pl-[286px]">
-        <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/92 backdrop-blur dark:border-slate-800 dark:bg-slate-950/92">
-          <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6">
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                aria-label="Abrir menu lateral"
-                onClick={() => setMobileOpen(true)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 lg:hidden"
-              >
-                <Menu className="h-5 w-5" />
-              </button>
-
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
-                  Panel
-                </p>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                  Gestiona marcas y landings desde un solo lugar
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              {themeToggle}
-              <AdminUserMenu />
-            </div>
-          </div>
-        </header>
-
         {activeBrand &&
         (isBrandOverviewPage ||
           isBrandEditPage ||

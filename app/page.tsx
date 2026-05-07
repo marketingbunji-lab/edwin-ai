@@ -41,12 +41,12 @@ export default async function HomePage() {
                 priority
               />
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary-muted)]">
-                  Bunji
-                </p>
                 <h1 className="text-base font-semibold text-white">
-                  Landing Engine
+                  EDwin
                 </h1>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary-muted)]">
+                  AI
+                </p>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ export default async function HomePage() {
                 Admin access
               </p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight text-white">
-                Ingresa para gestionar tus landings.
+                AI Agents working faster, smarter, together for your university and your school
               </h2>
             </div>
 

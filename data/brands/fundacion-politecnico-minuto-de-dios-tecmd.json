@@ -1,0 +1,52 @@
+{
+  "slug": "fundacion-politecnico-minuto-de-dios-tecmd",
+  "name": "Fundación Politécnico Minuto de Dios - TecMD",
+  "shortName": "Fundación Politécnico Minuto de Dios",
+  "logo": "",
+  "logos": {
+    "light": "",
+    "dark": ""
+  },
+  "typography": {
+    "fontFamily": "",
+    "googleFontHref": ""
+  },
+  "primaryColor": "#111827",
+  "secondaryColor": "#F8D74A",
+  "description": "Bienvenido a la Fundación Politécnico Minuto de Dios. Formación InTECligente en programas de formación técnico profesional de mayor demanda laboral. ¡Ingresa!",
+  "officialWebsite": "https://tecmd.edu.co/",
+  "siteName": "Fundación Politécnico Minuto de Dios",
+  "abstract": "",
+  "keywords": [
+    "Fundación Politécnico Minuto de Dios",
+    "Politécnico Minuto de Dios TecMD",
+    "Desición InTECligente",
+    "Programas Técnicos Profesionales",
+    "Inscripciones",
+    "Matriculas",
+    "Educación Virtual",
+    "Alta Demanda Laboral",
+    "Metodología Innovadora",
+    "Inscripciones en Línea",
+    "Formación Técnica",
+    "Educación Flexible",
+    "Oferta Académica",
+    "Bienestar Estudiantil",
+    "Alianzas Educativa",
+    "InTECligente",
+    "Institución educativa"
+  ],
+  "robots": "max-image-preview:large",
+  "generator": "",
+  "imageBrand": "https://tecmd.edu.co/wp-content/uploads/2025/06/TecMD-social-og.jpg",
+  "images": [
+    "https://tecmd.edu.co/wp-content/uploads/2025/06/TecMD-social-og.jpg"
+  ],
+  "legalLinks": [
+    {
+      "label": "Sitio oficial",
+      "url": "https://www.tecmd.edu.co"
+    }
+  ],
+  "certifications": []
+}
