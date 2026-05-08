@@ -72,8 +72,42 @@ function normalizeCertifications(brand: Brand) {
   }));
 }
 
+function parseJsonString(value: string) {
+  const cleanValue = value
+    .replace(/```json/gi, "")
+    .replace(/```/g, "")
+    .trim();
+  const firstBrace = cleanValue.indexOf("{");
+  const lastBrace = cleanValue.lastIndexOf("}");
+
+  if (firstBrace === -1 || lastBrace === -1) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(
+      cleanValue.slice(firstBrace, lastBrace + 1),
+    ) as unknown;
+  } catch {
+    return null;
+  }
+}
+
 function normalizeWebhookResponse(value: unknown): WebhookResponse | null {
   const firstValue = Array.isArray(value) ? value[0] : value;
+
+  if (typeof firstValue === "string") {
+    const parsed = parseJsonString(firstValue);
+
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      return parsed as WebhookResponse;
+    }
+
+    return {
+      message: firstValue,
+      raw: firstValue,
+    };
+  }
 
   if (!firstValue || typeof firstValue !== "object") {
     return null;
@@ -102,6 +136,64 @@ function normalizeWebhookResponse(value: unknown): WebhookResponse | null {
   }
 
   return record;
+}
+
+function findBrandCandidate(value: unknown, depth = 0): Brand | null {
+  if (depth > 4 || value == null) {
+    return null;
+  }
+
+  if (isBrand(value)) {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const parsed = parseJsonString(value);
+    return parsed ? findBrandCandidate(parsed, depth + 1) : null;
+  }
+
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const candidate = findBrandCandidate(item, depth + 1);
+
+      if (candidate) {
+        return candidate;
+      }
+    }
+
+    return null;
+  }
+
+  if (typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    const candidateKeys = [
+      "brand",
+      "draft",
+      "landing",
+      "data",
+      "result",
+      "payload",
+      "output",
+      "response",
+      "message",
+      "text",
+      "raw",
+    ];
+
+    for (const key of candidateKeys) {
+      if (!(key in record)) {
+        continue;
+      }
+
+      const candidate = findBrandCandidate(record[key], depth + 1);
+
+      if (candidate) {
+        return candidate;
+      }
+    }
+  }
+
+  return null;
 }
 
 function getAssistantText(value: unknown) {
@@ -163,52 +255,7 @@ function isBrand(value: unknown): value is Brand {
 
 function getGeneratedBrand(value: unknown) {
   const record = normalizeWebhookResponse(value);
-
-  if (isBrand(record?.brand)) {
-    return record.brand;
-  }
-
-  if (isBrand(record?.draft)) {
-    return record.draft;
-  }
-
-  if (isBrand(record?.landing)) {
-    return record.landing;
-  }
-
-  const textCandidates = [
-    record?.message,
-    record?.reply,
-    record?.response,
-    record?.output,
-    record?.text,
-  ];
-
-  for (const candidate of textCandidates) {
-    if (typeof candidate !== "string") {
-      continue;
-    }
-
-    const parsed = normalizeWebhookResponse({ raw: candidate });
-
-    if (isBrand(parsed?.brand)) {
-      return parsed.brand;
-    }
-
-    if (isBrand(parsed?.draft)) {
-      return parsed.draft;
-    }
-
-    if (isBrand(parsed)) {
-      return parsed;
-    }
-  }
-
-  if (isBrand(record)) {
-    return record;
-  }
-
-  return null;
+  return findBrandCandidate(record ?? value);
 }
 
 export default function AiBrandChat() {
@@ -242,6 +289,10 @@ export default function AiBrandChat() {
   function applyWebhookData(data: unknown) {
     const nextBrand = getGeneratedBrand(data);
     const normalized = normalizeWebhookResponse(data);
+
+    console.log("[AiBrandChat] webhook raw response", data);
+    console.log("[AiBrandChat] webhook normalized response", normalized);
+    console.log("[AiBrandChat] extracted brand preview", nextBrand);
 
     if (!nextBrand) {
       setDebugData({ raw: data, normalized, brand: null });
@@ -312,6 +363,12 @@ export default function AiBrandChat() {
       const data = contentType.includes("application/json")
         ? await response.json()
         : await response.text();
+
+      console.log("[AiBrandChat] /api/ai-brand-chat response", {
+        status: response.status,
+        contentType,
+        data,
+      });
 
       if (!response.ok) {
         throw new Error(getAssistantText(data) || "No se pudo enviar el mensaje");

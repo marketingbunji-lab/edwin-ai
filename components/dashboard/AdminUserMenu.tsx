@@ -38,15 +38,8 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
           return;
         }
 
-        const { data: profile } = await supabase
-          .from("profiles")
-          .select("full_name")
-          .eq("id", authUser.id)
-          .maybeSingle();
-
         if (isMounted) {
           const profileName =
-            profile?.full_name ||
             authUser.user_metadata?.full_name ||
             authUser.user_metadata?.name ||
             authUser.email ||

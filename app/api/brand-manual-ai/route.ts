@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-const webhookUrl = "https://n8n.crisnnino.com/webhook/brand-agent-edwin-ai-v2";
-//const webhookUrl = "https://n8n.crisnnino.com/webhook-test/brand-agent-edwin-ai-v2";
+const webhookUrl = "https://n8n.crisnnino.com/webhook-test/brand-manual-ai";
+//const webhookUrl = "https://n8n.crisnnino.com/webhook/brand-manual-ai";
 
 export async function POST(request: Request) {
   try {
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       ? await webhookResponse.json()
       : await webhookResponse.text();
 
-    console.log("AI BRAND CHAT WEBHOOK RESPONSE:", {
+    console.log("BRAND MANUAL AI WEBHOOK RESPONSE:", {
       status: webhookResponse.status,
       contentType,
       data,
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
             typeof data === "string" ? data : "El webhook respondio con error",
           details: typeof data === "string" ? undefined : data,
         },
-        { status: webhookResponse.status }
+        { status: webhookResponse.status },
       );
     }
 
@@ -49,11 +49,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("AI BRAND CHAT WEBHOOK ERROR:", error);
+    console.error("BRAND MANUAL AI WEBHOOK ERROR:", error);
 
     return NextResponse.json(
       { ok: false, error: "No se pudo contactar el webhook" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

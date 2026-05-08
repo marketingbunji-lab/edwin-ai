@@ -24,8 +24,8 @@ export default function BrandCard({
   return (
     <div className="border border-gray-200 bg-white p-6 transition hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-900">
       <Link href={`/admin/brands/${brand.slug}`} className="block">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
-          <div className="min-w-0">
+        <div className="grid grid-cols-3 items-center gap-5">
+          <div className="col-span-1">
             <img
               src={lightLogo}
               alt={brand.name}
@@ -38,7 +38,7 @@ export default function BrandCard({
             />
           </div>
 
-          <div className="max-w-28 shrink-0">
+          <div className="col-span-2">
             <h2 className="text-xl font-semibold dark:text-slate-50">{brand.name}</h2>
             <p className="break-words text-sm leading-5 text-gray-500 dark:text-slate-400">
               {brand.shortName || brand.description || brand.name}

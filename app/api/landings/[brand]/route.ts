@@ -214,7 +214,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     return NextResponse.json({
       ok: true,
       slug,
-      redirectTo: `/admin/brands/${brand}/${slug}`,
+      redirectTo: `/admin/brands/${brand}/landings/${slug}`,
     });
   } catch {
     return NextResponse.json(

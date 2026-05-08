@@ -13,24 +13,6 @@ export default async function BrandsPage() {
   return (
     <main className="min-h-screen bg-gray-50 px-6 py-10 dark:bg-[#020617]">
       <div className="w-full">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-50">
-              Marcas
-            </h1>
-            <p className="max-w-2xl text-gray-600 dark:text-slate-300">
-              Selecciona una marca para gestionar sus landings.
-            </p>
-          </div>
-
-          <Link
-            href="/admin/brands/new"
-            className="inline-flex items-center gap-2 rounded-xl bg-black px-5 py-3 text-sm font-semibold text-white dark:bg-[var(--bunji-primary)]"
-          >
-            <Plus className="h-4 w-4" />
-            Nueva marca
-          </Link>
-        </div>
 
         <section>
           <div className="mb-4">

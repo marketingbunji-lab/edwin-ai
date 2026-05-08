@@ -118,6 +118,7 @@ export async function POST(req: NextRequest) {
         fontFamily: body.typography?.fontFamily || "",
         googleFontHref: body.typography?.googleFontHref || "",
       },
+      identityManual: body.identityManual || "",
       primaryColor: body.primaryColor || "#111827",
       secondaryColor: body.secondaryColor || "#F8D74A",
       description: body.description || "",

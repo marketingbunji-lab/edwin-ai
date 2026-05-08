@@ -181,7 +181,7 @@ export default function LandingCard({ landing }: Props) {
 
       <div className="mt-5 flex flex-wrap gap-3">
         <Link
-          href={`/admin/brands/${landing.brand}/${landing.slug}`}
+          href={`/admin/brands/${landing.brand}/landings/${landing.slug}`}
           className="bunji-button-primary inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium"
           style={{ backgroundColor: "var(--bunji-primary)", color: "#fff" }}
         >

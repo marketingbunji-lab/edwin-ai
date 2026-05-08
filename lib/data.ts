@@ -14,6 +14,7 @@ export type Brand = {
     fontFamily?: string;
     googleFontHref?: string;
   };
+  identityManual?: string;
   primaryColor: string;
   secondaryColor: string;
   description?: string;

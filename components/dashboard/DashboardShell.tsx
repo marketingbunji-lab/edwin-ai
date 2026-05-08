@@ -41,6 +41,11 @@ type NavItem = {
   exact?: boolean;
 };
 
+type BrandSubNavItem = {
+  href: string;
+  label: string;
+};
+
 const themeChangeEvent = "bunji-theme-change";
 
 function applyTheme(theme: ThemeMode) {
@@ -99,17 +104,10 @@ const primaryNav: NavItem[] = [
     label: "Marcas",
     icon: FolderKanban,
   },
-  /*{
-    href: "/admin/brands/new",
-    label: "Nueva marca",
-    icon: Plus,
-  },*/
-  {
-    href: "/admin/landings",
-    label: "Landings",
-    icon: FolderKanban,
-  },
 ];
+
+const backButtonClassName =
+  "inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800";
 
 function isNavItemActive(pathname: string, item: NavItem) {
   if (item.exact) {
@@ -142,6 +140,15 @@ function getBrandActiveState(pathname: string, brandSlug: string) {
   return pathname === brandBasePath || pathname.startsWith(`${brandBasePath}/`);
 }
 
+function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
+  return [
+    {
+      href: `/admin/brands/${brandSlug}/landings`,
+      label: "Landings",
+    },
+  ];
+}
+
 export default function DashboardShell({
   brands,
   landingSummaries,
@@ -169,7 +176,7 @@ export default function DashboardShell({
     activeBrand && pathname === `/admin/brands/${activeBrand.slug}/new/ai`,
   );
   const landingRouteMatch = pathname.match(
-    /^\/admin\/brands\/([^/]+)\/([^/]+)$/,
+    /^\/admin\/brands\/([^/]+)\/landings\/([^/]+)$/,
   );
   const activeLanding =
     landingRouteMatch && activeBrand
@@ -250,6 +257,17 @@ export default function DashboardShell({
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-5">
+          <div className="mb-4">
+            <Link
+              href="/admin/brands/new"
+              onClick={() => setMobileOpen(false)}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+            >
+              <Plus className="h-4 w-4" />
+              Nueva marca
+            </Link>
+          </div>
+
           <nav className="space-y-1">
             {primaryNav.map((item) => {
               const active = isNavItemActive(pathname, item);
@@ -285,26 +303,54 @@ export default function DashboardShell({
               {brands.map((brand) => {
                 const active = getBrandActiveState(pathname, brand.slug);
                 const href = getBrandLink(pathname, brand);
+                const subNavItems = getBrandSubNavItems(brand.slug);
 
                 return (
-                  <Link
-                    key={brand.slug}
-                    href={href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`flex items-center justify-between gap-3 rounded-2xl px-4 py-3 transition ${
-                      active
-                        ? "bg-slate-100 text-slate-950 ring-1 ring-slate-200 dark:bg-white/10 dark:text-white dark:ring-white/10"
-                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
-                    }`}
-                  >
+                  <div key={brand.slug} className="space-y-1">
+                    <Link
+                      href={href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`flex items-center justify-between gap-3 rounded-2xl px-4 py-3 transition ${
+                        active
+                          ? "bg-slate-100 text-slate-950 ring-1 ring-slate-200 dark:bg-white/10 dark:text-white dark:ring-white/10"
+                          : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
+                      }`}
+                    >
                       <div className="min-w-0">
                         <p className="truncate text-sm font-medium">{brand.name}</p>
                         <p className="truncate text-xs text-slate-500 dark:text-slate-400">
                           {brand.shortName || brand.description || brand.slug}
                         </p>
                       </div>
-                    <ChevronRight className="h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500" />
-                  </Link>
+                      <ChevronRight className="h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500" />
+                    </Link>
+
+                    {active ? (
+                      <div className="ml-4 space-y-1 border-l border-slate-200 pl-4 dark:border-slate-800">
+                        {subNavItems.map((item) => {
+                          const isSubNavActive =
+                            pathname === item.href ||
+                            pathname.startsWith(`${item.href}/`);
+
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              onClick={() => setMobileOpen(false)}
+                              className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm transition ${
+                                isSubNavActive
+                                  ? "bg-[var(--bunji-primary-light)] font-medium text-[var(--bunji-primary-dark)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-white"
+                                  : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
+                              }`}
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                              <span>{item.label}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
                 );
               })}
             </div>
@@ -318,9 +364,7 @@ export default function DashboardShell({
 
       <div className="lg:pl-[286px]">
         {activeBrand &&
-        (isBrandOverviewPage ||
-          isBrandEditPage ||
-          isNewLandingPage ||
+        (isNewLandingPage ||
           isNewLandingAiPage ||
           isLandingEditorPage) ? (
           <section className="border-b border-slate-200/80 bg-white/92 backdrop-blur dark:border-slate-800 dark:bg-slate-950/92">
@@ -390,10 +434,10 @@ export default function DashboardShell({
                 {isBrandEditPage ? (
                   <Link
                     href={`/admin/brands/${activeBrand.slug}`}
-                    className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                    className={backButtonClassName}
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver
+                    Volver a marca
                   </Link>
                 ) : null}
 
@@ -408,11 +452,11 @@ export default function DashboardShell({
                     </Link>
 
                     <Link
-                      href={`/admin/brands/${activeBrand.slug}`}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                      href={`/admin/brands/${activeBrand.slug}/landings`}
+                      className={backButtonClassName}
                     >
                       <ArrowLeft className="h-4 w-4" />
-                      Volver
+                      Volver a landings
                     </Link>
                   </>
                 ) : null}
@@ -420,20 +464,20 @@ export default function DashboardShell({
                 {isNewLandingAiPage ? (
                   <Link
                     href={`/admin/brands/${activeBrand.slug}/new`}
-                    className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                    className={backButtonClassName}
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver
+                    Volver a nueva landing
                   </Link>
                 ) : null}
 
                 {isLandingEditorPage ? (
                   <Link
-                    href={`/admin/brands/${activeBrand.slug}`}
-                    className="inline-flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                    href={`/admin/brands/${activeBrand.slug}/landings`}
+                    className={backButtonClassName}
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver
+                    Volver a landings
                   </Link>
                 ) : null}
               </div>

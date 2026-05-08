@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   ArrowRight,
-  Building2,
   CheckCircle2,
   Loader2,
   RotateCcw,
@@ -14,20 +13,6 @@ import type { Brand } from "@/lib/data";
 
 const defaultPrimaryColor = "#111827";
 const defaultSecondaryColor = "#F8D74A";
-
-type BrandAgentPreview = {
-  title: string;
-  siteName: string;
-  content: string;
-  abstract: string;
-  keywords: string[];
-  officialWebsite: string;
-  robots: string;
-  generator: string;
-  images: string[];
-  mainImage: string;
-  slug: string;
-};
 
 type BrandAgentStep = "identity" | "visual";
 
@@ -71,7 +56,7 @@ function slugify(text: string) {
     .replace(/^-+|-+$/g, "");
 }
 
-function getBrandAgentPreview(data: unknown): BrandAgentPreview | null {
+function getBrandAgentPreview(data: unknown): Brand | null {
   const firstValue = Array.isArray(data) ? data[0] : data;
 
   if (!firstValue || typeof firstValue !== "object") {
@@ -79,43 +64,135 @@ function getBrandAgentPreview(data: unknown): BrandAgentPreview | null {
   }
 
   const record = firstValue as Record<string, unknown>;
-  const title = getCleanString(record.title);
-  const siteName = getCleanString(record.site_name);
-  const content =
-    getCleanString(record.content) || getCleanString(record.description);
-  const abstract = getCleanString(record.abstract);
+  const nestedBrand =
+    record.brand && typeof record.brand === "object" && !Array.isArray(record.brand)
+      ? (record.brand as Record<string, unknown>)
+      : null;
+  const name =
+    getCleanString(record.name) ||
+    getCleanString(record.title) ||
+    getCleanString(nestedBrand?.name) ||
+    getCleanString(nestedBrand?.title);
+  const shortName =
+    getCleanString(record.shortName) ||
+    getCleanString(record.site_name) ||
+    getCleanString(record.siteName) ||
+    getCleanString(nestedBrand?.shortName) ||
+    getCleanString(nestedBrand?.siteName);
+  const description =
+    getCleanString(record.content) ||
+    getCleanString(record.description) ||
+    getCleanString(nestedBrand?.description) ||
+    getCleanString(nestedBrand?.content);
+  const abstract =
+    getCleanString(record.abstract) ||
+    getCleanString(nestedBrand?.abstract);
   const keywords = Array.isArray(record.keywords)
     ? record.keywords
         .map(getCleanString)
         .filter((keyword) => keyword.length > 0)
-    : [];
-  const officialWebsite = getCleanString(record.official_website);
-  const robots = getCleanString(record.robots);
-  const generator = getCleanString(record.generator);
+    : Array.isArray(nestedBrand?.keywords)
+      ? nestedBrand.keywords
+          .map(getCleanString)
+          .filter((keyword) => keyword.length > 0)
+      : [];
+  const officialWebsite =
+    getCleanString(record.official_website) ||
+    getCleanString(record.officialWebsite) ||
+    getCleanString(record.brandUrl) ||
+    getCleanString(nestedBrand?.officialWebsite);
+  const robots =
+    getCleanString(record.robots) ||
+    getCleanString(nestedBrand?.robots);
+  const generator =
+    getCleanString(record.generator) ||
+    getCleanString(nestedBrand?.generator);
   const images = Array.isArray(record.images)
     ? record.images
         .map(getCleanString)
         .filter((image) => image.length > 0)
-    : [];
-  const mainImage = getCleanString(record.main_image);
-  const slug = getCleanString(record.slug) || slugify(title || siteName);
+    : Array.isArray(nestedBrand?.images)
+      ? nestedBrand.images
+          .map(getCleanString)
+          .filter((image) => image.length > 0)
+      : [];
+  const logo =
+    getCleanString(record.logo) ||
+    getCleanString(nestedBrand?.logo);
+  const logosRecord =
+    nestedBrand?.logos &&
+    typeof nestedBrand.logos === "object" &&
+    !Array.isArray(nestedBrand.logos)
+      ? (nestedBrand.logos as Record<string, unknown>)
+      : null;
+  const logoLight =
+    getCleanString(logosRecord?.light) ||
+    logo;
+  const logoDark =
+    getCleanString(logosRecord?.dark) ||
+    logo;
+  const typographyRecord =
+    nestedBrand?.typography &&
+    typeof nestedBrand.typography === "object" &&
+    !Array.isArray(nestedBrand.typography)
+      ? (nestedBrand.typography as Record<string, unknown>)
+      : null;
+  const imageBrand =
+    getCleanString(record.main_image) ||
+    getCleanString(record.mainImage) ||
+    getCleanString(nestedBrand?.imageBrand) ||
+    logoLight ||
+    logoDark;
+  const slug =
+    getCleanString(record.slug) ||
+    getCleanString(nestedBrand?.slug) ||
+    slugify(name || shortName);
+  const primaryColor =
+    getCleanString(record.primaryColor) ||
+    getCleanString(nestedBrand?.primaryColor) ||
+    defaultPrimaryColor;
+  const secondaryColor =
+    getCleanString(record.secondaryColor) ||
+    getCleanString(nestedBrand?.secondaryColor) ||
+    defaultSecondaryColor;
 
-  if (!title && !siteName && !content && !officialWebsite && !mainImage) {
+  if (!name && !shortName && !description && !officialWebsite && !imageBrand) {
     return null;
   }
 
   return {
-    title,
-    siteName,
-    content,
+    slug,
+    name,
+    shortName: shortName || name,
+    logo,
+    logos: {
+      light: logoLight,
+      dark: logoDark,
+    },
+    typography: {
+      fontFamily: getCleanString(typographyRecord?.fontFamily),
+      googleFontHref: getCleanString(typographyRecord?.googleFontHref),
+    },
+    primaryColor,
+    secondaryColor,
+    description,
+    officialWebsite,
+    siteName: shortName || name,
     abstract,
     keywords,
-    officialWebsite,
     robots,
     generator,
     images,
-    mainImage,
-    slug,
+    imageBrand,
+    legalLinks: officialWebsite
+      ? [
+          {
+            label: "Sitio oficial",
+            url: officialWebsite,
+          },
+        ]
+      : [],
+    certifications: [],
   };
 }
 
@@ -178,14 +255,12 @@ export default function NewBrandQuickStart() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-  const [agentPreview, setAgentPreview] = useState<BrandAgentPreview | null>(
-    null,
-  );
+  const [agentPreview, setAgentPreview] = useState<Brand | null>(null);
   const [savedBrand, setSavedBrand] = useState<Brand | null>(null);
   const [startingAnalysis, setStartingAnalysis] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [currentStep, setCurrentStep] = useState<BrandAgentStep>("identity");
-  const [brandManual, setBrandManual] = useState<File | null>(null);
+  const [brandManualUrl, setBrandManualUrl] = useState("");
   const [sendingManual, setSendingManual] = useState(false);
 
   const resetSearch = () => {
@@ -245,19 +320,31 @@ export default function NewBrandQuickStart() {
         );
       }
 
+      console.log("[NewBrandQuickStart] /api/ai-brand-chat response", {
+        status: response.status,
+        contentType,
+        data,
+      });
+
+      console.log("[NewBrandQuickStart] raw webhook payload", data);
+      console.log(
+        "[NewBrandQuickStart] raw webhook payload JSON",
+        JSON.stringify(data, null, 2),
+      );
+
       const preview = getBrandAgentPreview(data);
 
-      if (preview) {
-        setAgentPreview(preview);
-      }
+      console.log("[NewBrandQuickStart] parsed brand agent preview", preview);
+
+      setAgentPreview(preview);
 
       setMessage(
         preview
           ? "Informacion recibida del agente de marca."
           : (typeof data === "string"
-          ? data
-          : data.reply || data.message || data.response || data.output) ||
-              "Mensaje enviado al agente de marca.",
+            ? data
+            : data.reply || data.message || data.response || data.output) ||
+            "Mensaje enviado al agente de marca.",
       );
     } catch (sendError) {
       setError(
@@ -279,41 +366,7 @@ export default function NewBrandQuickStart() {
       setError("El agente no devolvio un slug para crear la marca.");
       return;
     }
-
-    const brandData: Brand = {
-      slug: agentPreview.slug,
-      name: agentPreview.title,
-      shortName: agentPreview.siteName || agentPreview.title,
-      logo: "",
-      logos: {
-        light: "",
-        dark: "",
-      },
-      typography: {
-        fontFamily: "",
-        googleFontHref: "",
-      },
-      primaryColor: defaultPrimaryColor,
-      secondaryColor: defaultSecondaryColor,
-      description: agentPreview.content,
-      siteName: agentPreview.siteName,
-      abstract: agentPreview.abstract,
-      keywords: agentPreview.keywords,
-      officialWebsite: agentPreview.officialWebsite,
-      robots: agentPreview.robots,
-      generator: agentPreview.generator,
-      images: agentPreview.images,
-      imageBrand: agentPreview.mainImage || agentPreview.images[0] || "",
-      legalLinks: agentPreview.officialWebsite
-        ? [
-            {
-              label: "Sitio oficial",
-              url: agentPreview.officialWebsite,
-            },
-          ]
-        : [],
-      certifications: [],
-    };
+    const brandData: Brand = agentPreview;
 
     try {
       setCreating(true);
@@ -466,13 +519,93 @@ export default function NewBrandQuickStart() {
   };
 
   const sendBrandManual = async () => {
-    if (!brandManual || sendingManual) {
+    const trimmedManualUrl = brandManualUrl.trim();
+
+    if (!trimmedManualUrl || sendingManual || !savedBrand) {
       return;
     }
 
-    setSendingManual(true);
-    setMessage(`Manual "${brandManual.name}" listo para enviar.`);
-    setSendingManual(false);
+    try {
+      setSendingManual(true);
+      setError("");
+      setMessage("");
+
+      const updatedBrand: Brand = {
+        ...savedBrand,
+        identityManual: trimmedManualUrl,
+      };
+
+      const updateResponse = await fetch(`/api/brands/${savedBrand.slug}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedBrand),
+      });
+      const updateData = (await updateResponse.json()) as {
+        ok?: boolean;
+        error?: string;
+      };
+
+      if (!updateResponse.ok || !updateData.ok) {
+        throw new Error(
+          updateData.error || "No se pudo guardar el manual de identidad",
+        );
+      }
+
+      const webhookResponse = await fetch("/api/brand-manual-ai", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          brand: updatedBrand,
+          identityManual: trimmedManualUrl,
+          manualUrl: trimmedManualUrl,
+          source: "brand-manual-step",
+        }),
+      });
+
+      const contentType = webhookResponse.headers.get("content-type") || "";
+      const webhookData = (contentType.includes("application/json")
+        ? await webhookResponse.json()
+        : await webhookResponse.text()) as
+        | string
+        | {
+            ok?: boolean;
+            error?: string;
+            message?: string;
+            reply?: string;
+            response?: string;
+            output?: string;
+          };
+
+      if (!webhookResponse.ok) {
+        throw new Error(
+          typeof webhookData === "string"
+            ? webhookData
+            : webhookData.error || "No se pudo enviar el manual al webhook",
+        );
+      }
+
+      setSavedBrand(updatedBrand);
+      setMessage(
+        (typeof webhookData === "string"
+          ? webhookData
+          : webhookData.message ||
+            webhookData.reply ||
+            webhookData.response ||
+            webhookData.output) || "Manual enviado correctamente.",
+      );
+    } catch (manualError) {
+      setError(
+        manualError instanceof Error
+          ? manualError.message
+          : "No se pudo enviar el manual",
+      );
+    } finally {
+      setSendingManual(false);
+    }
   };
 
   if (savedBrand) {
@@ -504,27 +637,21 @@ export default function NewBrandQuickStart() {
                   Manual de identidad grafica
                 </span>
                 <span className="mt-2 block text-sm leading-6 text-slate-500 dark:text-slate-400">
-                  Sube un archivo PDF con los lineamientos de marca.
+                  Agrega la URL del manual de identidad para analizar logos, colores, tipografias y lineamientos visuales.
                 </span>
                 <input
-                  type="file"
-                  accept="application/pdf,.pdf"
-                  onChange={(event) =>
-                    setBrandManual(event.target.files?.[0] ?? null)
-                  }
-                  className="mt-5 block w-full text-sm text-slate-600 file:mr-4 file:border-0 file:bg-slate-950 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white dark:text-slate-300 dark:file:bg-[var(--bunji-primary)]"
+                  type="url"
+                  value={brandManualUrl}
+                  onChange={(event) => setBrandManualUrl(event.target.value)}
+                  placeholder="https://..."
+                  className="mt-5 block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-black dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 />
-                {brandManual ? (
-                  <span className="mt-3 block text-sm font-medium text-slate-700 dark:text-slate-200">
-                    {brandManual.name}
-                  </span>
-                ) : null}
               </label>
 
               <button
                 type="button"
                 onClick={sendBrandManual}
-                disabled={!brandManual || sendingManual}
+                disabled={!brandManualUrl.trim() || sendingManual}
                 className="mt-5 inline-flex items-center gap-2 bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--bunji-primary)] disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[var(--bunji-primary)]"
               >
                 {sendingManual ? (
@@ -763,29 +890,46 @@ function BrandPreviewCard({
   agentPreview,
   brand,
 }: {
-  agentPreview: BrandAgentPreview | null;
+  agentPreview: Brand | null;
   brand?: Brand | null;
 }) {
-  const description = brand?.description || agentPreview?.content || "";
+  const description = brand?.description || agentPreview?.description || "";
   const previewImage =
     brand?.imageBrand ||
-    agentPreview?.mainImage ||
-    agentPreview?.images[0] ||
+    agentPreview?.imageBrand ||
+    agentPreview?.images?.[0] ||
     "";
+  const previewLogo =
+    brand?.logos?.light ||
+    brand?.logo ||
+    agentPreview?.logos?.light ||
+    agentPreview?.logo ||
+    "";
+  const primaryColor = brand?.primaryColor || agentPreview?.primaryColor || "";
+  const secondaryColor =
+    brand?.secondaryColor || agentPreview?.secondaryColor || "";
 
   return (
     <aside className="border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
       <div className="flex h-full min-h-[360px] flex-col">
         <div>
-          <div className="mb-8 flex h-14 w-14 items-center justify-center bg-white/10 text-white">
-            <Building2 className="h-7 w-7" />
-          </div>
-
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
+          <p className="text-xs mb-5 font-semibold uppercase tracking-[0.2em] text-white/50">
             Preview
           </p>
+          <div className="mb-8 flex h-14 w-50 items-center justify-center overflow-hidden p-2 text-white">
+            {previewLogo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={previewLogo}
+                alt={brand?.name || agentPreview?.name || "Logo de la marca"}
+                className="max-h-full w-full object-contain"
+              />
+            ) : (
+              <span className="text-lg font-semibold text-white/60">Logo</span>
+            )}
+          </div>
           <h2 className="mt-4 text-3xl font-semibold leading-tight">
-            {agentPreview?.title ||
+            {agentPreview?.name ||
               "Aqui previsualizaras las caracteristicas de tu marca"}
           </h2>
           {!agentPreview ? (
@@ -798,16 +942,6 @@ function BrandPreviewCard({
 
         {agentPreview ? (
           <div className="mt-10 space-y-5">
-            {previewImage ? (
-              <div className="overflow-hidden border border-white/10 bg-white/[0.04]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={previewImage}
-                  alt={brand?.name || agentPreview.title}
-                  className="h-40 w-full object-cover"
-                />
-              </div>
-            ) : null}
 
             {description ? (
               <div>
@@ -817,6 +951,55 @@ function BrandPreviewCard({
                 <p className="mt-2 text-sm leading-6 text-white/75">
                   {description}
                 </p>
+              </div>
+            ) : null}
+
+            {primaryColor || secondaryColor ? (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                  Colores
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {primaryColor ? (
+                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                      <div className="flex items-center gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="h-10 w-10 rounded-lg border border-white/10"
+                          style={{ backgroundColor: primaryColor }}
+                        />
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
+                            Primario
+                          </p>
+                          <p className="mt-1 text-sm font-medium text-white/80">
+                            {primaryColor}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {secondaryColor ? (
+                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                      <div className="flex items-center gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="h-10 w-10 rounded-lg border border-white/10"
+                          style={{ backgroundColor: secondaryColor }}
+                        />
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
+                            Secundario
+                          </p>
+                          <p className="mt-1 text-sm font-medium text-white/80">
+                            {secondaryColor}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
               </div>
             ) : null}
 
