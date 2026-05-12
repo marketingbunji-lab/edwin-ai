@@ -1,0 +1,315 @@
+{
+  "slug": "ingenieria-mecanica",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Ingeniería Mecánica",
+  "fullTitle": "Ingeniería Mecánica",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Pregrado en",
+    "title": "Ingeniería Mecánica",
+    "subtitle": "",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "Presencial",
+    "semesterPrice": "$10.144.100",
+    "price": "$10.144.100",
+    "duration": "10 Semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/ingeniera-mecanica-uam-pregrado.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#034592"
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Pregrado en Ingeniería Mecánica"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "180"
+    },
+    {
+      "label": "Duracion",
+      "value": "10 Semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "1919"
+    }
+  ],
+  "whyStudy": {
+    "title": "Transforma tu futuro con el Pregrado en Ingeniería Mecánica en la UAM",
+    "description": "Únete a los profesionales que crean y transforman la tecnología que mueve al mundo. Aprende a diseñar sistemas mecánicos avanzados, implementar manufactura inteligente y desarrollar soluciones energéticas sostenibles con un enfoque innovador y técnico.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Diseño y creación de tecnología avanzada",
+        "description": "Desarrolla habilidades para fabricar máquinas, herramientas y sistemas complejos utilizando herramientas computacionales de última generación y principios de ingeniería de precisión."
+      },
+      {
+        "title": "Enfoque en energías renovables y sostenibilidad",
+        "description": "Prepárate para diseñar sistemas térmicos y mecánicos que optimicen el uso de recursos y minimicen el impacto ambiental en la industria."
+      },
+      {
+        "title": "Experimentación en laboratorios de alta especialidad",
+        "description": "Fortalece tu perfil profesional con práctica constante en talleres y laboratorios de materiales, termofluidos y procesos de manufactura, donde aplicarás tus conocimientos en entornos industriales reales."
+      },
+      {
+        "title": "Formación integral para la industria 4.0",
+        "description": "Desarrolla una visión sistémica para gestionar proyectos de ingeniería que respondan a las exigencias de la transformación digital global."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu formación",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "description": "Formación práctica con expertos del sector.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "description": "Conexiones con profesionales y empresas líderes.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284307.js\"></script>",
+    "formId": "",
+    "programName": "Ingeniería Mecánica",
+    "submitLabel": "Submit"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "Acreditación de alta Calidad",
+        "name": "Acreditación de alta Calidad",
+        "description": "Resolución 014479 julio 25 de 2022 - 6 años",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "Resolución 014479 julio 25 de 2022 - 6 años"
+      },
+      {
+        "title": "Acreditación Internacional ARCU-SUR",
+        "name": "Acreditación Internacional ARCU-SUR",
+        "description": "",
+        "url": "",
+        "enabled": false,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/ingenieria-mecanica",
+  "logoMode": "dark",
+  "programUrl": "/uam/ingenieria-mecanica",
+  "catalog": "",
+  "shortTitle": "Ingeniería Mecánica",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "1919",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "diurna",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "10 Semestres",
+    "credits": "180",
+    "semesters": "10 Semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$10.144.100",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Ingeniería Mecánica",
+    "metaDescription": "",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Presencial"
+    },
+    {
+      "label": "Schedule",
+      "value": "diurna"
+    },
+    {
+      "label": "Duration",
+      "value": "10 Semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "180"
+    },
+    {
+      "label": "SNIES",
+      "value": "1919"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM apoyamos tu formación",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

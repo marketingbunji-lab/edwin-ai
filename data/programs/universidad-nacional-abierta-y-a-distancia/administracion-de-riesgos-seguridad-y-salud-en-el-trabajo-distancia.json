@@ -1,0 +1,267 @@
+{
+  "slug": "administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
+  "brand": "universidad-nacional-abierta-y-a-distancia",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-30",
+  "logoMode": "dark",
+  "title": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
+  "fullTitle": "Pregrado en Administración de Riesgos, Seguridad y Salud en el Trabajo (a Distancia)",
+  "programType": "Pregrado",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Facultad de Estudios a Distancia (FAEDIS)",
+    "highlight": "SNIES 108241",
+    "title": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
+    "subtitle": "",
+    "description": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
+    "supportText": "Conoce el programa e inscríbete",
+    "modality": "a distancia",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [],
+  "whyStudy": {
+    "title": "¿Por qué estudiar este programa?",
+    "description": "El programa ofrece formación teórico-práctica y promueve la investigación, el uso de tecnología y el desarrollo de competencias para el control de riesgos y la protección de bienes y personas.",
+    "image": "",
+    "items": [
+      {
+        "title": "Formación integral",
+        "description": "Conocimiento teórico-práctico avanzado para alto desempeño productivo en industria y servicios."
+      },
+      {
+        "title": "Gestión de riesgos",
+        "description": "Capacidad para reconocer, evaluar y limitar riesgos que constituyan amenazas para personas y procesos."
+      },
+      {
+        "title": "Investigación y práctica",
+        "description": "Fomento del estudio, la investigación y la aplicación de procedimientos avanzados en seguridad ocupacional."
+      },
+      {
+        "title": "Tecnología en seguridad",
+        "description": "Conocimientos para el empleo de tecnología de punta en la protección de bienes y personas."
+      },
+      {
+        "title": "Competencias para el autoaprendizaje",
+        "description": "Desarrollo de habilidades para la investigación, el pensamiento crítico y el aprendizaje autónomo en la disciplina."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Información y soporte",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Inscripciones",
+        "description": "Información sobre el proceso de inscripción y admisión disponible en la página de la facultad.",
+        "icon": "calendar"
+      },
+      {
+        "title": "Perfil profesional",
+        "description": "Formación orientada a la gestión de medios y procedimientos para la seguridad y salud en el trabajo.",
+        "icon": "user"
+      },
+      {
+        "title": "Plan de estudios",
+        "description": "Acceso a las asignaturas y estructura curricular a través de la sección de Plan de Estudios.",
+        "icon": "book"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Enfoque teórico-práctico",
+        "description": "Preparación orientada al desempeño productivo en sectores industriales y de servicios.",
+        "icon": "gear"
+      },
+      {
+        "title": "Actualización tecnológica",
+        "description": "Formación para el uso de tecnología de punta en seguridad y protección.",
+        "icon": "microchip"
+      },
+      {
+        "title": "Desarrollo investigativo",
+        "description": "Fomento de competencias para la investigación y el pensamiento crítico en la disciplina.",
+        "icon": "flask"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para estudiar Administración de Riesgos, Seguridad y Salud en el Trabajo?",
+    "description": "",
+    "button": "Inscríbete aquí",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Pregrado en Administración de Riesgos, Seguridad y Salud en el Trabajo (a Distancia)",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
+  "programUrl": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
+  "catalog": "",
+  "shortTitle": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "a distancia",
+    "schedule": "flexible",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Pregrado en Administración de Riesgos, Seguridad y Salud en el Trabajo (a Distancia)",
+    "metaDescription": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "a distancia"
+    },
+    {
+      "label": "Schedule",
+      "value": "flexible"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "Información y soporte",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Inscripciones",
+        "description": "Información sobre el proceso de inscripción y admisión disponible en la página de la facultad.",
+        "icon": "calendar"
+      },
+      {
+        "title": "Perfil profesional",
+        "description": "Formación orientada a la gestión de medios y procedimientos para la seguridad y salud en el trabajo.",
+        "icon": "user"
+      },
+      {
+        "title": "Plan de estudios",
+        "description": "Acceso a las asignaturas y estructura curricular a través de la sección de Plan de Estudios.",
+        "icon": "book"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

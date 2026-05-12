@@ -1,0 +1,346 @@
+{
+  "slug": "eligible-career-pathways-program-medical-training-plus-ged",
+  "brand": "pcihealth",
+  "title": "Eligible Career Pathways Program (GED Plus Medical Training)",
+  "fullTitle": "Eligible Career Pathways Program (GED Plus Medical Training)",
+  "sourceWebsite": "https://www.pcihealth.edu/ecpp/",
+  "catalog": "",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-11",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "name": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Texas Workforce Commission – TWC Career Schools and Colleges Section",
+        "name": "Texas Workforce Commission – TWC Career Schools and Colleges Section",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Career Colleges and Schools of Texas (CCST)",
+        "name": "Career Colleges and Schools of Texas (CCST)",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Career Education Colleges and Universities (CECU)",
+        "name": "Career Education Colleges and Universities (CECU)",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Eligible Career Pathways Program (GED Plus Medical Training)",
+    "subtitle": "",
+    "description": "ECCP! PCI offer s GED Program that provides the tools and training you need! Call 214-630-0568 to start training toward our programs today!",
+    "supportText": "",
+    "modality": "Program",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/GED-Hero.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#0693e3"
+  },
+  "programInfo": [
+    {
+      "label": "Program name",
+      "value": "Eligible Career Pathways Program (Medical Training Plus GED)"
+    },
+    {
+      "label": "Campuses",
+      "value": "Richardson, TX; Dallas (Southwest Dallas), TX"
+    },
+    {
+      "label": "Requirements",
+      "value": "Pass an independently administered, Department of Education approved, Ability to Benefit Test; concurrent enrollment in adult education and eligible post-secondary programs."
+    },
+    {
+      "label": "What you’ll get",
+      "value": "Work toward earning your High School Diploma Equivalency while enrolled in a healthcare career program."
+    },
+    {
+      "label": "Accreditation / Approvals",
+      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section."
+    }
+  ],
+  "opportunityToWork": {
+    "title": "Opportunities to Work",
+    "subtitle": "Careers available after completing training include:",
+    "items": [
+      {
+        "title": "",
+        "description": "Medical Assistant — entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
+      },
+      {
+        "title": "",
+        "description": "Dental Assistant — roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
+      },
+      {
+        "title": "",
+        "description": "Medical Office Assistant — roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
+      }
+    ]
+  },
+  "whyStudy": {
+    "title": "Why Study the Eligible Career Pathways Program",
+    "description": "Combine career training in healthcare with support to earn your High School Diploma Equivalency.",
+    "image": "",
+    "items": [
+      {
+        "title": "",
+        "description": "Work toward earning your High School Diploma Equivalency while training in a healthcare program."
+      },
+      {
+        "title": "",
+        "description": "Receive support and regular check-ins from staff."
+      },
+      {
+        "title": "",
+        "description": "Access the computer lab and online support for the High School Diploma Equivalency component."
+      },
+      {
+        "title": "",
+        "description": "Hands-on instruction in healthcare skills."
+      },
+      {
+        "title": "",
+        "description": "Small classroom sizes to support learning."
+      },
+      {
+        "title": "",
+        "description": "Job placement assistance to help start your career."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support & Campus Info",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Testimonial_Joselin_480.mp4",
+    "items": [
+      {
+        "title": "Item 1",
+        "description": "Contact: 469-518-2993"
+      },
+      {
+        "title": "Item 2",
+        "description": "Richardson Campus: 1300 International Parkway, Richardson, Texas 75081"
+      },
+      {
+        "title": "Item 3",
+        "description": "Dallas Campus (Southwest Dallas): 8101 John Carpenter Freeway, Dallas, Texas 75247"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Item 1",
+        "description": "Earn your High School Diploma Equivalency while you train for a healthcare career."
+      },
+      {
+        "title": "Item 2",
+        "description": "Receive dedicated support, check-ins, and access to computer lab resources."
+      },
+      {
+        "title": "Item 3",
+        "description": "Access online support for the High School Diploma Equivalency component."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Request Info",
+    "description": "",
+    "button": "Apply Now",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Eligible Career Pathways Program (GED Plus Medical Training)",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "programType": "Program",
+  "schedule": "hybrid",
+  "programUrl": "https://www.pcihealth.edu/ecpp/",
+  "shortTitle": "Eligible Career Pathways Program (GED Plus Medical Training)",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Program",
+    "schedule": "hybrid",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "",
+    "credits": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Eligible Career Pathways Program (GED Plus Medical Training)",
+    "metaDescription": "ECCP! PCI offer s GED Program that provides the tools and training you need! Call 214-630-0568 to start training toward our programs today!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Program"
+    },
+    {
+      "label": "Schedule",
+      "value": "hybrid"
+    },
+    {
+      "label": "Credits",
+      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section."
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "ECCP! PCI offer s GED Program that provides the tools and training you need! Call 214-630-0568 to start training toward our programs today!",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Opportunities to Work",
+    "subtitle": "Careers available after completing training include:",
+    "items": [
+      {
+        "title": "",
+        "description": "Medical Assistant — entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
+      },
+      {
+        "title": "",
+        "description": "Dental Assistant — roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
+      },
+      {
+        "title": "",
+        "description": "Medical Office Assistant — roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support & Campus Info",
+    "description": "",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Testimonial_Joselin_480.mp4",
+    "items": [
+      {
+        "title": "Item 1",
+        "description": "Contact: 469-518-2993"
+      },
+      {
+        "title": "Item 2",
+        "description": "Richardson Campus: 1300 International Parkway, Richardson, Texas 75081"
+      },
+      {
+        "title": "Item 3",
+        "description": "Dallas Campus (Southwest Dallas): 8101 John Carpenter Freeway, Dallas, Texas 75247"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

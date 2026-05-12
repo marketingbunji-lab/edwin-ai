@@ -44,6 +44,8 @@ export default async function BrandPage({ params }: Props) {
       title: "Agente de contenido",
       description:
         "Disena tu contenido base para alinear mensajes, formatos y canales para una comunicacion de marca consistente y escalable.",
+      href: `/admin/brands/${brand.slug}/programs`,
+      linkLabel: "Editar Agente de Contenido",
     },
     {
       step: "03",
@@ -195,7 +197,7 @@ export default async function BrandPage({ params }: Props) {
                 </p>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {primaryColor ? (
-                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
@@ -215,7 +217,7 @@ export default async function BrandPage({ params }: Props) {
                   ) : null}
 
                   {secondaryColor ? (
-                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"

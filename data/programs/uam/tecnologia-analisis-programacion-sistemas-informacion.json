@@ -1,0 +1,302 @@
+{
+  "slug": "tecnologia-analisis-programacion-sistemas-informacion",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-22",
+  "title": "Tecnología en Análisis y Programación de Sistemas de Información",
+  "fullTitle": "Tecnología en Análisis y Programación de Sistemas de Información",
+  "hero": {
+    "eyebrow": "Estudia en UAM",
+    "highlight": "Tecnología en",
+    "title": "Análisis y Programación de Sistemas de Información",
+    "subtitle": "",
+    "description": "Domina los lenguajes de programación y lidera las tendencias de la industria.",
+    "supportText": "Las tecnologías de la información y la comunicación siguen avanzando y tú puedes ser parte de este universo en la UAM.",
+    "modality": "Presencial",
+    "semesterPrice": "$1.956.000",
+    "price": "$1.956.000",
+    "duration": "7 Semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.autonoma.edu.co/sites/default/files/2025-12/tecnologia-en-analisis-y-programacion-de-sistemas-de-informacion.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Tecnología en Análisis y Programación de Sistemas de Información"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "97"
+    },
+    {
+      "label": "Duracion",
+      "value": "7 Semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "54000"
+    }
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Tecnología en Análisis y Programación de Sistemas de Información en la UAM?",
+    "description": "Fórmate en desarrollo de software, bases de datos y gestión de sistemas. Prepárate con habilidades prácticas para responder a los retos tecnológicos del mundo actual.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Aprende programación aplicada",
+        "description": "Desarrolla competencias en lógica, lenguajes de programación, estructuras de datos y desarrollo web."
+      },
+      {
+        "title": "Responde a la demanda laboral",
+        "description": "Las TIC generan alta demanda de talento con conocimientos en análisis y programación de sistemas."
+      },
+      {
+        "title": "Formación práctica y actual",
+        "description": "Adquiere conocimientos en bases de datos, pruebas, arquitectura de software y tendencias digitales."
+      },
+      {
+        "title": "Estudia los fines de semana",
+        "description": "Una jornada pensada para facilitar tu formación profesional mientras trabajas o gestionas otras responsabilidades."
+      },
+      {
+        "title": "Fortalece tu pensamiento analítico",
+        "description": "Aprende a identificar problemas, estructurar soluciones tecnológicas y optimizar procesos mediante herramientas digitales."
+      },
+      {
+        "title": "Conéctate con la transformación digital",
+        "description": "Prepárate para participar en proyectos de innovación tecnológica que impactan empresas y organizaciones."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Avanza desde fundamentos tecnológicos hasta programación web, sistemas de información y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas, pasantías, voluntariado y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce apoyos académicos y financieros para avanzar en tu formación profesional.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Alta proyección laboral",
+        "description": "Podrás desempeñarte en desarrollo de software, análisis de sistemas, bases de datos, soporte técnico y emprendimiento digital.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Becas UAM",
+        "description": "Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Mejor Bachiller 2.0, Plan Estudia, Puedo Estudiar y más.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Formación para el futuro",
+        "description": "Desarrolla competencias en tecnología, innovación y soluciones digitales para múltiples sectores.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para impulsar tu carrera en tecnología?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284258.js\"></script>",
+    "formId": "",
+    "programName": "Tecnología en Análisis y Programación de Sistemas de Información",
+    "submitLabel": "Submit"
+  },
+  "programType": "Tecnológico",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/tecnologia-analisis-programacion-sistemas-informacion",
+  "logoMode": "dark",
+  "programUrl": "/uam/tecnologia-analisis-programacion-sistemas-informacion",
+  "catalog": "",
+  "shortTitle": "Tecnología en Análisis y Programación de Sistemas de Información",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "54000",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "diurna",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "7 Semestres",
+    "credits": "97",
+    "semesters": "7 Semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$1.956.000",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Tecnología en Análisis y Programación de Sistemas de Información",
+    "metaDescription": "Domina los lenguajes de programación y lidera las tendencias de la industria.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Presencial"
+    },
+    {
+      "label": "Schedule",
+      "value": "diurna"
+    },
+    {
+      "label": "Duration",
+      "value": "7 Semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "97"
+    },
+    {
+      "label": "SNIES",
+      "value": "54000"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Domina los lenguajes de programación y lidera las tendencias de la industria.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Avanza desde fundamentos tecnológicos hasta programación web, sistemas de información y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas, pasantías, voluntariado y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce apoyos académicos y financieros para avanzar en tu formación profesional.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

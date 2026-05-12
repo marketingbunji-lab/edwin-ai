@@ -26,7 +26,6 @@ function getSearchableText(landing: BrandLandingListItem) {
       landing.title,
       landing.fullTitle,
       landing.slug,
-      landing.template,
       landing.status,
       landing.schedule,
       landing.hero?.modality,
@@ -124,10 +123,10 @@ export default function BrandLandingsList({ landings }: Props) {
                   </p>
                 </div>
 
-                  <span className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
-                    {group.items.length}
-                  </span>
-                </div>
+                <span className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+                  {group.items.length}
+                </span>
+              </div>
 
               <div className="grid gap-6 border border-none dark:border-none md:grid-cols-2 xl:grid-cols-3">
                 {group.items.map((landing) => (

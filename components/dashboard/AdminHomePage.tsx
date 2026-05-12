@@ -1,21 +1,8 @@
 import BrandCard from "@/components/dashboard/BrandCard";
 import { getBrands, getLandingsByBrand } from "@/lib/data";
-import Link from "next/link";
-import {
-  ArrowRight,
-  Bot,
-  FileStack,
-  Plus,
-  Rocket,
-  SwatchBook,
-} from "lucide-react";
 
 export default function HomePage() {
   const brands = getBrands();
-  const totalLandings = brands.reduce(
-    (count, brand) => count + getLandingsByBrand(brand.slug).length,
-    0,
-  );
 
   return (
     <main className="min-h-screen bg-transparent px-6 py-8">

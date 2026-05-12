@@ -3,7 +3,16 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Copy, ExternalLink, FileDown, Moon, Sun, SunMoon, Trash2 } from "lucide-react";
+import {
+  Copy,
+  ExternalLink,
+  Eye,
+  FileDown,
+  Moon,
+  Sun,
+  SunMoon,
+  Trash2,
+} from "lucide-react";
 import ExportHtmlButton from "@/components/export/ExportHtmlButton";
 
 type Props = {
@@ -169,9 +178,6 @@ export default function LandingCard({ landing }: Props) {
 
       <div className="mt-4 space-y-1 text-sm text-gray-600 dark:text-slate-300">
         <p>
-          <strong>Template:</strong> {landing.template}
-        </p>
-        <p>
           <strong>Slug:</strong> {landing.slug}
         </p>
         <p>
@@ -187,6 +193,16 @@ export default function LandingCard({ landing }: Props) {
         >
           <ExternalLink className="h-4 w-4" />
           Ver detalle
+        </Link>
+
+        <Link
+          href={`/landings/${landing.slug}/preview`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:text-slate-100"
+        >
+          <Eye className="h-4 w-4" />
+          Preview
         </Link>
 
         <ExportHtmlButton
@@ -233,7 +249,7 @@ export default function LandingCard({ landing }: Props) {
             role="dialog"
             aria-modal="true"
             aria-labelledby={`delete-${landing.slug}-title`}
-            className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-950"
+            className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-950"
           >
             <h2
               id={`delete-${landing.slug}-title`}

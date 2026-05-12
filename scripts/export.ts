@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { generateHTML } from "../lib/exportHtml";
-import data from "../data/landings/uam/administracion-empresas.json";
+import data from "../data/programs/uam/administracion-empresas.json";
 
 async function main() {
   const html = await generateHTML();

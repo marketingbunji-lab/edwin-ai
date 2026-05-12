@@ -1,0 +1,302 @@
+{
+  "slug": "tecnologia-mecanica-industrial",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-22",
+  "title": "Tecnología en Mecánica Industrial",
+  "fullTitle": "Tecnología en Mecánica Industrial",
+  "hero": {
+    "eyebrow": "Estudia en UAM",
+    "highlight": "Tecnología en",
+    "title": "Mecánica Industrial",
+    "subtitle": "",
+    "description": "Transforma tu futuro con conocimientos actualizados de la industria y lidera los procesos del sector.",
+    "supportText": "Desarrolla, aplica y administra la tecnología involucrada en los diversos procesos productivos industriales.",
+    "modality": "Presencial",
+    "semesterPrice": "$2.104.000",
+    "price": "$2.104.000",
+    "duration": "7 Semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.autonoma.edu.co/sites/default/files/2025-12/tecnologia-en-mecanica-industrial.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#462779"
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Tecnología en Mecánica Industrial"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "99"
+    },
+    {
+      "label": "Duracion",
+      "value": "7 Semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "3492"
+    }
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Tecnología en Mecánica Industrial en la UAM?",
+    "description": "La Tecnología en Mecánica Industrial de la UAM te forma en procesos de fabricación, mantenimiento y gestión de maquinaria, con un enfoque en optimización productiva y desarrollo industrial para responder a las necesidades del sector.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Formación para la industria productiva",
+        "description": "Desarrolla competencias para participar en procesos de manufactura, mantenimiento y operación de sistemas industriales."
+      },
+      {
+        "title": "Conocimientos técnicos actualizados",
+        "description": "Aprende sobre materiales, procesos térmicos, hidráulica, instrumentación, resistencia de materiales y equipos industriales."
+      },
+      {
+        "title": "Alta proyección laboral",
+        "description": "Prepárate para desempeñarte en supervisión de producción, mantenimiento, diseño de procesos y gestión de operaciones industriales."
+      },
+      {
+        "title": "Estudia los fines de semana",
+        "description": "La jornada de fin de semana facilita avanzar en tu formación tecnológica mientras trabajas o atiendes otras responsabilidades."
+      },
+      {
+        "title": "Aprendizaje práctico y aplicado",
+        "description": "Fortalece tus habilidades mediante práctica empresarial, evaluación de proyectos y formación orientada al entorno real de la industria."
+      },
+      {
+        "title": "Impulsa la mejora continua",
+        "description": "Adquiere herramientas para optimizar procesos, aumentar la productividad y proponer soluciones innovadoras en organizaciones."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM impulsamos tu futuro industrial",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Avanza desde matemáticas, física y dibujo técnico hasta mantenimiento, hidráulica, instrumentación, manufactura y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas profesionales, pasantías de aprendizaje e investigación, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Mejor Bachiller 2.0, Plan Estudia, Puedo Estudiar y más.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Proyección profesional",
+        "description": "Podrás desempeñarte como supervisor de producción, especialista en mantenimiento, diseñador de procesos industriales, gestor de proyectos de manufactura o emprendedor del sector industrial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Fortalece tu perfil con semestre académico, prácticas, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Becas y apoyos UAM",
+        "description": "Accede a alternativas como Becas Deportivas, Becas Jóvenes + PRO, Becas Fondo Patrimonial, Mejor Bachiller 2.0, Si se puede Becas UAM, Plan Estudia, Puedo Estudiar y Becas UTC UAM.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para impulsar tu futuro en la industria?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284433.js\"></script>",
+    "formId": "",
+    "programName": "Tecnología en Mecánica Industrial",
+    "submitLabel": "Submit"
+  },
+  "programType": "Tecnológico",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/tecnologia-mecanica-industrial",
+  "logoMode": "dark",
+  "programUrl": "/uam/tecnologia-mecanica-industrial",
+  "catalog": "",
+  "shortTitle": "Tecnología en Mecánica Industrial",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "3492",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "diurna",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "7 Semestres",
+    "credits": "99",
+    "semesters": "7 Semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$2.104.000",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Tecnología en Mecánica Industrial",
+    "metaDescription": "Transforma tu futuro con conocimientos actualizados de la industria y lidera los procesos del sector.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Presencial"
+    },
+    {
+      "label": "Schedule",
+      "value": "diurna"
+    },
+    {
+      "label": "Duration",
+      "value": "7 Semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "99"
+    },
+    {
+      "label": "SNIES",
+      "value": "3492"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Transforma tu futuro con conocimientos actualizados de la industria y lidera los procesos del sector.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM impulsamos tu futuro industrial",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Avanza desde matemáticas, física y dibujo técnico hasta mantenimiento, hidráulica, instrumentación, manufactura y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas profesionales, pasantías de aprendizaje e investigación, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Mejor Bachiller 2.0, Plan Estudia, Puedo Estudiar y más.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "slug": "tecnico-profesional-en-operacion-de-sistemas-de-informacion",
+  "brand": "tecnologico-de-medellin",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-30",
+  "logoMode": "dark",
+  "title": "Operación de Sistemas de Información",
+  "fullTitle": "Técnico Profesional en Operación de Sistemas de Información",
+  "programType": "Técnico Profesional",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Código SNIES: 111470",
+    "highlight": "Optimiza sistemas de información para la toma de decisiones y la competitividad empresarial",
+    "title": "Técnico Profesional en Operación de Sistemas de Información",
+    "subtitle": "",
+    "description": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
+    "supportText": "Precio MEN: $2.701.000 • Subsidio Tec: $1.215.000 • Valor Matrícula: $1.486.000",
+    "modality": "Virtual",
+    "semesterPrice": "Valor matrícula: $1.486.000 COP",
+    "price": "Valor matrícula: $1.486.000 COP",
+    "duration": "",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Operación de Sistemas de Información?",
+    "description": "Desarrolla habilidades técnicas y prácticas para garantizar la operación eficaz de sistemas y redes, resolver incidencias, administrar bases de datos y brindar soporte a usuarios en entornos empresariales digitales.",
+    "image": "",
+    "items": [
+      {
+        "title": "Formación práctica y aplicada",
+        "description": "Contenidos orientados a la operación, mantenimiento y soporte de hardware, software y redes para responder a necesidades reales del entorno empresarial."
+      },
+      {
+        "title": "Competencias en soporte y atención al usuario",
+        "description": "Aprende a manejar incidencias informáticas, protocolos de servicio y atención efectiva a usuarios."
+      },
+      {
+        "title": "Gestión y seguridad de la información",
+        "description": "Capacitación en gestión de bases de datos, implementación de actualizaciones y prácticas para proteger la información."
+      },
+      {
+        "title": "Salidas laborales inmediatas",
+        "description": "Formación para desempeñarte como técnico en mesa de ayuda, instalador de software, operador de servicios de soporte TIC o emprendedor tecnológico."
+      },
+      {
+        "title": "Modalidad virtual flexible",
+        "description": "Estudia en modalidad virtual con contenidos y soporte para adaptarlo a tu ritmo y disponibilidad."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Apoyo y admisiones",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Asesoría de admisiones",
+        "description": "Acompañamiento en el proceso de inscripción, revisión de documentos y seguimiento hasta la aceptación.",
+        "icon": "chat"
+      },
+      {
+        "title": "Opciones de financiación",
+        "description": "Información sobre subsidios institucionales y medios de pago. Consulta condiciones con el asesor educativo.",
+        "icon": "finance"
+      },
+      {
+        "title": "Soporte académico y virtual",
+        "description": "Orientación sobre acceso a la plataforma virtual, calendario académico, usuario institucional e inducción.",
+        "icon": "support"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Competencias técnicas relevantes",
+        "description": "Formación en administración de sistemas operativos, redes, soporte de software y bases de datos.",
+        "icon": "tools"
+      },
+      {
+        "title": "Preparación para el mercado laboral",
+        "description": "Perfil orientado a ocupaciones de soporte TIC, mesa de ayuda e instalación de software.",
+        "icon": "career"
+      },
+      {
+        "title": "Estudio virtual y flexible",
+        "description": "Modalidad virtual que facilita la compatibilidad con trabajo u otras responsabilidades.",
+        "icon": "online"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Solicita más información y asegura tu cupo",
+    "description": "",
+    "button": "Solicitar información",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Técnico Profesional en Operación de Sistemas de Información",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
+  "programUrl": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
+  "catalog": "",
+  "shortTitle": "Operación de Sistemas de Información",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "flexible",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "Valor matrícula: $1.486.000 COP",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Técnico Profesional en Operación de Sistemas de Información",
+    "metaDescription": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Virtual"
+    },
+    {
+      "label": "Schedule",
+      "value": "flexible"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "Apoyo y admisiones",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Asesoría de admisiones",
+        "description": "Acompañamiento en el proceso de inscripción, revisión de documentos y seguimiento hasta la aceptación.",
+        "icon": "chat"
+      },
+      {
+        "title": "Opciones de financiación",
+        "description": "Información sobre subsidios institucionales y medios de pago. Consulta condiciones con el asesor educativo.",
+        "icon": "finance"
+      },
+      {
+        "title": "Soporte académico y virtual",
+        "description": "Orientación sobre acceso a la plataforma virtual, calendario académico, usuario institucional e inducción.",
+        "icon": "support"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

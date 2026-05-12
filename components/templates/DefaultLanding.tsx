@@ -7,8 +7,12 @@ import type {
   IconTextItem,
   Landing,
   LegalLink,
+  ProgramInfoItem,
 } from "@/lib/data";
 import ClientifyFormEmbed from "../forms/ClientifyFormEmbed";
+import GenericLeadForm from "./GenericLeadForm";
+import OpportunityToWorkSection from "./OpportunityToWorkSection";
+import LandingAccordion from "../ui/LandingAccordion";
 
 type Props = {
   brand: Brand;
@@ -21,7 +25,36 @@ function normalizeProgramInfo(programInfo?: Landing["programInfo"]) {
     return [];
   }
 
-  return programInfo.map((item) => String(item ?? "")).filter(Boolean);
+  return programInfo
+    .map((item, index): ProgramInfoItem | null => {
+      if (typeof item === "string") {
+        const value = item.trim();
+
+        return value
+          ? {
+              key: `legacy-${index}`,
+              label: `Dato ${index + 1}`,
+              value,
+            }
+          : null;
+      }
+
+      if (!item || typeof item !== "object") {
+        return null;
+      }
+
+      const label = item.label?.trim() || `Dato ${index + 1}`;
+      const value = item.value?.trim() || "";
+
+      return value
+        ? {
+            key: item.key?.trim() || `program-info-${index}`,
+            label,
+            value,
+          }
+        : null;
+    })
+    .filter((item): item is ProgramInfoItem => Boolean(item));
 }
 
 function getTextColor(hexColor: string) {
@@ -43,6 +76,38 @@ function getSoftBackground(hexColor: string) {
   return `${hexColor}14`;
 }
 
+function isDirectVideoUrl(url?: string) {
+  return /\.(mp4|webm|ogg)(?:\?.*)?$/i.test(url?.trim() ?? "");
+}
+
+function getOverlayColorValue(color?: string, fallback = "rgba(17, 24, 39, 0.82)") {
+  const value = color?.trim();
+
+  if (!value) return fallback;
+
+  if (value.startsWith("#")) {
+    const hex = value.slice(1);
+
+    if (hex.length === 3) {
+      const red = Number.parseInt(hex[0] + hex[0], 16);
+      const green = Number.parseInt(hex[1] + hex[1], 16);
+      const blue = Number.parseInt(hex[2] + hex[2], 16);
+
+      return `rgba(${red}, ${green}, ${blue}, 0.72)`;
+    }
+
+    if (hex.length === 6) {
+      const red = Number.parseInt(hex.slice(0, 2), 16);
+      const green = Number.parseInt(hex.slice(2, 4), 16);
+      const blue = Number.parseInt(hex.slice(4, 6), 16);
+
+      return `rgba(${red}, ${green}, ${blue}, 0.72)`;
+    }
+  }
+
+  return value;
+}
+
 function getCertificationLogo(
   certification: BrandCertification,
   mode?: "light" | "dark",
@@ -62,10 +127,75 @@ function getCertificationResolution(
   const items = landing.certifications?.items ?? [];
   const certificationKey = `${certification.name || ""}|${certification.url || ""}`;
   const matchedItem = items.find(
-    (item) => `${item.name || ""}|${item.url || ""}` === certificationKey,
+    (item) =>
+      typeof item !== "string" &&
+      `${item.name || item.title || ""}|${item.url || ""}` === certificationKey,
   );
 
-  return matchedItem?.resolutionText ?? items[index]?.resolutionText ?? "";
+  const indexedItem = items[index];
+
+  return typeof matchedItem !== "string"
+    ? matchedItem?.resolutionText ??
+        (typeof indexedItem !== "string" ? indexedItem?.resolutionText : "") ??
+        ""
+    : "";
+}
+
+function normalizeAccordionItems(items?: NonNullable<Landing["whyStudy"]>["items"]) {
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .map((item, index) => {
+      if (typeof item === "string") {
+        const value = item.trim();
+        return value
+          ? {
+              title: `Item ${index + 1}`,
+              content: value,
+            }
+          : null;
+      }
+
+      const title = item?.title?.trim() || `Item ${index + 1}`;
+      const content = item?.content?.trim() || item?.description?.trim() || "";
+
+      return content || title
+        ? {
+            title,
+            content,
+          }
+        : null;
+    })
+    .filter((item): item is { title: string; content: string } => Boolean(item));
+}
+
+function normalizeIconTextItems(items?: NonNullable<Landing["benefits"]>["items"]) {
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .map((item, index): IconTextItem | null => {
+      if (typeof item === "string") {
+        const value = item.trim();
+        return value
+          ? {
+              title: `Item ${index + 1}`,
+              text: value,
+            }
+          : null;
+      }
+
+      const title = item?.title?.trim() || `Item ${index + 1}`;
+      const text = item?.text?.trim() || item?.description?.trim() || "";
+
+      return title || text
+        ? {
+            ...item,
+            title,
+            text,
+          }
+        : null;
+    })
+    .filter((item): item is IconTextItem => Boolean(item));
 }
 
 export default function DefaultLanding({
@@ -84,14 +214,14 @@ export default function DefaultLanding({
   const googleFontHref = brand.typography?.googleFontHref?.trim() || "";
   const hero = landing.hero ?? {};
   const whyStudy = landing.whyStudy ?? {};
-  const supportSection = landing.supportSection ?? {};
+  const supportSection = landing.supportSection ?? landing.studentSupport ?? {};
   const benefits = landing.benefits ?? {};
   const cta = landing.cta ?? {};
   const form = landing.form ?? {};
   const programInfo = normalizeProgramInfo(landing.programInfo);
-  const whyStudyItems = whyStudy.items ?? [];
-  const supportItems = supportSection.items ?? [];
-  const benefitItems = benefits.items ?? [];
+  const whyStudyItems = normalizeAccordionItems(whyStudy.items);
+  const supportItems = normalizeIconTextItems(supportSection.items);
+  const benefitItems = normalizeIconTextItems(benefits.items);
   const legalLinks = brand.legalLinks ?? [];
   const footerScripts = landing.footerScripts ?? [];
   const certificationSettings = landing.certifications ?? {};
@@ -103,36 +233,62 @@ export default function DefaultLanding({
       const landingItem =
         items.find(
           (item) =>
-            `${item.name || ""}|${item.url || ""}` === certificationKey,
+            typeof item !== "string" &&
+            `${item.name || item.title || ""}|${item.url || ""}` === certificationKey,
         ) ?? items[index];
 
       return {
         certification,
         index,
-        enabled: Boolean(landingItem?.enabled),
+        enabled:
+          typeof landingItem === "string"
+            ? certificationSettings.enabled
+            : Boolean(landingItem?.enabled),
       };
     })
     .filter((item) => item.enabled);
   const hasCertifications = Boolean(
     certificationSettings.enabled && activeCertifications.length,
   );
+  const hasCertificationHeadingRow = activeCertifications.length >= 3;
   const title = landing.title || landing.fullTitle || "";
   const fullTitle = landing.fullTitle || title;
   const heroTitle = hero.title || fullTitle;
   const heroDescription = hero.description || "";
+  const heroOverlayColor = getOverlayColorValue(
+    hero.overlayColor,
+    getOverlayColorValue(primaryColor),
+  );
   const supportTitle = supportSection.title || "";
+  const supportVideoUrl = supportSection.videoUrl?.trim() || "";
+  const hasSupportVideo = Boolean(supportVideoUrl);
   const ctaTitle = cta.title || "";
   const ctaButton = cta.button || "";
-  const hasForm = Boolean(form.scriptCode || form.scriptUrl);
+  const hasConfiguredForm = Boolean(form.scriptCode || form.scriptUrl);
+  const hasForm = true;
   const hasWhyStudy = Boolean(
     whyStudy.title ||
     whyStudy.description ||
     whyStudy.image ||
     whyStudyItems.length,
   );
-  const hasSupport = Boolean(supportTitle || supportItems.length);
+  const hasSupport = Boolean(supportTitle || hasSupportVideo || supportItems.length);
   const hasBenefits = Boolean(benefits.title || benefitItems.length);
   const hasCta = Boolean(ctaTitle || ctaButton);
+  const metaItems = [
+    hero.modality ? { label: "Modalidad", value: hero.modality } : null,
+    landing.schedule ? { label: "Jornada", value: landing.schedule } : null,
+    hero.semesterPrice
+      ? { label: "Inversion", value: hero.semesterPrice }
+      : null,
+    ...programInfo.slice(0, 4).map((item, index) => ({
+      label: item.label || `Dato ${index + 1}`,
+      value: item.value || "",
+    })),
+  ].filter(
+    (item): item is { label: string; value: string } =>
+      Boolean(item?.label && item.value),
+  );
 
   return (
     <div
@@ -150,29 +306,28 @@ export default function DefaultLanding({
         .default-container {
           width: min(1180px, calc(100% - 40px));
           margin: 0 auto;
+          padding: 80px 16px;
         }
 
         .default-hero {
           position: relative;
-          overflow: hidden;
           background:
-            linear-gradient(115deg, ${primaryColor} 0%, ${primaryColor}f2 42%, ${primaryColor}bf 100%)${
+            ${
               hero.backgroundImage
-                ? `, url("${hero.backgroundImage}") center / cover`
-                : ""
+                ? `linear-gradient(115deg, ${heroOverlayColor} 0%, ${heroOverlayColor} 42%, rgba(17, 24, 39, 0.28) 100%), url("${hero.backgroundImage}") center / cover`
+                : `linear-gradient(115deg, ${heroOverlayColor} 0%, ${primaryColor}f2 50%, ${primaryColor}bf 100%)`
             };
           color: ${primaryTextColor};
         }
 
         .default-hero-grid {
-          min-height: 720px;
           display: grid;
           grid-template-columns: minmax(0, 1fr) ${
             hasForm ? "minmax(320px, 420px)" : ""
           };
           gap: 48px;
           align-items: center;
-          padding: 48px 0;
+          padding: 0 0 16px 0;
         }
 
         .default-logo {
@@ -265,20 +420,28 @@ export default function DefaultLanding({
           line-height: 1.5;
         }
 
-        .default-meta-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 16px;
-          transform: translateY(50%);
-        }
-
-        .default-meta-card {
-          min-height: 112px;
+        .default-meta-panel {
           border-radius: 18px;
           background: #ffffff;
           padding: 18px;
           box-shadow: 0 18px 60px rgba(17,24,39,0.12);
           border-top: 4px solid ${secondaryColor};
+        }
+
+        .default-meta-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 0;
+        }
+
+        .default-meta-card {
+          min-height: 112px;
+          padding: 18px;
+          border-right: 1px solid #E5E7EB;
+        }
+
+        .default-meta-card:last-child {
+          border-right: 0;
         }
 
         .default-meta-card span {
@@ -355,6 +518,49 @@ export default function DefaultLanding({
           gap: 18px;
         }
 
+        .default-support-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+          gap: 24px;
+          align-items: start;
+        }
+
+        .default-support-grid-full {
+          grid-template-columns: 1fr;
+        }
+
+        .default-support-items {
+          display: grid;
+          gap: 16px;
+        }
+
+        .default-support-items-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .default-video-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          overflow: hidden;
+          border-radius: 20px;
+          background: #111827;
+          box-shadow: 0 18px 60px rgba(17,24,39,0.12);
+        }
+
+        .default-video-frame iframe,
+        .default-video-frame video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+
+        .default-video-frame video {
+          object-fit: cover;
+        }
+
         .default-certification-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -368,6 +574,14 @@ export default function DefaultLanding({
           flex-direction: column;
           justify-content: center;
           padding: 24px 0;
+        }
+
+        .default-certification-heading-full {
+          min-height: auto;
+          grid-column: 1 / -1;
+          align-items: center;
+          text-align: center;
+          padding: 0 0 12px;
         }
 
         .default-certification-card {
@@ -411,6 +625,75 @@ export default function DefaultLanding({
           margin: 12px 0 0;
           color: #4B5563;
           line-height: 1.6;
+        }
+
+        .uam-accordion {
+          display: grid;
+          gap: 12px;
+        }
+
+        .uam-accordion-item {
+          border: 1px solid #E5E7EB;
+          border-radius: 16px;
+          background: #ffffff;
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 10px 28px rgba(17,24,39,0.06);
+        }
+
+        .uam-accordion-input {
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .uam-accordion-summary {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          cursor: pointer;
+          padding: 18px 20px;
+          font-weight: 800;
+          color: #111827;
+        }
+
+        .uam-accordion-icons {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 26px;
+          min-width: 26px;
+          height: 26px;
+          border-radius: 999px;
+          background: ${secondaryColor};
+          color: ${secondaryTextColor};
+          font-size: 18px;
+          line-height: 1;
+          font-weight: 900;
+        }
+
+        .uam-accordion-minus {
+          display: none;
+        }
+
+        .uam-accordion-input:checked + .uam-accordion-summary .uam-accordion-plus {
+          display: none;
+        }
+
+        .uam-accordion-input:checked + .uam-accordion-summary .uam-accordion-minus {
+          display: inline;
+        }
+
+        .uam-accordion-panel {
+          display: none;
+          padding: 0 20px 18px;
+          color: #4B5563;
+          line-height: 1.65;
+        }
+
+        .uam-accordion-input:checked + .uam-accordion-summary + .uam-accordion-panel {
+          display: block;
         }
 
         .default-icon {
@@ -497,6 +780,7 @@ export default function DefaultLanding({
 
         @media (max-width: 980px) {
           .default-hero-grid,
+          .default-support-grid,
           .default-two-column {
             grid-template-columns: 1fr;
           }
@@ -507,8 +791,8 @@ export default function DefaultLanding({
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
-          .default-meta-grid {
-            transform: translateY(36px);
+          .default-meta-card:nth-child(2n) {
+            border-right: 0;
           }
 
           .default-section:first-of-type {
@@ -532,8 +816,14 @@ export default function DefaultLanding({
             grid-template-columns: 1fr;
           }
 
-          .default-meta-grid {
-            transform: translateY(24px);
+          .default-meta-card,
+          .default-meta-card:nth-child(2n) {
+            border-right: 0;
+            border-bottom: 1px solid #E5E7EB;
+          }
+
+          .default-meta-card:last-child {
+            border-bottom: 0;
           }
 
           .default-section {
@@ -562,30 +852,29 @@ export default function DefaultLanding({
                 <p className="default-description">{heroDescription}</p>
               ) : null}
 
-              {ctaButton || hasWhyStudy ? (
-                <div className="default-hero-actions">
-                  {ctaButton && hasForm ? (
-                    <a href="#default-form" className="default-primary-button">
-                      {ctaButton}
-                    </a>
-                  ) : null}
-                  {hasWhyStudy ? (
-                    <a
-                      href="#default-content"
-                      className="default-secondary-button"
-                    >
-                      {whyStudy.title || fullTitle || title}
-                    </a>
-                  ) : null}
+              {metaItems.length > 0 ? (
+                <div className="default-meta-panel">
+                  <div className="default-meta-grid">
+                    {metaItems.map((item, index) => (
+                      <MetaCard
+                        key={`${item.label}-${index}`}
+                        label={item.label}
+                        value={item.value}
+                      />
+                    ))}
+                  </div>
                 </div>
               ) : null}
+
             </div>
 
             {hasForm ? (
               <div id="default-form" className="default-form-card">
-                {form.programName ? <h2>{form.programName}</h2> : null}
+                {form.programName || fullTitle ? (
+                  <h2>{form.programName || fullTitle}</h2>
+                ) : null}
                 {fullTitle ? <p>{fullTitle}</p> : null}
-                {mode === "export" ? (
+                {hasConfiguredForm && mode === "export" ? (
                   form.scriptCode ? (
                     <div
                       dangerouslySetInnerHTML={{
@@ -595,40 +884,89 @@ export default function DefaultLanding({
                   ) : form.scriptUrl ? (
                     <script type="text/javascript" src={form.scriptUrl} />
                   ) : null
-                ) : form.scriptCode ? (
+                ) : hasConfiguredForm && form.scriptCode ? (
                   <ClientifyFormEmbed code={form.scriptCode} />
-                ) : form.scriptUrl ? (
+                ) : hasConfiguredForm && form.scriptUrl ? (
                   <Script src={form.scriptUrl} strategy="afterInteractive" />
-                ) : null}
+                ) : (
+                  <GenericLeadForm
+                    programName={form.programName || fullTitle || title}
+                    primaryColor={primaryColor}
+                    buttonText={ctaButton || "Submit"}
+                  />
+                )}
               </div>
             ) : null}
           </div>
 
-          {(programInfo.length > 0 ||
-            hero.modality ||
-            landing.schedule ||
-            hero.semesterPrice) && (
-            <div className="default-meta-grid">
-              {hero.modality ? (
-                <MetaCard label="Modalidad" value={hero.modality} />
-              ) : null}
-              {landing.schedule ? (
-                <MetaCard label="Jornada" value={landing.schedule} />
-              ) : null}
-              {hero.semesterPrice ? (
-                <MetaCard label="Inversión" value={hero.semesterPrice} />
-              ) : null}
-              {programInfo.slice(0, 4).map((item, index) => (
-                <MetaCard
-                  key={index}
-                  label={`Dato ${index + 1}`}
-                  value={item}
-                />
-              ))}
-            </div>
-          )}
         </div>
       </section>
+
+      {hasCertifications ? (
+        <section className="default-section default-section-soft">
+          <div className="default-container">
+            <div className="default-certification-grid">
+              <div
+                className={`default-certification-heading ${
+                  hasCertificationHeadingRow
+                    ? "default-certification-heading-full"
+                    : ""
+                }`}
+              >
+                <h2 className="default-section-title">Accreditations</h2>
+              </div>
+
+              {activeCertifications.map(({ certification, index }) => {
+                const certificationLogo = getCertificationLogo(
+                  certification,
+                  landing.logoMode,
+                );
+                const certificationResolution = getCertificationResolution(
+                  landing,
+                  certification,
+                  index,
+                );
+
+                return (
+                  <article className="default-certification-card" key={index}>
+                    {certificationLogo ? (
+                      <img src={certificationLogo} alt={certification.name} />
+                    ) : null}
+                    {certification.url ? (
+                      <a
+                        href={certification.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          color: primaryColor,
+                          fontWeight: 800,
+                          textDecoration: "none",
+                        }}
+                      >
+                        {certification.name}
+                      </a>
+                    ) : (
+                      <strong>{certification.name}</strong>
+                    )}
+                    {certificationResolution ? (
+                      <p
+                        style={{
+                          margin: "8px 0 0 0",
+                          color: "#4B5563",
+                          fontSize: 14,
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {certificationResolution}
+                      </p>
+                    ) : null}
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {hasWhyStudy ? (
         <section id="default-content" className="default-section">
@@ -647,15 +985,10 @@ export default function DefaultLanding({
               </div>
 
               {whyStudyItems.length > 0 ? (
-                <div className="default-card-grid">
-                  {whyStudyItems.slice(0, 6).map((item, index) => (
-                    <article className="default-card" key={index}>
-                      <div className="default-icon">{index + 1}</div>
-                      <h3>{item.title}</h3>
-                      <p>{item.content}</p>
-                    </article>
-                  ))}
-                </div>
+                <LandingAccordion
+                  items={whyStudyItems}
+                  id={`default-why-study-${landing.slug}`}
+                />
               ) : null}
             </div>
 
@@ -676,6 +1009,12 @@ export default function DefaultLanding({
         </section>
       ) : null}
 
+      <OpportunityToWorkSection
+        opportunityToWork={landing.opportunityToWork ?? landing.careerOutcomes}
+        primaryColor={primaryColor}
+        secondaryColor={secondaryColor}
+      />
+
       {hasSupport ? (
         <section className="default-section default-section-soft">
           <div className="default-container">
@@ -685,30 +1024,57 @@ export default function DefaultLanding({
               ) : null}
             </div>
 
-            {supportItems.length > 0 ? (
-              <div className="default-card-grid">
-                {supportItems.map((item: IconTextItem, index) => (
-                  <article className="default-card" key={index}>
-                    {item.icon ? (
-                      <img
-                        src={item.icon}
-                        alt={item.title}
-                        style={{
-                          width: 48,
-                          height: 48,
-                          objectFit: "contain",
-                          marginBottom: 18,
-                        }}
-                      />
-                    ) : (
-                      <div className="default-icon">{index + 1}</div>
-                    )}
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </article>
-                ))}
-              </div>
-            ) : null}
+            <div
+              className={`default-support-grid ${
+                hasSupportVideo ? "" : "default-support-grid-full"
+              }`}
+            >
+              {hasSupportVideo ? (
+                <div className="default-video-frame">
+                  {isDirectVideoUrl(supportVideoUrl) ? (
+                    <video controls playsInline preload="metadata">
+                      <source src={supportVideoUrl} />
+                    </video>
+                  ) : (
+                    <iframe
+                      src={supportVideoUrl}
+                      title={supportTitle || fullTitle}
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                      allowFullScreen
+                    />
+                  )}
+                </div>
+              ) : null}
+
+              {supportItems.length > 0 ? (
+                <div
+                  className={`default-support-items ${
+                    hasSupportVideo ? "" : "default-support-items-grid"
+                  }`}
+                >
+                  {supportItems.map((item: IconTextItem, index) => (
+                    <article className="default-card" key={index}>
+                      {item.icon ? (
+                        <img
+                          src={item.icon}
+                          alt={item.title}
+                          style={{
+                            width: 48,
+                            height: 48,
+                            objectFit: "contain",
+                            marginBottom: 18,
+                          }}
+                        />
+                      ) : (
+                        <div className="default-icon">{index + 1}</div>
+                      )}
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
         </section>
       ) : null}
@@ -746,70 +1112,6 @@ export default function DefaultLanding({
                 ))}
               </div>
             ) : null}
-          </div>
-        </section>
-      ) : null}
-
-      {hasCertifications ? (
-        <section className="default-section default-section-soft">
-          <div className="default-container">
-            <div className="default-certification-grid">
-              <div className="default-certification-heading">
-                <p className="default-section-kicker">{brandName}</p>
-                <h2 className="default-section-title">Acreditaciones</h2>
-              </div>
-
-              {activeCertifications.map(({ certification, index }) => {
-                const certificationLogo = getCertificationLogo(
-                  certification,
-                  landing.logoMode,
-                );
-                const certificationResolution = getCertificationResolution(
-                  landing,
-                  certification,
-                  index,
-                );
-
-                return (
-                  <article className="default-certification-card" key={index}>
-                    {certificationLogo ? (
-                      <img
-                        src={certificationLogo}
-                        alt={certification.name}
-                      />
-                    ) : null}
-                    {certification.url ? (
-                      <a
-                        href={certification.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          color: primaryColor,
-                          fontWeight: 800,
-                          textDecoration: "none",
-                        }}
-                      >
-                        {certification.name}
-                      </a>
-                    ) : (
-                      <strong>{certification.name}</strong>
-                    )}
-                    {certificationResolution ? (
-                      <p
-                        style={{
-                          margin: "8px 0 0 0",
-                          color: "#4B5563",
-                          fontSize: 14,
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {certificationResolution}
-                      </p>
-                    ) : null}
-                  </article>
-                );
-              })}
-            </div>
           </div>
         </section>
       ) : null}

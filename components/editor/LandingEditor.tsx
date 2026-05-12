@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import {
   Droplets,
   ChevronDown,
   ChevronUp,
+  Eye,
   FileDown,
   Laptop,
   Plus,
@@ -13,11 +15,11 @@ import {
   Trash2,
 } from "lucide-react";
 import type {
-  AccordionItem,
   Brand,
   BrandCertification,
-  IconTextItem,
   Landing,
+  LandingCertificationItem,
+  ProgramInfoItem,
 } from "@/lib/data";
 import { renderLandingTemplate } from "../templates/renderLandingTemplate";
 import ExportHtmlButton from "../export/ExportHtmlButton";
@@ -35,6 +37,7 @@ type EditableLanding = Landing & Record<string, unknown>;
 type EditableRecord = Record<string, unknown>;
 type EditableArrayItem = Record<string, string>;
 type EditableTextArray = string[];
+type EditableProgramInfoField = "key" | "label" | "value";
 type EditableCertificationItem = {
   name: string;
   url?: string;
@@ -83,14 +86,18 @@ function getLandingCertificationItem(
   landing: Landing,
   certification: BrandCertification,
   index: number,
-) {
+): LandingCertificationItem | null {
   const items = landing.certifications?.items ?? [];
   const certificationKey = getCertificationKey(certification);
   const matchedItem = items.find(
-    (item) => `${item.name || ""}|${item.url || ""}` === certificationKey,
+    (item): item is LandingCertificationItem =>
+      typeof item !== "string" &&
+      `${item.name || item.title || ""}|${item.url || ""}` === certificationKey,
   );
 
-  return matchedItem ?? items[index] ?? null;
+  const indexedItem = items[index];
+
+  return matchedItem ?? (typeof indexedItem !== "string" ? indexedItem : null);
 }
 
 function getLandingCertificationResolution(
@@ -112,6 +119,25 @@ function getLandingCertificationEnabled(
   return Boolean(
     getLandingCertificationItem(landing, certification, index)?.enabled,
   );
+}
+
+function normalizeProgramInfoEditorItem(
+  item: string | ProgramInfoItem,
+  index: number,
+): Required<ProgramInfoItem> {
+  if (typeof item === "string") {
+    return {
+      key: `custom-${index + 1}`,
+      label: `Dato ${index + 1}`,
+      value: item,
+    };
+  }
+
+  return {
+    key: item.key || `custom-${index + 1}`,
+    label: item.label || `Dato ${index + 1}`,
+    value: item.value || "",
+  };
 }
 
 export default function LandingEditor({
@@ -271,6 +297,43 @@ export default function LandingEditor({
     });
   };
 
+  const addProgramInfoItem = () => {
+    setLanding((prev) => ({
+      ...prev,
+      programInfo: [
+        ...(prev.programInfo ?? []),
+        {
+          key: "custom",
+          label: "Dato",
+          value: "Nuevo dato",
+        },
+      ],
+    }));
+  };
+
+  const updateProgramInfoItem = (
+    index: number,
+    field: EditableProgramInfoField,
+    value: string,
+  ) => {
+    setLanding((prev) => {
+      const next = structuredClone(prev);
+      const items = [...(next.programInfo ?? [])];
+      const current = normalizeProgramInfoEditorItem(
+        items[index] ?? "",
+        index,
+      );
+
+      items[index] = {
+        ...current,
+        [field]: value,
+      };
+      next.programInfo = items;
+
+      return next;
+    });
+  };
+
   const removeArrayItem = (arrayPath: string, index: number) => {
     setLanding((prev) => {
       const next = structuredClone(prev) as EditableLanding;
@@ -326,11 +389,13 @@ export default function LandingEditor({
         },
         body: JSON.stringify({
           imageUrl: landing.hero.backgroundImage,
+          fallbackHex: brand.primaryColor,
         }),
       });
 
       const result = (await response.json()) as {
         error?: string;
+        warning?: string;
         hex?: string;
         rgb?: { red: number; green: number; blue: number };
         imageUrl?: string;
@@ -346,14 +411,24 @@ export default function LandingEditor({
       }
 
       console.log("Hero image color analysis", result);
-      setMessage(`Color analizado y aplicado al hero: ${result.hex}`);
+      setMessage(
+        result.warning ||
+          `Color analizado y aplicado al hero: ${result.hex}`,
+      );
     } catch (error) {
       const errorMessage =
         error instanceof Error
           ? error.message
           : "No se pudo analizar el color de la imagen.";
 
-      setMessage(errorMessage);
+      if (brand.primaryColor) {
+        updateField("hero.overlayColor", brand.primaryColor);
+        setMessage(
+          `${errorMessage} Se aplico el color principal de la marca como overlay.`,
+        );
+      } else {
+        setMessage(errorMessage);
+      }
     } finally {
       setAnalyzingColor(false);
     }
@@ -378,7 +453,7 @@ export default function LandingEditor({
                 <span className="mb-2 block text-sm font-semibold text-gray-900 dark:text-slate-100">
                   Versión del logo
                 </span>
-                <div className="inline-flex rounded-xl border border-gray-300 bg-gray-100 p-1 dark:border-slate-700 dark:bg-slate-900">
+                <div className="inline-flex rounded-md border border-gray-300 bg-gray-100 p-1 dark:border-slate-700 dark:bg-slate-900">
                   {(["light", "dark"] as const).map((mode) => {
                     const isSelected = (landing.logoMode || "dark") === mode;
 
@@ -403,7 +478,7 @@ export default function LandingEditor({
 
             <EditorSection title="Certificaciones">
               <div className="space-y-4">
-                <div className="flex items-start justify-between gap-4 rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+                <div className="flex items-start justify-between gap-4 rounded-md border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900">
                   <div>
                     <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
                       Mostrar certificaciones de la marca
@@ -437,7 +512,7 @@ export default function LandingEditor({
                       return (
                         <div
                           key={`${certification.name}-${index}`}
-                          className="rounded-xl border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-950"
+                          className="rounded-md border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-950"
                         >
                           <div className="flex items-start justify-between gap-4">
                             <div>
@@ -494,7 +569,7 @@ export default function LandingEditor({
                     })}
                   </div>
                 ) : (
-                  <div className="rounded-xl border border-dashed border-gray-300 p-4 text-sm text-gray-500 dark:border-slate-700 dark:text-slate-400">
+                  <div className="rounded-md border border-dashed border-gray-300 p-4 text-sm text-gray-500 dark:border-slate-700 dark:text-slate-400">
                     Esta marca todavía no tiene certificaciones configuradas.
                     Agrégalas primero en el editor de marca.
                   </div>
@@ -579,9 +654,7 @@ export default function LandingEditor({
 
                     <button
                       type="button"
-                      onClick={() =>
-                        addTextArrayItem("programInfo", "Nuevo dato")
-                      }
+                      onClick={addProgramInfoItem}
                       className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
                     >
                       <Plus className="h-3.5 w-3.5" />
@@ -589,35 +662,60 @@ export default function LandingEditor({
                     </button>
                   </div>
 
-                  {(landing.programInfo || []).map((item: string, index) => (
-                    <div
-                      key={index}
-                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
-                    >
-                      <div className="mb-3 flex items-center justify-between">
-                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
-                          Dato {index + 1}
-                        </p>
+                  {(landing.programInfo || []).map((item, index) => {
+                    const programInfoItem = normalizeProgramInfoEditorItem(
+                      item,
+                      index,
+                    );
 
-                        <button
-                          type="button"
-                          onClick={() => removeArrayItem("programInfo", index)}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                          Eliminar
-                        </button>
+                    return (
+                      <div
+                        key={index}
+                        className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                      >
+                        <div className="mb-3 flex items-center justify-between">
+                          <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                            {programInfoItem.label || `Dato ${index + 1}`}
+                          </p>
+
+                          <button
+                            type="button"
+                            onClick={() => removeArrayItem("programInfo", index)}
+                            className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                            Eliminar
+                          </button>
+                        </div>
+
+                        <div className="grid gap-3">
+                          <Field
+                            label="Propiedad"
+                            value={programInfoItem.key}
+                            onChange={(value) =>
+                              updateProgramInfoItem(index, "key", value)
+                            }
+                          />
+
+                          <Field
+                            label="Etiqueta"
+                            value={programInfoItem.label}
+                            onChange={(value) =>
+                              updateProgramInfoItem(index, "label", value)
+                            }
+                          />
+
+                          <Field
+                            label="Valor"
+                            value={programInfoItem.value}
+                            onChange={(value) =>
+                              updateProgramInfoItem(index, "value", value)
+                            }
+                          />
+                        </div>
                       </div>
-
-                      <Field
-                        label="Texto"
-                        value={item || ""}
-                        onChange={(value) =>
-                          updateTextArrayItem("programInfo", index, value)
-                        }
-                      />
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
                 <Field
@@ -718,7 +816,7 @@ export default function LandingEditor({
                   </div>
 
                   {(landing.whyStudy?.items || []).map(
-                    (item: AccordionItem, index) => (
+                    (item, index) => (
                       <div
                         key={index}
                         className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
@@ -743,7 +841,7 @@ export default function LandingEditor({
                         <div className="space-y-3">
                           <Field
                             label="Título"
-                            value={item?.title || ""}
+                            value={typeof item === "string" ? "" : item?.title || ""}
                             onChange={(value) =>
                               updateArrayItem(
                                 "whyStudy.items",
@@ -756,7 +854,11 @@ export default function LandingEditor({
 
                           <TextareaField
                             label="Contenido"
-                            value={item?.content || ""}
+                            value={
+                              typeof item === "string"
+                                ? item
+                                : item?.content || item?.description || ""
+                            }
                             onChange={(value) =>
                               updateArrayItem(
                                 "whyStudy.items",
@@ -815,7 +917,7 @@ export default function LandingEditor({
                   </div>
 
                   {(landing.supportSection?.items || []).map(
-                    (item: IconTextItem, index) => (
+                    (item, index) => (
                       <div
                         key={index}
                         className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
@@ -840,7 +942,7 @@ export default function LandingEditor({
                         <div className="space-y-3">
                           <Field
                             label="Título"
-                            value={item?.title || ""}
+                            value={typeof item === "string" ? "" : item?.title || ""}
                             onChange={(value) =>
                               updateArrayItem(
                                 "supportSection.items",
@@ -853,7 +955,11 @@ export default function LandingEditor({
 
                           <TextareaField
                             label="Contenido"
-                            value={item?.text || ""}
+                            value={
+                              typeof item === "string"
+                                ? item
+                                : item?.text || item?.description || ""
+                            }
                             onChange={(value) =>
                               updateArrayItem(
                                 "supportSection.items",
@@ -866,7 +972,7 @@ export default function LandingEditor({
 
                           <Field
                             label="URL icono"
-                            value={item?.icon || ""}
+                            value={typeof item === "string" ? "" : item?.icon || ""}
                             onChange={(value) =>
                               updateArrayItem(
                                 "supportSection.items",
@@ -915,7 +1021,7 @@ export default function LandingEditor({
                   </div>
 
                   {(landing.benefits?.items || []).map(
-                    (item: IconTextItem, index) => (
+                    (item, index) => (
                       <div
                         key={index}
                         className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
@@ -940,7 +1046,7 @@ export default function LandingEditor({
                         <div className="space-y-3">
                           <Field
                             label="Título"
-                            value={item?.title || ""}
+                            value={typeof item === "string" ? "" : item?.title || ""}
                             onChange={(value) =>
                               updateArrayItem(
                                 "benefits.items",
@@ -953,7 +1059,11 @@ export default function LandingEditor({
 
                           <TextareaField
                             label="Contenido"
-                            value={item?.text || ""}
+                            value={
+                              typeof item === "string"
+                                ? item
+                                : item?.text || item?.description || ""
+                            }
                             onChange={(value) =>
                               updateArrayItem(
                                 "benefits.items",
@@ -966,7 +1076,7 @@ export default function LandingEditor({
 
                           <Field
                             label="URL icono"
-                            value={item?.icon || ""}
+                            value={typeof item === "string" ? "" : item?.icon || ""}
                             onChange={(value) =>
                               updateArrayItem(
                                 "benefits.items",
@@ -1057,7 +1167,7 @@ export default function LandingEditor({
           <button
             onClick={saveLanding}
             disabled={saving}
-            className="bunji-button-primary rounded-xl px-4 py-3 text-sm font-medium shadow-[0_10px_30px_rgba(62,57,137,0.26)] transition hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100"
+            className="bunji-button-primary rounded-md px-4 py-3 text-sm font-medium shadow-[0_10px_30px_rgba(62,57,137,0.26)] transition hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100"
             style={{
               backgroundColor: "var(--bunji-primary)",
               borderColor: "var(--bunji-primary)",
@@ -1073,11 +1183,21 @@ export default function LandingEditor({
             clientifyEndpoint={exportClientifyEndpoint}
             clientifyFilename={exportClientifyFilename}
             payload={landing}
-            className="rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+            className="rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
             icon={<FileDown className="h-4 w-4" />}
           >
             Exportar
           </ExportHtmlButton>
+
+          <Link
+            href={`/landings/${landing.slug}/preview`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+          >
+            <Eye className="h-4 w-4" />
+            Preview
+          </Link>
 
           {message ? <p className="text-sm text-gray-600 dark:text-slate-300">{message}</p> : null}
         </div>
@@ -1282,7 +1402,7 @@ function Field({
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
       />
     </label>
   );
@@ -1306,7 +1426,7 @@ function TextareaField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={4}
-        className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
       />
     </label>
   );
@@ -1334,7 +1454,7 @@ function SelectField({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

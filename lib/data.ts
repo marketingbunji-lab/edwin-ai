@@ -44,25 +44,64 @@ export type BrandCertification = {
   };
 };
 
+export type Program = {
+  id: string;
+  programName: string;
+  sourceWebsite: string;
+  catalog: string;
+  updatedAt: string;
+};
+
 export type AccordionItem = {
-  title: string;
-  content: string;
+  title?: string;
+  content?: string;
+  description?: string;
 };
 
 export type IconTextItem = {
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
+  description?: string;
   icon?: string;
+};
+
+export type ProgramInfoItem = {
+  key?: string;
+  label?: string;
+  value?: string;
+};
+
+export type LabelValueItem = {
+  label?: string;
+  value?: string;
+};
+
+export type TitleDescriptionItem = {
+  title?: string;
+  description?: string;
+  content?: string;
+  text?: string;
+  url?: string;
+  image?: string;
+};
+
+export type OpportunityToWork = {
+  title?: string;
+  subtitle?: string;
+  items?: Array<string | TitleDescriptionItem>;
 };
 
 export type LandingCertificationSettings = {
   enabled?: boolean;
+  title?: string;
   resolutionText?: string;
-  items?: LandingCertificationItem[];
+  items?: Array<string | LandingCertificationItem>;
 };
 
 export type LandingCertificationItem = {
-  name: string;
+  name?: string;
+  title?: string;
+  description?: string;
   url?: string;
   enabled?: boolean;
   resolutionText?: string;
@@ -72,13 +111,25 @@ export type LandingHero = {
   eyebrow?: string;
   highlight?: string;
   title?: string;
+  subtitle?: string;
   description?: string;
   supportText?: string;
   modality?: string;
   semesterPrice?: string;
+  price?: string;
+  duration?: string;
+  primaryCta?: {
+    label?: string;
+    url?: string;
+  };
+  secondaryCta?: {
+    label?: string;
+    url?: string;
+  };
   overlayColor?: string;
   backgroundImage?: string;
   personImage?: string;
+  videoUrl?: string;
 };
 
 export type Landing = {
@@ -86,45 +137,478 @@ export type Landing = {
   brand: string;
   title: string;
   fullTitle: string;
+  sourceWebsite?: string;
+  programUrl?: string;
+  catalog?: string;
+  shortTitle?: string;
   programType?: string;
+  degreeLevel?: string;
+  academicArea?: string;
+  faculty?: string;
+  snies?: string;
+  cipCode?: string;
   schedule?: string;
   template: string;
   status: string;
   updatedAt: string;
   logoMode?: "light" | "dark";
   certifications?: LandingCertificationSettings;
+  delivery?: {
+    modality?: string;
+    schedule?: string;
+    language?: string;
+    campuses?: string[];
+    onlineAvailable?: boolean;
+    hybridAvailable?: boolean;
+    onCampusAvailable?: boolean;
+  };
+  duration?: {
+    value?: string;
+    unit?: string;
+    display?: string;
+    credits?: string;
+    semesters?: string;
+    hours?: string;
+    externshipHours?: string;
+  };
+  tuition?: {
+    amount?: string;
+    currency?: string;
+    period?: string;
+    display?: string;
+    financialAidAvailable?: boolean;
+    financialAidText?: string;
+  };
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    keywords?: string[];
+  };
   hero?: LandingHero;
-  programInfo?: string[];
+  summaryCards?: LabelValueItem[];
+  programInfo?: Array<string | ProgramInfoItem>;
+  overview?: {
+    title?: string;
+    description?: string;
+    image?: string;
+  };
+  opportunityToWork?: OpportunityToWork;
   whyStudy?: {
     title?: string;
     description?: string;
     image?: string;
-    items?: AccordionItem[];
+    items?: Array<string | AccordionItem>;
+  };
+  curriculum?: {
+    title?: string;
+    description?: string;
+    downloadUrl?: string;
+    items?: Array<string | AccordionItem>;
+  };
+  handsOnTraining?: {
+    enabled?: boolean;
+    title?: string;
+    description?: string;
+    items?: Array<string | AccordionItem>;
+  };
+  externship?: {
+    enabled?: boolean;
+    title?: string;
+    description?: string;
+    hours?: string;
+    partners?: string[];
+  };
+  careerOutcomes?: {
+    title?: string;
+    subtitle?: string;
+    items?: Array<string | TitleDescriptionItem>;
+  };
+  studentSupport?: {
+    title?: string;
+    description?: string;
+    videoUrl?: string;
+    items?: Array<string | IconTextItem>;
   };
   supportSection?: {
     title?: string;
     videoUrl?: string;
-    items?: IconTextItem[];
+    items?: Array<string | IconTextItem>;
   };
   benefits?: {
     title?: string;
-    items?: IconTextItem[];
+    items?: Array<string | IconTextItem>;
+  };
+  admissions?: {
+    title?: string;
+    description?: string;
+    items?: Array<string | TitleDescriptionItem>;
+  };
+  financialAid?: {
+    enabled?: boolean;
+    title?: string;
+    description?: string;
+    items?: Array<string | TitleDescriptionItem>;
+  };
+  testimonials?: Array<{
+    name?: string;
+    role?: string;
+    quote?: string;
+    image?: string;
+  }>;
+  faq?: Array<{
+    question?: string;
+    answer?: string;
+  }>;
+  relatedPrograms?: Array<{
+    title?: string;
+    url?: string;
+    image?: string;
+  }>;
+  contact?: {
+    advisorName?: string;
+    advisorTitle?: string;
+    phone?: string;
+    email?: string;
+    image?: string;
   };
   cta?: {
     title?: string;
+    description?: string;
     button?: string;
+    secondaryButton?: string;
   };
   form?: {
+    title?: string;
+    description?: string;
     type?: string;
     scriptUrl?: string;
     scriptCode?: string;
+    formId?: string;
     programName?: string;
+    submitLabel?: string;
+  };
+  tracking?: {
+    googleAdsProgram?: string;
+    facebookEventName?: string;
+    utmCampaign?: string;
+  };
+  branding?: {
+    themeVariant?: string;
+    backgroundBody?: string;
+    primaryColor?: string;
+    secondaryColor?: string;
+    accentColor?: string;
+    textColor?: string;
   };
   footerScripts?: string[];
 };
 
 const brandsDir = path.join(process.cwd(), "data", "brands");
-const landingsDir = path.join(process.cwd(), "data", "landings");
+const programsDir = path.join(process.cwd(), "data", "programs");
+const legacyLandingsDir = path.join(process.cwd(), "data", "landings");
+const programsRegistryFile = "programs.json";
+
+function toTitleDescriptionItems(
+  items?: Array<string | TitleDescriptionItem>,
+): TitleDescriptionItem[] {
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item, index) => {
+    if (typeof item === "string") {
+      return {
+        title: "",
+        description: item,
+      };
+    }
+
+    return {
+      title: item.title || `Item ${index + 1}`,
+      description: item.description || item.content || item.text || "",
+      url: item.url || "",
+      image: item.image || "",
+    };
+  });
+}
+
+function toIconTextItems(items?: Array<string | IconTextItem>): IconTextItem[] {
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item, index) => {
+    if (typeof item === "string") {
+      return {
+        title: `Item ${index + 1}`,
+        text: item,
+        description: item,
+      };
+    }
+
+    return {
+      title: item.title || `Item ${index + 1}`,
+      text: item.text || item.description || "",
+      description: item.description || item.text || "",
+      icon: item.icon || "",
+    };
+  });
+}
+
+function toProgramInfoItems(
+  items?: Array<string | ProgramInfoItem>,
+): ProgramInfoItem[] {
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item, index) => {
+    if (typeof item === "string") {
+      const [label, ...rest] = item.split(":");
+
+      return rest.length
+        ? {
+            label: label.trim(),
+            value: rest.join(":").trim(),
+          }
+        : {
+            label: `Dato ${index + 1}`,
+            value: item,
+          };
+    }
+
+    return {
+      key: item.key || "",
+      label: item.label || `Dato ${index + 1}`,
+      value: item.value || "",
+    };
+  });
+}
+
+function toCertificationItems(
+  items?: Array<string | LandingCertificationItem>,
+): LandingCertificationItem[] {
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item) => {
+    if (typeof item === "string") {
+      return {
+        title: item,
+        name: item,
+        description: "",
+        url: "",
+        enabled: true,
+        resolutionText: "",
+      };
+    }
+
+    return {
+      title: item.title || item.name || "",
+      name: item.name || item.title || "",
+      description: item.description || item.resolutionText || "",
+      url: item.url || "",
+      enabled: item.enabled ?? true,
+      resolutionText: item.resolutionText || "",
+    };
+  });
+}
+
+export function normalizeLandingSchema(landing: Landing): Landing {
+  const programInfo = toProgramInfoItems(landing.programInfo);
+  const careerSource = landing.careerOutcomes ?? landing.opportunityToWork ?? {};
+  const supportSource = (landing.studentSupport ??
+    landing.supportSection ??
+    {}) as NonNullable<Landing["studentSupport"]>;
+  const hero = landing.hero ?? {};
+  const durationDisplay = landing.duration?.display || hero.duration || "";
+  const tuitionDisplay =
+    landing.tuition?.display || hero.price || hero.semesterPrice || "";
+  const deliveryModality = landing.delivery?.modality || hero.modality || "";
+  const deliverySchedule = landing.delivery?.schedule || landing.schedule || "";
+
+  return {
+    ...landing,
+    template: "DefaultLanding",
+    status: landing.status || "draft",
+    updatedAt: landing.updatedAt || new Date().toISOString().slice(0, 10),
+    logoMode: landing.logoMode || "dark",
+    sourceWebsite: landing.sourceWebsite || "",
+    programUrl: landing.programUrl || landing.sourceWebsite || "",
+    catalog: landing.catalog || "",
+    title: landing.title || "",
+    fullTitle: landing.fullTitle || landing.title || "",
+    shortTitle: landing.shortTitle || landing.title || "",
+    programType: landing.programType || "",
+    degreeLevel: landing.degreeLevel || "",
+    academicArea: landing.academicArea || "",
+    faculty: landing.faculty || "",
+    snies: landing.snies || "",
+    cipCode: landing.cipCode || "",
+    delivery: {
+      modality: deliveryModality,
+      schedule: deliverySchedule,
+      language: landing.delivery?.language || "",
+      campuses: landing.delivery?.campuses ?? [],
+      onlineAvailable: Boolean(landing.delivery?.onlineAvailable),
+      hybridAvailable: Boolean(landing.delivery?.hybridAvailable),
+      onCampusAvailable: Boolean(landing.delivery?.onCampusAvailable),
+    },
+    duration: {
+      value: landing.duration?.value || "",
+      unit: landing.duration?.unit || "",
+      display: durationDisplay,
+      credits: landing.duration?.credits || "",
+      semesters: landing.duration?.semesters || "",
+      hours: landing.duration?.hours || "",
+      externshipHours: landing.duration?.externshipHours || "",
+    },
+    tuition: {
+      amount: landing.tuition?.amount || "",
+      currency: landing.tuition?.currency || "",
+      period: landing.tuition?.period || "",
+      display: tuitionDisplay,
+      financialAidAvailable: Boolean(landing.tuition?.financialAidAvailable),
+      financialAidText: landing.tuition?.financialAidText || "",
+    },
+    seo: {
+      metaTitle: landing.seo?.metaTitle || landing.fullTitle || landing.title,
+      metaDescription: landing.seo?.metaDescription || hero.description || "",
+      keywords: landing.seo?.keywords ?? [],
+    },
+    hero: {
+      eyebrow: hero.eyebrow || "",
+      highlight: hero.highlight || "",
+      title: hero.title || landing.fullTitle || landing.title,
+      subtitle: hero.subtitle || "",
+      description: hero.description || "",
+      supportText: hero.supportText || "",
+      modality: hero.modality || deliveryModality,
+      semesterPrice: hero.semesterPrice || tuitionDisplay,
+      price: hero.price || tuitionDisplay,
+      duration: hero.duration || durationDisplay,
+      primaryCta: {
+        label: hero.primaryCta?.label || "Request Information",
+        url: hero.primaryCta?.url || "#form",
+      },
+      secondaryCta: {
+        label: hero.secondaryCta?.label || "",
+        url: hero.secondaryCta?.url || "",
+      },
+      backgroundImage: hero.backgroundImage || "",
+      personImage: hero.personImage || "",
+      videoUrl: hero.videoUrl || "",
+      overlayColor: hero.overlayColor || "",
+    },
+    summaryCards: landing.summaryCards ?? [],
+    programInfo,
+    overview: {
+      title: landing.overview?.title || "Program Overview",
+      description: landing.overview?.description || hero.description || "",
+      image: landing.overview?.image || "",
+    },
+    whyStudy: {
+      title: landing.whyStudy?.title || "Why Study This Program",
+      description: landing.whyStudy?.description || "",
+      image: landing.whyStudy?.image || "",
+      items: toTitleDescriptionItems(landing.whyStudy?.items),
+    },
+    curriculum: {
+      title: landing.curriculum?.title || "What You Will Learn",
+      description: landing.curriculum?.description || "",
+      downloadUrl: landing.curriculum?.downloadUrl || "",
+      items: toTitleDescriptionItems(landing.curriculum?.items),
+    },
+    handsOnTraining: {
+      enabled: Boolean(landing.handsOnTraining?.enabled),
+      title: landing.handsOnTraining?.title || "Hands-On Training",
+      description: landing.handsOnTraining?.description || "",
+      items: toTitleDescriptionItems(landing.handsOnTraining?.items),
+    },
+    externship: {
+      enabled: Boolean(landing.externship?.enabled),
+      title: landing.externship?.title || "Externship",
+      description: landing.externship?.description || "",
+      hours: landing.externship?.hours || "",
+      partners: landing.externship?.partners ?? [],
+    },
+    careerOutcomes: {
+      title: careerSource.title || "Career Opportunities",
+      subtitle: careerSource.subtitle || "",
+      items: toTitleDescriptionItems(careerSource.items),
+    },
+    opportunityToWork: {
+      title: careerSource.title || "Career Opportunities",
+      subtitle: careerSource.subtitle || "",
+      items: toTitleDescriptionItems(careerSource.items),
+    },
+    studentSupport: {
+      title: supportSource.title || "Student Support",
+      description: supportSource.description || "",
+      videoUrl: supportSource.videoUrl || "",
+      items: toIconTextItems(supportSource.items),
+    },
+    supportSection: {
+      title: supportSource.title || "Student Support",
+      videoUrl: supportSource.videoUrl || "",
+      items: toIconTextItems(supportSource.items),
+    },
+    benefits: {
+      title: landing.benefits?.title || "Program Benefits",
+      items: toIconTextItems(landing.benefits?.items),
+    },
+    admissions: {
+      title: landing.admissions?.title || "Admissions Requirements",
+      description: landing.admissions?.description || "",
+      items: toTitleDescriptionItems(landing.admissions?.items),
+    },
+    financialAid: {
+      enabled: Boolean(landing.financialAid?.enabled),
+      title: landing.financialAid?.title || "Financial Aid Options",
+      description: landing.financialAid?.description || "",
+      items: toTitleDescriptionItems(landing.financialAid?.items),
+    },
+    testimonials: landing.testimonials ?? [],
+    faq: landing.faq ?? [],
+    certifications: {
+      enabled: Boolean(landing.certifications?.enabled),
+      title: landing.certifications?.title || "Accreditations and Certifications",
+      resolutionText: landing.certifications?.resolutionText || "",
+      items: toCertificationItems(landing.certifications?.items),
+    },
+    relatedPrograms: landing.relatedPrograms ?? [],
+    contact: {
+      advisorName: landing.contact?.advisorName || "",
+      advisorTitle: landing.contact?.advisorTitle || "",
+      phone: landing.contact?.phone || "",
+      email: landing.contact?.email || "",
+      image: landing.contact?.image || "",
+    },
+    cta: {
+      title: landing.cta?.title || "Request Information",
+      description: landing.cta?.description || "",
+      button: landing.cta?.button || "Apply Now",
+      secondaryButton: landing.cta?.secondaryButton || "",
+    },
+    form: {
+      title: landing.form?.title || "Request Information",
+      description: landing.form?.description || "",
+      scriptUrl: landing.form?.scriptUrl || "",
+      scriptCode: landing.form?.scriptCode || "",
+      formId: landing.form?.formId || "",
+      programName: landing.form?.programName || landing.fullTitle || landing.title,
+      submitLabel: landing.form?.submitLabel || "Submit",
+      type: landing.form?.type,
+    },
+    tracking: {
+      googleAdsProgram: landing.tracking?.googleAdsProgram || "",
+      facebookEventName: landing.tracking?.facebookEventName || "Lead",
+      utmCampaign: landing.tracking?.utmCampaign || "",
+    },
+    branding: {
+      themeVariant: landing.branding?.themeVariant || "",
+      backgroundBody: landing.branding?.backgroundBody || "",
+      primaryColor: landing.branding?.primaryColor || "",
+      secondaryColor: landing.branding?.secondaryColor || "",
+      accentColor: landing.branding?.accentColor || "",
+      textColor: landing.branding?.textColor || "",
+    },
+    footerScripts: landing.footerScripts ?? [],
+  };
+}
 
 function normalizeBrand(brand: Brand): Brand {
   return {
@@ -160,31 +644,79 @@ export function getBrandBySlug(slug: string): Brand | null {
 }
 
 export function getLandingsByBrand(brandSlug: string): Landing[] {
-  const brandFolder = path.join(landingsDir, brandSlug);
+  const brandFolder = getProgramLandingFolder(brandSlug);
 
   if (!fs.existsSync(brandFolder)) return [];
 
-  const files = fs.readdirSync(brandFolder);
+  const files = fs
+    .readdirSync(brandFolder)
+    .filter((file) => file.endsWith(".json") && file !== programsRegistryFile);
 
   return files.map((file) => {
     const filePath = path.join(brandFolder, file);
     const content = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(content) as Landing;
+    return normalizeLandingSchema(JSON.parse(content) as Landing);
   });
+}
+
+export function getProgramsByBrand(brandSlug: string): Program[] {
+  const inferredPrograms = getLandingsByBrand(brandSlug).map((landing) =>
+    landingToProgram(landing),
+  );
+  const filePath = path.join(programsDir, brandSlug, programsRegistryFile);
+
+  if (!fs.existsSync(filePath)) {
+    return inferredPrograms;
+  }
+
+  const content = fs.readFileSync(filePath, "utf8");
+  const savedPrograms = JSON.parse(content) as Program[];
+  const savedProgramIds = new Set(savedPrograms.map((program) => program.id));
+
+  return [
+    ...savedPrograms,
+    ...inferredPrograms.filter((program) => !savedProgramIds.has(program.id)),
+  ];
 }
 
 export function getLandingBySlug(
   brandSlug: string,
   landingSlug: string
 ): Landing | null {
-  const filePath = path.join(
-    landingsDir,
-    brandSlug,
-    `${landingSlug}.json`
-  );
+  const filePath = getProgramLandingPath(brandSlug, landingSlug);
 
   if (!fs.existsSync(filePath)) return null;
 
   const content = fs.readFileSync(filePath, "utf8");
-  return JSON.parse(content) as Landing;
+  return normalizeLandingSchema(JSON.parse(content) as Landing);
+}
+
+function getProgramLandingFolder(brandSlug: string) {
+  const programsFolder = path.join(programsDir, brandSlug);
+
+  if (fs.existsSync(programsFolder)) {
+    return programsFolder;
+  }
+
+  return path.join(legacyLandingsDir, brandSlug);
+}
+
+function getProgramLandingPath(brandSlug: string, landingSlug: string) {
+  const programsPath = path.join(programsDir, brandSlug, `${landingSlug}.json`);
+
+  if (fs.existsSync(programsPath)) {
+    return programsPath;
+  }
+
+  return path.join(legacyLandingsDir, brandSlug, `${landingSlug}.json`);
+}
+
+function landingToProgram(landing: Landing): Program {
+  return {
+    id: landing.slug,
+    programName: landing.fullTitle || landing.title,
+    sourceWebsite: landing.sourceWebsite || `/${landing.brand}/${landing.slug}`,
+    catalog: landing.catalog || "",
+    updatedAt: landing.updatedAt,
+  };
 }

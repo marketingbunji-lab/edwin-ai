@@ -1,0 +1,496 @@
+{
+  "slug": "medical-assistant-medical-assistant-training",
+  "brand": "pcihealth",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-11",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "name": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "description": "Institutional accreditation by ACCSC.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Texas Workforce Commission – Career Schools and Colleges Section",
+        "name": "Texas Workforce Commission – Career Schools and Colleges Section",
+        "description": "Approved and regulated by the Texas Workforce Commission.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Memberships",
+        "name": "Memberships",
+        "description": "Member of Career Colleges and Schools of Texas (CCST) and Career Education Colleges and Universities (CECU).",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Medical Assistant | Medical Assistant Training",
+  "fullTitle": "Medical Assistant | Medical Assistant Training",
+  "sourceWebsite": "https://www.pcihealth.edu/medical-assistant/",
+  "catalog": "",
+  "programType": "Especialización",
+  "schedule": "hybrid",
+  "hero": {
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Medical Assistant | Medical Assistant Training",
+    "subtitle": "",
+    "description": "Medical Assistant! PCI&#039;s medical assistant training will prepare you i as little as 9 months! Call 214-630-0568 to learn more information!",
+    "supportText": "",
+    "modality": "Hybrid",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "As little as 9 months",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Assistant-Hero.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Program Length",
+      "value": "As little as 9 months"
+    },
+    {
+      "key": "",
+      "label": "Externship",
+      "value": "200 hours"
+    },
+    {
+      "key": "",
+      "label": "Delivery",
+      "value": "Hybrid — classroom, labs and externship"
+    },
+    {
+      "key": "",
+      "label": "Campuses",
+      "value": "Richardson, TX; Dallas, TX"
+    },
+    {
+      "key": "",
+      "label": "Approvals",
+      "value": "ACCSC accredited; Approved by Texas Workforce Commission"
+    }
+  ],
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Medical Assistant",
+        "description": "Prepare for clinical and administrative responsibilities in medical offices and clinics.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Clinic Assistant",
+        "description": "Support clinic operations and patient care under the supervision of healthcare professionals.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical Administrative Office Assistant",
+        "description": "Work on scheduling, patient records and front-office duties using EHR systems.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Phlebotomy / Physical Therapy Aide (specializations)",
+        "description": "Opportunities to specialize in areas such as phlebotomy or physical therapy assistance based on program tracks.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "whyStudy": {
+    "title": "Why Study This Program",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Accelerated pathway",
+        "description": "Complete training in as little as nine months to prepare for entry-level roles in medical offices.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Hands-on clinical training",
+        "description": "Lab sessions teach injections, phlebotomy, EKG, urinalysis, microscopy, autoclaving and other vital clinical skills.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Real-world experience",
+        "description": "Includes a 200-hour externship with professional partners to apply skills in a clinical setting.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Student support and career services",
+        "description": "Access to job search strategies, resume writing, interviewing practice and ongoing student support.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Career Services",
+        "text": "Job search assistance, employer connections and placement support.",
+        "description": "Job search assistance, employer connections and placement support.",
+        "icon": ""
+      },
+      {
+        "title": "Career preparation",
+        "text": "Resume writing and interviewing practice to prepare for employment.",
+        "description": "Resume writing and interviewing practice to prepare for employment.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing advising and a supportive campus community throughout training.",
+        "description": "Ongoing advising and a supportive campus community throughout training.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Short program length",
+        "text": "Earn the training needed for entry-level roles in as little as nine months.",
+        "description": "Earn the training needed for entry-level roles in as little as nine months.",
+        "icon": ""
+      },
+      {
+        "title": "Practical experience",
+        "text": "Extensive hands-on lab training plus a 200-hour externship.",
+        "description": "Extensive hands-on lab training plus a 200-hour externship.",
+        "icon": ""
+      },
+      {
+        "title": "Accredited institution",
+        "text": "PCI is accredited by ACCSC and approved by the Texas Workforce Commission.",
+        "description": "PCI is accredited by ACCSC and approved by the Texas Workforce Commission.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Request Information",
+    "description": "",
+    "button": "Apply Now",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Medical Assistant | Medical Assistant Training",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "programUrl": "https://www.pcihealth.edu/medical-assistant/",
+  "shortTitle": "Medical Assistant | Medical Assistant Training",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "hybrid",
+    "language": "en",
+    "campuses": [
+      "Richardson, TX",
+      "Dallas, TX"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "9",
+    "unit": "months",
+    "display": "As little as 9 months",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": "200"
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Medical Assistant | Medical Assistant Training",
+    "metaDescription": "Medical Assistant! PCI&#039;s medical assistant training will prepare you i as little as 9 months! Call 214-630-0568 to learn more information!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duration",
+      "value": "As little as 9 months"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid (lectures, labs, externship)"
+    },
+    {
+      "label": "Campuses",
+      "value": "Richardson, TX; Dallas, TX"
+    },
+    {
+      "label": "Externship",
+      "value": "200 hours"
+    },
+    {
+      "label": "Accreditation",
+      "value": "ACCSC accredited"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "PCI’s Medical Assistant program can train you for a career in healthcare in as little as nine months by teaching essential clinical and administrative skills; the program includes classroom instruction, hands-on lab practice, and a 200-hour externship, and allows students to pursue specializations such as Medical Administrative Office Assistant, Clinic Assistant, Clinic Technical Assistance, Medical Office Management, Phlebotomy, and Physical Therapy Aide.",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Assistant-Hero.jpg"
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": [
+      {
+        "title": "Clinical skills",
+        "description": "Check vital signs, assist with physical exams, perform injections and basic clinical procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Laboratory procedures",
+        "description": "Perform basic lab tests including phlebotomy, urinalysis, microscopy and autoclaving.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Diagnostic testing",
+        "description": "Conduct EKGs and other common medical diagnostic tests.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Electronic Health Records",
+        "description": "Training in EHR systems and transcribing patient medical information.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Administrative office skills",
+        "description": "Schedule and coordinate patient appointments, front office procedures and medical office operations.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Foundational medical knowledge",
+        "description": "Anatomy and physiology, pharmacology, first aid and CPR instruction.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "title": "Hands-On Training",
+    "description": "Practical lab sessions provide direct experience with clinical procedures and equipment.",
+    "items": [
+      {
+        "title": "Phlebotomy",
+        "description": "Hands-on practice drawing blood and preparing samples for analysis.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Injections and injections technique",
+        "description": "Practice administering common injections and safe handling procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "EKG and diagnostic tests",
+        "description": "Perform and interpret basic EKGs and other diagnostic procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Laboratory techniques",
+        "description": "Urinalysis, microscopy and autoclaving procedures.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "title": "Externship",
+    "description": "A 200-hour, real-world externship placed with professional partners to apply clinical and administrative skills.",
+    "hours": "200",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Medical Assistant",
+        "description": "Prepare for clinical and administrative responsibilities in medical offices and clinics.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Clinic Assistant",
+        "description": "Support clinic operations and patient care under the supervision of healthcare professionals.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical Administrative Office Assistant",
+        "description": "Work on scheduling, patient records and front-office duties using EHR systems.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Phlebotomy / Physical Therapy Aide (specializations)",
+        "description": "Opportunities to specialize in areas such as phlebotomy or physical therapy assistance based on program tracks.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support",
+    "description": "PCI provides a supportive environment with services to help students succeed academically and professionally, from enrollment through career placement.",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Career Services",
+        "text": "Job search assistance, employer connections and placement support.",
+        "description": "Job search assistance, employer connections and placement support.",
+        "icon": ""
+      },
+      {
+        "title": "Career preparation",
+        "text": "Resume writing and interviewing practice to prepare for employment.",
+        "description": "Resume writing and interviewing practice to prepare for employment.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing advising and a supportive campus community throughout training.",
+        "description": "Ongoing advising and a supportive campus community throughout training.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "How long does the Medical Assistant program take?",
+      "answer": "The program can prepare you in as little as nine months."
+    },
+    {
+      "question": "Does the program include practical experience?",
+      "answer": "Yes. The program includes hands-on lab training and a 200-hour externship."
+    },
+    {
+      "question": "Where is the Medical Assistant program offered?",
+      "answer": "PCI offers the program at campuses in Richardson, TX and Dallas (Southwest Dallas), TX."
+    },
+    {
+      "question": "Is PCI accredited?",
+      "answer": "PCI Health Training Center is accredited by the Accrediting Commission of Career Schools and Colleges (ACCSC) and is approved by the Texas Workforce Commission."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Medical Office Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Dental Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Dental Assistant – Hybrid",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "ECPP (Medical Training Plus GED)",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

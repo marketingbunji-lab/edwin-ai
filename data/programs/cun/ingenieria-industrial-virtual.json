@@ -1,0 +1,267 @@
+{
+  "slug": "ingenieria-industrial-virtual",
+  "brand": "cun",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-04",
+  "logoMode": "dark",
+  "title": "Ingeniería Industrial",
+  "fullTitle": "Pregrado en Ingeniería Industrial (Modalidad Virtual)",
+  "programType": "Pregrado",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Pregrado · Modalidad Virtual",
+    "highlight": "100% virtual",
+    "title": "Ingeniería Industrial",
+    "subtitle": "",
+    "description": "Forma profesionales capaces de diseñar, gestionar y mejorar procesos productivos y administrativos, implementando innovación tecnológica para aumentar la eficiencia organizacional.",
+    "supportText": "Matricúlate ya y accede a becas y créditos",
+    "modality": "Virtual",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Ingeniería Industrial en la CUN?",
+    "description": "Una formación virtual y flexible orientada a la optimización de procesos, innovación tecnológica y la mejora de la competitividad empresarial, con el respaldo institucional y registro SNIES.",
+    "image": "",
+    "items": [
+      {
+        "title": "Formación por ciclos propedéuticos",
+        "description": "Obtén tres títulos progresivos: Técnico Profesional, Tecnólogo e Ingeniero, lo que facilita la inserción laboral temprana."
+      },
+      {
+        "title": "Modalidad 100% virtual",
+        "description": "Estudia desde cualquier lugar de Colombia con horarios flexibles y plataforma académica interactiva."
+      },
+      {
+        "title": "Enfoque en innovación y mejora de procesos",
+        "description": "Aprende a diseñar, evaluar y optimizar sistemas productivos y administrativos integrando personas, materiales y tecnología."
+      },
+      {
+        "title": "Amplios campos laborales",
+        "description": "Desempeño como analista de procesos, coordinador de producción, gestor de calidad, consultor en eficiencia operativa o líder de proyectos industriales."
+      },
+      {
+        "title": "Respaldo institucional y registro SNIES",
+        "description": "Programa vigilado por el Ministerio de Educación Nacional con resoluciones y registros SNIES para cada ciclo formativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Soporte y recursos",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Becas y financiación",
+        "description": "Asesoría para acceder a becas académicas, deportivas y culturales, y orientación sobre créditos como ICETEX.",
+        "icon": ""
+      },
+      {
+        "title": "Plataforma virtual",
+        "description": "Ambiente virtual que facilita el aprendizaje autónomo y colaborativo con materiales y actividades interactivas.",
+        "icon": ""
+      },
+      {
+        "title": "Acompañamiento académico",
+        "description": "Servicios de bienestar, prácticas, y orientación vocacional para apoyar tu proceso formativo.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Beneficios",
+    "items": [
+      {
+        "title": "Acceso a becas",
+        "description": "Posibilidades de becas y apoyos financieros para facilitar tu estudios.",
+        "icon": ""
+      },
+      {
+        "title": "Modelo 335 - Educación flexible",
+        "description": "Formación modular que permite obtener tres títulos y avanzar por ciclos propedéuticos.",
+        "icon": ""
+      },
+      {
+        "title": "Estudia desde cualquier lugar",
+        "description": "Modalidad virtual con horarios flexibles y cobertura nacional.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Matricúlate hoy mismo",
+    "description": "",
+    "button": "Recibe más información",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Ingeniería Industrial - Modalidad Virtual",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/cun/ingenieria-industrial-virtual",
+  "programUrl": "/cun/ingenieria-industrial-virtual",
+  "catalog": "",
+  "shortTitle": "Ingeniería Industrial",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "flexible",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Pregrado en Ingeniería Industrial (Modalidad Virtual)",
+    "metaDescription": "Forma profesionales capaces de diseñar, gestionar y mejorar procesos productivos y administrativos, implementando innovación tecnológica para aumentar la eficiencia organizacional.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Virtual"
+    },
+    {
+      "label": "Schedule",
+      "value": "flexible"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Forma profesionales capaces de diseñar, gestionar y mejorar procesos productivos y administrativos, implementando innovación tecnológica para aumentar la eficiencia organizacional.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "Soporte y recursos",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Becas y financiación",
+        "description": "Asesoría para acceder a becas académicas, deportivas y culturales, y orientación sobre créditos como ICETEX.",
+        "icon": ""
+      },
+      {
+        "title": "Plataforma virtual",
+        "description": "Ambiente virtual que facilita el aprendizaje autónomo y colaborativo con materiales y actividades interactivas.",
+        "icon": ""
+      },
+      {
+        "title": "Acompañamiento académico",
+        "description": "Servicios de bienestar, prácticas, y orientación vocacional para apoyar tu proceso formativo.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

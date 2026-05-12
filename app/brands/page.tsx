@@ -1,8 +1,6 @@
 import BrandCard from "@/components/dashboard/BrandCard";
 import { getBrands, getLandingsByBrand } from "@/lib/data";
 import { getSupabaseBrands } from "@/lib/supabaseBrands";
-import Link from "next/link";
-import { Plus } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 

@@ -269,7 +269,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
         </p>
       </div>
 
-      <div className="mb-8 inline-flex rounded-xl border border-gray-200 bg-gray-100 p-1 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mb-8 inline-flex rounded-md border border-gray-200 bg-gray-100 p-1 dark:border-slate-800 dark:bg-slate-900">
         <button
           type="button"
           onClick={() => setActiveTab("general")}
@@ -656,7 +656,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
           type="button"
           onClick={handleSave}
           disabled={saving}
-          className="rounded-xl bg-[var(--bunji-primary)] px-5 py-3 text-sm font-medium text-white disabled:opacity-60"
+          className="rounded-md bg-[var(--bunji-primary)] px-5 py-3 text-sm font-medium text-white disabled:opacity-60"
         >
           {saving
             ? mode === "create"
@@ -695,7 +695,7 @@ function Field({
         value={value}
         disabled={disabled}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black disabled:bg-gray-100 disabled:text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:disabled:bg-slate-800 dark:disabled:text-slate-500"
+        className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black disabled:bg-gray-100 disabled:text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:disabled:bg-slate-800 dark:disabled:text-slate-500"
       />
     </label>
   );
@@ -719,7 +719,7 @@ function TextareaField({
         value={value}
         rows={4}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
       />
     </label>
   );
@@ -742,13 +742,13 @@ function ColorField({
       <div className="flex items-center gap-3">
         <span
           aria-hidden="true"
-          className="h-12 w-12 shrink-0 rounded-xl border border-gray-300 dark:border-slate-700"
+          className="h-12 w-12 shrink-0 rounded-md border border-gray-300 dark:border-slate-700"
           style={{ backgroundColor: value || "transparent" }}
         />
         <input
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
         />
       </div>
     </label>

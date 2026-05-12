@@ -86,7 +86,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm transition hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:hover:bg-white/[0.08]"
+        className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3 text-sm transition hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:hover:bg-white/[0.08]"
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -106,7 +106,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
       {open ? (
         <div
           role="menu"
-          className="absolute bottom-full left-0 z-50 mb-2 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-1 shadow-xl dark:border-white/10 dark:bg-slate-950"
+          className="absolute bottom-full left-0 z-50 mb-2 w-full overflow-hidden rounded-lg border border-slate-200 bg-white p-1 shadow-xl dark:border-white/10 dark:bg-slate-950"
         >
           <button
             type="button"
@@ -116,7 +116,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
               onThemeChange("light");
               setOpen(false);
             }}
-            className={`flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-medium transition ${
+            className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition ${
               theme === "light"
                 ? "bg-slate-100 text-slate-950 dark:bg-white/10 dark:text-white"
                 : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
@@ -134,7 +134,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
               onThemeChange("dark");
               setOpen(false);
             }}
-            className={`flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-medium transition ${
+            className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition ${
               theme === "dark"
                 ? "bg-slate-100 text-slate-950 dark:bg-white/10 dark:text-white"
                 : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
@@ -151,7 +151,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             role="menuitem"
             onClick={handleSignOut}
             disabled={signingOut}
-            className="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:text-red-300 dark:hover:bg-red-950/30"
+            className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:text-red-300 dark:hover:bg-red-950/30"
           >
             <LogOut className="h-4 w-4" />
             {signingOut ? "Saliendo..." : "Cerrar sesion"}

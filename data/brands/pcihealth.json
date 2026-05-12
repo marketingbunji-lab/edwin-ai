@@ -1,0 +1,58 @@
+{
+  "slug": "pcihealth",
+  "name": "PCI",
+  "shortName": "PCI Health Training Center",
+  "logo": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
+  "logos": {
+    "light": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
+    "dark": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png"
+  },
+  "typography": {
+    "fontFamily": "\"Lato\", sans-serif",
+    "googleFontHref": "https://fonts.googleapis.com/css2?family=Lato&display=swap"
+  },
+  "identityManual": "",
+  "primaryColor": "#0693e3",
+  "secondaryColor": "#F90101",
+  "description": "Medical Assistant - Dental Assistant! Learn the skills to become a Medical Assistant or Dental Assistant today! Call PCI today to learn about our offered Programs!",
+  "officialWebsite": "https://www.pcihealth.edu/",
+  "siteName": "Medical Assistant | Dental Assistant | Medical Office",
+  "abstract": "PCI Health Training Center was founded by Dr. Roy Rose as the Academy for Medical and Dental Assistants in 1978. Receiving initial accreditation in 1983, we were acquired by Prince Careers Inc. in 1990 and switched to our current name. In 2005, we opened a branch campus in Richardson, TX.",
+  "keywords": [],
+  "robots": "",
+  "generator": "",
+  "imageBrand": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
+  "images": [],
+  "legalLinks": [
+    {
+      "label": "Sitio oficial",
+      "url": "https://www.pcihealth.edu/"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "ACCSC",
+      "url": "",
+      "logos": {
+        "light": "https://www.accsc.org/wp-content/uploads/2023/09/ACCSC_Final_Logocopy.jpeg",
+        "dark": ""
+      }
+    },
+    {
+      "name": "TWC Career Schools and Colleges Section",
+      "url": "",
+      "logos": {
+        "light": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS624Ftch9O5Sn36U_lSLliQSy3-rGXzdWGoA&s",
+        "dark": ""
+      }
+    },
+    {
+      "name": "CECU",
+      "url": "",
+      "logos": {
+        "light": "https://media.maxknowledge.com/images/cecu/ceculogo.jpg",
+        "dark": ""
+      }
+    }
+  ]
+}

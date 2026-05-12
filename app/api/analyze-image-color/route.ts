@@ -20,9 +20,31 @@ function quantizeChannel(value: number) {
   return Math.min(7, Math.floor(value / 32));
 }
 
+function getFallbackHex(value?: string) {
+  const color = value?.trim();
+
+  if (!color) {
+    return "#111827";
+  }
+
+  if (/^#[0-9a-f]{6}$/i.test(color)) {
+    return color;
+  }
+
+  if (/^#[0-9a-f]{3}$/i.test(color)) {
+    return `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}`;
+  }
+
+  return "#111827";
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const { imageUrl } = (await request.json()) as { imageUrl?: string };
+    const { imageUrl, fallbackHex } = (await request.json()) as {
+      imageUrl?: string;
+      fallbackHex?: string;
+    };
+    const fallbackColor = getFallbackHex(fallbackHex);
 
     if (!imageUrl) {
       return NextResponse.json(
@@ -38,10 +60,12 @@ export async function POST(request: NextRequest) {
     });
 
     if (!imageResponse.ok) {
-      return NextResponse.json(
-        { error: "No se pudo descargar la imagen." },
-        { status: 400 }
-      );
+      return NextResponse.json({
+        imageUrl,
+        hex: fallbackColor,
+        warning:
+          "No se pudo descargar la imagen para analizarla. Se aplico el color principal de la marca como overlay.",
+      });
     }
 
     const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());

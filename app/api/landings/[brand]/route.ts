@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Landing } from "../../../../lib/data";
+import {
+  normalizeLandingSchema,
+  type Landing,
+  type ProgramInfoItem,
+} from "../../../../lib/data";
 
 type Params = Promise<{
   brand: string;
@@ -12,7 +16,7 @@ type LandingPayload = Partial<Landing> & {
   fullTitle: string;
 };
 
-const landingsDir = path.join(process.cwd(), "data", "landings");
+const programsDir = path.join(process.cwd(), "data", "programs");
 
 function slugify(text: string) {
   return text
@@ -69,6 +73,8 @@ function createBaseLanding(
     },
     title,
     fullTitle,
+    sourceWebsite: "",
+    catalog: "",
     programType: "",
     schedule: "",
     hero: {
@@ -83,6 +89,11 @@ function createBaseLanding(
       personImage: "",
     },
     programInfo: [],
+    opportunityToWork: {
+      title: "",
+      subtitle: "",
+      items: [],
+    },
     whyStudy: {
       title: "",
       description: "",
@@ -150,28 +161,91 @@ function normalizeAiLandingData(body: Partial<Landing>): Partial<Landing> {
   };
 }
 
-function normalizeProgramInfo(programInfo: unknown): string[] {
+function slugifyProgramInfoKey(text: string) {
+  return slugify(text) || "custom";
+}
+
+function inferProgramInfoItem(item: string, index: number): ProgramInfoItem {
+  const value = item.trim();
+  const [rawLabel, ...rest] = value.split(":");
+
+  if (rest.length > 0) {
+    const label = rawLabel.trim();
+    return {
+      key: slugifyProgramInfoKey(label),
+      label,
+      value: rest.join(":").trim(),
+    };
+  }
+
+  if (/snies/i.test(value)) {
+    return {
+      key: "snies",
+      label: "SNIES",
+      value: value.replace(/^snies\s*/i, "").trim(),
+    };
+  }
+
+  if (/cr[eé]dit/i.test(value)) {
+    return {
+      key: "credits",
+      label: "Creditos academicos",
+      value: value.replace(/\s*cr[eé]ditos?\s+acad[eé]micos?/i, "").trim(),
+    };
+  }
+
+  if (/semestre|mes|month|hour|hora|duraci[oó]n/i.test(value)) {
+    return {
+      key: "duration",
+      label: "Duracion",
+      value: value.replace(/\s+de\s+duraci[oó]n/i, "").trim(),
+    };
+  }
+
+  return {
+    key: index === 0 ? "degree" : "custom",
+    label: index === 0 ? "Titulo otorgado" : `Dato ${index + 1}`,
+    value,
+  };
+}
+
+function normalizeProgramInfo(programInfo: unknown): ProgramInfoItem[] {
   if (!Array.isArray(programInfo)) {
     return [];
   }
 
   return programInfo
-    .map((item) => {
+    .map((item, index) => {
       if (typeof item === "string") {
-        return item;
+        return inferProgramInfoItem(item, index);
       }
 
       if (isRecord(item)) {
+        const key = typeof item.key === "string" ? item.key.trim() : "";
+        const label = typeof item.label === "string" ? item.label.trim() : "";
+        const value = typeof item.value === "string" ? item.value.trim() : "";
         const title = typeof item.title === "string" ? item.title.trim() : "";
-        const content =
-          typeof item.content === "string" ? item.content.trim() : "";
+        const content = typeof item.content === "string" ? item.content.trim() : "";
 
-        return [title, content].filter(Boolean).join(": ");
+        if (value || label || key) {
+          return {
+            key: key || slugifyProgramInfoKey(label) || "custom",
+            label: label || title || "Dato",
+            value: value || content,
+          };
+        }
+
+        if (title || content) {
+          return inferProgramInfoItem(
+            [title, content].filter(Boolean).join(": "),
+            index,
+          );
+        }
       }
 
-      return "";
+      return null;
     })
-    .filter(Boolean);
+    .filter((item): item is ProgramInfoItem => Boolean(item));
 }
 
 export async function POST(req: NextRequest, { params }: { params: Params }) {
@@ -197,7 +271,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    const brandFolder = path.join(landingsDir, brand);
+    const brandFolder = path.join(programsDir, brand);
 
     if (!fs.existsSync(brandFolder)) {
       fs.mkdirSync(brandFolder, { recursive: true });
@@ -208,8 +282,13 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     const filePath = path.join(brandFolder, `${slug}.json`);
 
     landingData.slug = slug;
+    landingData.sourceWebsite = landingData.sourceWebsite || `/${brand}/${slug}`;
 
-    fs.writeFileSync(filePath, JSON.stringify(landingData, null, 2), "utf8");
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify(normalizeLandingSchema(landingData), null, 2),
+      "utf8",
+    );
 
     return NextResponse.json({
       ok: true,

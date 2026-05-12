@@ -1,0 +1,355 @@
+{
+  "slug": "medical-office-assistant",
+  "brand": "pcihealth",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-11",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "ACCSC",
+        "name": "ACCSC",
+        "description": "PCI Health Training Center is accredited by the Accrediting Commission of Career Schools and Colleges",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "PCI Health Training Center is accredited by the Accrediting Commission of Career Schools and Colleges"
+      },
+      {
+        "title": "TWC Career Schools and Colleges Section",
+        "name": "TWC Career Schools and Colleges Section",
+        "description": "PCI Health Training Center is approved and regulated by the Texas Workforce Commission",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "PCI Health Training Center is approved and regulated by the Texas Workforce Commission"
+      },
+      {
+        "title": "CECU",
+        "name": "CECU",
+        "description": "Career Colleges and Schools of Texas – CCST, Career Education Colleges and Universities",
+        "url": "",
+        "enabled": true,
+        "resolutionText": "Career Colleges and Schools of Texas – CCST, Career Education Colleges and Universities"
+      }
+    ]
+  },
+  "title": "Medical Office Assistant",
+  "fullTitle": "Medical Office Assistant Program",
+  "programType": "Otro",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Train for a Fulfilling Career",
+    "highlight": "Prepare in as little as 6 months",
+    "title": "Medical Office Assistant",
+    "subtitle": "",
+    "description": "Learn front office and administrative skills to support healthcare teams. Combine classroom instruction with a supervised externship to gain real-world experience.",
+    "supportText": "Call Today. Change Tomorrow. 469-518-2993",
+    "modality": "On-campus",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "6 Months",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Office-Hero.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#0693e3"
+  },
+  "programInfo": [
+    {
+      "label": "Program",
+      "value": "Medical Office Assistant Program"
+    },
+    {
+      "label": "Duration",
+      "value": "6 Months"
+    }
+  ],
+  "whyStudy": {
+    "title": "Why Study Medical Office Assistant at PCI Health",
+    "description": "PCI Health prepares students from diverse backgrounds for front-office healthcare careers through practical training, supportive services, and industry-relevant curriculum.",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/shutterstock_621863351-scaled.jpg",
+    "items": [
+      {
+        "title": "Career Opportunities",
+        "description": "Prepare for roles such as Medical Front Office Assistant, Medical Office Manager, Insurance Processor, Billing and Collections Specialist, and Patient Care Coordinator."
+      },
+      {
+        "title": "Fast, Focused Program",
+        "description": "Complete training in as little as 6 months with a combined 400 hours of classroom instruction and a 200-hour externship."
+      },
+      {
+        "title": "Hands-on Practical Training",
+        "description": "Train in a simulated medical office, learn EHR procedures, medical records management, procedural coding for billing, basic medical terminology, first aid, and CPR."
+      },
+      {
+        "title": "Supportive Student Services",
+        "description": "Ongoing support from enrollment through career placement, including job search strategies, resume writing, and interview practice."
+      },
+      {
+        "title": "Positive Job Outlook",
+        "description": "Employment of Medical Office Assistants is projected to grow 4% from 2024 to 2034 (U.S. Bureau of Labor Statistics)."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support Services",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Admissions Assistance",
+        "description": "Guidance through enrollment and program selection to help you start your training.",
+        "icon": ""
+      },
+      {
+        "title": "Financial Aid & Resources",
+        "description": "Information about financial aid options and consumer information to help make training accessible.",
+        "icon": ""
+      },
+      {
+        "title": "Career Services",
+        "description": "Job search support, resume development, and interview preparation to aid in post-graduation employment.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Real-world Experience",
+        "description": "A 200-hour externship provides supervised, hands-on administrative experience in healthcare settings.",
+        "icon": ""
+      },
+      {
+        "title": "Accredited Training",
+        "description": "Training from an ACCSC-accredited institution with state approval from the Texas Workforce Commission.",
+        "icon": ""
+      },
+      {
+        "title": "Multiple Campuses",
+        "description": "Program available at Dallas (Southwest Dallas) and Richardson (Northeast Dallas) campuses.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Take the first step toward a fulfilling career in healthcare.",
+    "description": "",
+    "button": "Request Info",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Medical Office Assistant",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "opportunityToWork": {
+    "title": "Opportunity to work",
+    "subtitle": "As a Medical Office Assistant, you’ll have the opportunity to work in a variety of front office roles, including",
+    "items": [
+      {
+        "title": "",
+        "description": "Medical Front Office Assistant"
+      },
+      {
+        "title": "",
+        "description": "Medical Office Manager"
+      },
+      {
+        "title": "",
+        "description": "Insurance Processor"
+      },
+      {
+        "title": "",
+        "description": "Billing and Collecting Specialist"
+      },
+      {
+        "title": "",
+        "description": "Patient Care Coordinator"
+      },
+      {
+        "title": "",
+        "description": "Support Specialist"
+      }
+    ]
+  },
+  "sourceWebsite": "https://www.pcihealth.edu/medical-assistant-hybrid/",
+  "programUrl": "https://www.pcihealth.edu/medical-assistant-hybrid/",
+  "catalog": "",
+  "shortTitle": "Medical Office Assistant",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "On-campus",
+    "schedule": "flexible",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "6 Months",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Medical Office Assistant Program",
+    "metaDescription": "Learn front office and administrative skills to support healthcare teams. Combine classroom instruction with a supervised externship to gain real-world experience.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "On-campus"
+    },
+    {
+      "label": "Schedule",
+      "value": "flexible"
+    },
+    {
+      "label": "Duration",
+      "value": "6 Months"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Learn front office and administrative skills to support healthcare teams. Combine classroom instruction with a supervised externship to gain real-world experience.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Opportunity to work",
+    "subtitle": "As a Medical Office Assistant, you’ll have the opportunity to work in a variety of front office roles, including",
+    "items": [
+      {
+        "title": "",
+        "description": "Medical Front Office Assistant"
+      },
+      {
+        "title": "",
+        "description": "Medical Office Manager"
+      },
+      {
+        "title": "",
+        "description": "Insurance Processor"
+      },
+      {
+        "title": "",
+        "description": "Billing and Collecting Specialist"
+      },
+      {
+        "title": "",
+        "description": "Patient Care Coordinator"
+      },
+      {
+        "title": "",
+        "description": "Support Specialist"
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support Services",
+    "description": "",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Admissions Assistance",
+        "description": "Guidance through enrollment and program selection to help you start your training.",
+        "icon": ""
+      },
+      {
+        "title": "Financial Aid & Resources",
+        "description": "Information about financial aid options and consumer information to help make training accessible.",
+        "icon": ""
+      },
+      {
+        "title": "Career Services",
+        "description": "Job search support, resume development, and interview preparation to aid in post-graduation employment.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

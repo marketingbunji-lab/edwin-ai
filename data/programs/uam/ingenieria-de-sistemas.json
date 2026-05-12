@@ -1,0 +1,315 @@
+{
+  "slug": "ingenieria-de-sistemas",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-22",
+  "title": "Ingeniería de Sistemas",
+  "fullTitle": "Ingeniería de Sistemas",
+  "hero": {
+    "eyebrow": "Estudia en UAM",
+    "highlight": "Pregrado en",
+    "title": "Ingeniería de Sistemas",
+    "subtitle": "",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "Presencial",
+    "semesterPrice": "$10.144.100",
+    "price": "$10.144.100",
+    "duration": "10 Semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/ingenieria-de-sistemas-uam.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#0e304a"
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Pregrado en Ingeniería de Sistemas"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "175"
+    },
+    {
+      "label": "Duracion",
+      "value": "10 Semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "1918"
+    }
+  ],
+  "whyStudy": {
+    "title": "Transforma tu futuro con el Pregrado en Ingeniería de Sistemas en la UAM",
+    "description": "Conviértete en desarrollador de soluciones tecnológicas que transformen el mundo. Aprende a diseñar software de alto impacto, dominar la Inteligencia Artificial y gestionar infraestructuras digitales con una visión innovadora y global..",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Inteligencia Artificial y Ciencia de Datos",
+        "description": "Domina las tecnologías del mercado mediante el desarrollo de algoritmos avanzados y sistemas inteligentes. Aprende a transformar grandes volúmenes de datos en soluciones estratégicas para la toma de decisiones."
+      },
+      {
+        "title": "Acreditación ARCU-SUR: Calidad avalada a nivel latinoamericano",
+        "description": "Certificación que avala la calidad académica del programa bajo estándares rigurosos del Mercosur, facilitando el reconocimiento del título en Argentina, Brasil, Chile, Paraguay, Uruguay y Bolivia."
+      },
+      {
+        "title": "Enfoque en arquitectura y desarrollo de software robusto",
+        "description": "Fortalece tus habilidades técnicas diseñando aplicaciones escalables y seguras bajo metodologías modernas. Crea ecosistemas digitales innovadores que respondan a las necesidades reales de las organizaciones."
+      },
+      {
+        "title": "Aprendizaje con base en la práctica y la experimentación",
+        "description": "Potencia tu aprendizaje en entornos tecnológicos de vanguardia diseñados para la práctica y la investigación aplicada. Desarrolla prototipos y soluciones reales utilizando herramientas de hardware y software de nivel profesional."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Fórmate en programación, bases de datos, algoritmos, IA, redes, sistemas operativos, software engineering, investigación y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas profesionales, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Plan Estudia, Puedo Estudiar y más.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Proyección profesional",
+        "description": "Podrás desempeñarte como desarrollador de software, ingeniero en IA, especialista en ciberseguridad, arquitecto de datos, líder tecnológico o emprendedor.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Perfil global e innovador",
+        "description": "Fortalece competencias en competitividad internacional, innovación organizacional y transformación digital.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Becas y apoyos UAM",
+        "description": "Accede a alternativas como Becas Deportivas, Becas Jóvenes + PRO, Becas Fondo Patrimonial, Mejor Bachiller 2.0, Plan Regreso a la U, Más Ingenieras UAM y Becas UTC UAM.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para construir el futuro digital?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284440.js\"></script>",
+    "formId": "",
+    "programName": "Ingeniería de Sistemas",
+    "submitLabel": "Submit"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "Acreditación de alta Calidad",
+        "name": "Acreditación de alta Calidad",
+        "description": "Resolución 014484 Julio 25 de 2022 - 6 años",
+        "url": "",
+        "enabled": false,
+        "resolutionText": "Resolución 014484 Julio 25 de 2022 - 6 años"
+      },
+      {
+        "title": "Acreditación Internacional ARCU-SUR",
+        "name": "Acreditación Internacional ARCU-SUR",
+        "description": "Acuerdo 034 junio 15 de 2022 - 6 años",
+        "url": "",
+        "enabled": false,
+        "resolutionText": "Acuerdo 034 junio 15 de 2022 - 6 años"
+      }
+    ]
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/ingenieria-de-sistemas",
+  "logoMode": "dark",
+  "programUrl": "/uam/ingenieria-de-sistemas",
+  "catalog": "",
+  "shortTitle": "Ingeniería de Sistemas",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "1918",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "diurna",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "10 Semestres",
+    "credits": "175",
+    "semesters": "10 Semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$10.144.100",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Ingeniería de Sistemas",
+    "metaDescription": "",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Presencial"
+    },
+    {
+      "label": "Schedule",
+      "value": "diurna"
+    },
+    {
+      "label": "Duration",
+      "value": "10 Semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "175"
+    },
+    {
+      "label": "SNIES",
+      "value": "1918"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Plan de estudios integral",
+        "description": "Fórmate en programación, bases de datos, algoritmos, IA, redes, sistemas operativos, software engineering, investigación y práctica empresarial.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Experiencias internacionales",
+        "description": "Accede a semestre académico, prácticas profesionales, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Becas y beneficios",
+        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Plan Estudia, Puedo Estudiar y más.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

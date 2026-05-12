@@ -1,14 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Landing } from "../../../../../lib/data";
+import { normalizeLandingSchema, type Landing } from "../../../../../lib/data";
 
 type Params = Promise<{
   brand: string;
   landing: string;
 }>;
 
-const landingsDir = path.join(process.cwd(), "data", "landings");
+const programsDir = path.join(process.cwd(), "data", "programs");
+const legacyLandingsDir = path.join(process.cwd(), "data", "landings");
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -19,19 +20,33 @@ function isSafeSlug(value: string) {
   return slugPattern.test(value);
 }
 
-function getLandingPath(brand: string, landing: string) {
-  if (!isSafeSlug(brand) || !isSafeSlug(landing)) {
-    return null;
-  }
-
-  const filePath = path.resolve(landingsDir, brand, `${landing}.json`);
-  const relativePath = path.relative(landingsDir, filePath);
+function getSafeLandingPath(rootDir: string, brand: string, landing: string) {
+  const filePath = path.resolve(rootDir, brand, `${landing}.json`);
+  const relativePath = path.relative(rootDir, filePath);
 
   if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
     return null;
   }
 
   return filePath;
+}
+
+function getLandingPath(brand: string, landing: string) {
+  if (!isSafeSlug(brand) || !isSafeSlug(landing)) {
+    return null;
+  }
+
+  const programsPath = getSafeLandingPath(programsDir, brand, landing);
+
+  if (!programsPath) {
+    return null;
+  }
+
+  if (fs.existsSync(programsPath)) {
+    return programsPath;
+  }
+
+  return getSafeLandingPath(legacyLandingsDir, brand, landing);
 }
 
 function isValidLandingPayload(
@@ -85,7 +100,11 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    fs.writeFileSync(filePath, JSON.stringify(body, null, 2), "utf8");
+    fs.writeFileSync(
+      filePath,
+      JSON.stringify(normalizeLandingSchema(body), null, 2),
+      "utf8",
+    );
 
     return NextResponse.json({ ok: true });
   } catch {

@@ -1,0 +1,488 @@
+{
+  "slug": "dental-assistant-hybrid-hybrid-dental-assistant-program",
+  "brand": "pcihealth",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-11",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "name": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "description": "PCI Health Training Center is accredited by the ACCSC.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Texas Workforce Commission approval",
+        "name": "Texas Workforce Commission approval",
+        "description": "PCI Health Training Center is approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+  "fullTitle": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+  "sourceWebsite": "https://www.pcihealth.edu/dental-assistant-hybrid/",
+  "catalog": "",
+  "programType": "Tecnología",
+  "schedule": "",
+  "hero": {
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+    "subtitle": "",
+    "description": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCI’s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
+    "supportText": "",
+    "modality": "Hybrid",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "In as little as 9 months",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2023/04/hero2.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Program Length",
+      "value": "In as little as nine months"
+    },
+    {
+      "key": "",
+      "label": "Delivery",
+      "value": "Hybrid — online curriculum with in-person lab sessions"
+    },
+    {
+      "key": "",
+      "label": "Location",
+      "value": "Richardson Campus (Dental Assistant training)"
+    },
+    {
+      "key": "",
+      "label": "Exam Preparation",
+      "value": "Prepares graduates for the Dental Assistant Examination to become a Registered Dental Assistant in Texas"
+    },
+    {
+      "key": "",
+      "label": "Accreditation / Approval",
+      "value": "Accredited by ACCSC; approved and regulated by Texas Workforce Commission"
+    }
+  ],
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Dental Assistant",
+        "description": "Perform chairside assisting, x-rays, and clinical and administrative tasks in a dental office.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Hygienist Assistant",
+        "description": "Support hygienists and dentists with clinical procedures and patient preparation.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Receptionist",
+        "description": "Manage scheduling, patient coordination, and administrative duties using dental software.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "whyStudy": {
+    "title": "Why Study This Program",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Flexible hybrid format",
+        "description": "Online coursework designed to work around your schedule combined with limited on-campus lab sessions.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Hands-on lab experience",
+        "description": "Practical exercises in medical and computer labs teach chairside assisting, instrument use, and preparing materials.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Real-world externship",
+        "description": "Includes an off-site externship at a dental office to gain practical experience in a clinical environment.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Career pathways",
+        "description": "Program prepares students for roles such as Dental Assistant, Dental Hygienist Assistant, and Dental Receptionist.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support",
+    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
+    "items": [
+      {
+        "title": "Career services",
+        "text": "Assistance with job search strategies and career planning.",
+        "description": "Assistance with job search strategies and career planning.",
+        "icon": ""
+      },
+      {
+        "title": "Resume writing and interview practice",
+        "text": "Support to prepare application materials and interviewing skills.",
+        "description": "Support to prepare application materials and interviewing skills.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing support from enrollment through program completion.",
+        "description": "Ongoing support from enrollment through program completion.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Accelerated timeline",
+        "text": "Complete training in as little as nine months.",
+        "description": "Complete training in as little as nine months.",
+        "icon": ""
+      },
+      {
+        "title": "Flexible learning",
+        "text": "Hybrid format combines online coursework with limited on-campus lab sessions.",
+        "description": "Hybrid format combines online coursework with limited on-campus lab sessions.",
+        "icon": ""
+      },
+      {
+        "title": "Practical experience",
+        "text": "Hands-on labs and an off-site externship provide real-world clinical exposure.",
+        "description": "Hands-on labs and an off-site externship provide real-world clinical exposure.",
+        "icon": ""
+      },
+      {
+        "title": "Accredited training",
+        "text": "Offered by a school accredited by ACCSC and approved by the Texas Workforce Commission.",
+        "description": "Offered by a school accredited by ACCSC and approved by the Texas Workforce Commission.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Request Information",
+    "description": "",
+    "button": "Apply Now",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "programUrl": "https://www.pcihealth.edu/dental-assistant-hybrid/",
+  "shortTitle": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "flexible",
+    "language": "en",
+    "campuses": [
+      "Richardson (Northeast Dallas)"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "9",
+    "unit": "months",
+    "display": "In as little as 9 months",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
+    "metaDescription": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCI’s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Program Length",
+      "value": "In as little as 9 months"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid (online courses with limited on-campus labs)"
+    },
+    {
+      "label": "Campus",
+      "value": "Richardson (Northeast Dallas)"
+    },
+    {
+      "label": "Externship",
+      "value": "Off-site externship at a dental office"
+    },
+    {
+      "label": "Accreditation",
+      "value": "ACCSC accredited; approved by Texas Workforce Commission"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Train for a career as a Dental Assistant in as little as nine months with PCI’s Hybrid Dental Assistant Program. The program combines flexible online coursework with limited on-campus lab sessions where you’ll learn chairside assisting, radiology, clinical procedures, and administrative tasks so you can work in a dental office.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": [
+      {
+        "title": "Anatomy and Physiology",
+        "description": "Foundational knowledge relevant to dental care.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Clinical Procedures",
+        "description": "Preparation of patients for treatment and clinical chairside assisting techniques.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Radiology",
+        "description": "Training to perform x-rays as part of clinical duties.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Chairside Assisting",
+        "description": "Instrument identification, use, and assisting dentists during procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Materials and Preparation",
+        "description": "Preparing materials and instruments for procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Administrative Skills",
+        "description": "Scheduling, coordinating patient appointments, and using dental software for office tasks.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "title": "Hands-On Training",
+    "description": "In-person lab sessions under instructor guidance focus on practical dental assisting skills.",
+    "items": [
+      {
+        "title": "Perform basic dental procedures",
+        "description": "Practice in lab settings to develop clinical competency.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Chairside assisting and instrument use",
+        "description": "Identify and use dental instruments and assist dentists during procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Radiology practice",
+        "description": "Hands-on instruction to perform x-rays.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental materials preparation",
+        "description": "Prepare materials and setups for clinical procedures.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "title": "Externship",
+    "description": "An off-site externship at a dental office provides real-world clinical experience.",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Dental Assistant",
+        "description": "Perform chairside assisting, x-rays, and clinical and administrative tasks in a dental office.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Hygienist Assistant",
+        "description": "Support hygienists and dentists with clinical procedures and patient preparation.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Receptionist",
+        "description": "Manage scheduling, patient coordination, and administrative duties using dental software.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support",
+    "description": "PCI provides services from enrollment through career entry, including career services and advising.",
+    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
+    "items": [
+      {
+        "title": "Career services",
+        "text": "Assistance with job search strategies and career planning.",
+        "description": "Assistance with job search strategies and career planning.",
+        "icon": ""
+      },
+      {
+        "title": "Resume writing and interview practice",
+        "text": "Support to prepare application materials and interviewing skills.",
+        "description": "Support to prepare application materials and interviewing skills.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing support from enrollment through program completion.",
+        "description": "Ongoing support from enrollment through program completion.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": [
+      {
+        "title": "Item 1",
+        "description": "",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "How long does the Hybrid Dental Assistant program take to complete?",
+      "answer": "The program can prepare you for a career as a Dental Assistant in as little as nine months."
+    },
+    {
+      "question": "Where is the Dental Assistant Hybrid program offered?",
+      "answer": "Dental Assistant training for the hybrid program is offered at PCI Health Training Center’s Richardson campus (Northeast Dallas)."
+    },
+    {
+      "question": "Does the program include hands-on training and externship?",
+      "answer": "Yes. The hybrid program includes in-person lab sessions and an off-site externship at a dental office for real-world experience."
+    },
+    {
+      "question": "Does the program prepare me for certification or licensure?",
+      "answer": "PCI’s Dental Assistant program prepares graduates for the Dental Assistant Examination to become a Registered Dental Assistant in the State of Texas."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Medical Assistant – Hybrid",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Medical Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Medical Office Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Dental Assistant",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "469-518-2993",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

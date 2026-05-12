@@ -1,0 +1,298 @@
+{
+  "slug": "ciencia-politica",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Ciencia Política",
+  "fullTitle": "Ciencia Política, Gobierno y Relaciones Internacionales",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Pregrado en",
+    "title": "Ciencia Política, Gobierno y Relaciones Internacionales",
+    "subtitle": "",
+    "description": "",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "Presencial",
+    "semesterPrice": "$10.144.100",
+    "price": "$10.144.100",
+    "duration": "9 semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/ciencia-politica.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "#010d05"
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Pregrado en Ciencia Política, Gobierno y Relaciones Internacionales"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "159"
+    },
+    {
+      "label": "Duracion",
+      "value": "9 semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "17692"
+    }
+  ],
+  "whyStudy": {
+    "title": "Transforma tu futuro con el Pregrado en Ciencia Política, Gobierno y Relaciones Internacionales en la UAM",
+    "description": "Conoce las dinámicas del poder, las políticas públicas y las relaciones internacionales para actuar como líder, analista y agente de cambio. Prepara para comprender y transformar la realidad política, tanto a nivel local como global.",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
+    "items": [
+      {
+        "title": "Formación interdisciplinaria y global",
+        "description": "Aprende teoría política, derecho, economía y sociología, con un enfoque global que te permite analizar y actuar en diferentes contextos políticos y sociales."
+      },
+      {
+        "title": "Desarrollo de pensamiento crítico y liderazgo",
+        "description": "Prepárate para analizar situaciones complejas y liderar proyectos sociales y políticos con impacto local y global."
+      },
+      {
+        "title": "Enfoque práctico con investigación aplicada",
+        "description": "Aplica lo aprendido mediante la investigación de problemáticas reales y el análisis de casos, integrando teoría y práctica."
+      },
+      {
+        "title": "Crecimiento en diversas áreas del sector público y privado",
+        "description": "Podrás ejercer en el sector público, organizaciones internacionales, ONGs, medios de comunicación y consultorías, desarrollando proyectos políticos y sociales."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu formación",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "description": "Formación práctica con expertos del sector.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "description": "Conexiones con profesionales y empresas líderes.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284221.js\"></script>",
+    "formId": "",
+    "programName": "Ciencia Política, Gobierno y Relaciones Internacionales",
+    "submitLabel": "Submit"
+  },
+  "programType": "Pregrado",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "diurna",
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/ciencia-politica",
+  "logoMode": "dark",
+  "programUrl": "/uam/ciencia-politica",
+  "catalog": "",
+  "shortTitle": "Ciencia Política",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "17692",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "diurna",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "9 semestres",
+    "credits": "159",
+    "semesters": "9 semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$10.144.100",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Ciencia Política, Gobierno y Relaciones Internacionales",
+    "metaDescription": "",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "Presencial"
+    },
+    {
+      "label": "Schedule",
+      "value": "diurna"
+    },
+    {
+      "label": "Duration",
+      "value": "9 semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "159"
+    },
+    {
+      "label": "SNIES",
+      "value": "17692"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM apoyamos tu formación",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

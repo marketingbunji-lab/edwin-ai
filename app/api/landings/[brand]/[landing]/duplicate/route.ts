@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
-import type { Landing } from "../../../../../../lib/data";
+import { normalizeLandingSchema, type Landing } from "../../../../../../lib/data";
 
 type Params = Promise<{
   brand: string;
@@ -33,8 +33,11 @@ export async function POST(_: Request, { params }: { params: Params }) {
   try {
     const { brand, landing } = await params;
 
-    const brandFolder = path.join(process.cwd(), "data", "landings", brand);
-    const sourcePath = path.join(brandFolder, `${landing}.json`);
+    const brandFolder = path.join(process.cwd(), "data", "programs", brand);
+    const legacyBrandFolder = path.join(process.cwd(), "data", "landings", brand);
+    const sourcePath = fs.existsSync(path.join(brandFolder, `${landing}.json`))
+      ? path.join(brandFolder, `${landing}.json`)
+      : path.join(legacyBrandFolder, `${landing}.json`);
 
     if (!fs.existsSync(sourcePath)) {
       return NextResponse.json(
@@ -53,12 +56,21 @@ export async function POST(_: Request, { params }: { params: Params }) {
       slug: nextSlug,
       title,
       fullTitle,
+      sourceWebsite: `/${brand}/${nextSlug}`,
       status: "draft",
       updatedAt: new Date().toISOString().slice(0, 10),
     };
 
+    if (!fs.existsSync(brandFolder)) {
+      fs.mkdirSync(brandFolder, { recursive: true });
+    }
+
     const targetPath = path.join(brandFolder, `${nextSlug}.json`);
-    fs.writeFileSync(targetPath, JSON.stringify(nextLanding, null, 2), "utf8");
+    fs.writeFileSync(
+      targetPath,
+      JSON.stringify(normalizeLandingSchema(nextLanding), null, 2),
+      "utf8",
+    );
 
     return NextResponse.json({
       ok: true,

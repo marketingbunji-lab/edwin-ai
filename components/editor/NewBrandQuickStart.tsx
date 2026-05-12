@@ -644,7 +644,7 @@ export default function NewBrandQuickStart() {
                   value={brandManualUrl}
                   onChange={(event) => setBrandManualUrl(event.target.value)}
                   placeholder="https://..."
-                  className="mt-5 block w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-black dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                  className="mt-5 block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-black dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                 />
               </label>
 
@@ -894,11 +894,6 @@ function BrandPreviewCard({
   brand?: Brand | null;
 }) {
   const description = brand?.description || agentPreview?.description || "";
-  const previewImage =
-    brand?.imageBrand ||
-    agentPreview?.imageBrand ||
-    agentPreview?.images?.[0] ||
-    "";
   const previewLogo =
     brand?.logos?.light ||
     brand?.logo ||
@@ -961,7 +956,7 @@ function BrandPreviewCard({
                 </p>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {primaryColor ? (
-                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
@@ -981,7 +976,7 @@ function BrandPreviewCard({
                   ) : null}
 
                   {secondaryColor ? (
-                    <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"

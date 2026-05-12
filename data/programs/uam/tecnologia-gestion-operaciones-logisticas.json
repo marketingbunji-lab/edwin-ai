@@ -1,0 +1,306 @@
+{
+  "slug": "tecnologia-gestion-operaciones-logisticas",
+  "brand": "uam",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-04-24",
+  "title": "Tecnología en Gestión de Operaciones Logísticas",
+  "fullTitle": "Tecnología en Gestión de Operaciones Logísticas",
+  "hero": {
+    "eyebrow": "Estudia en la UAM",
+    "highlight": "Tecnología en",
+    "title": "Gestión de Operaciones Logísticas",
+    "subtitle": "",
+    "description": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
+    "supportText": "¡En la UAM construimos historias con pasión!",
+    "modality": "100% virtual",
+    "semesterPrice": "$2.106.550",
+    "price": "$2.106.550",
+    "duration": "6 Semestres",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://bunjigrowth.io/wp-content/uploads/2026/04/hero-bg-operaciones-logiticas.jpg",
+    "personImage": "https://assets.unlayer.com/projects/0/1762961368284-modelo-tecnologia-operaciones-logisticas.png",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "label": "Titulo otorgado",
+      "value": "Tecnología en Gestión de Operaciones Logísticas"
+    },
+    {
+      "label": "Creditos academicos",
+      "value": "92"
+    },
+    {
+      "label": "Duracion",
+      "value": "6 Semestres"
+    },
+    {
+      "label": "SNIES",
+      "value": "116163"
+    }
+  ],
+  "whyStudy": {
+    "title": "¿Por qué estudiar Tecnología en Gestión de Operaciones Logísticas en la UAM?",
+    "description": "¡Transforma tu futuro con la Tecnología en Gestión de Operaciones Logísticas en la UAM!",
+    "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762887836825-chico-U.png",
+    "items": [
+      {
+        "title": "Optimiza procesos y recursos",
+        "description": "Aprende a analizar, planificar y mejorar los flujos logísticos dentro de las organizaciones, reduciendo costos y tiempos de entrega."
+      },
+      {
+        "title": "Conviértete en un tecnólogo estratégico",
+        "description": "Desarrolla habilidades que te permitirán gestionar operaciones con visión analítica, liderazgo y enfoque en resultados."
+      },
+      {
+        "title": "Aplica conocimientos prácticos y reales",
+        "description": "Integra teoría y práctica en entornos reales, enfrentando los retos actuales del comercio y la logística global."
+      },
+      {
+        "title": "Aporta al desarrollo sostenible",
+        "description": "Impulsa estrategias logísticas responsables que mejoran la eficiencia sin comprometer el impacto ambiental."
+      },
+      {
+        "title": "Prepárate para el mundo empresarial global",
+        "description": "Adquiere competencias que te abrirán puertas en compañías nacionales e internacionales enfocadas en logística, transporte y distribución."
+      },
+      {
+        "title": "Estudia en una institución con más de 45 años de experiencia",
+        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+      },
+      {
+        "title": "Estudio de homologación",
+        "description": "Al graduarte podrás escalar en tu formación académica con los programas que ofrece la Universidad mediante el proceso de reconocimiento de créditos."
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "En la UAM apoyamos tu carrera",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "items": [
+      {
+        "title": "Programa de Permanencia y Graduación",
+        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
+      },
+      {
+        "title": "Desarrollo de Habilidades Especializadas",
+        "description": "Formación práctica con expertos del sector",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
+      },
+      {
+        "title": "Networking Profesional",
+        "description": "Conexiones con profesionales y empresas líderes",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para transformar tu futuro?",
+    "description": "",
+    "button": "¡Inscríbete ahora!",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/283895.js\"></script>",
+    "formId": "",
+    "programName": "Tecnología en Gestión de Operaciones Logísticas - Virtual",
+    "submitLabel": "Submit"
+  },
+  "programType": "Tecnológico",
+  "footerScripts": [
+    "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
+  ],
+  "schedule": "flexible",
+  "certifications": {
+    "enabled": false,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": []
+  },
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "sourceWebsite": "/uam/tecnologia-gestion-operaciones-logisticas",
+  "logoMode": "dark",
+  "programUrl": "/uam/tecnologia-gestion-operaciones-logisticas",
+  "catalog": "",
+  "shortTitle": "Tecnología en Gestión de Operaciones Logísticas",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "116163",
+  "cipCode": "",
+  "delivery": {
+    "modality": "100% virtual",
+    "schedule": "flexible",
+    "language": "",
+    "campuses": [],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "6 Semestres",
+    "credits": "92",
+    "semesters": "6 Semestres",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "$2.106.550",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Tecnología en Gestión de Operaciones Logísticas",
+    "metaDescription": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Modality",
+      "value": "100% virtual"
+    },
+    {
+      "label": "Schedule",
+      "value": "flexible"
+    },
+    {
+      "label": "Duration",
+      "value": "6 Semestres"
+    },
+    {
+      "label": "Credits",
+      "value": "92"
+    },
+    {
+      "label": "SNIES",
+      "value": "116163"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
+    "image": ""
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "title": "Hands-On Training",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "title": "Externship",
+    "description": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": []
+  },
+  "studentSupport": {
+    "title": "En la UAM apoyamos tu carrera",
+    "description": "",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
+      },
+      {
+        "title": "Becas",
+        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
+      },
+      {
+        "title": "Beneficios",
+        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}
