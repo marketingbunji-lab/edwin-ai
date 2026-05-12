@@ -3,7 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
-import type { Brand, BrandCertification, LegalLink } from "@/lib/data";
+import type {
+  Brand,
+  BrandCampus,
+  BrandCertification,
+  LegalLink,
+} from "@/lib/data";
 
 type EditableBrand = Brand & Record<string, unknown>;
 type EditableRecord = Record<string, unknown>;
@@ -94,6 +99,52 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
     setBrand((prev) => ({
       ...prev,
       images: (prev.images ?? []).filter((_, itemIndex) => itemIndex !== index),
+    }));
+  };
+
+  const updateCampus = (
+    index: number,
+    field: keyof BrandCampus,
+    value: string,
+  ) => {
+    setBrand((prev) => {
+      const next = structuredClone(prev) as EditableBrand;
+
+      if (!Array.isArray(next.campuses)) {
+        next.campuses = [];
+      }
+
+      if (!next.campuses[index]) {
+        next.campuses[index] = {
+          name: "",
+          location: "",
+          description: "",
+          image: "",
+          videoUrl: "",
+        };
+      }
+
+      next.campuses[index][field] = value;
+      return next;
+    });
+  };
+
+  const addCampus = () => {
+    setBrand((prev) => ({
+      ...prev,
+      campuses: [
+        ...(prev.campuses ?? []),
+        { name: "", location: "", description: "", image: "", videoUrl: "" },
+      ],
+    }));
+  };
+
+  const removeCampus = (index: number) => {
+    setBrand((prev) => ({
+      ...prev,
+      campuses: (prev.campuses ?? []).filter(
+        (_, itemIndex) => itemIndex !== index,
+      ),
     }));
   };
 
@@ -417,6 +468,94 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                       value={image}
                       onChange={(value) => updateImage(index, value)}
                     />
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
+                      Campuses
+                    </h2>
+                    <p className="text-sm text-gray-500 dark:text-slate-400">
+                      Agrega sedes con su descripcion, imagen y video.
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={addCampus}
+                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                  >
+                    <Plus className="h-3.5 w-3.5" />
+                    Agregar campus
+                  </button>
+                </div>
+
+                {(brand.campuses ?? []).length === 0 ? (
+                  <div className="border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
+                    Esta marca todavia no tiene campuses configurados.
+                  </div>
+                ) : null}
+
+                {(brand.campuses ?? []).map((campus, index) => (
+                  <div
+                    key={index}
+                    className="border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-950"
+                  >
+                    <div className="mb-3 flex items-center justify-between">
+                      <p className="text-sm font-semibold text-gray-900 dark:text-slate-50">
+                        Campus {index + 1}
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={() => removeCampus(index)}
+                        className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                        Eliminar
+                      </button>
+                    </div>
+
+                    <div className="space-y-3">
+                      <Field
+                        label="Nombre del campus"
+                        value={campus.name || ""}
+                        onChange={(value) => updateCampus(index, "name", value)}
+                      />
+
+                      <Field
+                        label="Ubicacion"
+                        value={campus.location || ""}
+                        onChange={(value) =>
+                          updateCampus(index, "location", value)
+                        }
+                      />
+
+                      <TextareaField
+                        label="Descripcion del campus"
+                        value={campus.description || ""}
+                        onChange={(value) =>
+                          updateCampus(index, "description", value)
+                        }
+                      />
+
+                      <Field
+                        label="Imagen del campus"
+                        value={campus.image || ""}
+                        onChange={(value) => updateCampus(index, "image", value)}
+                      />
+
+                      <Field
+                        label="Link de video"
+                        value={campus.videoUrl || ""}
+                        onChange={(value) =>
+                          updateCampus(index, "videoUrl", value)
+                        }
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

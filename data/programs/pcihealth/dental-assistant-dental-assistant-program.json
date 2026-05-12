@@ -36,8 +36,8 @@
       }
     ]
   },
-  "title": "Dental Assistant | Dental Assistant Program",
-  "fullTitle": "Dental Assistant | Dental Assistant Program",
+  "title": "Dental Assistant",
+  "fullTitle": "Dental Assistant Program",
   "sourceWebsite": "https://www.pcihealth.edu/dental-assistant/",
   "catalog": "",
   "programType": "Tecnología",
@@ -45,7 +45,7 @@
   "hero": {
     "eyebrow": "Estudia en PCI Health Training Center",
     "highlight": "",
-    "title": "Dental Assistant | Dental Assistant Program",
+    "title": "Dental Assistant Program",
     "subtitle": "",
     "description": "Complete the Dental Assistant program in as little as 9 months! Call PCI at 214-630-0568 to learn how to become a dental assistant!",
     "supportText": "",
@@ -96,6 +96,7 @@
   "opportunityToWork": {
     "title": "Career Opportunities",
     "subtitle": "",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Dental Assistant",
@@ -120,7 +121,7 @@
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
-    "image": "",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/shutterstock_1646933860-scaled.jpg",
     "items": [
       {
         "title": "Complete Quickly",
@@ -328,6 +329,7 @@
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Dental Assistant",

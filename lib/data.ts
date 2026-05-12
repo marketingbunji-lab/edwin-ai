@@ -26,8 +26,17 @@ export type Brand = {
   generator?: string;
   imageBrand?: string;
   images?: string[];
+  campuses?: BrandCampus[];
   legalLinks?: LegalLink[];
   certifications?: BrandCertification[];
+};
+
+export type BrandCampus = {
+  name?: string;
+  location?: string;
+  description?: string;
+  image?: string;
+  videoUrl?: string;
 };
 
 export type LegalLink = {
@@ -88,6 +97,7 @@ export type TitleDescriptionItem = {
 export type OpportunityToWork = {
   title?: string;
   subtitle?: string;
+  image?: string;
   items?: Array<string | TitleDescriptionItem>;
 };
 
@@ -221,6 +231,7 @@ export type Landing = {
   careerOutcomes?: {
     title?: string;
     subtitle?: string;
+    image?: string;
     items?: Array<string | TitleDescriptionItem>;
   };
   studentSupport?: {
@@ -231,6 +242,7 @@ export type Landing = {
   };
   supportSection?: {
     title?: string;
+    description?: string;
     videoUrl?: string;
     items?: Array<string | IconTextItem>;
   };
@@ -528,11 +540,13 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     careerOutcomes: {
       title: careerSource.title || "Career Opportunities",
       subtitle: careerSource.subtitle || "",
+      image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     opportunityToWork: {
       title: careerSource.title || "Career Opportunities",
       subtitle: careerSource.subtitle || "",
+      image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     studentSupport: {
@@ -614,6 +628,13 @@ function normalizeBrand(brand: Brand): Brand {
   return {
     ...brand,
     shortName: brand.shortName?.trim() || brand.name,
+    campuses: (brand.campuses ?? []).map((campus) => ({
+      name: campus.name ?? "",
+      location: campus.location ?? "",
+      description: campus.description ?? "",
+      image: campus.image ?? "",
+      videoUrl: campus.videoUrl ?? "",
+    })),
     certifications: (brand.certifications ?? []).map((certification) => ({
       ...certification,
       logos: {

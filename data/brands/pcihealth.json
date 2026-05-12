@@ -2,10 +2,10 @@
   "slug": "pcihealth",
   "name": "PCI",
   "shortName": "PCI Health Training Center",
-  "logo": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
+  "logo": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci-light.png",
   "logos": {
-    "light": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
-    "dark": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png"
+    "light": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci-light.png",
+    "dark": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci.png"
   },
   "typography": {
     "fontFamily": "\"Lato\", sans-serif",
@@ -23,6 +23,22 @@
   "generator": "",
   "imageBrand": "https://www.pcihealth.edu/wp-content/uploads/2021/10/logo.png",
   "images": [],
+  "campuses": [
+    {
+      "name": "Richardson, TX",
+      "location": "(Northeast Dallas) 1300 International Parkway Richardson, Texas 75081",
+      "description": "PCI Health Training Center’s Richardson campus offers Medical Assistant Training. With a program that can prepare you to become a medical assistant in as little as 9 months, you may be well on your way to a rewarding career.",
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Locations-Inner-Richardson.jpg",
+      "videoUrl": ""
+    },
+    {
+      "name": "Dallas, TX",
+      "location": "(Southwest Dallas) 8101 John Carpenter Freeway Dallas, Texas 75247",
+      "description": "PCI Health Training Center’s Dallas campus offers Medical Assistant Training. With a program that can prepare you to become a medical assistant in as little as 9 months, you may be well on your way to a rewarding career.\n\n",
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Locations-Inner-Dallas.jpg",
+      "videoUrl": ""
+    }
+  ],
   "legalLinks": [
     {
       "label": "Sitio oficial",
@@ -42,7 +58,7 @@
       "name": "TWC Career Schools and Colleges Section",
       "url": "",
       "logos": {
-        "light": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS624Ftch9O5Sn36U_lSLliQSy3-rGXzdWGoA&s",
+        "light": "https://www.twc.texas.gov/themes/custom/uswds_custom/logo.png",
         "dark": ""
       }
     },

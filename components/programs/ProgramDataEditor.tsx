@@ -35,6 +35,8 @@ type HeroField =
   | "overlayColor"
   | "personImage";
 
+type OpportunityField = "title" | "subtitle" | "image";
+
 export default function ProgramDataEditor({
   brand,
   initialProgram,
@@ -42,40 +44,80 @@ export default function ProgramDataEditor({
 }: Props) {
   const router = useRouter();
   const [program, setProgram] = useState<Landing>(initialProgram);
+  const [jsonDraft, setJsonDraft] = useState(
+    JSON.stringify(initialProgram, null, 2),
+  );
+  const [jsonError, setJsonError] = useState("");
   const [previewProgram, setPreviewProgram] = useState<Landing | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const isCreateMode = mode === "create";
   const generatedSlug = slugify(program.fullTitle || program.title);
 
+  const applyProgram = (nextProgram: Landing) => {
+    setProgram(nextProgram);
+    setJsonDraft(JSON.stringify(nextProgram, null, 2));
+    setJsonError("");
+  };
+
   const updateField = (field: EditableField, value: string) => {
-    setProgram((current) => ({
-      ...current,
-      [field]: value,
-    }));
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        [field]: value,
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
   };
 
   const updateHeroField = (field: HeroField, value: string) => {
-    setProgram((current) => ({
-      ...current,
-      hero: {
-        ...(current.hero ?? {}),
-        [field]: value,
-      },
-    }));
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        hero: {
+          ...(current.hero ?? {}),
+          [field]: value,
+        },
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
   };
 
   const updateFormField = (
     field: "type" | "scriptUrl" | "scriptCode" | "programName",
     value: string,
   ) => {
-    setProgram((current) => ({
-      ...current,
-      form: {
-        ...(current.form ?? {}),
-        [field]: value,
-      },
-    }));
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        form: {
+          ...(current.form ?? {}),
+          [field]: value,
+        },
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
+  };
+
+  const updateOpportunityField = (field: OpportunityField, value: string) => {
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        opportunityToWork: {
+          ...(current.opportunityToWork ?? {}),
+          [field]: value,
+        },
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
   };
 
   const updateProgramInfo = (
@@ -90,40 +132,70 @@ export default function ProgramDataEditor({
         [field]: value,
       };
 
-      return {
+      const nextProgram = {
         ...current,
         programInfo: items,
       };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
     });
   };
 
   const addProgramInfo = () => {
-    setProgram((current) => ({
-      ...current,
-      programInfo: [
-        ...normalizeProgramInfo(current.programInfo),
-        {
-          key: "custom",
-          label: "",
-          value: "",
-        },
-      ],
-    }));
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        programInfo: [
+          ...normalizeProgramInfo(current.programInfo),
+          {
+            key: "custom",
+            label: "",
+            value: "",
+          },
+        ],
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
   };
 
   const removeProgramInfo = (index: number) => {
-    setProgram((current) => ({
-      ...current,
-      programInfo: normalizeProgramInfo(current.programInfo).filter(
-        (_, itemIndex) => itemIndex !== index,
-      ),
-    }));
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        programInfo: normalizeProgramInfo(current.programInfo).filter(
+          (_, itemIndex) => itemIndex !== index,
+        ),
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
+  };
+
+  const updateJsonDraft = (value: string) => {
+    setJsonDraft(value);
+
+    try {
+      const parsedProgram = JSON.parse(value) as Landing;
+      setProgram(parsedProgram);
+      setJsonError("");
+    } catch {
+      setJsonError("JSON invalido. Corrigelo antes de guardar.");
+    }
   };
 
   const saveProgram = async () => {
     try {
       setSaving(true);
       setMessage("");
+
+      if (jsonError) {
+        setMessage("Corrige el JSON completo antes de guardar el programa.");
+        return;
+      }
 
       const title = program.title.trim();
       const fullTitle = program.fullTitle.trim();
@@ -182,7 +254,7 @@ export default function ProgramDataEditor({
         throw new Error(data.error || "No se pudo guardar el programa");
       }
 
-      if (isCreateMode && data.slug) {
+        if (isCreateMode && data.slug) {
         const createdProgram = {
           ...nextProgram,
           slug: data.slug,
@@ -190,14 +262,14 @@ export default function ProgramDataEditor({
             nextProgram.sourceWebsite || `/${brand.slug}/${data.slug}`,
         };
 
-        setProgram(createdProgram);
+        applyProgram(createdProgram);
         setPreviewProgram(createdProgram);
         setMessage("Programa creado correctamente");
         router.refresh();
         return;
       }
 
-      setProgram(nextProgram);
+      applyProgram(nextProgram);
       setMessage(
         isCreateMode
           ? "Programa creado correctamente"
@@ -291,8 +363,8 @@ export default function ProgramDataEditor({
 
       {isCreateMode ? null : (
         <>
-          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
-            <SectionTitle title="Hero" />
+        <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
+          <SectionTitle title="Hero" />
             <Field label="Eyebrow" value={program.hero?.eyebrow ?? ""} onChange={(value) => updateHeroField("eyebrow", value)} />
             <Field label="Highlight" value={program.hero?.highlight ?? ""} onChange={(value) => updateHeroField("highlight", value)} />
             <Field label="Title" value={program.hero?.title ?? ""} onChange={(value) => updateHeroField("title", value)} />
@@ -303,6 +375,26 @@ export default function ProgramDataEditor({
             <Field label="Overlay color" value={program.hero?.overlayColor ?? ""} onChange={(value) => updateHeroField("overlayColor", value)} />
             <Field className="md:col-span-2" label="Background image" value={program.hero?.backgroundImage ?? ""} onChange={(value) => updateHeroField("backgroundImage", value)} />
             <Field className="md:col-span-2" label="Person image" value={program.hero?.personImage ?? ""} onChange={(value) => updateHeroField("personImage", value)} />
+          </section>
+
+          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
+            <SectionTitle title="Opportunity to work" />
+            <Field
+              label="Title"
+              value={program.opportunityToWork?.title ?? ""}
+              onChange={(value) => updateOpportunityField("title", value)}
+            />
+            <Field
+              label="Subtitle"
+              value={program.opportunityToWork?.subtitle ?? ""}
+              onChange={(value) => updateOpportunityField("subtitle", value)}
+            />
+            <Field
+              className="md:col-span-2"
+              label="Context image"
+              value={program.opportunityToWork?.image ?? ""}
+              onChange={(value) => updateOpportunityField("image", value)}
+            />
           </section>
 
           <section className="space-y-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
@@ -348,6 +440,41 @@ export default function ProgramDataEditor({
           {message}
         </p>
       ) : null}
+
+      <section className="space-y-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
+        <div className="space-y-2">
+          <SectionTitle title="JSON completo del programa" />
+          <p className="text-sm text-gray-600 dark:text-slate-400">
+            Aqui puedes editar absolutamente toda la estructura del programa.
+            Cualquier campo que exista en el data puede modificarse desde este
+            bloque.
+          </p>
+        </div>
+
+        <label className="block">
+          <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+            JSON
+          </span>
+          <textarea
+            value={jsonDraft}
+            rows={28}
+            onChange={(event) => updateJsonDraft(event.target.value)}
+            spellCheck={false}
+            className="w-full border border-gray-300 bg-white px-4 py-3 font-mono text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          />
+        </label>
+
+        {jsonError ? (
+          <p className="text-sm font-medium text-red-600 dark:text-red-300">
+            {jsonError}
+          </p>
+        ) : (
+          <p className="text-sm text-gray-500 dark:text-slate-400">
+            El formulario y este JSON quedan sincronizados mientras el contenido
+            sea valido.
+          </p>
+        )}
+      </section>
     </div>
   );
 }

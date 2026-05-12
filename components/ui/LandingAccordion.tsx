@@ -6,35 +6,42 @@ type Item = {
 type Props = {
   items: Item[];
   id?: string;
+  className?: string;
 };
 
 export default function LandingAccordion({
   items,
   id = "landing-accordion",
+  className = "",
 }: Props) {
-  return (
-    <div className="uam-accordion">
-      {items.map((item, index) => {
-        const inputId = `${id}-item-${index}`;
+  if (!items.length) {
+    return null;
+  }
 
+  return (
+    <div className={`grid gap-4 ${className}`.trim()}>
+      {items.map((item, index) => {
         return (
-          <div key={index} className="uam-accordion-item">
-            <input
-              className="uam-accordion-input"
-              type="radio"
-              name={id}
-              id={inputId}
-              defaultChecked={index === 0}
-            />
-            <label className="uam-accordion-summary" htmlFor={inputId}>
-              <span>{item.title}</span>
-              <span className="uam-accordion-icons" aria-hidden="true">
-                <span className="uam-accordion-plus">+</span>
-                <span className="uam-accordion-minus">-</span>
+          <details
+            key={`${id}-item-${index}`}
+            open={index === 0}
+            className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_12px_36px_rgba(17,24,39,0.08)]"
+          >
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left marker:content-none">
+              <span className="text-lg font-extrabold leading-6 text-slate-900">
+                {item.title}
               </span>
-            </label>
-            <div className="uam-accordion-panel">{item.content}</div>
-          </div>
+              <span
+                aria-hidden="true"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-slate-900 transition-transform duration-200 group-open:rotate-45"
+              >
+                <span className="text-2xl font-light leading-none">+</span>
+              </span>
+            </summary>
+            <div className="border-t border-slate-200 px-6 py-5">
+              <p className="m-0 text-base leading-7 text-slate-600">{item.content}</p>
+            </div>
+          </details>
         );
       })}
     </div>

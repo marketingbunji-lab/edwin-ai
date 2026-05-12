@@ -52,6 +52,7 @@ export default async function NewBrandProgramPage({ params }: Props) {
     opportunityToWork: {
       title: "",
       subtitle: "",
+      image: "",
       items: [],
     },
     whyStudy: {

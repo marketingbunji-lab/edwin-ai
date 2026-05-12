@@ -26,6 +26,16 @@ function normalizeCertifications(brand: Brand) {
   }));
 }
 
+function normalizeCampuses(brand: Brand) {
+  return (brand.campuses ?? []).map((campus) => ({
+    name: campus.name || "",
+    location: campus.location || "",
+    description: campus.description || "",
+    image: campus.image || "",
+    videoUrl: campus.videoUrl || "",
+  }));
+}
+
 async function createBrandInSupabase(brand: Brand) {
   try {
     const supabase = createAdminClient();
@@ -130,6 +140,7 @@ export async function POST(req: NextRequest) {
       generator: body.generator || "",
       imageBrand: body.imageBrand || "",
       images: body.images || [],
+      campuses: normalizeCampuses(body),
       legalLinks: body.legalLinks || [],
       certifications: normalizeCertifications(body),
     };

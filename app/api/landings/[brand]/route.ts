@@ -92,6 +92,7 @@ function createBaseLanding(
     opportunityToWork: {
       title: "",
       subtitle: "",
+      image: "",
       items: [],
     },
     whyStudy: {
