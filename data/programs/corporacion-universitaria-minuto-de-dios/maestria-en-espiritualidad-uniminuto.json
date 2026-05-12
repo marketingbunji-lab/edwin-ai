@@ -85,7 +85,7 @@
   "opportunityToWork": {
     "title": "Oportunidades laborales",
     "subtitle": "",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
     "items": [
       {
         "title": "Maestro de vida espiritual",
@@ -198,7 +198,7 @@
   "footerScripts": [],
   "externship": {
     "enabled": true,
-    "title": "Externship",
+    "title": "Practicas profesionales",
     "description": "Prácticas profesionales como paso para la inserción en escenarios laborales reales, facilitadas por convenios institucionales.",
     "image": "",
     "hours": "",
@@ -314,7 +314,7 @@
   "careerOutcomes": {
     "title": "Oportunidades laborales",
     "subtitle": "",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
     "items": [
       {
         "title": "Maestro de vida espiritual",

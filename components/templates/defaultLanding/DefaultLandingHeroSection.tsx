@@ -80,7 +80,7 @@ export default function DefaultLandingHeroSection({
               />
             ) : null}
 
-            <p className="mb-[18px] inline-flex items-center border border-[2px] border-[#FFFFFF] rounded-full px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-secondary-text)]">
+            <p className="mb-[18px] inline-flex items-center border border-[2px] border-[#FFFFFF] rounded-full px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)]">
               {eyebrowText}
             </p>
 

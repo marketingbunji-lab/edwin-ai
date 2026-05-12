@@ -30,6 +30,15 @@ export default function DefaultLandingFooterSection({
   legalLinksAriaLabel,
 }: Props) {
   const hasContactInfo = Boolean(advisorName || advisorTitle || phone || email);
+  const visibleLegalLinks = legalLinks.filter((link) => {
+    const normalizedLabel = link.label
+      ?.trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    return normalizedLabel !== "sitio oficial" && normalizedLabel !== "official site";
+  });
 
   return (
     <footer className="bg-slate-900 py-[42px] text-white">
@@ -49,36 +58,40 @@ export default function DefaultLandingFooterSection({
               {description}
             </p>
           ) : null}
-
-          {hasContactInfo ? (
-            <div className="mt-5 space-y-1 text-sm text-white/80">
-              {advisorName ? (
-                <p className="font-semibold text-white">{advisorName}</p>
-              ) : null}
-              {advisorTitle ? <p>{advisorTitle}</p> : null}
-              {phone ? <p>{phoneLabel}: {phone}</p> : null}
-              {email ? <p>{emailLabel}: {email}</p> : null}
-            </div>
-          ) : null}
         </div>
 
-        {legalLinks.length > 0 ? (
-          <nav
-            className="flex max-w-[420px] flex-wrap justify-end gap-x-[18px] gap-y-3 text-sm"
-            aria-label={legalLinksAriaLabel}
-          >
-            {legalLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/85 no-underline transition-opacity hover:opacity-100"
+        {hasContactInfo || visibleLegalLinks.length > 0 ? (
+          <div className="flex max-w-[420px] flex-col items-start gap-5 text-sm md:items-end">
+            {hasContactInfo ? (
+              <div className="space-y-1 text-white/80 md:text-right">
+                {advisorName ? (
+                  <p className="font-semibold text-white">{advisorName}</p>
+                ) : null}
+                {advisorTitle ? <p>{advisorTitle}</p> : null}
+                {phone ? <p>{phoneLabel}: {phone}</p> : null}
+                {email ? <p>{emailLabel}: {email}</p> : null}
+              </div>
+            ) : null}
+
+            {visibleLegalLinks.length > 0 ? (
+              <nav
+                className="flex flex-wrap gap-x-[18px] gap-y-3 text-sm md:justify-end"
+                aria-label={legalLinksAriaLabel}
               >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+                {visibleLegalLinks.map((link, index) => (
+                  <a
+                    key={index}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-white/85 no-underline transition-opacity hover:opacity-100"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            ) : null}
+          </div>
         ) : null}
       </div>
     </footer>

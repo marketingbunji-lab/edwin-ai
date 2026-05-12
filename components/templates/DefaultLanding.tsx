@@ -520,12 +520,6 @@ export default function DefaultLanding({
 
       <DefaultLandingFaqSection items={landing.faq ?? []} title={copy.faqTitle} />
 
-      <DefaultLandingRelatedProgramsSection
-        items={landing.relatedPrograms ?? []}
-        title={copy.relatedProgramsTitle}
-        actionLabel={copy.relatedProgramsAction}
-      />
-
       <DefaultLandingCtaSection
         title={ctaTitle}
         description={ctaDescription}

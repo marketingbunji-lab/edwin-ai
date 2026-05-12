@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 type Item = {
   title: string;
   content: string;
@@ -14,6 +18,8 @@ export default function LandingAccordion({
   id = "landing-accordion",
   className = "",
 }: Props) {
+  const [openIndex, setOpenIndex] = useState(0);
+
   if (!items.length) {
     return null;
   }
@@ -21,27 +27,44 @@ export default function LandingAccordion({
   return (
     <div className={`grid gap-4 ${className}`.trim()}>
       {items.map((item, index) => {
+        const isOpen = index === openIndex;
+
         return (
-          <details
+          <div
             key={`${id}-item-${index}`}
-            open={index === 0}
-            className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_12px_36px_rgba(17,24,39,0.08)]"
+            className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_12px_36px_rgba(17,24,39,0.08)]"
           >
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left marker:content-none">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(index)}
+              aria-expanded={isOpen}
+              aria-controls={`${id}-panel-${index}`}
+              className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+            >
               <span className="text-lg font-extrabold leading-6 text-slate-900">
                 {item.title}
               </span>
               <span
                 aria-hidden="true"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-slate-900 transition-transform duration-200 group-open:rotate-45"
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-slate-900 transition-transform duration-200 ${
+                  isOpen ? "rotate-45" : ""
+                }`}
               >
                 <span className="text-2xl font-light leading-none">+</span>
               </span>
-            </summary>
-            <div className="border-t border-slate-200 px-6 py-5">
-              <p className="m-0 text-base leading-7 text-slate-600">{item.content}</p>
-            </div>
-          </details>
+            </button>
+
+            {isOpen ? (
+              <div
+                id={`${id}-panel-${index}`}
+                className="border-t border-slate-200 px-6 py-5"
+              >
+                <p className="m-0 text-base leading-7 text-slate-600">
+                  {item.content}
+                </p>
+              </div>
+            ) : null}
+          </div>
         );
       })}
     </div>
