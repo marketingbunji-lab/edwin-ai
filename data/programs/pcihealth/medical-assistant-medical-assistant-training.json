@@ -45,9 +45,9 @@
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
-    "title": "Medical Assistant | Medical Assistant Training",
+    "title": "Medical Assistant",
     "subtitle": "",
-    "description": "Medical Assistant! PCI&#039;s medical assistant training will prepare you i as little as 9 months!",
+    "description": "Medical Assistant! PCI medical assistant training will prepare you i as little as 9 months!",
     "supportText": "",
     "modality": "Hybrid",
     "semesterPrice": "",
@@ -61,7 +61,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Assistant-Hero.jpg",
+    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": ""
@@ -96,7 +96,7 @@
   "opportunityToWork": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Medical Assistant",
@@ -127,7 +127,7 @@
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/shutterstock_1440454943-scaled.jpg",
     "items": [
       {
         "title": "Accelerated pathway",
@@ -157,6 +157,7 @@
   },
   "supportSection": {
     "title": "Student Support",
+    "description": "PCI provides a supportive environment with services to help students succeed academically and professionally, from enrollment through career placement.",
     "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
     "items": [
       {
@@ -209,8 +210,8 @@
     "secondaryButton": ""
   },
   "form": {
-    "title": "Request Information",
-    "description": "",
+    "title": "Request information",
+    "description": "Complete the form and our team will contact you shortly.",
     "scriptUrl": "",
     "scriptCode": "",
     "formId": "",
@@ -284,7 +285,7 @@
   "overview": {
     "title": "Program Overview",
     "description": "PCI's Medical Assistant program can train you for a career in healthcare in as little as nine months by teaching essential clinical and administrative skills; the program includes classroom instruction, hands-on lab practice, and a 200-hour externship, and allows students to pursue specializations such as Medical Administrative Office Assistant, Clinic Assistant, Clinic Technical Assistance, Medical Office Management, Phlebotomy, and Physical Therapy Aide.",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Assistant-Hero.jpg"
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Med-Assistant-Hero.jpg"
   },
   "curriculum": {
     "title": "What You Will Learn",
@@ -364,14 +365,14 @@
     "enabled": true,
     "title": "Externship",
     "description": "A 200-hour, real-world externship placed with professional partners to apply clinical and administrative skills.",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
     "hours": "200",
     "partners": []
   },
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Medical Assistant",
