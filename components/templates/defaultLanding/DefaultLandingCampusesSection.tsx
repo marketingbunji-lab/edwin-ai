@@ -13,6 +13,7 @@ import {
 type Props = {
   brandName: string;
   campuses: BrandCampus[];
+  campusFilters?: string[];
   title: string;
   description: string;
   videoLabel: string;
@@ -24,6 +25,7 @@ type Props = {
 export default function DefaultLandingCampusesSection({
   brandName,
   campuses,
+  campusFilters = [],
   title,
   description,
   videoLabel,
@@ -31,9 +33,77 @@ export default function DefaultLandingCampusesSection({
   primaryTextColor,
   isDirectVideoUrl,
 }: Props) {
-  if (!campuses.length) {
+  const normalizeValue = (value?: string) =>
+    value
+      ?.trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") || "";
+
+  const getPrimaryCampusFragment = (value?: string) =>
+    normalizeValue(value)
+      .split(/[,(]/)[0]
+      ?.trim() || "";
+
+  const getMeaningfulTokens = (value?: string) =>
+    normalizeValue(value)
+      .split(/[^a-z0-9]+/)
+      .filter(
+        (token) =>
+          token.length > 2 &&
+          !["campus", "texas", "southwest", "northeast"].includes(token),
+      );
+
+  const normalizedFilters = campusFilters
+    .map((campus) => normalizeValue(campus))
+    .filter(Boolean);
+
+  const visibleCampuses =
+    normalizedFilters.length > 0
+      ? campuses.filter((campus) => {
+          const campusName = normalizeValue(campus.name);
+          const campusLocation = normalizeValue(campus.location);
+          const campusPrimary = getPrimaryCampusFragment(campus.name);
+          const campusSearch = `${campusName} ${campusLocation}`.trim();
+          const campusTokens = new Set(getMeaningfulTokens(campusSearch));
+
+          return normalizedFilters.some(
+            (filter) => {
+              const filterPrimary = getPrimaryCampusFragment(filter);
+              const filterTokens = getMeaningfulTokens(filter);
+
+              if (
+                campusName.includes(filter) ||
+                filter.includes(campusName) ||
+                campusLocation.includes(filter) ||
+                filter.includes(campusLocation)
+              ) {
+                return true;
+              }
+
+              if (
+                filterPrimary &&
+                campusPrimary &&
+                (filterPrimary === campusPrimary ||
+                  campusSearch.includes(filterPrimary))
+              ) {
+                return true;
+              }
+
+              return (
+                filterTokens.length > 0 &&
+                filterTokens.every((token) => campusTokens.has(token))
+              );
+            },
+          );
+        })
+      : campuses;
+
+  if (!visibleCampuses.length) {
     return null;
   }
+
+  const isSingleCampus = visibleCampuses.length === 1;
 
   return (
     <section className={landingSectionSoftClass}>
@@ -46,11 +116,13 @@ export default function DefaultLandingCampusesSection({
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {campuses.map((campus, index) => (
+        <div className={isSingleCampus ? "grid gap-6" : "grid gap-6 lg:grid-cols-2"}>
+          {visibleCampuses.map((campus, index) => (
             <article
               key={`${campus.name || "campus"}-${index}`}
-              className="grid gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)]"
+              className={`rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)] ${
+                isSingleCampus ? "grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,1.05fr)] lg:items-center" : "grid gap-6"
+              }`}
             >
               <div className="flex flex-col">
                 {campus.name ? (

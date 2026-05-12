@@ -531,6 +531,7 @@ export default function DefaultLanding({
       <DefaultLandingCampusesSection
         brandName={brandName}
         campuses={campuses}
+        campusFilters={landing.delivery?.campuses ?? []}
         primaryColor={primaryColor}
         primaryTextColor={primaryTextColor}
         isDirectVideoUrl={isDirectVideoUrl}
