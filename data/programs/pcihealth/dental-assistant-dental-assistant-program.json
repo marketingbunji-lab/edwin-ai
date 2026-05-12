@@ -321,8 +321,8 @@
   },
   "externship": {
     "enabled": true,
-    "title": "Externship",
-    "description": "An off-site externship at a dental office provides real-world clinical experience.",
+    "title": "Supervised Clinical Externship",
+    "description": "Complete your training with a structured placement at a local dental practice, where you'll practice chairside assisting, patient communication, and office workflows bridging classroom learning to real-world employment.",
     "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
     "hours": "",
     "partners": []
