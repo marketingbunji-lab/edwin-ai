@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-23",
-  "title": "Ingeniería Electrónica",
-  "fullTitle": "Ingeniería Electrónica",
+  "title": "Electronic Engineering",
+  "fullTitle": "Electronic Engineering",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Ingeniería",
-    "title": "Electrónica",
+    "eyebrow": "Study at UAM",
+    "highlight": "Engineering",
+    "title": "Electronics",
     "subtitle": "",
-    "description": "Diseña soluciones inteligentes, domina nuevas tecnologías y lidera proyectos de automatización, energía y sistemas electrónicos.",
-    "supportText": "Programa profesional presencial con enfoque práctico, innovación y alta proyección laboral.",
-    "modality": "Presencial",
+    "description": "Design intelligent solutions, master new technologies and lead automation, energy and electronic systems projects.",
+    "supportText": "In-person professional program with a practical approach, innovation and high career prospects.",
+    "modality": "In person",
     "semesterPrice": "$7.348.000",
     "price": "$7.348.000",
     "duration": "9 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Ingeniero Electrónico"
+      "label": "Title awarded",
+      "value": "Electronic engineer"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "160"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "9 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Ingeniería Electrónica en la UAM?",
-    "description": "Prepárate para crear tecnología aplicada a la industria y la sociedad. Desarrolla competencias en automatización, inteligencia artificial, robótica, energías renovables y diseño de sistemas electrónicos.",
+    "title": "Why study Electronic Engineering at the UAM?",
+    "description": "Get ready to create technology applied to industry and society. Develop skills in automation, artificial intelligence, robotics, renewable energy and electronic systems design.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
         "title": "Alta empleabilidad",
-        "description": "Perfil demandado en sectores tecnológicos, industriales y energéticos."
+        "description": "Profile in demand in technological, industrial and energy sectors."
       },
       {
-        "title": "Aprendizaje práctico",
-        "description": "Fortalece habilidades en laboratorios, proyectos y retos reales."
+        "title": "Practical learning",
+        "description": "Strengthens skills in laboratories, projects and real challenges."
       },
       {
-        "title": "Tecnologías emergentes",
-        "description": "Explora IA, sistemas embebidos, robótica y automatización."
+        "title": "Emerging technologies",
+        "description": "Explore AI, embedded systems, robotics and automation."
       },
       {
-        "title": "Innovación constante",
-        "description": "Convierte ideas en soluciones funcionales y escalables."
+        "title": "Constant innovation",
+        "description": "Turn ideas into functional and scalable solutions."
       },
       {
-        "title": "Visión integral",
-        "description": "Integra software, hardware, datos y operación industrial."
+        "title": "Comprehensive vision",
+        "description": "Integrates software, hardware, data and industrial operation."
       },
       {
         "title": "Ruta profesional",
-        "description": "Accede a crecimiento laboral y estudios de posgrado."
+        "description": "Access job growth and postgraduate studies."
       }
     ]
   },
   "supportSection": {
-    "title": "La UAM impulsa tu futuro tecnológico",
+    "title": "The UAM promotes your technological future",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad académica y oportunidades globales.",
+        "description": "Access academic mobility and global opportunities.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Conexión con la industria",
-        "description": "Desarrolla competencias alineadas con necesidades reales del mercado.",
+        "title": "Connection with the industry",
+        "description": "Develop competencies aligned with real market needs.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo financiero",
-        "description": "Conoce alternativas para facilitar el acceso a tu formación.",
+        "title": "Scholarships and financial support",
+        "description": "Learn about alternatives to facilitate access to your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios de estudiar este programa",
+    "title": "Benefits of studying this program",
     "items": [
       {
         "title": "Perfil innovador",
-        "description": "Aprende a crear soluciones con impacto tecnológico.",
+        "description": "Learn to create solutions with technological impact.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Competencias del futuro",
-        "description": "Desarrolla habilidades valiosas para industrias en evolución.",
+        "title": "Skills of the future",
+        "description": "Develop valuable skills for evolving industries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Proyección profesional",
-        "description": "Abre oportunidades en liderazgo técnico y gestión de proyectos.",
+        "title": "Professional projection",
+        "description": "Opens opportunities in technical leadership and project management.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para convertir ideas en tecnología real?",
+    "title": "Ready to turn ideas into real technology?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Ingeniería Electrónica",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,14 +155,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/ingenieria-electronica",
   "catalog": "",
-  "shortTitle": "Ingeniería Electrónica",
+  "shortTitle": "Electronic Engineering",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "19546",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -188,14 +188,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Ingeniería Electrónica",
-    "metaDescription": "Diseña soluciones inteligentes, domina nuevas tecnologías y lidera proyectos de automatización, energía y sistemas electrónicos.",
+    "metaTitle": "Electronic Engineering",
+    "metaDescription": "Design intelligent solutions, master new technologies and lead automation, energy and electronic systems projects.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Diseña soluciones inteligentes, domina nuevas tecnologías y lidera proyectos de automatización, energía y sistemas electrónicos.",
+    "description": "Design intelligent solutions, master new technologies and lead automation, energy and electronic systems projects.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "La UAM impulsa tu futuro tecnológico",
+    "title": "The UAM promotes your technological future",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad académica y oportunidades globales.",
+        "description": "Access academic mobility and global opportunities.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Conexión con la industria",
-        "description": "Desarrolla competencias alineadas con necesidades reales del mercado.",
+        "title": "Connection with the industry",
+        "description": "Develop competencies aligned with real market needs.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo financiero",
-        "description": "Conoce alternativas para facilitar el acceso a tu formación.",
+        "title": "Scholarships and financial support",
+        "description": "Learn about alternatives to facilitate access to your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

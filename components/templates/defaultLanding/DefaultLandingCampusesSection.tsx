@@ -13,6 +13,9 @@ import {
 type Props = {
   brandName: string;
   campuses: BrandCampus[];
+  title: string;
+  description: string;
+  videoLabel: string;
   primaryColor: string;
   primaryTextColor: string;
   isDirectVideoUrl: (url?: string) => boolean;
@@ -21,6 +24,9 @@ type Props = {
 export default function DefaultLandingCampusesSection({
   brandName,
   campuses,
+  title,
+  description,
+  videoLabel,
   primaryColor,
   primaryTextColor,
   isDirectVideoUrl,
@@ -34,20 +40,19 @@ export default function DefaultLandingCampusesSection({
       <div className={landingContainerClass}>
         <div className={landingSectionHeaderCenteredClass}>
           <p className={landingSectionKickerClass}>{brandName}</p>
-          <h2 className={landingSectionTitleClass}>Conoce nuestros campuses</h2>
+          <h2 className={landingSectionTitleClass}>{title}</h2>
           <p className={landingSectionDescriptionClass}>
-            Explora las sedes disponibles y descubre sus espacios, entornos y
-            recursos para tu experiencia academica.
+            {description}
           </p>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid gap-6 lg:grid-cols-2">
           {campuses.map((campus, index) => (
             <article
               key={`${campus.name || "campus"}-${index}`}
-              className="grid items-stretch gap-7 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)] lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]"
+              className="grid gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)]"
             >
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col">
                 {campus.name ? (
                   <h3 className="m-0 text-[clamp(1.4rem,3vw,2rem)] font-black leading-[1.12] text-slate-900">
                     {campus.name}
@@ -74,7 +79,7 @@ export default function DefaultLandingCampusesSection({
                     className="mt-5 inline-flex min-h-12 items-center justify-center self-start rounded-xl px-5 py-3.5 font-extrabold no-underline transition-opacity hover:opacity-90"
                     style={{ background: primaryColor, color: primaryTextColor }}
                   >
-                    Ver video del campus
+                    {videoLabel}
                   </a>
                 ) : null}
               </div>

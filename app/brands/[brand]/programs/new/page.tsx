@@ -61,6 +61,14 @@ export default async function NewBrandProgramPage({ params }: Props) {
       image: "",
       items: [],
     },
+    externship: {
+      enabled: false,
+      title: "",
+      description: "",
+      image: "",
+      hours: "",
+      partners: [],
+    },
     supportSection: {
       title: "",
       videoUrl: "",

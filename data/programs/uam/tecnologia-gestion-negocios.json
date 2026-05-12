@@ -4,15 +4,15 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Tecnología en Gestión de Negocios",
-  "fullTitle": "Tecnología en Gestión de Negocios",
+  "title": "Technology in Business Management",
+  "fullTitle": "Technology in Business Management",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Tecnología en",
-    "title": "Gestión de Negocios",
+    "eyebrow": "Study at UAM",
+    "highlight": "Technology in",
+    "title": "Business Management",
     "subtitle": "",
-    "description": "Desarrolla las habilidades necesarias para dirigir equipos, administrar recursos y tomar decisiones estratégicas que impulsen el crecimiento de cualquier empresa.",
-    "supportText": "¡En la UAM construimos historias con pasión!",
+    "description": "Develop the skills necessary to lead teams, manage resources and make strategic decisions that drive the growth of any company.",
+    "supportText": "At the UAM we build stories with passion!",
     "modality": "100% virtual",
     "semesterPrice": "$2.106.550",
     "price": "$2.106.550",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Tecnología en Gestión de Negocios"
+      "label": "Title awarded",
+      "value": "Technology in Business Management"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "92"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "6 Semestres"
     },
     {
@@ -49,85 +49,85 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Tecnología en Gestión de Negocios en la UAM?",
-    "description": "¡Transforma tu carrera con la Tecnología en Gestión de Negocios en la UAM!",
+    "title": "Why study Technology in Business Management at the UAM?",
+    "description": "Transform your career with Technology in Business Management at the UAM!",
     "image": "https://assets.unlayer.com/projects/0/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Alinea estrategias para el éxito empresarial",
-        "description": "Aprende a integrar la planeación, el liderazgo y la ejecución para alcanzar resultados efectivos dentro de las organizaciones."
+        "title": "Align strategies for business success",
+        "description": "Learn to integrate planning, leadership and execution to achieve effective results within organizations."
       },
       {
-        "title": "Gestiona recursos con visión integral",
-        "description": "Domina la administración de los recursos humanos, financieros y tecnológicos para optimizar la eficiencia y la productividad."
+        "title": "Manage resources with a comprehensive vision",
+        "description": "Master the administration of human, financial and technological resources to optimize efficiency and productivity."
       },
       {
-        "title": "Fortalece tu toma de decisiones",
-        "description": "Desarrolla competencias analíticas y estratégicas que te permitirán liderar con confianza y visión global."
+        "title": "Strengthen your decision making",
+        "description": "Develop analytical and strategic skills that will allow you to lead with confidence and global vision."
       },
       {
-        "title": "Proyéctate en el entorno empresarial actual",
-        "description": "Prepárate para ocupar cargos clave en la gestión de negocios, con una formación práctica alineada con las necesidades del mercado."
+        "title": "Project yourself in the current business environment",
+        "description": "Prepare to occupy key positions in business management, with practical training aligned with the needs of the market."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       },
       {
-        "title": "Conviértete en un líder del cambio",
-        "description": "Potencia tu capacidad de innovación y liderazgo para transformar los procesos empresariales y generar impacto positivo."
+        "title": "Become a leader of change",
+        "description": "Enhance your capacity for innovation and leadership to transform business processes and generate positive impact."
       },
       {
-        "title": "Estudio de homologación",
-        "description": "Al graduarte podrás escalar en tu formación académica con los programas que ofrece la Universidad mediante el proceso de reconocimiento de créditos."
+        "title": "Homologation study",
+        "description": "Upon graduating, you will be able to advance your academic training with the programs offered by the University through the credit recognition process."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -139,7 +139,7 @@
     "programName": "Tecnología en Gestión de Negocios - Virtual",
     "submitLabel": "Submit"
   },
-  "programType": "Tecnológico",
+  "programType": "Technological",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -159,7 +159,7 @@
   "logoMode": "dark",
   "programUrl": "/uam/tecnologia-gestion-negocios",
   "catalog": "",
-  "shortTitle": "Tecnología en Gestión de Negocios",
+  "shortTitle": "Technology in Business Management",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
@@ -192,8 +192,8 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Tecnología en Gestión de Negocios",
-    "metaDescription": "Desarrolla las habilidades necesarias para dirigir equipos, administrar recursos y tomar decisiones estratégicas que impulsen el crecimiento de cualquier empresa.",
+    "metaTitle": "Technology in Business Management",
+    "metaDescription": "Develop the skills necessary to lead teams, manage resources and make strategic decisions that drive the growth of any company.",
     "keywords": []
   },
   "summaryCards": [
@@ -220,7 +220,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Desarrolla las habilidades necesarias para dirigir equipos, administrar recursos y tomar decisiones estratégicas que impulsen el crecimiento de cualquier empresa.",
+    "description": "Develop the skills necessary to lead teams, manage resources and make strategic decisions that drive the growth of any company.",
     "image": ""
   },
   "curriculum": {
@@ -248,23 +248,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
       }
     ]

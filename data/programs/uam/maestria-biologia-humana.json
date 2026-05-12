@@ -4,15 +4,15 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Maestría en Biología Humana",
-  "fullTitle": "Maestría en Biología Humana",
+  "title": "Master in Human Biology",
+  "fullTitle": "Master in Human Biology",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Maestría en",
-    "title": "Biología Humana",
+    "eyebrow": "Study at UAM",
+    "highlight": "Master in",
+    "title": "Human Biology",
     "subtitle": "",
-    "description": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
-    "supportText": "¡En la UAM construimos historias con pasión!",
+    "description": "Develop your scientific potential with a program designed to understand the complexity of the human being and its relationship with the environment, promoting real solutions for health and well-being.",
+    "supportText": "At the UAM we build stories with passion!",
     "modality": "100% virtual",
     "semesterPrice": "$9.691.500",
     "price": "$9.691.500",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Magíster en Biología Humana"
+      "label": "Title awarded",
+      "value": "Master in Human Biology"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "50"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "4 Semestres"
     },
     {
@@ -49,89 +49,89 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Maestría en Biología Humana en la UAM?",
-    "description": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
+    "title": "Why study a Master's Degree in Human Biology at the UAM?",
+    "description": "Develop your scientific potential with a program designed to understand the complexity of the human being and its relationship with the environment, promoting real solutions for health and well-being.",
     "image": "https://assets.unlayer.com/projects/0/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Aborda los retos de la salud y el entorno",
-        "description": "Analiza las interacciones del ser humano con su medio ambiente y contribuye al desarrollo de estrategias que mejoren la salud y la calidad de vida."
+        "title": "Addresses health and environmental challenges",
+        "description": "Analyzes the interactions of human beings with their environment and contributes to the development of strategies that improve health and quality of life."
       },
       {
-        "title": "Profundiza en los procesos biológicos humanos",
-        "description": "Explora los mecanismos que sustentan la vida humana desde una perspectiva celular, genética y fisiológica."
+        "title": "Delve deeper into human biological processes",
+        "description": "Explore the mechanisms that support human life from a cellular, genetic and physiological perspective."
       },
       {
-        "title": "Contribuye al avance científico",
-        "description": "Participa en proyectos de investigación que impactan positivamente el conocimiento y las prácticas biomédicas."
+        "title": "Contributes to scientific advancement",
+        "description": "Participate in research projects that positively impact biomedical knowledge and practices."
       },
       {
-        "title": "Forma parte de una comunidad investigadora",
-        "description": "Integra redes de investigación con docentes y expertos reconocidos por su trayectoria académica y científica."
+        "title": "Be part of a research community",
+        "description": "It integrates research networks with teachers and experts recognized for their academic and scientific career."
       },
       {
         "title": "Aumenta tu impacto profesional",
-        "description": "Aplica tu conocimiento en sectores como salud, biotecnología, docencia o investigación, fortaleciendo tu perfil como “magíster”."
+        "description": "Apply your knowledge in sectors such as health, biotechnology, teaching or research, strengthening your profile as a “master”."
       },
       {
-        "title": "Construye un futuro en la ciencia aplicada",
-        "description": "Obtén herramientas metodológicas y analíticas para desarrollar estudios que aporten soluciones reales en el campo de la biología humana."
+        "title": "Build a future in applied science",
+        "description": "Obtain methodological and analytical tools to develop studies that provide real solutions in the field of human biology."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Comprende las dinámicas del entorno económico global y toma decisiones que impulsen la competitividad y sostenibilidad empresarial."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Understand the dynamics of the global economic environment and make decisions that drive business competitiveness and sustainability."
       },
       {
-        "title": "Estudio de homologación",
-        "description": "Al graduarte podrás escalar en tu formación académica con los programas que ofrece la Universidad mediante el proceso de reconocimiento de créditos."
+        "title": "Homologation study",
+        "description": "Upon graduating, you will be able to advance your academic training with the programs offered by the University through the credit recognition process."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://assets.unlayer.com/projects/0/1762889493926-icon-premanencia.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://assets.unlayer.com/projects/0/1762889555571-icon-habilidades.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://assets.unlayer.com/projects/0/1762889575677-icon-networking.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -143,7 +143,7 @@
     "programName": "Maestría en Biología Humana  - Virtual",
     "submitLabel": "Submit"
   },
-  "programType": "Maestría",
+  "programType": "Mastery",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -163,7 +163,7 @@
   "logoMode": "dark",
   "programUrl": "/uam/maestria-biologia-humana",
   "catalog": "",
-  "shortTitle": "Maestría en Biología Humana",
+  "shortTitle": "Master in Human Biology",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
@@ -196,8 +196,8 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Maestría en Biología Humana",
-    "metaDescription": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
+    "metaTitle": "Master in Human Biology",
+    "metaDescription": "Develop your scientific potential with a program designed to understand the complexity of the human being and its relationship with the environment, promoting real solutions for health and well-being.",
     "keywords": []
   },
   "summaryCards": [
@@ -224,7 +224,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Desarrolla tu potencial científico con un programa diseñado para comprender la complejidad del ser humano y su relación con el entorno, promoviendo soluciones reales para la salud y el bienestar.",
+    "description": "Develop your scientific potential with a program designed to understand the complexity of the human being and its relationship with the environment, promoting real solutions for health and well-being.",
     "image": ""
   },
   "curriculum": {
@@ -252,23 +252,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
       }
     ]

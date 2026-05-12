@@ -19,7 +19,9 @@ type Props = {
   items: RelatedProgram[];
 };
 
-export default function DefaultLandingRelatedProgramsSection({ items }: Props) {
+export default function DefaultLandingRelatedProgramsSection({
+  items,
+}: Props) {
   const validItems = items.filter((item) => item.title?.trim() || item.image?.trim());
 
   if (!validItems.length) {
@@ -34,11 +36,14 @@ export default function DefaultLandingRelatedProgramsSection({ items }: Props) {
         </div>
 
         <div className={landingCardGridClass}>
-          {validItems.map((item, index) => (
+          {validItems.map((item, index) => {
+            const cardImage = item.image?.trim() || "";
+
+            return (
             <article className={landingCardClass} key={`${item.title || "program"}-${index}`}>
-              {item.image ? (
+              {cardImage ? (
                 <img
-                  src={item.image}
+                  src={cardImage}
                   alt={item.title}
                   className="mb-[18px] h-[180px] w-full rounded-[14px] object-cover"
                 />
@@ -55,7 +60,8 @@ export default function DefaultLandingRelatedProgramsSection({ items }: Props) {
                 </a>
               ) : null}
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

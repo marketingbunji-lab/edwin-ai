@@ -7,13 +7,13 @@
   "title": "Negocios Internacionales",
   "fullTitle": "Negocios Internacionales",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
+    "eyebrow": "Study at UAM",
     "highlight": "Negocios",
     "title": "Internacionales",
     "subtitle": "",
-    "description": "Lidera mercados globales, impulsa exportaciones y desarrolla estrategias para empresas en un entorno internacional.",
-    "supportText": "Programa profesional presencial con visión global, comercio exterior, logística e innovación empresarial.",
-    "modality": "Presencial",
+    "description": "Lead global markets, promote exports and develop strategies for companies in an international environment.",
+    "supportText": "In-person professional program with global vision, foreign trade, logistics and business innovation.",
+    "modality": "In person",
     "semesterPrice": "$5.334.000",
     "price": "$5.334.000",
     "duration": "9 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Profesional en Negocios Internacionales"
+      "label": "Title awarded",
+      "value": "International Business Professional"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "154"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "9 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Negocios Internacionales en la UAM?",
-    "description": "Prepárate para gestionar procesos de internacionalización, identificar oportunidades en mercados externos y liderar estrategias de comercio global. Desarrolla competencias en finanzas, logística, negociación y expansión empresarial.",
+    "title": "Why study International Business at UAM?",
+    "description": "Prepare to manage internationalization processes, identify opportunities in external markets and lead global trade strategies. Develop skills in finance, logistics, negotiation and business expansion.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Visión global",
-        "description": "Comprende tendencias económicas y oportunidades internacionales."
+        "title": "Overview",
+        "description": "Understands economic trends and international opportunities."
       },
       {
         "title": "Alta empleabilidad",
-        "description": "Perfil demandado en empresas exportadoras y multinacionales."
+        "description": "Profile in demand in exporting and multinational companies."
       },
       {
-        "title": "Negociación estratégica",
+        "title": "Strategic negotiation",
         "description": "Fortalece habilidades comerciales y relaciones internacionales."
       },
       {
-        "title": "Logística y supply chain",
-        "description": "Aprende a gestionar cadenas de suministro globales."
+        "title": "Logistics and supply chain",
+        "description": "Learn to manage global supply chains."
       },
       {
         "title": "Emprendimiento",
-        "description": "Crea negocios con proyección internacional y crecimiento sostenible."
+        "description": "Create businesses with international projection and sustainable growth."
       },
       {
-        "title": "Proyección profesional",
-        "description": "Accede a cargos directivos en mercados nacionales e internacionales."
+        "title": "Professional projection",
+        "description": "Access management positions in national and international markets."
       }
     ]
   },
   "supportSection": {
-    "title": "La UAM impulsa tu perfil internacional",
+    "title": "The UAM boosts your international profile",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad académica y experiencias globales.",
+        "description": "Access academic mobility and global experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Conexión empresarial",
-        "description": "Desarrolla competencias alineadas con empresas reales.",
+        "title": "Business connection",
+        "description": "Develop competencies aligned with real companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo financiero",
-        "description": "Conoce opciones que facilitan el acceso a tu formación.",
+        "title": "Scholarships and financial support",
+        "description": "Learn about options that facilitate access to your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios de estudiar este programa",
+    "title": "Benefits of studying this program",
     "items": [
       {
         "title": "Perfil competitivo",
-        "description": "Prepárate para destacar en un mercado globalizado.",
+        "description": "Get ready to stand out in a globalized market.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
         "title": "Competencias empresariales",
-        "description": "Integra finanzas, mercadeo, logística y estrategia.",
+        "description": "Integrates finance, marketing, logistics and strategy.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Red de oportunidades",
-        "description": "Conecta con escenarios laborales de alto crecimiento.",
+        "title": "Opportunity network",
+        "description": "Connect with high-growth work scenarios.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para llevar tu futuro al mundo?",
+    "title": "Ready to bring your future to the world?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Negocios Internacionales",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -162,7 +162,7 @@
   "snies": "55070",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -189,13 +189,13 @@
   },
   "seo": {
     "metaTitle": "Negocios Internacionales",
-    "metaDescription": "Lidera mercados globales, impulsa exportaciones y desarrolla estrategias para empresas en un entorno internacional.",
+    "metaDescription": "Lead global markets, promote exports and develop strategies for companies in an international environment.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Lidera mercados globales, impulsa exportaciones y desarrolla estrategias para empresas en un entorno internacional.",
+    "description": "Lead global markets, promote exports and develop strategies for companies in an international environment.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "La UAM impulsa tu perfil internacional",
+    "title": "The UAM boosts your international profile",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad académica y experiencias globales.",
+        "description": "Access academic mobility and global experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Conexión empresarial",
-        "description": "Desarrolla competencias alineadas con empresas reales.",
+        "title": "Business connection",
+        "description": "Develop competencies aligned with real companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo financiero",
-        "description": "Conoce opciones que facilitan el acceso a tu formación.",
+        "title": "Scholarships and financial support",
+        "description": "Learn about options that facilitate access to your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

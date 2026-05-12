@@ -2,12 +2,20 @@ type Props = {
   programName: string;
   primaryColor: string;
   buttonText?: string;
+  submitLabel?: string;
+  fullNameLabel?: string;
+  phoneLabel?: string;
+  emailLabel?: string;
 };
 
 export default function GenericLeadForm({
   programName,
   primaryColor,
   buttonText = "Submit",
+  submitLabel = "Submit",
+  fullNameLabel = "Full Name",
+  phoneLabel = "Phone",
+  emailLabel = "Email",
 }: Props) {
   const fieldStyle = {
     width: "100%",
@@ -26,42 +34,42 @@ export default function GenericLeadForm({
 
       <label style={{ display: "grid", gap: 6 }}>
         <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
-          Full Name
+          {fullNameLabel}
         </span>
         <input
           name="fullName"
           type="text"
           autoComplete="name"
           required
-          placeholder="Full Name"
+          placeholder={fullNameLabel}
           style={fieldStyle}
         />
       </label>
 
       <label style={{ display: "grid", gap: 6 }}>
         <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
-          Phone
+          {phoneLabel}
         </span>
         <input
           name="phone"
           type="tel"
           autoComplete="tel"
           required
-          placeholder="Phone"
+          placeholder={phoneLabel}
           style={fieldStyle}
         />
       </label>
 
       <label style={{ display: "grid", gap: 6 }}>
         <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
-          Email
+          {emailLabel}
         </span>
         <input
           name="email"
           type="email"
           autoComplete="email"
           required
-          placeholder="Email"
+          placeholder={emailLabel}
           style={fieldStyle}
         />
       </label>
@@ -81,7 +89,7 @@ export default function GenericLeadForm({
           padding: "13px 18px",
         }}
       >
-        {buttonText}
+        {buttonText || submitLabel}
       </button>
     </form>
   );

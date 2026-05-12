@@ -7,13 +7,13 @@
   "title": "Fisioterapia",
   "fullTitle": "Fisioterapia",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
+    "eyebrow": "Study at UAM",
     "highlight": "Fisioterapia",
     "title": "Fisioterapia",
     "subtitle": "",
-    "description": "Transforma vidas e impulsa la salud a través del movimiento corporal humano.",
-    "supportText": "Programa profesional presencial con enfoque en rehabilitación, prevención, bienestar y calidad de vida.",
-    "modality": "Presencial",
+    "description": "Transform lives and boost health through human body movement.",
+    "supportText": "In-person professional program with a focus on rehabilitation, prevention, well-being and quality of life.",
+    "modality": "In person",
     "semesterPrice": " $ 11,292,700",
     "price": " $ 11,292,700",
     "duration": "10 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
+      "label": "Title awarded",
       "value": "Fisioterapeuta"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "180"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Fisioterapia en la UAM?",
-    "description": "Desarrolla competencias para prevenir, evaluar y tratar alteraciones del movimiento humano. Fórmate en rehabilitación física, salud pública, ejercicio terapéutico y atención integral con enfoque científico y humano.",
+    "title": "Why study Physiotherapy at the UAM?",
+    "description": "Develop skills to prevent, evaluate and treat alterations in human movement. Train in physical rehabilitation, public health, therapeutic exercise and comprehensive care with a scientific and human approach.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
         "title": "Alta empleabilidad",
-        "description": "Campo laboral en clínicas, hospitales, centros deportivos y consulta privada."
+        "description": "Labor field in clinics, hospitals, sports centers and private practice."
       },
       {
         "title": "Impacto real",
-        "description": "Ayuda a mejorar movilidad, autonomía y calidad de vida."
+        "description": "Helps improve mobility, autonomy and quality of life."
       },
       {
-        "title": "Formación práctica",
-        "description": "Aprende con laboratorios, simulación y práctica clínica."
+        "title": "Practical training",
+        "description": "Learn with laboratories, simulation and clinical practice."
       },
       {
-        "title": "Prevención y bienestar",
-        "description": "Diseña estrategias para estilos de vida saludables."
+        "title": "Prevention and well-being",
+        "description": "Design strategies for healthy lifestyles."
       },
       {
         "title": "Trabajo interdisciplinario",
-        "description": "Integra equipos con médicos, terapeutas y especialistas."
+        "description": "Integrate teams with doctors, therapists and specialists."
       },
       {
-        "title": "Proyección internacional",
-        "description": "Accede a experiencias académicas y movilidad global."
+        "title": "International projection",
+        "description": "Access academic experiences and global mobility."
       }
     ]
   },
   "supportSection": {
-    "title": "La UAM impulsa tu crecimiento profesional",
+    "title": "The UAM promotes your professional growth",
     "videoUrl": "",
     "items": [
       {
         "title": "Movilidad internacional",
-        "description": "Participa en intercambios y experiencias globales.",
+        "description": "Participate in global exchanges and experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Aprendizaje aplicado",
-        "description": "Casos reales y práctica desde etapas tempranas.",
+        "description": "Real cases and practice from early stages.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Opciones para facilitar tu acceso y permanencia.",
+        "title": "Scholarships and support",
+        "description": "Options to facilitate your access and stay.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios de estudiar este programa",
+    "title": "Benefits of studying this program",
     "items": [
       {
         "title": "Perfil competitivo",
-        "description": "Destácate con formación clínica y científica integral.",
+        "description": "Stand out with comprehensive clinical and scientific training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Liderazgo en salud",
-        "description": "Prepárate para coordinar procesos de bienestar y rehabilitación.",
+        "title": "Health leadership",
+        "description": "Prepare to coordinate wellness and rehabilitation processes.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Amplias oportunidades",
-        "description": "Trabaja en múltiples sectores de salud y deporte.",
+        "description": "He works in multiple health and sports sectors.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar vidas con tu vocación?",
+    "title": "Ready to transform lives with your vocation?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Fisioterapia",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -162,7 +162,7 @@
   "snies": "1915",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -189,13 +189,13 @@
   },
   "seo": {
     "metaTitle": "Fisioterapia",
-    "metaDescription": "Transforma vidas e impulsa la salud a través del movimiento corporal humano.",
+    "metaDescription": "Transform lives and boost health through human body movement.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Transforma vidas e impulsa la salud a través del movimiento corporal humano.",
+    "description": "Transform lives and boost health through human body movement.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "La UAM impulsa tu crecimiento profesional",
+    "title": "The UAM promotes your professional growth",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Movilidad internacional",
-        "description": "Participa en intercambios y experiencias globales.",
+        "description": "Participate in global exchanges and experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Aprendizaje aplicado",
-        "description": "Casos reales y práctica desde etapas tempranas.",
+        "description": "Real cases and practice from early stages.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Opciones para facilitar tu acceso y permanencia.",
+        "title": "Scholarships and support",
+        "description": "Options to facilitate your access and stay.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

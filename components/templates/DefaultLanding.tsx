@@ -7,6 +7,7 @@ import type {
   ProgramInfoItem,
 } from "@/lib/data";
 import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
+import { getLandingTemplateCopy } from "@/lib/landingLanguage";
 import OpportunityToWorkSection from "./OpportunityToWorkSection";
 import DefaultLandingBenefitsSection from "./defaultLanding/DefaultLandingBenefitsSection";
 import DefaultLandingCampusesSection from "./defaultLanding/DefaultLandingCampusesSection";
@@ -18,12 +19,10 @@ import DefaultLandingFaqSection from "./defaultLanding/DefaultLandingFaqSection"
 import DefaultLandingFooterSection from "./defaultLanding/DefaultLandingFooterSection";
 import DefaultLandingHeroSection from "./defaultLanding/DefaultLandingHeroSection";
 import DefaultLandingOverviewSection from "./defaultLanding/DefaultLandingOverviewSection";
-import DefaultLandingProgramInfoSection from "./defaultLanding/DefaultLandingProgramInfoSection";
 import DefaultLandingRelatedProgramsSection from "./defaultLanding/DefaultLandingRelatedProgramsSection";
 import DefaultLandingSupportSection from "./defaultLanding/DefaultLandingSupportSection";
 import DefaultLandingTestimonialsSection from "./defaultLanding/DefaultLandingTestimonialsSection";
 import DefaultLandingWhyStudySection from "./defaultLanding/DefaultLandingWhyStudySection";
-import DefaultLandingContactSection from "./defaultLanding/DefaultLandingContactSection";
 
 type Props = {
   brand: Brand;
@@ -44,7 +43,7 @@ function normalizeProgramInfo(programInfo?: Landing["programInfo"]) {
         return value
           ? {
               key: `legacy-${index}`,
-              label: `Dato ${index + 1}`,
+              label: `Item ${index + 1}`,
               value,
             }
           : null;
@@ -54,7 +53,7 @@ function normalizeProgramInfo(programInfo?: Landing["programInfo"]) {
         return null;
       }
 
-      const label = item.label?.trim() || `Dato ${index + 1}`;
+      const label = item.label?.trim() || `Item ${index + 1}`;
       const value = item.value?.trim() || "";
 
       return value
@@ -235,6 +234,9 @@ export default function DefaultLanding({
   const secondaryTextColor = getTextColor(secondaryColor);
   const brandName = brand.name || brand.slug;
   const logo = getBrandLogo(brand, landing.logoMode || "light") || brand.logo;
+  const heroLogo = brand.logos?.light || logo;
+  const footerLogo = brand.logos?.light || logo;
+  const copy = getLandingTemplateCopy(landing.language, brand.slug);
   const fontFamily =
     brand.typography?.fontFamily?.trim() || "Inter, Arial, sans-serif";
   const googleFontHref = brand.typography?.googleFontHref?.trim() || "";
@@ -334,8 +336,8 @@ export default function DefaultLanding({
   const hasCta = Boolean(ctaTitle || ctaButton);
   const eyebrowText =
     hero.eyebrow || hero.modality
-      ? `${hero.modality ? `${hero.modality} en ` : ""}${brandName}`
-      : `Estudia en ${brandName}`;
+      ? `${hero.modality ? `${hero.modality} ${copy.studyAt.toLowerCase()} ` : ""}${brandName}`
+      : `${copy.studyAt} ${brandName}`;
   const formatProgramInfo = programInfo.find((item) =>
     isFormatLabel(item.label),
   );
@@ -367,20 +369,6 @@ export default function DefaultLanding({
       .map((item) => item.label?.trim().toLowerCase())
       .filter(Boolean),
   );
-  const additionalProgramInfo = programInfo.filter((item) => {
-    const label = item.label?.trim() || "";
-
-    if (!label || !item.value?.trim()) {
-      return false;
-    }
-
-    if (isLocationMetaLabel(label) || isLanguageMetaLabel(label)) {
-      return false;
-    }
-
-    return !visibleHeroProgramInfoLabels.has(label.toLowerCase());
-  });
-
   return (
     <div
       className="bg-white text-slate-900"
@@ -399,7 +387,7 @@ export default function DefaultLanding({
       {googleFontHref ? <style>{`@import url("${googleFontHref}");`}</style> : null}
 
       <DefaultLandingHeroSection
-        logo={logo}
+        logo={heroLogo}
         brandName={brandName}
         eyebrowText={eyebrowText}
         heroTitle={heroTitle}
@@ -411,6 +399,12 @@ export default function DefaultLanding({
         title={title}
         form={form}
         ctaButton={ctaButton}
+        formTitle={form.title?.trim() || copy.formTitle}
+        formDescription={form.description?.trim() || copy.formDescription}
+        submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
+        fullNameLabel={copy.formFullNameLabel}
+        phoneLabel={copy.formPhoneLabel}
+        emailLabel={copy.formEmailLabel}
         primaryColor={primaryColor}
         mode={mode}
         hasConfiguredForm={hasConfiguredForm}
@@ -426,6 +420,7 @@ export default function DefaultLanding({
         activeCertifications={activeCertifications}
         getCertificationLogo={getCertificationLogo}
         logoMode={landing.logoMode}
+        title={copy.certificationsRowTitle}
       />
 
       <DefaultLandingOverviewSection
@@ -434,7 +429,6 @@ export default function DefaultLanding({
         image={overview.image || ""}
       />
 
-      <DefaultLandingProgramInfoSection items={additionalProgramInfo} />
 
       <DefaultLandingWhyStudySection
         brandName={brandName}
@@ -458,7 +452,8 @@ export default function DefaultLanding({
         description={curriculum.description || ""}
         items={curriculumItems}
         downloadUrl={curriculum.downloadUrl || ""}
-        buttonLabel="Descargar plan de estudios"
+        buttonLabel={copy.curriculumButton}
+        viewMoreLabel={copy.sectionViewMore}
       />
 
       <DefaultLandingDetailCardsSection
@@ -466,12 +461,14 @@ export default function DefaultLanding({
         description={handsOnTraining.description || ""}
         items={handsOnTrainingItems}
         soft
+        viewMoreLabel={copy.sectionViewMore}
       />
 
       <DefaultLandingExternshipSection
         enabled={Boolean(externship.enabled)}
         title={externship.title || ""}
         description={externship.description || ""}
+        image={externship.image || ""}
         hours={externship.hours || ""}
         partners={externship.partners ?? []}
       />
@@ -494,6 +491,7 @@ export default function DefaultLanding({
           title={admissions.title || ""}
           description={admissions.description || ""}
           items={admissionsItems}
+          viewMoreLabel={copy.sectionViewMore}
         />
       ) : null}
 
@@ -503,23 +501,18 @@ export default function DefaultLanding({
           description={financialAid.description || ""}
           items={financialAidItems}
           soft
+          viewMoreLabel={copy.sectionViewMore}
         />
       ) : null}
 
       <DefaultLandingTestimonialsSection items={landing.testimonials ?? []} />
 
-      <DefaultLandingFaqSection items={landing.faq ?? []} />
+      <DefaultLandingFaqSection items={landing.faq ?? []} title={copy.faqTitle} />
 
       <DefaultLandingRelatedProgramsSection
         items={landing.relatedPrograms ?? []}
-      />
-
-      <DefaultLandingContactSection
-        advisorName={contact.advisorName || ""}
-        advisorTitle={contact.advisorTitle || ""}
-        phone={contact.phone || ""}
-        email={contact.email || ""}
-        image={contact.image || ""}
+        title={copy.relatedProgramsTitle}
+        actionLabel={copy.relatedProgramsAction}
       />
 
       <DefaultLandingCtaSection
@@ -536,13 +529,23 @@ export default function DefaultLanding({
         primaryColor={primaryColor}
         primaryTextColor={primaryTextColor}
         isDirectVideoUrl={isDirectVideoUrl}
+        title={copy.campusesTitle}
+        description={copy.campusesDescription}
+        videoLabel={copy.campusesVideoLabel}
       />
 
       <DefaultLandingFooterSection
-        logo={logo}
+        logo={footerLogo}
         brandName={brandName}
         description={brand.description || ""}
+        advisorName={contact.advisorName || ""}
+        advisorTitle={contact.advisorTitle || ""}
+        phone={contact.phone || ""}
+        email={contact.email || ""}
         legalLinks={legalLinks}
+        phoneLabel={copy.footerPhoneLabel}
+        emailLabel={copy.footerEmailLabel}
+        legalLinksAriaLabel={copy.legalLinksAriaLabel}
       />
 
       {footerScripts.map((script, index) =>

@@ -5,18 +5,18 @@
   "status": "draft",
   "updatedAt": "2026-04-30",
   "logoMode": "dark",
-  "title": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
-  "fullTitle": "Pregrado en Administración de Riesgos, Seguridad y Salud en el Trabajo (a Distancia)",
-  "programType": "Pregrado",
+  "title": "Risk Management, Safety and Health at Work",
+  "fullTitle": "Undergraduate in Risk Management, Safety and Health at Work (Distance)",
+  "programType": "Undergraduate",
   "schedule": "flexible",
   "hero": {
-    "eyebrow": "Facultad de Estudios a Distancia (FAEDIS)",
+    "eyebrow": "Faculty of Distance Studies (FAEDIS)",
     "highlight": "SNIES 108241",
-    "title": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
+    "title": "Risk Management, Safety and Health at Work",
     "subtitle": "",
-    "description": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
-    "supportText": "Conoce el programa e inscríbete",
-    "modality": "a distancia",
+    "description": "Training of suitable professionals in the administration of means and procedures to recognize, evaluate and control risks that affect the community, production processes and people.",
+    "supportText": "Learn about the program and sign up",
+    "modality": "at the distance",
     "semesterPrice": "",
     "price": "",
     "duration": "",
@@ -35,77 +35,77 @@
   },
   "programInfo": [],
   "whyStudy": {
-    "title": "¿Por qué estudiar este programa?",
-    "description": "El programa ofrece formación teórico-práctica y promueve la investigación, el uso de tecnología y el desarrollo de competencias para el control de riesgos y la protección de bienes y personas.",
+    "title": "Why study this program?",
+    "description": "The program offers theoretical-practical training and promotes research, the use of technology and the development of skills for risk control and the protection of property and people.",
     "image": "",
     "items": [
       {
-        "title": "Formación integral",
-        "description": "Conocimiento teórico-práctico avanzado para alto desempeño productivo en industria y servicios."
+        "title": "Comprehensive training",
+        "description": "Advanced theoretical-practical knowledge for high productive performance in industry and services."
       },
       {
-        "title": "Gestión de riesgos",
-        "description": "Capacidad para reconocer, evaluar y limitar riesgos que constituyan amenazas para personas y procesos."
+        "title": "Risk management",
+        "description": "Ability to recognize, evaluate and limit risks that constitute threats to people and processes."
       },
       {
-        "title": "Investigación y práctica",
-        "description": "Fomento del estudio, la investigación y la aplicación de procedimientos avanzados en seguridad ocupacional."
+        "title": "Research and practice",
+        "description": "Promotion of the study, research and application of advanced procedures in occupational safety."
       },
       {
-        "title": "Tecnología en seguridad",
-        "description": "Conocimientos para el empleo de tecnología de punta en la protección de bienes y personas."
+        "title": "Security technology",
+        "description": "Knowledge for the use of cutting-edge technology in the protection of property and people."
       },
       {
-        "title": "Competencias para el autoaprendizaje",
-        "description": "Desarrollo de habilidades para la investigación, el pensamiento crítico y el aprendizaje autónomo en la disciplina."
+        "title": "Skills for self-learning",
+        "description": "Development of skills for research, critical thinking and autonomous learning in the discipline."
       }
     ]
   },
   "supportSection": {
-    "title": "Información y soporte",
+    "title": "Information and support",
     "videoUrl": "",
     "items": [
       {
         "title": "Inscripciones",
-        "description": "Información sobre el proceso de inscripción y admisión disponible en la página de la facultad.",
+        "description": "Information about the registration and admission process available on the faculty website.",
         "icon": "calendar"
       },
       {
         "title": "Perfil profesional",
-        "description": "Formación orientada a la gestión de medios y procedimientos para la seguridad y salud en el trabajo.",
+        "description": "Training aimed at the management of means and procedures for safety and health at work.",
         "icon": "user"
       },
       {
-        "title": "Plan de estudios",
-        "description": "Acceso a las asignaturas y estructura curricular a través de la sección de Plan de Estudios.",
+        "title": "Curriculum",
+        "description": "Access to subjects and curricular structure through the Study Plan section.",
         "icon": "book"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios del programa",
+    "title": "Program benefits",
     "items": [
       {
-        "title": "Enfoque teórico-práctico",
-        "description": "Preparación orientada al desempeño productivo en sectores industriales y de servicios.",
+        "title": "Theoretical-practical approach",
+        "description": "Preparation aimed at productive performance in industrial and service sectors.",
         "icon": "gear"
       },
       {
-        "title": "Actualización tecnológica",
-        "description": "Formación para el uso de tecnología de punta en seguridad y protección.",
+        "title": "Technological update",
+        "description": "Training for the use of cutting-edge technology in security and protection.",
         "icon": "microchip"
       },
       {
         "title": "Desarrollo investigativo",
-        "description": "Fomento de competencias para la investigación y el pensamiento crítico en la disciplina.",
+        "description": "Promotion of skills for research and critical thinking in the discipline.",
         "icon": "flask"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para estudiar Administración de Riesgos, Seguridad y Salud en el Trabajo?",
+    "title": "Ready to study Risk Management, Safety and Health at Work?",
     "description": "",
-    "button": "Inscríbete aquí",
+    "button": "Sign up here",
     "secondaryButton": ""
   },
   "form": {
@@ -132,14 +132,14 @@
   "sourceWebsite": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
   "programUrl": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
   "catalog": "",
-  "shortTitle": "Administración de Riesgos, Seguridad y Salud en el Trabajo",
+  "shortTitle": "Risk Management, Safety and Health at Work",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "",
   "cipCode": "",
   "delivery": {
-    "modality": "a distancia",
+    "modality": "at the distance",
     "schedule": "flexible",
     "language": "",
     "campuses": [],
@@ -165,14 +165,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Pregrado en Administración de Riesgos, Seguridad y Salud en el Trabajo (a Distancia)",
-    "metaDescription": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
+    "metaTitle": "Undergraduate in Risk Management, Safety and Health at Work (Distance)",
+    "metaDescription": "Training of suitable professionals in the administration of means and procedures to recognize, evaluate and control risks that affect the community, production processes and people.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "a distancia"
+      "value": "at the distance"
     },
     {
       "label": "Schedule",
@@ -181,7 +181,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Formación de profesionales idóneos en la administración de medios y procedimientos para reconocer, evaluar y controlar riesgos que afecten a la comunidad, procesos productivos y personas.",
+    "description": "Training of suitable professionals in the administration of means and procedures to recognize, evaluate and control risks that affect the community, production processes and people.",
     "image": ""
   },
   "curriculum": {
@@ -209,23 +209,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "Información y soporte",
+    "title": "Information and support",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Inscripciones",
-        "description": "Información sobre el proceso de inscripción y admisión disponible en la página de la facultad.",
+        "description": "Information about the registration and admission process available on the faculty website.",
         "icon": "calendar"
       },
       {
         "title": "Perfil profesional",
-        "description": "Formación orientada a la gestión de medios y procedimientos para la seguridad y salud en el trabajo.",
+        "description": "Training aimed at the management of means and procedures for safety and health at work.",
         "icon": "user"
       },
       {
-        "title": "Plan de estudios",
-        "description": "Acceso a las asignaturas y estructura curricular a través de la sección de Plan de Estudios.",
+        "title": "Curriculum",
+        "description": "Access to subjects and curricular structure through the Study Plan section.",
         "icon": "book"
       }
     ]

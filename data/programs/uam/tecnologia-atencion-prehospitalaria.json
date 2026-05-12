@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Tecnología en Atención Prehospitalaria",
-  "fullTitle": "Tecnología en Atención Prehospitalaria",
+  "title": "Technology in Prehospital Care",
+  "fullTitle": "Technology in Prehospital Care",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Tecnología en",
-    "title": "Atención Prehospitalaria",
+    "eyebrow": "Study at UAM",
+    "highlight": "Technology in",
+    "title": "Prehospital Care",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$4.460.200",
     "price": "$4.460.200",
     "duration": "6 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Tecnólogo en Atención Prehospitalaria"
+      "label": "Title awarded",
+      "value": "Prehospital Care Technologist"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "95"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "6 semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con la Tecnología en Atención Prehospitalaria en la UAM",
-    "description": "Formamos estudiantes comprometidos con la salud y el bienestar, capacitados para brindar atención en situaciones de urgencia, emergencias y desastres, con un enfoque en gestión del riesgo y respuestas eficaces.",
+    "title": "Transform your future with Technology in Prehospital Care at the UAM",
+    "description": "We train students committed to health and well-being, trained to provide care in urgent situations, emergencies and disasters, with a focus on risk management and effective responses.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Formación integral en atención prehospitalaria",
-        "description": "Desarrolla competencias para brindar atención inicial a pacientes en emergencias y desastres, preservando la vida y reduciendo complicaciones."
+        "title": "Comprehensive training in prehospital care",
+        "description": "Develop competencies to provide initial care to patients in emergencies and disasters, preserving life and reducing complications."
       },
       {
-        "title": "Enfoque práctico con escenarios reales",
-        "description": "Aprende mediante simulaciones y prácticas en campo, enfrentando situaciones críticas que te preparan para actuar con rapidez y eficiencia."
+        "title": "Practical approach with real scenarios",
+        "description": "Learn through simulations and field practices, facing critical situations that prepare you to act quickly and efficiently."
       },
       {
-        "title": "Desarrollo de liderazgo en situaciones críticas",
-        "description": "Lidera equipos de atención prehospitalaria, aprendiendo a gestionar la presión y tomar decisiones estratégicas en situaciones de alta exigencia."
+        "title": "Leadership development in critical situations",
+        "description": "Lead pre-hospital care teams, learning to manage pressure and make strategic decisions in highly demanding situations."
       },
       {
-        "title": "Compromiso social y ética profesional",
-        "description": "Fomenta un enfoque ético y responsable, orientado a ayudar a los demás, con sensibilidad humana y un fuerte compromiso social en cada intervención."
+        "title": "Social commitment and professional ethics",
+        "description": "It promotes an ethical and responsible approach, aimed at helping others, with human sensitivity and a strong social commitment in each intervention."
       },
       {
-        "title": "Enfoque en gestión del riesgo y desastres",
-        "description": "Desarrolla competencias para identificar riesgos, liderar equipos y diseñar planes de gestión del riesgo ante situaciones de emergencia."
+        "title": "Focus on risk and disaster management",
+        "description": "Develop skills to identify risks, lead teams and design risk management plans in emergency situations."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector.",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes.",
+        "description": "Connections with professionals and leading companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Tecnología en Atención Prehospitalaria",
     "submitLabel": "Submit"
   },
-  "programType": "Tecnológico",
+  "programType": "Technological",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,14 +155,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/tecnologia-atencion-prehospitalaria",
   "catalog": "",
-  "shortTitle": "Tecnología en Atención Prehospitalaria",
+  "shortTitle": "Technology in Prehospital Care",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "11773",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -188,14 +188,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Tecnología en Atención Prehospitalaria",
+    "metaTitle": "Technology in Prehospital Care",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-22",
-  "title": "Ingeniería de Sistemas",
-  "fullTitle": "Ingeniería de Sistemas",
+  "title": "Systems Engineering",
+  "fullTitle": "Systems Engineering",
   "hero": {
-    "eyebrow": "Estudia en UAM",
-    "highlight": "Pregrado en",
-    "title": "Ingeniería de Sistemas",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "Systems Engineering",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
     "duration": "10 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Ingeniería de Sistemas"
+      "label": "Title awarded",
+      "value": "Undergraduate in Systems Engineering"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "175"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 Semestres"
     },
     {
@@ -49,77 +49,77 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Ingeniería de Sistemas en la UAM",
-    "description": "Conviértete en desarrollador de soluciones tecnológicas que transformen el mundo. Aprende a diseñar software de alto impacto, dominar la Inteligencia Artificial y gestionar infraestructuras digitales con una visión innovadora y global..",
+    "title": "Transform your future with the Undergraduate Degree in Systems Engineering at the UAM",
+    "description": "Become a developer of technological solutions that transform the world. Learn to design high-impact software, master Artificial Intelligence and manage digital infrastructures with an innovative and global vision.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Inteligencia Artificial y Ciencia de Datos",
-        "description": "Domina las tecnologías del mercado mediante el desarrollo de algoritmos avanzados y sistemas inteligentes. Aprende a transformar grandes volúmenes de datos en soluciones estratégicas para la toma de decisiones."
+        "title": "Artificial Intelligence and Data Science",
+        "description": "Master market technologies by developing advanced algorithms and intelligent systems. Learn to transform large volumes of data into strategic solutions for decision making."
       },
       {
-        "title": "Acreditación ARCU-SUR: Calidad avalada a nivel latinoamericano",
-        "description": "Certificación que avala la calidad académica del programa bajo estándares rigurosos del Mercosur, facilitando el reconocimiento del título en Argentina, Brasil, Chile, Paraguay, Uruguay y Bolivia."
+        "title": "ARCU-SUR Accreditation: Quality endorsed at the Latin American level",
+        "description": "Certification that guarantees the academic quality of the program under rigorous Mercosur standards, facilitating the recognition of the title in Argentina, Brazil, Chile, Paraguay, Uruguay and Bolivia."
       },
       {
-        "title": "Enfoque en arquitectura y desarrollo de software robusto",
-        "description": "Fortalece tus habilidades técnicas diseñando aplicaciones escalables y seguras bajo metodologías modernas. Crea ecosistemas digitales innovadores que respondan a las necesidades reales de las organizaciones."
+        "title": "Focus on robust software architecture and development",
+        "description": "Strengthen your technical skills by designing scalable and secure applications using modern methodologies. Create innovative digital ecosystems that respond to the real needs of organizations."
       },
       {
-        "title": "Aprendizaje con base en la práctica y la experimentación",
-        "description": "Potencia tu aprendizaje en entornos tecnológicos de vanguardia diseñados para la práctica y la investigación aplicada. Desarrolla prototipos y soluciones reales utilizando herramientas de hardware y software de nivel profesional."
+        "title": "Learning based on practice and experimentation",
+        "description": "Enhance your learning in cutting-edge technological environments designed for practice and applied research. Develop prototypes and real solutions using professional-grade hardware and software tools."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "title": "At the UAM we promote your technological future",
     "videoUrl": "",
     "items": [
       {
-        "title": "Plan de estudios integral",
-        "description": "Fórmate en programación, bases de datos, algoritmos, IA, redes, sistemas operativos, software engineering, investigación y práctica empresarial.",
+        "title": "Comprehensive curriculum",
+        "description": "Train yourself in programming, databases, algorithms, AI, networks, operating systems, software engineering, research and business practice.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Experiencias internacionales",
-        "description": "Accede a semestre académico, prácticas profesionales, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "description": "Access academic semester, professional practices, internships, academic missions, international volunteering and English courses with discounts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y beneficios",
-        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Plan Estudia, Puedo Estudiar y más.",
+        "title": "Scholarships and benefits",
+        "description": "Learn about support opportunities such as Sports Scholarships, Youth + PRO, Endowment Fund, Study Plan, I Can Study and more.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Proyección profesional",
-        "description": "Podrás desempeñarte como desarrollador de software, ingeniero en IA, especialista en ciberseguridad, arquitecto de datos, líder tecnológico o emprendedor.",
+        "title": "Professional projection",
+        "description": "You can work as a software developer, AI engineer, cybersecurity specialist, data architect, technology leader or entrepreneur.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
         "title": "Perfil global e innovador",
-        "description": "Fortalece competencias en competitividad internacional, innovación organizacional y transformación digital.",
+        "description": "Strengthens skills in international competitiveness, organizational innovation and digital transformation.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Becas y apoyos UAM",
-        "description": "Accede a alternativas como Becas Deportivas, Becas Jóvenes + PRO, Becas Fondo Patrimonial, Mejor Bachiller 2.0, Plan Regreso a la U, Más Ingenieras UAM y Becas UTC UAM.",
+        "title": "UAM scholarships and supports",
+        "description": "Access alternatives such as Sports Scholarships, Young + PRO Scholarships, Patrimonial Fund Scholarships, Best Bachelor 2.0, Return to the U Plan, More UAM Engineers and UTC UAM Scholarships.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para construir el futuro digital?",
+    "title": "Ready to build the digital future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -131,7 +131,7 @@
     "programName": "Ingeniería de Sistemas",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -142,20 +142,20 @@
     "resolutionText": "",
     "items": [
       {
-        "title": "Acreditación de alta Calidad",
-        "name": "Acreditación de alta Calidad",
-        "description": "Resolución 014484 Julio 25 de 2022 - 6 años",
+        "title": "High Quality Accreditation",
+        "name": "High Quality Accreditation",
+        "description": "Resolution 014484 July 25, 2022 - 6 years",
         "url": "",
         "enabled": false,
-        "resolutionText": "Resolución 014484 Julio 25 de 2022 - 6 años"
+        "resolutionText": "Resolution 014484 July 25, 2022 - 6 years"
       },
       {
-        "title": "Acreditación Internacional ARCU-SUR",
-        "name": "Acreditación Internacional ARCU-SUR",
-        "description": "Acuerdo 034 junio 15 de 2022 - 6 años",
+        "title": "ARCU-SUR International Accreditation",
+        "name": "ARCU-SUR International Accreditation",
+        "description": "Agreement 034 June 15, 2022 - 6 years",
         "url": "",
         "enabled": false,
-        "resolutionText": "Acuerdo 034 junio 15 de 2022 - 6 años"
+        "resolutionText": "Agreement 034 June 15, 2022 - 6 years"
       }
     ]
   },
@@ -168,14 +168,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/ingenieria-de-sistemas",
   "catalog": "",
-  "shortTitle": "Ingeniería de Sistemas",
+  "shortTitle": "Systems Engineering",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "1918",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -201,14 +201,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Ingeniería de Sistemas",
+    "metaTitle": "Systems Engineering",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -257,23 +257,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM impulsamos tu futuro tecnológico",
+    "title": "At the UAM we promote your technological future",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Plan de estudios integral",
-        "description": "Fórmate en programación, bases de datos, algoritmos, IA, redes, sistemas operativos, software engineering, investigación y práctica empresarial.",
+        "title": "Comprehensive curriculum",
+        "description": "Train yourself in programming, databases, algorithms, AI, networks, operating systems, software engineering, research and business practice.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Experiencias internacionales",
-        "description": "Accede a semestre académico, prácticas profesionales, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "description": "Access academic semester, professional practices, internships, academic missions, international volunteering and English courses with discounts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y beneficios",
-        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Plan Estudia, Puedo Estudiar y más.",
+        "title": "Scholarships and benefits",
+        "description": "Learn about support opportunities such as Sports Scholarships, Youth + PRO, Endowment Fund, Study Plan, I Can Study and more.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

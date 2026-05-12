@@ -6,6 +6,10 @@ type Props = {
   logo: string;
   brandName: string;
   description: string;
+  advisorName: string;
+  advisorTitle: string;
+  phone: string;
+  email: string;
   legalLinks: LegalLink[];
 };
 
@@ -13,12 +17,18 @@ export default function DefaultLandingFooterSection({
   logo,
   brandName,
   description,
+  advisorName,
+  advisorTitle,
+  phone,
+  email,
   legalLinks,
 }: Props) {
+  const hasContactInfo = Boolean(advisorName || advisorTitle || phone || email);
+
   return (
     <footer className="bg-slate-900 py-[42px] text-white">
-      <div className={`${landingContainerClass} flex flex-wrap items-center justify-between gap-6`}>
-        <div>
+      <div className={`${landingContainerClass} flex flex-wrap items-start justify-between gap-8`}>
+        <div className="max-w-[420px]">
           {logo ? (
             <img
               src={logo}
@@ -33,11 +43,22 @@ export default function DefaultLandingFooterSection({
               {description}
             </p>
           ) : null}
+
+          {hasContactInfo ? (
+            <div className="mt-5 space-y-1 text-sm text-white/80">
+              {advisorName ? (
+                <p className="font-semibold text-white">{advisorName}</p>
+              ) : null}
+              {advisorTitle ? <p>{advisorTitle}</p> : null}
+              {phone ? <p>Phone: {phone}</p> : null}
+              {email ? <p>Email: {email}</p> : null}
+            </div>
+          ) : null}
         </div>
 
         {legalLinks.length > 0 ? (
           <nav
-            className="flex flex-wrap justify-end gap-x-[18px] gap-y-3 text-sm"
+            className="flex max-w-[420px] flex-wrap justify-end gap-x-[18px] gap-y-3 text-sm"
             aria-label="Links legales"
           >
             {legalLinks.map((link, index) => (

@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Ingeniería Mecánica",
-  "fullTitle": "Ingeniería Mecánica",
+  "title": "mechanical Engineering",
+  "fullTitle": "mechanical Engineering",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Pregrado en",
-    "title": "Ingeniería Mecánica",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "mechanical Engineering",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
     "duration": "10 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Ingeniería Mecánica"
+      "label": "Title awarded",
+      "value": "Undergraduate in Mechanical Engineering"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "180"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 Semestres"
     },
     {
@@ -49,77 +49,77 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Ingeniería Mecánica en la UAM",
-    "description": "Únete a los profesionales que crean y transforman la tecnología que mueve al mundo. Aprende a diseñar sistemas mecánicos avanzados, implementar manufactura inteligente y desarrollar soluciones energéticas sostenibles con un enfoque innovador y técnico.",
+    "title": "Transform your future with the Undergraduate Degree in Mechanical Engineering at the UAM",
+    "description": "Join the professionals who create and transform the technology that moves the world. Learn to design advanced mechanical systems, implement smart manufacturing and develop sustainable energy solutions with an innovative and technical approach.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Diseño y creación de tecnología avanzada",
-        "description": "Desarrolla habilidades para fabricar máquinas, herramientas y sistemas complejos utilizando herramientas computacionales de última generación y principios de ingeniería de precisión."
+        "title": "Design and creation of advanced technology",
+        "description": "Develop skills to manufacture complex machines, tools, and systems using state-of-the-art computational tools and precision engineering principles."
       },
       {
-        "title": "Enfoque en energías renovables y sostenibilidad",
-        "description": "Prepárate para diseñar sistemas térmicos y mecánicos que optimicen el uso de recursos y minimicen el impacto ambiental en la industria."
+        "title": "Focus on renewable energy and sustainability",
+        "description": "Prepare to design thermal and mechanical systems that optimize the use of resources and minimize the environmental impact in the industry."
       },
       {
-        "title": "Experimentación en laboratorios de alta especialidad",
-        "description": "Fortalece tu perfil profesional con práctica constante en talleres y laboratorios de materiales, termofluidos y procesos de manufactura, donde aplicarás tus conocimientos en entornos industriales reales."
+        "title": "Experimentation in highly specialized laboratories",
+        "description": "Strengthen your professional profile with constant practice in workshops and laboratories of materials, thermofluids and manufacturing processes, where you will apply your knowledge in real industrial environments."
       },
       {
-        "title": "Formación integral para la industria 4.0",
-        "description": "Desarrolla una visión sistémica para gestionar proyectos de ingeniería que respondan a las exigencias de la transformación digital global."
+        "title": "Comprehensive training for industry 4.0",
+        "description": "Develop a systemic vision to manage engineering projects that respond to the demands of the global digital transformation."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector.",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes.",
+        "description": "Connections with professionals and leading companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -131,7 +131,7 @@
     "programName": "Ingeniería Mecánica",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -142,16 +142,16 @@
     "resolutionText": "",
     "items": [
       {
-        "title": "Acreditación de alta Calidad",
-        "name": "Acreditación de alta Calidad",
-        "description": "Resolución 014479 julio 25 de 2022 - 6 años",
+        "title": "High Quality Accreditation",
+        "name": "High Quality Accreditation",
+        "description": "Resolution 014479 July 25, 2022 - 6 years",
         "url": "",
         "enabled": true,
-        "resolutionText": "Resolución 014479 julio 25 de 2022 - 6 años"
+        "resolutionText": "Resolution 014479 July 25, 2022 - 6 years"
       },
       {
-        "title": "Acreditación Internacional ARCU-SUR",
-        "name": "Acreditación Internacional ARCU-SUR",
+        "title": "ARCU-SUR International Accreditation",
+        "name": "ARCU-SUR International Accreditation",
         "description": "",
         "url": "",
         "enabled": false,
@@ -168,14 +168,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/ingenieria-mecanica",
   "catalog": "",
-  "shortTitle": "Ingeniería Mecánica",
+  "shortTitle": "mechanical Engineering",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "1919",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -201,14 +201,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Ingeniería Mecánica",
+    "metaTitle": "mechanical Engineering",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -257,23 +257,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

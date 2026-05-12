@@ -1,5 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
+import {
+  defaultLandingLanguageForBrand,
+  getLandingTemplateCopy,
+  normalizeLandingLanguage,
+  type LandingLanguage,
+} from "./landingLanguage";
 
 export type Brand = {
   slug: string;
@@ -145,6 +151,7 @@ export type LandingHero = {
 export type Landing = {
   slug: string;
   brand: string;
+  language?: LandingLanguage;
   title: string;
   fullTitle: string;
   sourceWebsite?: string;
@@ -225,6 +232,7 @@ export type Landing = {
     enabled?: boolean;
     title?: string;
     description?: string;
+    image?: string;
     hours?: string;
     partners?: string[];
   };
@@ -342,6 +350,118 @@ function toTitleDescriptionItems(
   });
 }
 
+function normalizeTextMatch(value?: string) {
+  return value
+    ?.trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function getMatchTokens(value?: string) {
+  return new Set(
+    (normalizeTextMatch(value) ?? "")
+      .split(" ")
+      .map((token) => token.trim())
+      .filter(
+        (token) =>
+          token.length >= 3 &&
+          !["program", "training", "plus"].includes(token),
+      ),
+  );
+}
+
+function getSlugFromProgramUrl(url?: string) {
+  const value = url?.trim();
+
+  if (!value) return "";
+
+  const segments = value.split("/").filter(Boolean);
+  return segments.at(-1)?.trim().toLowerCase() || "";
+}
+
+function resolveRelatedProgramImage(
+  brandSlug: string,
+  item: { title?: string; url?: string; image?: string },
+) {
+  const currentImage = item.image?.trim();
+
+  if (currentImage) {
+    return currentImage;
+  }
+
+  const brandFolder = getProgramLandingFolder(brandSlug);
+
+  if (!fs.existsSync(brandFolder)) {
+    return "";
+  }
+
+  const targetSlug = getSlugFromProgramUrl(item.url);
+  const targetTitle = normalizeTextMatch(item.title);
+  const targetTokens = getMatchTokens(item.title);
+  const files = fs
+    .readdirSync(brandFolder)
+    .filter((file) => file.endsWith(".json") && file !== programsRegistryFile);
+  let bestImage = "";
+  let bestScore = 0;
+
+  for (const file of files) {
+    const filePath = path.join(brandFolder, file);
+    const content = fs.readFileSync(filePath, "utf8");
+    const landing = JSON.parse(content) as Landing;
+    const slug = landing.slug?.trim().toLowerCase() || file.replace(/\.json$/i, "");
+    const title = normalizeTextMatch(landing.title);
+    const fullTitle = normalizeTextMatch(landing.fullTitle);
+    const sourceWebsite = normalizeTextMatch(landing.sourceWebsite);
+    const slugTokens = getMatchTokens(slug);
+    const titleTokens = getMatchTokens(landing.title);
+    const fullTitleTokens = getMatchTokens(landing.fullTitle);
+
+    if (
+      (targetSlug && slug === targetSlug) ||
+      (targetTitle && (title === targetTitle || fullTitle === targetTitle))
+    ) {
+      return landing.hero?.backgroundImage?.trim() || "";
+    }
+
+    if (
+      targetTitle &&
+      (title?.includes(targetTitle) ||
+        fullTitle?.includes(targetTitle) ||
+        targetTitle.includes(title || "") ||
+        targetTitle.includes(fullTitle || "") ||
+        sourceWebsite?.includes(targetTitle))
+    ) {
+      return landing.hero?.backgroundImage?.trim() || "";
+    }
+
+    if (targetTokens.size > 0) {
+      const candidateTokens = new Set([
+        ...slugTokens,
+        ...titleTokens,
+        ...fullTitleTokens,
+      ]);
+      let score = 0;
+
+      targetTokens.forEach((token) => {
+        if (candidateTokens.has(token)) {
+          score += 1;
+        }
+      });
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestImage = landing.hero?.backgroundImage?.trim() || "";
+      }
+    }
+  }
+
+  return bestScore >= 2 ? bestImage : "";
+}
+
 function toIconTextItems(items?: Array<string | IconTextItem>): IconTextItem[] {
   if (!Array.isArray(items)) return [];
 
@@ -378,14 +498,14 @@ function toProgramInfoItems(
             value: rest.join(":").trim(),
           }
         : {
-            label: `Dato ${index + 1}`,
+            label: `Item ${index + 1}`,
             value: item,
           };
     }
 
     return {
       key: item.key || "",
-      label: item.label || `Dato ${index + 1}`,
+      label: item.label || `Item ${index + 1}`,
       value: item.value || "",
     };
   });
@@ -431,6 +551,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     landing.tuition?.display || hero.price || hero.semesterPrice || "";
   const deliveryModality = landing.delivery?.modality || hero.modality || "";
   const deliverySchedule = landing.delivery?.schedule || landing.schedule || "";
+  const language =
+    normalizeLandingLanguage(landing.language) ||
+    normalizeLandingLanguage(landing.delivery?.language) ||
+    defaultLandingLanguageForBrand(landing.brand);
+  const copy = getLandingTemplateCopy(language, landing.brand);
 
   return {
     ...landing,
@@ -450,10 +575,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     faculty: landing.faculty || "",
     snies: landing.snies || "",
     cipCode: landing.cipCode || "",
+    language,
     delivery: {
       modality: deliveryModality,
       schedule: deliverySchedule,
-      language: landing.delivery?.language || "",
+      language,
       campuses: landing.delivery?.campuses ?? [],
       onlineAvailable: Boolean(landing.delivery?.onlineAvailable),
       hybridAvailable: Boolean(landing.delivery?.hybridAvailable),
@@ -493,7 +619,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       price: hero.price || tuitionDisplay,
       duration: hero.duration || durationDisplay,
       primaryCta: {
-        label: hero.primaryCta?.label || "Request Information",
+        label: hero.primaryCta?.label || copy.heroPrimaryCtaLabel,
         url: hero.primaryCta?.url || "#form",
       },
       secondaryCta: {
@@ -508,70 +634,72 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     summaryCards: landing.summaryCards ?? [],
     programInfo,
     overview: {
-      title: landing.overview?.title || "Program Overview",
+      title: landing.overview?.title || copy.overviewTitle,
       description: landing.overview?.description || hero.description || "",
       image: landing.overview?.image || "",
     },
     whyStudy: {
-      title: landing.whyStudy?.title || "Why Study This Program",
+      title: landing.whyStudy?.title || copy.whyStudyTitle,
       description: landing.whyStudy?.description || "",
       image: landing.whyStudy?.image || "",
       items: toTitleDescriptionItems(landing.whyStudy?.items),
     },
     curriculum: {
-      title: landing.curriculum?.title || "What You Will Learn",
+      title: landing.curriculum?.title || copy.curriculumTitle,
       description: landing.curriculum?.description || "",
       downloadUrl: landing.curriculum?.downloadUrl || "",
       items: toTitleDescriptionItems(landing.curriculum?.items),
     },
     handsOnTraining: {
       enabled: Boolean(landing.handsOnTraining?.enabled),
-      title: landing.handsOnTraining?.title || "Hands-On Training",
+      title: landing.handsOnTraining?.title || copy.handsOnTrainingTitle,
       description: landing.handsOnTraining?.description || "",
       items: toTitleDescriptionItems(landing.handsOnTraining?.items),
     },
     externship: {
       enabled: Boolean(landing.externship?.enabled),
-      title: landing.externship?.title || "Externship",
+      title: landing.externship?.title || copy.externshipTitle,
       description: landing.externship?.description || "",
+      image: landing.externship?.image || "",
       hours: landing.externship?.hours || "",
       partners: landing.externship?.partners ?? [],
     },
     careerOutcomes: {
-      title: careerSource.title || "Career Opportunities",
+      title: careerSource.title || copy.careerOpportunitiesTitle,
       subtitle: careerSource.subtitle || "",
       image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     opportunityToWork: {
-      title: careerSource.title || "Career Opportunities",
+      title: careerSource.title || copy.careerOpportunitiesTitle,
       subtitle: careerSource.subtitle || "",
       image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     studentSupport: {
-      title: supportSource.title || "Student Support",
+      title: supportSource.title || copy.studentSupportTitle,
       description: supportSource.description || "",
       videoUrl: supportSource.videoUrl || "",
       items: toIconTextItems(supportSource.items),
     },
     supportSection: {
-      title: supportSource.title || "Student Support",
+      title: supportSource.title || copy.studentSupportTitle,
+      description: supportSource.description || "",
       videoUrl: supportSource.videoUrl || "",
       items: toIconTextItems(supportSource.items),
     },
     benefits: {
-      title: landing.benefits?.title || "Program Benefits",
+      title: landing.benefits?.title || copy.programBenefitsTitle,
       items: toIconTextItems(landing.benefits?.items),
     },
     admissions: {
-      title: landing.admissions?.title || "Admissions Requirements",
+      title: landing.admissions?.title || copy.admissionsTitle,
       description: landing.admissions?.description || "",
       items: toTitleDescriptionItems(landing.admissions?.items),
     },
     financialAid: {
       enabled: Boolean(landing.financialAid?.enabled),
-      title: landing.financialAid?.title || "Financial Aid Options",
+      title: landing.financialAid?.title || copy.financialAidTitle,
       description: landing.financialAid?.description || "",
       items: toTitleDescriptionItems(landing.financialAid?.items),
     },
@@ -579,11 +707,14 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     faq: landing.faq ?? [],
     certifications: {
       enabled: Boolean(landing.certifications?.enabled),
-      title: landing.certifications?.title || "Accreditations and Certifications",
+      title: landing.certifications?.title || copy.certificationsTitle,
       resolutionText: landing.certifications?.resolutionText || "",
       items: toCertificationItems(landing.certifications?.items),
     },
-    relatedPrograms: landing.relatedPrograms ?? [],
+    relatedPrograms: (landing.relatedPrograms ?? []).map((item) => ({
+      ...item,
+      image: resolveRelatedProgramImage(landing.brand, item),
+    })),
     contact: {
       advisorName: landing.contact?.advisorName || "",
       advisorTitle: landing.contact?.advisorTitle || "",
@@ -592,19 +723,19 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       image: landing.contact?.image || "",
     },
     cta: {
-      title: landing.cta?.title || "Request Information",
+      title: landing.cta?.title || copy.ctaTitle,
       description: landing.cta?.description || "",
-      button: landing.cta?.button || "Apply Now",
+      button: landing.cta?.button || copy.ctaButton,
       secondaryButton: landing.cta?.secondaryButton || "",
     },
     form: {
-      title: landing.form?.title || "Request Information",
+      title: landing.form?.title || copy.formTitle,
       description: landing.form?.description || "",
       scriptUrl: landing.form?.scriptUrl || "",
       scriptCode: landing.form?.scriptCode || "",
       formId: landing.form?.formId || "",
       programName: landing.form?.programName || landing.fullTitle || landing.title,
-      submitLabel: landing.form?.submitLabel || "Submit",
+      submitLabel: landing.form?.submitLabel || copy.formSubmitLabel,
       type: landing.form?.type,
     },
     tracking: {

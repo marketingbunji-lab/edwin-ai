@@ -159,6 +159,14 @@ function normalizeAiLandingData(body: Partial<Landing>): Partial<Landing> {
   return {
     ...body,
     programInfo: normalizeProgramInfo(body.programInfo),
+    externship: {
+      enabled: Boolean(body.externship?.enabled),
+      title: body.externship?.title || "",
+      description: body.externship?.description || "",
+      image: body.externship?.image || "",
+      hours: body.externship?.hours || "",
+      partners: body.externship?.partners ?? [],
+    },
   };
 }
 

@@ -5,18 +5,18 @@
   "status": "draft",
   "updatedAt": "2026-04-30",
   "logoMode": "dark",
-  "title": "Administración Financiera",
-  "fullTitle": "Especialización en Administración Financiera",
-  "programType": "Especialización",
+  "title": "Financial Administration",
+  "fullTitle": "Specialization in Financial Administration",
+  "programType": "Specialization",
   "schedule": "diurna",
   "hero": {
     "eyebrow": "Inscripciones abiertas 2026",
-    "highlight": "¡Maximiza el valor de las empresas!",
-    "title": "Especialización en Administración Financiera",
+    "highlight": "Maximize the value of companies!",
+    "title": "Specialization in Financial Administration",
     "subtitle": "",
-    "description": "Fortalece tus competencias en comprensión y aplicación del lenguaje financiero y en gestión de estrategias que contribuyan al mejoramiento de una compañía.",
-    "supportText": "Recibe más información y conoce las condiciones del beneficio para posgrado.",
-    "modality": "Presencial",
+    "description": "Strengthen your skills in understanding and applying financial language and managing strategies that contribute to the improvement of a company.",
+    "supportText": "Receive more information and know the conditions of the postgraduate benefit.",
+    "modality": "In person",
     "semesterPrice": "",
     "price": "",
     "duration": "",
@@ -35,82 +35,82 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Especialización en Administración Financiera"
+      "label": "Title awarded",
+      "value": "Specialization in Financial Administration"
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar esta especialización?",
-    "description": "Programa orientado a desarrollar habilidades en lenguaje financiero y en la gestión de estrategias que aumenten el valor de las organizaciones.",
+    "title": "Why study this specialization?",
+    "description": "Program aimed at developing skills in financial language and in the management of strategies that increase the value of organizations.",
     "image": "",
     "items": [
       {
-        "title": "Comprensión financiera",
-        "description": "Fortalece competencias en comprensión y aplicación del lenguaje financiero."
+        "title": "Financial understanding",
+        "description": "Strengthens skills in understanding and applying financial language."
       },
       {
-        "title": "Gestión estratégica",
-        "description": "Aprende a diseñar y gestionar estrategias que contribuyan al mejoramiento de la compañía."
+        "title": "Strategic management",
+        "description": "Learn to design and manage strategies that contribute to the improvement of the company."
       },
       {
-        "title": "Impacto en el valor empresarial",
-        "description": "Enfocado en maximizar el valor de las empresas mediante decisiones financieras informadas."
+        "title": "Impact on business value",
+        "description": "Focused on maximizing the value of companies through informed financial decisions."
       },
       {
-        "title": "Formación especializada",
-        "description": "Programa de posgrado con enfoque práctico en áreas clave de administración financiera."
+        "title": "Specialized training",
+        "description": "Graduate program with a practical focus in key areas of financial management."
       },
       {
-        "title": "Oportunidades de networking",
-        "description": "Modalidad presencial que facilita el intercambio con docentes y profesionales del sector."
+        "title": "Networking opportunities",
+        "description": "In-person modality that facilitates exchange with teachers and professionals in the sector."
       }
     ]
   },
   "supportSection": {
-    "title": "Condiciones y cómo acceder",
+    "title": "Conditions and how to access",
     "videoUrl": "",
     "items": [
       {
-        "title": "Beneficio de descuento",
-        "description": "El presente beneficio corresponde a un 45% de descuento para el primer semestre de posgrado, aplicable sobre el valor de la matrícula. Aplica para estudiantes nuevos que formalicen admisión y matrícula en las fechas establecidas.",
+        "title": "Discount benefit",
+        "description": "This benefit corresponds to a 45% discount for the first semester of postgraduate studies, applicable to the registration fee. Applies to new students who formalize admission and registration on the established dates.",
         "icon": ""
       },
       {
-        "title": "Condiciones de aplicación",
-        "description": "El descuento es personal, intransferible y no acumulable con otros beneficios. No es retroactivo y la institución se reserva el derecho de modificar o suspender el beneficio.",
+        "title": "Application conditions",
+        "description": "The discount is personal, non-transferable and cannot be combined with other benefits. It is not retroactive and the institution reserves the right to modify or suspend the benefit.",
         "icon": ""
       },
       {
-        "title": "Modalidad y aplicación escalonada",
-        "description": "Modalidad presencial: el 30% aplica solo para el primer semestre. El beneficio aplica de manera escalonada en los semestres 2026-2 (45%), 2027-1 (35%), 2027-2 (25%) y, para maestrías que apliquen, 2028-2 (25%).",
+        "title": "Modality and staggered application",
+        "description": "In-person modality: 30% applies only to the first semester. The benefit applies in a staggered manner in the semesters 2026-2 (45%), 2027-1 (35%), 2027-2 (25%) and, for master's degrees that apply, 2028-2 (25%).",
         "icon": ""
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios del programa",
+    "title": "Program benefits",
     "items": [
       {
-        "title": "Descuento para primer semestre",
-        "description": "Hasta 45% de descuento para el primer semestre, sujeto a condiciones y fechas de matrícula.",
+        "title": "Discount for first semester",
+        "description": "Up to 45% discount for the first semester, subject to registration conditions and dates.",
         "icon": ""
       },
       {
-        "title": "Desarrollo de competencias financieras",
-        "description": "Formación enfocada en el uso del lenguaje financiero y la gestión estratégica para mejorar el desempeño empresarial.",
+        "title": "Development of financial skills",
+        "description": "Training focused on the use of financial language and strategic management to improve business performance.",
         "icon": ""
       },
       {
-        "title": "Modalidad presencial",
-        "description": "Aprendizaje presencial que facilita el contacto directo con docentes y colegas para intercambio profesional.",
+        "title": "In-person mode",
+        "description": "In-person learning that facilitates direct contact with teachers and colleagues for professional exchange.",
         "icon": ""
       }
     ]
   },
   "cta": {
-    "title": "¿Interesado en la especialización?",
+    "title": "Interested in specialization?",
     "description": "",
-    "button": "Recibe más información",
+    "button": "Receive more information",
     "secondaryButton": ""
   },
   "form": {
@@ -137,14 +137,14 @@
   "sourceWebsite": "/universidad-ean/especializacion-en-administracion-financiera",
   "programUrl": "/universidad-ean/especializacion-en-administracion-financiera",
   "catalog": "",
-  "shortTitle": "Administración Financiera",
+  "shortTitle": "Financial Administration",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -170,14 +170,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Especialización en Administración Financiera",
-    "metaDescription": "Fortalece tus competencias en comprensión y aplicación del lenguaje financiero y en gestión de estrategias que contribuyan al mejoramiento de una compañía.",
+    "metaTitle": "Specialization in Financial Administration",
+    "metaDescription": "Strengthen your skills in understanding and applying financial language and managing strategies that contribute to the improvement of a company.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -186,7 +186,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Fortalece tus competencias en comprensión y aplicación del lenguaje financiero y en gestión de estrategias que contribuyan al mejoramiento de una compañía.",
+    "description": "Strengthen your skills in understanding and applying financial language and managing strategies that contribute to the improvement of a company.",
     "image": ""
   },
   "curriculum": {
@@ -214,23 +214,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "Condiciones y cómo acceder",
+    "title": "Conditions and how to access",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Beneficio de descuento",
-        "description": "El presente beneficio corresponde a un 45% de descuento para el primer semestre de posgrado, aplicable sobre el valor de la matrícula. Aplica para estudiantes nuevos que formalicen admisión y matrícula en las fechas establecidas.",
+        "title": "Discount benefit",
+        "description": "This benefit corresponds to a 45% discount for the first semester of postgraduate studies, applicable to the registration fee. Applies to new students who formalize admission and registration on the established dates.",
         "icon": ""
       },
       {
-        "title": "Condiciones de aplicación",
-        "description": "El descuento es personal, intransferible y no acumulable con otros beneficios. No es retroactivo y la institución se reserva el derecho de modificar o suspender el beneficio.",
+        "title": "Application conditions",
+        "description": "The discount is personal, non-transferable and cannot be combined with other benefits. It is not retroactive and the institution reserves the right to modify or suspend the benefit.",
         "icon": ""
       },
       {
-        "title": "Modalidad y aplicación escalonada",
-        "description": "Modalidad presencial: el 30% aplica solo para el primer semestre. El beneficio aplica de manera escalonada en los semestres 2026-2 (45%), 2027-1 (35%), 2027-2 (25%) y, para maestrías que apliquen, 2028-2 (25%).",
+        "title": "Modality and staggered application",
+        "description": "In-person modality: 30% applies only to the first semester. The benefit applies in a staggered manner in the semesters 2026-2 (45%), 2027-1 (35%), 2027-2 (25%) and, for master's degrees that apply, 2028-2 (25%).",
         "icon": ""
       }
     ]

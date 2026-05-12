@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-22",
-  "title": "Tecnología en Automatización Industrial",
-  "fullTitle": "Tecnología en Automatización Industrial",
+  "title": "Technology in Industrial Automation",
+  "fullTitle": "Technology in Industrial Automation",
   "hero": {
-    "eyebrow": "Estudia en UAM",
-    "highlight": "Tecnología en",
-    "title": "Automatización Industrial",
+    "eyebrow": "Study at UAM",
+    "highlight": "Technology in",
+    "title": "Industrial Automation",
     "subtitle": "",
-    "description": "Impulsa tus oportunidades laborales a través de tu pasión por la electrónica y la mecánica.",
-    "supportText": "Es hora de que aportes en la optimización de los recursos humanos y materiales.",
-    "modality": "Presencial",
+    "description": "Boost your job opportunities through your passion for electronics and mechanics.",
+    "supportText": "It is time for you to contribute to the optimization of human and material resources.",
+    "modality": "In person",
     "semesterPrice": "$2.261.600",
     "price": "$2.261.600",
     "duration": "7 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Tecnología en Automatización Industrial"
+      "label": "Title awarded",
+      "value": "Technology in Industrial Automation"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "99"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "7 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Tecnología en Automatización Industrial en la UAM?",
-    "description": "La Tecnología en Automatización Industrial ofrece una propuesta educativa orientada a la optimización de procesos, el uso de la tecnología y la mejora continua. Fórmate para integrar soluciones innovadoras en diversos sectores con habilidades en electrónica, robótica y sistemas de control.",
+    "title": "Why study Industrial Automation Technology at the UAM?",
+    "description": "Technology in Industrial Automation offers an educational proposal aimed at process optimization, the use of technology and continuous improvement. Train yourself to integrate innovative solutions in various sectors with skills in electronics, robotics and control systems.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Formación para la industria moderna",
-        "description": "Prepárate para enfrentar los desafíos del sector productivo con competencias en automatización, electrónica, mecánica y control de procesos."
+        "title": "Training for modern industry",
+        "description": "Prepare to face the challenges of the productive sector with skills in automation, electronics, mechanics and process control."
       },
       {
-        "title": "Integra tecnología e innovación",
-        "description": "Desarrolla la capacidad de diseñar e implementar soluciones automatizadas que mejoran la eficiencia y la productividad en las organizaciones."
+        "title": "Integrate technology and innovation",
+        "description": "Develop the ability to design and implement automated solutions that improve efficiency and productivity in organizations."
       },
       {
-        "title": "Alta proyección laboral",
-        "description": "Accede a oportunidades en automatización y control, mantenimiento de sistemas industriales, integración electrónica, eficiencia industrial y gestión de proyectos tecnológicos."
+        "title": "High job projection",
+        "description": "Access opportunities in automation and control, industrial system maintenance, electronic integration, industrial efficiency and technological project management."
       },
       {
-        "title": "Estudia los fines de semana",
-        "description": "La jornada de fin de semana facilita avanzar en tu formación tecnológica mientras trabajas o atiendes otras responsabilidades."
+        "title": "Study on weekends",
+        "description": "The weekend shift makes it easier to advance your technological training while you work or attend to other responsibilities."
       },
       {
-        "title": "Aprendizaje práctico y aplicado",
-        "description": "Fortalece tus habilidades en laboratorios, procesos industriales, robótica, PLC, microcontroladores y práctica empresarial."
+        "title": "Practical and applied learning",
+        "description": "Strengthen your skills in laboratories, industrial processes, robotics, PLC, microcontrollers and business practice."
       },
       {
-        "title": "Impulsa proyectos de modernización",
-        "description": "Adquiere herramientas para liderar iniciativas de transformación tecnológica y mejora continua en empresas del sector industrial."
+        "title": "Promotes modernization projects",
+        "description": "Acquire tools to lead technological transformation initiatives and continuous improvement in companies in the industrial sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM impulsamos tu futuro industrial",
+    "title": "At the UAM we promote your industrial future",
     "videoUrl": "",
     "items": [
       {
-        "title": "Plan de estudios integral",
-        "description": "Avanza desde fundamentos de tecnología, matemáticas y circuitos hasta automatización industrial, robótica, PLC, mantenimiento y práctica empresarial.",
+        "title": "Comprehensive curriculum",
+        "description": "Advances from technology fundamentals, mathematics, and circuits to industrial automation, robotics, PLC, maintenance, and business practice.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Experiencias internacionales",
-        "description": "Accede a semestre académico, prácticas profesionales, pasantías de aprendizaje e investigación, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "description": "Access academic semester, professional internships, learning and research internships, academic missions, international volunteering and discounted English courses.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y beneficios",
-        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Mejor Bachiller 2.0, Plan Estudia, Puedo Estudiar y más.",
+        "title": "Scholarships and benefits",
+        "description": "Learn about support opportunities such as Sports Scholarships, Youth + PRO, Endowment Fund, Best Bachelor 2.0, Study Plan, I Can Study and more.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Proyección profesional",
-        "description": "Podrás desempeñarte como especialista en automatización y control, técnico en mantenimiento industrial, integrador de sistemas electrónicos, consultor en eficiencia industrial y gestor de proyectos tecnológicos.",
+        "title": "Professional projection",
+        "description": "You will be able to work as an automation and control specialist, industrial maintenance technician, electronic systems integrator, industrial efficiency consultant and technological project manager.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
         "title": "Experiencias internacionales",
-        "description": "Fortalece tu perfil con semestre académico, prácticas, pasantías, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "description": "Strengthen your profile with an academic semester, internships, internships, academic missions, international volunteering and discounted English courses.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Becas y apoyos UAM",
-        "description": "Accede a alternativas como Becas Deportivas, Becas Jóvenes + PRO, Becas Fondo Patrimonial, Mejor Bachiller 2.0, Si se puede Becas UAM, Plan Estudia, Puedo Estudiar y Becas UTC UAM.",
+        "title": "UAM scholarships and supports",
+        "description": "Access alternatives such as Sports Scholarships, Young + PRO Scholarships, Patrimonial Fund Scholarships, Best Bachelor 2.0, Si se puede UAM Scholarships, Study Plan, I Can Study and UTC UAM Scholarships.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para impulsar tu futuro en la industria?",
+    "title": "Ready to boost your future in the industry?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Tecnología en Automatización",
     "submitLabel": "Submit"
   },
-  "programType": "Tecnológico",
+  "programType": "Technological",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,14 +155,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/tecnologia-automatizacion-industrial",
   "catalog": "",
-  "shortTitle": "Tecnología en Automatización Industrial",
+  "shortTitle": "Technology in Industrial Automation",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "2980",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -188,14 +188,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Tecnología en Automatización Industrial",
-    "metaDescription": "Impulsa tus oportunidades laborales a través de tu pasión por la electrónica y la mecánica.",
+    "metaTitle": "Technology in Industrial Automation",
+    "metaDescription": "Boost your job opportunities through your passion for electronics and mechanics.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Impulsa tus oportunidades laborales a través de tu pasión por la electrónica y la mecánica.",
+    "description": "Boost your job opportunities through your passion for electronics and mechanics.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM impulsamos tu futuro industrial",
+    "title": "At the UAM we promote your industrial future",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Plan de estudios integral",
-        "description": "Avanza desde fundamentos de tecnología, matemáticas y circuitos hasta automatización industrial, robótica, PLC, mantenimiento y práctica empresarial.",
+        "title": "Comprehensive curriculum",
+        "description": "Advances from technology fundamentals, mathematics, and circuits to industrial automation, robotics, PLC, maintenance, and business practice.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
         "title": "Experiencias internacionales",
-        "description": "Accede a semestre académico, prácticas profesionales, pasantías de aprendizaje e investigación, misiones académicas, voluntariado internacional y cursos de inglés con descuentos.",
+        "description": "Access academic semester, professional internships, learning and research internships, academic missions, international volunteering and discounted English courses.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y beneficios",
-        "description": "Conoce oportunidades de apoyo como Becas Deportivas, Jóvenes + PRO, Fondo Patrimonial, Mejor Bachiller 2.0, Plan Estudia, Puedo Estudiar y más.",
+        "title": "Scholarships and benefits",
+        "description": "Learn about support opportunities such as Sports Scholarships, Youth + PRO, Endowment Fund, Best Bachelor 2.0, Study Plan, I Can Study and more.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

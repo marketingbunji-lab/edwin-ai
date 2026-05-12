@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Diseño Industrial",
-  "fullTitle": "Diseño Industrial",
+  "title": "Industrial Design",
+  "fullTitle": "Industrial Design",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Pregrado en",
-    "title": "Diseño Industrial",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "Industrial Design",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
     "duration": "10 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Diseño Industrial"
+      "label": "Title awarded",
+      "value": "Undergraduate in Industrial Design"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "172"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 semestres"
     },
     {
@@ -49,77 +49,77 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Diseño Industrial en la UAM",
-    "description": "Conviértete en un profesional capaz de conceptualizar, diseñar y producir productos funcionales y sostenibles, impactando positivamente la sociedad con tus creaciones y usando tecnología para resolver problemas reales.",
+    "title": "Transform your future with the Undergraduate Degree in Industrial Design at the UAM",
+    "description": "Become a professional capable of conceptualizing, designing and producing functional and sustainable products, positively impacting society with your creations and using technology to solve real problems.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Enfoque en diseño sostenible",
-        "description": "Aprende a desarrollar productos que no solo sean funcionales y estéticamente atractivos, sino que también contribuyan al desarrollo sostenible."
+        "title": "Focus on sustainable design",
+        "description": "Learn how to develop products that are not only functional and aesthetically attractive, but also contribute to sustainable development."
       },
       {
-        "title": "Formación práctica e interdisciplinaria",
-        "description": "Trabaja en proyectos reales y prototipos, integrando teoría y práctica para crear soluciones innovadoras en diferentes sectores industriales."
+        "title": "Practical and interdisciplinary training",
+        "description": "Work on real projects and prototypes, integrating theory and practice to create innovative solutions in different industrial sectors."
       },
       {
-        "title": "Desarrollo de competencias en innovación y creatividad",
-        "description": "Potencia tu creatividad y capacidad de innovación para diseñar productos que resuelvan problemas y mejoren la experiencia del usuario, con un enfoque centrado en las personas."
+        "title": "Development of skills in innovation and creativity",
+        "description": "Boost your creativity and innovation capacity to design products that solve problems and improve the user experience, with a people-centered approach."
       },
       {
-        "title": "Preparación para el emprendimiento y la industria",
-        "description": "Desarrolla habilidades para emprender y liderar procesos de diseño en industrias como la manufactura, tecnología, mobiliario, y más, abriendo un mundo de oportunidades profesionales."
+        "title": "Preparation for entrepreneurship and industry",
+        "description": "Develop skills to undertake and lead design processes in industries such as manufacturing, technology, furniture, and more, opening a world of professional opportunities."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector.",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes.",
+        "description": "Connections with professionals and leading companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -131,7 +131,7 @@
     "programName": "Diseño Industrial",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -142,12 +142,12 @@
     "resolutionText": "",
     "items": [
       {
-        "title": "Acreditación de alta Calidad",
-        "name": "Acreditación de alta Calidad",
-        "description": "004569 - Marzo 11 de 2025 - 6 años",
+        "title": "High Quality Accreditation",
+        "name": "High Quality Accreditation",
+        "description": "004569 - March 11, 2025 - 6 years",
         "url": "",
         "enabled": true,
-        "resolutionText": "004569 - Marzo 11 de 2025 - 6 años"
+        "resolutionText": "004569 - March 11, 2025 - 6 years"
       }
     ]
   },
@@ -160,14 +160,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/diseno-industrial",
   "catalog": "",
-  "shortTitle": "Diseño Industrial",
+  "shortTitle": "Industrial Design",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "1914",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -193,14 +193,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Diseño Industrial",
+    "metaTitle": "Industrial Design",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -249,23 +249,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

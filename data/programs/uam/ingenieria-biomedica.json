@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-23",
-  "title": "Ingeniería Biomédica",
-  "fullTitle": "Ingeniería Biomédica",
+  "title": "Biomedical Engineering",
+  "fullTitle": "Biomedical Engineering",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Pregrado en",
-    "title": "Ingeniería Biomédica",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "Biomedical Engineering",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
     "duration": "10 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Ingeniería Biomédica"
+      "label": "Title awarded",
+      "value": "Undergraduate in Biomedical Engineering"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "177"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 semestres"
     },
     {
@@ -49,77 +49,77 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Ingeniería Biomédica en la UAM",
-    "description": "Forma parte de una disciplina que fusiona la ingeniería y la medicina para crear soluciones tecnológicas mejorando la calidad de vida. Aprende a diseñar dispositivos médicos, prótesis y sistemas de diagnóstico para transformar el cuidado de la salud.",
+    "title": "Transform your future with the Undergraduate Degree in Biomedical Engineering at the UAM",
+    "description": "It is part of a discipline that merges engineering and medicine to create technological solutions that improve the quality of life. Learn how to design medical devices, prosthetics, and diagnostic systems to transform healthcare.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Desarrolla soluciones tecnológicas innovadoras",
-        "description": "Aprende a crear dispositivos médicos, sistemas de monitoreo y tratamientos tecnológicos que transforman el cuidado de la salud."
+        "title": "Develop innovative technological solutions",
+        "description": "Learn how to create medical devices, monitoring systems, and technological treatments that transform healthcare."
       },
       {
-        "title": "Integración de ingeniería y ciencias de la salud",
-        "description": "Conoce y aplica conocimientos en ingeniería, biología, física y medicina para resolver desafíos en el sector salud."
+        "title": "Integration of engineering and health sciences",
+        "description": "Know and apply knowledge in engineering, biology, physics and medicine to solve challenges in the health sector."
       },
       {
-        "title": "Aprendizaje práctico e interdisciplinario",
-        "description": "Aprende investigando y diseñando proyectos interdisciplinarios en laboratorios especializados que aplican soluciones reales a problemáticas actuales."
+        "title": "Practical and interdisciplinary learning",
+        "description": "Learn by researching and designing interdisciplinary projects in specialized laboratories that apply real solutions to current problems."
       },
       {
-        "title": "Lidera proyectos con impacto social en sectores innovadores",
-        "description": "Desarrolla una mentalidad científica y creativa para liderar proyectos en hospitales, empresas tecnológicas, centros de investigación y startups que desarrollan tecnología para la salud."
+        "title": "Lead projects with social impact in innovative sectors",
+        "description": "Develop a scientific and creative mindset to lead projects in hospitals, technology companies, research centers and startups that develop technology for health."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector.",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes.",
+        "description": "Connections with professionals and leading companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -131,7 +131,7 @@
     "programName": "Ingeniería Biomédica",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -142,12 +142,12 @@
     "resolutionText": "",
     "items": [
       {
-        "title": "Acreditación de alta Calidad",
-        "name": "Acreditación de alta Calidad",
-        "description": "Resolución 002299 -Marzo 01 de 2022. Vigencia 6 años",
+        "title": "High Quality Accreditation",
+        "name": "High Quality Accreditation",
+        "description": "Resolution 002299 -March 01, 2022. Validity 6 years",
         "url": "",
         "enabled": true,
-        "resolutionText": "Resolución 002299 -Marzo 01 de 2022. Vigencia 6 años"
+        "resolutionText": "Resolution 002299 -March 01, 2022. Validity 6 years"
       }
     ]
   },
@@ -160,14 +160,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/ingenieria-biomedica",
   "catalog": "",
-  "shortTitle": "Ingeniería Biomédica",
+  "shortTitle": "Biomedical Engineering",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "20040",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -193,14 +193,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Ingeniería Biomédica",
+    "metaTitle": "Biomedical Engineering",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -249,23 +249,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

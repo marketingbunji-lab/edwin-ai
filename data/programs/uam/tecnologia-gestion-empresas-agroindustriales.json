@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-22",
-  "title": "Tecnología en Gestión de Empresas Agroindustriales",
-  "fullTitle": "Tecnología en Gestión de Empresas Agroindustriales",
+  "title": "Technology in Agroindustrial Business Management",
+  "fullTitle": "Technology in Agroindustrial Business Management",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Tecnología en",
-    "title": "Gestión de Empresas Agroindustriales",
+    "eyebrow": "Study at UAM",
+    "highlight": "Technology in",
+    "title": "Agroindustrial Business Management",
     "subtitle": "",
-    "description": "Universidad Acreditada en Alta Calidad",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Modalidad Virtual",
+    "description": "High Quality Accredited University",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "Virtual Mode",
     "semesterPrice": "$ 2.141.950",
     "price": "$ 2.141.950",
     "duration": "6 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Tecnólogo en Gestión de Empresas Agroindustriales"
+      "label": "Title awarded",
+      "value": "Technologist in Agroindustrial Business Management"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "92"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "6 semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con la Tecnología en Gestión de Empresas Agroindustriales en la UAM",
-    "description": "Aprende a administrar empresas del sector agroindustrial de forma integral. Desarrolla habilidades en gestión de recursos, procesos productivos, comercialización y toma de decisiones tácticas para optimizar resultados organizacionales en el sector rural.",
+    "title": "Transform your future with Technology in Agroindustrial Business Management at the UAM",
+    "description": "Learn to manage companies in the agroindustrial sector in a comprehensive manner. Develop skills in resource management, production processes, marketing and tactical decision making to optimize organizational results in the rural sector.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Formación 100% virtual con acompañamiento académico",
-        "description": "Estudia desde cualquier lugar del país con una metodología que combina aprendizaje autónomo, trabajo colaborativo y seguimiento constante de docentes especializados en el sector agroindustrial."
+        "title": "100% virtual training with academic support",
+        "description": "Study from anywhere in the country with a methodology that combines autonomous learning, collaborative work and constant monitoring by teachers specialized in the agroindustrial sector."
       },
       {
-        "title": "Gestión empresarial aplicada al sector agro",
-        "description": "Aprende a administrar recursos humanos, financieros y tecnológicos enfocados directamente en las dinámicas y necesidades de las organizaciones agroindustriales y rurales."
+        "title": "Business management applied to the agricultural sector",
+        "description": "Learn to manage human, financial and technological resources focused directly on the dynamics and needs of agroindustrial and rural organizations."
       },
       {
-        "title": "Integración entre producción y estrategia",
-        "description": "Desarrolla la capacidad de articular los procesos productivos del campo con las decisiones tácticas y operativas de una empresa, conectando comercialización, logística y planificación."
+        "title": "Integration between production and strategy",
+        "description": "Develops the ability to articulate the productive processes of the field with the tactical and operational decisions of a company, connecting marketing, logistics and planning."
       },
       {
-        "title": "Enfoque en desarrollo sostenible",
-        "description": "Fórmate con una visión que integra la gestión organizacional con la responsabilidad ambiental y social, entendiendo el impacto de cada decisión en el desarrollo del sector rural."
+        "title": "Focus on sustainable development",
+        "description": "Train yourself with a vision that integrates organizational management with environmental and social responsibility, understanding the impact of each decision on the development of the rural sector."
       },
       {
-        "title": "Duración de 6 semestres con enfoque práctico",
-        "description": "Completa tu formación tecnológica en 6 semestres con una metodología basada en la resolución de problemas reales del contexto agroindustrial y la toma de decisiones aplicada."
+        "title": "Duration of 6 semesters with practical focus",
+        "description": "Complete your technological training in 6 semesters with a methodology based on the resolution of real problems in the agroindustrial context and applied decision making."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Tecnología en Gestión de Empresas Agroindustriales",
     "submitLabel": "Submit"
   },
-  "programType": "Tecnológico",
+  "programType": "Technological",
   "footerScripts": [],
   "schedule": "virtual",
   "certifications": {
@@ -153,14 +153,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/tecnologia-gestion-empresas-agroindustriales",
   "catalog": "",
-  "shortTitle": "Tecnología en Gestión de Empresas Agroindustriales",
+  "shortTitle": "Technology in Agroindustrial Business Management",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "12761",
   "cipCode": "",
   "delivery": {
-    "modality": "Modalidad Virtual",
+    "modality": "Virtual Mode",
     "schedule": "virtual",
     "language": "",
     "campuses": [],
@@ -186,14 +186,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Tecnología en Gestión de Empresas Agroindustriales",
-    "metaDescription": "Universidad Acreditada en Alta Calidad",
+    "metaTitle": "Technology in Agroindustrial Business Management",
+    "metaDescription": "High Quality Accredited University",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Modalidad Virtual"
+      "value": "Virtual Mode"
     },
     {
       "label": "Schedule",
@@ -214,7 +214,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Universidad Acreditada en Alta Calidad",
+    "description": "High Quality Accredited University",
     "image": ""
   },
   "curriculum": {
@@ -242,23 +242,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

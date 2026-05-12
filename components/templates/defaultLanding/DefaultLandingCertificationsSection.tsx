@@ -12,6 +12,7 @@ type ActiveCertification = {
 
 type Props = {
   activeCertifications: ActiveCertification[];
+  title: string;
   getCertificationLogo: (
     certification: BrandCertification,
     mode?: "light" | "dark",
@@ -21,6 +22,7 @@ type Props = {
 
 export default function DefaultLandingCertificationsSection({
   activeCertifications,
+  title,
   getCertificationLogo,
   logoMode,
 }: Props) {
@@ -29,16 +31,16 @@ export default function DefaultLandingCertificationsSection({
   }
 
   return (
-    <section className={landingSectionSoftClass}>
+    <section className={`${landingSectionSoftClass} bg-white border border-slate-200`}>
       <div className={landingContainerClass}>
-        <div className="flex flex-col gap-5 rounded-[18px] border border-[#EEF2F7] bg-white px-6 py-5 shadow-[0_12px_36px_rgba(17,24,39,0.08)] md:flex-row md:items-center md:justify-between">
-          <div className="shrink-0">
+        <div className="flex flex-col gap-6 rounded-[18px] px-6 md:flex-row md:items-center md:justify-between md:gap-10 lg:px-8">
+          <div className="shrink-0 md:pr-8">
             <h2 className="m-0 text-[clamp(1.5rem,2vw,2rem)] font-black leading-[1.05] text-slate-900">
-              Accreditations
+              {title}
             </h2>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 md:justify-end">
+          <div className="flex flex-1 flex-wrap items-center justify-start gap-6 md:justify-end md:gap-8 lg:gap-10">
             {activeCertifications.map(({ certification, index }) => {
               const certificationLogo = getCertificationLogo(
                 certification,
@@ -53,20 +55,20 @@ export default function DefaultLandingCertificationsSection({
                         href={certification.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex transition-opacity hover:opacity-90"
+                        className="inline-flex items-center justify-center transition-opacity hover:opacity-90"
                         aria-label={certification.name}
                       >
                         <img
                           src={certificationLogo}
                           alt={certification.name}
-                          className="max-h-14 max-w-[160px] object-contain"
+                          className="max-h-14 max-w-[180px] object-contain object-center"
                         />
                       </a>
                     ) : (
                       <img
                         src={certificationLogo}
                         alt={certification.name}
-                        className="max-h-14 max-w-[160px] object-contain"
+                        className="max-h-14 max-w-[180px] object-contain object-center"
                       />
                     )
                   ) : certification.url ? (

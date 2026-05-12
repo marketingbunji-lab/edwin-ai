@@ -3,7 +3,7 @@
   "brand": "pcihealth",
   "template": "DefaultLanding",
   "status": "draft",
-  "updatedAt": "2026-05-11",
+  "updatedAt": "2026-05-12",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -36,18 +36,18 @@
       }
     ]
   },
-  "title": "Medical Assistant | Medical Assistant Training",
-  "fullTitle": "Medical Assistant | Medical Assistant Training",
+  "title": "Medical Assistant",
+  "fullTitle": "Medical Assistant Training",
   "sourceWebsite": "https://www.pcihealth.edu/medical-assistant/",
   "catalog": "",
-  "programType": "Especialización",
+  "programType": "Specialization",
   "schedule": "hybrid",
   "hero": {
-    "eyebrow": "Estudia en PCI Health Training Center",
+    "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
     "title": "Medical Assistant | Medical Assistant Training",
     "subtitle": "",
-    "description": "Medical Assistant! PCI&#039;s medical assistant training will prepare you i as little as 9 months! Call 214-630-0568 to learn more information!",
+    "description": "Medical Assistant! PCI&#039;s medical assistant training will prepare you i as little as 9 months!",
     "supportText": "",
     "modality": "Hybrid",
     "semesterPrice": "",
@@ -96,6 +96,7 @@
   "opportunityToWork": {
     "title": "Career Opportunities",
     "subtitle": "",
+    "image": "",
     "items": [
       {
         "title": "Medical Assistant",
@@ -227,7 +228,7 @@
   "delivery": {
     "modality": "Hybrid",
     "schedule": "hybrid",
-    "language": "en",
+    "language": "in",
     "campuses": [
       "Richardson, TX",
       "Dallas, TX"
@@ -282,7 +283,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "PCI’s Medical Assistant program can train you for a career in healthcare in as little as nine months by teaching essential clinical and administrative skills; the program includes classroom instruction, hands-on lab practice, and a 200-hour externship, and allows students to pursue specializations such as Medical Administrative Office Assistant, Clinic Assistant, Clinic Technical Assistance, Medical Office Management, Phlebotomy, and Physical Therapy Aide.",
+    "description": "PCI's Medical Assistant program can train you for a career in healthcare in as little as nine months by teaching essential clinical and administrative skills; the program includes classroom instruction, hands-on lab practice, and a 200-hour externship, and allows students to pursue specializations such as Medical Administrative Office Assistant, Clinic Assistant, Clinic Technical Assistance, Medical Office Management, Phlebotomy, and Physical Therapy Aide.",
     "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Assistant-Hero.jpg"
   },
   "curriculum": {
@@ -363,12 +364,14 @@
     "enabled": true,
     "title": "Externship",
     "description": "A 200-hour, real-world externship placed with professional partners to apply clinical and administrative skills.",
+    "image": "",
     "hours": "200",
     "partners": []
   },
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
+    "image": "",
     "items": [
       {
         "title": "Medical Assistant",
@@ -455,22 +458,22 @@
     {
       "title": "Medical Office Assistant",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Office-Hero.jpg"
     },
     {
       "title": "Dental Assistant",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
     },
     {
       "title": "Dental Assistant – Hybrid",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
     },
     {
       "title": "ECPP (Medical Training Plus GED)",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/GED-Hero.jpg"
     }
   ],
   "contact": {

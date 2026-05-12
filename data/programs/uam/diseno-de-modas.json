@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-23",
-  "title": "Diseño de Modas",
-  "fullTitle": "Diseño de Modas",
+  "title": "Fashion Design",
+  "fullTitle": "Fashion Design",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Diseño de Modas",
-    "title": "Diseño de Modas",
+    "eyebrow": "Study at UAM",
+    "highlight": "Fashion Design",
+    "title": "Fashion Design",
     "subtitle": "",
-    "description": "Haz moda que mueve ideas, no solo tendencias. Diseña desde la creatividad, la cultura y el propósito profesional.",
-    "supportText": "Programa profesional presencial con enfoque en diseño, producción, emprendimiento e innovación en la industria de la moda.",
-    "modality": "Presencial",
+    "description": "Make fashion that moves ideas, not just trends. Design from creativity, culture and professional purpose.",
+    "supportText": "In-person professional program with a focus on design, production, entrepreneurship and innovation in the fashion industry.",
+    "modality": "In person",
     "semesterPrice": "$5.380.000",
     "price": "$5.380.000",
     "duration": "10 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Diseñador de Modas"
+      "label": "Title awarded",
+      "value": "Fashion designer"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "170"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "10 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Diseño de Modas en la UAM?",
-    "description": "Desarrolla propuestas creativas con visión estratégica para una industria dinámica. Fórmate en diseño, patronaje, textiles, producción, tendencias y gestión de marca para transformar ideas en proyectos reales.",
+    "title": "Why study Fashion Design at the UAM?",
+    "description": "Develop creative proposals with strategic vision for a dynamic industry. Train yourself in design, pattern making, textiles, production, trends and brand management to transform ideas into real projects.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
         "title": "Creatividad aplicada",
-        "description": "Convierte conceptos en colecciones con identidad propia."
+        "description": "Convert concepts into collections with their own identity."
       },
       {
         "title": "Industria real",
-        "description": "Aprende procesos de producción y comercialización."
+        "description": "Learn production and marketing processes."
       },
       {
         "title": "Emprendimiento",
-        "description": "Prepárate para lanzar tu marca o negocio de moda."
+        "description": "Get ready to launch your fashion brand or business."
       },
       {
         "title": "Tendencias y cultura",
-        "description": "Analiza contextos sociales para diseñar con propósito."
+        "description": "Analyze social contexts to design with purpose."
       },
       {
-        "title": "Herramientas técnicas",
-        "description": "Domina patronaje, confección, textiles e ilustración."
+        "title": "Technical tools",
+        "description": "Master pattern making, clothing, textiles and illustration."
       },
       {
-        "title": "Proyección global",
+        "title": "Global projection",
         "description": "Comprende mercados y oportunidades internacionales."
       }
     ]
   },
   "supportSection": {
-    "title": "La UAM impulsa tu crecimiento creativo",
+    "title": "The UAM boosts your creative growth",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad e inspiración global para tu carrera.",
+        "description": "Access mobility and global inspiration for your career.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Aprendizaje práctico",
-        "description": "Desarrolla proyectos, colecciones y portafolio real.",
+        "title": "Practical learning",
+        "description": "Develop projects, collections and real portfolio.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Opciones para facilitar tu formación profesional.",
+        "title": "Scholarships and support",
+        "description": "Options to facilitate your professional training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios de estudiar este programa",
+    "title": "Benefits of studying this program",
     "items": [
       {
         "title": "Perfil competitivo",
-        "description": "Combina creatividad, técnica y visión empresarial.",
+        "description": "Combines creativity, technique and business vision.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
         "title": "Marca personal",
-        "description": "Construye identidad profesional y portafolio sólido.",
+        "description": "Build professional identity and solid portfolio.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Red de oportunidades",
-        "description": "Conecta con la industria creativa y empresarial.",
+        "title": "Opportunity network",
+        "description": "Connect with the creative and business industry.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para convertir tu talento en una carrera con estilo?",
+    "title": "Ready to turn your talent into a stylish career?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Diseño de Modas",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,14 +155,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/diseno-de-modas",
   "catalog": "",
-  "shortTitle": "Diseño de Modas",
+  "shortTitle": "Fashion Design",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "19726",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -188,14 +188,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Diseño de Modas",
-    "metaDescription": "Haz moda que mueve ideas, no solo tendencias. Diseña desde la creatividad, la cultura y el propósito profesional.",
+    "metaTitle": "Fashion Design",
+    "metaDescription": "Make fashion that moves ideas, not just trends. Design from creativity, culture and professional purpose.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Haz moda que mueve ideas, no solo tendencias. Diseña desde la creatividad, la cultura y el propósito profesional.",
+    "description": "Make fashion that moves ideas, not just trends. Design from creativity, culture and professional purpose.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "La UAM impulsa tu crecimiento creativo",
+    "title": "The UAM boosts your creative growth",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad e inspiración global para tu carrera.",
+        "description": "Access mobility and global inspiration for your career.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Aprendizaje práctico",
-        "description": "Desarrolla proyectos, colecciones y portafolio real.",
+        "title": "Practical learning",
+        "description": "Develop projects, collections and real portfolio.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Opciones para facilitar tu formación profesional.",
+        "title": "Scholarships and support",
+        "description": "Options to facilitate your professional training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

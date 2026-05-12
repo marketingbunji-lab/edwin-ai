@@ -40,14 +40,14 @@
   "fullTitle": "Dental Assistant Program",
   "sourceWebsite": "https://www.pcihealth.edu/dental-assistant/",
   "catalog": "",
-  "programType": "Tecnología",
+  "programType": "Technology",
   "schedule": "",
   "hero": {
-    "eyebrow": "Estudia en PCI Health Training Center",
+    "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
     "title": "Dental Assistant Program",
     "subtitle": "",
-    "description": "Complete the Dental Assistant program in as little as 9 months! Call PCI at 214-630-0568 to learn how to become a dental assistant!",
+    "description": "Complete the Dental Assistant program in as little as 9 months!",
     "supportText": "",
     "modality": "Hybrid",
     "semesterPrice": "",
@@ -216,7 +216,7 @@
   "delivery": {
     "modality": "Hybrid",
     "schedule": "hybrid",
-    "language": "en",
+    "language": "in",
     "campuses": [
       "Richardson (Northeast Dallas)"
     ],
@@ -266,7 +266,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Offered only at the Richardson campus, PCI’s Dental Assistant program is a comprehensive, immersive training that combines classroom instruction, hands-on lab work in dental operatories, and an off-site externship to prepare students to perform x-rays, assist with dental procedures, and manage administrative tasks using dental software.",
+    "description": "Offered only at the Richardson campus, PCI's Dental Assistant program is a comprehensive, immersive training that combines classroom instruction, hands-on lab work in dental operations, and an off-site externship to prepare students to perform x-rays, assist with dental procedures, and manage administrative tasks using dental software.",
     "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
   },
   "curriculum": {
@@ -323,6 +323,7 @@
     "enabled": true,
     "title": "Externship",
     "description": "An off-site externship at a dental office provides real-world clinical experience.",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-2-scaled.jpg",
     "hours": "",
     "partners": []
   },

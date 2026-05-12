@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Ingeniería Industrial noche",
-  "fullTitle": "Ingeniería Industrial",
+  "title": "Industrial Engineering night",
+  "fullTitle": "Industrial Engineering",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Pregrado en",
-    "title": "Ingeniería Industrial",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "Industrial Engineering",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$7.608.800",
     "price": "$7.608.800",
     "duration": "12 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Ingeniería Industrial"
+      "label": "Title awarded",
+      "value": "Undergraduate in Industrial Engineering"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "175"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "12 semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Ingeniería Industrial en la UAM",
-    "description": "Adquiere habilidades para diseñar y optimizar procesos productivos y logísticos, mejorando la competitividad y productividad de las organizaciones. Estudia en un horario que se adapta a tus necesidades profesionales y académicas.",
+    "title": "Transform your future with the Undergraduate Degree in Industrial Engineering at the UAM",
+    "description": "Acquire skills to design and optimize productive and logistical processes, improving the competitiveness and productivity of organizations. Study at a schedule that adapts to your professional and academic needs.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Flexibilidad para estudiar y trabajar",
-        "description": "La jornada nocturna, te permite avanzar en tu carrera profesional y actualizarte a las exigencias del mundo laboral, mientras cumples tus compromisos laborales y personales."
+        "title": "Flexibility to study and work",
+        "description": "The night shift allows you to advance in your professional career and update yourself to the demands of the working world, while you fulfill your work and personal commitments."
       },
       {
-        "title": "Formación práctica e interdisciplinaria",
-        "description": "Aprende a través de proyectos reales y laboratorios de simulación, integrando teoría y práctica en áreas clave como logística, calidad y producción."
+        "title": "Practical and interdisciplinary training",
+        "description": "Learn through real projects and simulation laboratories, integrating theory and practice in key areas such as logistics, quality and production."
       },
       {
-        "title": "Enfoque en innovación y sostenibilidad",
-        "description": "Desarrolla competencias en innovación, calidad y sostenibilidad para enfrentar los retos del mundo empresarial moderno y contribuir al desarrollo de soluciones eficientes."
+        "title": "Focus on innovation and sustainability",
+        "description": "Develop skills in innovation, quality and sustainability to face the challenges of the modern business world and contribute to the development of efficient solutions."
       },
       {
-        "title": "Oportunidades en sectores clave de la industria",
-        "description": "Conviértete en un líder capaz de desempeñarte en múltiples industrias, desde manufactura y logística hasta consultoría y el sector público, gracias a la versatilidad de tu formación."
+        "title": "Opportunities in key industry sectors",
+        "description": "Become a leader capable of working in multiple industries, from manufacturing and logistics to consulting and the public sector, thanks to the versatility of your training."
       },
       {
-        "title": "Acreditación ARCU-SUR: Calidad avalada a nivel latinoamericano",
-        "description": "Certificación que avala la calidad académica del programa bajo estándares rigurosos del Mercosur, facilitando el reconocimiento del título en Argentina, Brasil, Chile, Paraguay, Uruguay y Bolivia."
+        "title": "ARCU-SUR Accreditation: Quality endorsed at the Latin American level",
+        "description": "Certification that guarantees the academic quality of the program under rigorous Mercosur standards, facilitating the recognition of the title in Argentina, Brazil, Chile, Paraguay, Uruguay and Bolivia."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico.",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector.",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes.",
+        "description": "Connections with professionals and leading companies.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Ingeniería Industrial Noche",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -146,20 +146,20 @@
     "resolutionText": "",
     "items": [
       {
-        "title": "Acreditación de alta Calidad",
-        "name": "Acreditación de alta Calidad",
-        "description": "Resolución 015160 - agosto 02 de 2022 - 6 años",
+        "title": "High Quality Accreditation",
+        "name": "High Quality Accreditation",
+        "description": "Resolution 015160 - August 02, 2022 - 6 years",
         "url": "",
         "enabled": true,
-        "resolutionText": "Resolución 015160 - agosto 02 de 2022 - 6 años"
+        "resolutionText": "Resolution 015160 - August 02, 2022 - 6 years"
       },
       {
-        "title": "Acreditación Internacional ARCU-SUR",
-        "name": "Acreditación Internacional ARCU-SUR",
-        "description": "Acuerdo 031 - junio 15 de 2022 - 6 años",
+        "title": "ARCU-SUR International Accreditation",
+        "name": "ARCU-SUR International Accreditation",
+        "description": "Agreement 031 - June 15, 2022 - 6 years",
         "url": "",
         "enabled": true,
-        "resolutionText": "Acuerdo 031 - junio 15 de 2022 - 6 años"
+        "resolutionText": "Agreement 031 - June 15, 2022 - 6 years"
       }
     ]
   },
@@ -172,14 +172,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/ingenieria-industrial-noche",
   "catalog": "",
-  "shortTitle": "Ingeniería Industrial noche",
+  "shortTitle": "Industrial Engineering night",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "90856",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "nocturna",
     "language": "",
     "campuses": [],
@@ -205,14 +205,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Ingeniería Industrial",
+    "metaTitle": "Industrial Engineering",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -261,23 +261,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones.",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados.",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales.",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

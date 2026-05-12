@@ -4,15 +4,15 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Especialización en Gerencia de Finanzas",
-  "fullTitle": "Especialización en Gerencia de Finanzas",
+  "title": "Specialization in Finance Management",
+  "fullTitle": "Specialization in Finance Management",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Especialización en",
-    "title": "Gerencia de Finanzas",
+    "eyebrow": "Study at UAM",
+    "highlight": "Specialization in",
+    "title": "Finance Management",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
+    "supportText": "At the UAM we build stories with passion!",
     "modality": "100% virtual",
     "semesterPrice": "$7.784.500",
     "price": "$7.784.500",
@@ -32,98 +32,98 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Especialista en Gerencia de Finanzas"
+      "label": "Title awarded",
+      "value": "Finance Management Specialist"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "24"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "2 Semestres"
     },
     {
       "label": "SNIES",
-      "value": "116539 Res. 024108 - 2023 - 7 años"
+      "value": "116539 Res. 024108 - 2023 - 7 years"
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Especialización en Gerencia de Finanzas en la UAM?",
+    "title": "Why study Specialization in Financial Management at the UAM?",
     "description": "",
     "image": "https://assets.unlayer.com/projects/0/1762887836825-chico-U.png",
     "items": [
       {
-        "title": "Desarrolla una gestión financiera estratégica",
-        "description": "Aprende a dirigir estructuras de inversión y financiamiento que impulsen el crecimiento empresarial con una visión estratégica y analítica."
+        "title": "Develop strategic financial management",
+        "description": "Learn to direct investment and financing structures that drive business growth with a strategic and analytical vision."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       },
       {
-        "title": "Toma decisiones ágiles y precisas",
-        "description": "Adquiere herramientas para evaluar riesgos, analizar indicadores y responder con eficacia ante entornos cambiantes."
+        "title": "Make agile and precise decisions",
+        "description": "Acquire tools to evaluate risks, analyze indicators and respond effectively to changing environments."
       },
       {
-        "title": "Desarrolla liderazgo financiero",
-        "description": "Adquiere herramientas para evaluar riesgos, analizar indicadores y responder con eficacia ante entornos cambiantes."
+        "title": "Develop financial leadership",
+        "description": "Acquire tools to evaluate risks, analyze indicators and respond effectively to changing environments."
       },
       {
-        "title": "Optimiza estructuras de inversión y financiamiento",
-        "description": "Analiza y mejora la gestión de capital, maximizando el valor corporativo y minimizando los riesgos financieros."
+        "title": "Optimize investment and financing structures",
+        "description": "Analyzes and improves capital management, maximizing corporate value and minimizing financial risks."
       },
       {
-        "title": "Proyéctate como consultor o asesor financiero",
-        "description": "Prepárate para liderar procesos de consultoría y asesoramiento en inversiones dentro del mundo financiero actual."
+        "title": "Project yourself as a consultant or financial advisor",
+        "description": "Prepare to lead investment consulting and advisory processes within today's financial world."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://assets.unlayer.com/projects/0/1762889493926-icon-premanencia.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://assets.unlayer.com/projects/0/1762889555571-icon-habilidades.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://assets.unlayer.com/projects/0/1762889575677-icon-networking.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Esp. en Gerencia de Finanzas - Virtual",
     "submitLabel": "Submit"
   },
-  "programType": "Especialización",
+  "programType": "Specialization",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,11 +155,11 @@
   "logoMode": "dark",
   "programUrl": "/uam/especializacion-gerencia-finanzas",
   "catalog": "",
-  "shortTitle": "Especialización en Gerencia de Finanzas",
+  "shortTitle": "Specialization in Finance Management",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
-  "snies": "116539 Res. 024108 - 2023 - 7 años",
+  "snies": "116539 Res. 024108 - 2023 - 7 years",
   "cipCode": "",
   "delivery": {
     "modality": "100% virtual",
@@ -188,7 +188,7 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Especialización en Gerencia de Finanzas",
+    "metaTitle": "Specialization in Finance Management",
     "metaDescription": "",
     "keywords": []
   },
@@ -211,7 +211,7 @@
     },
     {
       "label": "SNIES",
-      "value": "116539 Res. 024108 - 2023 - 7 años"
+      "value": "116539 Res. 024108 - 2023 - 7 years"
     }
   ],
   "overview": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://assets.unlayer.com/projects/0/1762888369167-icon-financiacion.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://assets.unlayer.com/projects/0/1762888645144-icon-becas.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://assets.unlayer.com/projects/0/1762888661828-icon-beneficios.png"
       }
     ]

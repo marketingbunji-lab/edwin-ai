@@ -4,15 +4,15 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-24",
-  "title": "Tecnología en Gestión de Operaciones Logísticas",
-  "fullTitle": "Tecnología en Gestión de Operaciones Logísticas",
+  "title": "Technology in Logistics Operations Management",
+  "fullTitle": "Technology in Logistics Operations Management",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Tecnología en",
-    "title": "Gestión de Operaciones Logísticas",
+    "eyebrow": "Study at UAM",
+    "highlight": "Technology in",
+    "title": "Logistics Operations Management",
     "subtitle": "",
-    "description": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
-    "supportText": "¡En la UAM construimos historias con pasión!",
+    "description": "It is part of the engine that drives business efficiency. Learn to optimize logistics processes, implement sustainable strategies and develop a comprehensive vision of the supply chain.",
+    "supportText": "At the UAM we build stories with passion!",
     "modality": "100% virtual",
     "semesterPrice": "$2.106.550",
     "price": "$2.106.550",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Tecnología en Gestión de Operaciones Logísticas"
+      "label": "Title awarded",
+      "value": "Technology in Logistics Operations Management"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "92"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "6 Semestres"
     },
     {
@@ -49,85 +49,85 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Tecnología en Gestión de Operaciones Logísticas en la UAM?",
-    "description": "¡Transforma tu futuro con la Tecnología en Gestión de Operaciones Logísticas en la UAM!",
+    "title": "Why study Technology in Logistics Operations Management at the UAM?",
+    "description": "Transform your future with Technology in Logistics Operations Management at the UAM!",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762887836825-chico-U.png",
     "items": [
       {
         "title": "Optimiza procesos y recursos",
-        "description": "Aprende a analizar, planificar y mejorar los flujos logísticos dentro de las organizaciones, reduciendo costos y tiempos de entrega."
+        "description": "Learn to analyze, plan and improve logistics flows within organizations, reducing costs and delivery times."
       },
       {
-        "title": "Conviértete en un tecnólogo estratégico",
-        "description": "Desarrolla habilidades que te permitirán gestionar operaciones con visión analítica, liderazgo y enfoque en resultados."
+        "title": "Become a strategic technologist",
+        "description": "Develop skills that will allow you to manage operations with analytical vision, leadership and focus on results."
       },
       {
-        "title": "Aplica conocimientos prácticos y reales",
-        "description": "Integra teoría y práctica en entornos reales, enfrentando los retos actuales del comercio y la logística global."
+        "title": "Apply practical and real knowledge",
+        "description": "It integrates theory and practice in real environments, facing the current challenges of global trade and logistics."
       },
       {
         "title": "Aporta al desarrollo sostenible",
-        "description": "Impulsa estrategias logísticas responsables que mejoran la eficiencia sin comprometer el impacto ambiental."
+        "description": "Promotes responsible logistics strategies that improve efficiency without compromising environmental impact."
       },
       {
-        "title": "Prepárate para el mundo empresarial global",
-        "description": "Adquiere competencias que te abrirán puertas en compañías nacionales e internacionales enfocadas en logística, transporte y distribución."
+        "title": "Prepare for the global business world",
+        "description": "Acquire skills that will open doors for you in national and international companies focused on logistics, transportation and distribution."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       },
       {
-        "title": "Estudio de homologación",
-        "description": "Al graduarte podrás escalar en tu formación académica con los programas que ofrece la Universidad mediante el proceso de reconocimiento de créditos."
+        "title": "Homologation study",
+        "description": "Upon graduating, you will be able to advance your academic training with the programs offered by the University through the credit recognition process."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -139,7 +139,7 @@
     "programName": "Tecnología en Gestión de Operaciones Logísticas - Virtual",
     "submitLabel": "Submit"
   },
-  "programType": "Tecnológico",
+  "programType": "Technological",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -159,7 +159,7 @@
   "logoMode": "dark",
   "programUrl": "/uam/tecnologia-gestion-operaciones-logisticas",
   "catalog": "",
-  "shortTitle": "Tecnología en Gestión de Operaciones Logísticas",
+  "shortTitle": "Technology in Logistics Operations Management",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
@@ -192,8 +192,8 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Tecnología en Gestión de Operaciones Logísticas",
-    "metaDescription": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
+    "metaTitle": "Technology in Logistics Operations Management",
+    "metaDescription": "It is part of the engine that drives business efficiency. Learn to optimize logistics processes, implement sustainable strategies and develop a comprehensive vision of the supply chain.",
     "keywords": []
   },
   "summaryCards": [
@@ -220,7 +220,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Forma parte del motor que impulsa la eficiencia empresarial. Aprende a optimizar procesos logísticos, implementar estrategias sostenibles y desarrollar una visión integral de la cadena de suministro.",
+    "description": "It is part of the engine that drives business efficiency. Learn to optimize logistics processes, implement sustainable strategies and develop a comprehensive vision of the supply chain.",
     "image": ""
   },
   "curriculum": {
@@ -248,23 +248,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu carrera",
+    "title": "At the UAM we support your career",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/uam-icon-benefiocios-03.png"
       }
     ]

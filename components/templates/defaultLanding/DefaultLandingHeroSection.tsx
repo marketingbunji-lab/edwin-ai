@@ -7,8 +7,6 @@ import type { LabelValueItem } from "@/lib/data";
 import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSection";
 import {
   landingContainerClass,
-  landingPrimaryButtonClass,
-  landingSecondaryButtonClass,
 } from "./classes";
 
 type Props = {
@@ -24,6 +22,12 @@ type Props = {
   title: string;
   form: NonNullable<Landing["form"]>;
   ctaButton: string;
+  formTitle: string;
+  formDescription: string;
+  submitLabel: string;
+  fullNameLabel: string;
+  phoneLabel: string;
+  emailLabel: string;
   primaryColor: string;
   mode: "preview" | "export";
   hasConfiguredForm: boolean;
@@ -48,6 +52,12 @@ export default function DefaultLandingHeroSection({
   title,
   form,
   ctaButton,
+  formTitle,
+  formDescription,
+  submitLabel,
+  fullNameLabel,
+  phoneLabel,
+  emailLabel,
   primaryColor,
   mode,
   hasConfiguredForm,
@@ -58,9 +68,6 @@ export default function DefaultLandingHeroSection({
   backgroundImage,
   heroOverlayColor,
 }: Props) {
-  const hasHeroActions = Boolean(
-    (primaryCtaLabel && primaryCtaUrl) || (secondaryCtaLabel && secondaryCtaUrl),
-  );
   const heroBackground = backgroundImage
     ? `linear-gradient(115deg, ${heroOverlayColor} 0%, ${heroOverlayColor} 42%, rgba(17, 24, 39, 0.28) 100%), url("${backgroundImage}") center / cover`
     : `linear-gradient(115deg, ${heroOverlayColor} 0%, var(--landing-primary) 50%, color-mix(in srgb, var(--landing-primary) 75%, transparent) 100%)`;
@@ -81,7 +88,7 @@ export default function DefaultLandingHeroSection({
               />
             ) : null}
 
-            <p className="mb-[18px] inline-flex items-center rounded-full bg-[var(--landing-secondary)] px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-secondary-text)]">
+            <p className="mb-[18px] inline-flex items-center border border-[2px] border-[#FFFFFF] rounded-full px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-secondary-text)]">
               {eyebrowText}
             </p>
 
@@ -100,7 +107,7 @@ export default function DefaultLandingHeroSection({
             ) : null}
 
             {heroDescription ? (
-              <p className="mt-6 max-w-[720px] text-xl leading-[1.55] text-[var(--landing-primary-text)] opacity-90">
+              <p className="mt-6 mb-6 max-w-[720px] text-xl leading-[1.55] text-[var(--landing-primary-text)] opacity-90">
                 {heroDescription}
               </p>
             ) : null}
@@ -111,20 +118,6 @@ export default function DefaultLandingHeroSection({
               </p>
             ) : null}
 
-            {hasHeroActions ? (
-              <div className="mb-7 mt-7 flex flex-wrap gap-3">
-                {primaryCtaLabel && primaryCtaUrl ? (
-                  <a href={primaryCtaUrl} className={landingPrimaryButtonClass}>
-                    {primaryCtaLabel}
-                  </a>
-                ) : null}
-                {secondaryCtaLabel && secondaryCtaUrl ? (
-                  <a href={secondaryCtaUrl} className={landingSecondaryButtonClass}>
-                    {secondaryCtaLabel}
-                  </a>
-                ) : null}
-              </div>
-            ) : null}
 
             {summaryItems.length > 0 ? (
               <DefaultLandingSummaryCardsSection
@@ -138,12 +131,14 @@ export default function DefaultLandingHeroSection({
             id="default-form"
             className="rounded-3xl bg-white p-6 text-slate-900 shadow-[0_24px_80px_rgba(0,0,0,0.18)]"
           >
-            {form.programName || fullTitle ? (
-              <h2 className="mb-2 text-2xl leading-[1.15]">
-                {form.programName || fullTitle}
-              </h2>
-            ) : null}
-            {fullTitle ? <p className="mb-[18px] leading-6 text-slate-600">{fullTitle}</p> : null}
+            <div className="mb-5 text-center">
+            <h2 className="mb-2 text-2xl leading-[1.15]">
+              {formTitle}
+            </h2>
+            <p className="leading-6 text-slate-600">
+              {formDescription}
+            </p>
+            </div>
             {hasConfiguredForm && mode === "export" ? (
               form.scriptCode ? (
                 <div
@@ -162,7 +157,11 @@ export default function DefaultLandingHeroSection({
               <GenericLeadForm
                 programName={form.programName || fullTitle || title}
                 primaryColor={primaryColor}
-                buttonText={ctaButton || "Submit"}
+                buttonText={ctaButton || submitLabel}
+                submitLabel={submitLabel}
+                fullNameLabel={fullNameLabel}
+                phoneLabel={phoneLabel}
+                emailLabel={emailLabel}
               />
             )}
           </div>

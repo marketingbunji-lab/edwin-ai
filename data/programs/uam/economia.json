@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-23",
-  "title": "Economía",
-  "fullTitle": "Economía",
+  "title": "Economy",
+  "fullTitle": "Economy",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Economía",
-    "title": "Economía",
+    "eyebrow": "Study at UAM",
+    "highlight": "Economy",
+    "title": "Economy",
     "subtitle": "",
-    "description": "Convierte los datos en decisiones estratégicas y lidera transformaciones en empresas, gobiernos y mercados.",
-    "supportText": "Programa profesional presencial con enfoque en análisis económico, finanzas, política pública e innovación.",
-    "modality": "Presencial",
+    "description": "Turn data into strategic decisions and lead transformations in companies, governments and markets.",
+    "supportText": "In-person professional program with a focus on economic analysis, finance, public policy and innovation.",
+    "modality": "In person",
     "semesterPrice": "$5.194.000",
     "price": "$5.194.000",
     "duration": "9 Semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
+      "label": "Title awarded",
       "value": "Economista"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "156"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "9 Semestres"
     },
     {
@@ -49,81 +49,81 @@
     }
   ],
   "whyStudy": {
-    "title": "¿Por qué estudiar Economía en la UAM?",
-    "description": "Desarrolla pensamiento analítico para interpretar mercados, diseñar estrategias sostenibles y tomar decisiones con impacto real. Fórmate en microeconomía, macroeconomía, econometría, finanzas y análisis de datos.",
+    "title": "Why study Economics at the UAM?",
+    "description": "Develop analytical thinking to interpret markets, design sustainable strategies and make decisions with real impact. Train yourself in microeconomics, macroeconomics, econometrics, finance and data analysis.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
         "title": "Alta demanda laboral",
-        "description": "Perfil requerido en empresas, banca, consultoría y sector público."
+        "description": "Profile required in companies, banking, consulting and public sector."
       },
       {
-        "title": "Análisis de datos",
-        "description": "Aprende a modelar escenarios y anticipar tendencias económicas."
+        "title": "Data analysis",
+        "description": "Learn to model scenarios and anticipate economic trends."
       },
       {
         "title": "Finanzas y mercados",
-        "description": "Fortalece competencias para inversión y crecimiento organizacional."
+        "description": "Strengthens skills for investment and organizational growth."
       },
       {
         "title": "Impacto social",
-        "description": "Participa en soluciones para comunidades y desarrollo regional."
+        "description": "Participate in solutions for communities and regional development."
       },
       {
-        "title": "Visión estratégica",
-        "description": "Convierte información compleja en decisiones inteligentes."
+        "title": "Strategic vision",
+        "description": "Turn complex information into intelligent decisions."
       },
       {
-        "title": "Proyección global",
-        "description": "Comprende dinámicas internacionales y competitividad."
+        "title": "Global projection",
+        "description": "Understands international dynamics and competitiveness."
       }
     ]
   },
   "supportSection": {
-    "title": "La UAM impulsa tu crecimiento profesional",
+    "title": "The UAM promotes your professional growth",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad y experiencias académicas globales.",
+        "description": "Access mobility and global academic experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Formación aplicada",
-        "description": "Aprende con casos reales y enfoque práctico.",
+        "title": "Applied training",
+        "description": "Learn with real cases and a practical approach.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Conoce alternativas para financiar tu formación.",
+        "title": "Scholarships and support",
+        "description": "Learn about alternatives to finance your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios de estudiar este programa",
+    "title": "Benefits of studying this program",
     "items": [
       {
         "title": "Perfil competitivo",
-        "description": "Destácate con habilidades analíticas y estratégicas.",
+        "description": "Stand out with analytical and strategic skills.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
         "title": "Liderazgo profesional",
-        "description": "Prepárate para roles de alto impacto organizacional.",
+        "description": "Prepare for roles with high organizational impact.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
-        "title": "Red de oportunidades",
-        "description": "Conecta con sectores públicos y privados.",
+        "title": "Opportunity network",
+        "description": "Connect with public and private sectors.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para impulsar decisiones que transforman?",
+    "title": "Ready to drive transformative decisions?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -135,7 +135,7 @@
     "programName": "Economía",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -155,14 +155,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/economia",
   "catalog": "",
-  "shortTitle": "Economía",
+  "shortTitle": "Economy",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "90753",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -188,14 +188,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Economía",
-    "metaDescription": "Convierte los datos en decisiones estratégicas y lidera transformaciones en empresas, gobiernos y mercados.",
+    "metaTitle": "Economy",
+    "metaDescription": "Turn data into strategic decisions and lead transformations in companies, governments and markets.",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -216,7 +216,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Convierte los datos en decisiones estratégicas y lidera transformaciones en empresas, gobiernos y mercados.",
+    "description": "Turn data into strategic decisions and lead transformations in companies, governments and markets.",
     "image": ""
   },
   "curriculum": {
@@ -244,23 +244,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "La UAM impulsa tu crecimiento profesional",
+    "title": "The UAM promotes your professional growth",
     "description": "",
     "videoUrl": "",
     "items": [
       {
         "title": "Experiencia internacional",
-        "description": "Accede a movilidad y experiencias académicas globales.",
+        "description": "Access mobility and global academic experiences.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Formación aplicada",
-        "description": "Aprende con casos reales y enfoque práctico.",
+        "title": "Applied training",
+        "description": "Learn with real cases and a practical approach.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Becas y apoyo",
-        "description": "Conoce alternativas para financiar tu formación.",
+        "title": "Scholarships and support",
+        "description": "Learn about alternatives to finance your training.",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

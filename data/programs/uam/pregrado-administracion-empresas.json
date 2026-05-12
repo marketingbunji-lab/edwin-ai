@@ -4,16 +4,16 @@
   "template": "DefaultLanding",
   "status": "draft",
   "updatedAt": "2026-04-27",
-  "title": "Administración de Empresas",
-  "fullTitle": "Pregrado en Administración de Empresas",
+  "title": "Business Administration",
+  "fullTitle": "Undergraduate in Business Administration",
   "hero": {
-    "eyebrow": "Estudia en la UAM",
-    "highlight": "Pregrado en",
-    "title": "Administración de Empresas",
+    "eyebrow": "Study at UAM",
+    "highlight": "Undergraduate in",
+    "title": "Business Administration",
     "subtitle": "",
     "description": "",
-    "supportText": "¡En la UAM construimos historias con pasión!",
-    "modality": "Presencial",
+    "supportText": "At the UAM we build stories with passion!",
+    "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
     "duration": "9 semestres",
@@ -32,15 +32,15 @@
   },
   "programInfo": [
     {
-      "label": "Titulo otorgado",
-      "value": "Pregrado en Administración de Empresas"
+      "label": "Title awarded",
+      "value": "Undergraduate in Business Administration"
     },
     {
-      "label": "Creditos academicos",
+      "label": "academic credits",
       "value": "153"
     },
     {
-      "label": "Duracion",
+      "label": "Duration",
       "value": "9 semestres"
     },
     {
@@ -49,77 +49,77 @@
     }
   ],
   "whyStudy": {
-    "title": "Transforma tu futuro con el Pregrado en Administración de Empresas en la UAM",
-    "description": "Forma parte de los líderes que transforman el mundo empresarial mediante la innovación y la estrategia. Desarrolla habilidades para dirigir organizaciones sostenibles, gestionar el talento y crear modelos de negocio competitivos.",
+    "title": "Transform your future with the Undergraduate in Business Administration at the UAM",
+    "description": "Be part of the leaders who transform the business world through innovation and strategy. Develop skills to lead sustainable organizations, manage talent and create competitive business models.",
     "image": "https://bunjigrowth.io/wp-content/uploads/2026/04/1762954045813-chica-U.png",
     "items": [
       {
-        "title": "Enfoque sólido en emprendimiento e innovación",
-        "description": "Desarrolla tu espíritu empresarial con herramientas para escalar modelos de negocio exitosos. Convierte tus ideas en proyectos reales con el respaldo de nuestro ecosistema de emprendimiento e innovación."
+        "title": "Solid focus on entrepreneurship and innovation",
+        "description": "Develop your entrepreneurial spirit with tools to scale successful business models. Turn your ideas into real projects with the support of our entrepreneurship and innovation ecosystem."
       },
       {
-        "title": "Formación integral para la toma de decisiones",
-        "description": "Domina áreas clave de la gestión de finanzas, mercadeo, talento humano y operaciones estratégicas, aplicando un enfoque integral que te permite tomar decisiones estratégicas y liderar organizaciones con visión sostenible."
+        "title": "Comprehensive training for decision making",
+        "description": "Master key areas of finance, marketing, human talent and strategic operations management, applying a comprehensive approach that allows you to make strategic decisions and lead organizations with a sustainable vision."
       },
       {
-        "title": "Preparación para el entorno empresarial global",
-        "description": "Desarrolla habilidades para liderar en mercados nacionales e internacionales, manejando con eficacia la negociación y gestión de empresas en contextos globalizados y en constante cambio."
+        "title": "Prepare for the global business environment",
+        "description": "Develop skills to lead in national and international markets, effectively managing the negotiation and management of companies in globalized and constantly changing contexts."
       },
       {
-        "title": "Aplicación práctica en casos reales",
-        "description": "Aprende mediante proyectos reales, aplicando tus conocimientos a desafíos concretos de empresas nacionales e internacionales, para fortalecer tus habilidades directivas."
+        "title": "Practical application in real cases",
+        "description": "Learn through real projects, applying your knowledge to specific challenges of national and international companies, to strengthen your management skills."
       },
       {
-        "title": "Estudia en una institución con más de 45 años de experiencia",
-        "description": "Formación acreditada, reconocida y con alto prestigio en el sector educativo."
+        "title": "Study at an institution with more than 45 years of experience",
+        "description": "Accredited, recognized training with high prestige in the educational sector."
       }
     ]
   },
   "supportSection": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]
   },
   "benefits": {
-    "title": "Algunos de los beneficios que tendrás con nosotros",
+    "title": "Some of the benefits you will have with us",
     "items": [
       {
-        "title": "Programa de Permanencia y Graduación",
-        "description": "Acompañamiento con diferentes servicios que facilitan el desarrollo personal y académico",
+        "title": "Permanence and Graduation Program",
+        "description": "Accompaniment with different services that facilitate personal and academic development",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237454690-icono-investigacion-vanguardista.png"
       },
       {
-        "title": "Desarrollo de Habilidades Especializadas",
-        "description": "Formación práctica con expertos del sector",
+        "title": "Development of Specialized Skills",
+        "description": "Practical training with industry experts",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237467665-icono-desarrolllo-de-habilidades-especializadas.png"
       },
       {
         "title": "Networking Profesional",
-        "description": "Conexiones con profesionales y empresas líderes",
+        "description": "Connections with professionals and leading companies",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/1716237475627-icono-networking-profesional.png"
       }
     ]
   },
   "cta": {
-    "title": "¿Listo para transformar tu futuro?",
+    "title": "Ready to transform your future?",
     "description": "",
-    "button": "¡Inscríbete ahora!",
+    "button": "Sign up now!",
     "secondaryButton": ""
   },
   "form": {
@@ -131,7 +131,7 @@
     "programName": "Pregrado en Administración de Empresas",
     "submitLabel": "Submit"
   },
-  "programType": "Pregrado",
+  "programType": "Undergraduate",
   "footerScripts": [
     "<!--dataLayer-->\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function () {\n            const observer = new MutationObserver(function () {\n                const nombreInput = document.querySelector('input[placeholder=\"Nombre*\"]');\n                const apellidosInput = document.querySelector('input[placeholder=\"Apellidos*\"]');\n                const emailInput = document.querySelector('input[placeholder=\"Email*\"]');\n                const telefonoInput = document.querySelector('input[placeholder=\"321 1234567\"]');\n                const programaSelect = [...document.querySelectorAll('select')].find(select =>\n                    [...select.options].some(option => option.text.trim() === TARGET_TEXT) || select.value.trim() !== \"\"\n                );\n                const btnSubscribe = document.querySelector('.btn-subscribe');\n\n                if (\n                    nombreInput &&\n                    apellidosInput &&\n                    emailInput &&\n                    telefonoInput &&\n                    programaSelect &&\n                    btnSubscribe &&\n                    !btnSubscribe.dataset.listenerAdded\n                ) {\n                    console.log(\"Formulario Clientify detectado. Registrando listener...\");\n\n                    btnSubscribe.dataset.listenerAdded = \"true\";\n\n                    btnSubscribe.addEventListener(\"click\", function () {\n                        const nombre = nombreInput.value.trim();\n                        const apellidos = apellidosInput.value.trim();\n                        const email = emailInput.value.trim();\n                        const telefono = telefonoInput.value.trim();\n                        const selectedOption = programaSelect.options[programaSelect.selectedIndex];\n                        const programa = (selectedOption?.text || programaSelect.value || \"\").trim();\n\n                        const allFilled =\n                            nombre !== \"\" &&\n                            apellidos !== \"\" &&\n                            email !== \"\" &&\n                            telefono !== \"\" &&\n                            programa !== \"\";\n\n                        if (!allFilled) {\n                            console.log(\"Faltan campos. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        const emailValido = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email);\n                        if (!emailValido) {\n                            console.log(\"Email inválido. No se dispara dataLayer.\");\n                            return;\n                        }\n\n                        window.dataLayer = window.dataLayer || [];\n                        window.dataLayer.push({\n                            event: \"form_subscribe\",\n                            form_name: \"clientify_superform\",\n                            nombre: nombre,\n                            apellidos: apellidos,\n                            email: email,\n                            telefono: telefono,\n                            programa: programa\n                        });\n\n                        console.log(\"dataLayer.push enviado\");\n                    });\n\n                    observer.disconnect();\n                }\n            });\n\n            observer.observe(document.body, { childList: true, subtree: true });\n        });\n    </script>"
   ],
@@ -151,14 +151,14 @@
   "logoMode": "dark",
   "programUrl": "/uam/pregrado-administracion-empresas",
   "catalog": "",
-  "shortTitle": "Administración de Empresas",
+  "shortTitle": "Business Administration",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
   "snies": "54766",
   "cipCode": "",
   "delivery": {
-    "modality": "Presencial",
+    "modality": "In person",
     "schedule": "diurna",
     "language": "",
     "campuses": [],
@@ -184,14 +184,14 @@
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Pregrado en Administración de Empresas",
+    "metaTitle": "Undergraduate in Business Administration",
     "metaDescription": "",
     "keywords": []
   },
   "summaryCards": [
     {
       "label": "Modality",
-      "value": "Presencial"
+      "value": "In person"
     },
     {
       "label": "Schedule",
@@ -240,23 +240,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "En la UAM apoyamos tu formación",
+    "title": "At the UAM we support your training",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Financiación",
-        "description": "Múltiples opciones de financiamiento para que puedas estudiar sin preocupaciones",
+        "title": "Financing",
+        "description": "Multiple financing options so you can study without worries",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
       },
       {
-        "title": "Becas",
-        "description": "Programas de becas y ayudas económicas para estudiantes destacados",
+        "title": "Scholarships",
+        "description": "Scholarship and financial aid programs for outstanding students",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
       },
       {
-        "title": "Beneficios",
-        "description": "Acceso a recursos, plataformas digitales y red de profesionales",
+        "title": "Benefits",
+        "description": "Access to resources, digital platforms and network of professionals",
         "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
       }
     ]

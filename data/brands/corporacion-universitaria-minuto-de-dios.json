@@ -2,16 +2,16 @@
   "slug": "corporacion-universitaria-minuto-de-dios",
   "name": "Corporación Universitaria Minuto de Dios",
   "shortName": "Corporación Universitaria Minuto de Dios",
-  "logo": "https://www.uniminuto.edu/sites/default/files/logo-para-web-2024.png",
+  "logo": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png",
   "logos": {
-    "light": "https://www.uniminuto.edu/sites/default/files/logo-para-web-2024.png",
-    "dark": "https://www.uniminuto.edu/sites/default/files/logo-para-web-2024.png"
+    "light": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png",
+    "dark": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png"
   },
   "typography": {
     "fontFamily": "\"Poppins\", sans-serif",
     "googleFontHref": "https://fonts.googleapis.com/css2?family=Poppins&display=swap"
   },
-  "identityManual": "https://tecmd.edu.co/wp-content/uploads/2022/04/Manual-identidad-Tec-y-TecMD-.pdf",
+  "identityManual": "",
   "primaryColor": "#003085",
   "secondaryColor": "#ffd300",
   "description": "Somos la Corporación Universitaria Minuto de Dios -UNIMINUTO-, más de 300 programas académicos entre pregrado, posgrado y educación continua.",
@@ -21,8 +21,9 @@
   "keywords": [],
   "robots": "",
   "generator": "",
-  "imageBrand": "https://www.uniminuto.edu/sites/default/files/logo-para-web-2024.png",
+  "imageBrand": "/sites/default/files/logo-uniminuto-footer.png",
   "images": [],
+  "campuses": [],
   "legalLinks": [
     {
       "label": "Sitio oficial",

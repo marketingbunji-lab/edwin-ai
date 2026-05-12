@@ -5,20 +5,20 @@
   "status": "draft",
   "updatedAt": "2026-04-30",
   "logoMode": "dark",
-  "title": "Operación de Sistemas de Información",
-  "fullTitle": "Técnico Profesional en Operación de Sistemas de Información",
-  "programType": "Técnico Profesional",
+  "title": "Information Systems Operation",
+  "fullTitle": "Professional Technician in Information Systems Operation",
+  "programType": "Professional Technician",
   "schedule": "flexible",
   "hero": {
-    "eyebrow": "Código SNIES: 111470",
-    "highlight": "Optimiza sistemas de información para la toma de decisiones y la competitividad empresarial",
-    "title": "Técnico Profesional en Operación de Sistemas de Información",
+    "eyebrow": "SNIES code: 111470",
+    "highlight": "Optimizes information systems for decision making and business competitiveness",
+    "title": "Professional Technician in Information Systems Operation",
     "subtitle": "",
-    "description": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
-    "supportText": "Precio MEN: $2.701.000 • Subsidio Tec: $1.215.000 • Valor Matrícula: $1.486.000",
+    "description": "Trains trained technicians to operate, maintain and support information systems, guaranteeing their availability, security and support for users in business environments.",
+    "supportText": "MEN Price: $2,701,000 • Tec Subsidy: $1,215,000 • Registration Value: $1,486,000",
     "modality": "Virtual",
-    "semesterPrice": "Valor matrícula: $1.486.000 COP",
-    "price": "Valor matrícula: $1.486.000 COP",
+    "semesterPrice": "Registration fee: $1,486,000 COP",
+    "price": "Registration fee: $1,486,000 COP",
     "duration": "",
     "primaryCta": {
       "label": "Request Information",
@@ -35,77 +35,77 @@
   },
   "programInfo": [],
   "whyStudy": {
-    "title": "¿Por qué estudiar Operación de Sistemas de Información?",
-    "description": "Desarrolla habilidades técnicas y prácticas para garantizar la operación eficaz de sistemas y redes, resolver incidencias, administrar bases de datos y brindar soporte a usuarios en entornos empresariales digitales.",
+    "title": "Why study Information Systems Operation?",
+    "description": "Develop technical and practical skills to ensure the effective operation of systems and networks, resolve incidents, manage databases, and support users in digital business environments.",
     "image": "",
     "items": [
       {
-        "title": "Formación práctica y aplicada",
-        "description": "Contenidos orientados a la operación, mantenimiento y soporte de hardware, software y redes para responder a necesidades reales del entorno empresarial."
+        "title": "Practical and applied training",
+        "description": "Contents aimed at the operation, maintenance and support of hardware, software and networks to respond to real needs of the business environment."
       },
       {
-        "title": "Competencias en soporte y atención al usuario",
-        "description": "Aprende a manejar incidencias informáticas, protocolos de servicio y atención efectiva a usuarios."
+        "title": "Competencies in support and user service",
+        "description": "Learn to manage computer incidents, service protocols and effective customer service."
       },
       {
-        "title": "Gestión y seguridad de la información",
-        "description": "Capacitación en gestión de bases de datos, implementación de actualizaciones y prácticas para proteger la información."
+        "title": "Information management and security",
+        "description": "Training in database management, implementation of updates and practices to protect information."
       },
       {
         "title": "Salidas laborales inmediatas",
-        "description": "Formación para desempeñarte como técnico en mesa de ayuda, instalador de software, operador de servicios de soporte TIC o emprendedor tecnológico."
+        "description": "Training to work as a help desk technician, software installer, ICT support services operator or technological entrepreneur."
       },
       {
-        "title": "Modalidad virtual flexible",
-        "description": "Estudia en modalidad virtual con contenidos y soporte para adaptarlo a tu ritmo y disponibilidad."
+        "title": "Flexible virtual mode",
+        "description": "Study in virtual mode with content and support to adapt it to your pace and availability."
       }
     ]
   },
   "supportSection": {
-    "title": "Apoyo y admisiones",
+    "title": "Support and admissions",
     "videoUrl": "",
     "items": [
       {
-        "title": "Asesoría de admisiones",
-        "description": "Acompañamiento en el proceso de inscripción, revisión de documentos y seguimiento hasta la aceptación.",
+        "title": "Admissions counseling",
+        "description": "Support in the registration process, document review and follow-up until acceptance.",
         "icon": "chat"
       },
       {
-        "title": "Opciones de financiación",
-        "description": "Información sobre subsidios institucionales y medios de pago. Consulta condiciones con el asesor educativo.",
+        "title": "Financing options",
+        "description": "Information on institutional subsidies and means of payment. Consult conditions with the educational advisor.",
         "icon": "finance"
       },
       {
-        "title": "Soporte académico y virtual",
-        "description": "Orientación sobre acceso a la plataforma virtual, calendario académico, usuario institucional e inducción.",
+        "title": "Academic and virtual support",
+        "description": "Guidance on access to the virtual platform, academic calendar, institutional user and induction.",
         "icon": "support"
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios del programa",
+    "title": "Program benefits",
     "items": [
       {
-        "title": "Competencias técnicas relevantes",
-        "description": "Formación en administración de sistemas operativos, redes, soporte de software y bases de datos.",
+        "title": "Relevant technical competencies",
+        "description": "Training in administration of operating systems, networks, software support and databases.",
         "icon": "tools"
       },
       {
-        "title": "Preparación para el mercado laboral",
-        "description": "Perfil orientado a ocupaciones de soporte TIC, mesa de ayuda e instalación de software.",
+        "title": "Preparation for the labor market",
+        "description": "Profile oriented towards ICT support, help desk and software installation occupations.",
         "icon": "career"
       },
       {
-        "title": "Estudio virtual y flexible",
-        "description": "Modalidad virtual que facilita la compatibilidad con trabajo u otras responsabilidades.",
+        "title": "Virtual and flexible studio",
+        "description": "Virtual mode that facilitates compatibility with work or other responsibilities.",
         "icon": "online"
       }
     ]
   },
   "cta": {
-    "title": "Solicita más información y asegura tu cupo",
+    "title": "Request more information and secure your spot",
     "description": "",
-    "button": "Solicitar información",
+    "button": "Request information",
     "secondaryButton": ""
   },
   "form": {
@@ -132,7 +132,7 @@
   "sourceWebsite": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
   "programUrl": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
   "catalog": "",
-  "shortTitle": "Operación de Sistemas de Información",
+  "shortTitle": "Information Systems Operation",
   "degreeLevel": "",
   "academicArea": "",
   "faculty": "",
@@ -160,13 +160,13 @@
     "amount": "",
     "currency": "",
     "period": "",
-    "display": "Valor matrícula: $1.486.000 COP",
+    "display": "Registration fee: $1,486,000 COP",
     "financialAidAvailable": false,
     "financialAidText": ""
   },
   "seo": {
-    "metaTitle": "Técnico Profesional en Operación de Sistemas de Información",
-    "metaDescription": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
+    "metaTitle": "Professional Technician in Information Systems Operation",
+    "metaDescription": "Trains trained technicians to operate, maintain and support information systems, guaranteeing their availability, security and support for users in business environments.",
     "keywords": []
   },
   "summaryCards": [
@@ -181,7 +181,7 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Forma técnicos capacitados para operar, mantener y soportar sistemas de información, garantizando su disponibilidad, seguridad y soporte a usuarios en entornos empresariales.",
+    "description": "Trains trained technicians to operate, maintain and support information systems, guaranteeing their availability, security and support for users in business environments.",
     "image": ""
   },
   "curriculum": {
@@ -209,23 +209,23 @@
     "items": []
   },
   "studentSupport": {
-    "title": "Apoyo y admisiones",
+    "title": "Support and admissions",
     "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Asesoría de admisiones",
-        "description": "Acompañamiento en el proceso de inscripción, revisión de documentos y seguimiento hasta la aceptación.",
+        "title": "Admissions counseling",
+        "description": "Support in the registration process, document review and follow-up until acceptance.",
         "icon": "chat"
       },
       {
-        "title": "Opciones de financiación",
-        "description": "Información sobre subsidios institucionales y medios de pago. Consulta condiciones con el asesor educativo.",
+        "title": "Financing options",
+        "description": "Information on institutional subsidies and means of payment. Consult conditions with the educational advisor.",
         "icon": "finance"
       },
       {
-        "title": "Soporte académico y virtual",
-        "description": "Orientación sobre acceso a la plataforma virtual, calendario académico, usuario institucional e inducción.",
+        "title": "Academic and virtual support",
+        "description": "Guidance on access to the virtual platform, academic calendar, institutional user and induction.",
         "icon": "support"
       }
     ]

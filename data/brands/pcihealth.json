@@ -58,7 +58,7 @@
       "name": "TWC Career Schools and Colleges Section",
       "url": "",
       "logos": {
-        "light": "https://www.twc.texas.gov/themes/custom/uswds_custom/logo.png",
+        "light": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/texas-workforce-commission.png",
         "dark": ""
       }
     },

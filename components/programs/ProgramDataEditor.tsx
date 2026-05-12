@@ -36,6 +36,7 @@ type HeroField =
   | "personImage";
 
 type OpportunityField = "title" | "subtitle" | "image";
+type ExternshipField = "title" | "description" | "image" | "hours";
 
 export default function ProgramDataEditor({
   brand,
@@ -111,6 +112,21 @@ export default function ProgramDataEditor({
         ...current,
         opportunityToWork: {
           ...(current.opportunityToWork ?? {}),
+          [field]: value,
+        },
+      };
+
+      setJsonDraft(JSON.stringify(nextProgram, null, 2));
+      return nextProgram;
+    });
+  };
+
+  const updateExternshipField = (field: ExternshipField, value: string) => {
+    setProgram((current) => {
+      const nextProgram = {
+        ...current,
+        externship: {
+          ...(current.externship ?? {}),
           [field]: value,
         },
       };
@@ -394,6 +410,32 @@ export default function ProgramDataEditor({
               label="Context image"
               value={program.opportunityToWork?.image ?? ""}
               onChange={(value) => updateOpportunityField("image", value)}
+            />
+          </section>
+
+          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
+            <SectionTitle title="Externship" />
+            <Field
+              label="Title"
+              value={program.externship?.title ?? ""}
+              onChange={(value) => updateExternshipField("title", value)}
+            />
+            <Field
+              label="Hours"
+              value={program.externship?.hours ?? ""}
+              onChange={(value) => updateExternshipField("hours", value)}
+            />
+            <Field
+              className="md:col-span-2"
+              label="Description"
+              value={program.externship?.description ?? ""}
+              onChange={(value) => updateExternshipField("description", value)}
+            />
+            <Field
+              className="md:col-span-2"
+              label="Image"
+              value={program.externship?.image ?? ""}
+              onChange={(value) => updateExternshipField("image", value)}
             />
           </section>
 
