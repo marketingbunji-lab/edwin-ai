@@ -98,7 +98,7 @@ export default function DefaultLandingExternshipSection({
               ))}
             </div>
 
-            {!hours && validPartners.length === 0 && description ? (
+            {!image && !hours && validPartners.length === 0 && description ? (
               <div className={landingCardClass}>
                 <p className={landingCardTextClass}>{description}</p>
               </div>

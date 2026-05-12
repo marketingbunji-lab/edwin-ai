@@ -5,7 +5,6 @@ import {
   landingCardTextClass,
   landingCardTitleClass,
   landingContainerClass,
-  landingIconBadgeClass,
   landingSectionDescriptionClass,
   landingSectionHeaderCenteredClass,
   landingSectionSoftClass,
@@ -90,9 +89,7 @@ export default function DefaultLandingSupportSection({
                       alt={item.title}
                       className="mb-[18px] h-12 w-12 object-contain"
                     />
-                  ) : (
-                    <div className={landingIconBadgeClass}>{index + 1}</div>
-                  )}
+                  ) : null}
                   <h3 className={landingCardTitleClass}>{item.title}</h3>
                   <p className={landingCardTextClass}>{item.text}</p>
                 </article>
