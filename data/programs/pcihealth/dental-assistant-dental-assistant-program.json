@@ -61,7 +61,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg",
+    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": ""
@@ -96,7 +96,7 @@
   "opportunityToWork": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-1-scaled.jpg",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Dental Assistant",
@@ -121,7 +121,7 @@
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/shutterstock_1646933860-scaled.jpg",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/shutterstock_1646933860-scaled.jpg",
     "items": [
       {
         "title": "Complete Quickly",
@@ -267,7 +267,7 @@
   "overview": {
     "title": "Program Overview",
     "description": "Offered only at the Richardson campus, PCI's Dental Assistant program is a comprehensive, immersive training that combines classroom instruction, hands-on lab work in dental operations, and an off-site externship to prepare students to perform x-rays, assist with dental procedures, and manage administrative tasks using dental software.",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg"
   },
   "curriculum": {
     "title": "What You Will Learn",
@@ -290,7 +290,7 @@
         "title": "Externship",
         "description": "Off-site externship at a dental office to gain real-world experience.",
         "url": "",
-        "image": ""
+        "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg"
       }
     ]
   },
@@ -323,14 +323,14 @@
     "enabled": true,
     "title": "Externship",
     "description": "An off-site externship at a dental office provides real-world clinical experience.",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-2-scaled.jpg",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
     "hours": "",
     "partners": []
   },
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/10/Programs-Inner-1-scaled.jpg",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
     "items": [
       {
         "title": "Dental Assistant",
