@@ -1,0 +1,439 @@
+{
+  "slug": "dental-assistant-dental-assistant-program",
+  "brand": "pcihealth",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-12",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "ACCSC Accreditation",
+        "name": "ACCSC Accreditation",
+        "description": "PCI Health Training Center is accredited by the Accrediting Commission of Career Schools and Colleges (ACCSC).",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Texas Workforce Commission Approval",
+        "name": "Texas Workforce Commission Approval",
+        "description": "Approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Memberships",
+        "name": "Memberships",
+        "description": "Member of Career Colleges and Schools of Texas (CCST) and Career Education Colleges and Universities (CECU).",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Dental Assistant | Dental Assistant Program",
+  "fullTitle": "Dental Assistant | Dental Assistant Program",
+  "sourceWebsite": "https://www.pcihealth.edu/dental-assistant/",
+  "catalog": "",
+  "programType": "Tecnología",
+  "schedule": "",
+  "hero": {
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Dental Assistant | Dental Assistant Program",
+    "subtitle": "",
+    "description": "Complete the Dental Assistant program in as little as 9 months! Call PCI at 214-630-0568 to learn how to become a dental assistant!",
+    "supportText": "",
+    "modality": "Hybrid",
+    "semesterPrice": "",
+    "price": "",
+    "duration": "In as little as 9 months",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Program Length",
+      "value": "In as little as 9 months"
+    },
+    {
+      "key": "",
+      "label": "Location",
+      "value": "Richardson Campus (1300 International Parkway, Richardson, TX)"
+    },
+    {
+      "key": "",
+      "label": "Format",
+      "value": "Classroom, Lab, Off-site Externship"
+    },
+    {
+      "key": "",
+      "label": "Language",
+      "value": "English"
+    },
+    {
+      "key": "",
+      "label": "Prepares for",
+      "value": "Dental Assistant Examination to become a Registered Dental Assistant in Texas"
+    }
+  ],
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Dental Assistant",
+        "description": "Prepare to work as a Dental Assistant performing clinical and administrative duties.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Hygienist Assistant",
+        "description": "Training supports entry-level assisting roles that work with dental hygienists.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Receptionist",
+        "description": "Program includes administrative training such as scheduling and using dental software.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "whyStudy": {
+    "title": "Why Study This Program",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Complete Quickly",
+        "description": "Finish the program in as little as 9 months to begin a career in dental assisting.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Hands-on Experience",
+        "description": "Practical exercises in dental operatories and labs guided by experienced instructors.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Career Pathways",
+        "description": "Prepare for roles such as Dental Assistant, Dental Hygienist Assistant, or Dental Receptionist.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Student Support",
+        "description": "Access to career services including job search strategies, resume writing, and interview practice.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support",
+    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
+    "items": [
+      {
+        "title": "Career Services",
+        "text": "Job searching strategies, resume writing, and interview practice.",
+        "description": "Job searching strategies, resume writing, and interview practice.",
+        "icon": ""
+      },
+      {
+        "title": "Advising & Support",
+        "text": "Ongoing student support and access to campus resources.",
+        "description": "Ongoing student support and access to campus resources.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Accredited Program",
+        "text": "PCI is accredited by the Accrediting Commission of Career Schools and Colleges (ACCSC).",
+        "description": "PCI is accredited by the Accrediting Commission of Career Schools and Colleges (ACCSC).",
+        "icon": ""
+      },
+      {
+        "title": "Hands-on Labs & Externship",
+        "text": "Practical training in dental operatories and an off-site externship for real-world experience.",
+        "description": "Practical training in dental operatories and an off-site externship for real-world experience.",
+        "icon": ""
+      },
+      {
+        "title": "Short Program Length",
+        "text": "Complete training in as little as 9 months.",
+        "description": "Complete training in as little as 9 months.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Request Information",
+    "description": "",
+    "button": "Apply Now",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Dental Assistant | Dental Assistant Program",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "programUrl": "https://www.pcihealth.edu/dental-assistant/",
+  "shortTitle": "Dental Assistant | Dental Assistant Program",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "hybrid",
+    "language": "en",
+    "campuses": [
+      "Richardson (Northeast Dallas)"
+    ],
+    "onlineAvailable": false,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "9",
+    "unit": "months",
+    "display": "In as little as 9 months",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Dental Assistant | Dental Assistant Program",
+    "metaDescription": "Complete the Dental Assistant program in as little as 9 months! Call PCI at 214-630-0568 to learn how to become a dental assistant!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duration",
+      "value": "In as little as 9 months"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid"
+    },
+    {
+      "label": "Campus",
+      "value": "Richardson (Northeast Dallas)"
+    },
+    {
+      "label": "Accreditation",
+      "value": "Accredited by ACCSC"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "Offered only at the Richardson campus, PCI’s Dental Assistant program is a comprehensive, immersive training that combines classroom instruction, hands-on lab work in dental operatories, and an off-site externship to prepare students to perform x-rays, assist with dental procedures, and manage administrative tasks using dental software.",
+    "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "The curriculum blends classroom theory with lab practice and an externship to teach clinical and administrative dental skills.",
+    "downloadUrl": "",
+    "items": [
+      {
+        "title": "Classroom Topics",
+        "description": "Anatomy and physiology, clinical procedures, preparing patients for treatment, chairside assisting, and radiology.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Lab Skills",
+        "description": "Performing basic dental procedures, identifying and using dental instruments, and preparing materials for chairside assisting.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Externship",
+        "description": "Off-site externship at a dental office to gain real-world experience.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "title": "Hands-On Training",
+    "description": "Practical training in dental operatories and labs under instructor supervision.",
+    "items": [
+      {
+        "title": "Chairside Assisting",
+        "description": "Hands-on practice assisting during dental procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Radiology / X-rays",
+        "description": "Training to perform x-rays as part of clinical skills.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Procedures & Instruments",
+        "description": "Perform basic dental procedures and learn proper use of dental instruments and materials.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "title": "Externship",
+    "description": "An off-site externship at a dental office provides real-world clinical experience.",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "items": [
+      {
+        "title": "Dental Assistant",
+        "description": "Prepare to work as a Dental Assistant performing clinical and administrative duties.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Hygienist Assistant",
+        "description": "Training supports entry-level assisting roles that work with dental hygienists.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Dental Receptionist",
+        "description": "Program includes administrative training such as scheduling and using dental software.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support",
+    "description": "PCI provides a supportive environment and services from enrollment through job placement assistance.",
+    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
+    "items": [
+      {
+        "title": "Career Services",
+        "text": "Job searching strategies, resume writing, and interview practice.",
+        "description": "Job searching strategies, resume writing, and interview practice.",
+        "icon": ""
+      },
+      {
+        "title": "Advising & Support",
+        "text": "Ongoing student support and access to campus resources.",
+        "description": "Ongoing student support and access to campus resources.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "How long does the Dental Assistant program take to complete?",
+      "answer": "The program can be completed in as little as 9 months."
+    },
+    {
+      "question": "Where is the Dental Assistant program offered?",
+      "answer": "Dental Assistant Training is only offered at PCI Health Training Center’s Richardson campus."
+    },
+    {
+      "question": "Does the program include hands-on training and an externship?",
+      "answer": "Yes. The program combines classroom instruction with lab exercises in dental operatories and includes an off-site externship at a dental office."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Medical Assistant – Hybrid",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Medical Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Medical Office Assistant",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "ECPP (Medical Training Plus GED)",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "469-518-2993",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}
