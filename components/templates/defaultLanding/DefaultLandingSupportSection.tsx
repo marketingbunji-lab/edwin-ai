@@ -48,7 +48,7 @@ export default function DefaultLandingSupportSection({
           className={
             hasSupportVideo
               ? "grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]"
-              : "grid gap-4 xl:grid-cols-3"
+              : "grid gap-4"
           }
         >
           {hasSupportVideo ? (
@@ -79,7 +79,7 @@ export default function DefaultLandingSupportSection({
               className={
                 hasSupportVideo
                   ? "grid gap-4"
-                  : "grid gap-4 xl:grid-cols-3"
+                  : "grid gap-4 md:grid-cols-2"
               }
             >
               {items.map((item, index) => (

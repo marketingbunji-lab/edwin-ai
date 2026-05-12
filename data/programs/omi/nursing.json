@@ -55,7 +55,7 @@
   "delivery": {
     "modality": "",
     "schedule": "",
-    "language": "",
+    "language": "en",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -184,5 +184,6 @@
     "accentColor": "",
     "textColor": ""
   },
-  "footerScripts": []
+  "footerScripts": [],
+  "language": "en"
 }

@@ -200,7 +200,7 @@
   "delivery": {
     "modality": "On-campus",
     "schedule": "flexible",
-    "language": "",
+    "language": "en",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -351,5 +351,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "en"
 }

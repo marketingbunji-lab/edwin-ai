@@ -31,10 +31,6 @@ type Props = {
   primaryColor: string;
   mode: "preview" | "export";
   hasConfiguredForm: boolean;
-  primaryCtaLabel: string;
-  primaryCtaUrl: string;
-  secondaryCtaLabel: string;
-  secondaryCtaUrl: string;
   backgroundImage: string;
   heroOverlayColor: string;
 };
@@ -61,10 +57,6 @@ export default function DefaultLandingHeroSection({
   primaryColor,
   mode,
   hasConfiguredForm,
-  primaryCtaLabel,
-  primaryCtaUrl,
-  secondaryCtaLabel,
-  secondaryCtaUrl,
   backgroundImage,
   heroOverlayColor,
 }: Props) {

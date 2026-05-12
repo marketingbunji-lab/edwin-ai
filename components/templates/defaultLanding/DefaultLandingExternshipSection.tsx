@@ -20,7 +20,9 @@ type Props = {
   description: string;
   image: string;
   hours: string;
+  hoursLabel: string;
   partners: string[];
+  partnerLabel: string;
 };
 
 export default function DefaultLandingExternshipSection({
@@ -29,18 +31,20 @@ export default function DefaultLandingExternshipSection({
   description,
   image,
   hours,
+  hoursLabel,
   partners,
+  partnerLabel,
 }: Props) {
   const validPartners = partners.filter((partner) => partner.trim());
+  const hasRenderableContent = Boolean(
+    description.trim() || image.trim() || hours.trim() || validPartners.length > 0,
+  );
 
-  if (
-    !enabled &&
-    !title &&
-    !description &&
-    !image &&
-    !hours &&
-    validPartners.length === 0
-  ) {
+  if (!enabled && !hasRenderableContent) {
+    return null;
+  }
+
+  if (!hasRenderableContent) {
     return null;
   }
 
@@ -81,14 +85,14 @@ export default function DefaultLandingExternshipSection({
             <div className={landingCardGridClass}>
               {hours ? (
                 <article className={landingCardClass}>
-                  <p className={landingSectionKickerClass}>Hours</p>
+                  <p className={landingSectionKickerClass}>{hoursLabel}</p>
                   <h3 className={landingCardTitleClass}>{hours}</h3>
                 </article>
               ) : null}
 
               {validPartners.map((partner, index) => (
                 <article className={landingCardClass} key={`${partner}-${index}`}>
-                  <p className={landingSectionKickerClass}>Partner</p>
+                  <p className={landingSectionKickerClass}>{partnerLabel}</p>
                   <h3 className={landingCardTitleClass}>{partner}</h3>
                 </article>
               ))}

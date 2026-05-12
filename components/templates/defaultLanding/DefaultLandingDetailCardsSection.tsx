@@ -26,6 +26,7 @@ type Props = {
   soft?: boolean;
   downloadUrl?: string;
   buttonLabel?: string;
+  viewMoreLabel?: string;
 };
 
 export default function DefaultLandingDetailCardsSection({
@@ -35,12 +36,16 @@ export default function DefaultLandingDetailCardsSection({
   soft = false,
   downloadUrl = "",
   buttonLabel = "Descargar",
+  viewMoreLabel = "Ver mas",
 }: Props) {
   const validItems = items.filter(
     (item) => item.title?.trim() || item.description?.trim() || item.image?.trim(),
   );
+  const hasRenderableContent = Boolean(
+    description.trim() || downloadUrl.trim() || validItems.length > 0,
+  );
 
-  if (!title && !description && !downloadUrl && validItems.length === 0) {
+  if (!hasRenderableContent) {
     return null;
   }
 
@@ -79,7 +84,7 @@ export default function DefaultLandingDetailCardsSection({
                     rel="noreferrer"
                     className="mt-4 inline-flex font-bold text-slate-900 no-underline"
                   >
-                    Ver mas
+                    {viewMoreLabel}
                   </a>
                 ) : null}
               </article>

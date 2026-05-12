@@ -141,7 +141,7 @@
   "delivery": {
     "modality": "at the distance",
     "schedule": "flexible",
-    "language": "",
+    "language": "es",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -263,5 +263,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "es"
 }

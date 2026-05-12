@@ -17,10 +17,14 @@ type RelatedProgram = {
 
 type Props = {
   items: RelatedProgram[];
+  title: string;
+  actionLabel: string;
 };
 
 export default function DefaultLandingRelatedProgramsSection({
   items,
+  title,
+  actionLabel,
 }: Props) {
   const validItems = items.filter((item) => item.title?.trim() || item.image?.trim());
 
@@ -32,7 +36,7 @@ export default function DefaultLandingRelatedProgramsSection({
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
         <div className={landingSectionHeaderCenteredClass}>
-          <h2 className={landingSectionTitleClass}>Related programs</h2>
+          <h2 className={landingSectionTitleClass}>{title}</h2>
         </div>
 
         <div className={landingCardGridClass}>
@@ -56,7 +60,7 @@ export default function DefaultLandingRelatedProgramsSection({
                   rel="noreferrer"
                   className="mt-4 inline-flex font-bold text-slate-900 no-underline"
                 >
-                  Explore program
+                  {actionLabel}
                 </a>
               ) : null}
             </article>

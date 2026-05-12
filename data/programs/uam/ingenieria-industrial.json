@@ -181,7 +181,7 @@
   "delivery": {
     "modality": "In person",
     "schedule": "diurna",
-    "language": "",
+    "language": "es",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -315,5 +315,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "es"
 }

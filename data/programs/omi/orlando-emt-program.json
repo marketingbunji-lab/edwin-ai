@@ -158,7 +158,7 @@
   "delivery": {
     "modality": "In-person with flipped classroom model",
     "schedule": "flexible",
-    "language": "",
+    "language": "en",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -280,5 +280,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "en"
 }

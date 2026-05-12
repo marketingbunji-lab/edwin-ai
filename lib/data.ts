@@ -3,6 +3,7 @@ import path from "node:path";
 import {
   defaultLandingLanguageForBrand,
   getLandingTemplateCopy,
+  landingTemplateCopyByLanguage,
   normalizeLandingLanguage,
   type LandingLanguage,
 } from "./landingLanguage";
@@ -323,6 +324,35 @@ export type Landing = {
   footerScripts?: string[];
 };
 
+function normalizeComparableText(value?: string) {
+  return value
+    ?.trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ");
+}
+
+function localizeGenericValue(
+  value: string | undefined,
+  localizedValue: string,
+  genericValues: string[],
+) {
+  const normalizedValue = normalizeComparableText(value);
+
+  if (!normalizedValue) {
+    return localizedValue;
+  }
+
+  const normalizedGenericValues = genericValues
+    .map((item) => normalizeComparableText(item))
+    .filter(Boolean);
+
+  return normalizedGenericValues.includes(normalizedValue)
+    ? localizedValue
+    : value || localizedValue;
+}
+
 const brandsDir = path.join(process.cwd(), "data", "brands");
 const programsDir = path.join(process.cwd(), "data", "programs");
 const legacyLandingsDir = path.join(process.cwd(), "data", "landings");
@@ -556,6 +586,8 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     normalizeLandingLanguage(landing.delivery?.language) ||
     defaultLandingLanguageForBrand(landing.brand);
   const copy = getLandingTemplateCopy(language, landing.brand);
+  const englishCopy = landingTemplateCopyByLanguage.en;
+  const spanishCopy = landingTemplateCopyByLanguage.es;
 
   return {
     ...landing,
@@ -619,7 +651,10 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       price: hero.price || tuitionDisplay,
       duration: hero.duration || durationDisplay,
       primaryCta: {
-        label: hero.primaryCta?.label || copy.heroPrimaryCtaLabel,
+        label: localizeGenericValue(hero.primaryCta?.label, copy.heroPrimaryCtaLabel, [
+          englishCopy.heroPrimaryCtaLabel,
+          spanishCopy.heroPrimaryCtaLabel,
+        ]),
         url: hero.primaryCta?.url || "#form",
       },
       secondaryCta: {
@@ -634,72 +669,119 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     summaryCards: landing.summaryCards ?? [],
     programInfo,
     overview: {
-      title: landing.overview?.title || copy.overviewTitle,
+      title: localizeGenericValue(landing.overview?.title, copy.overviewTitle, [
+        englishCopy.overviewTitle,
+        spanishCopy.overviewTitle,
+      ]),
       description: landing.overview?.description || hero.description || "",
       image: landing.overview?.image || "",
     },
     whyStudy: {
-      title: landing.whyStudy?.title || copy.whyStudyTitle,
+      title: localizeGenericValue(landing.whyStudy?.title, copy.whyStudyTitle, [
+        englishCopy.whyStudyTitle,
+        spanishCopy.whyStudyTitle,
+      ]),
       description: landing.whyStudy?.description || "",
       image: landing.whyStudy?.image || "",
       items: toTitleDescriptionItems(landing.whyStudy?.items),
     },
     curriculum: {
-      title: landing.curriculum?.title || copy.curriculumTitle,
+      title: localizeGenericValue(landing.curriculum?.title, copy.curriculumTitle, [
+        englishCopy.curriculumTitle,
+        spanishCopy.curriculumTitle,
+      ]),
       description: landing.curriculum?.description || "",
       downloadUrl: landing.curriculum?.downloadUrl || "",
       items: toTitleDescriptionItems(landing.curriculum?.items),
     },
     handsOnTraining: {
       enabled: Boolean(landing.handsOnTraining?.enabled),
-      title: landing.handsOnTraining?.title || copy.handsOnTrainingTitle,
+      title: localizeGenericValue(
+        landing.handsOnTraining?.title,
+        copy.handsOnTrainingTitle,
+        [englishCopy.handsOnTrainingTitle, spanishCopy.handsOnTrainingTitle],
+      ),
       description: landing.handsOnTraining?.description || "",
       items: toTitleDescriptionItems(landing.handsOnTraining?.items),
     },
     externship: {
       enabled: Boolean(landing.externship?.enabled),
-      title: landing.externship?.title || copy.externshipTitle,
+      title: localizeGenericValue(landing.externship?.title, copy.externshipTitle, [
+        englishCopy.externshipTitle,
+        spanishCopy.externshipTitle,
+      ]),
       description: landing.externship?.description || "",
       image: landing.externship?.image || "",
       hours: landing.externship?.hours || "",
       partners: landing.externship?.partners ?? [],
     },
     careerOutcomes: {
-      title: careerSource.title || copy.careerOpportunitiesTitle,
+      title: localizeGenericValue(
+        careerSource.title,
+        copy.careerOpportunitiesTitle,
+        [
+          englishCopy.careerOpportunitiesTitle,
+          spanishCopy.careerOpportunitiesTitle,
+        ],
+      ),
       subtitle: careerSource.subtitle || "",
       image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     opportunityToWork: {
-      title: careerSource.title || copy.careerOpportunitiesTitle,
+      title: localizeGenericValue(
+        careerSource.title,
+        copy.careerOpportunitiesTitle,
+        [
+          englishCopy.careerOpportunitiesTitle,
+          spanishCopy.careerOpportunitiesTitle,
+        ],
+      ),
       subtitle: careerSource.subtitle || "",
       image: careerSource.image || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     studentSupport: {
-      title: supportSource.title || copy.studentSupportTitle,
+      title: localizeGenericValue(supportSource.title, copy.studentSupportTitle, [
+        englishCopy.studentSupportTitle,
+        spanishCopy.studentSupportTitle,
+      ]),
       description: supportSource.description || "",
       videoUrl: supportSource.videoUrl || "",
       items: toIconTextItems(supportSource.items),
     },
     supportSection: {
-      title: supportSource.title || copy.studentSupportTitle,
+      title: localizeGenericValue(supportSource.title, copy.studentSupportTitle, [
+        englishCopy.studentSupportTitle,
+        spanishCopy.studentSupportTitle,
+      ]),
       description: supportSource.description || "",
       videoUrl: supportSource.videoUrl || "",
       items: toIconTextItems(supportSource.items),
     },
     benefits: {
-      title: landing.benefits?.title || copy.programBenefitsTitle,
+      title: localizeGenericValue(
+        landing.benefits?.title,
+        copy.programBenefitsTitle,
+        [englishCopy.programBenefitsTitle, spanishCopy.programBenefitsTitle],
+      ),
       items: toIconTextItems(landing.benefits?.items),
     },
     admissions: {
-      title: landing.admissions?.title || copy.admissionsTitle,
+      title: localizeGenericValue(landing.admissions?.title, copy.admissionsTitle, [
+        englishCopy.admissionsTitle,
+        spanishCopy.admissionsTitle,
+      ]),
       description: landing.admissions?.description || "",
       items: toTitleDescriptionItems(landing.admissions?.items),
     },
     financialAid: {
       enabled: Boolean(landing.financialAid?.enabled),
-      title: landing.financialAid?.title || copy.financialAidTitle,
+      title: localizeGenericValue(
+        landing.financialAid?.title,
+        copy.financialAidTitle,
+        [englishCopy.financialAidTitle, spanishCopy.financialAidTitle],
+      ),
       description: landing.financialAid?.description || "",
       items: toTitleDescriptionItems(landing.financialAid?.items),
     },
@@ -707,7 +789,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     faq: landing.faq ?? [],
     certifications: {
       enabled: Boolean(landing.certifications?.enabled),
-      title: landing.certifications?.title || copy.certificationsTitle,
+      title: localizeGenericValue(
+        landing.certifications?.title,
+        copy.certificationsTitle,
+        [englishCopy.certificationsTitle, spanishCopy.certificationsTitle],
+      ),
       resolutionText: landing.certifications?.resolutionText || "",
       items: toCertificationItems(landing.certifications?.items),
     },
@@ -723,19 +809,36 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       image: landing.contact?.image || "",
     },
     cta: {
-      title: landing.cta?.title || copy.ctaTitle,
+      title: localizeGenericValue(landing.cta?.title, copy.ctaTitle, [
+        englishCopy.ctaTitle,
+        spanishCopy.ctaTitle,
+      ]),
       description: landing.cta?.description || "",
-      button: landing.cta?.button || copy.ctaButton,
+      button: localizeGenericValue(landing.cta?.button, copy.ctaButton, [
+        englishCopy.ctaButton,
+        spanishCopy.ctaButton,
+      ]),
       secondaryButton: landing.cta?.secondaryButton || "",
     },
     form: {
-      title: landing.form?.title || copy.formTitle,
-      description: landing.form?.description || "",
+      title: localizeGenericValue(landing.form?.title, copy.formTitle, [
+        englishCopy.formTitle,
+        spanishCopy.formTitle,
+      ]),
+      description: localizeGenericValue(
+        landing.form?.description,
+        copy.formDescription,
+        [englishCopy.formDescription, spanishCopy.formDescription],
+      ),
       scriptUrl: landing.form?.scriptUrl || "",
       scriptCode: landing.form?.scriptCode || "",
       formId: landing.form?.formId || "",
       programName: landing.form?.programName || landing.fullTitle || landing.title,
-      submitLabel: landing.form?.submitLabel || copy.formSubmitLabel,
+      submitLabel: localizeGenericValue(
+        landing.form?.submitLabel,
+        copy.formSubmitLabel,
+        [englishCopy.formSubmitLabel, spanishCopy.formSubmitLabel],
+      ),
       type: landing.form?.type,
     },
     tracking: {

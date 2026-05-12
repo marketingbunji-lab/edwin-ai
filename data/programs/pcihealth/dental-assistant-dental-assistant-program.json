@@ -216,7 +216,7 @@
   "delivery": {
     "modality": "Hybrid",
     "schedule": "hybrid",
-    "language": "in",
+    "language": "en",
     "campuses": [
       "Richardson (Northeast Dallas)"
     ],
@@ -438,5 +438,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "en"
 }

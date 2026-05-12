@@ -141,7 +141,7 @@
   "delivery": {
     "modality": "Virtual",
     "schedule": "flexible",
-    "language": "",
+    "language": "es",
     "campuses": [],
     "onlineAvailable": true,
     "hybridAvailable": false,
@@ -263,5 +263,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "es"
 }

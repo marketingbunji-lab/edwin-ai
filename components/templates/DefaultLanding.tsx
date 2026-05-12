@@ -223,6 +223,23 @@ function isFormatLabel(label?: string) {
   return normalizedLabel === "format" || normalizedLabel === "formato";
 }
 
+function hasGenericEyebrow(text?: string) {
+  const normalizedText = text
+    ?.trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  if (!normalizedText) {
+    return true;
+  }
+
+  return (
+    normalizedText.startsWith("study at ") ||
+    normalizedText.startsWith("estudia en ")
+  );
+}
+
 export default function DefaultLanding({
   brand,
   landing,
@@ -335,9 +352,11 @@ export default function DefaultLanding({
   const hasForm = true;
   const hasCta = Boolean(ctaTitle || ctaButton);
   const eyebrowText =
-    hero.eyebrow || hero.modality
-      ? `${hero.modality ? `${hero.modality} ${copy.studyAt.toLowerCase()} ` : ""}${brandName}`
-      : `${copy.studyAt} ${brandName}`;
+    hero.eyebrow?.trim() && !hasGenericEyebrow(hero.eyebrow)
+      ? hero.eyebrow.trim()
+      : hero.modality
+        ? `${hero.modality} ${copy.heroModalityConnector} ${brandName}`
+        : `${copy.studyAt} ${brandName}`;
   const formatProgramInfo = programInfo.find((item) =>
     isFormatLabel(item.label),
   );
@@ -363,12 +382,6 @@ export default function DefaultLanding({
 
     return true;
   });
-  const visibleHeroProgramInfoLabels = new Set(
-    programInfo
-      .slice(0, 4)
-      .map((item) => item.label?.trim().toLowerCase())
-      .filter(Boolean),
-  );
   return (
     <div
       className="bg-white text-slate-900"
@@ -408,10 +421,6 @@ export default function DefaultLanding({
         primaryColor={primaryColor}
         mode={mode}
         hasConfiguredForm={hasConfiguredForm}
-        primaryCtaLabel={hero.primaryCta?.label?.trim() || ""}
-        primaryCtaUrl={hero.primaryCta?.url?.trim() || ""}
-        secondaryCtaLabel={hero.secondaryCta?.label?.trim() || ""}
-        secondaryCtaUrl={hero.secondaryCta?.url?.trim() || ""}
         backgroundImage={hero.backgroundImage || ""}
         heroOverlayColor={heroOverlayColor}
       />
@@ -470,7 +479,9 @@ export default function DefaultLanding({
         description={externship.description || ""}
         image={externship.image || ""}
         hours={externship.hours || ""}
+        hoursLabel={copy.externshipHoursLabel}
         partners={externship.partners ?? []}
+        partnerLabel={copy.externshipPartnerLabel}
       />
 
       <DefaultLandingSupportSection

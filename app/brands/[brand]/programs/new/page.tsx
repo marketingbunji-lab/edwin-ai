@@ -1,6 +1,10 @@
 import { notFound } from "next/navigation";
 import ProgramDataEditor from "@/components/programs/ProgramDataEditor";
 import { getBrandBySlug, type Landing } from "@/lib/data";
+import {
+  defaultLandingLanguageForBrand,
+  getLandingTemplateCopy,
+} from "@/lib/landingLanguage";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 export const dynamic = "force-dynamic";
@@ -20,9 +24,13 @@ export default async function NewBrandProgramPage({ params }: Props) {
     notFound();
   }
 
+  const language = defaultLandingLanguageForBrand(brand.slug);
+  const copy = getLandingTemplateCopy(language, brand.slug);
+
   const program: Landing = {
     slug: "",
     brand: brand.slug,
+    language,
     title: "",
     fullTitle: "",
     sourceWebsite: "",
@@ -37,7 +45,7 @@ export default async function NewBrandProgramPage({ params }: Props) {
       items: [],
     },
     hero: {
-      eyebrow: `Estudia en ${brand.shortName ?? brand.name}`,
+      eyebrow: `${copy.studyAt} ${brand.shortName ?? brand.name}`,
       highlight: "",
       title: "",
       description: "",
@@ -83,9 +91,12 @@ export default async function NewBrandProgramPage({ params }: Props) {
       button: "",
     },
     form: {
+      title: copy.formTitle,
+      description: copy.formDescription,
       scriptUrl: "",
       scriptCode: "",
       programName: "",
+      submitLabel: copy.formSubmitLabel,
     },
     footerScripts: [],
   };

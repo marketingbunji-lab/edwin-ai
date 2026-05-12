@@ -164,7 +164,7 @@
   "delivery": {
     "modality": "In person",
     "schedule": "nocturna",
-    "language": "",
+    "language": "es",
     "campuses": [],
     "onlineAvailable": false,
     "hybridAvailable": false,
@@ -298,5 +298,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "es"
 }

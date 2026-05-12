@@ -8,6 +8,8 @@ export type LandingTemplateCopy = {
   ctaTitle: string;
   curriculumButton: string;
   curriculumTitle: string;
+  externshipHoursLabel: string;
+  externshipPartnerLabel: string;
   externshipTitle: string;
   faqTitle: string;
   financialAidTitle: string;
@@ -20,6 +22,7 @@ export type LandingTemplateCopy = {
   formSubmitLabel: string;
   formTitle: string;
   handsOnTrainingTitle: string;
+  heroModalityConnector: string;
   heroPrimaryCtaLabel: string;
   overviewTitle: string;
   relatedProgramsAction: string;
@@ -53,6 +56,8 @@ export const landingTemplateCopyByLanguage: Record<
     ctaTitle: "Request Information",
     curriculumButton: "Download study plan",
     curriculumTitle: "What You Will Learn",
+    externshipHoursLabel: "Hours",
+    externshipPartnerLabel: "Partner",
     externshipTitle: "Externship",
     faqTitle: "Frequently asked questions",
     financialAidTitle: "Financial Aid Options",
@@ -65,6 +70,7 @@ export const landingTemplateCopyByLanguage: Record<
     formSubmitLabel: "Submit",
     formTitle: "Request information",
     handsOnTrainingTitle: "Hands-On Training",
+    heroModalityConnector: "at",
     heroPrimaryCtaLabel: "Request Information",
     legalLinksAriaLabel: "Legal links",
     overviewTitle: "Program Overview",
@@ -89,7 +95,9 @@ export const landingTemplateCopyByLanguage: Record<
     ctaTitle: "Solicita informacion",
     curriculumButton: "Descargar plan de estudios",
     curriculumTitle: "Lo que aprenderas",
-    externshipTitle: "Externship",
+    externshipHoursLabel: "Horas",
+    externshipPartnerLabel: "Aliado",
+    externshipTitle: "Practicas profesionales",
     faqTitle: "Preguntas frecuentes",
     financialAidTitle: "Opciones de ayuda financiera",
     formEmailLabel: "Correo",
@@ -101,6 +109,7 @@ export const landingTemplateCopyByLanguage: Record<
     formSubmitLabel: "Enviar",
     formTitle: "Solicita informacion",
     handsOnTrainingTitle: "Entrenamiento practico",
+    heroModalityConnector: "en",
     heroPrimaryCtaLabel: "Solicita informacion",
     legalLinksAriaLabel: "Links legales",
     overviewTitle: "Resumen del programa",

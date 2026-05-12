@@ -7,7 +7,7 @@
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
-    "title": "Accreditations and Certifications",
+    "title": "Acreditaciones y certificaciones",
     "resolutionText": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
     "items": [
       {
@@ -27,7 +27,7 @@
   "programType": "Maestría",
   "schedule": "",
   "hero": {
-    "eyebrow": "Estudia en PCI Health Training Center",
+    "eyebrow": "",
     "highlight": "",
     "title": "Maestría en Espiritualidad | Uniminuto",
     "subtitle": "",
@@ -38,16 +38,16 @@
     "price": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio $ 3.791.900",
     "duration": "4 Semestres",
     "primaryCta": {
-      "label": "Request Information",
+      "label": "Solicita informacion",
       "url": "#form"
     },
     "secondaryCta": {
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/sites/default/files/styles/scale_and_crop_650x600/public/2026-04/M_espiritualidad-%28650x600%29.png?itok=c0gw8fQh",
+    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/maestria-en-espiritualidad.png",
     "personImage": "",
-    "videoUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "videoUrl": "",
     "overlayColor": ""
   },
   "programInfo": [
@@ -83,7 +83,7 @@
     }
   ],
   "opportunityToWork": {
-    "title": "Career Opportunities",
+    "title": "Oportunidades laborales",
     "subtitle": "",
     "image": "",
     "items": [
@@ -102,9 +102,9 @@
     ]
   },
   "whyStudy": {
-    "title": "Why Study This Program",
+    "title": "Por que estudiar este programa",
     "description": "",
-    "image": "",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-04/M_espiritualidad-%28650x600%29.png?itok=c0gw8fQh",
     "items": [
       {
         "title": "Formación para el acompañamiento espiritual",
@@ -133,8 +133,9 @@
     ]
   },
   "supportSection": {
-    "title": "Student Support",
-    "videoUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "title": "Acompanamiento al estudiante",
+    "description": "Servicios institucionales como biblioteca física y digital, laboratorios, bienestar universitario, bolsa de empleo, movilidad internacional y acompañamiento durante la formación académica. Atención telefónica y por WhatsApp para información y soporte.",
+    "videoUrl": "",
     "items": [
       {
         "title": "Línea de atención",
@@ -157,7 +158,7 @@
     ]
   },
   "benefits": {
-    "title": "Program Benefits",
+    "title": "Beneficios del programa",
     "items": [
       {
         "title": "Descuentos de lanzamiento",
@@ -180,19 +181,19 @@
     ]
   },
   "cta": {
-    "title": "Request Information",
+    "title": "Solicita informacion",
     "description": "¡Inscríbete Gratis! Completa el formulario y un asesor se contactará contigo.",
-    "button": "Apply Now",
+    "button": "Inscribete ahora",
     "secondaryButton": ""
   },
   "form": {
-    "title": "Request Information",
-    "description": "",
+    "title": "Solicita informacion",
+    "description": "Completa el formulario y nuestro equipo te contactara pronto.",
     "scriptUrl": "",
     "scriptCode": "",
     "formId": "",
     "programName": "Maestría en Espiritualidad | Uniminuto",
-    "submitLabel": "Submit"
+    "submitLabel": "Enviar"
   },
   "footerScripts": [],
   "externship": {
@@ -262,14 +263,14 @@
     }
   ],
   "overview": {
-    "title": "Program Overview",
+    "title": "Resumen del programa",
     "description": "La Maestría en Espiritualidad forma maestros de vida espiritual capaces de transmitir la fe a partir de experiencias bíblicas, históricas y del acompañamiento espiritual, y de construir procesos de acompañamiento orientados al crecimiento de la vida espiritual en personas y comunidades.",
-    "image": "/sites/default/files/styles/scale_and_crop_640x640/public/2026-04/B2_M_espiritualidad-%28640x640%29%20%281%29.jpg?itok=GjX2K55N"
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-04/B2_M_espiritualidad-%28640x640%29%20%281%29.jpg?itok=GjX2K55N"
   },
   "curriculum": {
-    "title": "What You Will Learn",
+    "title": "Lo que aprenderas",
     "description": "Competencias para caracterizar la vida espiritual cristiana, construir procesos de acompañamiento y aplicar prácticas de discernimiento orientadas al crecimiento espiritual.",
-    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "downloadUrl": "",
     "items": [
       {
         "title": "Elementos de la vida espiritual cristiana",
@@ -293,7 +294,7 @@
   },
   "handsOnTraining": {
     "enabled": true,
-    "title": "Hands-On Training",
+    "title": "Entrenamiento practico",
     "description": "El programa incluye prácticas profesionales y acompañamiento práctico en emprendimiento y escenarios reales.",
     "items": [
       {
@@ -311,7 +312,7 @@
     ]
   },
   "careerOutcomes": {
-    "title": "Career Opportunities",
+    "title": "Oportunidades laborales",
     "subtitle": "",
     "image": "",
     "items": [
@@ -330,9 +331,9 @@
     ]
   },
   "studentSupport": {
-    "title": "Student Support",
+    "title": "Acompanamiento al estudiante",
     "description": "Servicios institucionales como biblioteca física y digital, laboratorios, bienestar universitario, bolsa de empleo, movilidad internacional y acompañamiento durante la formación académica. Atención telefónica y por WhatsApp para información y soporte.",
-    "videoUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "videoUrl": "",
     "items": [
       {
         "title": "Línea de atención",
@@ -355,7 +356,7 @@
     ]
   },
   "admissions": {
-    "title": "Admissions Requirements",
+    "title": "Requisitos de admision",
     "description": "Requisitos y proceso de admisión detallados para aspirantes, incluyendo documentación y pasos del proceso.",
     "items": [
       {
@@ -380,7 +381,7 @@
   },
   "financialAid": {
     "enabled": true,
-    "title": "Financial Aid Options",
+    "title": "Opciones de ayuda financiera",
     "description": "La institución ofrece becas, descuentos y opciones de financiación para los estudiantes.",
     "items": [
       {
@@ -436,5 +437,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "es"
 }

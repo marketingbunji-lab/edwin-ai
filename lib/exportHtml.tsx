@@ -1,5 +1,5 @@
-import brand from "../data/brands/uam.json";
-import data from "../data/programs/uam/administracion-empresas.json";
+import brand from "../data/brands/pcihealth.json";
+import data from "../data/programs/pcihealth/dental-assistant-dental-assistant-program.json";
 import type { Landing } from "./data";
 import { exportLandingHtml } from "./exportLandingHtml";
 

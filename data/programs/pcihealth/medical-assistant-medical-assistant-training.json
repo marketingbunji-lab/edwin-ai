@@ -228,7 +228,7 @@
   "delivery": {
     "modality": "Hybrid",
     "schedule": "hybrid",
-    "language": "in",
+    "language": "en",
     "campuses": [
       "Richardson, TX",
       "Dallas, TX"
@@ -495,5 +495,6 @@
     "secondaryColor": "",
     "accentColor": "",
     "textColor": ""
-  }
+  },
+  "language": "en"
 }

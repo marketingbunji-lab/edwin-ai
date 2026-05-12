@@ -61,7 +61,7 @@ export default function DefaultLandingSummaryCardsSection({
       >
         {validItems.map((item, index) => (
           <div
-            className="border-b border-slate-200 px-5 py-4 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r"
+            className="border-slate-200 px-5 py-4 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r"
             style={{
               borderRightWidth:
                 index === validItems.length - 1 ||

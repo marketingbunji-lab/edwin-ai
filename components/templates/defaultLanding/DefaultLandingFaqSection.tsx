@@ -13,9 +13,10 @@ type FaqItem = {
 
 type Props = {
   items: FaqItem[];
+  title: string;
 };
 
-export default function DefaultLandingFaqSection({ items }: Props) {
+export default function DefaultLandingFaqSection({ items, title }: Props) {
   const validItems = items.filter((item) => item.question?.trim() && item.answer?.trim());
   const accordionItems = validItems.map((item) => ({
     title: item.question?.trim() || "",
@@ -30,7 +31,7 @@ export default function DefaultLandingFaqSection({ items }: Props) {
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
         <div className={landingSectionHeaderCenteredClass}>
-          <h2 className={landingSectionTitleClass}>Frequently asked questions</h2>
+          <h2 className={landingSectionTitleClass}>{title}</h2>
         </div>
 
         <LandingAccordion items={accordionItems} id="default-faq" />

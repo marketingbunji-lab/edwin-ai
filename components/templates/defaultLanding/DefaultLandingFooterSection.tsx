@@ -11,6 +11,9 @@ type Props = {
   phone: string;
   email: string;
   legalLinks: LegalLink[];
+  phoneLabel: string;
+  emailLabel: string;
+  legalLinksAriaLabel: string;
 };
 
 export default function DefaultLandingFooterSection({
@@ -22,6 +25,9 @@ export default function DefaultLandingFooterSection({
   phone,
   email,
   legalLinks,
+  phoneLabel,
+  emailLabel,
+  legalLinksAriaLabel,
 }: Props) {
   const hasContactInfo = Boolean(advisorName || advisorTitle || phone || email);
 
@@ -50,8 +56,8 @@ export default function DefaultLandingFooterSection({
                 <p className="font-semibold text-white">{advisorName}</p>
               ) : null}
               {advisorTitle ? <p>{advisorTitle}</p> : null}
-              {phone ? <p>Phone: {phone}</p> : null}
-              {email ? <p>Email: {email}</p> : null}
+              {phone ? <p>{phoneLabel}: {phone}</p> : null}
+              {email ? <p>{emailLabel}: {email}</p> : null}
             </div>
           ) : null}
         </div>
@@ -59,7 +65,7 @@ export default function DefaultLandingFooterSection({
         {legalLinks.length > 0 ? (
           <nav
             className="flex max-w-[420px] flex-wrap justify-end gap-x-[18px] gap-y-3 text-sm"
-            aria-label="Links legales"
+            aria-label={legalLinksAriaLabel}
           >
             {legalLinks.map((link, index) => (
               <a

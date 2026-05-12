@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Bot, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import type { Brand, Landing, ProgramInfoItem } from "@/lib/data";
+import type { Brand, Landing } from "@/lib/data";
 
 type Props = {
   brand: Brand;
@@ -13,6 +13,7 @@ type Props = {
 };
 
 type EditableField =
+  | "language"
   | "title"
   | "fullTitle"
   | "sourceWebsite"
@@ -22,21 +23,6 @@ type EditableField =
   | "status"
   | "updatedAt"
   | "template";
-
-type HeroField =
-  | "eyebrow"
-  | "highlight"
-  | "title"
-  | "description"
-  | "supportText"
-  | "modality"
-  | "semesterPrice"
-  | "backgroundImage"
-  | "overlayColor"
-  | "personImage";
-
-type OpportunityField = "title" | "subtitle" | "image";
-type ExternshipField = "title" | "description" | "image" | "hours";
 
 export default function ProgramDataEditor({
   brand,
@@ -66,124 +52,6 @@ export default function ProgramDataEditor({
       const nextProgram = {
         ...current,
         [field]: value,
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const updateHeroField = (field: HeroField, value: string) => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        hero: {
-          ...(current.hero ?? {}),
-          [field]: value,
-        },
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const updateFormField = (
-    field: "type" | "scriptUrl" | "scriptCode" | "programName",
-    value: string,
-  ) => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        form: {
-          ...(current.form ?? {}),
-          [field]: value,
-        },
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const updateOpportunityField = (field: OpportunityField, value: string) => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        opportunityToWork: {
-          ...(current.opportunityToWork ?? {}),
-          [field]: value,
-        },
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const updateExternshipField = (field: ExternshipField, value: string) => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        externship: {
-          ...(current.externship ?? {}),
-          [field]: value,
-        },
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const updateProgramInfo = (
-    index: number,
-    field: keyof ProgramInfoItem,
-    value: string,
-  ) => {
-    setProgram((current) => {
-      const items = normalizeProgramInfo(current.programInfo);
-      items[index] = {
-        ...items[index],
-        [field]: value,
-      };
-
-      const nextProgram = {
-        ...current,
-        programInfo: items,
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const addProgramInfo = () => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        programInfo: [
-          ...normalizeProgramInfo(current.programInfo),
-          {
-            key: "custom",
-            label: "",
-            value: "",
-          },
-        ],
-      };
-
-      setJsonDraft(JSON.stringify(nextProgram, null, 2));
-      return nextProgram;
-    });
-  };
-
-  const removeProgramInfo = (index: number) => {
-    setProgram((current) => {
-      const nextProgram = {
-        ...current,
-        programInfo: normalizeProgramInfo(current.programInfo).filter(
-          (_, itemIndex) => itemIndex !== index,
-        ),
       };
 
       setJsonDraft(JSON.stringify(nextProgram, null, 2));
@@ -242,6 +110,7 @@ export default function ProgramDataEditor({
           ...(program.hero ?? {}),
           title: program.hero?.title || title,
         },
+        language: (program.language ?? "es").trim() as Landing["language"],
         form: {
           ...(program.form ?? {}),
           programName: program.form?.programName || fullTitle,
@@ -352,6 +221,15 @@ export default function ProgramDataEditor({
           <SectionTitle title="Informacion base" />
           <Field label="Program name" value={program.title} required onChange={(value) => updateField("title", value)} />
           <Field label="Full title" value={program.fullTitle} required onChange={(value) => updateField("fullTitle", value)} />
+          <SelectField
+            label="Language"
+            value={program.language ?? "es"}
+            onChange={(value) => updateField("language", value)}
+            options={[
+              { label: "Spanish", value: "es" },
+              { label: "English", value: "en" },
+            ]}
+          />
           <Field label="Slug" value={generatedSlug} readOnly onChange={() => {}} />
           <Field label="Source website" value={program.sourceWebsite ?? ""} onChange={(value) => updateField("sourceWebsite", value)} />
           <Field label="Catalogo" value={program.catalog ?? ""} onChange={(value) => updateField("catalog", value)} />
@@ -376,106 +254,6 @@ export default function ProgramDataEditor({
           />
         ) : null}
       </div>
-
-      {isCreateMode ? null : (
-        <>
-        <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
-          <SectionTitle title="Hero" />
-            <Field label="Eyebrow" value={program.hero?.eyebrow ?? ""} onChange={(value) => updateHeroField("eyebrow", value)} />
-            <Field label="Highlight" value={program.hero?.highlight ?? ""} onChange={(value) => updateHeroField("highlight", value)} />
-            <Field label="Title" value={program.hero?.title ?? ""} onChange={(value) => updateHeroField("title", value)} />
-            <Field label="Description" value={program.hero?.description ?? ""} onChange={(value) => updateHeroField("description", value)} />
-            <Field label="Support text" value={program.hero?.supportText ?? ""} onChange={(value) => updateHeroField("supportText", value)} />
-            <Field label="Modality" value={program.hero?.modality ?? ""} onChange={(value) => updateHeroField("modality", value)} />
-            <Field label="Semester price" value={program.hero?.semesterPrice ?? ""} onChange={(value) => updateHeroField("semesterPrice", value)} />
-            <Field label="Overlay color" value={program.hero?.overlayColor ?? ""} onChange={(value) => updateHeroField("overlayColor", value)} />
-            <Field className="md:col-span-2" label="Background image" value={program.hero?.backgroundImage ?? ""} onChange={(value) => updateHeroField("backgroundImage", value)} />
-            <Field className="md:col-span-2" label="Person image" value={program.hero?.personImage ?? ""} onChange={(value) => updateHeroField("personImage", value)} />
-          </section>
-
-          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
-            <SectionTitle title="Opportunity to work" />
-            <Field
-              label="Title"
-              value={program.opportunityToWork?.title ?? ""}
-              onChange={(value) => updateOpportunityField("title", value)}
-            />
-            <Field
-              label="Subtitle"
-              value={program.opportunityToWork?.subtitle ?? ""}
-              onChange={(value) => updateOpportunityField("subtitle", value)}
-            />
-            <Field
-              className="md:col-span-2"
-              label="Context image"
-              value={program.opportunityToWork?.image ?? ""}
-              onChange={(value) => updateOpportunityField("image", value)}
-            />
-          </section>
-
-          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
-            <SectionTitle title="Externship" />
-            <Field
-              label="Title"
-              value={program.externship?.title ?? ""}
-              onChange={(value) => updateExternshipField("title", value)}
-            />
-            <Field
-              label="Hours"
-              value={program.externship?.hours ?? ""}
-              onChange={(value) => updateExternshipField("hours", value)}
-            />
-            <Field
-              className="md:col-span-2"
-              label="Description"
-              value={program.externship?.description ?? ""}
-              onChange={(value) => updateExternshipField("description", value)}
-            />
-            <Field
-              className="md:col-span-2"
-              label="Image"
-              value={program.externship?.image ?? ""}
-              onChange={(value) => updateExternshipField("image", value)}
-            />
-          </section>
-
-          <section className="space-y-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <SectionTitle title="Program info" />
-              <button
-                type="button"
-                onClick={addProgramInfo}
-                className="border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-900"
-              >
-                Agregar dato
-              </button>
-            </div>
-
-            {normalizeProgramInfo(program.programInfo).map((item, index) => (
-              <div key={`${item.key}-${index}`} className="grid gap-3 md:grid-cols-[1fr_1fr_2fr_auto]">
-                <Field label="Key" value={item.key ?? ""} onChange={(value) => updateProgramInfo(index, "key", value)} />
-                <Field label="Label" value={item.label ?? ""} onChange={(value) => updateProgramInfo(index, "label", value)} />
-                <Field label="Value" value={item.value ?? ""} onChange={(value) => updateProgramInfo(index, "value", value)} />
-                <button
-                  type="button"
-                  onClick={() => removeProgramInfo(index)}
-                  className="self-end px-3 py-3 text-sm font-semibold text-red-600 dark:text-red-300"
-                >
-                  Quitar
-                </button>
-              </div>
-            ))}
-          </section>
-
-          <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
-            <SectionTitle title="Formulario" />
-            <Field label="Program form name" value={program.form?.programName ?? ""} onChange={(value) => updateFormField("programName", value)} />
-            <Field label="Form type" value={program.form?.type ?? ""} onChange={(value) => updateFormField("type", value)} />
-            <Field className="md:col-span-2" label="Script URL" value={program.form?.scriptUrl ?? ""} onChange={(value) => updateFormField("scriptUrl", value)} />
-            <Field className="md:col-span-2" label="Script code" value={program.form?.scriptCode ?? ""} onChange={(value) => updateFormField("scriptCode", value)} />
-          </section>
-        </>
-      )}
 
       {message ? (
         <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
@@ -512,33 +290,13 @@ export default function ProgramDataEditor({
           </p>
         ) : (
           <p className="text-sm text-gray-500 dark:text-slate-400">
-            El formulario y este JSON quedan sincronizados mientras el contenido
-            sea valido.
+            La informacion base y este JSON quedan sincronizados mientras el
+            contenido sea valido.
           </p>
         )}
       </section>
     </div>
   );
-}
-
-function normalizeProgramInfo(
-  programInfo: Landing["programInfo"],
-): ProgramInfoItem[] {
-  return (programInfo ?? []).map((item, index) => {
-    if (typeof item === "string") {
-      return {
-        key: index === 0 ? "degree" : "custom",
-        label: index === 0 ? "Titulo otorgado" : `Dato ${index + 1}`,
-        value: item,
-      };
-    }
-
-    return {
-      key: item.key ?? "",
-      label: item.label ?? "",
-      value: item.value ?? "",
-    };
-  });
 }
 
 function SectionTitle({ title }: { title: string }) {
@@ -693,6 +451,39 @@ function Field({
         onChange={(event) => onChange(event.target.value)}
         className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 read-only:bg-gray-100 read-only:text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:read-only:bg-slate-950 dark:read-only:text-slate-500"
       />
+    </label>
+  );
+}
+
+function SelectField({
+  label,
+  value,
+  onChange,
+  className = "",
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  className?: string;
+  options: Array<{ label: string; value: string }>;
+}) {
+  return (
+    <label className={`block ${className}`}>
+      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </label>
   );
 }

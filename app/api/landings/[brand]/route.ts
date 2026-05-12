@@ -6,6 +6,12 @@ import {
   type Landing,
   type ProgramInfoItem,
 } from "../../../../lib/data";
+import {
+  defaultLandingLanguageForBrand,
+  getLandingTemplateCopy,
+  normalizeLandingLanguage,
+  type LandingLanguage,
+} from "../../../../lib/landingLanguage";
 
 type Params = Promise<{
   brand: string;
@@ -58,10 +64,14 @@ function createBaseLanding(
   title: string,
   fullTitle: string,
   template: string,
+  language: LandingLanguage,
 ): Landing {
+  const copy = getLandingTemplateCopy(language, brand);
+
   return {
     slug: slugify(title),
     brand,
+    language,
     template,
     status: "draft",
     updatedAt: new Date().toISOString().slice(0, 10),
@@ -78,7 +88,7 @@ function createBaseLanding(
     programType: "",
     schedule: "",
     hero: {
-      eyebrow: `Estudia en ${brand.toUpperCase()}`,
+      eyebrow: `${copy.studyAt} ${brand.toUpperCase()}`,
       highlight: "",
       title: fullTitle,
       description: "",
@@ -103,6 +113,7 @@ function createBaseLanding(
     },
     supportSection: {
       title: "",
+      description: "",
       videoUrl: "",
       items: [],
     },
@@ -112,12 +123,15 @@ function createBaseLanding(
     },
     cta: {
       title: "",
-      button: "¡Inscríbete ahora!",
+      button: "",
     },
     form: {
+      title: copy.formTitle,
+      description: copy.formDescription,
       scriptUrl: "",
       scriptCode: "",
       programName: fullTitle,
+      submitLabel: copy.formSubmitLabel,
     },
     footerScripts: [],
   };
@@ -132,13 +146,18 @@ function normalizeLanding(
   const fullTitle = body.fullTitle?.trim() ?? "";
   const template =
     body.template?.trim() || fallbackTemplate || "DefaultLanding";
+  const language =
+    normalizeLandingLanguage(body.language) ||
+    normalizeLandingLanguage(body.delivery?.language) ||
+    defaultLandingLanguageForBrand(brand);
 
-  const normalizedBody = normalizeAiLandingData(body);
+  const normalizedBody = normalizeAiLandingData(body, language);
 
   return {
-    ...createBaseLanding(brand, title, fullTitle, template),
+    ...createBaseLanding(brand, title, fullTitle, template, language),
     ...normalizedBody,
     brand,
+    language,
     title,
     fullTitle,
     template,
@@ -147,17 +166,24 @@ function normalizeLanding(
     updatedAt: new Date().toISOString().slice(0, 10),
     logoMode: body.logoMode || "dark",
     form: {
+      title: normalizedBody.form?.title || "",
+      description: normalizedBody.form?.description || "",
       scriptUrl: normalizedBody.form?.scriptUrl || "",
       scriptCode: normalizedBody.form?.scriptCode || "",
       programName: normalizedBody.form?.programName || fullTitle,
+      submitLabel: normalizedBody.form?.submitLabel || "",
       type: normalizedBody.form?.type,
     },
   };
 }
 
-function normalizeAiLandingData(body: Partial<Landing>): Partial<Landing> {
+function normalizeAiLandingData(
+  body: Partial<Landing>,
+  language: LandingLanguage,
+): Partial<Landing> {
   return {
     ...body,
+    language,
     programInfo: normalizeProgramInfo(body.programInfo),
     externship: {
       enabled: Boolean(body.externship?.enabled),
@@ -167,6 +193,13 @@ function normalizeAiLandingData(body: Partial<Landing>): Partial<Landing> {
       hours: body.externship?.hours || "",
       partners: body.externship?.partners ?? [],
     },
+    delivery: body.delivery
+      ? {
+          ...body.delivery,
+          language:
+            normalizeLandingLanguage(body.delivery.language) || language,
+        }
+      : body.delivery,
   };
 }
 
@@ -198,7 +231,7 @@ function inferProgramInfoItem(item: string, index: number): ProgramInfoItem {
   if (/cr[eé]dit/i.test(value)) {
     return {
       key: "credits",
-      label: "Creditos academicos",
+      label: "Academic credits",
       value: value.replace(/\s*cr[eé]ditos?\s+acad[eé]micos?/i, "").trim(),
     };
   }
@@ -206,14 +239,14 @@ function inferProgramInfoItem(item: string, index: number): ProgramInfoItem {
   if (/semestre|mes|month|hour|hora|duraci[oó]n/i.test(value)) {
     return {
       key: "duration",
-      label: "Duracion",
+      label: "Duration",
       value: value.replace(/\s+de\s+duraci[oó]n/i, "").trim(),
     };
   }
 
   return {
     key: index === 0 ? "degree" : "custom",
-    label: index === 0 ? "Titulo otorgado" : `Dato ${index + 1}`,
+    label: index === 0 ? "Degree awarded" : `Item ${index + 1}`,
     value,
   };
 }
@@ -234,12 +267,13 @@ function normalizeProgramInfo(programInfo: unknown): ProgramInfoItem[] {
         const label = typeof item.label === "string" ? item.label.trim() : "";
         const value = typeof item.value === "string" ? item.value.trim() : "";
         const title = typeof item.title === "string" ? item.title.trim() : "";
-        const content = typeof item.content === "string" ? item.content.trim() : "";
+        const content =
+          typeof item.content === "string" ? item.content.trim() : "";
 
         if (value || label || key) {
           return {
             key: key || slugifyProgramInfoKey(label) || "custom",
-            label: label || title || "Dato",
+            label: label || title || "Item",
             value: value || content,
           };
         }
@@ -264,7 +298,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     if (!isLandingPayload(body)) {
       return NextResponse.json(
-        { ok: false, error: "Datos de landing inválidos" },
+        { ok: false, error: "Invalid landing data" },
         { status: 400 },
       );
     }
@@ -275,7 +309,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     if (!title || !fullTitle) {
       return NextResponse.json(
-        { ok: false, error: "Título y título completo son obligatorios" },
+        { ok: false, error: "Title and full title are required" },
         { status: 400 },
       );
     }
@@ -306,7 +340,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
     });
   } catch {
     return NextResponse.json(
-      { ok: false, error: "No se pudo crear la landing" },
+      { ok: false, error: "The landing could not be created" },
       { status: 500 },
     );
   }
