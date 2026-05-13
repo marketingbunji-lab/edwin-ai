@@ -24,7 +24,7 @@ export default function DefaultLandingCtaSection({
   }
 
   return (
-    <section className="bg-[var(--landing-primary)] py-20 text-center text-[var(--landing-primary-text)]">
+    <section className="bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--landing-secondary)_28%,transparent),transparent_36%),linear-gradient(135deg,var(--landing-primary-darkest),var(--landing-primary-dark),var(--landing-primary))] py-20 text-center text-[var(--landing-primary-text)]">
       <div className={landingContainerClass}>
         {title ? (
           <h2 className="mx-auto max-w-[820px] text-[clamp(2rem,4vw,3.5rem)] font-black leading-[1.05] text-[var(--landing-primary-text)]">

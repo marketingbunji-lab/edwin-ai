@@ -1,4 +1,5 @@
 import { getBrandLogo } from "@/lib/brandLogo";
+import { normalizeBrandColorPalette } from "@/lib/brandColors";
 import type {
   Brand,
   BrandCertification,
@@ -249,6 +250,7 @@ export default function DefaultLanding({
   const secondaryColor = brand.secondaryColor || "#F8D74A";
   const primaryTextColor = getTextColor(primaryColor);
   const secondaryTextColor = getTextColor(secondaryColor);
+  const colorPalette = normalizeBrandColorPalette(brand);
   const brandName = brand.name || brand.slug;
   const logo = getBrandLogo(brand, landing.logoMode || "light") || brand.logo;
   const heroLogo = brand.logos?.light || logo;
@@ -390,10 +392,18 @@ export default function DefaultLanding({
           fontFamily,
           "--landing-primary": primaryColor,
           "--landing-primary-text": primaryTextColor,
+          "--landing-primary-lightest": colorPalette.primary?.lightest,
+          "--landing-primary-light": colorPalette.primary?.light,
+          "--landing-primary-dark": colorPalette.primary?.dark,
+          "--landing-primary-darkest": colorPalette.primary?.darkest,
           "--landing-secondary": secondaryColor,
           "--landing-secondary-text": secondaryTextColor,
-          "--landing-soft-bg": getSoftBackground(primaryColor),
-          "--landing-accent-bg": getSoftBackground(secondaryColor),
+          "--landing-secondary-lightest": colorPalette.secondary?.lightest,
+          "--landing-secondary-light": colorPalette.secondary?.light,
+          "--landing-secondary-dark": colorPalette.secondary?.dark,
+          "--landing-secondary-darkest": colorPalette.secondary?.darkest,
+          "--landing-soft-bg": colorPalette.primary?.lightest || getSoftBackground(primaryColor),
+          "--landing-accent-bg": colorPalette.secondary?.lightest || getSoftBackground(secondaryColor),
         } as React.CSSProperties
       }
     >

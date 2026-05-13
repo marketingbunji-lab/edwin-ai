@@ -70,5 +70,19 @@
         "dark": ""
       }
     }
-  ]
+  ],
+  "colorPalette": {
+    "primary": {
+      "lightest": "#E1F2FC",
+      "light": "#A0D6F4",
+      "dark": "#046AA3",
+      "darkest": "#034A72"
+    },
+    "secondary": {
+      "lightest": "#FEE1E1",
+      "light": "#FD9E9E",
+      "dark": "#B30101",
+      "darkest": "#7D0101"
+    }
+  }
 }

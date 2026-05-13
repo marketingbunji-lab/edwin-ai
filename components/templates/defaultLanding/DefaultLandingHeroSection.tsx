@@ -61,8 +61,8 @@ export default function DefaultLandingHeroSection({
   heroOverlayColor,
 }: Props) {
   const heroBackground = backgroundImage
-    ? `linear-gradient(115deg, ${heroOverlayColor} 0%, ${heroOverlayColor} 42%, rgba(17, 24, 39, 0.28) 100%), url("${backgroundImage}") center / cover`
-    : `linear-gradient(115deg, ${heroOverlayColor} 0%, var(--landing-primary) 50%, color-mix(in srgb, var(--landing-primary) 75%, transparent) 100%)`;
+    ? `radial-gradient(circle at 8% 16%, color-mix(in srgb, var(--landing-secondary) 36%, transparent) 0%, transparent 32%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, ${heroOverlayColor} 44%, rgba(17, 24, 39, 0.18) 100%), url("${backgroundImage}") center / cover`
+    : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 28%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary) 54%, var(--landing-primary-dark) 100%)`;
 
   return (
     <section
@@ -80,7 +80,7 @@ export default function DefaultLandingHeroSection({
               />
             ) : null}
 
-            <p className="mb-[18px] inline-flex items-center border border-[2px] border-[#FFFFFF] rounded-full px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)]">
+            <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
               {eyebrowText}
             </p>
 
@@ -121,7 +121,7 @@ export default function DefaultLandingHeroSection({
 
           <div
             id="default-form"
-            className="rounded-3xl bg-white p-6 text-slate-900 shadow-[0_24px_80px_rgba(0,0,0,0.18)]"
+            className="rounded-3xl border border-white/80 bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-6 text-slate-900 shadow-[0_24px_80px_rgba(0,0,0,0.18)]"
           >
             <div className="mb-5 text-center">
             <h2 className="mb-2 text-2xl leading-[1.15]">

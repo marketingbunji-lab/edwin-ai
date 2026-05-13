@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import type { Brand } from "../../../lib/data";
+import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../utils/supabase/admin";
 
 const brandsDir = path.join(process.cwd(), "data", "brands");
@@ -115,7 +116,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const brandData: Brand = {
+    const brandData: Brand = enrichBrandColorPalette({
       slug,
       name,
       shortName: (body.shortName || name).trim(),
@@ -143,7 +144,7 @@ export async function POST(req: NextRequest) {
       campuses: normalizeCampuses(body),
       legalLinks: body.legalLinks || [],
       certifications: normalizeCertifications(body),
-    };
+    });
 
     fs.writeFileSync(filePath, JSON.stringify(brandData, null, 2), "utf8");
     const supabase = await createBrandInSupabase(brandData);

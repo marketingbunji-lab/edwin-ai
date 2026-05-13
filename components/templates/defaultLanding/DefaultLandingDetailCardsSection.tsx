@@ -74,7 +74,14 @@ export default function DefaultLandingDetailCardsSection({
         {validItems.length > 0 ? (
           <div className={landingCardGridClass}>
             {validItems.map((item, index) => (
-              <article className={landingCardClass} key={`${item.title || "item"}-${index}`}>
+              <article
+                className={`${landingCardClass} relative overflow-hidden`}
+                key={`${item.title || "item"}-${index}`}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-1 w-full bg-[linear-gradient(90deg,var(--landing-secondary),var(--landing-primary-light))]"
+                />
                 {item.title ? <h3 className={landingCardTitleClass}>{item.title}</h3> : null}
                 {item.description ? <p className={landingCardTextClass}>{item.description}</p> : null}
                 {item.url ? (
@@ -82,7 +89,7 @@ export default function DefaultLandingDetailCardsSection({
                     href={item.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-4 inline-flex font-bold text-slate-900 no-underline"
+                    className="mt-4 inline-flex font-bold text-[var(--landing-primary-dark)] no-underline"
                   >
                     {viewMoreLabel}
                   </a>

@@ -30,5 +30,19 @@
       "url": "https://www.uniminuto.edu"
     }
   ],
-  "certifications": []
+  "certifications": [],
+  "colorPalette": {
+    "primary": {
+      "lightest": "#E0E6F0",
+      "light": "#9EB0D1",
+      "dark": "#002360",
+      "darkest": "#001843"
+    },
+    "secondary": {
+      "lightest": "#FFFAE0",
+      "light": "#FFEE9E",
+      "dark": "#B89800",
+      "darkest": "#806A00"
+    }
+  }
 }

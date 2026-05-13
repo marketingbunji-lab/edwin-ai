@@ -26,9 +26,9 @@ export default function DefaultLandingOverviewSection({
   }
 
   return (
-    <section className={landingSectionClass}>
+    <section className={`${landingSectionClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`}>
       <div className={`${landingContainerClass} ${landingTwoColumnClass}`}>
-        <div>
+        <div className="rounded-[24px] border border-[var(--landing-primary-light)] bg-white/72 p-8 shadow-[0_18px_60px_rgba(17,24,39,0.06)]">
           <div className={landingSectionHeaderClass}>
             {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
             {description ? (

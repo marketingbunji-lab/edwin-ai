@@ -82,7 +82,10 @@ export default function DefaultLandingSupportSection({
               }
             >
               {items.map((item, index) => (
-                <article className={landingCardClass} key={index}>
+                <article
+                  className={`${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`}
+                  key={index}
+                >
                   {item.icon ? (
                     <img
                       src={item.icon}

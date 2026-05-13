@@ -1,4 +1,5 @@
 import type { Brand, BrandCertification, LegalLink } from "./data";
+import { enrichBrandColorPalette } from "./brandColors";
 import { createAdminClient } from "@/utils/supabase/admin";
 
 type SupabaseBrandRow = {
@@ -16,7 +17,7 @@ type SupabaseBrandRow = {
 };
 
 function toBrand(brand: SupabaseBrandRow): Brand {
-  return {
+  return enrichBrandColorPalette({
     slug: brand.slug ?? "",
     name: brand.name ?? "",
     shortName: brand.shortName ?? brand.name ?? "",
@@ -41,7 +42,7 @@ function toBrand(brand: SupabaseBrandRow): Brand {
         dark: certification.logos?.dark || "",
       },
     })),
-  };
+  });
 }
 
 export async function getSupabaseBrands(): Promise<Brand[]> {

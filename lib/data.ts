@@ -7,6 +7,7 @@ import {
   normalizeLandingLanguage,
   type LandingLanguage,
 } from "./landingLanguage";
+import { enrichBrandColorPalette } from "./brandColors";
 
 export type Brand = {
   slug: string;
@@ -24,6 +25,7 @@ export type Brand = {
   identityManual?: string;
   primaryColor: string;
   secondaryColor: string;
+  colorPalette?: BrandColorPalette;
   description?: string;
   officialWebsite?: string;
   siteName?: string;
@@ -49,6 +51,18 @@ export type BrandCampus = {
 export type LegalLink = {
   label: string;
   url: string;
+};
+
+export type BrandColorScale = {
+  lightest: string;
+  light: string;
+  dark: string;
+  darkest: string;
+};
+
+export type BrandColorPalette = {
+  primary?: BrandColorScale;
+  secondary?: BrandColorScale;
 };
 
 export type BrandCertification = {
@@ -859,7 +873,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
 }
 
 function normalizeBrand(brand: Brand): Brand {
-  return {
+  return enrichBrandColorPalette({
     ...brand,
     shortName: brand.shortName?.trim() || brand.name,
     campuses: (brand.campuses ?? []).map((campus) => ({
@@ -876,7 +890,7 @@ function normalizeBrand(brand: Brand): Brand {
         dark: certification.logos?.dark ?? "",
       },
     })),
-  };
+  });
 }
 
 export function getBrands(): Brand[] {

@@ -7,8 +7,15 @@ import type {
   Brand,
   BrandCampus,
   BrandCertification,
+  BrandColorPalette,
+  BrandColorScale,
   LegalLink,
 } from "@/lib/data";
+import {
+  createBrandColorScale,
+  enrichBrandColorPalette,
+  normalizeBrandColorPalette,
+} from "@/lib/brandColors";
 
 type EditableBrand = Brand & Record<string, unknown>;
 type EditableRecord = Record<string, unknown>;
@@ -48,7 +55,9 @@ function getRecordAtPath(target: EditableRecord, keys: string[]) {
 
 export default function BrandEditor({ mode, initialBrand }: Props) {
   const router = useRouter();
-  const [brand, setBrand] = useState<Brand>(initialBrand);
+  const [brand, setBrand] = useState<Brand>(() =>
+    enrichBrandColorPalette(initialBrand),
+  );
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [activeTab, setActiveTab] = useState<"general" | "styles">("general");
@@ -65,6 +74,43 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
 
       const current = getRecordAtPath(next, keys.slice(0, -1));
       current[fieldKey] = value;
+
+      if (path === "primaryColor") {
+        next.colorPalette = {
+          ...(next.colorPalette ?? {}),
+          primary: createBrandColorScale(value),
+        };
+      }
+
+      if (path === "secondaryColor") {
+        next.colorPalette = {
+          ...(next.colorPalette ?? {}),
+          secondary: createBrandColorScale(value),
+        };
+      }
+
+      return next;
+    });
+  };
+
+  const updatePaletteField = (
+    colorGroup: keyof BrandColorPalette,
+    tone: keyof BrandColorScale,
+    value: string,
+  ) => {
+    setBrand((prev) => {
+      const next = structuredClone(prev) as EditableBrand;
+      const palette = normalizeBrandColorPalette(next);
+      const scale = palette[colorGroup] ?? createBrandColorScale();
+
+      next.colorPalette = {
+        ...palette,
+        [colorGroup]: {
+          ...scale,
+          [tone]: value,
+        },
+      };
+
       return next;
     });
   };
@@ -275,7 +321,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(brand),
+        body: JSON.stringify(enrichBrandColorPalette(brand)),
       });
 
       const data = (await response.json()) as SaveBrandResponse;
@@ -758,6 +804,28 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                     onChange={(value) => updateField("secondaryColor", value)}
                   />
                 </div>
+
+                <PaletteEditor
+                  title="Variantes del color primario"
+                  scale={
+                    brand.colorPalette?.primary ??
+                    createBrandColorScale(brand.primaryColor)
+                  }
+                  onChange={(tone, value) =>
+                    updatePaletteField("primary", tone, value)
+                  }
+                />
+
+                <PaletteEditor
+                  title="Variantes del color secundario"
+                  scale={
+                    brand.colorPalette?.secondary ??
+                    createBrandColorScale(brand.secondaryColor)
+                  }
+                  onChange={(tone, value) =>
+                    updatePaletteField("secondary", tone, value)
+                  }
+                />
               </div>
 
               <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
@@ -879,10 +947,12 @@ function ColorField({
         {label}
       </span>
       <div className="flex items-center gap-3">
-        <span
-          aria-hidden="true"
-          className="h-12 w-12 shrink-0 rounded-md border border-gray-300 dark:border-slate-700"
-          style={{ backgroundColor: value || "transparent" }}
+        <input
+          type="color"
+          value={isHexColor(value) ? value : "#000000"}
+          onChange={(event) => onChange(event.target.value)}
+          aria-label={`${label} picker`}
+          className="h-12 w-12 shrink-0 cursor-pointer rounded-md border border-gray-300 bg-transparent p-1 dark:border-slate-700"
         />
         <input
           value={value}
@@ -892,4 +962,49 @@ function ColorField({
       </div>
     </label>
   );
+}
+
+function PaletteEditor({
+  title,
+  scale,
+  onChange,
+}: {
+  title: string;
+  scale: BrandColorScale;
+  onChange: (tone: keyof BrandColorScale, value: string) => void;
+}) {
+  const tones: Array<{ key: keyof BrandColorScale; label: string }> = [
+    { key: "lightest", label: "Lightest" },
+    { key: "light", label: "Light" },
+    { key: "dark", label: "Dark" },
+    { key: "darkest", label: "Darkest" },
+  ];
+
+  return (
+    <div className="space-y-3 border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-950">
+      <div>
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
+          {title}
+        </h3>
+        <p className="text-xs text-gray-500 dark:text-slate-400">
+          Se generan desde el color base, pero puedes ajustar cada tono.
+        </p>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        {tones.map((tone) => (
+          <ColorField
+            key={tone.key}
+            label={tone.label}
+            value={scale[tone.key]}
+            onChange={(value) => onChange(tone.key, value)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function isHexColor(value: string) {
+  return /^#[0-9a-fA-F]{6}$/.test(value);
 }

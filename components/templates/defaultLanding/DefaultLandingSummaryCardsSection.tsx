@@ -49,7 +49,7 @@ export default function DefaultLandingSummaryCardsSection({
 
   const card = (
     <article
-      className={`${landingCardClass} min-h-0 border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_18px_60px_rgba(17,24,39,0.12)]`}
+      className={`${landingCardClass} min-h-0 border-t-4 border-t-[var(--landing-secondary)] bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-0 shadow-[0_18px_60px_rgba(17,24,39,0.12)]`}
     >
       <div
         className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[var(--summary-grid-columns)]"
@@ -61,7 +61,7 @@ export default function DefaultLandingSummaryCardsSection({
       >
         {validItems.map((item, index) => (
           <div
-            className="border-slate-200 px-5 py-4 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r"
+            className="border-[var(--landing-primary-light)] px-5 py-4 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r"
             style={{
               borderRightWidth:
                 index === validItems.length - 1 ||
@@ -71,10 +71,10 @@ export default function DefaultLandingSummaryCardsSection({
             }}
             key={`${item.label}-${index}`}
           >
-            <p className="mb-1.5 text-[11px] font-black uppercase tracking-[0.08em] text-[var(--landing-primary)]">
+            <p className="mb-1.5 text-[11px] font-black uppercase tracking-[0.08em] text-[var(--landing-primary-dark)]">
               {item.label}
             </p>
-            <h3 className="m-0 text-base font-bold leading-[1.35] text-slate-900">
+            <h3 className="m-0 text-base font-bold leading-[1.35] text-[var(--landing-primary-darkest)]">
               {item.value}
             </h3>
           </div>

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import type { Brand } from "../../../../lib/data";
+import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../../utils/supabase/admin";
 
 type Params = Promise<{
@@ -39,7 +40,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
   try {
     const { brand } = await params;
     const body = (await req.json()) as Brand;
-    const brandData: Brand = {
+    const brandData: Brand = enrichBrandColorPalette({
       slug: brand,
       name: body.name || "",
       shortName: (body.shortName || body.name || brand).trim(),
@@ -67,7 +68,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       campuses: normalizeCampuses(body),
       legalLinks: body.legalLinks || [],
       certifications: normalizeCertifications(body),
-    };
+    });
 
     const filePath = path.join(
       process.cwd(),

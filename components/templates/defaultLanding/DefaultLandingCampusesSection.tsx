@@ -120,13 +120,13 @@ export default function DefaultLandingCampusesSection({
           {visibleCampuses.map((campus, index) => (
             <article
               key={`${campus.name || "campus"}-${index}`}
-              className={`rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)] ${
+              className={`rounded-3xl border border-[var(--landing-primary-light)] bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)] ${
                 isSingleCampus ? "grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,1.05fr)] lg:items-center" : "grid gap-6"
               }`}
             >
               <div className="flex flex-col">
                 {campus.name ? (
-                  <h3 className="m-0 text-[clamp(1.4rem,3vw,2rem)] font-black leading-[1.12] text-slate-900">
+                  <h3 className="m-0 text-[clamp(1.4rem,3vw,2rem)] font-black leading-[1.12] text-[var(--landing-primary-darkest)]">
                     {campus.name}
                   </h3>
                 ) : null}
@@ -148,8 +148,8 @@ export default function DefaultLandingCampusesSection({
                     href={campus.videoUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 inline-flex min-h-12 items-center justify-center self-start rounded-xl px-5 py-3.5 font-extrabold no-underline transition-opacity hover:opacity-90"
-                    style={{ background: primaryColor, color: primaryTextColor }}
+                    className="mt-5 inline-flex min-h-12 items-center justify-center self-start rounded-xl px-5 py-3.5 font-extrabold no-underline shadow-[0_12px_30px_color-mix(in_srgb,var(--landing-primary)_22%,transparent)] transition-opacity hover:opacity-90"
+                    style={{ background: `linear-gradient(135deg, ${primaryColor}, var(--landing-primary-dark))`, color: primaryTextColor }}
                   >
                     {videoLabel}
                   </a>
@@ -158,7 +158,7 @@ export default function DefaultLandingCampusesSection({
 
               <div className="grid gap-4">
                 {campus.image ? (
-                  <div className="relative min-h-[260px] overflow-hidden rounded-[20px] bg-[var(--landing-soft-bg)]">
+                  <div className="relative min-h-[260px] overflow-hidden rounded-[20px] bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))]">
                     <img
                       src={campus.image}
                       alt={campus.name || `Campus ${index + 1}`}
