@@ -3,7 +3,7 @@
   "brand": "pcihealth",
   "template": "DefaultLanding",
   "status": "draft",
-  "updatedAt": "2026-05-12",
+  "updatedAt": "2026-05-13",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -45,7 +45,7 @@
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
-    "title": "Dental Assistant Program",
+    "title": "Dental Assistant",
     "subtitle": "",
     "description": "Complete the Dental Assistant program in as little as 9 months!",
     "supportText": "",
@@ -151,6 +151,7 @@
   },
   "supportSection": {
     "title": "Student Support",
+    "description": "PCI provides a supportive environment and services from enrollment through job placement assistance.",
     "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
     "items": [
       {
@@ -197,8 +198,8 @@
     "secondaryButton": ""
   },
   "form": {
-    "title": "Request Information",
-    "description": "",
+    "title": "Request information",
+    "description": "Complete the form and our team will contact you shortly.",
     "scriptUrl": "",
     "scriptCode": "",
     "formId": "",
@@ -411,12 +412,12 @@
     {
       "title": "Medical Office Assistant",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Office-Hero.jpg"
     },
     {
       "title": "ECPP (Medical Training Plus GED)",
       "url": "",
-      "image": ""
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/GED-Hero.jpg"
     }
   ],
   "contact": {
