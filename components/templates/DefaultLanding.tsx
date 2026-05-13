@@ -20,7 +20,6 @@ import DefaultLandingFaqSection from "./defaultLanding/DefaultLandingFaqSection"
 import DefaultLandingFooterSection from "./defaultLanding/DefaultLandingFooterSection";
 import DefaultLandingHeroSection from "./defaultLanding/DefaultLandingHeroSection";
 import DefaultLandingOverviewSection from "./defaultLanding/DefaultLandingOverviewSection";
-import DefaultLandingRelatedProgramsSection from "./defaultLanding/DefaultLandingRelatedProgramsSection";
 import DefaultLandingSupportSection from "./defaultLanding/DefaultLandingSupportSection";
 import DefaultLandingTestimonialsSection from "./defaultLanding/DefaultLandingTestimonialsSection";
 import DefaultLandingWhyStudySection from "./defaultLanding/DefaultLandingWhyStudySection";
@@ -386,7 +385,7 @@ export default function DefaultLanding({
   });
   return (
     <div
-      className="bg-white text-slate-900"
+      className="bg-[#f8fbff] text-slate-900"
       style={
         {
           fontFamily,
@@ -402,6 +401,7 @@ export default function DefaultLanding({
           "--landing-secondary-light": colorPalette.secondary?.light,
           "--landing-secondary-dark": colorPalette.secondary?.dark,
           "--landing-secondary-darkest": colorPalette.secondary?.darkest,
+          "--landing-page-bg": "#f8fbff",
           "--landing-soft-bg": colorPalette.primary?.lightest || getSoftBackground(primaryColor),
           "--landing-accent-bg": colorPalette.secondary?.lightest || getSoftBackground(secondaryColor),
         } as React.CSSProperties
@@ -462,6 +462,7 @@ export default function DefaultLanding({
 
       <OpportunityToWorkSection
         opportunityToWork={landing.opportunityToWork ?? landing.careerOutcomes}
+        eyebrow={copy.careerOpportunitiesEyebrow}
         primaryColor={primaryColor}
         secondaryColor={secondaryColor}
       />

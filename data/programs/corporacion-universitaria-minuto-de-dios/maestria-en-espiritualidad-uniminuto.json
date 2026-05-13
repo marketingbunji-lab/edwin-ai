@@ -3,7 +3,7 @@
   "brand": "corporacion-universitaria-minuto-de-dios",
   "template": "DefaultLanding",
   "status": "draft",
-  "updatedAt": "2026-05-12",
+  "updatedAt": "2026-05-13",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -29,7 +29,7 @@
   "hero": {
     "eyebrow": "",
     "highlight": "",
-    "title": "Maestría en Espiritualidad | Uniminuto",
+    "title": "Maestría en Espiritualidad",
     "subtitle": "",
     "description": "Programa diseñado para formar maestros de vida espiritual que acompañen procesos de encuentro con Dios, desde la Biblia, la tradición cristiana y la práctica del acompañamiento espiritual.",
     "supportText": "",

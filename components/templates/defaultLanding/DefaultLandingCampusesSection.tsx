@@ -2,13 +2,10 @@
 import type { BrandCampus } from "@/lib/data";
 import {
   landingContainerClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionKickerClass,
   landingSectionSoftClass,
-  landingSectionTitleClass,
   landingVideoFrameClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   brandName: string;
@@ -108,25 +105,24 @@ export default function DefaultLandingCampusesSection({
   return (
     <section className={landingSectionSoftClass}>
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          <p className={landingSectionKickerClass}>{brandName}</p>
-          <h2 className={landingSectionTitleClass}>{title}</h2>
-          <p className={landingSectionDescriptionClass}>
-            {description}
-          </p>
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow={`Explore ${brandName}`}
+          title={title}
+          description={description}
+          centered
+        />
 
         <div className={isSingleCampus ? "grid gap-6" : "grid gap-6 lg:grid-cols-2"}>
           {visibleCampuses.map((campus, index) => (
             <article
               key={`${campus.name || "campus"}-${index}`}
-              className={`rounded-3xl border border-[var(--landing-primary-light)] bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-6 shadow-[0_16px_48px_rgba(17,24,39,0.08)] ${
+              className={`rounded-3xl border border-[var(--landing-primary-light)] bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                 isSingleCampus ? "grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,1.05fr)] lg:items-center" : "grid gap-6"
               }`}
             >
               <div className="flex flex-col">
                 {campus.name ? (
-                  <h3 className="m-0 text-[clamp(1.4rem,3vw,2rem)] font-black leading-[1.12] text-[var(--landing-primary-darkest)]">
+                  <h3 className="m-0 text-3xl font-bold leading-tight tracking-tight text-[var(--landing-primary-darkest)]">
                     {campus.name}
                   </h3>
                 ) : null}
@@ -139,7 +135,7 @@ export default function DefaultLandingCampusesSection({
                   </p>
                 ) : null}
                 {campus.description ? (
-                  <p className="mt-4 text-base leading-7 text-slate-600">
+                  <p className="mt-4 text-lg leading-8 text-slate-600">
                     {campus.description}
                   </p>
                 ) : null}
@@ -158,7 +154,7 @@ export default function DefaultLandingCampusesSection({
 
               <div className="grid gap-4">
                 {campus.image ? (
-                  <div className="relative min-h-[260px] overflow-hidden rounded-[20px] bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))]">
+                  <div className="relative min-h-[260px] overflow-hidden rounded-3xl bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))] shadow-xl ring-1 ring-slate-200">
                     <img
                       src={campus.image}
                       alt={campus.name || `Campus ${index + 1}`}

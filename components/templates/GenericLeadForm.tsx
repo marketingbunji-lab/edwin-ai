@@ -10,24 +10,12 @@ type Props = {
 
 export default function GenericLeadForm({
   programName,
-  primaryColor,
   buttonText = "Submit",
   submitLabel = "Submit",
   fullNameLabel = "Full Name",
   phoneLabel = "Phone",
   emailLabel = "Email",
 }: Props) {
-  const fieldStyle = {
-    width: "100%",
-    border: "1px solid #D1D5DB",
-    borderRadius: 12,
-    padding: "12px 14px",
-    color: "#111827",
-    fontSize: 14,
-    outline: "none",
-    background: "#ffffff",
-  };
-
   return (
     <form action="#" method="post" style={{ display: "grid", gap: 14 }}>
       <input type="hidden" name="program" value={programName} />
@@ -42,7 +30,7 @@ export default function GenericLeadForm({
           autoComplete="name"
           required
           placeholder={fullNameLabel}
-          style={fieldStyle}
+          className="h-12 rounded-xl border border-slate-200 bg-white/90 px-4 text-[15px] text-slate-950 outline-none transition focus:border-[var(--landing-primary)] focus:ring-4 focus:ring-[color-mix(in_srgb,var(--landing-primary)_15%,transparent)]"
         />
       </label>
 
@@ -56,7 +44,7 @@ export default function GenericLeadForm({
           autoComplete="tel"
           required
           placeholder={phoneLabel}
-          style={fieldStyle}
+          className="h-12 rounded-xl border border-slate-200 bg-white/90 px-4 text-[15px] text-slate-950 outline-none transition focus:border-[var(--landing-primary)] focus:ring-4 focus:ring-[color-mix(in_srgb,var(--landing-primary)_15%,transparent)]"
         />
       </label>
 
@@ -70,24 +58,13 @@ export default function GenericLeadForm({
           autoComplete="email"
           required
           placeholder={emailLabel}
-          style={fieldStyle}
+          className="h-12 rounded-xl border border-slate-200 bg-white/90 px-4 text-[15px] text-slate-950 outline-none transition focus:border-[var(--landing-primary)] focus:ring-4 focus:ring-[color-mix(in_srgb,var(--landing-primary)_15%,transparent)]"
         />
       </label>
 
       <button
         type="submit"
-        style={{
-          minHeight: 48,
-          border: 0,
-          borderRadius: 12,
-          background: primaryColor,
-          color: "#ffffff",
-          cursor: "pointer",
-          fontSize: 15,
-          fontWeight: 800,
-          marginTop: 4,
-          padding: "13px 18px",
-        }}
+        className="mt-2 min-h-14 rounded-xl border-0 bg-[linear-gradient(135deg,var(--landing-primary),var(--landing-primary-dark))] px-5 py-[15px] text-base font-extrabold tracking-[0.01em] text-white shadow-lg shadow-[color-mix(in_srgb,var(--landing-primary)_25%,transparent)] transition duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-[color-mix(in_srgb,var(--landing-primary)_30%,transparent)]"
       >
         {buttonText || submitLabel}
       </button>

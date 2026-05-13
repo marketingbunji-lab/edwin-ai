@@ -34,6 +34,7 @@ export type LandingTemplateCopy = {
   campusesTitle: string;
   campusesDescription: string;
   campusesVideoLabel: string;
+  careerOpportunitiesEyebrow: string;
   programBenefitsTitle: string;
   careerOpportunitiesTitle: string;
   legalLinksAriaLabel: string;
@@ -49,6 +50,7 @@ export const landingTemplateCopyByLanguage: Record<
       "Discover our available locations and explore the spaces, environment, and resources that shape the student experience.",
     campusesTitle: "Explore our campuses",
     campusesVideoLabel: "Watch campus video",
+    careerOpportunitiesEyebrow: "Career paths",
     careerOpportunitiesTitle: "Career Opportunities",
     certificationsRowTitle: "Accreditations",
     certificationsTitle: "Accreditations and Certifications",
@@ -88,6 +90,7 @@ export const landingTemplateCopyByLanguage: Record<
       "Descubre nuestras sedes disponibles y explora los espacios, entornos y recursos que hacen parte de la experiencia estudiantil.",
     campusesTitle: "Conoce nuestros campuses",
     campusesVideoLabel: "Ver video del campus",
+    careerOpportunitiesEyebrow: "Oportunidades laborales",
     careerOpportunitiesTitle: "Oportunidades laborales",
     certificationsRowTitle: "Acreditaciones",
     certificationsTitle: "Acreditaciones y certificaciones",

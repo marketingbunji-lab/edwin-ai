@@ -4,13 +4,9 @@ import {
   landingContainerClass,
   landingImageClass,
   landingImageFrameClass,
-  landingSectionClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderClass,
-  landingSectionKickerClass,
-  landingSectionTitleClass,
   landingTwoColumnClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type AccordionItem = {
   title: string;
@@ -43,16 +39,17 @@ export default function DefaultLandingWhyStudySection({
   }
 
   return (
-    <section id={sectionId} className={landingSectionClass}>
+    <section
+      id={sectionId}
+      className="bg-white py-24 md:py-32"
+    >
       <div className={`${landingContainerClass} ${landingTwoColumnClass}`}>
-        <div>
-          <div className={landingSectionHeaderClass}>
-            <p className={landingSectionKickerClass}>{brandName}</p>
-            {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-            {description ? (
-              <p className={landingSectionDescriptionClass}>{description}</p>
-            ) : null}
-          </div>
+        <div className="relative pl-6 before:absolute before:left-0 before:top-1 before:h-24 before:w-1 before:rounded-full before:bg-[linear-gradient(180deg,var(--landing-secondary),var(--landing-primary-light))]">
+          <DefaultLandingSectionHeader
+            eyebrow={`Why choose ${brandName}`}
+            title={title}
+            description={description}
+          />
 
           {items.length > 0 ? (
             <LandingAccordion items={items} id={`default-why-study-${sectionId}`} />

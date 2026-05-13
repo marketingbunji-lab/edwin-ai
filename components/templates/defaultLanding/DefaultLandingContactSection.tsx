@@ -6,12 +6,10 @@ import {
   landingContainerClass,
   landingImageClass,
   landingImageFrameClass,
-  landingSectionHeaderClass,
-  landingSectionKickerClass,
   landingSectionSoftClass,
-  landingSectionTitleClass,
   landingTwoColumnClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   advisorName: string;
@@ -44,10 +42,10 @@ export default function DefaultLandingContactSection({
         </div>
 
         <div>
-          <div className={landingSectionHeaderClass}>
-            <p className={landingSectionKickerClass}>Contact</p>
-            <h2 className={landingSectionTitleClass}>Speak with an advisor</h2>
-          </div>
+          <DefaultLandingSectionHeader
+            eyebrow="Contact"
+            title="Speak with an advisor"
+          />
 
           <div className={landingCardClass}>
             {advisorName ? <h3 className={landingCardTitleClass}>{advisorName}</h3> : null}

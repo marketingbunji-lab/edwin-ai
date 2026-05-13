@@ -5,11 +5,9 @@ import {
   landingCardTitleClass,
   landingContainerClass,
   landingSectionClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderCenteredClass,
   landingSectionKickerClass,
-  landingSectionTitleClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   title?: string;
@@ -31,12 +29,12 @@ export default function DefaultLandingProgramInfoSection({
   return (
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-          {description ? (
-            <p className={landingSectionDescriptionClass}>{description}</p>
-          ) : null}
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Program snapshot"
+          title={title}
+          description={description}
+          centered
+        />
 
         <div className={landingCardGridClass}>
           {validItems.map((item, index) => (

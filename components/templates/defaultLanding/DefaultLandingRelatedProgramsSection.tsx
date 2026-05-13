@@ -5,9 +5,8 @@ import {
   landingCardTitleClass,
   landingContainerClass,
   landingSectionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionTitleClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type RelatedProgram = {
   title?: string;
@@ -35,9 +34,11 @@ export default function DefaultLandingRelatedProgramsSection({
   return (
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          <h2 className={landingSectionTitleClass}>{title}</h2>
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Explore more"
+          title={title}
+          centered
+        />
 
         <div className={landingCardGridClass}>
           {validItems.map((item, index) => {
@@ -49,7 +50,7 @@ export default function DefaultLandingRelatedProgramsSection({
                 <img
                   src={cardImage}
                   alt={item.title}
-                  className="mb-[18px] h-[180px] w-full rounded-[14px] object-cover"
+                  className="mb-[18px] h-[180px] w-full overflow-hidden rounded-3xl object-cover shadow-xl ring-1 ring-slate-200"
                 />
               ) : null}
               {item.title ? <h3 className={landingCardTitleClass}>{item.title}</h3> : null}

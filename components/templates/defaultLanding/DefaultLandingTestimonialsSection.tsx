@@ -4,10 +4,8 @@ import {
   landingCardTextClass,
   landingCardTitleClass,
   landingContainerClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionSoftClass,
-  landingSectionTitleClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type TestimonialItem = {
   name?: string;
@@ -30,11 +28,13 @@ export default function DefaultLandingTestimonialsSection({ items }: Props) {
   }
 
   return (
-    <section className={landingSectionSoftClass}>
+    <section className="bg-white py-24 md:py-32">
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          <h2 className={landingSectionTitleClass}>Student stories</h2>
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Community voices"
+          title="Student stories"
+          centered
+        />
 
         <div className={landingCardGridClass}>
           {validItems.map((item, index) => (

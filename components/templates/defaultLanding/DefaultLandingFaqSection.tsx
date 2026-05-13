@@ -1,10 +1,6 @@
 import LandingAccordion from "@/components/ui/LandingAccordion";
-import {
-  landingContainerClass,
-  landingSectionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionTitleClass,
-} from "./classes";
+import { landingContainerClass } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type FaqItem = {
   question?: string;
@@ -28,11 +24,13 @@ export default function DefaultLandingFaqSection({ items, title }: Props) {
   }
 
   return (
-    <section className={landingSectionClass}>
+    <section className="bg-[linear-gradient(180deg,var(--landing-primary-lightest),#fff)] py-24 md:py-32">
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          <h2 className={landingSectionTitleClass}>{title}</h2>
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Questions"
+          title={title}
+          centered
+        />
 
         <LandingAccordion items={accordionItems} id="default-faq" />
       </div>

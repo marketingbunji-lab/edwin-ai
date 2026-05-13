@@ -1,16 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
+import { Headphones } from "lucide-react";
 import {
   landingCardClass,
   landingCardTextClass,
   landingCardTitleClass,
   landingContainerClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionSoftClass,
-  landingSectionTitleClass,
   landingVideoFrameClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   title: string;
@@ -34,14 +32,15 @@ export default function DefaultLandingSupportSection({
   }
 
   return (
-    <section className={landingSectionSoftClass}>
+    <section className="bg-[radial-gradient(circle_at_8%_18%,color-mix(in_srgb,var(--landing-primary)_14%,transparent),transparent_32%),linear-gradient(180deg,#fff,var(--landing-primary-lightest))] py-24 md:py-32">
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-          {description ? (
-            <p className={landingSectionDescriptionClass}>{description}</p>
-          ) : null}
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Student experience"
+          title={title}
+          description={description}
+          centered
+          icon={<Headphones className="h-7 w-7" />}
+        />
 
         <div
           className={

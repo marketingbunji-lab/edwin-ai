@@ -41,7 +41,7 @@ export default function DefaultLandingFooterSection({
   });
 
   return (
-    <footer className="bg-slate-900 py-[42px] text-white">
+    <footer className="bg-slate-900 py-16 text-white md:py-20">
       <div className={`${landingContainerClass} flex flex-wrap items-start justify-between gap-8`}>
         <div className="max-w-[420px]">
           {logo ? (

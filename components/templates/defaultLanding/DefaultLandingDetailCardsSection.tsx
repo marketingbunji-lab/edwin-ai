@@ -5,12 +5,9 @@ import {
   landingCardTitleClass,
   landingContainerClass,
   landingPrimaryButtonClass,
-  landingSectionClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionSoftClass,
-  landingSectionTitleClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import { BookOpenCheck, Hammer } from "lucide-react";
 
 type SectionItem = {
   title?: string;
@@ -50,13 +47,36 @@ export default function DefaultLandingDetailCardsSection({
   }
 
   return (
-    <section className={soft ? landingSectionSoftClass : landingSectionClass}>
-      <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-          {description ? (
-            <p className={landingSectionDescriptionClass}>{description}</p>
-          ) : null}
+    <section
+      className={
+        soft
+          ? "relative overflow-hidden bg-[radial-gradient(circle_at_85%_18%,color-mix(in_srgb,var(--landing-secondary)_22%,transparent),transparent_34%),linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-page-bg))] py-24 md:py-32"
+          : "relative overflow-hidden bg-[linear-gradient(180deg,#fff,var(--landing-page-bg))] py-24 md:py-32"
+      }
+    >
+      <div
+        aria-hidden="true"
+        className={`absolute top-10 h-40 w-40 rounded-full blur-3xl ${
+          soft
+            ? "right-8 bg-[var(--landing-secondary)] opacity-15"
+            : "left-8 bg-[var(--landing-primary)] opacity-10"
+        }`}
+      />
+      <div className={`${landingContainerClass} relative`}>
+        <div>
+          <DefaultLandingSectionHeader
+            eyebrow={soft ? "Learning experience" : "Program content"}
+            title={title}
+            description={description}
+            centered
+            icon={
+              soft ? (
+                <Hammer className="h-7 w-7" />
+              ) : (
+                <BookOpenCheck className="h-7 w-7" />
+              )
+            }
+          />
           {downloadUrl ? (
             <div className="mt-6">
               <a

@@ -4,11 +4,9 @@ import {
   landingImageClass,
   landingImageFrameClass,
   landingSectionClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderClass,
-  landingSectionTitleClass,
   landingTwoColumnClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   title: string;
@@ -26,15 +24,14 @@ export default function DefaultLandingOverviewSection({
   }
 
   return (
-    <section className={`${landingSectionClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`}>
+    <section className={`${landingSectionClass} bg-[linear-gradient(180deg,var(--landing-page-bg),var(--landing-primary-lightest))]`}>
       <div className={`${landingContainerClass} ${landingTwoColumnClass}`}>
-        <div className="rounded-[24px] border border-[var(--landing-primary-light)] bg-white/72 p-8 shadow-[0_18px_60px_rgba(17,24,39,0.06)]">
-          <div className={landingSectionHeaderClass}>
-            {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-            {description ? (
-              <p className={landingSectionDescriptionClass}>{description}</p>
-            ) : null}
-          </div>
+        <div className="rounded-3xl border border-[var(--landing-primary-light)] bg-white/72 p-8 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <DefaultLandingSectionHeader
+            eyebrow="Program overview"
+            title={title}
+            description={description}
+          />
         </div>
 
         {image ? (

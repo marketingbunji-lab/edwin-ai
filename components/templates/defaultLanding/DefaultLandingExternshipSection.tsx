@@ -6,13 +6,11 @@ import {
   landingContainerClass,
   landingImageClass,
   landingImageFrameClass,
-  landingSectionDescriptionClass,
-  landingSectionHeaderClass,
   landingSectionKickerClass,
   landingSectionSoftClass,
-  landingSectionTitleClass,
   landingTwoColumnClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   enabled: boolean;
@@ -63,23 +61,21 @@ export default function DefaultLandingExternshipSection({
             </div>
           ) : (
             <div>
-              <div className={landingSectionHeaderClass}>
-                {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-                {description ? (
-                  <p className={landingSectionDescriptionClass}>{description}</p>
-                ) : null}
-              </div>
+              <DefaultLandingSectionHeader
+                eyebrow="Real-world practice"
+                title={title}
+                description={description}
+              />
             </div>
           )}
 
           <div>
             {image ? (
-              <div className={landingSectionHeaderClass}>
-                {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-                {description ? (
-                  <p className={landingSectionDescriptionClass}>{description}</p>
-                ) : null}
-              </div>
+              <DefaultLandingSectionHeader
+                eyebrow="Real-world practice"
+                title={title}
+                description={description}
+              />
             ) : null}
 
             <div className={landingCardGridClass}>

@@ -30,11 +30,11 @@ export default function DefaultLandingCertificationsSection({
   }
 
   return (
-    <section className="border-y border-[var(--landing-primary-light)] bg-[linear-gradient(90deg,#fff,var(--landing-primary-lightest),#fff)] py-12">
+    <section className="border-y border-[var(--landing-primary-light)] bg-[linear-gradient(90deg,var(--landing-page-bg),var(--landing-primary-lightest),var(--landing-page-bg))] py-16 md:py-20">
       <div className={landingContainerClass}>
-        <div className="flex flex-col gap-6 rounded-[18px] border border-[var(--landing-primary-light)] bg-white/78 px-6 py-6 shadow-[0_14px_48px_rgba(17,24,39,0.06)] md:flex-row md:items-center md:justify-between md:gap-10 lg:px-8">
+        <div className="flex flex-col gap-6 rounded-3xl border border-[var(--landing-primary-light)] bg-white/78 px-6 py-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:flex-row md:items-center md:justify-between md:gap-10 lg:px-8">
           <div className="shrink-0 md:pr-8">
-            <h2 className="m-0 text-[clamp(1.5rem,2vw,2rem)] font-black leading-[1.05] text-[var(--landing-primary-darkest)]">
+            <h2 className="m-0 text-3xl font-bold leading-tight tracking-tight text-[var(--landing-primary-darkest)]">
               {title}
             </h2>
           </div>

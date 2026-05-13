@@ -61,16 +61,16 @@ export default function DefaultLandingHeroSection({
   heroOverlayColor,
 }: Props) {
   const heroBackground = backgroundImage
-    ? `radial-gradient(circle at 8% 16%, color-mix(in srgb, var(--landing-secondary) 36%, transparent) 0%, transparent 32%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, ${heroOverlayColor} 44%, rgba(17, 24, 39, 0.18) 100%), url("${backgroundImage}") center / cover`
-    : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 28%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary) 54%, var(--landing-primary-dark) 100%)`;
+    ? `radial-gradient(circle at 8% 14%, color-mix(in srgb, var(--landing-secondary) 52%, transparent) 0%, transparent 34%), linear-gradient(115deg, rgba(2, 6, 23, 0.96) 0%, var(--landing-primary-darkest) 42%, ${heroOverlayColor} 66%, rgba(2, 6, 23, 0.72) 100%), url("${backgroundImage}") center / cover`
+    : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 30%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary-dark) 52%, var(--landing-primary) 100%)`;
 
   return (
     <section
-      className="relative text-[var(--landing-primary-text)]"
+      className="relative overflow-hidden text-[var(--landing-primary-text)]"
       style={{ background: heroBackground }}
     >
-      <div className={`${landingContainerClass} py-[80px] max-sm:py-[34px]`}>
-        <div className="grid items-center gap-12 pb-4 lg:grid-cols-[minmax(0,1fr)_minmax(320px,420px)] max-sm:pb-[72px]">
+      <div className={`${landingContainerClass} py-24 md:py-32`}>
+        <div className="grid items-center gap-14 pb-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
           <div>
             {logo ? (
               <img
@@ -85,27 +85,27 @@ export default function DefaultLandingHeroSection({
             </p>
 
             {heroTitle ? (
-              <h1 className="m-0 text-[clamp(2.5rem,6vw,5rem)] font-black leading-[0.98] text-[var(--landing-primary-text)]">
+              <h1 className="m-0 max-w-[940px] text-6xl font-bold leading-tight tracking-tight text-[var(--landing-primary-text)] md:text-8xl">
                 {heroTitle}
               </h1>
             ) : null}
 
             {heroSubtitle ? (
               <p
-                className="mt-[18px] text-2xl font-bold leading-[1.35] text-inherit opacity-90"
+                className="mt-[18px] text-2xl font-bold leading-tight tracking-tight text-inherit opacity-90 md:text-3xl"
               >
                 {heroSubtitle}
               </p>
             ) : null}
 
             {heroDescription ? (
-              <p className="mt-6 mb-6 max-w-[720px] text-xl leading-[1.55] text-[var(--landing-primary-text)] opacity-90">
+              <p className="mt-6 mb-6 max-w-[720px] text-lg leading-8 text-[var(--landing-primary-text)] opacity-90">
                 {heroDescription}
               </p>
             ) : null}
 
             {heroSupportText ? (
-              <p className="mt-[18px] max-w-[680px] text-base leading-[1.7] text-inherit opacity-90">
+              <p className="mt-[18px] max-w-[680px] text-lg leading-8 text-inherit opacity-90">
                 {heroSupportText}
               </p>
             ) : null}
@@ -121,41 +121,51 @@ export default function DefaultLandingHeroSection({
 
           <div
             id="default-form"
-            className="rounded-3xl border border-white/80 bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))] p-6 text-slate-900 shadow-[0_24px_80px_rgba(0,0,0,0.18)]"
+            className="relative isolate overflow-hidden rounded-3xl border border-white/50 bg-white/90 p-6 text-slate-900 shadow-2xl shadow-slate-950/20 backdrop-blur-xl"
           >
-            <div className="mb-5 text-center">
-            <h2 className="mb-2 text-2xl leading-[1.15]">
-              {formTitle}
-            </h2>
-            <p className="leading-6 text-slate-600">
-              {formDescription}
-            </p>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.34))]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-20 -top-20 -z-10 h-48 w-48 rounded-full bg-white/50 blur-3xl"
+            />
+            <div className="relative mb-5 text-center">
+              <h2 className="mb-2 text-3xl font-bold leading-tight tracking-tight">
+                {formTitle}
+              </h2>
+              <p className="leading-6 text-slate-600">
+                {formDescription}
+              </p>
             </div>
-            {hasConfiguredForm && mode === "export" ? (
-              form.scriptCode ? (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: form.scriptCode,
-                  }}
+            <div className="relative">
+              {hasConfiguredForm && mode === "export" ? (
+                form.scriptCode ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: form.scriptCode,
+                    }}
+                  />
+                ) : form.scriptUrl ? (
+                  <script type="text/javascript" src={form.scriptUrl} />
+                ) : null
+              ) : hasConfiguredForm && form.scriptCode ? (
+                <ClientifyFormEmbed code={form.scriptCode} />
+              ) : hasConfiguredForm && form.scriptUrl ? (
+                <Script src={form.scriptUrl} strategy="afterInteractive" />
+              ) : (
+                <GenericLeadForm
+                  programName={form.programName || fullTitle || title}
+                  primaryColor={primaryColor}
+                  buttonText={ctaButton || submitLabel}
+                  submitLabel={submitLabel}
+                  fullNameLabel={fullNameLabel}
+                  phoneLabel={phoneLabel}
+                  emailLabel={emailLabel}
                 />
-              ) : form.scriptUrl ? (
-                <script type="text/javascript" src={form.scriptUrl} />
-              ) : null
-            ) : hasConfiguredForm && form.scriptCode ? (
-              <ClientifyFormEmbed code={form.scriptCode} />
-            ) : hasConfiguredForm && form.scriptUrl ? (
-              <Script src={form.scriptUrl} strategy="afterInteractive" />
-            ) : (
-              <GenericLeadForm
-                programName={form.programName || fullTitle || title}
-                primaryColor={primaryColor}
-                buttonText={ctaButton || submitLabel}
-                submitLabel={submitLabel}
-                fullNameLabel={fullNameLabel}
-                phoneLabel={phoneLabel}
-                emailLabel={emailLabel}
-              />
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ export default function LandingAccordion({
         return (
           <div
             key={`${id}-item-${index}`}
-            className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_12px_36px_rgba(17,24,39,0.08)]"
+            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
           >
             <button
               type="button"

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
+import { Sparkles } from "lucide-react";
 import {
   landingCardClass,
   landingCardGridClass,
@@ -7,10 +8,8 @@ import {
   landingCardTitleClass,
   landingContainerClass,
   landingIconBadgeClass,
-  landingSectionClass,
-  landingSectionHeaderCenteredClass,
-  landingSectionTitleClass,
 } from "./classes";
+import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   title: string;
@@ -26,11 +25,14 @@ export default function DefaultLandingBenefitsSection({
   }
 
   return (
-    <section className={landingSectionClass}>
+    <section className="bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--landing-secondary)_20%,transparent),transparent_34%),linear-gradient(180deg,var(--landing-page-bg),#fff)] py-24 md:py-32">
       <div className={landingContainerClass}>
-        <div className={landingSectionHeaderCenteredClass}>
-          {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
-        </div>
+        <DefaultLandingSectionHeader
+          eyebrow="Benefits"
+          title={title}
+          centered
+          icon={<Sparkles className="h-7 w-7" />}
+        />
 
         {items.length > 0 ? (
           <div className={landingCardGridClass}>
