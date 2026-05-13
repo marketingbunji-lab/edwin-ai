@@ -21,7 +21,7 @@ export default function GenericLeadForm({
       <input type="hidden" name="program" value={programName} />
 
       <label style={{ display: "grid", gap: 6 }}>
-        <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
+        <span className="text-[13px] font-bold text-slate-700">
           {fullNameLabel}
         </span>
         <input
@@ -35,7 +35,7 @@ export default function GenericLeadForm({
       </label>
 
       <label style={{ display: "grid", gap: 6 }}>
-        <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
+        <span className="text-[13px] font-bold text-slate-700">
           {phoneLabel}
         </span>
         <input
@@ -49,7 +49,7 @@ export default function GenericLeadForm({
       </label>
 
       <label style={{ display: "grid", gap: 6 }}>
-        <span style={{ color: "#374151", fontSize: 13, fontWeight: 700 }}>
+        <span className="text-[13px] font-bold text-slate-700">
           {emailLabel}
         </span>
         <input

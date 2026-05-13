@@ -106,10 +106,10 @@ export default function DefaultLandingSummaryCardsSection({
 
   const card = (
     <article
-      className={`${landingCardClass} min-h-0 border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_10px_30px_rgba(15,23,42,0.08)] ${
+      className={`min-h-0 overflow-hidden rounded-2xl border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
         embedded
-          ? "border-white/30 bg-white/92 backdrop-blur-xl"
-          : "bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]"
+          ? "border border-white/20 bg-slate-950/45 backdrop-blur-xl"
+          : `${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`
       }`}
     >
       <div
@@ -125,7 +125,11 @@ export default function DefaultLandingSummaryCardsSection({
 
           return (
             <div
-              className="flex gap-4 border-[var(--landing-primary-light)] px-5 py-5 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r"
+              className={`flex gap-4 px-5 py-5 last:border-b-0 md:border-r md:[&:nth-child(2n)]:border-r-0 xl:[&:nth-child(2n)]:border-r xl:[&:nth-child(3n)]:border-r ${
+                embedded
+                  ? "border-white/20"
+                  : "border-[var(--landing-primary-light)]"
+              }`}
               style={{
                 borderRightWidth:
                   index === validItems.length - 1 ||
@@ -135,14 +139,28 @@ export default function DefaultLandingSummaryCardsSection({
               }}
               key={`${item.label}-${index}`}
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--landing-secondary-lightest)] text-[var(--landing-secondary-darkest)] shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
+              <span
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl shadow-[0_10px_24px_rgba(15,23,42,0.08)] ${
+                  embedded
+                    ? "bg-white/12 text-white ring-1 ring-white/20"
+                    : "bg-[var(--landing-secondary-lightest)] text-[var(--landing-secondary-darkest)]"
+                }`}
+              >
                 <Icon className="h-5 w-5" />
               </span>
               <div>
-                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[var(--landing-primary-dark)]">
+                <p
+                  className={`mb-1.5 text-[11px] font-bold uppercase tracking-[0.08em] ${
+                    embedded ? "text-white/68" : "text-[var(--landing-primary-dark)]"
+                  }`}
+                >
                   {item.label}
                 </p>
-                <h3 className="m-0 text-lg font-bold leading-tight tracking-tight text-[var(--landing-primary-darkest)]">
+                <h3
+                  className={`m-0 text-lg font-bold leading-tight tracking-tight ${
+                    embedded ? "text-white" : "text-[var(--landing-primary-darkest)]"
+                  }`}
+                >
                   {item.value}
                 </h3>
               </div>

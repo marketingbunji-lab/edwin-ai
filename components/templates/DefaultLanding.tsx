@@ -522,7 +522,7 @@ export default function DefaultLanding({
           title={financialAid.title || ""}
           description={financialAid.description || ""}
           items={financialAidItems}
-          soft
+          variant="secondary"
           viewMoreLabel={copy.sectionViewMore}
         />
       ) : null}
