@@ -524,6 +524,27 @@ export default function LandingEditor({
     }
   };
 
+  const sanitizeExportedInteractiveState = (root: HTMLElement) => {
+    for (const form of Array.from(root.querySelectorAll("form"))) {
+      form.removeAttribute("data-verity-bound");
+
+      const submitButton = form.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement | null;
+
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+
+      for (const statusNode of Array.from(
+        form.querySelectorAll("[data-tone]"),
+      )) {
+        statusNode.textContent = "";
+        statusNode.setAttribute("data-tone", "idle");
+      }
+    }
+  };
+
   const exportPreviewHtml = async () => {
     try {
       const previewRoot = previewContentRef.current;
@@ -539,6 +560,7 @@ export default function LandingEditor({
       }
 
       absolutizeAssetUrls(clone);
+      sanitizeExportedInteractiveState(clone);
 
       const accordionBootstrapScript = `<script>
 document.addEventListener("DOMContentLoaded", function () {
