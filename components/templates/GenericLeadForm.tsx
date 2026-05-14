@@ -1,3 +1,7 @@
+"use client";
+
+import type { FormEvent } from "react";
+
 type Props = {
   programName: string;
   primaryColor: string;
@@ -10,6 +14,12 @@ type Props = {
   emailLabel?: string;
 };
 
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+  }
+}
+
 export default function GenericLeadForm({
   programName,
   buttonText = "Submit",
@@ -20,8 +30,25 @@ export default function GenericLeadForm({
   phoneLabel = "Phone",
   emailLabel = "Email",
 }: Props) {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const form = event.currentTarget;
+
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
+        event: "formSubmission",
+        formId: form.id || "",
+        ...Object.fromEntries(new FormData(form).entries()),
+      });
+    }
+  };
+
   return (
-    <form action="#" method="post" style={{ display: "grid", gap: 14 }}>
+    <form
+      action="#"
+      method="post"
+      onSubmit={handleSubmit}
+      style={{ display: "grid", gap: 14 }}
+    >
       {hiddenProgramFieldName ? (
         <input
           type="hidden"

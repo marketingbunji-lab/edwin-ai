@@ -228,6 +228,14 @@ export default function VerityLeadForm({
           throw new Error(message);
         }
 
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({
+            event: "formSubmission",
+            formId: form.id || "",
+            ...Object.fromEntries(formData.entries()),
+          });
+        }
+
         setStatus("Information sent successfully.", "success");
         form.reset();
       } catch (error) {

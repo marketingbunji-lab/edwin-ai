@@ -23,6 +23,24 @@ function upsertHiddenInput(root: ParentNode, fieldName: string, fieldValue: stri
     }
 
     hidden.value = fieldValue;
+
+    if ((form as HTMLFormElement).dataset.formSubmissionBound !== "true") {
+      form.addEventListener("submit", () => {
+        if (
+          typeof window !== "undefined" &&
+          window.dataLayer &&
+          Array.isArray(window.dataLayer)
+        ) {
+          window.dataLayer.push({
+            event: "formSubmission",
+            formId: (form as HTMLFormElement).id || "",
+            ...Object.fromEntries(new FormData(form as HTMLFormElement).entries()),
+          });
+        }
+      });
+
+      (form as HTMLFormElement).dataset.formSubmissionBound = "true";
+    }
   }
 
   return forms.length > 0;
