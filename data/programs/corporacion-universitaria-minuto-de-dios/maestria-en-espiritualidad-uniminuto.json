@@ -3,7 +3,7 @@
   "brand": "corporacion-universitaria-minuto-de-dios",
   "template": "DefaultLanding",
   "status": "draft",
-  "updatedAt": "2026-05-13",
+  "updatedAt": "2026-05-14",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -33,9 +33,11 @@
     "subtitle": "",
     "description": "Programa diseñado para formar maestros de vida espiritual que acompañen procesos de encuentro con Dios, desde la Biblia, la tradición cristiana y la práctica del acompañamiento espiritual.",
     "supportText": "",
-    "modality": "Online",
+    "modality": "Virtual",
     "semesterPrice": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio otorgado por la sede $ 3.791.900",
-    "price": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio $ 3.791.900",
+    "price": "$ 7.583.800",
+    "discountedPrice": "$3.791.900",
+    "discountPercentage": "50%",
     "duration": "4 Semestres",
     "primaryCta": {
       "label": "Solicita informacion",
@@ -83,19 +85,19 @@
     }
   ],
   "opportunityToWork": {
-    "title": "Oportunidades laborales",
+    "title": "",
     "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
+    "image": "",
     "items": [
       {
-        "title": "Maestro de vida espiritual",
-        "description": "Formación para ejercer como guía y formador en procesos de vida espiritual.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       },
       {
-        "title": "Acompañante espiritual",
-        "description": "Capacidad para acompañar procesos de discernimiento y crecimiento espiritual en personas y comunidades.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       }
@@ -133,49 +135,49 @@
     ]
   },
   "supportSection": {
-    "title": "Acompanamiento al estudiante",
-    "description": "Servicios institucionales como biblioteca física y digital, laboratorios, bienestar universitario, bolsa de empleo, movilidad internacional y acompañamiento durante la formación académica. Atención telefónica y por WhatsApp para información y soporte.",
+    "title": "",
+    "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Línea de atención",
-        "text": "Línea Nacional 01 8000 116 668, Bogotá (601) 291 6520, WhatsApp 313 833 0249. Horario Lunes a viernes: 8:00 am - 8:00 pm.",
-        "description": "Línea Nacional 01 8000 116 668, Bogotá (601) 291 6520, WhatsApp 313 833 0249. Horario Lunes a viernes: 8:00 am - 8:00 pm.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Servicios académicos y de bienestar",
-        "text": "Biblioteca física y digital, laboratorios especializados, servicios de bienestar universitario (psicología, apoyo académico, deportes).",
-        "description": "Biblioteca física y digital, laboratorios especializados, servicios de bienestar universitario (psicología, apoyo académico, deportes).",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Movilidad y convenios",
-        "text": "Más de 160 convenios nacionales e internacionales para movilidad y actividades virtuales con estudiantes y docentes de otros países.",
-        "description": "Más de 160 convenios nacionales e internacionales para movilidad y actividades virtuales con estudiantes y docentes de otros países.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       }
     ]
   },
   "benefits": {
-    "title": "Beneficios del programa",
+    "title": "",
     "items": [
       {
-        "title": "Descuentos de lanzamiento",
-        "text": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
-        "description": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Subsidios por grupo",
-        "text": "Incorporados eudistas y colaboradores OMD: 50%; Externos: 25%; Comunidades religiosas o sacerdotes diocesanos y grupos de oración: 35%.",
-        "description": "Incorporados eudistas y colaboradores OMD: 50%; Externos: 25%; Comunidades religiosas o sacerdotes diocesanos y grupos de oración: 35%.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Becas y financiamiento",
-        "text": "Becas y descuentos disponibles; financiamiento de hasta el 100% de los estudios.",
-        "description": "Becas y descuentos disponibles; financiamiento de hasta el 100% de los estudios.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       }
     ]
@@ -197,9 +199,9 @@
   },
   "footerScripts": [],
   "externship": {
-    "enabled": true,
-    "title": "Practicas profesionales",
-    "description": "Prácticas profesionales como paso para la inserción en escenarios laborales reales, facilitadas por convenios institucionales.",
+    "enabled": false,
+    "title": "",
+    "description": "",
     "image": "",
     "hours": "",
     "partners": []
@@ -264,93 +266,95 @@
   ],
   "overview": {
     "title": "Resumen del programa",
-    "description": "La Maestría en Espiritualidad forma maestros de vida espiritual capaces de transmitir la fe a partir de experiencias bíblicas, históricas y del acompañamiento espiritual, y de construir procesos de acompañamiento orientados al crecimiento de la vida espiritual en personas y comunidades.",
+    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador.",
     "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-04/B2_M_espiritualidad-%28640x640%29%20%281%29.jpg?itok=GjX2K55N"
   },
   "curriculum": {
-    "title": "Lo que aprenderas",
-    "description": "Competencias para caracterizar la vida espiritual cristiana, construir procesos de acompañamiento y aplicar prácticas de discernimiento orientadas al crecimiento espiritual.",
-    "downloadUrl": "",
+    "title": "Ruta formativa",
+    "description": "",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "buttonUrl": "",
+    "buttonTitle": "Descarga el Plan de Estudios",
     "items": [
       {
-        "title": "Elementos de la vida espiritual cristiana",
-        "description": "Caracterización de dinámicas, fundamentos epistemológicos e históricos de la disciplina.",
+        "title": "Fundamentación",
+        "description": "Se afirman los tres pilares de la Sagrada Escritura, la Antropología y la Teología Mística.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Acompañamiento espiritual",
-        "description": "Construcción de procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
+        "title": "Profundización",
+        "description": "Se aprende la historia, el desarrollo, las formas de vivencia y los recursos de apoyo para la vida espiritual, en diálogo interdisciplinar con la Biblia y la sicología aplicada a la vida espiritual.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Discernimiento práctico",
-        "description": "Herramientas para orientar procesos de crecimiento espiritual desde la práctica del discernimiento.",
+        "title": "Investigación",
+        "description": "Se afinan las habilidades para el acompañamiento espiritual y la producción de investigaciones que aporten al campo de estudio.",
         "url": "",
         "image": ""
       }
     ]
   },
   "handsOnTraining": {
-    "enabled": true,
-    "title": "Entrenamiento practico",
-    "description": "El programa incluye prácticas profesionales y acompañamiento práctico en emprendimiento y escenarios reales.",
+    "enabled": "",
+    "title": "",
+    "description": "",
     "items": [
       {
-        "title": "Práctica profesional",
-        "description": "Práctica en escenarios reales apoyada por convenios institucionales para aplicar conocimientos en contextos pastorales y comunitarios.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       },
       {
-        "title": "Emprendimiento con acompañamiento",
-        "description": "Acompañamiento desde la idea hasta la empresa consolidada, con mentores y asesoría especializada.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       }
     ]
   },
   "careerOutcomes": {
-    "title": "Oportunidades laborales",
+    "title": "",
     "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
+    "image": "",
     "items": [
       {
-        "title": "Maestro de vida espiritual",
-        "description": "Formación para ejercer como guía y formador en procesos de vida espiritual.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       },
       {
-        "title": "Acompañante espiritual",
-        "description": "Capacidad para acompañar procesos de discernimiento y crecimiento espiritual en personas y comunidades.",
+        "title": "",
+        "description": "",
         "url": "",
         "image": ""
       }
     ]
   },
   "studentSupport": {
-    "title": "Acompanamiento al estudiante",
-    "description": "Servicios institucionales como biblioteca física y digital, laboratorios, bienestar universitario, bolsa de empleo, movilidad internacional y acompañamiento durante la formación académica. Atención telefónica y por WhatsApp para información y soporte.",
+    "title": "",
+    "description": "",
     "videoUrl": "",
     "items": [
       {
-        "title": "Línea de atención",
-        "text": "Línea Nacional 01 8000 116 668, Bogotá (601) 291 6520, WhatsApp 313 833 0249. Horario Lunes a viernes: 8:00 am - 8:00 pm.",
-        "description": "Línea Nacional 01 8000 116 668, Bogotá (601) 291 6520, WhatsApp 313 833 0249. Horario Lunes a viernes: 8:00 am - 8:00 pm.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Servicios académicos y de bienestar",
-        "text": "Biblioteca física y digital, laboratorios especializados, servicios de bienestar universitario (psicología, apoyo académico, deportes).",
-        "description": "Biblioteca física y digital, laboratorios especializados, servicios de bienestar universitario (psicología, apoyo académico, deportes).",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       },
       {
-        "title": "Movilidad y convenios",
-        "text": "Más de 160 convenios nacionales e internacionales para movilidad y actividades virtuales con estudiantes y docentes de otros países.",
-        "description": "Más de 160 convenios nacionales e internacionales para movilidad y actividades virtuales con estudiantes y docentes de otros países.",
+        "title": "",
+        "text": "",
+        "description": "",
         "icon": ""
       }
     ]
@@ -382,17 +386,23 @@
   "financialAid": {
     "enabled": true,
     "title": "Opciones de ayuda financiera",
-    "description": "La institución ofrece becas, descuentos y opciones de financiación para los estudiantes.",
+    "description": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
     "items": [
       {
-        "title": "Becas y descuentos",
-        "description": "Becas y descuentos disponibles según convocatoria y subsidios por sede.",
+        "title": "Descuentos de lanzamiento",
+        "description": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Financiación",
-        "description": "Financiamiento de hasta el 100% de los estudios y múltiples opciones de pago (Efecty, Daviplata, PSE, tarjetas, cooperativas y bancos).",
+        "title": "Subsidios por grupo",
+        "description": "Incorporados eudistas y colaboradores OMD: 50%; Externos: 25%; Comunidades religiosas o sacerdotes diocesanos y grupos de oración: 35%.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Becas y financiamiento",
+        "description": "Becas y descuentos disponibles; financiamiento de hasta el 100% de los estudios.",
         "url": "",
         "image": ""
       }
@@ -438,5 +448,35 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "Perfil del egresado",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
+    "items": [
+      {
+        "title": "Vida espiritual cristiana",
+        "description": "Caracterizar los elementos constitutivos de la vida espiritual cristiana con sus dinámicas particulares y problemáticas.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Discernimiento y maduración espiritual",
+        "description": "Acompañar procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Procesos de acompañamiento renovadores",
+        "description": "Construir procesos de acompañamiento sólidos y renovadores orientados al crecimiento espiritual.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Respuesta a los tiempos actuales",
+        "description": "Responder a los requerimientos de los tiempos actuales con criterio, sensibilidad social y vocación clara.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  }
 }

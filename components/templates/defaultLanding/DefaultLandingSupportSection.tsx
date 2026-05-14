@@ -11,6 +11,7 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
+  eyebrow: string;
   title: string;
   description: string;
   videoUrl: string;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export default function DefaultLandingSupportSection({
+  eyebrow,
   title,
   description,
   videoUrl,
@@ -35,7 +37,7 @@ export default function DefaultLandingSupportSection({
     <section className="bg-[radial-gradient(circle_at_8%_18%,color-mix(in_srgb,var(--landing-primary)_14%,transparent),transparent_32%),linear-gradient(180deg,#fff,var(--landing-primary-lightest))] py-24 md:py-32">
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Student experience"
+          eyebrow={eyebrow}
           title={title}
           description={description}
           centered

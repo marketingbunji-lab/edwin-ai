@@ -21,7 +21,7 @@
       {
         "title": "Texas Workforce Commission approval",
         "name": "Texas Workforce Commission approval",
-        "description": "Approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+        "description": "Approved and regulated by the Texas Workforce Commission â€“ TWC Career Schools and Colleges Section.",
         "url": "",
         "enabled": true,
         "resolutionText": ""
@@ -47,11 +47,13 @@
     "highlight": "",
     "title": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
     "subtitle": "",
-    "description": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCI’s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
+    "description": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCIâ€™s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
     "supportText": "",
     "modality": "Hybrid",
     "semesterPrice": "",
     "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "In as little as 9 months",
     "primaryCta": {
       "label": "Request Information",
@@ -75,7 +77,7 @@
     {
       "key": "",
       "label": "Delivery",
-      "value": "Hybrid — online courses combined with in-person labs"
+      "value": "Hybrid â€” online courses combined with in-person labs"
     },
     {
       "key": "",
@@ -90,7 +92,7 @@
     {
       "key": "",
       "label": "Accreditation & Approval",
-      "value": "Accredited by ACCSC; approved and regulated by Texas Workforce Commission – TWC Career Schools and Colleges Section"
+      "value": "Accredited by ACCSC; approved and regulated by Texas Workforce Commission â€“ TWC Career Schools and Colleges Section"
     }
   ],
   "opportunityToWork": {
@@ -261,7 +263,7 @@
   },
   "seo": {
     "metaTitle": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
-    "metaDescription": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCI’s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
+    "metaDescription": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCIâ€™s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
     "keywords": []
   },
   "summaryCards": [
@@ -299,6 +301,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": [
       {
         "title": "Anatomy and Physiology",
@@ -472,7 +476,7 @@
     },
     {
       "question": "Where is the Dental Assistant training offered?",
-      "answer": "Dental Assistant training is offered at PCI Health Training Center’s Richardson campus (Northeast Dallas)."
+      "answer": "Dental Assistant training is offered at PCI Health Training Centerâ€™s Richardson campus (Northeast Dallas)."
     },
     {
       "question": "Does the program include hands-on training and externship?",
@@ -485,7 +489,7 @@
   ],
   "relatedPrograms": [
     {
-      "title": "Medical Assistant – Hybrid",
+      "title": "Medical Assistant â€“ Hybrid",
       "url": "",
       "image": ""
     },
@@ -520,5 +524,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "en"
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

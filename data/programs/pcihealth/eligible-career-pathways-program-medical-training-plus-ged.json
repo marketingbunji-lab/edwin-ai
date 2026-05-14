@@ -23,8 +23,8 @@
         "resolutionText": ""
       },
       {
-        "title": "Texas Workforce Commission – TWC Career Schools and Colleges Section",
-        "name": "Texas Workforce Commission – TWC Career Schools and Colleges Section",
+        "title": "Texas Workforce Commission â€“ TWC Career Schools and Colleges Section",
+        "name": "Texas Workforce Commission â€“ TWC Career Schools and Colleges Section",
         "description": "",
         "url": "",
         "enabled": true,
@@ -58,6 +58,8 @@
     "modality": "Program",
     "semesterPrice": "",
     "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "",
     "primaryCta": {
       "label": "Request Information",
@@ -91,7 +93,7 @@
     },
     {
       "label": "Accreditation / Approvals",
-      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section."
+      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission â€“ TWC Career Schools and Colleges Section."
     }
   ],
   "opportunityToWork": {
@@ -100,15 +102,15 @@
     "items": [
       {
         "title": "",
-        "description": "Medical Assistant — entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
+        "description": "Medical Assistant â€” entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
       },
       {
         "title": "",
-        "description": "Dental Assistant — roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
+        "description": "Dental Assistant â€” roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
       },
       {
         "title": "",
-        "description": "Medical Office Assistant — roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
+        "description": "Medical Office Assistant â€” roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
       }
     ]
   },
@@ -216,7 +218,7 @@
     "value": "",
     "unit": "",
     "display": "",
-    "credits": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+    "credits": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission â€“ TWC Career Schools and Colleges Section.",
     "semesters": "",
     "hours": "",
     "externshipHours": ""
@@ -245,7 +247,7 @@
     },
     {
       "label": "Credits",
-      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section."
+      "value": "Accredited by ACCSC; approved and regulated by the Texas Workforce Commission â€“ TWC Career Schools and Colleges Section."
     }
   ],
   "overview": {
@@ -257,6 +259,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -278,15 +282,15 @@
     "items": [
       {
         "title": "",
-        "description": "Medical Assistant — entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
+        "description": "Medical Assistant â€” entry-level duties: check vital signs, assist in physical examinations, administer medications, perform electrocardiograms and basic laboratory tests."
       },
       {
         "title": "",
-        "description": "Dental Assistant — roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
+        "description": "Dental Assistant â€” roles include Dental Assistant, Dental Receptionist, Office Manager, Dental Hygienist Assistant."
       },
       {
         "title": "",
-        "description": "Medical Office Assistant — roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
+        "description": "Medical Office Assistant â€” roles include front office assistant, receptionist, insurance biller/collector, appointment scheduler."
       }
     ]
   },
@@ -343,5 +347,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "en"
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

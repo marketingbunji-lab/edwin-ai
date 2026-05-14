@@ -5,10 +5,12 @@ import type {
   BrandCertification,
   IconTextItem,
   Landing,
+  LandingCertificationItem,
   ProgramInfoItem,
 } from "@/lib/data";
 import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
 import { getLandingTemplateCopy } from "@/lib/landingLanguage";
+import GraduateProfileSection from "./GraduateProfileSection";
 import OpportunityToWorkSection from "./OpportunityToWorkSection";
 import DefaultLandingBenefitsSection from "./defaultLanding/DefaultLandingBenefitsSection";
 import DefaultLandingCampusesSection from "./defaultLanding/DefaultLandingCampusesSection";
@@ -149,7 +151,7 @@ function normalizeAccordionItems(
           : null;
       }
 
-      const title = item?.title?.trim() || `Item ${index + 1}`;
+      const title = item?.title?.trim() || "";
       const content = item?.content?.trim() || item?.description?.trim() || "";
 
       return content || title
@@ -168,18 +170,18 @@ function normalizeIconTextItems(
   if (!Array.isArray(items)) return [];
 
   return items
-    .map((item, index): IconTextItem | null => {
+    .map((item): IconTextItem | null => {
       if (typeof item === "string") {
         const value = item.trim();
         return value
           ? {
-              title: `Item ${index + 1}`,
+              title: "",
               text: value,
             }
           : null;
       }
 
-      const title = item?.title?.trim() || `Item ${index + 1}`;
+      const title = item?.title?.trim() || "";
       const text = item?.text?.trim() || item?.description?.trim() || "";
 
       return title || text
@@ -191,6 +193,68 @@ function normalizeIconTextItems(
         : null;
     })
     .filter((item): item is IconTextItem => Boolean(item));
+}
+
+function normalizeDetailCardItems(
+  items?: Array<
+    | string
+    | {
+        title?: string;
+        description?: string;
+        content?: string;
+        text?: string;
+        url?: string;
+        image?: string;
+      }
+  >,
+) {
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .map((item) => {
+      if (typeof item === "string") {
+        const value = item.trim();
+
+        return value
+          ? {
+              title: "",
+              description: value,
+              url: "",
+              image: "",
+            }
+          : null;
+      }
+
+      const title = item?.title?.trim() || "";
+      const description =
+        item?.description?.trim() ||
+        item?.content?.trim() ||
+        item?.text?.trim() ||
+        "";
+      const url = item?.url?.trim() || "";
+      const image = item?.image?.trim() || "";
+
+      if (!title && !description && !url && !image) {
+        return null;
+      }
+
+      return {
+        title,
+        description,
+        url,
+        image,
+      };
+    })
+    .filter(
+      (
+        item,
+      ): item is {
+        title: string;
+        description: string;
+        url: string;
+        image: string;
+      } => Boolean(item),
+    );
 }
 
 function isLocationMetaLabel(label?: string) {
@@ -265,6 +329,7 @@ export default function DefaultLanding({
   const cta = landing.cta ?? {};
   const form = landing.form ?? {};
   const overview = landing.overview ?? {};
+  const graduateProfile = landing.graduateProfile ?? {};
   const curriculum = landing.curriculum ?? {};
   const handsOnTraining = landing.handsOnTraining ?? {};
   const externship = landing.externship ?? {};
@@ -275,30 +340,10 @@ export default function DefaultLanding({
   const whyStudyItems = normalizeAccordionItems(whyStudy.items);
   const supportItems = normalizeIconTextItems(supportSection.items);
   const benefitItems = normalizeIconTextItems(benefits.items);
-  const curriculumItems = (curriculum.items ?? []).filter(
-    (item) =>
-      typeof item === "string" ||
-      item?.title?.trim() ||
-      item?.description?.trim(),
-  ) as Array<{ title?: string; description?: string; url?: string; image?: string }>;
-  const handsOnTrainingItems = (handsOnTraining.items ?? []).filter(
-    (item) =>
-      typeof item === "string" ||
-      item?.title?.trim() ||
-      item?.description?.trim(),
-  ) as Array<{ title?: string; description?: string; url?: string; image?: string }>;
-  const admissionsItems = (admissions.items ?? []).filter(
-    (item) =>
-      typeof item === "string" ||
-      item?.title?.trim() ||
-      item?.description?.trim(),
-  ) as Array<{ title?: string; description?: string; url?: string; image?: string }>;
-  const financialAidItems = (financialAid.items ?? []).filter(
-    (item) =>
-      typeof item === "string" ||
-      item?.title?.trim() ||
-      item?.description?.trim(),
-  ) as Array<{ title?: string; description?: string; url?: string; image?: string }>;
+  const curriculumItems = normalizeDetailCardItems(curriculum.items);
+  const handsOnTrainingItems = normalizeDetailCardItems(handsOnTraining.items);
+  const admissionsItems = normalizeDetailCardItems(admissions.items);
+  const financialAidItems = normalizeDetailCardItems(financialAid.items);
   const legalLinks = brand.legalLinks ?? [];
   const campuses = (brand.campuses ?? []).filter(
     (campus) =>
@@ -342,6 +387,9 @@ export default function DefaultLanding({
   const supportTitle = supportSection.title || "";
   const supportDescription = supportSection.description?.trim() || "";
   const supportVideoUrl = supportSection.videoUrl?.trim() || "";
+  const hasSupportSection = Boolean(
+    supportDescription || supportVideoUrl || supportItems.length > 0,
+  );
   const ctaTitle = cta.title || "";
   const ctaButton = cta.button || "";
   const ctaDescription = cta.description?.trim() || "";
@@ -383,6 +431,16 @@ export default function DefaultLanding({
 
     return true;
   });
+  const firstCertificationResolutionItem = certificationSettings.items?.find(
+    (item): item is LandingCertificationItem =>
+      typeof item !== "string" &&
+      item.enabled !== false &&
+      Boolean(item.resolutionText?.trim()),
+  );
+  const heroResolutionText =
+    certificationSettings.resolutionText?.trim() ||
+    firstCertificationResolutionItem?.resolutionText?.trim() ||
+    "";
   return (
     <div
       className="bg-[#f8fbff] text-slate-900"
@@ -417,6 +475,11 @@ export default function DefaultLanding({
         heroSubtitle={hero.subtitle || ""}
         heroDescription={heroDescription}
         heroSupportText={hero.supportText || ""}
+        price={hero.price || ""}
+        discountedPrice={hero.discountedPrice || ""}
+        discountPercentage={hero.discountPercentage || ""}
+        discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
+        resolutionText={heroResolutionText}
         summaryItems={heroSummaryItems}
         fullTitle={fullTitle}
         title={title}
@@ -443,6 +506,7 @@ export default function DefaultLanding({
       />
 
       <DefaultLandingOverviewSection
+        eyebrow={copy.overviewEyebrow}
         title={overview.title || ""}
         description={overview.description || ""}
         image={overview.image || ""}
@@ -451,6 +515,7 @@ export default function DefaultLanding({
 
       <DefaultLandingWhyStudySection
         brandName={brandName}
+        eyebrow={`${copy.whyChoosePrefix} ${brandName}`}
         sectionId={landing.slug}
         title={whyStudy.title || ""}
         description={whyStudy.description || ""}
@@ -458,6 +523,13 @@ export default function DefaultLanding({
         logo={logo}
         heroTitle={title}
         items={whyStudyItems}
+      />
+
+      <GraduateProfileSection
+        graduateProfile={graduateProfile}
+        eyebrow={copy.graduateProfileEyebrow}
+        primaryColor={primaryColor}
+        secondaryColor={secondaryColor}
       />
 
       <OpportunityToWorkSection
@@ -468,15 +540,18 @@ export default function DefaultLanding({
       />
 
       <DefaultLandingDetailCardsSection
+        eyebrow={copy.contentEyebrow}
         title={curriculum.title || ""}
         description={curriculum.description || ""}
         items={curriculumItems}
+        buttonUrl={curriculum.buttonUrl || ""}
         downloadUrl={curriculum.downloadUrl || ""}
-        buttonLabel={copy.curriculumButton}
+        buttonLabel={curriculum.buttonTitle || copy.curriculumButton}
         viewMoreLabel={copy.sectionViewMore}
       />
 
       <DefaultLandingDetailCardsSection
+        eyebrow={copy.experienceEyebrow}
         title={handsOnTraining.title || ""}
         description={handsOnTraining.description || ""}
         items={handsOnTrainingItems}
@@ -485,6 +560,7 @@ export default function DefaultLanding({
       />
 
       <DefaultLandingExternshipSection
+        eyebrow={copy.externshipEyebrow}
         enabled={Boolean(externship.enabled)}
         title={externship.title || ""}
         description={externship.description || ""}
@@ -495,21 +571,26 @@ export default function DefaultLanding({
         partnerLabel={copy.externshipPartnerLabel}
       />
 
-      <DefaultLandingSupportSection
-        title={supportTitle}
-        description={supportDescription}
-        videoUrl={supportVideoUrl}
-        items={supportItems}
-        isDirectVideoUrl={isDirectVideoUrl}
-      />
+      {hasSupportSection ? (
+        <DefaultLandingSupportSection
+          eyebrow={copy.studentExperienceEyebrow}
+          title={supportTitle}
+          description={supportDescription}
+          videoUrl={supportVideoUrl}
+          items={supportItems}
+          isDirectVideoUrl={isDirectVideoUrl}
+        />
+      ) : null}
 
       <DefaultLandingBenefitsSection
+        eyebrow={copy.benefitsEyebrow}
         title={benefits.title || ""}
         items={benefitItems}
       />
 
       {hasAdmissionsSection ? (
         <DefaultLandingDetailCardsSection
+          eyebrow={copy.contentEyebrow}
           title={admissions.title || ""}
           description={admissions.description || ""}
           items={admissionsItems}
@@ -519,6 +600,7 @@ export default function DefaultLanding({
 
       {financialAid.enabled ? (
         <DefaultLandingDetailCardsSection
+          eyebrow={copy.financialSupportEyebrow}
           title={financialAid.title || ""}
           description={financialAid.description || ""}
           items={financialAidItems}
@@ -527,9 +609,17 @@ export default function DefaultLanding({
         />
       ) : null}
 
-      <DefaultLandingTestimonialsSection items={landing.testimonials ?? []} />
+      <DefaultLandingTestimonialsSection
+        eyebrow={copy.studentStoriesEyebrow}
+        title={copy.studentStoriesTitle}
+        items={landing.testimonials ?? []}
+      />
 
-      <DefaultLandingFaqSection items={landing.faq ?? []} title={copy.faqTitle} />
+      <DefaultLandingFaqSection
+        eyebrow={copy.faqEyebrow}
+        items={landing.faq ?? []}
+        title={copy.faqTitle}
+      />
 
       <DefaultLandingCtaSection
         title={ctaTitle}
@@ -540,7 +630,7 @@ export default function DefaultLanding({
       />
 
       <DefaultLandingCampusesSection
-        brandName={brandName}
+        eyebrow={`${copy.campusesEyebrowPrefix} ${brandName}`}
         campuses={campuses}
         campusFilters={landing.delivery?.campuses ?? []}
         primaryColor={primaryColor}

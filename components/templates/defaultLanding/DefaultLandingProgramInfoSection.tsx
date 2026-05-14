@@ -10,12 +10,14 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
+  eyebrow?: string;
   title?: string;
   description?: string;
   items: ProgramInfoItem[];
 };
 
 export default function DefaultLandingProgramInfoSection({
+  eyebrow = "Program snapshot",
   title = "Program details",
   description = "",
   items,
@@ -30,7 +32,7 @@ export default function DefaultLandingProgramInfoSection({
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Program snapshot"
+          eyebrow={eyebrow}
           title={title}
           description={description}
           centered

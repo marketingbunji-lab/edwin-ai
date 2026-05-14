@@ -56,7 +56,15 @@ async function handleExport(request: Request, params: Params) {
     });
   } catch (error) {
     console.error("EXPORT ERROR:", error);
-    return new NextResponse("Error al exportar HTML", { status: 500 });
+    const message =
+      error instanceof Error ? error.stack || error.message : String(error);
+
+    return new NextResponse(
+      process.env.NODE_ENV === "production"
+        ? "Error al exportar HTML"
+        : `Error al exportar HTML\n${message}`,
+      { status: 500 },
+    );
   }
 }
 

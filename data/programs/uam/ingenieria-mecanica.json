@@ -16,6 +16,8 @@
     "modality": "In person",
     "semesterPrice": "$10.144.100",
     "price": "$10.144.100",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "10 Semestres",
     "primaryCta": {
       "label": "Request Information",
@@ -236,6 +238,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -312,5 +316,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

@@ -15,12 +15,14 @@ type RelatedProgram = {
 };
 
 type Props = {
+  eyebrow: string;
   items: RelatedProgram[];
   title: string;
   actionLabel: string;
 };
 
 export default function DefaultLandingRelatedProgramsSection({
+  eyebrow,
   items,
   title,
   actionLabel,
@@ -35,7 +37,7 @@ export default function DefaultLandingRelatedProgramsSection({
     <section className={landingSectionClass}>
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Explore more"
+          eyebrow={eyebrow}
           title={title}
           centered
         />

@@ -108,7 +108,7 @@ export default function DefaultLandingSummaryCardsSection({
     <article
       className={`min-h-0 overflow-hidden rounded-2xl border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
         embedded
-          ? "border border-white/20 bg-slate-950/45 backdrop-blur-xl"
+          ? "border border-white/20 bg-slate-950/15 backdrop-blur-xl"
           : `${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`
       }`}
     >

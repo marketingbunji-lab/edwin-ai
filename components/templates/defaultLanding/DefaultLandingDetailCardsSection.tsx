@@ -17,32 +17,41 @@ type SectionItem = {
 };
 
 type Props = {
+  eyebrow?: string;
   title: string;
   description: string;
   items: SectionItem[];
   soft?: boolean;
   variant?: "default" | "secondary";
   downloadUrl?: string;
+  buttonUrl?: string;
   buttonLabel?: string;
   viewMoreLabel?: string;
 };
 
 export default function DefaultLandingDetailCardsSection({
+  eyebrow,
   title,
   description,
   items,
   soft = false,
   variant = "default",
   downloadUrl = "",
+  buttonUrl = "",
   buttonLabel = "Descargar",
   viewMoreLabel = "Ver mas",
 }: Props) {
   const validItems = items.filter(
-    (item) => item.title?.trim() || item.description?.trim() || item.image?.trim(),
+    (item) =>
+      item.title?.trim() ||
+      item.description?.trim() ||
+      item.image?.trim() ||
+      item.url?.trim(),
   );
   const hasRenderableContent = Boolean(
-    description.trim() || downloadUrl.trim() || validItems.length > 0,
+    description.trim() || buttonUrl.trim() || downloadUrl.trim() || validItems.length > 0,
   );
+  const resolvedButtonUrl = buttonUrl.trim() || downloadUrl.trim();
 
   if (!hasRenderableContent) {
     return null;
@@ -54,11 +63,11 @@ export default function DefaultLandingDetailCardsSection({
     : soft
       ? "relative overflow-hidden bg-[radial-gradient(circle_at_85%_18%,color-mix(in_srgb,var(--landing-secondary)_22%,transparent),transparent_34%),linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-page-bg))] py-24 md:py-32"
       : "relative overflow-hidden bg-[linear-gradient(180deg,#fff,var(--landing-page-bg))] py-24 md:py-32";
-  const eyebrow = isSecondaryVariant
+  const resolvedEyebrow = eyebrow || (isSecondaryVariant
     ? "Financial support"
     : soft
       ? "Learning experience"
-      : "Program content";
+      : "Program content");
   const headerIcon = isSecondaryVariant ? (
     <Banknote className="h-7 w-7" />
   ) : soft ? (
@@ -95,24 +104,12 @@ export default function DefaultLandingDetailCardsSection({
       <div className={`${landingContainerClass} relative`}>
         <div>
           <DefaultLandingSectionHeader
-            eyebrow={eyebrow}
+            eyebrow={resolvedEyebrow}
             title={title}
             description={description}
             centered
             icon={headerIcon}
           />
-          {downloadUrl ? (
-            <div className="mt-6">
-              <a
-                href={downloadUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={landingPrimaryButtonClass}
-              >
-                {buttonLabel}
-              </a>
-            </div>
-          ) : null}
         </div>
 
         {validItems.length > 0 ? (
@@ -140,6 +137,19 @@ export default function DefaultLandingDetailCardsSection({
                 ) : null}
               </article>
             ))}
+          </div>
+        ) : null}
+
+        {resolvedButtonUrl ? (
+          <div className="mt-10 flex justify-center">
+            <a
+              href={resolvedButtonUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={landingPrimaryButtonClass}
+            >
+              {buttonLabel}
+            </a>
           </div>
         ) : null}
       </div>

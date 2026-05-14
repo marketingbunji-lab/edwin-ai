@@ -16,6 +16,8 @@
     "modality": "100% virtual",
     "semesterPrice": "$9.691.500",
     "price": "$9.691.500",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "4 Semestres",
     "primaryCta": {
       "label": "Request Information",
@@ -71,7 +73,7 @@
       },
       {
         "title": "Aumenta tu impacto profesional",
-        "description": "Apply your knowledge in sectors such as health, biotechnology, teaching or research, strengthening your profile as a “master”."
+        "description": "Apply your knowledge in sectors such as health, biotechnology, teaching or research, strengthening your profile as a �Smaster⬝."
       },
       {
         "title": "Build a future in applied science",
@@ -231,6 +233,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -307,5 +311,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

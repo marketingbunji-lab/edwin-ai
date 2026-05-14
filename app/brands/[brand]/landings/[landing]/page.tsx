@@ -27,10 +27,7 @@ export default async function LandingDetailPage({ params }: Props) {
         <LandingEditor
           brand={brand}
           initialLanding={landing}
-          exportEndpoint={`/api/export/${brandSlug}/${landingSlug}`}
           exportFilename={`${brandSlug}-${landingSlug}.html`}
-          exportClientifyEndpoint={`/api/export-clientify/${brandSlug}/${landingSlug}`}
-          exportClientifyFilename={`${brandSlug}-${landingSlug}-clientify.html`}
         />
       </div>
     </main>

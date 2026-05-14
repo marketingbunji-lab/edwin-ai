@@ -13,6 +13,7 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
+  eyebrow: string;
   enabled: boolean;
   title: string;
   description: string;
@@ -24,6 +25,7 @@ type Props = {
 };
 
 export default function DefaultLandingExternshipSection({
+  eyebrow,
   enabled,
   title,
   description,
@@ -62,7 +64,7 @@ export default function DefaultLandingExternshipSection({
           ) : (
             <div>
               <DefaultLandingSectionHeader
-                eyebrow="Real-world practice"
+                eyebrow={eyebrow}
                 title={title}
                 description={description}
               />
@@ -72,7 +74,7 @@ export default function DefaultLandingExternshipSection({
           <div>
             {image ? (
               <DefaultLandingSectionHeader
-                eyebrow="Real-world practice"
+                eyebrow={eyebrow}
                 title={title}
                 description={description}
               />

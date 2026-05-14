@@ -8,7 +8,7 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
-  brandName: string;
+  eyebrow: string;
   campuses: BrandCampus[];
   campusFilters?: string[];
   title: string;
@@ -20,7 +20,7 @@ type Props = {
 };
 
 export default function DefaultLandingCampusesSection({
-  brandName,
+  eyebrow,
   campuses,
   campusFilters = [],
   title,
@@ -106,7 +106,7 @@ export default function DefaultLandingCampusesSection({
     <section className={landingSectionSoftClass}>
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow={`Explore ${brandName}`}
+          eyebrow={eyebrow}
           title={title}
           description={description}
           centered

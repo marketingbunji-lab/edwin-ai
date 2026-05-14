@@ -8,11 +8,12 @@ type FaqItem = {
 };
 
 type Props = {
+  eyebrow: string;
   items: FaqItem[];
   title: string;
 };
 
-export default function DefaultLandingFaqSection({ items, title }: Props) {
+export default function DefaultLandingFaqSection({ eyebrow, items, title }: Props) {
   const validItems = items.filter((item) => item.question?.trim() && item.answer?.trim());
   const accordionItems = validItems.map((item) => ({
     title: item.question?.trim() || "",
@@ -27,7 +28,7 @@ export default function DefaultLandingFaqSection({ items, title }: Props) {
     <section className="bg-[linear-gradient(180deg,var(--landing-primary-lightest),#fff)] py-24 md:py-32">
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Questions"
+          eyebrow={eyebrow}
           title={title}
           centered
         />

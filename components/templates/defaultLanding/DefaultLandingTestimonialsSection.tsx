@@ -15,10 +15,16 @@ type TestimonialItem = {
 };
 
 type Props = {
+  eyebrow: string;
+  title: string;
   items: TestimonialItem[];
 };
 
-export default function DefaultLandingTestimonialsSection({ items }: Props) {
+export default function DefaultLandingTestimonialsSection({
+  eyebrow,
+  title,
+  items,
+}: Props) {
   const validItems = items.filter(
     (item) => item.name?.trim() || item.role?.trim() || item.quote?.trim(),
   );
@@ -31,8 +37,8 @@ export default function DefaultLandingTestimonialsSection({ items }: Props) {
     <section className="bg-white py-24 md:py-32">
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Community voices"
-          title="Student stories"
+          eyebrow={eyebrow}
+          title={title}
           centered
         />
 

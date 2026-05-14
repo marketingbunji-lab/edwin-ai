@@ -44,8 +44,9 @@ export default function OpportunityToWorkSection({
   const subtitle = opportunityToWork?.subtitle?.trim() ?? "";
   const image = opportunityToWork?.image?.trim() ?? "";
   const items = getItems(opportunityToWork?.items);
+  const hasRenderableContent = Boolean(subtitle || image || items.length > 0);
 
-  if (!title && !subtitle && !image && items.length === 0) {
+  if (!hasRenderableContent) {
     return null;
   }
 

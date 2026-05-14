@@ -17,6 +17,11 @@ type Props = {
   heroSubtitle: string;
   heroDescription: string;
   heroSupportText: string;
+  price: string;
+  discountedPrice: string;
+  discountPercentage: string;
+  discountSuffix: string;
+  resolutionText: string;
   summaryItems: LabelValueItem[];
   fullTitle: string;
   title: string;
@@ -43,6 +48,11 @@ export default function DefaultLandingHeroSection({
   heroSubtitle,
   heroDescription,
   heroSupportText,
+  price,
+  discountedPrice,
+  discountPercentage,
+  discountSuffix,
+  resolutionText,
   summaryItems,
   fullTitle,
   title,
@@ -63,6 +73,11 @@ export default function DefaultLandingHeroSection({
   const heroBackground = backgroundImage
     ? `radial-gradient(circle at 8% 14%, color-mix(in srgb, var(--landing-secondary) 52%, transparent) 0%, transparent 34%), linear-gradient(115deg, rgba(2, 6, 23, 0.96) 0%, var(--landing-primary-darkest) 42%, ${heroOverlayColor} 66%, rgba(2, 6, 23, 0.72) 100%), url("${backgroundImage}") center / cover`
     : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 30%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary-dark) 52%, var(--landing-primary) 100%)`;
+  const hasDiscountPricing = Boolean(discountedPrice?.trim());
+  const hasBasePrice = Boolean(price?.trim());
+  const hasDiscountBadge = Boolean(discountPercentage?.trim());
+  const showPricingBlock = hasBasePrice || hasDiscountPricing || hasDiscountBadge;
+  const primaryDisplayedPrice = discountedPrice?.trim() || price?.trim();
 
   return (
     <section
@@ -110,12 +125,41 @@ export default function DefaultLandingHeroSection({
               </p>
             ) : null}
 
+            {showPricingBlock ? (
+              <div className="mb-8 mt-8 row items-end gap-x-4 gap-y-2 text-white">
+                {hasDiscountPricing && hasBasePrice ? (
+                  <p className="text-xl mb-2 font-medium leading-none text-white/55 line-through md:text-lg">
+                    {price}
+                  </p>
+                ) : null}
+
+                {primaryDisplayedPrice ? (
+                  <div className="flex flex-wrap items-end gap-x-3 gap-y-2">
+                    <p className="text-4xl font-semibold leading-none tracking-tight text-white md:text-4xl">
+                      {primaryDisplayedPrice}
+                    </p>
+
+                    {hasDiscountPricing && hasDiscountBadge ? (
+                      <span className="mb-1 inline-flex items-center rounded-full border border-emerald-300/45 bg-emerald-400/18 px-3 py-1 text-sm font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_10px_24px_rgba(16,185,129,0.16)] backdrop-blur">
+                        {discountPercentage} {discountSuffix}
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
 
             {summaryItems.length > 0 ? (
               <DefaultLandingSummaryCardsSection
                 items={summaryItems}
                 embedded
               />
+            ) : null}
+
+            {resolutionText ? (
+              <p className="mt-4 max-w-[860px] text-[11px] leading-5 text-white/58 md:text-xs">
+                {resolutionText}
+              </p>
             ) : null}
           </div>
 

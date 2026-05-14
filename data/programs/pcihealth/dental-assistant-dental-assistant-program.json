@@ -21,7 +21,7 @@
       {
         "title": "Texas Workforce Commission Approval",
         "name": "Texas Workforce Commission Approval",
-        "description": "Approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+        "description": "Approved and regulated by the Texas Workforce Commission â€“ TWC Career Schools and Colleges Section.",
         "url": "",
         "enabled": true,
         "resolutionText": ""
@@ -52,6 +52,8 @@
     "modality": "Hybrid",
     "semesterPrice": "",
     "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "In as little as 9 months",
     "primaryCta": {
       "label": "Request Information",
@@ -274,6 +276,8 @@
     "title": "What You Will Learn",
     "description": "The curriculum blends classroom theory with lab practice and an externship to teach clinical and administrative dental skills.",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": [
       {
         "title": "Classroom Topics",
@@ -391,7 +395,7 @@
     },
     {
       "question": "Where is the Dental Assistant program offered?",
-      "answer": "Dental Assistant Training is only offered at PCI Health Training Center’s Richardson campus."
+      "answer": "Dental Assistant Training is only offered at PCI Health Training Centerâ€™s Richardson campus."
     },
     {
       "question": "Does the program include hands-on training and an externship?",
@@ -400,7 +404,7 @@
   ],
   "relatedPrograms": [
     {
-      "title": "Medical Assistant – Hybrid",
+      "title": "Medical Assistant â€“ Hybrid",
       "url": "",
       "image": ""
     },
@@ -440,5 +444,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "en"
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

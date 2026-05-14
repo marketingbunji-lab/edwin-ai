@@ -27,6 +27,8 @@
     "modality": "",
     "semesterPrice": "",
     "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "",
     "primaryCta": {
       "label": "Request Information",
@@ -126,6 +128,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -186,5 +190,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "en"
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

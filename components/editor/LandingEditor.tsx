@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   Droplets,
   ChevronDown,
@@ -22,15 +22,28 @@ import type {
   ProgramInfoItem,
 } from "@/lib/data";
 import { renderLandingTemplate } from "../templates/renderLandingTemplate";
-import ExportHtmlButton from "../export/ExportHtmlButton";
 
 type Props = {
   brand: Brand;
   initialLanding: Landing;
-  exportEndpoint: string;
   exportFilename: string;
-  exportClientifyEndpoint: string;
-  exportClientifyFilename: string;
+};
+
+type FilePickerHandle = {
+  createWritable: () => Promise<{
+    write: (data: Blob) => Promise<void>;
+    close: () => Promise<void>;
+  }>;
+};
+
+type WindowWithSavePicker = Window & {
+  showSaveFilePicker?: (options?: {
+    suggestedName?: string;
+    types?: Array<{
+      description: string;
+      accept: Record<string, string[]>;
+    }>;
+  }) => Promise<FilePickerHandle>;
 };
 
 type EditableLanding = Landing & Record<string, unknown>;
@@ -143,10 +156,7 @@ function normalizeProgramInfoEditorItem(
 export default function LandingEditor({
   brand,
   initialLanding,
-  exportEndpoint,
   exportFilename,
-  exportClientifyEndpoint,
-  exportClientifyFilename,
 }: Props) {
   const [landing, setLanding] = useState<Landing>(initialLanding);
   const [saving, setSaving] = useState(false);
@@ -154,6 +164,7 @@ export default function LandingEditor({
   const [analyzingColor, setAnalyzingColor] = useState(false);
   const [previewWidth, setPreviewWidth] = useState(1200);
   const [previewHeight, setPreviewHeight] = useState(820);
+  const previewContentRef = useRef<HTMLDivElement | null>(null);
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
   const certificationsEnabled = Boolean(landing.certifications?.enabled);
@@ -434,6 +445,130 @@ export default function LandingEditor({
     }
   };
 
+  const downloadBlob = async (blob: Blob, suggestedName: string) => {
+    const picker = (window as WindowWithSavePicker).showSaveFilePicker;
+
+    if (picker) {
+      try {
+        const handle = await picker({
+          suggestedName,
+          types: [
+            {
+              description: "HTML",
+              accept: {
+                "text/html": [".html"],
+              },
+            },
+          ],
+        });
+        const writable = await handle.createWritable();
+
+        await writable.write(blob);
+        await writable.close();
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+      }
+    }
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = suggestedName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const collectInlineStyles = () => {
+    const chunks: string[] = [];
+
+    for (const sheet of Array.from(document.styleSheets)) {
+      try {
+        const rules = Array.from(sheet.cssRules);
+        const cssText = rules.map((rule) => rule.cssText).join("\n");
+
+        if (cssText.trim()) {
+          chunks.push(cssText);
+        }
+      } catch {
+        // Ignore cross-origin stylesheets that the browser won't let us read.
+      }
+    }
+
+    return chunks.join("\n\n");
+  };
+
+  const absolutizeAssetUrls = (root: HTMLElement) => {
+    const attributes = ["src", "href", "poster"] as const;
+
+    for (const selector of ["[src]", "[href]", "[poster]"]) {
+      for (const element of Array.from(root.querySelectorAll(selector))) {
+        for (const attribute of attributes) {
+          const value = element.getAttribute(attribute);
+
+          if (!value || !value.startsWith("/")) {
+            continue;
+          }
+
+          element.setAttribute(
+            attribute,
+            new URL(value, window.location.origin).toString(),
+          );
+        }
+      }
+    }
+  };
+
+  const exportPreviewHtml = async () => {
+    try {
+      const previewRoot = previewContentRef.current;
+
+      if (!previewRoot) {
+        throw new Error("No se encontró el preview de la landing para exportar.");
+      }
+
+      const clone = previewRoot.cloneNode(true);
+
+      if (!(clone instanceof HTMLDivElement)) {
+        throw new Error("No se pudo preparar el HTML de exportación.");
+      }
+
+      absolutizeAssetUrls(clone);
+
+      const html = `<!DOCTYPE html>
+<html lang="${landing.language || "es"}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${landing.fullTitle || landing.title || "Programa"}</title>
+  <style>
+${collectInlineStyles()}
+  </style>
+</head>
+<body style="margin:0;background:#ffffff;">
+${clone.innerHTML}
+</body>
+</html>`;
+
+      await downloadBlob(
+        new Blob([html], { type: "text/html;charset=utf-8" }),
+        exportFilename,
+      );
+    } catch (error) {
+      console.error(error);
+      window.alert(
+        error instanceof Error
+          ? error.message
+          : "No se pudo exportar el HTML.",
+      );
+    }
+  };
+
   return (
     <div className="grid gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 xl:grid-cols-[380px_minmax(0,1fr)]">
       <div className="flex h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 xl:sticky xl:top-[81px]">
@@ -644,6 +779,24 @@ export default function LandingEditor({
                   label="Valor semestre"
                   value={landing.hero?.semesterPrice || ""}
                   onChange={(value) => updateField("hero.semesterPrice", value)}
+                />
+
+                <Field
+                  label="Precio oficial"
+                  value={landing.hero?.price || ""}
+                  onChange={(value) => updateField("hero.price", value)}
+                />
+
+                <Field
+                  label="Precio con descuento"
+                  value={landing.hero?.discountedPrice || ""}
+                  onChange={(value) => updateField("hero.discountedPrice", value)}
+                />
+
+                <Field
+                  label="Porcentaje de descuento"
+                  value={landing.hero?.discountPercentage || ""}
+                  onChange={(value) => updateField("hero.discountPercentage", value)}
                 />
 
                 <div className="space-y-4">
@@ -872,6 +1025,231 @@ export default function LandingEditor({
                       </div>
                     ),
                   )}
+                </div>
+              </EditorSection>
+            )}
+
+            {landing.curriculum && (
+              <EditorSection title="Sección: Plan de estudios">
+                <Field
+                  label="Título de sección"
+                  value={landing.curriculum?.title || ""}
+                  onChange={(value) => updateField("curriculum.title", value)}
+                />
+
+                <TextareaField
+                  label="Descripción"
+                  value={landing.curriculum?.description || ""}
+                  onChange={(value) =>
+                    updateField("curriculum.description", value)
+                  }
+                />
+
+                <Field
+                  label="URL botón"
+                  value={
+                    landing.curriculum?.buttonUrl ||
+                    landing.curriculum?.downloadUrl ||
+                    ""
+                  }
+                  onChange={(value) => updateField("curriculum.buttonUrl", value)}
+                />
+
+                <Field
+                  label="Texto botón"
+                  value={landing.curriculum?.buttonTitle || ""}
+                  onChange={(value) =>
+                    updateField("curriculum.buttonTitle", value)
+                  }
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Items del plan
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("curriculum.items", {
+                          title: "Nuevo título",
+                          content: "Nuevo contenido",
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar item
+                    </button>
+                  </div>
+
+                  {(landing.curriculum?.items || []).map((item, index) => (
+                    <div
+                      key={index}
+                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                          Item {index + 1}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem("curriculum.items", index)
+                          }
+                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Eliminar
+                        </button>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Field
+                          label="Título"
+                          value={typeof item === "string" ? "" : item?.title || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "curriculum.items",
+                              index,
+                              "title",
+                              value,
+                            )
+                          }
+                        />
+
+                        <TextareaField
+                          label="Contenido"
+                          value={
+                            typeof item === "string"
+                              ? item
+                              : item?.content || item?.description || ""
+                          }
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "curriculum.items",
+                              index,
+                              "content",
+                              value,
+                            )
+                          }
+                        />
+
+                        <Field
+                          label="URL"
+                          value={typeof item === "string" ? "" : item?.url || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "curriculum.items",
+                              index,
+                              "url",
+                              value,
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </EditorSection>
+            )}
+
+            {landing.graduateProfile && (
+              <EditorSection title="Sección: Perfil del egresado">
+                <Field
+                  label="Título de sección"
+                  value={landing.graduateProfile?.title || ""}
+                  onChange={(value) =>
+                    updateField("graduateProfile.title", value)
+                  }
+                />
+
+                <Field
+                  label="URL imagen de apoyo"
+                  value={landing.graduateProfile?.image || ""}
+                  onChange={(value) =>
+                    updateField("graduateProfile.image", value)
+                  }
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Items del perfil
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("graduateProfile.items", {
+                          title: "Nuevo título",
+                          content: "Nuevo contenido",
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar item
+                    </button>
+                  </div>
+
+                  {(landing.graduateProfile?.items || []).map((item, index) => (
+                    <div
+                      key={index}
+                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                          Item {index + 1}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem("graduateProfile.items", index)
+                          }
+                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Eliminar
+                        </button>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Field
+                          label="Título"
+                          value={typeof item === "string" ? "" : item?.title || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "graduateProfile.items",
+                              index,
+                              "title",
+                              value,
+                            )
+                          }
+                        />
+
+                        <TextareaField
+                          label="Contenido"
+                          value={
+                            typeof item === "string"
+                              ? item
+                              : item?.content || item?.description || ""
+                          }
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "graduateProfile.items",
+                              index,
+                              "content",
+                              value,
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </EditorSection>
             )}
@@ -1177,17 +1555,16 @@ export default function LandingEditor({
             {saving ? "Guardando..." : "Guardar cambios"}
           </button>
 
-          <ExportHtmlButton
-            endpoint={exportEndpoint}
-            filename={exportFilename}
-            clientifyEndpoint={exportClientifyEndpoint}
-            clientifyFilename={exportClientifyFilename}
-            payload={landing}
+          <button
+            type="button"
+            onClick={exportPreviewHtml}
             className="rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-            icon={<FileDown className="h-4 w-4" />}
           >
-            Exportar
-          </ExportHtmlButton>
+            <span className="inline-flex items-center gap-2">
+              <FileDown className="h-4 w-4" />
+              Exportar HTML
+            </span>
+          </button>
 
           <Link
             href={`/landings/${landing.slug}/preview`}
@@ -1263,7 +1640,9 @@ export default function LandingEditor({
               maxWidth: "100%",
             }}
           >
-            {renderLandingTemplate({ brand, landing })}
+            <div ref={previewContentRef}>
+              {renderLandingTemplate({ brand, landing })}
+            </div>
           </div>
         </div>
       </div>

@@ -12,15 +12,17 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
+  eyebrow: string;
   title: string;
   items: IconTextItem[];
 };
 
 export default function DefaultLandingBenefitsSection({
+  eyebrow,
   title,
   items,
 }: Props) {
-  if (!title && items.length === 0) {
+  if (items.length === 0) {
     return null;
   }
 
@@ -28,7 +30,7 @@ export default function DefaultLandingBenefitsSection({
     <section className="bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--landing-secondary)_20%,transparent),transparent_34%),linear-gradient(180deg,var(--landing-page-bg),#fff)] py-24 md:py-32">
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
-          eyebrow="Benefits"
+          eyebrow={eyebrow}
           title={title}
           centered
           icon={<Sparkles className="h-7 w-7" />}

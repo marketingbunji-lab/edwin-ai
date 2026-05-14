@@ -29,10 +29,10 @@
       {
         "title": "CECU",
         "name": "CECU",
-        "description": "Career Colleges and Schools of Texas – CCST, Career Education Colleges and Universities",
+        "description": "Career Colleges and Schools of Texas â€“ CCST, Career Education Colleges and Universities",
         "url": "",
         "enabled": true,
-        "resolutionText": "Career Colleges and Schools of Texas – CCST, Career Education Colleges and Universities"
+        "resolutionText": "Career Colleges and Schools of Texas â€“ CCST, Career Education Colleges and Universities"
       }
     ]
   },
@@ -50,6 +50,8 @@
     "modality": "On-campus",
     "semesterPrice": "",
     "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "6 Months",
     "primaryCta": {
       "label": "Request Information",
@@ -251,6 +253,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -352,5 +356,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "en"
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

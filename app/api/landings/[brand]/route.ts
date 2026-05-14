@@ -95,10 +95,18 @@ function createBaseLanding(
       supportText: "",
       modality: "",
       semesterPrice: "",
+      price: "",
+      discountedPrice: "",
+      discountPercentage: "",
       backgroundImage: "",
       personImage: "",
     },
     programInfo: [],
+    graduateProfile: {
+      title: "",
+      image: "",
+      items: [],
+    },
     opportunityToWork: {
       title: "",
       subtitle: "",
@@ -109,6 +117,14 @@ function createBaseLanding(
       title: "",
       description: "",
       image: "",
+      items: [],
+    },
+    curriculum: {
+      title: "",
+      description: "",
+      downloadUrl: "",
+      buttonUrl: "",
+      buttonTitle: "",
       items: [],
     },
     supportSection: {

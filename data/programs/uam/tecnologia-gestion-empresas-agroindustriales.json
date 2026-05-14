@@ -16,6 +16,8 @@
     "modality": "Virtual Mode",
     "semesterPrice": "$ 2.141.950",
     "price": "$ 2.141.950",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "6 semestres",
     "primaryCta": {
       "label": "Request Information",
@@ -221,6 +223,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -297,5 +301,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

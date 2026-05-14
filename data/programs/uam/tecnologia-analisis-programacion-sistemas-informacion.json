@@ -11,11 +11,13 @@
     "highlight": "Technology in",
     "title": "Analysis and Programming of Information Systems",
     "subtitle": "",
-    "description": "Master programming languages ​​and lead industry trends.",
+    "description": "Master programming languages â€‹â€‹and lead industry trends.",
     "supportText": "Information and communication technologies continue to advance and you can be part of this universe at the UAM.",
     "modality": "In person",
     "semesterPrice": "$1.956.000",
     "price": "$1.956.000",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "7 Semestres",
     "primaryCta": {
       "label": "Request Information",
@@ -189,7 +191,7 @@
   },
   "seo": {
     "metaTitle": "Technology in Analysis and Programming of Information Systems",
-    "metaDescription": "Master programming languages ​​and lead industry trends.",
+    "metaDescription": "Master programming languages â€‹â€‹and lead industry trends.",
     "keywords": []
   },
   "summaryCards": [
@@ -216,13 +218,15 @@
   ],
   "overview": {
     "title": "Program Overview",
-    "description": "Master programming languages ​​and lead industry trends.",
+    "description": "Master programming languages â€‹â€‹and lead industry trends.",
     "image": ""
   },
   "curriculum": {
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -299,5 +303,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

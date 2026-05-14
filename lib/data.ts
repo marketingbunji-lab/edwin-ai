@@ -86,6 +86,8 @@ export type AccordionItem = {
   title?: string;
   content?: string;
   description?: string;
+  url?: string;
+  image?: string;
 };
 
 export type IconTextItem = {
@@ -122,6 +124,12 @@ export type OpportunityToWork = {
   items?: Array<string | TitleDescriptionItem>;
 };
 
+export type GraduateProfile = {
+  title?: string;
+  image?: string;
+  items?: Array<string | TitleDescriptionItem>;
+};
+
 export type LandingCertificationSettings = {
   enabled?: boolean;
   title?: string;
@@ -148,6 +156,8 @@ export type LandingHero = {
   modality?: string;
   semesterPrice?: string;
   price?: string;
+  discountedPrice?: string;
+  discountPercentage?: string;
   duration?: string;
   primaryCta?: {
     label?: string;
@@ -224,6 +234,7 @@ export type Landing = {
     description?: string;
     image?: string;
   };
+  graduateProfile?: GraduateProfile;
   opportunityToWork?: OpportunityToWork;
   whyStudy?: {
     title?: string;
@@ -235,6 +246,8 @@ export type Landing = {
     title?: string;
     description?: string;
     downloadUrl?: string;
+    buttonUrl?: string;
+    buttonTitle?: string;
     items?: Array<string | AccordionItem>;
   };
   handsOnTraining?: {
@@ -377,7 +390,8 @@ function toTitleDescriptionItems(
 ): TitleDescriptionItem[] {
   if (!Array.isArray(items)) return [];
 
-  return items.map((item, index) => {
+  return items
+    .map((item) => {
     if (typeof item === "string") {
       return {
         title: "",
@@ -386,12 +400,19 @@ function toTitleDescriptionItems(
     }
 
     return {
-      title: item.title || `Item ${index + 1}`,
+      title: item.title || "",
       description: item.description || item.content || item.text || "",
       url: item.url || "",
       image: item.image || "",
     };
-  });
+    })
+    .filter(
+      (item) =>
+        Boolean(item.title?.trim()) ||
+        Boolean(item.description?.trim()) ||
+        Boolean(item.url?.trim()) ||
+        Boolean(item.image?.trim()),
+    );
 }
 
 function normalizeTextMatch(value?: string) {
@@ -509,22 +530,30 @@ function resolveRelatedProgramImage(
 function toIconTextItems(items?: Array<string | IconTextItem>): IconTextItem[] {
   if (!Array.isArray(items)) return [];
 
-  return items.map((item, index) => {
+  return items
+    .map((item) => {
     if (typeof item === "string") {
       return {
-        title: `Item ${index + 1}`,
+        title: "",
         text: item,
         description: item,
       };
     }
 
     return {
-      title: item.title || `Item ${index + 1}`,
+      title: item.title || "",
       text: item.text || item.description || "",
       description: item.description || item.text || "",
       icon: item.icon || "",
     };
-  });
+    })
+    .filter(
+      (item) =>
+        Boolean(item.title?.trim()) ||
+        Boolean(item.text?.trim()) ||
+        Boolean(item.description?.trim()) ||
+        Boolean(item.icon?.trim()),
+    );
 }
 
 function toProgramInfoItems(
@@ -663,6 +692,8 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       modality: hero.modality || deliveryModality,
       semesterPrice: hero.semesterPrice || tuitionDisplay,
       price: hero.price || tuitionDisplay,
+      discountedPrice: hero.discountedPrice || "",
+      discountPercentage: hero.discountPercentage || "",
       duration: hero.duration || durationDisplay,
       primaryCta: {
         label: localizeGenericValue(hero.primaryCta?.label, copy.heroPrimaryCtaLabel, [
@@ -690,6 +721,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       description: landing.overview?.description || hero.description || "",
       image: landing.overview?.image || "",
     },
+    graduateProfile: {
+      title: landing.graduateProfile?.title || "",
+      image: landing.graduateProfile?.image || "",
+      items: toTitleDescriptionItems(landing.graduateProfile?.items),
+    },
     whyStudy: {
       title: localizeGenericValue(landing.whyStudy?.title, copy.whyStudyTitle, [
         englishCopy.whyStudyTitle,
@@ -706,6 +742,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       ]),
       description: landing.curriculum?.description || "",
       downloadUrl: landing.curriculum?.downloadUrl || "",
+      buttonUrl:
+        landing.curriculum?.buttonUrl || landing.curriculum?.downloadUrl || "",
+      buttonTitle: landing.curriculum?.buttonTitle || "",
       items: toTitleDescriptionItems(landing.curriculum?.items),
     },
     handsOnTraining: {

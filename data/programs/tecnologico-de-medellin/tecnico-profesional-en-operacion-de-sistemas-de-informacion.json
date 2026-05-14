@@ -15,10 +15,12 @@
     "title": "Professional Technician in Information Systems Operation",
     "subtitle": "",
     "description": "Trains trained technicians to operate, maintain and support information systems, guaranteeing their availability, security and support for users in business environments.",
-    "supportText": "MEN Price: $2,701,000 • Tec Subsidy: $1,215,000 • Registration Value: $1,486,000",
+    "supportText": "MEN Price: $2,701,000 ⬢ Tec Subsidy: $1,215,000 ⬢ Registration Value: $1,486,000",
     "modality": "Virtual",
     "semesterPrice": "Registration fee: $1,486,000 COP",
     "price": "Registration fee: $1,486,000 COP",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "",
     "primaryCta": {
       "label": "Request Information",
@@ -188,6 +190,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -264,5 +268,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

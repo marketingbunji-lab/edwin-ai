@@ -16,6 +16,8 @@
     "modality": "In person",
     "semesterPrice": "$5.334.000",
     "price": "$5.334.000",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "duration": "9 Semestres",
     "primaryCta": {
       "label": "Request Information",
@@ -223,6 +225,8 @@
     "title": "What You Will Learn",
     "description": "",
     "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
     "items": []
   },
   "handsOnTraining": {
@@ -299,5 +303,10 @@
     "accentColor": "",
     "textColor": ""
   },
-  "language": "es"
+  "language": "es",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
 }

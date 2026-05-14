@@ -74,7 +74,9 @@ export default function ExportHtmlButton({
       });
 
       if (!response.ok) {
-        throw new Error("No se pudo exportar el HTML");
+        const errorText = await response.text();
+
+        throw new Error(errorText || "No se pudo exportar el HTML");
       }
 
       const blob = await response.blob();
@@ -110,7 +112,12 @@ export default function ExportHtmlButton({
       fallbackDownload(blob, selectedFilename);
     } catch (error) {
       console.error(error);
-      window.alert("No se pudo exportar el HTML.");
+      const message =
+        error instanceof Error && error.message
+          ? error.message
+          : "No se pudo exportar el HTML.";
+
+      window.alert(message);
     } finally {
       setExporting(false);
     }
