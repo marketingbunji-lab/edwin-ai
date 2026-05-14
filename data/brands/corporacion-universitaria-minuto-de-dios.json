@@ -2,9 +2,9 @@
   "slug": "corporacion-universitaria-minuto-de-dios",
   "name": "Corporación Universitaria Minuto de Dios",
   "shortName": "Corporación Universitaria Minuto de Dios",
-  "logo": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png",
+  "logo": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/652b8dae367803925cafa91517259b11705aa029/public/uniminuto/logo-uniminuto-light.svg",
   "logos": {
-    "light": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png",
+    "light": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/652b8dae367803925cafa91517259b11705aa029/public/uniminuto/logo-uniminuto-light.svg",
     "dark": "https://www.uniminuto.edu/sites/default/files/logo-uniminuto-footer.png"
   },
   "typography": {
@@ -13,7 +13,7 @@
   },
   "identityManual": "",
   "primaryColor": "#003085",
-  "secondaryColor": "#ffd300",
+  "secondaryColor": "#FFD300",
   "description": "Somos la Corporación Universitaria Minuto de Dios -UNIMINUTO-, más de 300 programas académicos entre pregrado, posgrado y educación continua.",
   "officialWebsite": "https://www.uniminuto.edu",
   "siteName": "Corporación Universitaria Minuto de Dios",
