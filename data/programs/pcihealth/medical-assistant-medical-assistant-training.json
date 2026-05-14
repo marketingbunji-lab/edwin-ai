@@ -2,7 +2,7 @@
   "slug": "medical-assistant-medical-assistant-training",
   "brand": "pcihealth",
   "template": "DefaultLanding",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-05-12",
   "logoMode": "dark",
   "certifications": {
@@ -217,8 +217,31 @@
     "scriptUrl": "",
     "scriptCode": "",
     "formId": "",
-    "programName": "Medical Assistant | Medical Assistant Training",
-    "submitLabel": "Submit"
+    "programName": "Medical Assistant",
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": "PCI Richardson",
+    "campusOptions": [
+      {
+        "label": "Richardson, TX",
+        "campus": "PCI Richardson",
+        "campaigntype": "PCI Richardson"
+      },
+      {
+        "label": "Dallas, TX",
+        "campus": "PCI Dallas",
+        "campaigntype": "PCI Dallas"
+      }
+    ],
+    "campaigntype": "PCI Richardson",
+    "campaigncode": "American Healthcare Institute",
+    "leadsource": "google ads",
+    "leadid": "",
+    "tenantid": "147",
+    "schoolname": "American Healthcare Institute",
+    "channel": "Website",
+    "veritySysKey": "w78s742w",
+    "verityLeadPostUrl": "https://api.verityiq.com/api/leadpost"
   },
   "footerScripts": [],
   "programUrl": "https://www.pcihealth.edu/medical-assistant/",

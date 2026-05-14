@@ -196,7 +196,7 @@ export default function LandingCard({ landing }: Props) {
         </Link>
 
         <Link
-          href={`/landings/${landing.slug}/preview`}
+          href={`/landings/${landing.brand}/${landing.slug}`}
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:text-slate-100"

@@ -491,6 +491,7 @@ export default function DefaultLanding({
         fullNameLabel={copy.formFullNameLabel}
         phoneLabel={copy.formPhoneLabel}
         emailLabel={copy.formEmailLabel}
+        zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
         primaryColor={primaryColor}
         mode={mode}
         hasConfiguredForm={hasConfiguredForm}

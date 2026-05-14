@@ -108,6 +108,12 @@ export type LabelValueItem = {
   value?: string;
 };
 
+export type FormCampusOption = {
+  label?: string;
+  campus?: string;
+  campaigntype?: string;
+};
+
 export type TitleDescriptionItem = {
   title?: string;
   description?: string;
@@ -333,6 +339,19 @@ export type Landing = {
     scriptCode?: string;
     formId?: string;
     programName?: string;
+    campus?: string;
+    campusOptions?: FormCampusOption[];
+    language?: string;
+    campaigntype?: string;
+    campaigncode?: string;
+    leadsource?: string;
+    leadid?: string;
+    tenantid?: string;
+    schoolname?: string;
+    channel?: string;
+    veritySysKey?: string;
+    verityLeadPostUrl?: string;
+    hiddenProgramFieldName?: string;
     submitLabel?: string;
   };
   tracking?: {
@@ -887,6 +906,23 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       scriptCode: landing.form?.scriptCode || "",
       formId: landing.form?.formId || "",
       programName: landing.form?.programName || landing.fullTitle || landing.title,
+      campus: landing.form?.campus || "",
+      campusOptions: (landing.form?.campusOptions ?? []).map((option) => ({
+        label: option?.label || "",
+        campus: option?.campus || "",
+        campaigntype: option?.campaigntype || "",
+      })),
+      language: landing.form?.language || (language === "es" ? "Spanish" : "English"),
+      campaigntype: landing.form?.campaigntype || "",
+      campaigncode: landing.form?.campaigncode || "",
+      leadsource: landing.form?.leadsource || "",
+      leadid: landing.form?.leadid || "",
+      tenantid: landing.form?.tenantid || "",
+      schoolname: landing.form?.schoolname || "",
+      channel: landing.form?.channel || "",
+      veritySysKey: landing.form?.veritySysKey || "",
+      verityLeadPostUrl: landing.form?.verityLeadPostUrl || "",
+      hiddenProgramFieldName: landing.form?.hiddenProgramFieldName || "program",
       submitLabel: localizeGenericValue(
         landing.form?.submitLabel,
         copy.formSubmitLabel,

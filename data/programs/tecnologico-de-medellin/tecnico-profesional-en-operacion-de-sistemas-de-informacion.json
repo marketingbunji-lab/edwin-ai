@@ -117,7 +117,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Técnico Profesional en Operación de Sistemas de Información",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "certifications": {

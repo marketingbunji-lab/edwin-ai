@@ -173,7 +173,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Nursing Program",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "tracking": {
     "googleAdsProgram": "",

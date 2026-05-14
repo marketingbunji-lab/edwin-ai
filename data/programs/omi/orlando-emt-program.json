@@ -134,7 +134,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Emergency Medical Technician (EMT)",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "certifications": {

@@ -2,6 +2,8 @@
 import Script from "next/script";
 import type { Landing } from "@/lib/data";
 import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
+import FormHiddenFieldInjector from "@/components/forms/FormHiddenFieldInjector";
+import VerityLeadForm from "@/components/forms/VerityLeadForm";
 import GenericLeadForm from "@/components/templates/GenericLeadForm";
 import type { LabelValueItem } from "@/lib/data";
 import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSection";
@@ -33,6 +35,7 @@ type Props = {
   fullNameLabel: string;
   phoneLabel: string;
   emailLabel: string;
+  zipLabel: string;
   primaryColor: string;
   mode: "preview" | "export";
   hasConfiguredForm: boolean;
@@ -64,12 +67,16 @@ export default function DefaultLandingHeroSection({
   fullNameLabel,
   phoneLabel,
   emailLabel,
+  zipLabel,
   primaryColor,
   mode,
   hasConfiguredForm,
   backgroundImage,
   heroOverlayColor,
 }: Props) {
+  const hiddenProgramFieldName = form.hiddenProgramFieldName?.trim() || "program";
+  const hiddenProgramFieldValue = form.programName || fullTitle || title;
+  const campusValue = form.campus || "";
   const heroBackground = backgroundImage
     ? `radial-gradient(circle at 8% 14%, color-mix(in srgb, var(--landing-secondary) 52%, transparent) 0%, transparent 34%), linear-gradient(115deg, rgba(2, 6, 23, 0.96) 0%, var(--landing-primary-darkest) 42%, ${heroOverlayColor} 66%, rgba(2, 6, 23, 0.72) 100%), url("${backgroundImage}") center / cover`
     : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 30%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary-dark) 52%, var(--landing-primary) 100%)`;
@@ -78,6 +85,22 @@ export default function DefaultLandingHeroSection({
   const hasDiscountBadge = Boolean(discountPercentage?.trim());
   const showPricingBlock = hasBasePrice || hasDiscountPricing || hasDiscountBadge;
   const primaryDisplayedPrice = discountedPrice?.trim() || price?.trim();
+  const isVerityForm = Boolean(
+    form.verityLeadPostUrl?.trim() && form.veritySysKey?.trim(),
+  );
+  const hiddenFormFields = [
+    {
+      name: hiddenProgramFieldName,
+      value: hiddenProgramFieldValue,
+    },
+    {
+      name: "campus",
+      value: campusValue,
+    },
+  ].filter((field) => field.name.trim());
+  const hiddenFieldInjectionScript = hiddenFormFields.length
+    ? `(function(){var fields=${JSON.stringify(hiddenFormFields)};var tries=0;var maxTries=20;function upsert(doc){var forms=Array.prototype.slice.call(doc.querySelectorAll('form'));forms.forEach(function(form){fields.forEach(function(field){var selector='input[type="hidden"][name="'+field.name.replace(/"/g,'\\"')+'"]';var hidden=form.querySelector(selector);if(!hidden){hidden=doc.createElement('input');hidden.type='hidden';hidden.name=field.name;form.appendChild(hidden);}hidden.value=field.value;});});return forms.length>0;}function apply(){var docs=[document];Array.prototype.forEach.call(document.querySelectorAll('iframe'),function(iframe){try{var idoc=iframe.contentDocument||(iframe.contentWindow&&iframe.contentWindow.document);if(idoc){docs.push(idoc);}}catch(e){}});var applied=false;docs.forEach(function(doc){applied=upsert(doc)||applied;});return applied;}apply();var interval=window.setInterval(function(){tries+=1;var applied=apply();if(applied||tries>=maxTries){window.clearInterval(interval);}},1000);}());`
+    : "";
 
   return (
     <section
@@ -184,26 +207,61 @@ export default function DefaultLandingHeroSection({
               </p>
             </div>
             <div className="relative">
-              {hasConfiguredForm && mode === "export" ? (
-                form.scriptCode ? (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: form.scriptCode,
-                    }}
-                  />
-                ) : form.scriptUrl ? (
-                  <script type="text/javascript" src={form.scriptUrl} />
-                ) : null
+              {isVerityForm ? (
+                <VerityLeadForm
+                  form={form}
+                  buttonText={ctaButton || submitLabel}
+                  fullNameLabel={fullNameLabel}
+                  phoneLabel={phoneLabel}
+                  emailLabel={emailLabel}
+                  zipLabel={zipLabel}
+                />
+              ) : hasConfiguredForm && mode === "export" ? (
+                <>
+                  {form.scriptCode ? (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: form.scriptCode,
+                      }}
+                    />
+                  ) : form.scriptUrl ? (
+                    <script type="text/javascript" src={form.scriptUrl} />
+                  ) : null}
+                  {hiddenFieldInjectionScript ? (
+                    <script
+                      type="text/javascript"
+                      dangerouslySetInnerHTML={{
+                        __html: hiddenFieldInjectionScript,
+                      }}
+                    />
+                  ) : null}
+                </>
               ) : hasConfiguredForm && form.scriptCode ? (
-                <ClientifyFormEmbed code={form.scriptCode} />
+                <>
+                  <ClientifyFormEmbed code={form.scriptCode} />
+                  <FormHiddenFieldInjector
+                    fieldName={hiddenProgramFieldName}
+                    fieldValue={hiddenProgramFieldValue}
+                  />
+                  <FormHiddenFieldInjector fieldName="campus" fieldValue={campusValue} />
+                </>
               ) : hasConfiguredForm && form.scriptUrl ? (
-                <Script src={form.scriptUrl} strategy="afterInteractive" />
+                <>
+                  <Script src={form.scriptUrl} strategy="afterInteractive" />
+                  <FormHiddenFieldInjector
+                    fieldName={hiddenProgramFieldName}
+                    fieldValue={hiddenProgramFieldValue}
+                  />
+                  <FormHiddenFieldInjector fieldName="campus" fieldValue={campusValue} />
+                </>
               ) : (
                 <GenericLeadForm
-                  programName={form.programName || fullTitle || title}
+                  programName={hiddenProgramFieldValue}
                   primaryColor={primaryColor}
                   buttonText={ctaButton || submitLabel}
                   submitLabel={submitLabel}
+                  campusValue={campusValue}
+                  hiddenProgramFieldName={hiddenProgramFieldName}
                   fullNameLabel={fullNameLabel}
                   phoneLabel={phoneLabel}
                   emailLabel={emailLabel}

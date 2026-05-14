@@ -223,7 +223,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "programUrl": "https://www.pcihealth.edu/dental-assistant-hybrid/",

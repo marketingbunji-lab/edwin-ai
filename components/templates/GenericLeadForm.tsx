@@ -3,6 +3,8 @@ type Props = {
   primaryColor: string;
   buttonText?: string;
   submitLabel?: string;
+  campusValue?: string;
+  hiddenProgramFieldName?: string;
   fullNameLabel?: string;
   phoneLabel?: string;
   emailLabel?: string;
@@ -12,13 +14,22 @@ export default function GenericLeadForm({
   programName,
   buttonText = "Submit",
   submitLabel = "Submit",
+  campusValue = "",
+  hiddenProgramFieldName = "program",
   fullNameLabel = "Full Name",
   phoneLabel = "Phone",
   emailLabel = "Email",
 }: Props) {
   return (
     <form action="#" method="post" style={{ display: "grid", gap: 14 }}>
-      <input type="hidden" name="program" value={programName} />
+      {hiddenProgramFieldName ? (
+        <input
+          type="hidden"
+          name={hiddenProgramFieldName}
+          value={programName}
+        />
+      ) : null}
+      <input type="hidden" name="campus" value={campusValue} />
 
       <label style={{ display: "grid", gap: 6 }}>
         <span className="text-[13px] font-bold text-slate-700">

@@ -77,7 +77,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Medical Assistant - Hybrid",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "programUrl": "https://www.pcihealth.edu/medical-assistant-hybrid/",

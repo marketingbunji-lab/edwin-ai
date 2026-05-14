@@ -131,7 +131,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284293.js\"></script>",
     "formId": "",
     "programName": "Ingeniería Biomédica",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Undergraduate",
   "footerScripts": [

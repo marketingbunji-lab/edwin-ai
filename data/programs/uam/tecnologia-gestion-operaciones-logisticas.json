@@ -139,7 +139,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/283895.js\"></script>",
     "formId": "",
     "programName": "Tecnología en Gestión de Operaciones Logísticas - Virtual",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Technological",
   "footerScripts": [

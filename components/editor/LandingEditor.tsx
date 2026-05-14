@@ -540,6 +540,43 @@ export default function LandingEditor({
 
       absolutizeAssetUrls(clone);
 
+      const accordionBootstrapScript = `<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var accordions = Array.prototype.slice.call(
+    document.querySelectorAll("[data-landing-accordion]")
+  );
+
+  accordions.forEach(function (accordion) {
+    var triggers = Array.prototype.slice.call(
+      accordion.querySelectorAll("[data-accordion-trigger='true']")
+    );
+    var panels = Array.prototype.slice.call(
+      accordion.querySelectorAll("[data-accordion-panel='true']")
+    );
+
+    triggers.forEach(function (trigger, index) {
+      trigger.addEventListener("click", function () {
+        triggers.forEach(function (currentTrigger, currentIndex) {
+          var panel = panels[currentIndex];
+          var icon = currentTrigger.querySelector("[data-accordion-icon='true']");
+          var isActive = currentIndex === index;
+
+          currentTrigger.setAttribute("aria-expanded", isActive ? "true" : "false");
+
+          if (panel) {
+            panel.hidden = !isActive;
+          }
+
+          if (icon) {
+            icon.classList.toggle("rotate-45", isActive);
+          }
+        });
+      });
+    });
+  });
+});
+</script>`;
+
       const html = `<!DOCTYPE html>
 <html lang="${landing.language || "es"}">
 <head>
@@ -552,6 +589,7 @@ ${collectInlineStyles()}
 </head>
 <body style="margin:0;background:#ffffff;">
 ${clone.innerHTML}
+${accordionBootstrapScript}
 </body>
 </html>`;
 
@@ -583,6 +621,22 @@ ${clone.innerHTML}
 
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           <div className="space-y-3">
+            <EditorSection title="Estado" defaultOpen>
+              <SelectField
+                label="Estado de la landing"
+                value={landing.status || "draft"}
+                onChange={(value) => updateField("status", value)}
+                options={[
+                  { value: "draft", label: "Draft" },
+                  { value: "published", label: "Published" },
+                ]}
+              />
+
+              <p className="text-xs leading-5 text-gray-500 dark:text-slate-400">
+                El estado se guarda junto con el resto de cambios de la landing.
+              </p>
+            </EditorSection>
+
             <EditorSection title="Logo" defaultOpen>
               <div>
                 <span className="mb-2 block text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -921,6 +975,112 @@ ${clone.innerHTML}
                   label="Nombre del programa"
                   value={landing.form?.programName || ""}
                   onChange={(value) => updateField("form.programName", value)}
+                />
+
+                <Field
+                  label="Campus"
+                  value={landing.form?.campus || ""}
+                  onChange={(value) => updateField("form.campus", value)}
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Opciones de campus
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("form.campusOptions", {
+                          label: "Nuevo campus",
+                          campus: "",
+                          campaigntype: "",
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar campus
+                    </button>
+                  </div>
+
+                  {(landing.form?.campusOptions || []).map((item, index) => (
+                    <div
+                      key={index}
+                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                          Campus {index + 1}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem("form.campusOptions", index)
+                          }
+                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Eliminar
+                        </button>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Field
+                          label="Label visible"
+                          value={typeof item === "string" ? "" : item?.label || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "form.campusOptions",
+                              index,
+                              "label",
+                              value,
+                            )
+                          }
+                        />
+
+                        <Field
+                          label="Valor campus"
+                          value={typeof item === "string" ? "" : item?.campus || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "form.campusOptions",
+                              index,
+                              "campus",
+                              value,
+                            )
+                          }
+                        />
+
+                        <Field
+                          label="Valor campaigntype"
+                          value={
+                            typeof item === "string"
+                              ? ""
+                              : item?.campaigntype || ""
+                          }
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "form.campusOptions",
+                              index,
+                              "campaigntype",
+                              value,
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <Field
+                  label="Nombre input hidden"
+                  value={landing.form?.hiddenProgramFieldName || ""}
+                  onChange={(value) =>
+                    updateField("form.hiddenProgramFieldName", value)
+                  }
                 />
               </EditorSection>
             )}
@@ -1567,7 +1727,7 @@ ${clone.innerHTML}
           </button>
 
           <Link
-            href={`/landings/${landing.slug}/preview`}
+            href={`/landings/${landing.brand}/${landing.slug}`}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"

@@ -135,7 +135,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284465.js\"></script>",
     "formId": "",
     "programName": "Ingeniería de Sistemas",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Undergraduate",
   "footerScripts": [

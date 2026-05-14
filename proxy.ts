@@ -13,15 +13,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  const previewMatch = request.nextUrl.pathname.match(/^\/([^/]+)\/preview\/?$/);
-
-  if (previewMatch) {
-    const rewriteUrl = request.nextUrl.clone();
-    rewriteUrl.pathname = `/landings/${previewMatch[1]}/preview`;
-
-    return NextResponse.rewrite(rewriteUrl);
-  }
-
   return updateSession(request);
 }
 

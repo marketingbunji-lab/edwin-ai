@@ -194,8 +194,10 @@
     "scriptUrl": "",
     "scriptCode": "",
     "formId": "",
-    "programName": "Maestría en Espiritualidad | Uniminuto",
-    "submitLabel": "Enviar"
+    "programName": "Maestría en Espiritualidad",
+    "submitLabel": "Enviar",
+    "hiddenProgramFieldName": "program",
+    "campus": "Uniminuto"
   },
   "footerScripts": [],
   "externship": {

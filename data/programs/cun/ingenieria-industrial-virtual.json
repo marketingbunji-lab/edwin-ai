@@ -117,7 +117,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Ingeniería Industrial - Modalidad Virtual",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "certifications": {

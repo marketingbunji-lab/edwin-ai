@@ -139,7 +139,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284610.js\"></script>",
     "formId": "",
     "programName": "Tecnología en Gestión de Negocios - Virtual",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Technological",
   "footerScripts": [

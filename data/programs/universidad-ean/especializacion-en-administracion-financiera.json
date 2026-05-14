@@ -122,7 +122,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Especialización en Administración Financiera",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "certifications": {

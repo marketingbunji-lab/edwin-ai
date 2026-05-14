@@ -143,7 +143,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/264965.js\"></script>",
     "formId": "",
     "programName": "Maestría en Biología Humana  - Virtual",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Mastery",
   "footerScripts": [

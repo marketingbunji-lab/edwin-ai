@@ -135,7 +135,9 @@
     "scriptCode": "<script type=\"text/javascript\" src=\"https://api.clientify.net/web-marketing/superforms/script/284410.js\"></script>",
     "formId": "",
     "programName": "Tecnología en Atención Prehospitalaria",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "programType": "Technological",
   "footerScripts": [

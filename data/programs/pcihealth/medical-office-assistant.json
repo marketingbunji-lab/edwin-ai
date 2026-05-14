@@ -157,7 +157,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Medical Office Assistant",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "opportunityToWork": {

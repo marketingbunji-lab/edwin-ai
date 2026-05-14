@@ -193,7 +193,9 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Eligible Career Pathways Program (GED Plus Medical Training)",
-    "submitLabel": "Submit"
+    "submitLabel": "Submit",
+    "hiddenProgramFieldName": "program",
+    "campus": ""
   },
   "footerScripts": [],
   "programType": "Program",
