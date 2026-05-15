@@ -1,0 +1,48 @@
+{
+  "slug": "universidad-ean",
+  "name": "Universidad EAN",
+  "shortName": "Universidad EAN",
+  "logo": "https://universidadean.edu.co/sites/default/files/logo-horizontal-es.png",
+  "logos": {
+    "light": "https://universidadean.edu.co/sites/default/files/logo-horizontal-es.png",
+    "dark": "https://universidadean.edu.co/sites/default/files/logo-horizontal-es.png"
+  },
+  "typography": {
+    "fontFamily": "\"Open Sans\", sans-serif",
+    "googleFontHref": "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+  },
+  "identityManual": "https://universidadean.edu.co/sites/default/files/institucion/manuales/Manual-Marca.pdf",
+  "primaryColor": "#3BAC53",
+  "secondaryColor": "#212529",
+  "description": "Empodérate. Estudia en la Universidad Ean - Acreditada en Alta Calidad. Metodología virtual o presencial. Emprendimiento, Innovación y Sostenibilidad",
+  "officialWebsite": "https://universidadean.edu.co/node",
+  "siteName": "Universidad EAN",
+  "abstract": "",
+  "keywords": [],
+  "robots": "",
+  "generator": "",
+  "imageBrand": "https://universidadean.edu.co/sites/default/files/logo-horizontal-es.png",
+  "images": [],
+  "campuses": [],
+  "legalLinks": [
+    {
+      "label": "Sitio oficial",
+      "url": "https://universidadean.edu.co/node"
+    }
+  ],
+  "certifications": [],
+  "colorPalette": {
+    "primary": {
+      "lightest": "#E7F5EA",
+      "light": "#B5DFBE",
+      "dark": "#2A7C3C",
+      "darkest": "#1E562A"
+    },
+    "secondary": {
+      "lightest": "#E4E5E5",
+      "light": "#ABACAE",
+      "dark": "#181B1E",
+      "darkest": "#111315"
+    }
+  }
+}

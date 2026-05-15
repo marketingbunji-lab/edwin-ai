@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   ArrowLeft,
   ChevronRight,
@@ -68,27 +68,10 @@ function getPreferredTheme(): ThemeMode {
     : "light";
 }
 
-function subscribeThemeChange(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  window.addEventListener(themeChangeEvent, onStoreChange);
-
-  return () => {
-    window.removeEventListener("storage", onStoreChange);
-    window.removeEventListener(themeChangeEvent, onStoreChange);
-  };
-}
-
-function getThemeSnapshot() {
-  return getPreferredTheme();
-}
-
-function getServerThemeSnapshot(): ThemeMode {
-  return "light";
-}
-
 function saveTheme(theme: ThemeMode) {
   applyTheme(theme);
   window.localStorage.setItem("bunji-theme", theme);
+  document.cookie = `bunji-theme=${theme}; path=/; max-age=31536000; SameSite=Lax`;
   window.dispatchEvent(new Event(themeChangeEvent));
 }
 
@@ -147,6 +130,14 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
       label: "Programs",
     },
     {
+      href: `/admin/brands/${brandSlug}/buyer-person`,
+      label: "Buyer Person",
+    },
+    {
+      href: `/admin/brands/${brandSlug}/visual-assets`,
+      label: "Visual Assets",
+    },
+    {
       href: `/admin/brands/${brandSlug}/landings`,
       label: "Landings",
     },
@@ -160,11 +151,13 @@ export default function DashboardShell({
 }: Props) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const theme = useSyncExternalStore(
-    subscribeThemeChange,
-    getThemeSnapshot,
-    getServerThemeSnapshot,
-  );
+  const [theme, setTheme] = useState<ThemeMode>(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+
+    return getPreferredTheme();
+  });
   const activeBrand =
     brands.find((brand) => getBrandActiveState(pathname, brand.slug)) ?? null;
   const isBrandOverviewPage = Boolean(
@@ -191,9 +184,33 @@ export default function DashboardShell({
         ) ?? null
       : null;
   const isLandingEditorPage = Boolean(activeBrand && activeLanding);
-  useEffect(() => {
+  useLayoutEffect(() => {
     applyTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    const syncTheme = () => {
+      const preferredTheme = getPreferredTheme();
+
+      setTheme((currentTheme) =>
+        currentTheme === preferredTheme ? currentTheme : preferredTheme,
+      );
+    };
+
+    syncTheme();
+    window.addEventListener("storage", syncTheme);
+    window.addEventListener(themeChangeEvent, syncTheme);
+
+    return () => {
+      window.removeEventListener("storage", syncTheme);
+      window.removeEventListener(themeChangeEvent, syncTheme);
+    };
+  }, []);
+
+  const handleThemeChange = (nextTheme: ThemeMode) => {
+    setTheme(nextTheme);
+    saveTheme(nextTheme);
+  };
 
   if (!pathname.startsWith("/admin")) {
     return children;
@@ -201,9 +218,7 @@ export default function DashboardShell({
 
   return (
     <div
-      className={`min-h-screen bg-[#f3f5f9] text-slate-900 dark:bg-[#020617] dark:text-slate-100 ${
-        theme === "dark" ? "dark" : ""
-      }`}
+      className="min-h-screen bg-[#f3f5f9] text-slate-900 dark:bg-[#020617] dark:text-slate-100"
     >
       {mobileOpen ? (
         <button
@@ -362,7 +377,7 @@ export default function DashboardShell({
         </div>
 
         <div className="border-t border-slate-200 p-3 dark:border-white/10">
-          <AdminUserMenu theme={theme} onThemeChange={saveTheme} />
+          <AdminUserMenu theme={theme} onThemeChange={handleThemeChange} />
         </div>
       </aside>
 

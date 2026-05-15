@@ -610,9 +610,7 @@ export default function NewBrandQuickStart() {
 
   if (savedBrand) {
     return (
-      <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[260px_minmax(0,2fr)_minmax(320px,1fr)]">
-        <BrandAgentProgress currentStep={currentStep} />
-
+      <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
         <div className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 sm:p-8 lg:p-10">
           <div className="mb-10 inline-flex items-center gap-2 border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300">
             <CheckCircle2 className="h-4 w-4" />
@@ -704,9 +702,7 @@ export default function NewBrandQuickStart() {
   }
 
   return (
-    <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[260px_minmax(0,2fr)_minmax(320px,1fr)]">
-      <BrandAgentProgress currentStep="identity" />
-
+    <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
       <form
         onSubmit={sendBrandPrompt}
         className="flex min-h-[560px] flex-col justify-between border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 sm:p-8 lg:p-10"
@@ -721,7 +717,7 @@ export default function NewBrandQuickStart() {
             <span className="block max-w-4xl text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-5xl lg:text-6xl">
               {agentPreview
                 ? "¿Esta es tu universidad?"
-                : "Dejanos aqui la url del sitio web de tu universidad o institucion"}
+                : "Vamos a configurar tu marca. ¿Cuál es el sitio web de tu institución?"}
             </span>
 
             {agentPreview ? (
@@ -798,91 +794,6 @@ export default function NewBrandQuickStart() {
 
       <BrandPreviewCard agentPreview={agentPreview} />
     </section>
-  );
-}
-
-function BrandAgentProgress({
-  currentStep,
-}: {
-  currentStep: BrandAgentStep;
-}) {
-  const steps: Array<{
-    id: BrandAgentStep;
-    label: string;
-    description: string;
-  }> = [
-    {
-      id: "identity",
-      label: "Quien eres",
-      description: "Encuentra y confirma la institucion.",
-    },
-    {
-      id: "visual",
-      label: "Identidad grafica",
-      description: "Define logos, colores y estilo visual.",
-    },
-  ];
-  const currentIndex = steps.findIndex((step) => step.id === currentStep);
-
-  return (
-    <aside className="border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950 xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)]">
-      <div className="flex h-full flex-col">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-            Progreso
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold text-slate-950 dark:text-slate-50">
-            Brand Agent
-          </h2>
-        </div>
-
-        <div className="mt-8 flex-1">
-          <ol className="relative space-y-7">
-            <span className="absolute left-[11px] top-3 h-[calc(100%-1.5rem)] w-px bg-slate-200 dark:bg-slate-800" />
-
-            {steps.map((step, index) => {
-              const isActive = step.id === currentStep;
-              const isComplete = index < currentIndex;
-
-              return (
-                <li key={step.id} className="relative flex gap-4">
-                  <span
-                    className={`relative z-10 mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border ${
-                      isComplete
-                        ? "border-[var(--bunji-primary)] bg-[var(--bunji-primary)] text-white"
-                        : isActive
-                          ? "border-[var(--bunji-primary)] bg-white text-[var(--bunji-primary)] dark:bg-slate-950 dark:text-[var(--bunji-primary-muted)]"
-                          : "border-slate-300 bg-white text-slate-400 dark:border-slate-700 dark:bg-slate-950"
-                    }`}
-                  >
-                    {isComplete ? (
-                      <CheckCircle2 className="h-4 w-4" />
-                    ) : (
-                      <span className="h-2 w-2 rounded-full bg-current" />
-                    )}
-                  </span>
-
-                  <div>
-                    <p
-                      className={`text-sm font-semibold ${
-                        isActive
-                          ? "text-slate-950 dark:text-slate-50"
-                          : "text-slate-500 dark:text-slate-400"
-                      }`}
-                    >
-                      {step.label}
-                    </p>
-                    <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-500">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      </div>
-    </aside>
   );
 }
 

@@ -1,0 +1,152 @@
+{
+  "id": "medical-assistant-aspirant",
+  "profileName": "Medical Assistant Aspirant",
+  "description": "Individuals seeking to become certified Medical Assistants or Dental Assistants through practical training programs.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-34",
+    "gender": "all",
+    "location": [
+      "Texas"
+    ],
+    "educationLevel": "high school diploma or equivalent",
+    "employmentStatus": "underemployed or unemployed",
+    "incomeRange": "$20,000 - $35,000",
+    "familySituation": "single or young families",
+    "languagePreference": [
+      "English",
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "motivated",
+      "curious",
+      "adaptive"
+    ],
+    "values": [
+      "education",
+      "stability",
+      "career advancement"
+    ],
+    "interests": [
+      "healthcare",
+      "patient care",
+      "community service"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "Gain skills to become a Medical Assistant",
+      "Obtain certification quickly"
+    ],
+    "secondary": [
+      "Secure a fulfilling job in healthcare",
+      "Advance in the medical field"
+    ],
+    "successDefinition": "Successfully completing training and obtaining a job as a Medical Assistant within 6 months of program completion."
+  },
+  "painPoints": [
+    "Lack of affordable training options",
+    "Difficulty finding short-term programs",
+    "Uncertainty about career opportunities post-training"
+  ],
+  "motivations": [
+    "Desire for stable employment",
+    "Interest in helping others",
+    "Need for a faster career path"
+  ],
+  "objections": [
+    "Concerns about program cost",
+    "Doubts about job placement success",
+    "Skepticism regarding program quality"
+  ],
+  "decisionFactors": [
+    "Program length",
+    "Accreditation status",
+    "Job placement support"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "Online ads",
+      "Social media posts",
+      "Word of mouth from current students"
+    ],
+    "informationNeeds": [
+      "Program details",
+      "Success stories",
+      "Cost and financing options"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "medical assistant training",
+      "dental assistant program",
+      "career in healthcare"
+    ],
+    "commonQuestions": [
+      "How long does the training take?",
+      "What is the cost of the program?",
+      "What certifications will I receive?"
+    ]
+  },
+  "emotionalTriggers": [
+    "Insecurities about job market",
+    "Hopes for a better future",
+    "Desire for approval from friends/family"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "text message",
+      "social media"
+    ],
+    "preferredContactTime": [
+      "weekdays during business hours",
+      "evenings"
+    ],
+    "tone": [
+      "encouraging",
+      "informative",
+      "supportive"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Start your healthcare career in just 9 months!",
+      "Hands-on training with job placement support.",
+      "Affordable programs tailored for you."
+    ],
+    "ctaExamples": [
+      "Request more info today!",
+      "Schedule a campus visit!",
+      "Apply now and start learning!"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "infographics",
+      "testimonials"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "medium",
+    "salesReadiness": "high"
+  },
+  "metadata": {
+    "createdAt": "2026-05-15",
+    "updatedAt": "2026-05-15",
+    "source": "AI",
+    "tags": [
+      "medical assistant",
+      "training program",
+      "career change"
+    ]
+  },
+  "profileImage": ""
+}

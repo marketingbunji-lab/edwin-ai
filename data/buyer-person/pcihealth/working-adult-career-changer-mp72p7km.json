@@ -1,0 +1,68 @@
+{
+  "id": "working-adult-career-changer-mp72p7km",
+  "profileName": "Working Adult Career Changer",
+  "description": "I want to build a stable career in healthcare with better job opportunities and long-term growth. I need a training program that is affordable, flexible, and can fit around my work and family responsibilities. I am concerned about the cost, program length, and whether I will be able to find a job after graduation. I need clear information about tuition, financial aid options, class schedules, and career support to feel confident about enrolling.",
+  "stage": "Consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "",
+    "gender": "",
+    "location": [],
+    "educationLevel": "",
+    "employmentStatus": "",
+    "incomeRange": "",
+    "familySituation": "",
+    "languagePreference": []
+  },
+  "psychographics": {
+    "personalityTraits": [],
+    "values": [],
+    "interests": []
+  },
+  "goals": {
+    "primary": [],
+    "secondary": [],
+    "successDefinition": ""
+  },
+  "painPoints": [],
+  "motivations": [
+    "I want to build a stable career in healthcare with better job opportunities and long-term growth. I need a training program that is affordable, flexible, and can fit around my work and family responsibilities. I am concerned about the cost, program length, and whether I will be able to find a job after graduation. I need clear information about tuition, financial aid options, class schedules, and career support to feel confident about enrolling."
+  ],
+  "objections": [],
+  "decisionFactors": [],
+  "buyerJourney": {
+    "stage": "Consideration",
+    "awarenessTriggers": [],
+    "informationNeeds": []
+  },
+  "searchBehavior": {
+    "keywords": [],
+    "commonQuestions": []
+  },
+  "emotionalTriggers": [],
+  "preferredCommunication": {
+    "channels": [],
+    "preferredContactTime": [],
+    "tone": []
+  },
+  "messagingRecommendations": {
+    "keyMessages": [],
+    "ctaExamples": []
+  },
+  "contentPreferences": {
+    "formats": []
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "",
+    "salesReadiness": ""
+  },
+  "metadata": {
+    "createdAt": "2026-05-15",
+    "updatedAt": "2026-05-15",
+    "source": "Manual",
+    "tags": []
+  },
+  "profileImage": ""
+}

@@ -1,0 +1,153 @@
+{
+  "id": "medical-assistant-career-changer",
+  "profileName": "Medical Assistant Career Changer",
+  "profileImage": "",
+  "description": "An individual seeking to transition into the medical field, motivated by job stability and personal fulfillment.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "25-35",
+    "gender": "female",
+    "location": [
+      "Richardson, TX",
+      "Dallas, TX",
+      "Greater Texas"
+    ],
+    "educationLevel": "some college",
+    "employmentStatus": "employed",
+    "incomeRange": "$30,000-$50,000",
+    "familySituation": "single or recently married",
+    "languagePreference": [
+      "English"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "motivated",
+      "empathetic",
+      "detail-oriented"
+    ],
+    "values": [
+      "job security",
+      "helping others",
+      "work-life balance"
+    ],
+    "interests": [
+      "healthcare",
+      "volunteering",
+      "continuing education"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "to gain certification as a Medical Assistant",
+      "to secure a stable and rewarding job in healthcare"
+    ],
+    "secondary": [
+      "to find a program that allows for flexible scheduling",
+      "to minimize student debt"
+    ],
+    "successDefinition": "Successfully graduating and obtaining a Medical Assistant certification within a year."
+  },
+  "painPoints": [
+    "concerns about cost of education",
+    "uncertainty about job availability",
+    "balancing work and study commitments"
+  ],
+  "motivations": [
+    "desire for a rewarding career",
+    "interest in healthcare",
+    "need for financial stability"
+  ],
+  "objections": [
+    "fear of being unable to keep up with the program",
+    "concerns over the return on investment"
+  ],
+  "decisionFactors": [
+    "program length",
+    "tuition cost",
+    "flexibility of class schedules",
+    "reputation of the institution"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "seeking career change",
+      "healthcare job market growth",
+      "personal experiences with healthcare"
+    ],
+    "informationNeeds": [
+      "cost of programs",
+      "career outcome statistics",
+      "financial aid options"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "medical assistant training",
+      "fast medical certification",
+      "healthcare career change"
+    ],
+    "commonQuestions": [
+      "How long does the program take?",
+      "What is the tuition cost?",
+      "What certifications do I earn?"
+    ]
+  },
+  "emotionalTriggers": [
+    "anxiety about the future",
+    "hope for a better career",
+    "pride in helping others"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "text",
+      "social media"
+    ],
+    "preferredContactTime": [
+      "weekdays after 5 PM",
+      "weekends"
+    ],
+    "tone": [
+      "supportive",
+      "informative",
+      "friendly"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Start your healthcare journey today!",
+      "Training that fits your busy life.",
+      "Join a community dedicated to your success."
+    ],
+    "ctaExamples": [
+      "Request more information",
+      "Schedule a campus visit",
+      "Apply now"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "webinars",
+      "success stories",
+      "infographics"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "medium",
+    "salesReadiness": "high"
+  },
+  "metadata": {
+    "createdAt": "2026-05-15",
+    "updatedAt": "2026-05-15",
+    "source": "AI",
+    "tags": [
+      "medical assistant",
+      "career changer",
+      "healthcare education"
+    ]
+  }
+}

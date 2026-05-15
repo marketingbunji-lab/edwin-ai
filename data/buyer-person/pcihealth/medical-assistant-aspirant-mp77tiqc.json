@@ -1,0 +1,156 @@
+{
+  "id": "medical-assistant-aspirant-mp77tiqc",
+  "profileName": "Medical Assistant Aspirant",
+  "profileImage": "https://cdn.uploadtourl.com/a93c5b04-e8c7-4060-b377-50dbe9f7b74f_data.png",
+  "description": "Individuals seeking accelerated vocational training to become medical assistants or dental assistants, focused on acquiring essential skills for rapid job placement.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-35",
+    "gender": "any",
+    "location": [
+      "Richardson, TX",
+      "Dallas, TX"
+    ],
+    "educationLevel": "high school diploma or GED",
+    "employmentStatus": "unemployed or underemployed",
+    "incomeRange": "$20,000 - $40,000",
+    "familySituation": "single or recently married, no children",
+    "languagePreference": [
+      "English",
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "motivated",
+      "goal-oriented"
+    ],
+    "values": [
+      "career advancement",
+      "work-life balance",
+      "financial independence"
+    ],
+    "interests": [
+      "healthcare",
+      "patient care",
+      "community service"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "Become a certified medical assistant",
+      "Gain practical experience in a healthcare setting",
+      "Secure employment within 9 months"
+    ],
+    "secondary": [
+      "Make connections in the healthcare industry",
+      "Achieve financial stability",
+      "Acquire additional certifications"
+    ],
+    "successDefinition": "Obtaining employment as a medical assistant or dental assistant and being financially stable within 1 year."
+  },
+  "painPoints": [
+    "Limited time for education",
+    "Concern about job market competition",
+    "High costs of healthcare training"
+  ],
+  "motivations": [
+    "Desire for a stable job in healthcare",
+    "Interest in helping others",
+    "Short training duration"
+  ],
+  "objections": [
+    "Worries about affordability",
+    "Doubts regarding the quality of training programs",
+    "Concerns about job placement assistance"
+  ],
+  "decisionFactors": [
+    "Program length",
+    "Tuition costs",
+    "Job placement success rates",
+    "Accreditation and reputation of institution"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "Social media ads",
+      "Referrals from friends/family",
+      "Education fairs"
+    ],
+    "informationNeeds": [
+      "Program details",
+      "Financial aid options",
+      "Success stories from alumni"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "medical assistant training",
+      "dental assistant programs",
+      "vocational schools near me"
+    ],
+    "commonQuestions": [
+      "What is the duration of the program?",
+      "What are the tuition fees?",
+      "What jobs can I get after graduation?"
+    ]
+  },
+  "emotionalTriggers": [
+    "Fear of job instability",
+    "Hope for a better future",
+    "Desire for community contribution"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "SMS",
+      "social media"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "weekends"
+    ],
+    "tone": [
+      "friendly",
+      "informative",
+      "supportive"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Fast-track your career in healthcare!",
+      "Join the PCI community today!",
+      "We offer flexible financial aid options."
+    ],
+    "ctaExamples": [
+      "Enroll now!",
+      "Get more information!",
+      "Schedule a campus visit!"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "blog articles",
+      "infographics"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "high",
+    "salesReadiness": "ready to enroll"
+  },
+  "metadata": {
+    "createdAt": "2026-05-15",
+    "updatedAt": "2026-05-15",
+    "source": "AI",
+    "tags": [
+      "medical assistant",
+      "enrollment",
+      "vocational training"
+    ]
+  }
+}

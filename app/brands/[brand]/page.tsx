@@ -41,6 +41,14 @@ export default async function BrandPage({ params }: Props) {
     },
     {
       step: "02",
+      title: "Agente de Buyer Persona",
+      description:
+        "Define perfiles de estudiante ideal, motivaciones, objeciones y mensajes clave para orientar la captacion.",
+      href: `/admin/brands/${brand.slug}/buyer-person`,
+      linkLabel: "Editar Buyer Persona",
+    },
+    {
+      step: "03",
       title: "Agente de contenido",
       description:
         "Disena tu contenido base para alinear mensajes, formatos y canales para una comunicacion de marca consistente y escalable.",
@@ -48,7 +56,15 @@ export default async function BrandPage({ params }: Props) {
       linkLabel: "Editar Agente de Contenido",
     },
     {
-      step: "03",
+      step: "04",
+      title: "Agente de recursos visuales",
+      description:
+        "Organiza los activos visuales, referencias graficas y materiales de marca para producir piezas consistentes.",
+      href: `/admin/brands/${brand.slug}/visual-assets`,
+      linkLabel: "Editar Visual Assets",
+    },
+    {
+      step: "05",
       title: "Agente de landings",
       description:
         "Disena tu landing page para atraer y convertir leads en estudiantes.",

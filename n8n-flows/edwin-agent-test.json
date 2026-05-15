@@ -1,0 +1,260 @@
+{
+  "name": "edwin-agent-test",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "edwin-agent-test",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c371a69a-8293-4ca2-9a48-ca24dcbdd294",
+      "name": "Webhook - edwin-agent-test",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1328,
+        1184
+      ],
+      "webhookId": "edwin-agent-test"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Create one complete buyer persona for this brand. Analyze all available brand data and infer the most useful enrollment marketing persona.\n\nBrand JSON:\n{{ JSON.stringify($json.body.brand, null, 2) }}\n\nReturn only valid JSON. Do not use markdown. Do not wrap the response in an array. The JSON must match exactly this shape:\n{\n  \"id\": \"\",\n  \"profileName\": \"\",\n  \"profileImage\": \"\",\n  \"description\": \"\",\n  \"stage\": \"\",\n  \"priority\": 1,\n  \"status\": \"active\",\n  \"demographics\": {\n    \"ageRange\": \"\",\n    \"gender\": \"\",\n    \"location\": [],\n    \"educationLevel\": \"\",\n    \"employmentStatus\": \"\",\n    \"incomeRange\": \"\",\n    \"familySituation\": \"\",\n    \"languagePreference\": []\n  },\n  \"psychographics\": {\n    \"personalityTraits\": [],\n    \"values\": [],\n    \"interests\": []\n  },\n  \"goals\": {\n    \"primary\": [],\n    \"secondary\": [],\n    \"successDefinition\": \"\"\n  },\n  \"painPoints\": [],\n  \"motivations\": [],\n  \"objections\": [],\n  \"decisionFactors\": [],\n  \"buyerJourney\": {\n    \"stage\": \"\",\n    \"awarenessTriggers\": [],\n    \"informationNeeds\": []\n  },\n  \"searchBehavior\": {\n    \"keywords\": [],\n    \"commonQuestions\": []\n  },\n  \"emotionalTriggers\": [],\n  \"preferredCommunication\": {\n    \"channels\": [],\n    \"preferredContactTime\": [],\n    \"tone\": []\n  },\n  \"messagingRecommendations\": {\n    \"keyMessages\": [],\n    \"ctaExamples\": []\n  },\n  \"contentPreferences\": {\n    \"formats\": []\n  },\n  \"scoring\": {\n    \"conversionLikelihood\": 0,\n    \"urgency\": \"\",\n    \"salesReadiness\": \"\"\n  },\n  \"metadata\": {\n    \"createdAt\": \"2026-05-15\",\n    \"updatedAt\": \"2026-05-15\",\n    \"source\": \"AI\",\n    \"tags\": []\n  }\n}",
+        "options": {
+          "systemMessage": "You are an expert enrollment marketing strategist and buyer persona researcher for education brands. Build practical, conversion-oriented buyer personas for admissions, marketing automation, landing pages, and lead nurturing. Always return strict JSON only. Fill every field with useful, specific content. Use concise strings. Arrays should contain 3 to 8 items when possible. Use a slug-like id derived from the profileName."
+        }
+      },
+      "id": "adbdeaf5-ec8c-4269-9858-798e1371e5ba",
+      "name": "AI Agent - Buyer Persona",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1600,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "id": "bfae7c7c-a94d-4a45-9f1b-08dcaa0f366d",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        1408
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const raw = $json.output ?? $json.text ?? $json.response ?? $json.message ?? $json;\n\nfunction parseJsonCandidate(value) {\n  if (typeof value === 'object' && value !== null) return value;\n  if (typeof value !== 'string') return null;\n\n  const cleaned = value\n    .replace(/^```json\\s*/i, '')\n    .replace(/^```\\s*/i, '')\n    .replace(/```$/i, '')\n    .trim();\n\n  try {\n    return JSON.parse(cleaned);\n  } catch (error) {\n    const match = cleaned.match(/\\{[\\s\\S]*\\}/);\n    if (!match) return null;\n    try {\n      return JSON.parse(match[0]);\n    } catch {\n      return null;\n    }\n  }\n}\n\nconst buyerPersona = parseJsonCandidate(raw);\n\nif (!buyerPersona || !buyerPersona.profileName) {\n  return {\n    json: {\n      ok: false,\n      agent: 'edwin-agent-test',\n      message: 'No se pudo generar un buyer persona valido',\n      rawOutput: raw\n    }\n  };\n}\n\nconst today = new Date().toISOString().slice(0, 10);\nbuyerPersona.profileImage = buyerPersona.profileImage || '';\nbuyerPersona.metadata = {\n  createdAt: today,\n  updatedAt: today,\n  source: 'AI',\n  tags: Array.isArray(buyerPersona.metadata?.tags) ? buyerPersona.metadata.tags : []\n};\n\nconst demographics = buyerPersona.demographics || {};\nconst psychographics = buyerPersona.psychographics || {};\nconst goals = buyerPersona.goals || {};\nconst imagePrompt = [\n  'Photorealistic professional enrollment marketing buyer persona profile portrait.',\n  'Show a realistic person, not a celebrity, not a known public figure.',\n  `Persona: ${buyerPersona.profileName}.`,\n  `Description: ${buyerPersona.description || ''}.`,\n  `Age range: ${demographics.ageRange || 'adult'}.`,\n  `Location context: ${(demographics.location || []).join(', ') || 'United States'}.`,\n  `Education/employment context: ${demographics.educationLevel || ''}, ${demographics.employmentStatus || ''}.`,\n  `Traits: ${(psychographics.personalityTraits || []).join(', ')}.`,\n  `Goals: ${(goals.primary || []).join(', ')}.`,\n  'Neutral clean background, friendly and trustworthy expression, modern realistic portrait, natural lighting, waist-up composition.'\n].join(' ');\n\nreturn {\n  json: {\n    ok: true,\n    agent: 'edwin-agent-test',\n    message: 'buyer persona generado, generando imagen de perfil',\n    buyerPersona,\n    imagePrompt,\n    rawOutput: raw\n  }\n};"
+      },
+      "id": "21c31766-aa68-44ef-9bce-e8268a19e1f5",
+      "name": "Normalize Buyer Persona JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1888,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const uploadResponse = $json;\nconst previous = $('Normalize Buyer Persona JSON').item.json;\nconst buyerPersona = previous.buyerPersona;\nconst uploadedUrl = uploadResponse.url || uploadResponse.data?.url || uploadResponse.fileUrl || '';\n\nbuyerPersona.profileImage = uploadedUrl || buyerPersona.profileImage || '';\n\nreturn {\n  json: {\n    ok: true,\n    agent: 'edwin-agent-test',\n    message: 'todo bien por estos lados',\n    buyerPersona,\n    profileImageUrl: buyerPersona.profileImage,\n    imagePrompt: previous.imagePrompt,\n    imageGenerated: Boolean(buyerPersona.profileImage),\n    upload: uploadResponse\n  }\n};"
+      },
+      "id": "29df44c0-32c1-49a2-9ce7-bec542b87446",
+      "name": "Attach Profile Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "916587f6-0906-4a8f-bb94-e5b8154e3bbf",
+      "name": "Respond - Buyer Persona",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2656,
+        1184
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-image-1-mini"
+        },
+        "prompt": "={{ $json.imagePrompt }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        2096,
+        1184
+      ],
+      "id": "a105e88b-6c4f-4c48-8849-a4d7a14f9184",
+      "name": "Generate an image",
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-uploadtourl.uploadToUrl",
+      "typeVersion": 1,
+      "position": [
+        2272,
+        912
+      ],
+      "id": "daffda4e-e580-4c0d-aa62-8c73c2db919f",
+      "name": "Upload a File",
+      "credentials": {
+        "uploadToUrlApi": {
+          "id": "RiaMbQZJa9yaLtLy",
+          "name": "Upload to URL account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - edwin-agent-test": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - Buyer Persona",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Buyer Persona",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Buyer Persona": {
+      "main": [
+        [
+          {
+            "node": "Normalize Buyer Persona JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Buyer Persona JSON": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attach Profile Image": {
+      "main": [
+        [
+          {
+            "node": "Respond - Buyer Persona",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Upload a File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a File": {
+      "main": [
+        [
+          {
+            "node": "Attach Profile Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "edwin-agent-test-v4-upload-url-response",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8874de15b47c80f0b0eec824cc0f11205ea41b15268d32d142543fcb20af9153"
+  },
+  "id": "wxZ4FEVfw3kDscf7",
+  "tags": [
+    {
+      "updatedAt": "2026-05-15T16:22:49.290Z",
+      "createdAt": "2026-05-15T16:22:49.290Z",
+      "id": "R3syTFw5NbiRi55A",
+      "name": "buyer-person"
+    },
+    {
+      "updatedAt": "2026-05-15T16:07:21.094Z",
+      "createdAt": "2026-05-15T16:07:21.094Z",
+      "id": "uThPHFWHXSCVuUQm",
+      "name": "EDwin AI"
+    },
+    {
+      "updatedAt": "2026-05-15T16:07:21.083Z",
+      "createdAt": "2026-05-15T16:07:21.083Z",
+      "id": "xKdCqgrCRUOCXK5p",
+      "name": "test"
+    }
+  ]
+}

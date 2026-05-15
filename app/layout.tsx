@@ -52,7 +52,10 @@ export default async function RootLayout({
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
-        <DashboardShell brands={brands} landingSummaries={landingSummaries}>
+        <DashboardShell
+          brands={brands}
+          landingSummaries={landingSummaries}
+        >
           {children}
         </DashboardShell>
       </body>
