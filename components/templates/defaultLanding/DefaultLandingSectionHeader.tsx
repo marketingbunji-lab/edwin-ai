@@ -1,6 +1,9 @@
 import {
   type ReactNode,
 } from "react";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 import {
   landingSectionDescriptionClass,
   landingSectionHeaderCenteredClass,
@@ -15,6 +18,10 @@ type Props = {
   description?: string;
   centered?: boolean;
   icon?: ReactNode;
+  liveEdit?: LandingLiveEditConfig;
+  titlePath?: string;
+  descriptionPath?: string;
+  eyebrowPath?: string;
 };
 
 export default function DefaultLandingSectionHeader({
@@ -23,6 +30,10 @@ export default function DefaultLandingSectionHeader({
   description = "",
   centered = false,
   icon,
+  liveEdit,
+  titlePath,
+  descriptionPath,
+  eyebrowPath,
 }: Props) {
   if (!eyebrow && !title && !description && !icon) {
     return null;
@@ -45,7 +56,16 @@ export default function DefaultLandingSectionHeader({
               {icon}
             </span>
           ) : null}
-          {eyebrow}
+          {eyebrowPath ? (
+            <LiveEditableText
+              path={eyebrowPath}
+              value={eyebrow}
+              liveEdit={liveEdit}
+              singleLine
+            />
+          ) : (
+            eyebrow
+          )}
         </p>
       ) : icon ? (
         <div
@@ -64,9 +84,32 @@ export default function DefaultLandingSectionHeader({
           }`}
         />
       ) : null}
-      {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
+      {title ? (
+        titlePath ? (
+          <LiveEditableText
+            as="h2"
+            path={titlePath}
+            value={title}
+            liveEdit={liveEdit}
+            singleLine
+            className={landingSectionTitleClass}
+          />
+        ) : (
+          <h2 className={landingSectionTitleClass}>{title}</h2>
+        )
+      ) : null}
       {description ? (
-        <p className={landingSectionDescriptionClass}>{description}</p>
+        descriptionPath ? (
+          <LiveEditableText
+            as="p"
+            path={descriptionPath}
+            value={description}
+            liveEdit={liveEdit}
+            className={landingSectionDescriptionClass}
+          />
+        ) : (
+          <p className={landingSectionDescriptionClass}>{description}</p>
+        )
       ) : null}
     </div>
   );

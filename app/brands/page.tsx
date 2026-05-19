@@ -9,7 +9,7 @@ export default async function BrandsPage() {
   const supabaseBrands = await getSupabaseBrands();
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
 
         <section>

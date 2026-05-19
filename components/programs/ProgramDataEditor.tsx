@@ -176,19 +176,19 @@ export default function ProgramDataEditor({
         <div>
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
-            className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="admin-button-secondary mb-3"
           >
             <ArrowLeft className="h-4 w-4" />
             Volver a programs
           </Link>
-          <p className="text-sm text-gray-500 dark:text-slate-400">
+          <p className="admin-eyebrow">
             {brand.name}
           </p>
-          <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+          <h1 className="admin-title">
             {isCreateMode ? "Agregar program" : "Editar programa"}
           </h1>
           {isCreateMode ? (
-            <p className="mt-2 text-sm text-gray-600 dark:text-slate-400">
+            <p className="admin-muted mt-2">
               Campos minimos: Program name y Full title. El slug se genera
               automaticamente desde Full title.
             </p>
@@ -199,7 +199,7 @@ export default function ProgramDataEditor({
           type="button"
           onClick={saveProgram}
           disabled={saving}
-          className="inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[var(--bunji-primary)]"
+          className="admin-button-primary"
         >
           <Save className="h-4 w-4" />
           {saving
@@ -217,7 +217,7 @@ export default function ProgramDataEditor({
             : "block"
         }
       >
-        <section className="grid gap-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950 md:grid-cols-2">
+        <section className="admin-panel grid gap-4 p-5 md:grid-cols-2">
           <SectionTitle title="Informacion base" />
           <Field label="Program name" value={program.title} required onChange={(value) => updateField("title", value)} />
           <Field label="Full title" value={program.fullTitle} required onChange={(value) => updateField("fullTitle", value)} />
@@ -256,15 +256,15 @@ export default function ProgramDataEditor({
       </div>
 
       {message ? (
-        <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
+        <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
           {message}
         </p>
       ) : null}
 
-      <section className="space-y-4 border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
+      <section className="admin-panel space-y-4 p-5">
         <div className="space-y-2">
           <SectionTitle title="JSON completo del programa" />
-          <p className="text-sm text-gray-600 dark:text-slate-400">
+          <p className="admin-muted">
             Aqui puedes editar absolutamente toda la estructura del programa.
             Cualquier campo que exista en el data puede modificarse desde este
             bloque.
@@ -272,7 +272,7 @@ export default function ProgramDataEditor({
         </div>
 
         <label className="block">
-          <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+          <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
             JSON
           </span>
           <textarea
@@ -280,7 +280,7 @@ export default function ProgramDataEditor({
             rows={28}
             onChange={(event) => updateJsonDraft(event.target.value)}
             spellCheck={false}
-            className="w-full border border-gray-300 bg-white px-4 py-3 font-mono text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            className="admin-textarea font-mono"
           />
         </label>
 
@@ -289,7 +289,7 @@ export default function ProgramDataEditor({
             {jsonError}
           </p>
         ) : (
-          <p className="text-sm text-gray-500 dark:text-slate-400">
+          <p className="admin-muted">
             La informacion base y este JSON quedan sincronizados mientras el
             contenido sea valido.
           </p>
@@ -301,7 +301,7 @@ export default function ProgramDataEditor({
 
 function SectionTitle({ title }: { title: string }) {
   return (
-    <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500 md:col-span-2">
+    <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500 md:col-span-2">
       {title}
     </h2>
   );
@@ -359,14 +359,14 @@ function ProgramPreviewCard({
 
   if (!program) {
     return (
-      <aside className="border border-dashed border-gray-300 bg-white p-6 dark:border-slate-700 dark:bg-slate-950">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500">
+      <aside className="admin-empty-state p-6 text-left">
+        <p className="admin-eyebrow">
           Preview
         </p>
-        <h2 className="mt-4 text-xl font-semibold text-gray-950 dark:text-slate-50">
+        <h2 className="mt-4 text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
           Aqui se muestra la informacion del programa
         </h2>
-        <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-slate-400">
+        <p className="admin-muted mt-3">
           Completa los campos minimos y crea el programa para revisar aqui la
           informacion antes de ejecutar el agente de contenido.
         </p>
@@ -375,11 +375,11 @@ function ProgramPreviewCard({
   }
 
   return (
-    <aside className="border border-gray-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-950">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
+    <aside className="admin-panel p-6">
+      <p className="admin-eyebrow">
         Preview
       </p>
-      <h2 className="mt-4 text-2xl font-semibold text-gray-950 dark:text-slate-50">
+      <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
         {program.fullTitle}
       </h2>
       <dl className="mt-5 space-y-4 text-sm">
@@ -396,13 +396,13 @@ function ProgramPreviewCard({
         type="button"
         onClick={executeAgent}
         disabled={sending}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-[var(--bunji-primary)]"
+        className="admin-button-primary mt-6 w-full"
       >
         <Bot className="h-4 w-4" />
         {sending ? "Enviando..." : "Ejecutar Agent Content"}
       </button>
       {message ? (
-        <p className="mt-3 text-sm font-medium text-gray-600 dark:text-slate-300">
+        <p className="mt-3 text-sm font-medium text-slate-600 dark:text-slate-300">
           {message}
         </p>
       ) : null}
@@ -413,10 +413,10 @@ function ProgramPreviewCard({
 function PreviewItem({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-slate-500">
+      <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-500">
         {label}
       </dt>
-      <dd className="mt-1 break-words text-gray-900 dark:text-slate-100">
+      <dd className="mt-1 break-words text-slate-900 dark:text-slate-100">
         {value}
       </dd>
     </div>
@@ -440,7 +440,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
         {required ? <span className="text-red-500"> *</span> : null}
       </span>
@@ -449,7 +449,7 @@ function Field({
         required={required}
         readOnly={readOnly}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 read-only:bg-gray-100 read-only:text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:read-only:bg-slate-950 dark:read-only:text-slate-500"
+        className="admin-input"
       />
     </label>
   );
@@ -470,13 +470,13 @@ function SelectField({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
       </span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="admin-input"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

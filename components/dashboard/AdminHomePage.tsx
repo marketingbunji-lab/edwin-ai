@@ -5,19 +5,19 @@ export default function HomePage() {
   const brands = getBrands();
 
   return (
-    <main className="min-h-screen bg-transparent px-6 py-8">
-      <div className="w-full">
+    <main className="admin-page bg-transparent">
+      <div className="admin-page-inner">
 
         <section className="mt-12">
           <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-sm font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              <p className="admin-eyebrow">
                 Marcas
               </p>
-              <h2 className="mt-2 text-4xl font-bold text-slate-950 dark:text-slate-50">
+              <h2 className="mt-2 text-4xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
                 Espacios de trabajo disponibles
               </h2>
-              <p className="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+              <p className="admin-muted mt-3 max-w-3xl">
                 <strong>Agentes de IA trabajando más rápido y de forma inteligente</strong> para tu universidad o institución 
               </p>
             </div>

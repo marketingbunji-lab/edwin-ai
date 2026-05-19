@@ -90,7 +90,7 @@ const primaryNav: NavItem[] = [
 ];
 
 const backButtonClassName =
-  "inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800";
+  "admin-button-secondary";
 
 function isNavItemActive(pathname: string, item: NavItem) {
   if (item.exact) {
@@ -217,9 +217,7 @@ export default function DashboardShell({
   }
 
   return (
-    <div
-      className="min-h-screen bg-[#f3f5f9] text-slate-900 dark:bg-[#020617] dark:text-slate-100"
-    >
+    <div className="admin-shell-bg min-h-screen">
       {mobileOpen ? (
         <button
           type="button"
@@ -234,14 +232,14 @@ export default function DashboardShell({
           type="button"
           aria-label="Abrir menu lateral"
           onClick={() => setMobileOpen(true)}
-          className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 lg:hidden"
+          className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-lg transition hover:bg-slate-50 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
       ) : null}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[286px] flex-col border-r border-slate-200 bg-white text-slate-900 shadow-xl transition-transform duration-200 dark:border-slate-800 dark:bg-[#030712] dark:text-slate-100 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[286px] flex-col border-r border-slate-200 bg-white/95 text-slate-900 shadow-xl backdrop-blur-xl transition-transform duration-200 dark:border-white/10 dark:bg-[#030712]/96 dark:text-slate-100 lg:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -280,7 +278,7 @@ export default function DashboardShell({
             <Link
               href="/admin/brands/new"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white transition hover:brightness-110"
+              className="admin-button-primary w-full"
             >
               <Plus className="h-4 w-4" />
               Nueva marca
@@ -386,7 +384,7 @@ export default function DashboardShell({
         (isNewLandingPage ||
           isNewLandingAiPage ||
           isLandingEditorPage) ? (
-          <section className="border-b border-slate-200/80 bg-white/92 backdrop-blur dark:border-slate-800 dark:bg-slate-950/92">
+          <section className="border-b border-slate-200/80 bg-white/90 shadow-[0_10px_35px_rgba(15,23,42,0.04)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90">
             <div className="flex flex-wrap items-center justify-between gap-5 px-4 py-5 sm:px-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-28 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -434,7 +432,7 @@ export default function DashboardShell({
                   <>
                     <Link
                       href={`/admin/brands/${activeBrand.slug}/edit`}
-                      className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                      className="admin-button-secondary"
                     >
                       <Pencil className="h-4 w-4" />
                       Editar marca
@@ -442,7 +440,7 @@ export default function DashboardShell({
 
                     <Link
                       href={`/admin/brands/${activeBrand.slug}/new`}
-                      className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-sm dark:bg-[var(--bunji-primary)]"
+                      className="admin-button-primary"
                     >
                       <Plus className="h-4 w-4" />
                       Nueva landing
@@ -464,7 +462,7 @@ export default function DashboardShell({
                   <>
                     <Link
                       href={`/admin/brands/${activeBrand.slug}/new/ai`}
-                      className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-sm dark:bg-[var(--bunji-primary)]"
+                      className="admin-button-primary"
                     >
                       <Sparkles className="h-4 w-4" />
                       Crear con AI

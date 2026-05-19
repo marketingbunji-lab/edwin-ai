@@ -462,7 +462,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                 onChange={(value) => updateField("imageBrand", value)}
               />
 
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
@@ -476,7 +476,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                   <button
                     type="button"
                     onClick={addImage}
-                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Agregar imagen
@@ -518,7 +518,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                 ))}
               </div>
 
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
@@ -532,7 +532,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                   <button
                     type="button"
                     onClick={addCampus}
-                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Agregar campus
@@ -608,7 +608,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
             </div>
 
             <div className="space-y-4">
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
@@ -622,7 +622,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                   <button
                     type="button"
                     onClick={addLegalLink}
-                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Agregar link
@@ -672,7 +672,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                 ))}
               </div>
 
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
@@ -686,7 +686,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                   <button
                     type="button"
                     onClick={addCertification}
-                    className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                    className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Agregar certificacion
@@ -760,7 +760,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
         ) : (
           <>
             <div className="space-y-4">
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
                   Logos
                 </h2>
@@ -786,7 +786,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
             </div>
 
             <div className="space-y-4">
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
                   Colores
                 </h2>
@@ -828,7 +828,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
                 />
               </div>
 
-              <div className="space-y-4 border border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+              <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
                   Tipografia
                 </h2>
@@ -863,7 +863,7 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
           type="button"
           onClick={handleSave}
           disabled={saving}
-          className="rounded-md bg-[var(--bunji-primary)] px-5 py-3 text-sm font-medium text-white disabled:opacity-60"
+          className="admin-button-primary px-5"
         >
           {saving
             ? mode === "create"
@@ -895,14 +895,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-300">
         {label}
       </span>
       <input
         value={value}
         disabled={disabled}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black disabled:bg-gray-100 disabled:text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:disabled:bg-slate-800 dark:disabled:text-slate-500"
+        className="admin-input"
       />
     </label>
   );
@@ -919,14 +919,14 @@ function TextareaField({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-300">
         {label}
       </span>
       <textarea
         value={value}
         rows={4}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="admin-textarea"
       />
     </label>
   );
@@ -943,7 +943,7 @@ function ColorField({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-300">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-300">
         {label}
       </span>
       <div className="flex items-center gap-3">
@@ -952,12 +952,12 @@ function ColorField({
           value={isHexColor(value) ? value : "#000000"}
           onChange={(event) => onChange(event.target.value)}
           aria-label={`${label} picker`}
-          className="h-12 w-12 shrink-0 cursor-pointer rounded-md border border-gray-300 bg-transparent p-1 dark:border-slate-700"
+          className="h-12 w-12 shrink-0 cursor-pointer rounded-xl border border-slate-300 bg-transparent p-1 dark:border-slate-700"
         />
         <input
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          className="admin-input"
         />
       </div>
     </label>
@@ -981,7 +981,7 @@ function PaletteEditor({
   ];
 
   return (
-    <div className="space-y-3 border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-950">
+    <div className="admin-panel-soft space-y-3 p-4">
       <div>
         <h3 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
           {title}

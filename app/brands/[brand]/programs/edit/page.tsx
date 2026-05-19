@@ -23,7 +23,7 @@ export default async function BrandProgramsEditPage({ params }: Props) {
   const programs = getProgramsByBrand(brand.slug);
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         <ProgramsEditor brand={brand} initialPrograms={programs} />
       </div>

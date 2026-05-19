@@ -48,11 +48,11 @@ export default function NewLandingForm({ brandSlug, brandName }: Props) {
   };
 
   return (
-    <div className="rounded-lg bg-white p-8 shadow-sm dark:border dark:border-slate-800 dark:bg-slate-950">
+    <div className="admin-panel p-8">
       <div className="mb-6">
-        <p className="text-sm text-gray-500 dark:text-slate-400">{brandName}</p>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-50">Nueva landing</h1>
-        <p className="mt-2 text-gray-600 dark:text-slate-300">
+        <p className="admin-eyebrow">{brandName}</p>
+        <h1 className="admin-title">Nueva landing</h1>
+        <p className="admin-muted mt-2">
           Crea una nueva landing base para esta marca.
         </p>
       </div>
@@ -78,7 +78,7 @@ export default function NewLandingForm({ brandSlug, brandName }: Props) {
           type="button"
           onClick={handleCreate}
           disabled={saving}
-          className="bunji-button-primary rounded-md px-5 py-3 text-sm font-medium disabled:opacity-60"
+          className="admin-button-primary px-5"
         >
           {saving ? "Creando..." : "Crear landing"}
         </button>
@@ -102,14 +102,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-200">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-200">
         {label}
       </span>
       <input
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="admin-input"
       />
     </label>
   );

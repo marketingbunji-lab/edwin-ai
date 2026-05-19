@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import { Sparkles } from "lucide-react";
 import {
   landingCardClass,
@@ -15,12 +16,14 @@ type Props = {
   eyebrow: string;
   title: string;
   items: IconTextItem[];
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingBenefitsSection({
   eyebrow,
   title,
   items,
+  liveEdit,
 }: Props) {
   if (items.length === 0) {
     return null;
@@ -34,6 +37,8 @@ export default function DefaultLandingBenefitsSection({
           title={title}
           centered
           icon={<Sparkles className="h-7 w-7" />}
+          liveEdit={liveEdit}
+          titlePath="benefits.title"
         />
 
         {items.length > 0 ? (

@@ -7,12 +7,14 @@ import {
   landingTwoColumnClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 
 type Props = {
   eyebrow: string;
   title: string;
   description: string;
   image: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingOverviewSection({
@@ -20,6 +22,7 @@ export default function DefaultLandingOverviewSection({
   title,
   description,
   image,
+  liveEdit,
 }: Props) {
   if (!title && !description && !image) {
     return null;
@@ -33,6 +36,9 @@ export default function DefaultLandingOverviewSection({
             eyebrow={eyebrow}
             title={title}
             description={description}
+            liveEdit={liveEdit}
+            titlePath="overview.title"
+            descriptionPath="overview.description"
           />
         </div>
 

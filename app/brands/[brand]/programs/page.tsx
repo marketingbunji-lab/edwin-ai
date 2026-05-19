@@ -25,11 +25,11 @@ export default async function BrandProgramsPage({ params }: Props) {
   const programs = getProgramsByBrand(brand.slug);
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
-      <div className="w-full">
+    <main className="admin-page">
+      <div className="admin-page-inner">
         <Link
           href={`/admin/brands/${brand.slug}`}
-          className="mb-6 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+          className="admin-button-secondary mb-6"
         >
           <ArrowLeft className="h-4 w-4" />
           Volver a marca

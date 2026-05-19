@@ -131,7 +131,7 @@ export default async function NewBrandProgramPage({ params }: Props) {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         <ProgramDataEditor
           brand={brand}

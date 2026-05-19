@@ -7,6 +7,7 @@ import {
   landingPrimaryButtonClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import { Banknote, BookOpenCheck, Hammer } from "lucide-react";
 
 type SectionItem = {
@@ -27,6 +28,9 @@ type Props = {
   buttonUrl?: string;
   buttonLabel?: string;
   viewMoreLabel?: string;
+  liveEdit?: LandingLiveEditConfig;
+  titlePath?: string;
+  descriptionPath?: string;
 };
 
 export default function DefaultLandingDetailCardsSection({
@@ -40,6 +44,9 @@ export default function DefaultLandingDetailCardsSection({
   buttonUrl = "",
   buttonLabel = "Descargar",
   viewMoreLabel = "Ver mas",
+  liveEdit,
+  titlePath,
+  descriptionPath,
 }: Props) {
   const validItems = items.filter(
     (item) =>
@@ -109,6 +116,9 @@ export default function DefaultLandingDetailCardsSection({
             description={description}
             centered
             icon={headerIcon}
+            liveEdit={liveEdit}
+            titlePath={titlePath}
+            descriptionPath={descriptionPath}
           />
         </div>
 

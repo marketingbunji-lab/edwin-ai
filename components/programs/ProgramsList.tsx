@@ -14,13 +14,13 @@ export default function ProgramsList({ brand, programs }: Props) {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-sm text-gray-500 dark:text-slate-400">
+          <p className="admin-eyebrow">
             {brand.name}
           </p>
-          <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+          <h1 className="admin-title">
             Programs
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-600 dark:text-slate-400">
+          <p className="admin-muted mt-2 max-w-2xl">
             Registros base del Agente de Contenido para organizar la oferta
             academica de esta marca.
           </p>
@@ -28,7 +28,7 @@ export default function ProgramsList({ brand, programs }: Props) {
 
         <Link
           href={`/admin/brands/${brand.slug}/programs/new`}
-          className="inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-[var(--bunji-primary)]"
+          className="admin-button-primary"
         >
           <Plus className="h-4 w-4" />
           Agregar program
@@ -36,22 +36,22 @@ export default function ProgramsList({ brand, programs }: Props) {
       </div>
 
       {programs.length === 0 ? (
-        <section className="border border-dashed border-gray-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-950">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500">
+        <section className="admin-empty-state">
+          <p className="admin-eyebrow">
             Content Agent
           </p>
-          <h2 className="mt-4 text-2xl font-semibold text-gray-950 dark:text-slate-50">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
             Aun no hay programs registrados
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-600 dark:text-slate-400">
+          <p className="admin-muted mx-auto mt-3 max-w-xl">
             Agrega el nombre del programa, sitio fuente y catalogo para empezar
             a alimentar el agente de contenido.
           </p>
         </section>
       ) : (
-        <div className="overflow-hidden border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+        <div className="admin-table-shell">
           <table className="w-full min-w-[760px] border-collapse text-left">
-            <thead className="bg-gray-50 text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:bg-slate-900 dark:text-slate-500">
+            <thead className="admin-table-header">
               <tr>
                 <th className="px-5 py-4">Program</th>
                 <th className="px-5 py-4">Status</th>
@@ -63,7 +63,7 @@ export default function ProgramsList({ brand, programs }: Props) {
               {programs.map((program) => (
                 <tr
                   key={program.id}
-                  className="transition hover:bg-gray-50 dark:hover:bg-slate-900/70"
+                  className="transition hover:bg-slate-50 dark:hover:bg-white/[0.035]"
                 >
                   <td className="px-5 py-4">
                     <p className="text-sm font-semibold text-gray-950 dark:text-slate-50">
@@ -85,7 +85,7 @@ export default function ProgramsList({ brand, programs }: Props) {
                     <div className="flex justify-end gap-2">
                       <Link
                         href={`/admin/brands/${brand.slug}/programs/${program.id}/edit`}
-                        className="inline-flex items-center gap-2 bg-slate-950 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-900 dark:bg-[var(--bunji-primary)]"
+                        className="admin-button-primary px-3 py-2 text-xs"
                       >
                         <Pencil className="h-3.5 w-3.5" />
                         Editar

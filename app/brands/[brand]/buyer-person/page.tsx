@@ -32,24 +32,24 @@ export default async function BrandBuyerPersonPage({ params }: Props) {
   ) as BuyerPersonRecord[];
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
           <div>
             <Link
               href={`/admin/brands/${brand.slug}`}
-              className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="admin-button-secondary mb-3"
             >
               <ArrowLeft className="h-4 w-4" />
               Volver a marca
             </Link>
-            <p className="text-sm text-gray-500 dark:text-slate-400">
+            <p className="admin-eyebrow">
               {brand.name}
             </p>
-            <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+            <h1 className="admin-title">
               Buyer Person
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-gray-600 dark:text-slate-400">
+            <p className="admin-muted mt-2 max-w-2xl">
               Organiza perfiles de estudiante ideal, necesidades, objeciones y
               oportunidades de comunicacion para esta marca.
             </p>
@@ -57,7 +57,7 @@ export default async function BrandBuyerPersonPage({ params }: Props) {
 
           <Link
             href={`/admin/brands/${brand.slug}/buyer-person/new`}
-            className="inline-flex items-center gap-2 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+            className="admin-button-primary"
           >
             <Plus className="h-4 w-4" />
             Agregar buyer person
@@ -65,24 +65,24 @@ export default async function BrandBuyerPersonPage({ params }: Props) {
         </div>
 
         {records.length === 0 ? (
-          <section className="border border-dashed border-gray-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-950">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--bunji-primary-light)] text-[var(--bunji-primary)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)]">
+          <section className="admin-empty-state">
+            <div className="admin-icon-tile mx-auto">
               <Users className="h-5 w-5" />
             </div>
-            <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500">
+            <p className="admin-eyebrow mt-5">
               Buyer Persona Agent
             </p>
-            <h2 className="mt-4 text-2xl font-semibold text-gray-950 dark:text-slate-50">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
               Aun no hay buyer persons creados
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-600 dark:text-slate-400">
+            <p className="admin-muted mx-auto mt-3 max-w-xl">
               Crea el primer perfil para empezar a orientar mensajes,
               audiencias y automatizaciones de matricula.
             </p>
             <div className="mt-6">
               <Link
                 href={`/admin/brands/${brand.slug}/buyer-person/new`}
-                className="inline-flex items-center gap-2 bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+                className="admin-button-primary"
               >
                 <Plus className="h-4 w-4" />
                 Crear primer buyer person

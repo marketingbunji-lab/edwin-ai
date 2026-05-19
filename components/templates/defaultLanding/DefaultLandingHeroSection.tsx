@@ -5,6 +5,9 @@ import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
 import FormHiddenFieldInjector from "@/components/forms/FormHiddenFieldInjector";
 import VerityLeadForm from "@/components/forms/VerityLeadForm";
 import GenericLeadForm from "@/components/templates/GenericLeadForm";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 import type { LabelValueItem } from "@/lib/data";
 import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSection";
 import {
@@ -41,6 +44,7 @@ type Props = {
   hasConfiguredForm: boolean;
   backgroundImage: string;
   heroOverlayColor: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingHeroSection({
@@ -73,6 +77,7 @@ export default function DefaultLandingHeroSection({
   hasConfiguredForm,
   backgroundImage,
   heroOverlayColor,
+  liveEdit,
 }: Props) {
   const hiddenProgramFieldName = form.hiddenProgramFieldName?.trim() || "program";
   const hiddenProgramFieldValue = form.programName || fullTitle || title;
@@ -119,33 +124,54 @@ export default function DefaultLandingHeroSection({
             ) : null}
 
             <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
-              {eyebrowText}
+              <LiveEditableText
+                path="hero.eyebrow"
+                value={eyebrowText}
+                liveEdit={liveEdit}
+                singleLine
+              />
             </p>
 
             {heroTitle ? (
-              <h1 className="m-0 max-w-[940px] text-6xl font-bold leading-tight tracking-tight text-[var(--landing-primary-text)] md:text-8xl">
-                {heroTitle}
-              </h1>
+              <LiveEditableText
+                as="h1"
+                path="hero.title"
+                value={heroTitle}
+                liveEdit={liveEdit}
+                singleLine
+                className="m-0 block max-w-[940px] text-6xl font-bold leading-tight tracking-tight text-[var(--landing-primary-text)] md:text-8xl"
+              />
             ) : null}
 
             {heroSubtitle ? (
-              <p
+              <LiveEditableText
+                as="p"
+                path="hero.subtitle"
+                value={heroSubtitle}
+                liveEdit={liveEdit}
+                singleLine
                 className="mt-[18px] text-2xl font-bold leading-tight tracking-tight text-inherit opacity-90 md:text-3xl"
-              >
-                {heroSubtitle}
-              </p>
+              />
             ) : null}
 
             {heroDescription ? (
-              <p className="mt-6 mb-6 max-w-[720px] text-lg leading-8 text-[var(--landing-primary-text)] opacity-90">
-                {heroDescription}
-              </p>
+              <LiveEditableText
+                as="p"
+                path="hero.description"
+                value={heroDescription}
+                liveEdit={liveEdit}
+                className="mt-6 mb-6 block max-w-[720px] text-lg leading-8 text-[var(--landing-primary-text)] opacity-90"
+              />
             ) : null}
 
             {heroSupportText ? (
-              <p className="mt-[18px] max-w-[680px] text-lg leading-8 text-inherit opacity-90">
-                {heroSupportText}
-              </p>
+              <LiveEditableText
+                as="p"
+                path="hero.supportText"
+                value={heroSupportText}
+                liveEdit={liveEdit}
+                className="mt-[18px] block max-w-[680px] text-lg leading-8 text-inherit opacity-90"
+              />
             ) : null}
 
             {showPricingBlock ? (
@@ -200,10 +226,19 @@ export default function DefaultLandingHeroSection({
             />
             <div className="relative mb-5 text-center">
               <h2 className="mb-2 text-3xl font-bold leading-tight tracking-tight">
-                {formTitle}
+                <LiveEditableText
+                  path="form.title"
+                  value={formTitle}
+                  liveEdit={liveEdit}
+                  singleLine
+                />
               </h2>
               <p className="leading-6 text-slate-600">
-                {formDescription}
+                <LiveEditableText
+                  path="form.description"
+                  value={formDescription}
+                  liveEdit={liveEdit}
+                />
               </p>
             </div>
             <div className="relative">

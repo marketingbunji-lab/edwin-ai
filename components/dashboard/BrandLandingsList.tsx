@@ -72,9 +72,9 @@ export default function BrandLandingsList({ landings }: Props) {
 
   return (
     <div className="space-y-8">
-      <div className="border border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
+      <div className="admin-panel p-4">
         <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-gray-900 dark:text-slate-50">
+          <span className="mb-2 block text-sm font-semibold text-slate-950 dark:text-slate-50">
             Buscar landings
           </span>
           <div className="relative">
@@ -83,7 +83,7 @@ export default function BrandLandingsList({ landings }: Props) {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Busca por programa, slug, modalidad, jornada o estado"
-              className="w-full border border-gray-300 bg-white py-3 pl-11 pr-12 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+              className="admin-input pl-11 pr-12"
             />
             {query ? (
               <button
@@ -98,14 +98,14 @@ export default function BrandLandingsList({ landings }: Props) {
           </div>
         </label>
 
-        <p className="mt-3 text-sm text-gray-500 dark:text-slate-400">
+        <p className="admin-muted mt-3">
           {filteredLandings.length} de {landings.length} landing
           {landings.length === 1 ? "" : "s"}
         </p>
       </div>
 
       {filteredLandings.length === 0 ? (
-        <div className="border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
+        <div className="admin-empty-state text-slate-500 dark:text-slate-400">
           No encontramos landings con esa busqueda.
         </div>
       ) : (
@@ -114,16 +114,16 @@ export default function BrandLandingsList({ landings }: Props) {
             <section key={group.programType}>
               <div className="mb-4 flex items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-50">
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
                     {group.programType}
                   </h2>
-                  <p className="text-sm text-gray-500 dark:text-slate-400">
+                  <p className="admin-muted">
                     {group.items.length} landing
                     {group.items.length === 1 ? "" : "s"}
                   </p>
                 </div>
 
-                <span className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+                <span className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100">
                   {group.items.length}
                 </span>
               </div>

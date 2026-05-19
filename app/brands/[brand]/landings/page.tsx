@@ -31,24 +31,24 @@ export default async function BrandLandingsPage({ params }: Props) {
   }));
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
-      <div className="w-full">
+    <main className="admin-page">
+      <div className="admin-page-inner">
         <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
           <div>
             <Link
               href={`/admin/brands/${brand.slug}`}
-              className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+              className="admin-button-secondary mb-3"
             >
               <ArrowLeft className="h-4 w-4" />
               Volver a marca
             </Link>
-            <p className="text-sm text-gray-500 dark:text-slate-400">
+            <p className="admin-eyebrow">
               {brand.name}
             </p>
-            <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+            <h1 className="admin-title">
               Landings de marca
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-gray-600 dark:text-slate-400">
+            <p className="admin-muted mt-2 max-w-2xl">
               Gestiona las landings creadas para esta universidad y crea nuevas
               experiencias cuando las necesites.
             </p>
@@ -56,7 +56,7 @@ export default async function BrandLandingsPage({ params }: Props) {
 
           <Link
             href={`/admin/brands/${brand.slug}/new`}
-            className="inline-flex items-center gap-2 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+            className="admin-button-primary"
           >
             <Plus className="h-4 w-4" />
             Crear landing
@@ -64,21 +64,21 @@ export default async function BrandLandingsPage({ params }: Props) {
         </div>
 
         {landingItems.length === 0 ? (
-          <section className="border border-dashed border-gray-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-950">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500">
+          <section className="admin-empty-state">
+            <p className="admin-eyebrow">
               Agente de landings
             </p>
-            <h2 className="mt-4 text-2xl font-semibold text-gray-950 dark:text-slate-50">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
               Aun no hay landings creadas
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-600 dark:text-slate-400">
+            <p className="admin-muted mx-auto mt-3 max-w-xl">
               Crea la primera landing de esta marca para empezar a organizar su
               oferta academica y flujo de captacion.
             </p>
             <div className="mt-6">
               <Link
                 href={`/admin/brands/${brand.slug}/new`}
-                className="inline-flex items-center gap-2 bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+                className="admin-button-primary"
               >
                 <Plus className="h-4 w-4" />
                 Crear primera landing

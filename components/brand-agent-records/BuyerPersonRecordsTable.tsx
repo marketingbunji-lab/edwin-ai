@@ -54,9 +54,9 @@ export default function BuyerPersonRecordsTable({
 
   return (
     <div className="space-y-3">
-      <section className="overflow-x-auto border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+      <section className="admin-table-shell">
         <div className="min-w-[1060px]">
-          <div className="grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.5fr)_minmax(240px,1fr)_150px_260px] bg-slate-100 px-5 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:bg-slate-900 dark:text-slate-400">
+          <div className="admin-table-header grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.5fr)_minmax(240px,1fr)_150px_260px]">
             <span>Perfil</span>
             <span>Etapa</span>
             <span>Motivaciones</span>
@@ -66,7 +66,7 @@ export default function BuyerPersonRecordsTable({
           {records.map((record) => (
             <article
               key={record.id}
-              className="grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.5fr)_minmax(240px,1fr)_150px_260px] gap-4 border-t border-slate-200 px-5 py-4 text-sm dark:border-slate-800"
+              className="admin-table-row grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.5fr)_minmax(240px,1fr)_150px_260px] gap-4"
             >
               <div>
                 <p className="font-semibold text-slate-950 dark:text-slate-50">
@@ -90,14 +90,14 @@ export default function BuyerPersonRecordsTable({
               <div className="flex justify-end gap-2">
                 <Link
                   href={`/admin/brands/${brandSlug}/buyer-person/${record.id}`}
-                  className="inline-flex items-center gap-2 border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-white/5"
+                  className="admin-button-secondary px-3 py-2 text-xs"
                 >
                   <Eye className="h-3.5 w-3.5" />
                   Ver
                 </Link>
                 <Link
                   href={`/admin/brands/${brandSlug}/buyer-person/${record.id}/edit`}
-                  className="inline-flex items-center gap-2 bg-[var(--bunji-primary)] px-3 py-2 text-xs font-semibold text-white transition hover:brightness-110"
+                  className="admin-button-primary px-3 py-2 text-xs"
                 >
                   <Pencil className="h-3.5 w-3.5" />
                   Editar
@@ -106,7 +106,7 @@ export default function BuyerPersonRecordsTable({
                   type="button"
                   onClick={() => deleteRecord(record.id)}
                   disabled={deletingId === record.id}
-                  className="inline-flex items-center gap-2 border border-red-500/40 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:text-red-300 dark:hover:bg-red-500/10"
+                  className="admin-button-danger px-3 py-2 text-xs"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                   {deletingId === record.id ? "Eliminando..." : "Eliminar"}

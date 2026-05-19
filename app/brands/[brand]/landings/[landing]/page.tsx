@@ -22,7 +22,7 @@ export default async function LandingDetailPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-[#020617]">
+    <main className="admin-page px-0 py-0">
       <div className="w-full">
         <LandingEditor
           brand={brand}

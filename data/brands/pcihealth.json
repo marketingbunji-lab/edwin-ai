@@ -2,17 +2,17 @@
   "slug": "pcihealth",
   "name": "PCI",
   "shortName": "PCI Health Training Center",
-  "logo": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci-light.png",
+  "logo": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci.png",
   "logos": {
     "light": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci-light.png",
-    "dark": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci.png"
+    "dark": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/911063c0327b3268e26f10b9a3668465400c6782/public/logo-pci-light.png"
   },
   "typography": {
     "fontFamily": "\"Lato\", sans-serif",
     "googleFontHref": "https://fonts.googleapis.com/css2?family=Lato&display=swap"
   },
   "identityManual": "",
-  "primaryColor": "#0693e3",
+  "primaryColor": "#0693E3",
   "secondaryColor": "#F90101",
   "description": "Medical Assistant - Dental Assistant! Learn the skills to become a Medical Assistant or Dental Assistant today! Call PCI today to learn about our offered Programs!",
   "officialWebsite": "https://www.pcihealth.edu/",

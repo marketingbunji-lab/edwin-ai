@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import { Headphones } from "lucide-react";
 import {
   landingCardClass,
@@ -17,6 +18,7 @@ type Props = {
   videoUrl: string;
   items: IconTextItem[];
   isDirectVideoUrl: (url?: string) => boolean;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingSupportSection({
@@ -26,6 +28,7 @@ export default function DefaultLandingSupportSection({
   videoUrl,
   items,
   isDirectVideoUrl,
+  liveEdit,
 }: Props) {
   const hasSupportVideo = Boolean(videoUrl);
 
@@ -42,6 +45,9 @@ export default function DefaultLandingSupportSection({
           description={description}
           centered
           icon={<Headphones className="h-7 w-7" />}
+          liveEdit={liveEdit}
+          titlePath="supportSection.title"
+          descriptionPath="supportSection.description"
         />
 
         <div

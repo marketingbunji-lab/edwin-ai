@@ -1,0 +1,157 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, Plus } from "lucide-react";
+import VisualAssetsTable from "@/components/brand-agent-records/VisualAssetsTable";
+import {
+  getVisualAssetsByCategory,
+  isVisualAssetCategory,
+} from "@/lib/brandAgentRecords";
+import { getBrandBySlug, getProgramsByBrand, type Program } from "@/lib/data";
+import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
+
+export const dynamic = "force-dynamic";
+
+type Props = {
+  params: Promise<{
+    brand: string;
+    category: string;
+    program: string;
+  }>;
+};
+
+export default async function ProgramVisualAssetsPage({ params }: Props) {
+  const {
+    brand: brandSlug,
+    category: categorySlug,
+    program: programId,
+  } = await params;
+  const brand =
+    getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
+
+  if (!brand || categorySlug !== "programs-assets" || !isVisualAssetCategory(categorySlug)) {
+    notFound();
+  }
+
+  const allAssets = getVisualAssetsByCategory(brand.slug, categorySlug);
+  const isAll = programId === "all";
+  const program = isAll
+    ? null
+    : resolveProgram(getProgramsByBrand(brand.slug), programId);
+  const resolvedProgramId = program?.id ?? programId;
+
+  const records = isAll
+    ? allAssets
+    : allAssets.filter(
+        (asset) =>
+          asset.programId === resolvedProgramId ||
+          slugify(asset.programId ?? "") === slugify(programId),
+      );
+  const title = isAll
+    ? "Todos los programs assets"
+    : program?.programName ?? titleFromSlug(programId);
+
+  return (
+    <main className="admin-page">
+      <div className="w-full">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <Link
+              href={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}`}
+              className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Volver a Programs Assets
+            </Link>
+            <p className="text-sm text-gray-500 dark:text-slate-400">
+              {brand.name}
+            </p>
+            <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+              {title}
+            </h1>
+            <p className="mt-2 max-w-2xl text-sm text-gray-600 dark:text-slate-400">
+              {isAll
+                ? "Vista completa de todos los assets asociados a programas."
+                : "Assets visuales asociados a este programa."}
+            </p>
+          </div>
+
+          <Link
+            href={
+              isAll
+                ? `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/new`
+                : `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}/new`
+            }
+            className="inline-flex items-center gap-2 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+          >
+            <Plus className="h-4 w-4" />
+            Agregar asset
+          </Link>
+        </div>
+
+        {records.length === 0 ? (
+          <section className="border border-dashed border-gray-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-950">
+            <h2 className="text-2xl font-semibold text-gray-950 dark:text-slate-50">
+              Aun no hay assets creados
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-600 dark:text-slate-400">
+              Agrega el primer asset para empezar a organizar los recursos del programa.
+            </p>
+            <div className="mt-6">
+              <Link
+                href={
+                  isAll
+                    ? `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/new`
+                    : `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}/new`
+                }
+                className="inline-flex items-center gap-2 bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+              >
+                <Plus className="h-4 w-4" />
+                Crear primer asset
+              </Link>
+            </div>
+          </section>
+        ) : (
+          <VisualAssetsTable
+            brandSlug={brand.slug}
+            category={categorySlug}
+            records={records}
+          />
+        )}
+      </div>
+    </main>
+  );
+}
+
+function resolveProgram(programs: Program[], programId: string) {
+  const normalizedProgramId = slugify(programId);
+
+  return programs.find((program) => {
+    const sourceSlug = program.sourceWebsite
+      ? slugify(program.sourceWebsite.split("/").filter(Boolean).at(-1) ?? "")
+      : "";
+
+    return (
+      program.id === programId ||
+      slugify(program.id) === normalizedProgramId ||
+      slugify(program.programName) === normalizedProgramId ||
+      sourceSlug === normalizedProgramId
+    );
+  });
+}
+
+function titleFromSlug(slug: string) {
+  return slug
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}

@@ -525,13 +525,13 @@ export default function AiBrandChat() {
               placeholder="Escribe la informacion de la marca..."
               rows={2}
               disabled={sending}
-              className="min-h-12 flex-1 resize-none rounded-md border border-gray-300 px-4 py-3 text-sm text-gray-900 outline-none focus:border-black disabled:bg-gray-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:disabled:bg-slate-800"
+              className="admin-textarea min-h-12 flex-1 resize-none disabled:bg-slate-100 dark:disabled:bg-slate-800"
             />
             <button
               type="button"
               onClick={() => sendMessage()}
               disabled={!canSend}
-              className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-black text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-[var(--bunji-primary)]"
+              className="admin-button-primary h-12 w-12 shrink-0 p-0 disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Enviar mensaje"
             >
               <Send className="h-4 w-4" />
@@ -546,7 +546,7 @@ export default function AiBrandChat() {
         </div>
       </section>
 
-      <aside className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <aside className="admin-panel p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
@@ -596,7 +596,7 @@ export default function AiBrandChat() {
             />
           </div>
         ) : (
-          <div className="mt-6 rounded-md bg-gray-50 p-4 text-sm text-gray-600 dark:bg-slate-900 dark:text-slate-300">
+          <div className="admin-panel-soft mt-6 p-4 text-sm text-slate-600 dark:text-slate-300">
             Cuando n8n responda con un objeto <strong>brand</strong> o{" "}
             <strong>draft</strong>, aparecera aqui para revisarlo y crearlo.
           </div>
@@ -607,7 +607,7 @@ export default function AiBrandChat() {
             type="button"
             onClick={createBrand}
             disabled={!canCreate}
-            className="bunji-button-primary inline-flex w-full items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60"
+            className="admin-button-primary w-full"
           >
             <FilePlus2 className="h-4 w-4" />
             {creating ? "Creando marca..." : "Crear marca con este JSON"}
@@ -617,7 +617,7 @@ export default function AiBrandChat() {
             <button
               type="button"
               onClick={() => setShowJson((value) => !value)}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+              className="admin-button-secondary w-full"
             >
               <Code2 className="h-4 w-4" />
               {showJson ? "Ocultar JSON" : "Ver JSON"}
@@ -634,7 +634,7 @@ export default function AiBrandChat() {
         <button
           type="button"
           onClick={() => setShowDebug((value) => !value)}
-          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-dashed border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          className="admin-button-secondary mt-4 w-full border-dashed"
         >
           <Code2 className="h-4 w-4" />
           {showDebug ? "Ocultar debug" : "Ver debug"}
@@ -648,7 +648,7 @@ export default function AiBrandChat() {
 
         <Link
           href="/admin/brands/new"
-          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          className="admin-button-secondary mt-5 w-full"
         >
           Volver al formulario manual
           <ArrowRight className="h-4 w-4" />
@@ -664,7 +664,7 @@ function DraftField({ label, value }: { label: string; value: string }) {
       <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
         {label}
       </p>
-      <p className="mt-1 min-h-10 rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100">
+      <p className="mt-1 min-h-10 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100">
         {value || "Pendiente"}
       </p>
     </div>

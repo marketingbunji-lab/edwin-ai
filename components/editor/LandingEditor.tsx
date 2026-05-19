@@ -9,6 +9,7 @@ import {
   Eye,
   FileDown,
   Laptop,
+  MousePointerClick,
   Plus,
   Smartphone,
   Tablet,
@@ -162,6 +163,7 @@ export default function LandingEditor({
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [analyzingColor, setAnalyzingColor] = useState(false);
+  const [liveEditEnabled, setLiveEditEnabled] = useState(false);
   const [previewWidth, setPreviewWidth] = useState(1200);
   const [previewHeight, setPreviewHeight] = useState(820);
   const previewContentRef = useRef<HTMLDivElement | null>(null);
@@ -187,6 +189,11 @@ export default function LandingEditor({
 
   const updateField = (path: string, value: string) => {
     updateValueAtPath(path, value);
+  };
+
+  const liveEditConfig = {
+    enabled: liveEditEnabled,
+    onTextChange: updateField,
   };
 
   const updateBooleanField = (path: string, value: boolean) => {
@@ -689,7 +696,7 @@ ${accordionBootstrapScript}
 
             <EditorSection title="Certificaciones">
               <div className="space-y-4">
-                <div className="flex items-start justify-between gap-4 rounded-md border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900">
+                <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
                   <div>
                     <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
                       Mostrar certificaciones de la marca
@@ -900,7 +907,7 @@ ${accordionBootstrapScript}
                     return (
                       <div
                         key={index}
-                        className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                        className="admin-panel-soft p-4"
                       >
                         <div className="mb-3 flex items-center justify-between">
                           <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1030,7 +1037,7 @@ ${accordionBootstrapScript}
                   {(landing.form?.campusOptions || []).map((item, index) => (
                     <div
                       key={index}
-                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                      className="admin-panel-soft p-4"
                     >
                       <div className="mb-3 flex items-center justify-between">
                         <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1154,7 +1161,7 @@ ${accordionBootstrapScript}
                     (item, index) => (
                       <div
                         key={index}
-                        className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                        className="admin-panel-soft p-4"
                       >
                         <div className="mb-3 flex items-center justify-between">
                           <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1269,7 +1276,7 @@ ${accordionBootstrapScript}
                   {(landing.curriculum?.items || []).map((item, index) => (
                     <div
                       key={index}
-                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                      className="admin-panel-soft p-4"
                     >
                       <div className="mb-3 flex items-center justify-between">
                         <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1380,7 +1387,7 @@ ${accordionBootstrapScript}
                   {(landing.graduateProfile?.items || []).map((item, index) => (
                     <div
                       key={index}
-                      className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                      className="admin-panel-soft p-4"
                     >
                       <div className="mb-3 flex items-center justify-between">
                         <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1480,7 +1487,7 @@ ${accordionBootstrapScript}
                     (item, index) => (
                       <div
                         key={index}
-                        className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                        className="admin-panel-soft p-4"
                       >
                         <div className="mb-3 flex items-center justify-between">
                           <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1584,7 +1591,7 @@ ${accordionBootstrapScript}
                     (item, index) => (
                       <div
                         key={index}
-                        className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                        className="admin-panel-soft p-4"
                       >
                         <div className="mb-3 flex items-center justify-between">
                           <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1692,7 +1699,7 @@ ${accordionBootstrapScript}
                 {(landing.footerScripts || []).map((script: string, index) => (
                   <div
                     key={index}
-                  className="border border-gray-200 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-900"
+                  className="admin-panel-soft p-4"
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1763,7 +1770,7 @@ ${accordionBootstrapScript}
       </div>
 
       <div className="bg-white dark:bg-slate-950">
-        <div className="flex flex-wrap items-end gap-4 border-b border-gray-200 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex flex-wrap items-end gap-4 border-b border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/[0.035]">
           <PreviewControl
             label="Ancho"
             min={360}
@@ -1811,6 +1818,24 @@ ${accordionBootstrapScript}
             <Laptop className="h-3.5 w-3.5" />
             Desktop
           </button>
+          <button
+            type="button"
+            onClick={() => setLiveEditEnabled((current) => !current)}
+            className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition ${
+              liveEditEnabled
+                ? "border-[var(--bunji-primary)] bg-[var(--bunji-primary)] text-white shadow-[0_10px_24px_rgba(62,57,137,0.22)]"
+                : "border-gray-300 bg-white text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+            }`}
+          >
+            <MousePointerClick className="h-3.5 w-3.5" />
+            {liveEditEnabled ? "Live edit activo" : "Live edit"}
+          </button>
+          {liveEditEnabled ? (
+            <p className="max-w-sm text-xs leading-5 text-gray-600 dark:text-slate-300">
+              Haz click en los textos marcados, edita y sal del campo para
+              actualizar el JSON.
+            </p>
+          ) : null}
         </div>
 
         <div className="max-h-[calc(100vh-240px)] overflow-auto border-t border-gray-200 bg-gray-100 p-4 dark:border-slate-800 dark:bg-[#020617]">
@@ -1823,7 +1848,11 @@ ${accordionBootstrapScript}
             }}
           >
             <div ref={previewContentRef}>
-              {renderLandingTemplate({ brand, landing })}
+              {renderLandingTemplate({
+                brand,
+                landing,
+                liveEdit: liveEditConfig,
+              })}
             </div>
           </div>
         </div>
@@ -1882,14 +1911,14 @@ function EditorSection({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <section className="overflow-hidden border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+    <section className="admin-panel overflow-hidden">
       <button
         type="button"
         onClick={() => setIsOpen((value) => !value)}
-        className="flex w-full items-center justify-between gap-3 bg-gray-50 px-4 py-3 text-left dark:bg-slate-900"
+        className="flex w-full items-center justify-between gap-3 bg-slate-50 px-4 py-3 text-left transition hover:bg-slate-100 dark:bg-white/[0.035] dark:hover:bg-white/[0.06]"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-slate-100">
+        <span className="text-sm font-semibold uppercase tracking-wide text-slate-950 dark:text-slate-100">
           {title}
         </span>
         <span className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-300 text-sm text-gray-600 dark:border-slate-700 dark:text-slate-300">
@@ -1902,7 +1931,7 @@ function EditorSection({
       </button>
 
       {isOpen ? (
-        <div className="space-y-4 border-t border-gray-200 p-4 dark:border-slate-800">{children}</div>
+        <div className="space-y-4 border-t border-slate-200 p-4 dark:border-white/10">{children}</div>
       ) : null}
     </section>
   );
@@ -1957,13 +1986,13 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
       </span>
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="admin-input"
       />
     </label>
   );
@@ -1980,14 +2009,14 @@ function TextareaField({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
       </span>
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={4}
-        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500"
+        className="admin-textarea"
       />
     </label>
   );
@@ -2009,13 +2038,13 @@ function SelectField({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
       </span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="admin-input"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

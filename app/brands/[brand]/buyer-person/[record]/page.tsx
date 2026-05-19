@@ -37,7 +37,7 @@ export default async function BuyerPersonDetailPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link

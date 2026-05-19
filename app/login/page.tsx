@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="mx-auto max-w-md bg-white p-6 dark:bg-slate-950">
         <div className="mb-8 flex items-center gap-3">
           <Image

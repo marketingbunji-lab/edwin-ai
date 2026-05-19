@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { VisualAssetImageCategory } from "./visualAssetCategories";
 
 export type BrandAgentCollection = "buyer-person" | "visual-assets";
+export type VisualAssetCategory = "brand-assets" | "programs-assets";
 
 export type BuyerPersonRecord = {
   id: string;
@@ -72,6 +74,10 @@ export type BuyerPersonRecord = {
 
 export type VisualAssetRecord = {
   id: string;
+  category: VisualAssetCategory;
+  assetCategory?: VisualAssetImageCategory | string;
+  programId?: string;
+  programName?: string;
   name: string;
   assetType: string;
   url: string;
@@ -105,6 +111,24 @@ export const brandAgentCollectionLabels: Record<
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const buyerPersonDir = path.join(process.cwd(), "data", "buyer-person");
 const visualAssetsDir = path.join(process.cwd(), "data", "visual-assets");
+export const visualAssetCategories: Array<{
+  slug: VisualAssetCategory;
+  title: string;
+  description: string;
+}> = [
+  {
+    slug: "brand-assets",
+    title: "Brand Assets",
+    description:
+      "Logos, imagenes institucionales, manuales y recursos visuales base de la marca.",
+  },
+  {
+    slug: "programs-assets",
+    title: "Programs Assets",
+    description:
+      "Imagenes, videos y recursos visuales asociados a programas academicos.",
+  },
+];
 
 export function isBrandAgentCollection(
   value: string,
@@ -114,6 +138,22 @@ export function isBrandAgentCollection(
 
 export function isSafeBrandAgentSlug(value: string) {
   return slugPattern.test(value);
+}
+
+export function isVisualAssetCategory(
+  value: string,
+): value is VisualAssetCategory {
+  return value === "brand-assets" || value === "programs-assets";
+}
+
+export function getVisualAssetsByCategory(
+  brandSlug: string,
+  category: VisualAssetCategory,
+) {
+  return getBrandAgentRecords(brandSlug, "visual-assets").filter(
+    (record): record is VisualAssetRecord =>
+      "category" in record && record.category === category,
+  );
 }
 
 export function getBrandAgentRecords(
@@ -423,6 +463,15 @@ function normalizeBrandAgentRecord(
   }
 
   const name = toText(value.name);
+  const categoryValue =
+    toText(value.category) ||
+    ((current && "category" in current && current.category) || "");
+  const category = isVisualAssetCategory(categoryValue)
+    ? categoryValue
+    : "brand-assets";
+  const programId = toText(value.programId);
+  const programName = toText(value.programName);
+  const assetCategory = toText(value.assetCategory);
   const assetType = toText(value.assetType);
   const url = toText(value.url);
   const notes = toText(value.notes);
@@ -433,6 +482,10 @@ function normalizeBrandAgentRecord(
 
   return {
     id: id ?? toRecordId(name),
+    category,
+    assetCategory,
+    programId,
+    programName,
     name,
     assetType,
     url,

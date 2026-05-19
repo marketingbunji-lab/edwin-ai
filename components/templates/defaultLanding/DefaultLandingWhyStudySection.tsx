@@ -7,6 +7,7 @@ import {
   landingTwoColumnClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 
 type AccordionItem = {
   title: string;
@@ -23,6 +24,7 @@ type Props = {
   logo: string;
   heroTitle: string;
   items: AccordionItem[];
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingWhyStudySection({
@@ -35,6 +37,7 @@ export default function DefaultLandingWhyStudySection({
   logo,
   heroTitle,
   items,
+  liveEdit,
 }: Props) {
   if (!title && !description && !image && !logo && items.length === 0) {
     return null;
@@ -51,6 +54,9 @@ export default function DefaultLandingWhyStudySection({
             eyebrow={eyebrow}
             title={title}
             description={description}
+            liveEdit={liveEdit}
+            titlePath="whyStudy.title"
+            descriptionPath="whyStudy.description"
           />
 
           {items.length > 0 ? (

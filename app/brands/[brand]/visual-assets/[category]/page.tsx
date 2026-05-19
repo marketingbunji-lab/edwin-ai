@@ -1,0 +1,235 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, Eye, ImageIcon, Plus } from "lucide-react";
+import VisualAssetsTable from "@/components/brand-agent-records/VisualAssetsTable";
+import {
+  getVisualAssetsByCategory,
+  isVisualAssetCategory,
+  visualAssetCategories,
+} from "@/lib/brandAgentRecords";
+import { getBrandBySlug, getProgramsByBrand } from "@/lib/data";
+import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
+
+export const dynamic = "force-dynamic";
+
+type Props = {
+  params: Promise<{
+    brand: string;
+    category: string;
+  }>;
+};
+
+export default async function VisualAssetsCategoryPage({ params }: Props) {
+  const { brand: brandSlug, category: categorySlug } = await params;
+  const brand =
+    getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
+
+  if (!brand || !isVisualAssetCategory(categorySlug)) {
+    notFound();
+  }
+
+  const category = visualAssetCategories.find(
+    (item) => item.slug === categorySlug,
+  );
+
+  if (!category) {
+    notFound();
+  }
+
+  if (categorySlug === "programs-assets") {
+    const programs = getProgramsByBrand(brand.slug);
+    const assets = getVisualAssetsByCategory(brand.slug, categorySlug);
+
+    return (
+      <main className="admin-page">
+        <div className="admin-page-inner">
+          <Header
+            brandName={brand.name}
+            brandSlug={brand.slug}
+            title={category.title}
+            description={category.description}
+          />
+
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <Link
+              href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/all`}
+              className="admin-button-secondary"
+            >
+              <Eye className="h-4 w-4" />
+              Ver todos los assets
+            </Link>
+            <Link
+              href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
+              className="admin-button-primary"
+            >
+              <Plus className="h-4 w-4" />
+              Agregar asset general
+            </Link>
+          </div>
+
+          {programs.length === 0 ? (
+            <EmptyState
+              href={`/admin/brands/${brand.slug}/programs/new`}
+              title="Aun no hay programas creados"
+              buttonLabel="Crear programa"
+            />
+          ) : (
+            <section className="grid gap-4">
+              {programs.map((program) => {
+                const count = assets.filter(
+                  (asset) => asset.programId === program.id,
+                ).length;
+
+                return (
+                  <article
+                    key={program.id}
+                    className="admin-panel grid gap-4 p-5 md:grid-cols-[minmax(0,1fr)_auto]"
+                  >
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
+                        Programa
+                      </p>
+                      <h2 className="mt-2 text-xl font-semibold text-slate-950 dark:text-slate-50">
+                        {program.programName}
+                      </h2>
+                      <p className="mt-1 font-mono text-xs text-slate-500">
+                        {program.id}
+                      </p>
+                      <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                        {count} assets asociados
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2 md:justify-end">
+                      <Link
+                        href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}`}
+                        className="admin-button-secondary"
+                      >
+                        <Eye className="h-4 w-4" />
+                        Ver assets
+                      </Link>
+                      <Link
+                        href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}/new`}
+                        className="admin-button-primary"
+                      >
+                        <Plus className="h-4 w-4" />
+                        Agregar asset
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </section>
+          )}
+        </div>
+      </main>
+    );
+  }
+
+  const records = getVisualAssetsByCategory(brand.slug, categorySlug);
+
+  return (
+    <main className="admin-page">
+      <div className="admin-page-inner">
+        <Header
+          brandName={brand.name}
+          brandSlug={brand.slug}
+          title={category.title}
+          description={category.description}
+          actionHref={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
+        />
+
+        {records.length === 0 ? (
+          <EmptyState
+            href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
+            title="Aun no hay assets creados"
+            buttonLabel="Crear primer asset"
+          />
+        ) : (
+          <VisualAssetsTable
+            brandSlug={brand.slug}
+            category={category.slug}
+            records={records}
+          />
+        )}
+      </div>
+    </main>
+  );
+}
+
+function Header({
+  brandName,
+  brandSlug,
+  title,
+  description,
+  actionHref,
+}: {
+  brandName: string;
+  brandSlug: string;
+  title: string;
+  description: string;
+  actionHref?: string;
+}) {
+  return (
+    <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <Link
+          href={`/admin/brands/${brandSlug}/visual-assets`}
+          className="admin-button-secondary mb-3"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Volver a visual assets
+        </Link>
+        <p className="admin-eyebrow">
+          {brandName}
+        </p>
+        <h1 className="admin-title">
+          {title}
+        </h1>
+        <p className="admin-muted mt-2 max-w-2xl">
+          {description}
+        </p>
+      </div>
+
+      {actionHref ? (
+        <Link
+          href={actionHref}
+          className="admin-button-primary"
+        >
+          <Plus className="h-4 w-4" />
+          Agregar asset
+        </Link>
+      ) : null}
+    </div>
+  );
+}
+
+function EmptyState({
+  href,
+  title,
+  buttonLabel,
+}: {
+  href: string;
+  title: string;
+  buttonLabel: string;
+}) {
+  return (
+    <section className="admin-empty-state">
+      <div className="admin-icon-tile mx-auto">
+        <ImageIcon className="h-5 w-5" />
+      </div>
+      <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
+        {title}
+      </h2>
+      <div className="mt-6">
+        <Link
+          href={href}
+          className="admin-button-primary"
+        >
+          <Plus className="h-4 w-4" />
+          {buttonLabel}
+        </Link>
+      </div>
+    </section>
+  );
+}

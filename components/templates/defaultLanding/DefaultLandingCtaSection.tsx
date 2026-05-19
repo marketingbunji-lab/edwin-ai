@@ -1,6 +1,9 @@
 import {
   landingContainerClass,
 } from "./classes";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 
 type Props = {
   title: string;
@@ -8,6 +11,7 @@ type Props = {
   button: string;
   secondaryButton: string;
   hasForm: boolean;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingCtaSection({
@@ -16,6 +20,7 @@ export default function DefaultLandingCtaSection({
   button,
   secondaryButton,
   hasForm,
+  liveEdit,
 }: Props) {
   if (!title && !description && !button && !secondaryButton) {
     return null;
@@ -43,12 +48,21 @@ export default function DefaultLandingCtaSection({
         <div className="mx-auto max-w-[1060px] rounded-3xl border border-white/20 bg-white/[0.13] px-6 py-12 shadow-[0_30px_90px_rgba(2,6,23,0.36)] backdrop-blur-xl md:px-12 md:py-16">
           {title ? (
             <h2 className="mx-auto max-w-[920px] text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
-              {title}
+              <LiveEditableText
+                path="cta.title"
+                value={title}
+                liveEdit={liveEdit}
+                singleLine
+              />
             </h2>
           ) : null}
           {description ? (
             <p className="mx-auto mt-6 max-w-[760px] text-xl leading-8 text-white/86 md:text-2xl md:leading-9">
-              {description}
+              <LiveEditableText
+                path="cta.description"
+                value={description}
+                liveEdit={liveEdit}
+              />
             </p>
           ) : null}
           {(button || secondaryButton) && hasForm ? (
@@ -58,7 +72,12 @@ export default function DefaultLandingCtaSection({
                   href="#default-form"
                   className="inline-flex min-h-14 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-7 py-4 text-lg font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_18px_46px_color-mix(in_srgb,var(--landing-secondary)_38%,transparent)] transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                 >
-                  {button}
+                  <LiveEditableText
+                    path="cta.button"
+                    value={button}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
                 </a>
               ) : null}
               {secondaryButton ? (
@@ -66,7 +85,12 @@ export default function DefaultLandingCtaSection({
                   href="#default-form"
                   className="inline-flex min-h-14 items-center justify-center rounded-xl bg-white/12 px-7 py-4 text-lg font-extrabold text-white no-underline shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)] transition-all duration-300 hover:scale-[1.02] hover:bg-white/18"
                 >
-                  {secondaryButton}
+                  <LiveEditableText
+                    path="cta.secondaryButton"
+                    value={secondaryButton}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
                 </a>
               ) : null}
             </div>

@@ -28,7 +28,7 @@ export default function AdminLandingsPage() {
   );
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         {landings.length === 0 ? (
           <div className="rounded-lg border border-dashed border-gray-300 bg-white p-10 text-center text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">

@@ -145,11 +145,13 @@ export default function LandingCard({ landing }: Props) {
   };
 
   return (
-    <div className="relative border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
+    <div className="admin-panel relative p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_46px_rgba(15,23,42,0.12)]">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold dark:text-slate-50">{landing.title}</h3>
-          <p className="text-sm text-gray-500 dark:text-slate-400">{landing.fullTitle}</p>
+          <h3 className="text-lg font-bold tracking-tight text-slate-950 dark:text-slate-50">
+            {landing.title}
+          </h3>
+          <p className="admin-muted">{landing.fullTitle}</p>
         </div>
 
         <div className="flex shrink-0 flex-col items-end gap-2">
@@ -176,7 +178,7 @@ export default function LandingCard({ landing }: Props) {
         </div>
       </div>
 
-      <div className="mt-4 space-y-1 text-sm text-gray-600 dark:text-slate-300">
+      <div className="mt-4 space-y-1 rounded-xl border border-slate-200 bg-slate-50/70 p-3 text-sm text-slate-600 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300">
         <p>
           <strong>Slug:</strong> {landing.slug}
         </p>
@@ -188,7 +190,7 @@ export default function LandingCard({ landing }: Props) {
       <div className="mt-5 flex flex-wrap gap-3">
         <Link
           href={`/admin/brands/${landing.brand}/landings/${landing.slug}`}
-          className="bunji-button-primary inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium"
+          className="admin-button-primary py-2"
           style={{ backgroundColor: "var(--bunji-primary)", color: "#fff" }}
         >
           <ExternalLink className="h-4 w-4" />
@@ -199,7 +201,7 @@ export default function LandingCard({ landing }: Props) {
           href={`/landings/${landing.brand}/${landing.slug}`}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 dark:border-slate-700 dark:text-slate-100"
+          className="admin-button-secondary py-2"
         >
           <Eye className="h-4 w-4" />
           Preview
@@ -211,7 +213,7 @@ export default function LandingCard({ landing }: Props) {
           clientifyEndpoint={`/api/export-clientify/${landing.brand}/${landing.slug}`}
           clientifyFilename={`${landing.brand}-${landing.slug}-clientify.html`}
           icon={<FileDown className="h-4 w-4" />}
-          className="bunji-button-secondary rounded-lg px-4 py-2 text-sm font-medium"
+          className="admin-button-secondary py-2"
           style={{ backgroundColor: "var(--bunji-primary-muted)", color: "#fff" }}
         >
           Exportar
@@ -221,7 +223,7 @@ export default function LandingCard({ landing }: Props) {
           type="button"
           onClick={duplicateLanding}
           disabled={duplicating || deleting}
-          className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:text-slate-100"
+          className="admin-button-secondary py-2"
         >
           <Copy className="h-4 w-4" />
           {duplicating ? "Duplicando..." : "Duplicar"}
@@ -234,7 +236,7 @@ export default function LandingCard({ landing }: Props) {
             setShowDeleteModal(true);
           }}
           disabled={duplicating || deleting}
-          className="inline-flex items-center gap-2 rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/60 dark:text-red-300 dark:hover:bg-red-950/40"
+          className="admin-button-danger py-2"
         >
           <Trash2 className="h-4 w-4" />
           Eliminar
@@ -249,7 +251,7 @@ export default function LandingCard({ landing }: Props) {
             role="dialog"
             aria-modal="true"
             aria-labelledby={`delete-${landing.slug}-title`}
-            className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-950"
+            className="admin-panel w-full max-w-md p-6"
           >
             <h2
               id={`delete-${landing.slug}-title`}
@@ -267,7 +269,7 @@ export default function LandingCard({ landing }: Props) {
                 type="button"
                 onClick={() => setShowDeleteModal(false)}
                 disabled={deleting}
-                className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-60 dark:border-slate-700 dark:text-slate-100"
+                className="admin-button-secondary py-2"
               >
                 Cancelar
               </button>
@@ -275,7 +277,7 @@ export default function LandingCard({ landing }: Props) {
                 type="button"
                 onClick={deleteLanding}
                 disabled={deleting}
-                className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+                className="admin-button-danger bg-red-600 py-2 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
               >
                 <Trash2 className="h-4 w-4" />
                 {deleting ? "Eliminando..." : "Sí, eliminar"}

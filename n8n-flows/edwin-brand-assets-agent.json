@@ -1,0 +1,243 @@
+{
+  "name": "edwin-brand-assets-agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "edwin-brand-assets-agent",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "0c2f8322-8a3d-4a6e-9413-d4ec9fa66a1d",
+      "name": "Webhook - edwin-brand-assets-agent",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        960
+      ],
+      "webhookId": "edwin-brand-assets-agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Create one brand visual asset concept for this education brand, then prepare a precise image-generation prompt. Use the selected asset category and the buyer personas to make the image useful for enrollment marketing.\n\nSelected asset category: {{ $json.body.assetCategory }}\nSelected category label: {{ $json.body.assetCategoryLabel }}\n\nBrand JSON:\n{{ JSON.stringify($json.body.brand, null, 2) }}\n\nBuyer personas JSON:\n{{ JSON.stringify($json.body.buyerPersonRecords || [], null, 2) }}\n\nCurrent draft JSON:\n{{ JSON.stringify($json.body.currentDraft || {}, null, 2) }}\n\nReturn only valid JSON. Do not use markdown. Do not wrap the response in an array. The JSON must match this shape:\n{\n  \"visualAsset\": {\n    \"name\": \"\",\n    \"assetType\": \"Image\",\n    \"assetCategory\": \"{{ $json.body.assetCategory }}\",\n    \"url\": \"\",\n    \"notes\": \"\"\n  },\n  \"imagePrompt\": \"\"\n}\n\nImage prompt rules:\n- Generate a photorealistic marketing image for an education institution.\n- Do not include readable text, logos, watermarks, UI, brand marks, or fictional seal designs inside the image.\n- Avoid depicting real identifiable public figures or celebrities.\n- Respect the brand context, colors, location, audience, programs, tone, and buyer personas.\n- Make the image premium, modern, realistic, inclusive, and enrollment-oriented.\n- If the category is campusImages, facilityImages, classroomImages, or studentLifeImages, imply a realistic campus or learning environment without copying a real building exactly.\n- If the category is careerSuccessImages, show graduates or students in professional healthcare or career contexts when the brand supports that.\n- If the category is testimonialImages, create a natural portrait aligned with the buyer persona.\n- Use concise notes explaining recommended use cases for landing pages, ads, email, or social."
+      },
+      "id": "e3ecda84-d5a0-499d-b812-38a61267e35d",
+      "name": "AI Agent - Brand Visual Asset",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1488,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "id": "24db8f7f-4ab9-4283-93aa-f51f7d0dc41f",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1488,
+        1184
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const raw = $json.output ?? $json.text ?? $json.response ?? $json.message ?? $json;\nconst request = $('Webhook - edwin-brand-assets-agent').item.json.body || {};\n\nfunction parseJsonCandidate(value) {\n  if (typeof value === 'object' && value !== null) return value;\n  if (typeof value !== 'string') return null;\n\n  const cleaned = value\n    .replace(/^```json\\s*/i, '')\n    .replace(/^```\\s*/i, '')\n    .replace(/```$/i, '')\n    .trim();\n\n  try {\n    return JSON.parse(cleaned);\n  } catch (error) {\n    const match = cleaned.match(/\\{[\\s\\S]*\\}/);\n    if (!match) return null;\n    try {\n      return JSON.parse(match[0]);\n    } catch {\n      return null;\n    }\n  }\n}\n\nconst parsed = parseJsonCandidate(raw);\nconst visualAsset = parsed?.visualAsset || parsed?.asset || parsed;\nconst imagePrompt = parsed?.imagePrompt || parsed?.prompt || '';\n\nif (!visualAsset || !visualAsset.name || !imagePrompt) {\n  return {\n    json: {\n      ok: false,\n      agent: 'edwin-brand-assets-agent',\n      message: 'No se pudo generar un visual asset valido',\n      rawOutput: raw\n    }\n  };\n}\n\nvisualAsset.assetType = visualAsset.assetType || 'Image';\nvisualAsset.assetCategory = visualAsset.assetCategory || request.assetCategory || 'lifestyleImages';\nvisualAsset.url = visualAsset.url || '';\nvisualAsset.notes = visualAsset.notes || '';\n\nreturn {\n  json: {\n    ok: true,\n    agent: 'edwin-brand-assets-agent',\n    message: 'visual asset generado, generando imagen',\n    visualAsset,\n    imagePrompt,\n    rawOutput: raw\n  }\n};"
+      },
+      "id": "bbfa3d7a-8cc5-4381-aabd-a1aaeeaa42cc",
+      "name": "Normalize Brand Visual Asset JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1776,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-image-1-mini"
+        },
+        "prompt": "={{ $json.imagePrompt }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        1984,
+        960
+      ],
+      "id": "a1fdc780-5609-4a09-b9fb-bd148e292671",
+      "name": "Generate an image",
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-uploadtourl.uploadToUrl",
+      "typeVersion": 1,
+      "position": [
+        2192,
+        960
+      ],
+      "id": "e7159b38-433d-4986-8795-1ef4a6d4bc58",
+      "name": "Upload a File",
+      "credentials": {
+        "uploadToUrlApi": {
+          "id": "RiaMbQZJa9yaLtLy",
+          "name": "Upload to URL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const uploadResponse = $json;\nconst previous = $('Normalize Brand Visual Asset JSON').item.json;\nconst visualAsset = previous.visualAsset;\nconst uploadedUrl = uploadResponse.url || uploadResponse.data?.url || uploadResponse.fileUrl || '';\n\nvisualAsset.url = uploadedUrl || visualAsset.url || '';\n\nreturn {\n  json: {\n    ok: Boolean(visualAsset.url),\n    agent: 'edwin-brand-assets-agent',\n    message: visualAsset.url ? 'visual asset generado correctamente' : 'No se recibio URL de imagen del nodo upload',\n    visualAsset,\n    imageUrl: visualAsset.url,\n    imagePrompt: previous.imagePrompt,\n    imageGenerated: Boolean(visualAsset.url),\n    upload: uploadResponse\n  }\n};"
+      },
+      "id": "d00b3d35-0d2f-41e3-8d8c-1fd98e273302",
+      "name": "Attach Brand Asset Image",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2400,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "0f1d4d53-c6a4-44bb-8610-a6c576587fda",
+      "name": "Respond - Brand Visual Asset",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        2608,
+        960
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - edwin-brand-assets-agent": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - Brand Visual Asset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - Brand Visual Asset",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - Brand Visual Asset": {
+      "main": [
+        [
+          {
+            "node": "Normalize Brand Visual Asset JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Brand Visual Asset JSON": {
+      "main": [
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Upload a File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a File": {
+      "main": [
+        [
+          {
+            "node": "Attach Brand Asset Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attach Brand Asset Image": {
+      "main": [
+        [
+          {
+            "node": "Respond - Brand Visual Asset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "edwin-brand-assets-agent-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": [
+    {
+      "name": "visual-assets"
+    },
+    {
+      "name": "EDwin AI"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { getBrandBySlug } from "../../../lib/data";
 import { getSupabaseBrandBySlug } from "../../../lib/supabaseBrands";
+import { normalizeBrandColorPalette } from "../../../lib/brandColors";
 
 export const dynamic = "force-dynamic";
 
@@ -75,9 +76,17 @@ export default async function BrandPage({ params }: Props) {
   const previewLogo = brand.logos?.light || brand.logo || "";
   const primaryColor = brand.primaryColor || "";
   const secondaryColor = brand.secondaryColor || "";
+  const colorPalette = normalizeBrandColorPalette(brand);
+  const previewBackground =
+    colorPalette.primary?.darkest || primaryColor || "#020617";
+  const previewPrimaryDark = colorPalette.primary?.dark || primaryColor || "#111827";
+  const previewPrimaryLight =
+    colorPalette.primary?.light || "rgba(255,255,255,0.16)";
+  const previewSecondaryLight =
+    colorPalette.secondary?.light || secondaryColor || "#A78BFA";
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         <Link
           href="/admin/brands"
@@ -146,8 +155,35 @@ export default async function BrandPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="border border-slate-800 bg-slate-950 p-6 text-white shadow-sm xl:col-span-1">
-            <div className="mb-8 flex h-14 w-40 items-center justify-center overflow-hidden text-white">
+          <div
+            className="relative overflow-hidden border border-white/10 p-6 text-white shadow-[0_24px_80px_rgba(2,6,23,0.32)] xl:col-span-1"
+            style={{
+              background:
+                `radial-gradient(circle at 18% 10%, ${previewSecondaryLight}55 0%, transparent 28%), ` +
+                `radial-gradient(circle at 88% 16%, ${previewPrimaryLight}66 0%, transparent 34%), ` +
+                `linear-gradient(145deg, ${previewBackground} 0%, ${previewPrimaryDark} 54%, ${previewBackground} 100%)`,
+            }}
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 opacity-[0.14]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px)",
+                backgroundSize: "38px 38px",
+                maskImage:
+                  "radial-gradient(circle at center, black 0%, transparent 76%)",
+              }}
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -right-20 top-24 h-56 w-56 rounded-full blur-3xl"
+              style={{ backgroundColor: `${secondaryColor || previewSecondaryLight}44` }}
+            />
+
+            <div className="relative">
+            <div className="mb-8 flex min-h-16 w-full items-center justify-between gap-4">
+              <div className="flex h-16 max-w-48 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur">
               {previewLogo ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -158,9 +194,10 @@ export default async function BrandPage({ params }: Props) {
               ) : (
                 <span className="text-sm font-semibold text-white/60">Logo</span>
               )}
+              </div>
             </div>
 
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/55">
               Brand Agent Preview
             </p>
             <h1 className="mt-4 text-4xl font-semibold leading-tight">
@@ -172,7 +209,7 @@ export default async function BrandPage({ params }: Props) {
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
                   Descripcion
                 </p>
-                <p className="mt-2 max-w-4xl text-sm leading-6 text-white/75">
+                <p className="mt-2 max-w-4xl text-sm leading-6 text-white/78">
                   {brand.description}
                 </p>
               </div>
@@ -181,14 +218,14 @@ export default async function BrandPage({ params }: Props) {
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {brand.officialWebsite ? (
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
                     Sitio oficial
                   </p>
                   <a
                     href={brand.officialWebsite}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-2 inline-flex max-w-full items-center gap-2 truncate text-sm font-semibold text-[var(--bunji-primary-muted)] underline-offset-4 hover:underline"
+                    className="mt-2 inline-flex max-w-full items-center gap-2 rounded-xl border border-white/15 bg-white/[0.10] px-3 py-2 text-sm font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] underline-offset-4 transition hover:bg-white/[0.16] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     <span className="truncate">{brand.officialWebsite}</span>
                     <ExternalLink className="h-4 w-4 shrink-0" />
@@ -213,7 +250,7 @@ export default async function BrandPage({ params }: Props) {
                 </p>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {primaryColor ? (
-                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
@@ -233,7 +270,7 @@ export default async function BrandPage({ params }: Props) {
                   ) : null}
 
                   {secondaryColor ? (
-                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.07] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
@@ -259,11 +296,12 @@ export default async function BrandPage({ params }: Props) {
               <div>
                 <Link
                   href={`/admin/brands/${brand.slug}/edit`}
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-[var(--bunji-primary-muted)]"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(255,255,255,0.12)] transition hover:scale-[1.01] hover:bg-[var(--bunji-primary-muted)]"
                 >
                   Editar datos de marca
                 </Link>
               </div>
+            </div>
             </div>
           </div>
         </section>

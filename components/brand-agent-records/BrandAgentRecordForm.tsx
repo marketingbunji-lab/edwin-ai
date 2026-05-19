@@ -8,8 +8,15 @@ import type {
   BrandAgentCollection,
   BrandAgentRecord,
   BuyerPersonRecord,
+  VisualAssetCategory,
   VisualAssetRecord,
 } from "@/lib/brandAgentRecords";
+import {
+  getVisualAssetImageCategories,
+  getVisualAssetImageCategoryLabel,
+  type VisualAssetImageCategory,
+} from "@/lib/visualAssetCategories";
+import { getRandomEdwinAssistantMessage } from "@/lib/edwinAssistantMessages";
 
 type Props = {
   brand: Brand;
@@ -20,6 +27,11 @@ type Props = {
   eyebrow?: string;
   title?: string;
   description?: string;
+  visualAssetCategory?: VisualAssetCategory;
+  visualAssetProgramId?: string;
+  visualAssetProgramName?: string;
+  visualAssetProgramData?: unknown;
+  buyerPersonRecords?: BuyerPersonRecord[];
 };
 
 type FormState = {
@@ -65,9 +77,13 @@ type FormState = {
   source: string;
   tags: string;
   assetName: string;
+  assetCategory: VisualAssetImageCategory | "";
   assetType: string;
   url: string;
   notes: string;
+  category: VisualAssetCategory;
+  programId: string;
+  programName: string;
 };
 
 const initialState: FormState = {
@@ -113,9 +129,13 @@ const initialState: FormState = {
   source: "Manual",
   tags: "",
   assetName: "",
+  assetCategory: "lifestyleImages",
   assetType: "",
   url: "",
   notes: "",
+  category: "brand-assets",
+  programId: "",
+  programName: "",
 };
 
 function linesToArray(value: string) {
@@ -202,6 +222,13 @@ function formStateFromRecord(record?: BrandAgentRecord): FormState {
 
   return {
     ...initialState,
+    category: record.category || "brand-assets",
+    assetCategory:
+      "assetCategory" in record
+        ? (record.assetCategory as VisualAssetImageCategory | "")
+        : "lifestyleImages",
+    programId: record.programId || "",
+    programName: record.programName || "",
     assetName: record.name,
     assetType: record.assetType,
     url: record.url,
@@ -286,6 +313,42 @@ function buyerPersonFromForm(
   } satisfies BuyerPersonRecord;
 }
 
+function visualAssetFromForm(
+  form: FormState,
+  initialRecord?: BrandAgentRecord,
+) {
+  return {
+    id: initialRecord?.id ?? "preview",
+    category: form.category,
+    assetCategory: form.assetCategory,
+    programId: form.programId,
+    programName: form.programName,
+    name: form.assetName,
+    assetType: form.assetType,
+    url: form.url,
+    notes: form.notes,
+    createdAt: "createdAt" in (initialRecord ?? {})
+      ? (initialRecord as VisualAssetRecord).createdAt
+      : "",
+    updatedAt: "updatedAt" in (initialRecord ?? {})
+      ? (initialRecord as VisualAssetRecord).updatedAt
+      : "",
+  } satisfies VisualAssetRecord;
+}
+
+function visualAssetFormPayload(form: FormState) {
+  return {
+    category: form.category,
+    assetCategory: form.assetCategory,
+    programId: form.programId,
+    programName: form.programName,
+    name: form.assetName,
+    assetType: form.assetType,
+    url: form.url,
+    notes: form.notes,
+  };
+}
+
 function extractBuyerPersonaFromResponse(value: unknown) {
   const payload = Array.isArray(value) ? value[0] : value;
 
@@ -305,6 +368,31 @@ function extractBuyerPersonaFromResponse(value: unknown) {
   }
 
   if (isBuyerPersonRecordLike(payload)) {
+    return payload;
+  }
+
+  return null;
+}
+
+function extractVisualAssetFromResponse(value: unknown) {
+  const payload = Array.isArray(value) ? value[0] : value;
+
+  if (!isRecord(payload)) {
+    return null;
+  }
+
+  const directVisualAsset =
+    payload.visualAsset ?? payload.asset ?? payload.record ?? payload.data;
+  const parsedVisualAsset =
+    typeof directVisualAsset === "string"
+      ? safeJsonParse(directVisualAsset)
+      : directVisualAsset;
+
+  if (isVisualAssetRecordLike(parsedVisualAsset)) {
+    return parsedVisualAsset;
+  }
+
+  if (isVisualAssetRecordLike(payload)) {
     return payload;
   }
 
@@ -335,6 +423,14 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
+function isVisualAssetRecordLike(value: unknown): value is Partial<VisualAssetRecord> {
+  return (
+    isRecord(value) &&
+    (typeof value.name === "string" || typeof value.assetName === "string") &&
+    (typeof value.url === "string" || typeof value.imageUrl === "string")
+  );
+}
+
 export default function BrandAgentRecordForm({
   brand,
   collection,
@@ -344,67 +440,168 @@ export default function BrandAgentRecordForm({
   eyebrow,
   title,
   description,
+  visualAssetCategory = "brand-assets",
+  visualAssetProgramId = "",
+  visualAssetProgramName = "",
+  visualAssetProgramData = null,
+  buyerPersonRecords = [],
 }: Props) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(() =>
-    formStateFromRecord(initialRecord),
+    initialRecord
+        ? formStateFromRecord(initialRecord)
+      : {
+          ...initialState,
+          category: visualAssetCategory,
+          programId: visualAssetProgramId,
+          programName: visualAssetProgramName,
+        },
   );
   const [previewRecord, setPreviewRecord] = useState<BrandAgentRecord | null>(
     initialRecord ?? null,
   );
   const [saving, setSaving] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [assistantLoadingMessage, setAssistantLoadingMessage] = useState(
+    () => getRandomEdwinAssistantMessage("loading"),
+  );
   const [message, setMessage] = useState("");
 
   const isBuyerPerson = collection === "buyer-person";
+  const isVisualAsset = collection === "visual-assets";
   const isEditMode = mode === "edit";
 
   const generateWithAi = async () => {
     try {
-      if (!isBuyerPerson) {
-        setMessage("El agente AI de visual assets todavia no esta conectado.");
+      if (!isBuyerPerson && !isVisualAsset) {
+        setMessage("Este agente AI todavia no esta conectado.");
         return;
       }
 
       setGenerating(true);
-      setMessage("Generando buyer persona con AI...");
+      setAssistantLoadingMessage(getRandomEdwinAssistantMessage("loading"));
+      setMessage(
+        isBuyerPerson
+          ? "Generando buyer persona con AI..."
+          : "Generando visual asset con AI...",
+      );
 
       const response = await fetch(
-        "https://n8n.crisnnino.com/webhook/edwin-agent-test",
+        isBuyerPerson
+          ? "https://n8n.crisnnino.com/webhook/edwin-agent-test"
+          : form.category === "programs-assets"
+            ? "/api/program-assets-ai"
+            : "/api/visual-assets-ai",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            task: "generate-buyer-persona",
-            agent: "edwin-agent-test",
-            brand,
-            requestedOutput: "buyer-person-v1",
-          }),
+          body: JSON.stringify(
+            isBuyerPerson
+              ? {
+                  task: "generate-buyer-persona",
+                  agent: "edwin-agent-test",
+                  brand,
+                  requestedOutput: "buyer-person-v1",
+                }
+              : {
+                  task: "generate-brand-visual-asset",
+                  agent: "edwin-brand-assets-agent",
+                  brand,
+                  buyerPersonRecords,
+                  program: visualAssetProgramData,
+                  programId: form.programId,
+                  programName: form.programName,
+                  assetCategory: form.assetCategory,
+                  assetCategoryLabel:
+                    getVisualAssetImageCategoryLabel(
+                      form.category,
+                      form.assetCategory,
+                    ),
+                  availableAssetCategories: getVisualAssetImageCategories(
+                    form.category,
+                  ),
+                  currentDraft: visualAssetFromForm(form, initialRecord),
+                  requestedOutput: "brand-visual-asset-v1",
+                },
+          ),
         },
       );
       const data = await response.json();
-      const buyerPersona = extractBuyerPersonaFromResponse(data);
 
-      console.log("edwin-agent-test response", data);
+      console.log(
+        isBuyerPerson
+          ? "edwin-agent-test response"
+          : "edwin-brand-assets-agent response",
+        data,
+      );
 
-      if (!response.ok || !buyerPersona) {
+      if (isBuyerPerson) {
+        const buyerPersona = extractBuyerPersonaFromResponse(data);
+
+        if (!response.ok || !buyerPersona) {
+          throw new Error(
+            data?.error ||
+              "El agente no devolvio un buyer persona con el formato esperado",
+          );
+        }
+
+        setForm(formStateFromRecord(buyerPersona));
+        setPreviewRecord(buyerPersona);
+        setMessage("Buyer persona generado. Revisa los campos y guarda.");
+        return;
+      }
+
+      const visualAsset = extractVisualAssetFromResponse(data);
+
+      if (!response.ok || !visualAsset) {
         throw new Error(
           data?.error ||
-            "El agente no devolvio un buyer persona con el formato esperado",
+            "El agente no devolvio un visual asset con el formato esperado",
         );
       }
 
-      setForm(formStateFromRecord(buyerPersona));
-      setPreviewRecord(buyerPersona);
-      setMessage("Buyer persona generado. Revisa los campos y guarda.");
+      const nextRecord = {
+        id: initialRecord?.id ?? "preview",
+        category: form.category,
+        programId: form.programId,
+        programName: form.programName,
+        assetCategory:
+          (visualAsset.assetCategory as VisualAssetImageCategory | undefined) ||
+          form.assetCategory,
+        name:
+          visualAsset.name ||
+          (visualAsset as Record<string, unknown>).assetName?.toString() ||
+          form.assetName,
+        assetType: visualAsset.assetType || "Image",
+        url:
+          visualAsset.url ||
+          (visualAsset as Record<string, unknown>).imageUrl?.toString() ||
+          "",
+        notes: visualAsset.notes || "",
+        createdAt: "createdAt" in (initialRecord ?? {})
+          ? (initialRecord as VisualAssetRecord).createdAt
+          : "",
+        updatedAt: "updatedAt" in (initialRecord ?? {})
+          ? (initialRecord as VisualAssetRecord).updatedAt
+          : "",
+      } satisfies VisualAssetRecord;
+
+      setForm(formStateFromRecord(nextRecord));
+      setPreviewRecord(nextRecord);
+      setMessage("Visual asset generado. Revisa los campos y guarda.");
     } catch (error) {
-      console.log("edwin-agent-test error", error);
+      console.log(
+        isBuyerPerson ? "edwin-agent-test error" : "edwin-brand-assets-agent error",
+        error,
+      );
       setMessage(
         error instanceof Error
           ? error.message
-          : "No se pudo generar el buyer persona",
+          : isBuyerPerson
+            ? "No se pudo generar el buyer persona"
+            : "No se pudo generar el visual asset",
       );
     } finally {
       setGenerating(false);
@@ -421,19 +618,7 @@ export default function BrandAgentRecordForm({
       setPreviewRecord(
         isBuyerPerson
           ? buyerPersonFromForm(nextForm, initialRecord)
-          : ({
-              id: initialRecord?.id ?? "preview",
-              name: nextForm.assetName,
-              assetType: nextForm.assetType,
-              url: nextForm.url,
-              notes: nextForm.notes,
-              createdAt: "createdAt" in (initialRecord ?? {})
-                ? (initialRecord as VisualAssetRecord).createdAt
-                : "",
-              updatedAt: "updatedAt" in (initialRecord ?? {})
-                ? (initialRecord as VisualAssetRecord).updatedAt
-                : "",
-            } satisfies VisualAssetRecord),
+        : visualAssetFromForm(nextForm, initialRecord),
       );
 
       return nextForm;
@@ -447,12 +632,7 @@ export default function BrandAgentRecordForm({
 
       const record = isBuyerPerson
         ? buyerPersonFromForm(form, initialRecord)
-        : {
-            name: form.assetName,
-            assetType: form.assetType,
-            url: form.url,
-            notes: form.notes,
-          };
+          : visualAssetFormPayload(form);
 
       const response = await fetch(
         isEditMode && initialRecord
@@ -511,7 +691,7 @@ export default function BrandAgentRecordForm({
           type="button"
           onClick={generateWithAi}
           disabled={generating}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[var(--bunji-primary)]/20 transition hover:scale-[1.02] hover:brightness-110"
+          className="admin-button-primary px-5"
         >
           <Bot className="h-4 w-4" />
           {generating ? "Generando..." : "Generar con AI"}
@@ -521,7 +701,7 @@ export default function BrandAgentRecordForm({
           type="button"
           onClick={saveRecord}
           disabled={saving}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+          className="admin-button-dark px-5"
         >
           <Save className="h-4 w-4" />
           {saving ? "Guardando..." : isEditMode ? "Guardar cambios" : "Guardar"}
@@ -542,7 +722,7 @@ export default function BrandAgentRecordForm({
 
   return (
     <section className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]">
-      <div className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+      <div className="admin-panel p-6">
         {eyebrow ? (
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
             {eyebrow}
@@ -562,7 +742,12 @@ export default function BrandAgentRecordForm({
         {formContent}
       </div>
 
-      <PreviewCard collection={collection} record={previewRecord} />
+      <PreviewCard
+        collection={collection}
+        record={previewRecord}
+        isGenerating={generating}
+        loadingMessage={assistantLoadingMessage}
+      />
     </section>
   );
 }
@@ -651,6 +836,30 @@ function VisualAssetFields({
   return (
     <div className="mt-8 grid gap-5 md:grid-cols-2">
       <Field label="Nombre del recurso *" value={form.assetName} placeholder="Ej. Hero campus principal" onChange={(value) => updateField("assetName", value)} />
+      <input type="hidden" value={form.category} readOnly />
+      <input type="hidden" value={form.programId} readOnly />
+      <input type="hidden" value={form.programName} readOnly />
+      {form.category === "programs-assets" && form.programName ? (
+        <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+            Programa
+          </p>
+          <p className="mt-1 font-semibold">{form.programName}</p>
+        </div>
+      ) : null}
+      {form.category === "brand-assets" || form.category === "programs-assets" ? (
+        <SelectField
+          label="Categoria del asset"
+          value={form.assetCategory}
+          onChange={(value) =>
+            updateField("assetCategory", value as VisualAssetImageCategory)
+          }
+          options={getVisualAssetImageCategories(form.category).map((item) => ({
+            value: item.value,
+            label: item.label,
+          }))}
+        />
+      ) : null}
       <Field label="Tipo de recurso" value={form.assetType} placeholder="Ej. Imagen, logo, video" onChange={(value) => updateField("assetType", value)} />
       <Field label="URL del recurso" value={form.url} placeholder="https://..." onChange={(value) => updateField("url", value)} className="md:col-span-2" />
       <TextArea label="Notas de uso" value={form.notes} placeholder="Contexto, restricciones o recomendaciones para usar este recurso." onChange={(value) => updateField("notes", value)} />
@@ -661,16 +870,20 @@ function VisualAssetFields({
 function PreviewCard({
   collection,
   record,
+  isGenerating,
+  loadingMessage,
 }: {
   collection: BrandAgentCollection;
   record: BrandAgentRecord | null;
+  isGenerating: boolean;
+  loadingMessage: string;
 }) {
   const isBuyerPerson = collection === "buyer-person";
   const Icon = isBuyerPerson ? Users : ImageIcon;
 
   return (
-    <aside className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--bunji-primary-light)] text-[var(--bunji-primary)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)]">
+    <aside className="admin-panel relative overflow-hidden p-6">
+      <div className="admin-icon-tile">
         <Icon className="h-5 w-5" />
       </div>
       <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
@@ -682,6 +895,33 @@ function PreviewCard({
       ) : (
         <VisualAssetPreview record={record as VisualAssetRecord | null} />
       )}
+
+      {!isBuyerPerson ? (
+        <div
+          aria-hidden={!isGenerating}
+          className={`absolute inset-0 z-10 flex items-center justify-center bg-[#020617]/92 backdrop-blur-sm transition-all duration-700 ease-out ${
+            isGenerating
+              ? "pointer-events-auto opacity-100"
+              : "pointer-events-none opacity-0"
+          }`}
+        >
+          <div
+            className={`transition-all duration-700 ease-out ${
+              isGenerating ? "scale-100 opacity-100" : "scale-95 opacity-0"
+            }`}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/edwin-preview-loader.gif"
+              alt=""
+              className="h-72 w-72 object-contain"
+            />
+            <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-100">
+              {loadingMessage}
+            </p>
+          </div>
+        </div>
+      ) : null}
     </aside>
   );
 }
@@ -745,7 +985,26 @@ function VisualAssetPreview({ record }: { record: VisualAssetRecord | null }) {
         {record?.name || "Preview del asset"}
       </h2>
       <div className="mt-6 space-y-5">
+        <PreviewField
+          label="Categoria"
+          value={
+            record?.assetCategory
+              ? getVisualAssetImageCategoryLabel(
+                  record.category,
+                  record.assetCategory,
+                )
+              : "Pendiente"
+          }
+        />
         <PreviewField label="Tipo" value={record?.assetType || "Pendiente"} />
+        {record?.url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={record.url}
+            alt={record.name}
+            className="aspect-video w-full rounded-2xl border border-slate-200 object-cover shadow-sm dark:border-slate-800"
+          />
+        ) : null}
         <PreviewField label="URL" value={record?.url || "Pendiente"} />
         <PreviewField
           label="Notas"
@@ -779,7 +1038,7 @@ function FieldGroup({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900/40">
+    <section className="admin-panel-soft p-4">
       <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
         {title}
       </h2>
@@ -810,8 +1069,39 @@ function Field({
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-[var(--bunji-primary)] focus:ring-4 focus:ring-[var(--bunji-primary)]/15 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
+        className="admin-input"
       />
+    </label>
+  );
+}
+
+function SelectField({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="space-y-2">
+      <span className="text-sm font-semibold text-slate-950 dark:text-slate-100">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="admin-input"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </label>
   );
 }
@@ -837,7 +1127,7 @@ function TextArea({
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[var(--bunji-primary)] focus:ring-4 focus:ring-[var(--bunji-primary)]/15 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50"
+        className="admin-textarea"
       />
     </label>
   );

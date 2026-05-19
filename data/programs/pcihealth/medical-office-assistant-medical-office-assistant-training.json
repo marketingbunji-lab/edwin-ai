@@ -1,0 +1,542 @@
+{
+  "slug": "medical-office-assistant-medical-office-assistant-training",
+  "brand": "pcihealth",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-19",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Accreditations and Certifications",
+    "resolutionText": "PCI Health Training Center is accredited and approved by recognized agencies.",
+    "items": [
+      {
+        "title": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "name": "Accrediting Commission of Career Schools and Colleges (ACCSC)",
+        "description": "PCI Health Training Center is accredited by ACCSC.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Texas Workforce Commission Approval",
+        "name": "Texas Workforce Commission Approval",
+        "description": "Approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Member Organizations",
+        "name": "Member Organizations",
+        "description": "Member of Career Colleges and Schools of Texas (CCST) and Career Education Colleges and Universities (CECU).",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Medical Office Assistant | Medical Office Assistant Training",
+  "fullTitle": "Medical Office Assistant | Medical Office Assistant Training",
+  "programType": "Program",
+  "schedule": "flexible",
+  "hero": {
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Medical Office Assistant | Medical Office Assistant Training",
+    "subtitle": "",
+    "description": "Medical Office Assistant! Enroll into the medical office assistant program at PCI in as little as 6 months! Call 214-630-0568 to learn how!",
+    "supportText": "",
+    "modality": "Hybrid",
+    "semesterPrice": "",
+    "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "duration": "As little as 6 months",
+    "primaryCta": {
+      "label": "Request Information",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://cdn.uploadtourl.com/5101e4ff-417c-4593-8c17-bb4173d90561_data.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Program Length",
+      "value": "As little as 6 months (400 hours classroom + 200-hour externship)"
+    },
+    {
+      "key": "",
+      "label": "Classroom Training",
+      "value": "400 hours of classroom and computer lab instruction"
+    },
+    {
+      "key": "",
+      "label": "Externship",
+      "value": "200-hour externship in a medical office, clinic, lab, or hospital"
+    },
+    {
+      "key": "",
+      "label": "Campuses",
+      "value": "Richardson (1300 International Parkway, Richardson, TX); Dallas (8101 John Carpenter Freeway, Dallas, TX)"
+    },
+    {
+      "key": "",
+      "label": "Accreditation & Approval",
+      "value": "Accrediting Commission of Career Schools and Colleges (ACCSC); Approved and regulated by Texas Workforce Commission – TWC Career Schools and Colleges Section"
+    }
+  ],
+  "whyStudy": {
+    "title": "Why Study This Program",
+    "description": "",
+    "image": "https://cdn.uploadtourl.com/df0eeccd-201c-466e-a8a1-342af9340490_data.png",
+    "items": [
+      {
+        "title": "Complete training quickly",
+        "description": "The program can prepare you for entry-level front office roles in as little as six months.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Hands-on simulated training",
+        "description": "Lecture instruction is paired with practical exercises in a computer lab and simulated medical office environment.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Real-world externship",
+        "description": "A 200-hour externship gives supervised experience in medical offices, clinics, labs, or hospitals.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Student support for career readiness",
+        "description": "PCI provides services such as job searching strategies, resume writing, and interviewing practice to support student success.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "supportSection": {
+    "title": "Student Support",
+    "description": "PCI offers ongoing student support including career services and academic assistance from enrollment through job search.",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Career services",
+        "text": "Job search strategies and career guidance.",
+        "description": "Job search strategies and career guidance.",
+        "icon": ""
+      },
+      {
+        "title": "Resume writing",
+        "text": "Assistance preparing professional resumes for healthcare roles.",
+        "description": "Assistance preparing professional resumes for healthcare roles.",
+        "icon": ""
+      },
+      {
+        "title": "Interviewing practice",
+        "text": "Support and practice for interview skills.",
+        "description": "Support and practice for interview skills.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing advising and supportive services throughout training.",
+        "description": "Ongoing advising and supportive services throughout training.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Program Benefits",
+    "items": [
+      {
+        "title": "Fast completion",
+        "text": "Prepare for entry-level roles in as little as six months.",
+        "description": "Prepare for entry-level roles in as little as six months.",
+        "icon": ""
+      },
+      {
+        "title": "Hands-on learning and externship",
+        "text": "Practical lab exercises and a 200-hour externship provide real-world experience.",
+        "description": "Practical lab exercises and a 200-hour externship provide real-world experience.",
+        "icon": ""
+      },
+      {
+        "title": "Accredited training",
+        "text": "Program is offered by an institution accredited by ACCSC and approved by Texas Workforce Commission.",
+        "description": "Program is offered by an institution accredited by ACCSC and approved by Texas Workforce Commission.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "title": "Request Information",
+    "description": "",
+    "button": "Apply Now",
+    "secondaryButton": ""
+  },
+  "form": {
+    "title": "Request information",
+    "description": "Complete the form and our team will contact you shortly.",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Medical Office Assistant | Medical Office Assistant Training",
+    "campus": "",
+    "campusOptions": [],
+    "language": "English",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Submit"
+  },
+  "footerScripts": [],
+  "opportunityToWork": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "image": "https://cdn.uploadtourl.com/cd3f32b3-b3d0-4d64-bd3c-389714473325_data.png",
+    "items": [
+      {
+        "title": "Medical Front Office Assistant",
+        "description": "Front office administrative role in healthcare settings.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical Office Manager",
+        "description": "Management of front office operations.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Insurance Processor",
+        "description": "Processing insurance claims and related administrative tasks.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Billing and Collecting Specialist",
+        "description": "Billing procedures and collections management.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Patient Care Coordinator",
+        "description": "Coordinating patient flow and administrative support.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Support Specialist",
+        "description": "Various front office support roles in clinics and medical offices.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "sourceWebsite": "https://www.pcihealth.edu/medical-office-assistant/",
+  "programUrl": "https://www.pcihealth.edu/medical-office-assistant/",
+  "catalog": "",
+  "shortTitle": "Medical Office Assistant",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "hybrid",
+    "language": "en",
+    "campuses": [
+      "Richardson (Northeast Dallas) - 1300 International Parkway, Richardson, Texas 75081",
+      "Dallas (Southwest Dallas) - 8101 John Carpenter Freeway, Dallas, Texas 75247"
+    ],
+    "onlineAvailable": false,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "6",
+    "unit": "months",
+    "display": "As little as 6 months",
+    "credits": "",
+    "semesters": "",
+    "hours": "600",
+    "externshipHours": "200"
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Medical Office Assistant | Medical Office Assistant Training",
+    "metaDescription": "Medical Office Assistant! Enroll into the medical office assistant program at PCI in as little as 6 months! Call 214-630-0568 to learn how!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Program Length",
+      "value": "As little as 6 months"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid (classroom + externship)"
+    },
+    {
+      "label": "Campuses",
+      "value": "Richardson; Dallas"
+    },
+    {
+      "label": "Accreditation",
+      "value": "ACCSC; Approved by Texas Workforce Commission"
+    }
+  ],
+  "overview": {
+    "title": "Program Overview",
+    "description": "PCI Health Training Center’s Medical Office Assistant Program prepares students for front office and administrative roles in healthcare by teaching EHR procedures, medical coding and billing, insurance processing, medical records management, collections, basic medical terminology, first aid and CPR, combining classroom instruction with hands-on computer lab exercises and a supervised externship.",
+    "image": "https://cdn.uploadtourl.com/4b0403ff-150a-4a7d-a3c0-6db5e6ebb40e_data.png"
+  },
+  "curriculum": {
+    "title": "What You Will Learn",
+    "description": "",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Electronic Health Records (EHR) procedures",
+        "description": "Training on EHR use and simulated office workflows.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical coding and billing",
+        "description": "Procedural codes for billing purposes and insurance claim processing.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical records and collections",
+        "description": "Maintaining records, billing collections, and front office management procedures.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Basic medical terminology, first aid and CPR",
+        "description": "Foundational clinical knowledge to support administrative duties.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Computer lab exercises and simulated office training",
+        "description": "Practical hands-on exercises to apply administrative and EHR skills.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "title": "Hands-On Training",
+    "description": "The program combines lectures with practical hands-on exercises in a computer lab and training in a simulated medical office environment.",
+    "items": [
+      {
+        "title": "Simulated medical office environment",
+        "description": "Practice front office procedures and patient coordination under instructor supervision.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Computer lab exercises",
+        "description": "Hands-on training using software and EHR workflows relevant to administrative roles.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "title": "Externship",
+    "description": "After 400 hours of classroom training, students complete a 200-hour externship to apply skills in a real-world setting under supervision.",
+    "image": "",
+    "hours": "200",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "title": "Career Opportunities",
+    "subtitle": "",
+    "image": "https://cdn.uploadtourl.com/cd3f32b3-b3d0-4d64-bd3c-389714473325_data.png",
+    "items": [
+      {
+        "title": "Medical Front Office Assistant",
+        "description": "Front office administrative role in healthcare settings.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Medical Office Manager",
+        "description": "Management of front office operations.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Insurance Processor",
+        "description": "Processing insurance claims and related administrative tasks.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Billing and Collecting Specialist",
+        "description": "Billing procedures and collections management.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Patient Care Coordinator",
+        "description": "Coordinating patient flow and administrative support.",
+        "url": "",
+        "image": ""
+      },
+      {
+        "title": "Support Specialist",
+        "description": "Various front office support roles in clinics and medical offices.",
+        "url": "",
+        "image": ""
+      }
+    ]
+  },
+  "studentSupport": {
+    "title": "Student Support",
+    "description": "PCI offers ongoing student support including career services and academic assistance from enrollment through job search.",
+    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
+    "items": [
+      {
+        "title": "Career services",
+        "text": "Job search strategies and career guidance.",
+        "description": "Job search strategies and career guidance.",
+        "icon": ""
+      },
+      {
+        "title": "Resume writing",
+        "text": "Assistance preparing professional resumes for healthcare roles.",
+        "description": "Assistance preparing professional resumes for healthcare roles.",
+        "icon": ""
+      },
+      {
+        "title": "Interviewing practice",
+        "text": "Support and practice for interview skills.",
+        "description": "Support and practice for interview skills.",
+        "icon": ""
+      },
+      {
+        "title": "Advising and student support",
+        "text": "Ongoing advising and supportive services throughout training.",
+        "description": "Ongoing advising and supportive services throughout training.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "title": "Admissions Requirements",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "title": "Financial Aid Options",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "How long does the Medical Office Assistant program take to complete?",
+      "answer": "The program can prepare you in as little as six months, consisting of 400 hours of classroom training plus a 200-hour externship."
+    },
+    {
+      "question": "Where is the program offered?",
+      "answer": "PCI Health Training Center offers the Medical Office Assistant program at the Richardson campus (1300 International Parkway, Richardson, TX) and the Dallas campus (8101 John Carpenter Freeway, Dallas, TX)."
+    },
+    {
+      "question": "What kind of practical training is included?",
+      "answer": "The curriculum includes practical hands-on exercises in a computer lab, training in a simulated medical office environment, and a supervised 200-hour externship in a medical office, clinic, lab, or hospital."
+    },
+    {
+      "question": "Is the program accredited?",
+      "answer": "Yes. PCI Health Training Center is accredited by the Accrediting Commission of Career Schools and Colleges (ACCSC) and is approved and regulated by the Texas Workforce Commission – TWC Career Schools and Colleges Section."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Medical Assistant – Hybrid",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Medical Assistant",
+      "url": "",
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Hybrid-Hero.jpg"
+    },
+    {
+      "title": "Dental Assistant",
+      "url": "",
+      "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg"
+    },
+    {
+      "title": "Dental Assistant – Hybrid",
+      "url": "",
+      "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg"
+    },
+    {
+      "title": "ECPP (Medical Training Plus GED)",
+      "url": "",
+      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/GED-Hero.jpg"
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "language": "en",
+  "graduateProfile": {
+    "title": "",
+    "image": "",
+    "items": []
+  }
+}

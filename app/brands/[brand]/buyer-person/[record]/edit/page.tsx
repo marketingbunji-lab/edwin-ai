@@ -38,7 +38,7 @@ export default async function EditBuyerPersonPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-8 dark:bg-[#020617]">
+    <main className="admin-page">
       <div className="w-full">
         <Link
           href={`/admin/brands/${brand.slug}/buyer-person`}

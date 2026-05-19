@@ -95,15 +95,15 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
         <div>
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
-            className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="admin-button-secondary mb-3"
           >
             <ArrowLeft className="h-4 w-4" />
             Volver a programs
           </Link>
-          <p className="text-sm text-gray-500 dark:text-slate-400">
+          <p className="admin-eyebrow">
             {brand.name}
           </p>
-          <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
+          <h1 className="admin-title">
             Editar Programs
           </h1>
         </div>
@@ -112,7 +112,7 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
           <button
             type="button"
             onClick={addProgram}
-            className="inline-flex items-center gap-2 border border-gray-300 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+            className="admin-button-secondary"
           >
             <Plus className="h-4 w-4" />
             Agregar program
@@ -121,7 +121,7 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
             type="button"
             onClick={savePrograms}
             disabled={saving}
-            className="inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[var(--bunji-primary)]"
+            className="admin-button-primary"
           >
             <Save className="h-4 w-4" />
             {saving ? "Guardando..." : "Guardar"}
@@ -133,10 +133,10 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
         {programs.map((program, index) => (
           <section
             key={program.id}
-            className="border border-gray-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950"
+            className="admin-panel p-5"
           >
             <div className="mb-4 flex items-center justify-between gap-4">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-slate-500">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
                 Program {index + 1}
               </h2>
               <button
@@ -176,14 +176,14 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
         <button
           type="button"
           onClick={addProgram}
-          className="w-full border border-dashed border-gray-300 bg-white p-10 text-center text-sm font-semibold text-gray-600 transition hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300"
+          className="admin-empty-state w-full text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/[0.04]"
         >
           Agregar primer program
         </button>
       ) : null}
 
       {message ? (
-        <p className="text-sm font-medium text-gray-600 dark:text-slate-300">
+        <p className="text-sm font-medium text-slate-600 dark:text-slate-300">
           {message}
         </p>
       ) : null}
@@ -202,13 +202,13 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-semibold text-gray-900 dark:text-slate-100">
+      <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
         {label}
       </span>
       <input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-black focus:ring-1 focus:ring-black/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+        className="admin-input"
       />
     </label>
   );

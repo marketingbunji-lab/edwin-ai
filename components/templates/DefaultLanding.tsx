@@ -9,6 +9,7 @@ import type {
   ProgramInfoItem,
 } from "@/lib/data";
 import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import { getLandingTemplateCopy } from "@/lib/landingLanguage";
 import GraduateProfileSection from "./GraduateProfileSection";
 import OpportunityToWorkSection from "./OpportunityToWorkSection";
@@ -30,6 +31,7 @@ type Props = {
   brand: Brand;
   landing: Landing;
   mode?: "preview" | "export";
+  liveEdit?: LandingLiveEditConfig;
 };
 
 function normalizeProgramInfo(programInfo?: Landing["programInfo"]) {
@@ -308,6 +310,7 @@ export default function DefaultLanding({
   brand,
   landing,
   mode = "preview",
+  liveEdit,
 }: Props) {
   const primaryColor = brand.primaryColor || "#111827";
   const secondaryColor = brand.secondaryColor || "#F8D74A";
@@ -497,6 +500,7 @@ export default function DefaultLanding({
         hasConfiguredForm={hasConfiguredForm}
         backgroundImage={hero.backgroundImage || ""}
         heroOverlayColor={heroOverlayColor}
+        liveEdit={liveEdit}
       />
 
       <DefaultLandingCertificationsSection
@@ -511,6 +515,7 @@ export default function DefaultLanding({
         title={overview.title || ""}
         description={overview.description || ""}
         image={overview.image || ""}
+        liveEdit={liveEdit}
       />
 
 
@@ -524,6 +529,7 @@ export default function DefaultLanding({
         logo={logo}
         heroTitle={title}
         items={whyStudyItems}
+        liveEdit={liveEdit}
       />
 
       <GraduateProfileSection
@@ -549,6 +555,9 @@ export default function DefaultLanding({
         downloadUrl={curriculum.downloadUrl || ""}
         buttonLabel={curriculum.buttonTitle || copy.curriculumButton}
         viewMoreLabel={copy.sectionViewMore}
+        liveEdit={liveEdit}
+        titlePath="curriculum.title"
+        descriptionPath="curriculum.description"
       />
 
       <DefaultLandingDetailCardsSection
@@ -558,6 +567,9 @@ export default function DefaultLanding({
         items={handsOnTrainingItems}
         soft
         viewMoreLabel={copy.sectionViewMore}
+        liveEdit={liveEdit}
+        titlePath="handsOnTraining.title"
+        descriptionPath="handsOnTraining.description"
       />
 
       <DefaultLandingExternshipSection
@@ -580,6 +592,7 @@ export default function DefaultLanding({
           videoUrl={supportVideoUrl}
           items={supportItems}
           isDirectVideoUrl={isDirectVideoUrl}
+          liveEdit={liveEdit}
         />
       ) : null}
 
@@ -587,6 +600,7 @@ export default function DefaultLanding({
         eyebrow={copy.benefitsEyebrow}
         title={benefits.title || ""}
         items={benefitItems}
+        liveEdit={liveEdit}
       />
 
       {hasAdmissionsSection ? (
@@ -596,6 +610,9 @@ export default function DefaultLanding({
           description={admissions.description || ""}
           items={admissionsItems}
           viewMoreLabel={copy.sectionViewMore}
+          liveEdit={liveEdit}
+          titlePath="admissions.title"
+          descriptionPath="admissions.description"
         />
       ) : null}
 
@@ -607,6 +624,9 @@ export default function DefaultLanding({
           items={financialAidItems}
           variant="secondary"
           viewMoreLabel={copy.sectionViewMore}
+          liveEdit={liveEdit}
+          titlePath="financialAid.title"
+          descriptionPath="financialAid.description"
         />
       ) : null}
 
@@ -628,6 +648,7 @@ export default function DefaultLanding({
         button={ctaButton}
         secondaryButton={ctaSecondaryButton}
         hasForm={hasForm && hasCta}
+        liveEdit={liveEdit}
       />
 
       <DefaultLandingCampusesSection
