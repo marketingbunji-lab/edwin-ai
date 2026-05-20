@@ -45,6 +45,7 @@ export default async function NewBrandProgramPage({ params }: Props) {
       items: [],
     },
     hero: {
+      variant: "default",
       eyebrow: `${copy.studyAt} ${brand.shortName ?? brand.name}`,
       highlight: "",
       title: "",

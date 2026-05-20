@@ -39,6 +39,7 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
   if (categorySlug === "programs-assets") {
     const programs = getProgramsByBrand(brand.slug);
     const assets = getVisualAssetsByCategory(brand.slug, categorySlug);
+    const generalAssets = assets.filter((asset) => !asset.programId?.trim());
 
     return (
       <main className="admin-page">
@@ -60,6 +61,34 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
               Ver todos los assets
             </Link>
           </div>
+
+          {generalAssets.length > 0 ? (
+            <section className="admin-panel mb-5 grid gap-4 p-5 md:grid-cols-[minmax(0,1fr)_auto]">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
+                  Assets generales
+                </p>
+                <h2 className="mt-2 text-xl font-semibold text-slate-950 dark:text-slate-50">
+                  Resources not tied to a single program
+                </h2>
+                <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                  {generalAssets.length} assets creados sin `programId`. Estos
+                  recursos viven en `Programs Assets`, pero no aparecen dentro
+                  de una card específica de programa.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 md:justify-end">
+                <Link
+                  href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/all`}
+                  className="admin-button-secondary"
+                >
+                  <Eye className="h-4 w-4" />
+                  Ver assets generales
+                </Link>
+              </div>
+            </section>
+          ) : null}
 
           {programs.length === 0 ? (
             <EmptyState
@@ -170,10 +199,11 @@ function Header({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href={`/admin/brands/${brandSlug}/visual-assets`}
-            className="admin-button-secondary"
+            className="admin-button-secondary admin-button-icon"
+            aria-label="Volver a visual assets"
+            title="Volver a visual assets"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver a visual assets
           </Link>
 
           {actionHref ? (

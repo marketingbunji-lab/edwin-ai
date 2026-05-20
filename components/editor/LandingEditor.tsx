@@ -162,6 +162,9 @@ export default function LandingEditor({
   const [landing, setLanding] = useState<Landing>(initialLanding);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
+  const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
+    JSON.stringify(initialLanding),
+  );
   const [analyzingColor, setAnalyzingColor] = useState(false);
   const [liveEditEnabled, setLiveEditEnabled] = useState(false);
   const [previewWidth, setPreviewWidth] = useState(1200);
@@ -170,6 +173,9 @@ export default function LandingEditor({
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
   const certificationsEnabled = Boolean(landing.certifications?.enabled);
+  const currentSnapshot = JSON.stringify(landing);
+  const hasChanges = currentSnapshot !== lastSavedSnapshot;
+  const saveDisabled = saving || !hasChanges;
 
   const updateValueAtPath = (path: string, value: string | boolean) => {
     setLanding((prev) => {
@@ -363,6 +369,10 @@ export default function LandingEditor({
   };
 
   const saveLanding = async () => {
+    if (saveDisabled) {
+      return;
+    }
+
     try {
       setSaving(true);
       setMessage("");
@@ -382,6 +392,7 @@ export default function LandingEditor({
         throw new Error("No se pudo guardar la landing");
       }
 
+      setLastSavedSnapshot(currentSnapshot);
       setMessage("Cambios guardados correctamente");
     } catch {
       setMessage("Ocurrió un error al guardar");
@@ -844,6 +855,16 @@ ${accordionBootstrapScript}
                   label="Modalidad"
                   value={landing.hero?.modality || ""}
                   onChange={(value) => updateField("hero.modality", value)}
+                />
+
+                <SelectField
+                  label="Variante del hero"
+                  value={landing.hero?.variant || "default"}
+                  onChange={(value) => updateField("hero.variant", value)}
+                  options={[
+                    { value: "default", label: "Default" },
+                    { value: "option-b", label: "Opción B con menú de anclas" },
+                  ]}
                 />
 
                 <SelectField
@@ -1733,7 +1754,7 @@ ${accordionBootstrapScript}
         <div className="flex items-center gap-3 border-t border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
           <button
             onClick={saveLanding}
-            disabled={saving}
+            disabled={saveDisabled}
             className="bunji-button-primary rounded-md px-4 py-3 text-sm font-medium shadow-[0_10px_30px_rgba(62,57,137,0.26)] transition hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100"
             style={{
               backgroundColor: "var(--bunji-primary)",

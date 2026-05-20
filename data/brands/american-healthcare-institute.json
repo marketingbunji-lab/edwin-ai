@@ -4,8 +4,8 @@
   "shortName": "American Healthcare Institute",
   "logo": "https://amhealthinstitute.com/wp-content/uploads/2024/03/cropped-amhealth-logo-300x100.png",
   "logos": {
-    "light": "",
-    "dark": "https://amhealthinstitute.com/wp-content/uploads/2024/03/cropped-amhealth-logo-300x100.png"
+    "light": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/amhealth/cropped-amhealth-logo-300x100-white.png",
+    "dark": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/amhealth/cropped-amhealth-logo-300x100-white.png"
   },
   "typography": {
     "fontFamily": "\"Raleway\", sans-serif",

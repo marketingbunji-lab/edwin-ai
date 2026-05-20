@@ -53,15 +53,33 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="w-full">
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
-          <div>
+        <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
               href={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}`}
-              className="mb-3 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+              className="admin-button-secondary admin-button-icon"
+              aria-label="Volver a Programs Assets"
+              title="Volver a Programs Assets"
             >
               <ArrowLeft className="h-4 w-4" />
-              Volver a Programs Assets
             </Link>
+
+            <Link
+              href={
+                isAll
+                  ? `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/new`
+                  : `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}/new`
+              }
+              className="admin-button-primary"
+            >
+              <Plus className="h-4 w-4" />
+              Agregar asset
+            </Link>
+          </div>
+        </div>
+
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+          <div>
             <p className="text-sm text-gray-500 dark:text-slate-400">
               {brand.name}
             </p>
@@ -74,18 +92,6 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
                 : "Assets visuales asociados a este programa."}
             </p>
           </div>
-
-          <Link
-            href={
-              isAll
-                ? `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/new`
-                : `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}/new`
-            }
-            className="inline-flex items-center gap-2 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
-          >
-            <Plus className="h-4 w-4" />
-            Agregar asset
-          </Link>
         </div>
 
         {records.length === 0 ? (

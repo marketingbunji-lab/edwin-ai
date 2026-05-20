@@ -52,10 +52,11 @@ export default async function EditVisualAssetPage({ params }: Props) {
       <div className="w-full">
         <Link
           href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}`}
-          className="mb-6 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+          className="mb-6 inline-flex h-11 w-11 shrink-0 items-center justify-center bg-slate-950 px-0 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+          aria-label={`Volver a ${category.title}`}
+          title={`Volver a ${category.title}`}
         >
           <ArrowLeft className="h-4 w-4" />
-          Volver a {category.title}
         </Link>
 
         <section className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">

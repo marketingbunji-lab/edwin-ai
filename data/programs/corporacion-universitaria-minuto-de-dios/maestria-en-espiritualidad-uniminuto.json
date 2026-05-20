@@ -3,7 +3,7 @@
   "brand": "corporacion-universitaria-minuto-de-dios",
   "template": "DefaultLanding",
   "status": "published",
-  "updatedAt": "2026-05-14",
+  "updatedAt": "2026-05-20",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -27,11 +27,12 @@
   "programType": "Maestría",
   "schedule": "",
   "hero": {
-    "eyebrow": "",
+    "variant": "option-b",
+    "eyebrow": "Virtual",
     "highlight": "",
     "title": "Maestría en Espiritualidad",
     "subtitle": "",
-    "description": "Programa diseñado para formar maestros de vida espiritual que acompañen procesos de encuentro con Dios, desde la Biblia, la tradición cristiana y la práctica del acompañamiento espiritual.",
+    "description": "Áreas de conocimiento: Artes y Humanidades",
     "supportText": "",
     "modality": "Virtual",
     "semesterPrice": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio otorgado por la sede $ 3.791.900",
@@ -93,33 +94,8 @@
   "whyStudy": {
     "title": "Por que estudiar este programa",
     "description": "",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-04/M_espiritualidad-%28650x600%29.png?itok=c0gw8fQh",
-    "items": [
-      {
-        "title": "Formación para el acompañamiento espiritual",
-        "description": "Prepara para el acompañamiento y el discernimiento en procesos de crecimiento de la vida espiritual en personas y comunidades.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Enfoque histórico y bíblico",
-        "description": "Integra fundamentos epistemológicos, históricos y bíblicos para una comprensión profunda de la experiencia espiritual cristiana.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Docentes y certificaciones",
-        "description": "Profesores con experiencia profesional y académica; inclusión de microcertificaciones digitales que validan competencias alineadas con el programa.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Internacionalización y movilidad",
-        "description": "Convenios nacionales e internacionales con actividades virtuales e internacionales para enriquecer la experiencia académica.",
-        "url": "",
-        "image": ""
-      }
-    ]
+    "image": "",
+    "items": []
   },
   "supportSection": {
     "title": "Acompanamiento al estudiante",
@@ -227,8 +203,8 @@
     }
   ],
   "overview": {
-    "title": "Resumen del programa",
-    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador.",
+    "title": "Conoce el programa",
+    "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
     "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-04/B2_M_espiritualidad-%28640x640%29%20%281%29.jpg?itok=GjX2K55N"
   },
   "curriculum": {
@@ -328,20 +304,20 @@
   "testimonials": [],
   "faq": [
     {
-      "question": "¿Cuál es el proceso de admisión en UNIMINUTO?",
-      "answer": "Registro en línea en el portal, presentación de documentos requeridos, entrevista con el coordinador del programa y pago de matrícula. El proceso toma aproximadamente 2 semanas."
+      "question": "",
+      "answer": ""
     },
     {
-      "question": "¿Qué modalidad ofrece la Maestría en Espiritualidad?",
-      "answer": "Modalidad Virtual, 100% en línea con plataforma educativa avanzada."
+      "question": "",
+      "answer": ""
     },
     {
-      "question": "¿Cuentan con opciones de financiación?",
-      "answer": "Sí. Hay becas y descuentos disponibles y financiamiento de hasta el 100% de los estudios."
+      "question": "",
+      "answer": ""
     },
     {
-      "question": "¿Cuánto dura el programa?",
-      "answer": "La duración es de 4 semestres y el programa tiene 42 créditos."
+      "question": "",
+      "answer": ""
     }
   ],
   "relatedPrograms": [],

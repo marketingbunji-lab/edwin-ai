@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import BrandAgentRecordForm from "@/components/brand-agent-records/BrandAgentRecordForm";
 import {
   getBrandAgentRecords,
@@ -54,14 +52,6 @@ export default async function NewProgramVisualAssetPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="w-full">
-        <Link
-          href={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}`}
-          className="mb-6 inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Volver a assets del programa
-        </Link>
-
         <BrandAgentRecordForm
           brand={brand}
           collection="visual-assets"
@@ -71,6 +61,8 @@ export default async function NewProgramVisualAssetPage({ params }: Props) {
           visualAssetProgramData={programData}
           buyerPersonRecords={buyerPersonRecords}
           showPreview
+          backHref={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}`}
+          backLabel="Volver a assets del programa"
           eyebrow={brand.shortName || brand.name}
           title="Agregar asset del programa"
           description="Registra recursos visuales asociados a este programa academico."

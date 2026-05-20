@@ -88,6 +88,7 @@ function createBaseLanding(
     programType: "",
     schedule: "",
     hero: {
+      variant: "default",
       eyebrow: `${copy.studyAt} ${brand.toUpperCase()}`,
       highlight: "",
       title: fullTitle,

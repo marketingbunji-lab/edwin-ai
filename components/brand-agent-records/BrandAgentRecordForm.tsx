@@ -452,15 +452,16 @@ export default function BrandAgentRecordForm({
   backLabel,
 }: Props) {
   const router = useRouter();
+  const initialFormState = initialRecord
+    ? formStateFromRecord(initialRecord)
+    : {
+        ...initialState,
+        category: visualAssetCategory,
+        programId: visualAssetProgramId,
+        programName: visualAssetProgramName,
+      };
   const [form, setForm] = useState<FormState>(() =>
-    initialRecord
-        ? formStateFromRecord(initialRecord)
-      : {
-          ...initialState,
-          category: visualAssetCategory,
-          programId: visualAssetProgramId,
-          programName: visualAssetProgramName,
-        },
+    initialFormState,
   );
   const [previewRecord, setPreviewRecord] = useState<BrandAgentRecord | null>(
     initialRecord ?? null,
@@ -471,10 +472,16 @@ export default function BrandAgentRecordForm({
     () => getRandomEdwinAssistantMessage("loading"),
   );
   const [message, setMessage] = useState("");
+  const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
+    JSON.stringify(initialFormState),
+  );
 
   const isBuyerPerson = collection === "buyer-person";
   const isVisualAsset = collection === "visual-assets";
   const isEditMode = mode === "edit";
+  const currentSnapshot = JSON.stringify(form);
+  const hasChanges = currentSnapshot !== lastSavedSnapshot;
+  const saveDisabled = saving || !hasChanges;
 
   const generateWithAi = async () => {
     try {
@@ -631,6 +638,10 @@ export default function BrandAgentRecordForm({
   };
 
   const saveRecord = async () => {
+    if (saveDisabled) {
+      return;
+    }
+
     try {
       setSaving(true);
       setMessage("");
@@ -663,7 +674,11 @@ export default function BrandAgentRecordForm({
 
       if (data.record) {
         setPreviewRecord(data.record);
-        setForm(formStateFromRecord(data.record));
+        const nextFormState = formStateFromRecord(data.record);
+        setForm(nextFormState);
+        setLastSavedSnapshot(JSON.stringify(nextFormState));
+      } else {
+        setLastSavedSnapshot(currentSnapshot);
       }
 
       setMessage(
@@ -698,7 +713,7 @@ export default function BrandAgentRecordForm({
       <button
         type="button"
         onClick={saveRecord}
-        disabled={saving}
+        disabled={saveDisabled}
         className="admin-button-dark px-5 disabled:cursor-not-allowed disabled:opacity-60"
       >
         <Save className="h-4 w-4" />
@@ -734,9 +749,13 @@ export default function BrandAgentRecordForm({
       <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           {backHref && backLabel ? (
-            <Link href={backHref} className="admin-button-secondary">
+            <Link
+              href={backHref}
+              className="admin-button-secondary admin-button-icon"
+              aria-label={backLabel}
+              title={backLabel}
+            >
               <ArrowLeft className="h-4 w-4" />
-              {backLabel}
             </Link>
           ) : (
             <div />

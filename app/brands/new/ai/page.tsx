@@ -16,10 +16,11 @@ export default function NewBrandAiPage() {
 
           <Link
             href="/admin/brands/new"
-            className="inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-slate-950 px-0 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            aria-label="Volver a nueva marca"
+            title="Volver a nueva marca"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver a nueva marca
           </Link>
         </div>
 

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
 import {
   ArrowLeft,
+  BookOpenText,
   Brush,
   ChevronRight,
   FileStack,
@@ -92,10 +93,15 @@ const primaryNav: NavItem[] = [
     label: "Marcas",
     icon: FolderKanban,
   },
+  {
+    href: "/admin/docs",
+    label: "Docs",
+    icon: BookOpenText,
+  },
 ];
 
 const backButtonClassName =
-  "admin-button-secondary";
+  "admin-button-secondary admin-button-icon";
 
 function isNavItemActive(pathname: string, item: NavItem) {
   if (item.exact) {
@@ -462,9 +468,10 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}`}
                     className={backButtonClassName}
+                    aria-label="Volver a marca"
+                    title="Volver a marca"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver a marca
                   </Link>
                 ) : null}
 
@@ -481,9 +488,10 @@ export default function DashboardShell({
                     <Link
                       href={`/admin/brands/${activeBrand.slug}/landings`}
                       className={backButtonClassName}
+                      aria-label="Volver a landings"
+                      title="Volver a landings"
                     >
                       <ArrowLeft className="h-4 w-4" />
-                      Volver a landings
                     </Link>
                   </>
                 ) : null}
@@ -492,9 +500,10 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}/new`}
                     className={backButtonClassName}
+                    aria-label="Volver a nueva landing"
+                    title="Volver a nueva landing"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver a nueva landing
                   </Link>
                 ) : null}
 
@@ -502,9 +511,10 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}/landings`}
                     className={backButtonClassName}
+                    aria-label="Volver a landings"
+                    title="Volver a landings"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Volver a landings
                   </Link>
                 ) : null}
               </div>

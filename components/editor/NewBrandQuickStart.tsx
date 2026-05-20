@@ -744,10 +744,11 @@ export default function NewBrandQuickStart() {
                   type="button"
                   onClick={resetSearch}
                   disabled={creating}
-                  className="inline-flex items-center gap-2 border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-slate-300 bg-white px-0 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                  aria-label="Volver a buscar"
+                  title="Volver a buscar"
                 >
                   <RotateCcw className="h-4 w-4" />
-                  Volver a buscar
                 </button>
               </span>
             ) : (

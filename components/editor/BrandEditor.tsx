@@ -65,12 +65,17 @@ export default function BrandEditor({
   stickyActions = false,
 }: Props) {
   const router = useRouter();
-  const [brand, setBrand] = useState<Brand>(() =>
-    enrichBrandColorPalette(initialBrand),
-  );
+  const enrichedInitialBrand = enrichBrandColorPalette(initialBrand);
+  const [brand, setBrand] = useState<Brand>(() => enrichedInitialBrand);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [activeTab, setActiveTab] = useState<"general" | "styles">("general");
+  const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
+    JSON.stringify(enrichedInitialBrand),
+  );
+  const currentSnapshot = JSON.stringify(brand);
+  const hasChanges = currentSnapshot !== lastSavedSnapshot;
+  const saveDisabled = saving || !hasChanges;
 
   const updateField = (path: string, value: string) => {
     setBrand((prev) => {
@@ -318,6 +323,10 @@ export default function BrandEditor({
   };
 
   const handleSave = async () => {
+    if (saveDisabled) {
+      return;
+    }
+
     try {
       setSaving(true);
       setMessage("");
@@ -357,6 +366,7 @@ export default function BrandEditor({
         return;
       }
 
+      setLastSavedSnapshot(currentSnapshot);
       setMessage("Cambios guardados correctamente");
       router.refresh();
     } catch (error: unknown) {
@@ -372,9 +382,13 @@ export default function BrandEditor({
         <div className="-mt-2 mb-8 sticky top-4 z-20 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             {backHref ? (
-              <Link href={backHref} className="admin-button-secondary">
+              <Link
+                href={backHref}
+                className="admin-button-secondary admin-button-icon"
+                aria-label={backLabel}
+                title={backLabel}
+              >
                 <ArrowLeft className="h-4 w-4" />
-                {backLabel}
               </Link>
             ) : (
               <div />
@@ -390,8 +404,8 @@ export default function BrandEditor({
               <button
                 type="button"
                 onClick={handleSave}
-                disabled={saving}
-                className="admin-button-primary px-5"
+                disabled={saveDisabled}
+                className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {saving
                   ? mode === "create"
@@ -911,8 +925,8 @@ export default function BrandEditor({
           <button
             type="button"
             onClick={handleSave}
-            disabled={saving}
-            className="admin-button-primary px-5"
+            disabled={saveDisabled}
+            className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {saving
               ? mode === "create"

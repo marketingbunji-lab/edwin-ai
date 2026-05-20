@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { getVisualAssetsByCategory, type VisualAssetRecord } from "./brandAgentRecords";
 import {
   defaultLandingLanguageForBrand,
   getLandingTemplateCopy,
@@ -153,6 +154,7 @@ export type LandingCertificationItem = {
 };
 
 export type LandingHero = {
+  variant?: "default" | "option-b" | "menu";
   eyebrow?: string;
   highlight?: string;
   title?: string;
@@ -546,6 +548,145 @@ function resolveRelatedProgramImage(
   return bestScore >= 2 ? bestImage : "";
 }
 
+function getProgramVisualAssetCandidates(
+  brandSlug: string,
+  landing: Landing,
+) {
+  const assets = getVisualAssetsByCategory(brandSlug, "programs-assets");
+  const targetSlug = landing.slug?.trim().toLowerCase() || "";
+  const targetTitle = normalizeTextMatch(landing.title);
+  const targetFullTitle = normalizeTextMatch(landing.fullTitle);
+  const targetProgramName = normalizeTextMatch(landing.form?.programName);
+  const targetTokens = new Set([
+    ...getMatchTokens(landing.slug),
+    ...getMatchTokens(landing.title),
+    ...getMatchTokens(landing.fullTitle),
+    ...getMatchTokens(landing.form?.programName),
+  ]);
+
+  const isUsableImageAsset = (asset: VisualAssetRecord) =>
+    Boolean(asset.url?.trim()) &&
+    asset.category === "programs-assets" &&
+    asset.assetCategory !== "videos" &&
+    asset.assetCategory !== "documents";
+
+  const exactMatches = assets.filter((asset) => {
+    if (!isUsableImageAsset(asset)) {
+      return false;
+    }
+
+    return asset.programId?.trim().toLowerCase() === targetSlug;
+  });
+
+  if (exactMatches.length > 0) {
+    return exactMatches;
+  }
+
+  const scoredMatches = assets
+    .filter(isUsableImageAsset)
+    .map((asset) => {
+      const normalizedProgramId = normalizeTextMatch(asset.programId);
+      const normalizedProgramName = normalizeTextMatch(asset.programName);
+      const normalizedAssetName = normalizeTextMatch(asset.name);
+      const candidateTokens = new Set([
+        ...getMatchTokens(asset.programId),
+        ...getMatchTokens(asset.programName),
+        ...getMatchTokens(asset.name),
+      ]);
+
+      let score = 0;
+
+      if (
+        normalizedProgramId &&
+        (normalizedProgramId === targetSlug ||
+          normalizedProgramId === targetTitle ||
+          normalizedProgramId === targetFullTitle ||
+          normalizedProgramId === targetProgramName)
+      ) {
+        score += 5;
+      }
+
+      if (
+        normalizedProgramName &&
+        (normalizedProgramName === targetTitle ||
+          normalizedProgramName === targetFullTitle ||
+          normalizedProgramName === targetProgramName)
+      ) {
+        score += 5;
+      }
+
+      if (
+        normalizedProgramName &&
+        targetTitle &&
+        (normalizedProgramName.includes(targetTitle) ||
+          targetTitle.includes(normalizedProgramName))
+      ) {
+        score += 3;
+      }
+
+      if (
+        normalizedProgramName &&
+        targetFullTitle &&
+        (normalizedProgramName.includes(targetFullTitle) ||
+          targetFullTitle.includes(normalizedProgramName))
+      ) {
+        score += 3;
+      }
+
+      if (
+        normalizedAssetName &&
+        targetTitle &&
+        (normalizedAssetName.includes(targetTitle) ||
+          targetTitle.includes(normalizedAssetName))
+      ) {
+        score += 1;
+      }
+
+      targetTokens.forEach((token) => {
+        if (candidateTokens.has(token)) {
+          score += 1;
+        }
+      });
+
+      return { asset, score };
+    })
+    .filter((item) => item.score >= 3)
+    .sort((left, right) => right.score - left.score);
+
+  return scoredMatches.map((item) => item.asset);
+}
+
+function pickNextProgramVisualAsset(
+  assets: VisualAssetRecord[],
+  usedAssetIds: Set<string>,
+  preferredCategories: string[],
+) {
+  for (const category of preferredCategories) {
+    const matchedAsset = assets.find(
+      (asset) =>
+        !usedAssetIds.has(asset.id) &&
+        asset.assetCategory?.trim() === category &&
+        Boolean(asset.url?.trim()),
+    );
+
+    if (matchedAsset) {
+      usedAssetIds.add(matchedAsset.id);
+      return matchedAsset;
+    }
+  }
+
+  const fallbackAsset = assets.find(
+    (asset) => !usedAssetIds.has(asset.id) && Boolean(asset.url?.trim()),
+  );
+
+  if (!fallbackAsset) {
+    return null;
+  }
+
+  usedAssetIds.add(fallbackAsset.id);
+  return fallbackAsset;
+}
+
 function toIconTextItems(items?: Array<string | IconTextItem>): IconTextItem[] {
   if (!Array.isArray(items)) return [];
 
@@ -650,6 +791,98 @@ export function normalizeLandingSchema(landing: Landing): Landing {
   const copy = getLandingTemplateCopy(language, landing.brand);
   const englishCopy = landingTemplateCopyByLanguage.en;
   const spanishCopy = landingTemplateCopyByLanguage.es;
+  const programVisualAssets = getProgramVisualAssetCandidates(
+    landing.brand,
+    landing,
+  );
+  const hasExplicitSectionImages = Boolean(
+    landing.overview?.image ||
+      landing.graduateProfile?.image ||
+      landing.whyStudy?.image ||
+      landing.externship?.image ||
+      careerSource.image ||
+      landing.contact?.image,
+  );
+  const hasExactProgramVisualAsset = programVisualAssets.some(
+    (asset) =>
+      asset.programId?.trim().toLowerCase() === landing.slug?.trim().toLowerCase(),
+  );
+  const heroUsesManagedAsset = Boolean(
+    hero.backgroundImage?.includes("/edwin-ai-assets/"),
+  );
+  const heroSharesLegacyImageWithOverview = Boolean(
+    hero.backgroundImage &&
+      landing.overview?.image &&
+      hero.backgroundImage === landing.overview.image &&
+      !hero.backgroundImage.includes("/edwin-ai-assets/"),
+  );
+  const shouldPromoteProgramAssetToHero = Boolean(
+    programVisualAssets.length > 0 &&
+      !heroUsesManagedAsset &&
+      (!hero.backgroundImage ||
+        (heroSharesLegacyImageWithOverview && hasExactProgramVisualAsset) ||
+        (!hasExplicitSectionImages &&
+          (hasExactProgramVisualAsset || programVisualAssets.length === 1))),
+  );
+  const usedProgramAssetIds = new Set<string>();
+  const heroAsset = shouldPromoteProgramAssetToHero
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "heroImages",
+        "lifestyleImages",
+        "classroomImages",
+        "galleryImages",
+        "handsOnTrainingImages",
+      ])
+    : null;
+  const overviewAsset = !landing.overview?.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "lifestyleImages",
+        "classroomImages",
+        "galleryImages",
+        "heroImages",
+      ])
+    : null;
+  const graduateProfileAsset = !landing.graduateProfile?.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "lifestyleImages",
+        "classroomImages",
+        "facultyImages",
+        "testimonialImages",
+        "galleryImages",
+      ])
+    : null;
+  const whyStudyAsset = !landing.whyStudy?.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "classroomImages",
+        "lifestyleImages",
+        "galleryImages",
+        "heroImages",
+      ])
+    : null;
+  const handsOnAsset = !landing.externship?.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "handsOnTrainingImages",
+        "classroomImages",
+        "galleryImages",
+        "lifestyleImages",
+      ])
+    : null;
+  const careerAsset = !careerSource.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "careerImages",
+        "testimonialImages",
+        "lifestyleImages",
+        "galleryImages",
+      ])
+    : null;
+  const contactAsset = !landing.contact?.image
+    ? pickNextProgramVisualAsset(programVisualAssets, usedProgramAssetIds, [
+        "testimonialImages",
+        "facultyImages",
+        "lifestyleImages",
+        "galleryImages",
+      ])
+    : null;
 
   return {
     ...landing,
@@ -702,6 +935,12 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       keywords: landing.seo?.keywords ?? [],
     },
     hero: {
+      variant:
+        hero.variant === "menu"
+          ? "option-b"
+          : hero.variant === "option-b"
+            ? "option-b"
+            : "default",
       eyebrow: hero.eyebrow || "",
       highlight: hero.highlight || "",
       title: hero.title || landing.fullTitle || landing.title,
@@ -725,7 +964,8 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         label: hero.secondaryCta?.label || "",
         url: hero.secondaryCta?.url || "",
       },
-      backgroundImage: hero.backgroundImage || "",
+      backgroundImage:
+        (heroAsset?.url?.trim() || "") || hero.backgroundImage || "",
       personImage: hero.personImage || "",
       videoUrl: hero.videoUrl || "",
       overlayColor: hero.overlayColor || "",
@@ -738,11 +978,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         spanishCopy.overviewTitle,
       ]),
       description: landing.overview?.description || hero.description || "",
-      image: landing.overview?.image || "",
+      image: landing.overview?.image || overviewAsset?.url?.trim() || "",
     },
     graduateProfile: {
       title: landing.graduateProfile?.title || "",
-      image: landing.graduateProfile?.image || "",
+      image: landing.graduateProfile?.image || graduateProfileAsset?.url?.trim() || "",
       items: toTitleDescriptionItems(landing.graduateProfile?.items),
     },
     whyStudy: {
@@ -751,7 +991,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         spanishCopy.whyStudyTitle,
       ]),
       description: landing.whyStudy?.description || "",
-      image: landing.whyStudy?.image || "",
+      image: landing.whyStudy?.image || whyStudyAsset?.url?.trim() || "",
       items: toTitleDescriptionItems(landing.whyStudy?.items),
     },
     curriculum: {
@@ -783,7 +1023,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         spanishCopy.externshipTitle,
       ]),
       description: landing.externship?.description || "",
-      image: landing.externship?.image || "",
+      image: landing.externship?.image || handsOnAsset?.url?.trim() || "",
       hours: landing.externship?.hours || "",
       partners: landing.externship?.partners ?? [],
     },
@@ -797,7 +1037,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         ],
       ),
       subtitle: careerSource.subtitle || "",
-      image: careerSource.image || "",
+      image: careerSource.image || careerAsset?.url?.trim() || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     opportunityToWork: {
@@ -810,7 +1050,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         ],
       ),
       subtitle: careerSource.subtitle || "",
-      image: careerSource.image || "",
+      image: careerSource.image || careerAsset?.url?.trim() || "",
       items: toTitleDescriptionItems(careerSource.items),
     },
     studentSupport: {
@@ -878,7 +1118,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       advisorTitle: landing.contact?.advisorTitle || "",
       phone: landing.contact?.phone || "",
       email: landing.contact?.email || "",
-      image: landing.contact?.image || "",
+      image: landing.contact?.image || contactAsset?.url?.trim() || "",
     },
     cta: {
       title: localizeGenericValue(landing.cta?.title, copy.ctaTitle, [

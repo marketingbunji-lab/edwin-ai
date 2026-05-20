@@ -95,10 +95,11 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
         <div>
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
-            className="admin-button-secondary mb-3"
+            className="admin-button-secondary admin-button-icon mb-3"
+            aria-label="Volver a programs"
+            title="Volver a programs"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver a programs
           </Link>
           <p className="admin-eyebrow">
             {brand.name}

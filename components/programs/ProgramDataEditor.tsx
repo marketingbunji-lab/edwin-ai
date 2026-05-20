@@ -38,8 +38,14 @@ export default function ProgramDataEditor({
   const [previewProgram, setPreviewProgram] = useState<Landing | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
+  const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
+    JSON.stringify(initialProgram),
+  );
   const isCreateMode = mode === "create";
   const generatedSlug = slugify(program.fullTitle || program.title);
+  const currentSnapshot = JSON.stringify(program);
+  const hasChanges = currentSnapshot !== lastSavedSnapshot;
+  const saveDisabled = saving || !hasChanges || Boolean(jsonError);
 
   const applyProgram = (nextProgram: Landing) => {
     setProgram(nextProgram);
@@ -72,6 +78,10 @@ export default function ProgramDataEditor({
   };
 
   const saveProgram = async () => {
+    if (saveDisabled) {
+      return;
+    }
+
     try {
       setSaving(true);
       setMessage("");
@@ -149,12 +159,14 @@ export default function ProgramDataEditor({
 
         applyProgram(createdProgram);
         setPreviewProgram(createdProgram);
+        setLastSavedSnapshot(JSON.stringify(createdProgram));
         setMessage("Programa creado correctamente");
         router.refresh();
         return;
       }
 
       applyProgram(nextProgram);
+      setLastSavedSnapshot(JSON.stringify(nextProgram));
       setMessage(
         isCreateMode
           ? "Programa creado correctamente"
@@ -176,16 +188,17 @@ export default function ProgramDataEditor({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
-            className="admin-button-secondary"
+            className="admin-button-secondary admin-button-icon"
+            aria-label="Volver a programs"
+            title="Volver a programs"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver a programs
           </Link>
 
           <button
             type="button"
             onClick={saveProgram}
-            disabled={saving}
+            disabled={saveDisabled}
             className="admin-button-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
             <Save className="h-4 w-4" />

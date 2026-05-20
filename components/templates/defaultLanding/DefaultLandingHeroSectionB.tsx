@@ -13,6 +13,11 @@ import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSecti
 import { landingContainerClass } from "./classes";
 
 type Props = {
+  menuItems: Array<{
+    id: string;
+    label: string;
+  }>;
+  menuCtaLabel: string;
   logo: string;
   brandName: string;
   eyebrowText: string;
@@ -45,7 +50,9 @@ type Props = {
   liveEdit?: LandingLiveEditConfig;
 };
 
-export default function DefaultLandingHeroSection({
+export default function DefaultLandingHeroSectionB({
+  menuItems,
+  menuCtaLabel,
   logo,
   brandName,
   eyebrowText,
@@ -110,17 +117,47 @@ export default function DefaultLandingHeroSection({
       className="relative overflow-hidden text-[var(--landing-primary-text)]"
       style={{ background: heroBackground }}
     >
-      <div className={`${landingContainerClass} py-24 md:py-32`}>
+      <div className={`${landingContainerClass} pt-5 pb-24 md:pb-32`}>
+        {menuItems.length > 0 ? (
+          <div className="mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-white/10 p-3 shadow-[0_18px_40px_rgba(2,6,23,0.16)] backdrop-blur-xl">
+            <nav
+              aria-label="Navegación de secciones"
+              className="flex flex-wrap items-center justify-between gap-4"
+            >
+              <div className="flex items-center gap-4">
+                {logo ? (
+                  <img
+                    src={logo}
+                    alt={brandName}
+                    className="h-12 w-auto max-w-[150px] object-contain object-left"
+                  />
+                ) : null}
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                  {menuItems.map((item) => (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      className="text-sm font-medium lowercase text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href="#default-form"
+                className="inline-flex items-center rounded-full border border-white/35 bg-white/14 px-4 py-2 text-sm font-semibold lowercase text-white transition hover:bg-white/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                {menuCtaLabel}
+              </a>
+            </nav>
+          </div>
+        ) : null}
+
         <div className="grid items-center gap-14 pb-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
           <div>
-            {logo ? (
-              <img
-                src={logo}
-                alt={brandName}
-                className="mb-9 max-h-24 w-[min(260px,70vw)] object-contain object-left"
-              />
-            ) : null}
-
             <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
               <LiveEditableText
                 path="hero.eyebrow"
@@ -172,30 +209,6 @@ export default function DefaultLandingHeroSection({
               />
             ) : null}
 
-            {showPricingBlock ? (
-              <div className="mb-8 mt-8 row items-end gap-x-4 gap-y-2 text-white">
-                {hasDiscountPricing && hasBasePrice ? (
-                  <p className="text-xl mb-2 font-medium leading-none text-white/55 line-through md:text-lg">
-                    {price}
-                  </p>
-                ) : null}
-
-                {primaryDisplayedPrice ? (
-                  <div className="flex flex-wrap items-end gap-x-3 gap-y-2">
-                    <p className="text-4xl font-semibold leading-none tracking-tight text-white md:text-4xl">
-                      {primaryDisplayedPrice}
-                    </p>
-
-                    {hasDiscountPricing && hasDiscountBadge ? (
-                      <span className="mb-1 inline-flex items-center rounded-full border border-emerald-300/45 bg-emerald-400/18 px-3 py-1 text-sm font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_10px_24px_rgba(16,185,129,0.16)] backdrop-blur">
-                        {discountPercentage} {discountSuffix}
-                      </span>
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-
             {summaryItems.length > 0 ? (
               <DefaultLandingSummaryCardsSection
                 items={summaryItems}
@@ -210,10 +223,7 @@ export default function DefaultLandingHeroSection({
             ) : null}
           </div>
 
-          <div
-            id="default-form"
-            className="relative isolate overflow-hidden rounded-3xl border border-white/50 bg-white/90 p-6 text-slate-900 shadow-2xl shadow-slate-950/20 backdrop-blur-xl"
-          >
+          <div>
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.34))]"
@@ -223,83 +233,10 @@ export default function DefaultLandingHeroSection({
               className="pointer-events-none absolute -right-20 -top-20 -z-10 h-48 w-48 rounded-full bg-white/50 blur-3xl"
             />
             <div className="relative mb-5 text-center">
-              <h2 className="mb-2 text-3xl font-bold leading-tight tracking-tight">
-                <LiveEditableText
-                  path="form.title"
-                  value={formTitle}
-                  liveEdit={liveEdit}
-                  singleLine
-                />
-              </h2>
-              <p className="leading-6 text-slate-600">
-                <LiveEditableText
-                  path="form.description"
-                  value={formDescription}
-                  liveEdit={liveEdit}
-                />
-              </p>
+              
             </div>
             <div className="relative">
-              {isVerityForm ? (
-                <VerityLeadForm
-                  form={form}
-                  buttonText={ctaButton || submitLabel}
-                  fullNameLabel={fullNameLabel}
-                  phoneLabel={phoneLabel}
-                  emailLabel={emailLabel}
-                  zipLabel={zipLabel}
-                />
-              ) : hasConfiguredForm && mode === "export" ? (
-                <>
-                  {form.scriptCode ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: form.scriptCode,
-                      }}
-                    />
-                  ) : form.scriptUrl ? (
-                    <script type="text/javascript" src={form.scriptUrl} />
-                  ) : null}
-                  {hiddenFieldInjectionScript ? (
-                    <script
-                      type="text/javascript"
-                      dangerouslySetInnerHTML={{
-                        __html: hiddenFieldInjectionScript,
-                      }}
-                    />
-                  ) : null}
-                </>
-              ) : hasConfiguredForm && form.scriptCode ? (
-                <>
-                  <ClientifyFormEmbed code={form.scriptCode} />
-                  <FormHiddenFieldInjector
-                    fieldName={hiddenProgramFieldName}
-                    fieldValue={hiddenProgramFieldValue}
-                  />
-                  <FormHiddenFieldInjector fieldName="campus" fieldValue={campusValue} />
-                </>
-              ) : hasConfiguredForm && form.scriptUrl ? (
-                <>
-                  <Script src={form.scriptUrl} strategy="afterInteractive" />
-                  <FormHiddenFieldInjector
-                    fieldName={hiddenProgramFieldName}
-                    fieldValue={hiddenProgramFieldValue}
-                  />
-                  <FormHiddenFieldInjector fieldName="campus" fieldValue={campusValue} />
-                </>
-              ) : (
-                <GenericLeadForm
-                  programName={hiddenProgramFieldValue}
-                  primaryColor={primaryColor}
-                  buttonText={ctaButton || submitLabel}
-                  submitLabel={submitLabel}
-                  campusValue={campusValue}
-                  hiddenProgramFieldName={hiddenProgramFieldName}
-                  fullNameLabel={fullNameLabel}
-                  phoneLabel={phoneLabel}
-                  emailLabel={emailLabel}
-                />
-              )}
+              
             </div>
           </div>
         </div>

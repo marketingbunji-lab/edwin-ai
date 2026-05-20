@@ -648,9 +648,10 @@ export default function AiBrandChat() {
 
         <Link
           href="/admin/brands/new"
-          className="admin-button-secondary mt-5 w-full"
+          className="admin-button-secondary admin-button-icon mt-5"
+          aria-label="Volver al formulario manual"
+          title="Volver al formulario manual"
         >
-          Volver al formulario manual
           <ArrowRight className="h-4 w-4" />
         </Link>
       </aside>

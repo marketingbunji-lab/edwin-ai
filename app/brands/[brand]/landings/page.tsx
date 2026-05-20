@@ -37,10 +37,11 @@ export default async function BrandLandingsPage({ params }: Props) {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
               href={`/admin/brands/${brand.slug}`}
-              className="admin-button-secondary"
+              className="admin-button-secondary admin-button-icon"
+              aria-label="Volver a marca"
+              title="Volver a marca"
             >
               <ArrowLeft className="h-4 w-4" />
-              Volver a marca
             </Link>
 
             <Link

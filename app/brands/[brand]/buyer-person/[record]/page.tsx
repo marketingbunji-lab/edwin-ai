@@ -42,10 +42,11 @@ export default async function BuyerPersonDetailPage({ params }: Props) {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href={`/admin/brands/${brand.slug}/buyer-person`}
-            className="inline-flex items-center gap-2 bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-slate-950 px-0 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
+            aria-label="Volver a buyer person"
+            title="Volver a buyer person"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver a buyer person
           </Link>
 
           <Link

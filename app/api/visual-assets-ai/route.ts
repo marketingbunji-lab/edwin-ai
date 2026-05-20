@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAuthenticatedUser } from "@/lib/serverAuth";
+import { persistVisualAssetResponseImages } from "@/lib/supabaseAssetStorage";
 
 const brandAssetsWebhookUrl =
   "https://n8n.crisnnino.com/webhook/edwin-brand-assets-agent";
@@ -39,7 +40,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json(data);
+    const persistedData = await persistVisualAssetResponseImages(data, {
+      brandSlug:
+        typeof body?.brand?.slug === "string" ? body.brand.slug : undefined,
+      category:
+        typeof body?.currentDraft?.category === "string"
+          ? body.currentDraft.category
+          : "brand-assets",
+      programId:
+        typeof body?.programId === "string" ? body.programId : undefined,
+      assetName:
+        typeof body?.currentDraft?.name === "string"
+          ? body.currentDraft.name
+          : typeof body?.currentDraft?.assetName === "string"
+            ? body.currentDraft.assetName
+            : undefined,
+    });
+
+    return NextResponse.json(persistedData);
   } catch (error) {
     return NextResponse.json(
       {

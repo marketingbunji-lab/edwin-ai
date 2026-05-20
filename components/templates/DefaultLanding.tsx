@@ -22,6 +22,7 @@ import DefaultLandingExternshipSection from "./defaultLanding/DefaultLandingExte
 import DefaultLandingFaqSection from "./defaultLanding/DefaultLandingFaqSection";
 import DefaultLandingFooterSection from "./defaultLanding/DefaultLandingFooterSection";
 import DefaultLandingHeroSection from "./defaultLanding/DefaultLandingHeroSection";
+import DefaultLandingHeroSectionB from "./defaultLanding/DefaultLandingHeroSectionB";
 import DefaultLandingOverviewSection from "./defaultLanding/DefaultLandingOverviewSection";
 import DefaultLandingSupportSection from "./defaultLanding/DefaultLandingSupportSection";
 import DefaultLandingTestimonialsSection from "./defaultLanding/DefaultLandingTestimonialsSection";
@@ -33,6 +34,15 @@ type Props = {
   mode?: "preview" | "export";
   liveEdit?: LandingLiveEditConfig;
 };
+
+type HeroMenuItem = {
+  id: string;
+  label: string;
+};
+
+function toMenuLabel(value: string) {
+  return value.trim().toLocaleLowerCase();
+}
 
 function normalizeProgramInfo(programInfo?: Landing["programInfo"]) {
   if (!Array.isArray(programInfo)) {
@@ -444,6 +454,145 @@ export default function DefaultLanding({
     certificationSettings.resolutionText?.trim() ||
     firstCertificationResolutionItem?.resolutionText?.trim() ||
     "";
+  const heroVariant = hero.variant || "default";
+  const hasOverviewSection = Boolean(
+    overview.title || overview.description || overview.image,
+  );
+  const hasWhyStudySection = Boolean(
+    whyStudy.title || whyStudy.description || whyStudy.image || whyStudyItems.length > 0,
+  );
+  const hasGraduateProfileSection = Boolean(
+    graduateProfile.title || graduateProfile.image || graduateProfile.items?.length,
+  );
+  const hasCareerSection = Boolean(
+    (landing.opportunityToWork ?? landing.careerOutcomes)?.subtitle ||
+      (landing.opportunityToWork ?? landing.careerOutcomes)?.image ||
+      (landing.opportunityToWork ?? landing.careerOutcomes)?.items?.length,
+  );
+  const hasCurriculumSection = Boolean(
+    curriculum.description ||
+      curriculum.buttonUrl ||
+      curriculum.downloadUrl ||
+      curriculumItems.length > 0,
+  );
+  const hasHandsOnSection = Boolean(
+    handsOnTraining.description || handsOnTrainingItems.length > 0,
+  );
+  const hasExternshipSection = Boolean(
+    externship.description ||
+      externship.image ||
+      externship.hours ||
+      externship.partners?.length,
+  );
+  const hasBenefitsSection = benefitItems.length > 0;
+  const hasFinancialAidSection = Boolean(
+    financialAid.enabled && (financialAid.description || financialAidItems.length > 0),
+  );
+  const hasTestimonialsSection = Boolean(
+    (landing.testimonials ?? []).some(
+      (item) => item.name?.trim() || item.role?.trim() || item.quote?.trim(),
+    ),
+  );
+  const hasFaqSection = Boolean(
+    (landing.faq ?? []).some(
+      (item) => item.question?.trim() && item.answer?.trim(),
+    ),
+  );
+  const hasCampusesSection = campuses.length > 0;
+  const heroMenuItems: HeroMenuItem[] = [
+    hasOverviewSection
+      ? {
+          id: "landing-overview",
+          label: toMenuLabel(overview.title || copy.overviewTitle),
+        }
+      : null,
+    hasWhyStudySection
+      ? {
+          id: "landing-why-study",
+          label: toMenuLabel(whyStudy.title || copy.whyStudyTitle),
+        }
+      : null,
+    hasGraduateProfileSection
+      ? {
+          id: "landing-graduate-profile",
+          label: toMenuLabel(
+            graduateProfile.title || copy.graduateProfileEyebrow,
+          ),
+        }
+      : null,
+    hasCareerSection
+      ? {
+          id: "landing-career-opportunities",
+          label: toMenuLabel(
+            landing.opportunityToWork?.title ||
+              landing.careerOutcomes?.title ||
+              copy.careerOpportunitiesTitle,
+          ),
+        }
+      : null,
+    hasCurriculumSection
+      ? {
+          id: "landing-curriculum",
+          label: toMenuLabel(curriculum.title || copy.curriculumTitle),
+        }
+      : null,
+    hasHandsOnSection
+      ? {
+          id: "landing-hands-on-training",
+          label: toMenuLabel(
+            handsOnTraining.title || copy.handsOnTrainingTitle,
+          ),
+        }
+      : null,
+    hasExternshipSection
+      ? {
+          id: "landing-externship",
+          label: toMenuLabel(externship.title || copy.externshipTitle),
+        }
+      : null,
+    hasSupportSection
+      ? {
+          id: "landing-support",
+          label: toMenuLabel(supportTitle || copy.studentSupportTitle),
+        }
+      : null,
+    hasBenefitsSection
+      ? {
+          id: "landing-benefits",
+          label: toMenuLabel(benefits.title || copy.programBenefitsTitle),
+        }
+      : null,
+    hasAdmissionsSection
+      ? {
+          id: "landing-admissions",
+          label: toMenuLabel(admissions.title || copy.admissionsTitle),
+        }
+      : null,
+    hasFinancialAidSection
+      ? {
+          id: "landing-financial-aid",
+          label: toMenuLabel(financialAid.title || copy.financialAidTitle),
+        }
+      : null,
+    hasTestimonialsSection
+      ? {
+          id: "landing-testimonials",
+          label: toMenuLabel(copy.studentStoriesTitle),
+        }
+      : null,
+    hasFaqSection
+      ? {
+          id: "landing-faq",
+          label: toMenuLabel(copy.faqTitle),
+        }
+      : null,
+    hasCampusesSection
+      ? {
+          id: "landing-campuses",
+          label: toMenuLabel(copy.campusesTitle),
+        }
+      : null,
+  ].filter((item): item is HeroMenuItem => Boolean(item));
   return (
     <div
       className="bg-[#f8fbff] text-slate-900"
@@ -470,7 +619,10 @@ export default function DefaultLanding({
     >
       {googleFontHref ? <style>{`@import url("${googleFontHref}");`}</style> : null}
 
-      <DefaultLandingHeroSection
+      {heroVariant === "option-b" ? (
+        <DefaultLandingHeroSectionB
+        menuItems={heroMenuItems}
+        menuCtaLabel={landing.language === "en" ? "enroll now" : "inscribete ahora"}
         logo={heroLogo}
         brandName={brandName}
         eyebrowText={eyebrowText}
@@ -501,7 +653,41 @@ export default function DefaultLanding({
         backgroundImage={hero.backgroundImage || ""}
         heroOverlayColor={heroOverlayColor}
         liveEdit={liveEdit}
-      />
+        />
+      ) : (
+        <DefaultLandingHeroSection
+          logo={heroLogo}
+          brandName={brandName}
+          eyebrowText={eyebrowText}
+          heroTitle={heroTitle}
+          heroSubtitle={hero.subtitle || ""}
+          heroDescription={heroDescription}
+          heroSupportText={hero.supportText || ""}
+          price={hero.price || ""}
+          discountedPrice={hero.discountedPrice || ""}
+          discountPercentage={hero.discountPercentage || ""}
+          discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
+          resolutionText={heroResolutionText}
+          summaryItems={heroSummaryItems}
+          fullTitle={fullTitle}
+          title={title}
+          form={form}
+          ctaButton={ctaButton}
+          formTitle={form.title?.trim() || copy.formTitle}
+          formDescription={form.description?.trim() || copy.formDescription}
+          submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
+          fullNameLabel={copy.formFullNameLabel}
+          phoneLabel={copy.formPhoneLabel}
+          emailLabel={copy.formEmailLabel}
+          zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
+          primaryColor={primaryColor}
+          mode={mode}
+          hasConfiguredForm={hasConfiguredForm}
+          backgroundImage={hero.backgroundImage || ""}
+          heroOverlayColor={heroOverlayColor}
+          liveEdit={liveEdit}
+        />
+      )}
 
       <DefaultLandingCertificationsSection
         activeCertifications={activeCertifications}
@@ -510,137 +696,163 @@ export default function DefaultLanding({
         title={copy.certificationsRowTitle}
       />
 
-      <DefaultLandingOverviewSection
-        eyebrow={copy.overviewEyebrow}
-        title={overview.title || ""}
-        description={overview.description || ""}
-        image={overview.image || ""}
-        liveEdit={liveEdit}
-      />
-
-
-      <DefaultLandingWhyStudySection
-        brandName={brandName}
-        eyebrow={`${copy.whyChoosePrefix} ${brandName}`}
-        sectionId={landing.slug}
-        title={whyStudy.title || ""}
-        description={whyStudy.description || ""}
-        image={whyStudy.image || ""}
-        logo={logo}
-        heroTitle={title}
-        items={whyStudyItems}
-        liveEdit={liveEdit}
-      />
-
-      <GraduateProfileSection
-        graduateProfile={graduateProfile}
-        eyebrow={copy.graduateProfileEyebrow}
-        primaryColor={primaryColor}
-        secondaryColor={secondaryColor}
-      />
-
-      <OpportunityToWorkSection
-        opportunityToWork={landing.opportunityToWork ?? landing.careerOutcomes}
-        eyebrow={copy.careerOpportunitiesEyebrow}
-        primaryColor={primaryColor}
-        secondaryColor={secondaryColor}
-      />
-
-      <DefaultLandingDetailCardsSection
-        eyebrow={copy.contentEyebrow}
-        title={curriculum.title || ""}
-        description={curriculum.description || ""}
-        items={curriculumItems}
-        buttonUrl={curriculum.buttonUrl || ""}
-        downloadUrl={curriculum.downloadUrl || ""}
-        buttonLabel={curriculum.buttonTitle || copy.curriculumButton}
-        viewMoreLabel={copy.sectionViewMore}
-        liveEdit={liveEdit}
-        titlePath="curriculum.title"
-        descriptionPath="curriculum.description"
-      />
-
-      <DefaultLandingDetailCardsSection
-        eyebrow={copy.experienceEyebrow}
-        title={handsOnTraining.title || ""}
-        description={handsOnTraining.description || ""}
-        items={handsOnTrainingItems}
-        soft
-        viewMoreLabel={copy.sectionViewMore}
-        liveEdit={liveEdit}
-        titlePath="handsOnTraining.title"
-        descriptionPath="handsOnTraining.description"
-      />
-
-      <DefaultLandingExternshipSection
-        eyebrow={copy.externshipEyebrow}
-        enabled={Boolean(externship.enabled)}
-        title={externship.title || ""}
-        description={externship.description || ""}
-        image={externship.image || ""}
-        hours={externship.hours || ""}
-        hoursLabel={copy.externshipHoursLabel}
-        partners={externship.partners ?? []}
-        partnerLabel={copy.externshipPartnerLabel}
-      />
-
-      {hasSupportSection ? (
-        <DefaultLandingSupportSection
-          eyebrow={copy.studentExperienceEyebrow}
-          title={supportTitle}
-          description={supportDescription}
-          videoUrl={supportVideoUrl}
-          items={supportItems}
-          isDirectVideoUrl={isDirectVideoUrl}
+      <div id="landing-overview" className="scroll-mt-24">
+        <DefaultLandingOverviewSection
+          eyebrow={copy.overviewEyebrow}
+          title={overview.title || ""}
+          description={overview.description || ""}
+          image={overview.image || ""}
           liveEdit={liveEdit}
         />
-      ) : null}
+      </div>
 
-      <DefaultLandingBenefitsSection
-        eyebrow={copy.benefitsEyebrow}
-        title={benefits.title || ""}
-        items={benefitItems}
-        liveEdit={liveEdit}
-      />
 
-      {hasAdmissionsSection ? (
+      <div id="landing-why-study" className="scroll-mt-24">
+        <DefaultLandingWhyStudySection
+          brandName={brandName}
+          eyebrow={`${copy.whyChoosePrefix} ${brandName}`}
+          sectionId={landing.slug}
+          title={whyStudy.title || ""}
+          description={whyStudy.description || ""}
+          image={whyStudy.image || ""}
+          logo={logo}
+          heroTitle={title}
+          items={whyStudyItems}
+          liveEdit={liveEdit}
+        />
+      </div>
+
+      <div id="landing-graduate-profile" className="scroll-mt-24">
+        <GraduateProfileSection
+          graduateProfile={graduateProfile}
+          eyebrow={copy.graduateProfileEyebrow}
+          primaryColor={primaryColor}
+          secondaryColor={secondaryColor}
+        />
+      </div>
+
+      <div id="landing-career-opportunities" className="scroll-mt-24">
+        <OpportunityToWorkSection
+          opportunityToWork={landing.opportunityToWork ?? landing.careerOutcomes}
+          eyebrow={copy.careerOpportunitiesEyebrow}
+          primaryColor={primaryColor}
+          secondaryColor={secondaryColor}
+        />
+      </div>
+
+      <div id="landing-curriculum" className="scroll-mt-24">
         <DefaultLandingDetailCardsSection
           eyebrow={copy.contentEyebrow}
-          title={admissions.title || ""}
-          description={admissions.description || ""}
-          items={admissionsItems}
+          title={curriculum.title || ""}
+          description={curriculum.description || ""}
+          items={curriculumItems}
+          buttonUrl={curriculum.buttonUrl || ""}
+          downloadUrl={curriculum.downloadUrl || ""}
+          buttonLabel={curriculum.buttonTitle || copy.curriculumButton}
           viewMoreLabel={copy.sectionViewMore}
           liveEdit={liveEdit}
-          titlePath="admissions.title"
-          descriptionPath="admissions.description"
+          titlePath="curriculum.title"
+          descriptionPath="curriculum.description"
         />
+      </div>
+
+      <div id="landing-hands-on-training" className="scroll-mt-24">
+        <DefaultLandingDetailCardsSection
+          eyebrow={copy.experienceEyebrow}
+          title={handsOnTraining.title || ""}
+          description={handsOnTraining.description || ""}
+          items={handsOnTrainingItems}
+          soft
+          viewMoreLabel={copy.sectionViewMore}
+          liveEdit={liveEdit}
+          titlePath="handsOnTraining.title"
+          descriptionPath="handsOnTraining.description"
+        />
+      </div>
+
+      <div id="landing-externship" className="scroll-mt-24">
+        <DefaultLandingExternshipSection
+          eyebrow={copy.externshipEyebrow}
+          enabled={Boolean(externship.enabled)}
+          title={externship.title || ""}
+          description={externship.description || ""}
+          image={externship.image || ""}
+          hours={externship.hours || ""}
+          hoursLabel={copy.externshipHoursLabel}
+          partners={externship.partners ?? []}
+          partnerLabel={copy.externshipPartnerLabel}
+        />
+      </div>
+
+      {hasSupportSection ? (
+        <div id="landing-support" className="scroll-mt-24">
+          <DefaultLandingSupportSection
+            eyebrow={copy.studentExperienceEyebrow}
+            title={supportTitle}
+            description={supportDescription}
+            videoUrl={supportVideoUrl}
+            items={supportItems}
+            isDirectVideoUrl={isDirectVideoUrl}
+            liveEdit={liveEdit}
+          />
+        </div>
+      ) : null}
+
+      <div id="landing-benefits" className="scroll-mt-24">
+        <DefaultLandingBenefitsSection
+          eyebrow={copy.benefitsEyebrow}
+          title={benefits.title || ""}
+          items={benefitItems}
+          liveEdit={liveEdit}
+        />
+      </div>
+
+      {hasAdmissionsSection ? (
+        <div id="landing-admissions" className="scroll-mt-24">
+          <DefaultLandingDetailCardsSection
+            eyebrow={copy.contentEyebrow}
+            title={admissions.title || ""}
+            description={admissions.description || ""}
+            items={admissionsItems}
+            viewMoreLabel={copy.sectionViewMore}
+            liveEdit={liveEdit}
+            titlePath="admissions.title"
+            descriptionPath="admissions.description"
+          />
+        </div>
       ) : null}
 
       {financialAid.enabled ? (
-        <DefaultLandingDetailCardsSection
-          eyebrow={copy.financialSupportEyebrow}
-          title={financialAid.title || ""}
-          description={financialAid.description || ""}
-          items={financialAidItems}
-          variant="secondary"
-          viewMoreLabel={copy.sectionViewMore}
-          liveEdit={liveEdit}
-          titlePath="financialAid.title"
-          descriptionPath="financialAid.description"
-        />
+        <div id="landing-financial-aid" className="scroll-mt-24">
+          <DefaultLandingDetailCardsSection
+            eyebrow={copy.financialSupportEyebrow}
+            title={financialAid.title || ""}
+            description={financialAid.description || ""}
+            items={financialAidItems}
+            variant="secondary"
+            viewMoreLabel={copy.sectionViewMore}
+            liveEdit={liveEdit}
+            titlePath="financialAid.title"
+            descriptionPath="financialAid.description"
+          />
+        </div>
       ) : null}
 
-      <DefaultLandingTestimonialsSection
-        eyebrow={copy.studentStoriesEyebrow}
-        title={copy.studentStoriesTitle}
-        items={landing.testimonials ?? []}
-      />
+      <div id="landing-testimonials" className="scroll-mt-24">
+        <DefaultLandingTestimonialsSection
+          eyebrow={copy.studentStoriesEyebrow}
+          title={copy.studentStoriesTitle}
+          items={landing.testimonials ?? []}
+        />
+      </div>
 
-      <DefaultLandingFaqSection
-        eyebrow={copy.faqEyebrow}
-        items={landing.faq ?? []}
-        title={copy.faqTitle}
-      />
+      <div id="landing-faq" className="scroll-mt-24">
+        <DefaultLandingFaqSection
+          eyebrow={copy.faqEyebrow}
+          items={landing.faq ?? []}
+          title={copy.faqTitle}
+        />
+      </div>
 
       <DefaultLandingCtaSection
         title={ctaTitle}
@@ -651,17 +863,19 @@ export default function DefaultLanding({
         liveEdit={liveEdit}
       />
 
-      <DefaultLandingCampusesSection
-        eyebrow={`${copy.campusesEyebrowPrefix} ${brandName}`}
-        campuses={campuses}
-        campusFilters={landing.delivery?.campuses ?? []}
-        primaryColor={primaryColor}
-        primaryTextColor={primaryTextColor}
-        isDirectVideoUrl={isDirectVideoUrl}
-        title={copy.campusesTitle}
-        description={copy.campusesDescription}
-        videoLabel={copy.campusesVideoLabel}
-      />
+      <div id="landing-campuses" className="scroll-mt-24">
+        <DefaultLandingCampusesSection
+          eyebrow={`${copy.campusesEyebrowPrefix} ${brandName}`}
+          campuses={campuses}
+          campusFilters={landing.delivery?.campuses ?? []}
+          primaryColor={primaryColor}
+          primaryTextColor={primaryTextColor}
+          isDirectVideoUrl={isDirectVideoUrl}
+          title={copy.campusesTitle}
+          description={copy.campusesDescription}
+          videoLabel={copy.campusesVideoLabel}
+        />
+      </div>
 
       <DefaultLandingFooterSection
         logo={footerLogo}
