@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { Brand } from "@/lib/data";
+import { getRandomEdwinAssistantMessage } from "@/lib/edwinAssistantMessages";
 
 const defaultPrimaryColor = "#111827";
 const defaultSecondaryColor = "#F8D74A";
@@ -257,6 +258,9 @@ export default function NewBrandQuickStart() {
   const [message, setMessage] = useState("");
   const [agentPreview, setAgentPreview] = useState<Brand | null>(null);
   const [savedBrand, setSavedBrand] = useState<Brand | null>(null);
+  const [assistantLoadingMessage, setAssistantLoadingMessage] = useState(() =>
+    getRandomEdwinAssistantMessage("loading"),
+  );
   const [startingAnalysis, setStartingAnalysis] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [currentStep, setCurrentStep] = useState<BrandAgentStep>("identity");
@@ -286,6 +290,7 @@ export default function NewBrandQuickStart() {
       setSending(true);
       setError("");
       setMessage("");
+      setAssistantLoadingMessage(getRandomEdwinAssistantMessage("loading"));
 
       const response = await fetch("/api/ai-brand-chat", {
         method: "POST",
@@ -792,7 +797,11 @@ export default function NewBrandQuickStart() {
         <div />
       </form>
 
-      <BrandPreviewCard agentPreview={agentPreview} />
+      <BrandPreviewCard
+        agentPreview={agentPreview}
+        isLoading={sending}
+        loadingMessage={assistantLoadingMessage}
+      />
     </section>
   );
 }
@@ -800,9 +809,13 @@ export default function NewBrandQuickStart() {
 function BrandPreviewCard({
   agentPreview,
   brand,
+  isLoading = false,
+  loadingMessage = "",
 }: {
   agentPreview: Brand | null;
   brand?: Brand | null;
+  isLoading?: boolean;
+  loadingMessage?: string;
 }) {
   const description = brand?.description || agentPreview?.description || "";
   const previewLogo =
@@ -816,7 +829,7 @@ function BrandPreviewCard({
     brand?.secondaryColor || agentPreview?.secondaryColor || "";
 
   return (
-    <aside className="border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
+    <aside className="relative overflow-hidden border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
       <div className="flex h-full min-h-[360px] flex-col">
         <div>
           <p className="text-xs mb-5 font-semibold uppercase tracking-[0.2em] text-white/50">
@@ -937,6 +950,31 @@ function BrandPreviewCard({
             ) : null}
           </div>
         ) : null}
+      </div>
+
+      <div
+        aria-hidden={!isLoading}
+        className={`absolute inset-0 z-10 flex items-center justify-center bg-[#020617]/92 backdrop-blur-sm transition-all duration-700 ease-out ${
+          isLoading
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+      >
+        <div
+          className={`transition-all duration-700 ease-out ${
+            isLoading ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          }`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/edwin-preview-loader.gif"
+            alt="EDwin analizando la informacion de la marca"
+            className="h-72 w-72 object-contain"
+          />
+          <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-100">
+            {loadingMessage}
+          </p>
+        </div>
       </div>
     </aside>
   );

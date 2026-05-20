@@ -48,22 +48,16 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
             brandSlug={brand.slug}
             title={category.title}
             description={category.description}
+            actionHref={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
           />
 
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          <div className="mb-5 flex flex-wrap items-center gap-3">
             <Link
               href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/all`}
               className="admin-button-secondary"
             >
               <Eye className="h-4 w-4" />
               Ver todos los assets
-            </Link>
-            <Link
-              href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
-              className="admin-button-primary"
-            >
-              <Plus className="h-4 w-4" />
-              Agregar asset general
             </Link>
           </div>
 
@@ -171,15 +165,30 @@ function Header({
   actionHref?: string;
 }) {
   return (
-    <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
-      <div>
-        <Link
-          href={`/admin/brands/${brandSlug}/visual-assets`}
-          className="admin-button-secondary mb-3"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Volver a visual assets
-        </Link>
+    <>
+      <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Link
+            href={`/admin/brands/${brandSlug}/visual-assets`}
+            className="admin-button-secondary"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Volver a visual assets
+          </Link>
+
+          {actionHref ? (
+            <Link
+              href={actionHref}
+              className="admin-button-primary"
+            >
+              <Plus className="h-4 w-4" />
+              Agregar asset
+            </Link>
+          ) : null}
+        </div>
+      </div>
+
+      <div className="mb-8">
         <p className="admin-eyebrow">
           {brandName}
         </p>
@@ -190,17 +199,7 @@ function Header({
           {description}
         </p>
       </div>
-
-      {actionHref ? (
-        <Link
-          href={actionHref}
-          className="admin-button-primary"
-        >
-          <Plus className="h-4 w-4" />
-          Agregar asset
-        </Link>
-      ) : null}
-    </div>
+    </>
   );
 }
 

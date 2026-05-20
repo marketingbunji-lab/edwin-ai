@@ -2,7 +2,7 @@
   "slug": "maestria-en-espiritualidad-uniminuto",
   "brand": "corporacion-universitaria-minuto-de-dios",
   "template": "DefaultLanding",
-  "status": "draft",
+  "status": "published",
   "updatedAt": "2026-05-14",
   "logoMode": "dark",
   "certifications": {
@@ -85,23 +85,10 @@
     }
   ],
   "opportunityToWork": {
-    "title": "",
+    "title": "Oportunidades laborales",
     "subtitle": "",
     "image": "",
-    "items": [
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      }
-    ]
+    "items": []
   },
   "whyStudy": {
     "title": "Por que estudiar este programa",
@@ -135,52 +122,14 @@
     ]
   },
   "supportSection": {
-    "title": "",
+    "title": "Acompanamiento al estudiante",
     "description": "",
     "videoUrl": "",
-    "items": [
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      }
-    ]
+    "items": []
   },
   "benefits": {
-    "title": "",
-    "items": [
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      }
-    ]
+    "title": "Beneficios del programa",
+    "items": []
   },
   "cta": {
     "title": "Solicita informacion",
@@ -195,14 +144,25 @@
     "scriptCode": "",
     "formId": "",
     "programName": "Maestría en Espiritualidad",
-    "submitLabel": "Enviar",
+    "campus": "Uniminuto",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
     "hiddenProgramFieldName": "program",
-    "campus": "Uniminuto"
+    "submitLabel": "Enviar"
   },
   "footerScripts": [],
   "externship": {
     "enabled": false,
-    "title": "",
+    "title": "Practicas profesionales",
     "description": "",
     "image": "",
     "hours": "",
@@ -275,7 +235,7 @@
     "title": "Ruta formativa",
     "description": "",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
-    "buttonUrl": "",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
     "buttonTitle": "Descarga el Plan de Estudios",
     "items": [
       {
@@ -299,67 +259,22 @@
     ]
   },
   "handsOnTraining": {
-    "enabled": "",
-    "title": "",
+    "enabled": false,
+    "title": "Entrenamiento practico",
     "description": "",
-    "items": [
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      }
-    ]
+    "items": []
   },
   "careerOutcomes": {
-    "title": "",
+    "title": "Oportunidades laborales",
     "subtitle": "",
     "image": "",
-    "items": [
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "",
-        "description": "",
-        "url": "",
-        "image": ""
-      }
-    ]
+    "items": []
   },
   "studentSupport": {
-    "title": "",
+    "title": "Acompanamiento al estudiante",
     "description": "",
     "videoUrl": "",
-    "items": [
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      },
-      {
-        "title": "",
-        "text": "",
-        "description": "",
-        "icon": ""
-      }
-    ]
+    "items": []
   },
   "admissions": {
     "title": "Requisitos de admision",

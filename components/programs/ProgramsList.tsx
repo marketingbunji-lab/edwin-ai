@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Pencil, Plus } from "lucide-react";
+import { Pencil } from "lucide-react";
 import DeleteProgramButton from "./DeleteProgramButton";
 import UpdateProgramButton from "./UpdateProgramButton";
 import type { Brand, Program } from "@/lib/data";
@@ -25,14 +25,6 @@ export default function ProgramsList({ brand, programs }: Props) {
             academica de esta marca.
           </p>
         </div>
-
-        <Link
-          href={`/admin/brands/${brand.slug}/programs/new`}
-          className="admin-button-primary"
-        >
-          <Plus className="h-4 w-4" />
-          Agregar program
-        </Link>
       </div>
 
       {programs.length === 0 ? (

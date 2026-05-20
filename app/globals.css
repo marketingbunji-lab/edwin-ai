@@ -94,7 +94,7 @@ body {
   }
 
   .admin-page-inner {
-    @apply mx-auto w-full max-w-[1440px];
+    @apply mx-auto w-full;
   }
 
   .admin-panel {

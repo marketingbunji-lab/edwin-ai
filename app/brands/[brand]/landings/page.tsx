@@ -33,34 +33,37 @@ export default async function BrandLandingsPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="admin-page-inner">
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
-          <div>
+        <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <Link
               href={`/admin/brands/${brand.slug}`}
-              className="admin-button-secondary mb-3"
+              className="admin-button-secondary"
             >
               <ArrowLeft className="h-4 w-4" />
               Volver a marca
             </Link>
-            <p className="admin-eyebrow">
-              {brand.name}
-            </p>
-            <h1 className="admin-title">
-              Landings de marca
-            </h1>
-            <p className="admin-muted mt-2 max-w-2xl">
-              Gestiona las landings creadas para esta universidad y crea nuevas
-              experiencias cuando las necesites.
-            </p>
-          </div>
 
-          <Link
-            href={`/admin/brands/${brand.slug}/new`}
-            className="admin-button-primary"
-          >
-            <Plus className="h-4 w-4" />
-            Crear landing
-          </Link>
+            <Link
+              href={`/admin/brands/${brand.slug}/new`}
+              className="admin-button-primary"
+            >
+              <Plus className="h-4 w-4" />
+              Crear landing
+            </Link>
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <p className="admin-eyebrow">
+            {brand.name}
+          </p>
+          <h1 className="admin-title">
+            Landings de marca
+          </h1>
+          <p className="admin-muted mt-2 max-w-2xl">
+            Gestiona las landings creadas para esta universidad y crea nuevas
+            experiencias cuando las necesites.
+          </p>
         </div>
 
         {landingItems.length === 0 ? (

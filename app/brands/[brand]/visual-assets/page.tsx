@@ -28,14 +28,19 @@ export default async function BrandVisualAssetsPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="admin-page-inner">
+        <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link
+              href={`/admin/brands/${brand.slug}`}
+              className="admin-button-secondary"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Volver a marca
+            </Link>
+          </div>
+        </div>
+
         <div className="mb-8">
-          <Link
-            href={`/admin/brands/${brand.slug}`}
-            className="admin-button-secondary mb-3"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Volver a marca
-          </Link>
           <p className="admin-eyebrow">
             {brand.name}
           </p>

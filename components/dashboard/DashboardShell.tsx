@@ -6,13 +6,17 @@ import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useState } from "react";
 import {
   ArrowLeft,
+  Brush,
   ChevronRight,
+  FileStack,
   FolderKanban,
   LayoutDashboard,
   Menu,
   Pencil,
   Plus,
+  Shapes,
   Sparkles,
+  Users,
   X,
 } from "lucide-react";
 import AdminUserMenu from "@/components/dashboard/AdminUserMenu";
@@ -44,6 +48,7 @@ type NavItem = {
 type BrandSubNavItem = {
   href: string;
   label: string;
+  icon: React.ComponentType<{ className?: string }>;
 };
 
 const themeChangeEvent = "bunji-theme-change";
@@ -128,18 +133,22 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
     {
       href: `/admin/brands/${brandSlug}/programs`,
       label: "Programs",
+      icon: FileStack,
     },
     {
       href: `/admin/brands/${brandSlug}/buyer-person`,
       label: "Buyer Person",
+      icon: Users,
     },
     {
       href: `/admin/brands/${brandSlug}/visual-assets`,
       label: "Visual Assets",
+      icon: Brush,
     },
     {
       href: `/admin/brands/${brandSlug}/landings`,
       label: "Landings",
+      icon: Shapes,
     },
   ];
 }
@@ -348,6 +357,7 @@ export default function DashboardShell({
                           const isSubNavActive =
                             pathname === item.href ||
                             pathname.startsWith(`${item.href}/`);
+                          const Icon = item.icon;
 
                           return (
                             <Link
@@ -360,7 +370,7 @@ export default function DashboardShell({
                                   : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
                               }`}
                             >
-                              <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                              <Icon className="h-4 w-4 shrink-0" />
                               <span>{item.label}</span>
                             </Link>
                           );

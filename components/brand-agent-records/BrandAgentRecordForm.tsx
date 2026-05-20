@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Bot, ImageIcon, Save, Users } from "lucide-react";
+import { ArrowLeft, Bot, ImageIcon, Save, Users } from "lucide-react";
 import type { Brand } from "@/lib/data";
 import type {
   BrandAgentCollection,
@@ -32,6 +33,8 @@ type Props = {
   visualAssetProgramName?: string;
   visualAssetProgramData?: unknown;
   buyerPersonRecords?: BuyerPersonRecord[];
+  backHref?: string;
+  backLabel?: string;
 };
 
 type FormState = {
@@ -445,6 +448,8 @@ export default function BrandAgentRecordForm({
   visualAssetProgramName = "",
   visualAssetProgramData = null,
   buyerPersonRecords = [],
+  backHref,
+  backLabel,
 }: Props) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>(() =>
@@ -678,6 +683,30 @@ export default function BrandAgentRecordForm({
     }
   };
 
+  const actionButtons = (
+    <div className="flex flex-wrap gap-3">
+      <button
+        type="button"
+        onClick={generateWithAi}
+        disabled={generating}
+        className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        <Bot className="h-4 w-4" />
+        {generating ? "Generando..." : "Generar con AI"}
+      </button>
+
+      <button
+        type="button"
+        onClick={saveRecord}
+        disabled={saving}
+        className="admin-button-dark px-5 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        <Save className="h-4 w-4" />
+        {saving ? "Guardando..." : isEditMode ? "Guardar cambios" : "Guardar"}
+      </button>
+    </div>
+  );
+
   const formContent = (
     <>
       {isBuyerPerson ? (
@@ -686,27 +715,7 @@ export default function BrandAgentRecordForm({
         <VisualAssetFields form={form} updateField={updateField} />
       )}
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={generateWithAi}
-          disabled={generating}
-          className="admin-button-primary px-5"
-        >
-          <Bot className="h-4 w-4" />
-          {generating ? "Generando..." : "Generar con AI"}
-        </button>
-
-        <button
-          type="button"
-          onClick={saveRecord}
-          disabled={saving}
-          className="admin-button-dark px-5"
-        >
-          <Save className="h-4 w-4" />
-          {saving ? "Guardando..." : isEditMode ? "Guardar cambios" : "Guardar"}
-        </button>
-      </div>
+      {showPreview ? null : <div className="mt-8">{actionButtons}</div>}
 
       {message ? (
         <p className="mt-4 text-sm font-medium text-slate-600 dark:text-slate-300">
@@ -721,8 +730,24 @@ export default function BrandAgentRecordForm({
   }
 
   return (
-    <section className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]">
-      <div className="admin-panel p-6">
+    <div className="space-y-6">
+      <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {backHref && backLabel ? (
+            <Link href={backHref} className="admin-button-secondary">
+              <ArrowLeft className="h-4 w-4" />
+              {backLabel}
+            </Link>
+          ) : (
+            <div />
+          )}
+
+          {actionButtons}
+        </div>
+      </div>
+
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]">
+        <div className="admin-panel p-6">
         {eyebrow ? (
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
             {eyebrow}
@@ -740,15 +765,16 @@ export default function BrandAgentRecordForm({
         ) : null}
 
         {formContent}
-      </div>
+        </div>
 
-      <PreviewCard
-        collection={collection}
-        record={previewRecord}
-        isGenerating={generating}
-        loadingMessage={assistantLoadingMessage}
-      />
-    </section>
+        <PreviewCard
+          collection={collection}
+          record={previewRecord}
+          isGenerating={generating}
+          loadingMessage={assistantLoadingMessage}
+        />
+      </section>
+    </div>
   );
 }
 

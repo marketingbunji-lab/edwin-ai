@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, Plus, Trash2 } from "lucide-react";
 import type {
   Brand,
   BrandCampus,
@@ -23,6 +24,9 @@ type EditableRecord = Record<string, unknown>;
 type Props = {
   mode: "create" | "edit";
   initialBrand: Brand;
+  backHref?: string;
+  backLabel?: string;
+  stickyActions?: boolean;
 };
 
 type SaveBrandResponse = {
@@ -53,7 +57,13 @@ function getRecordAtPath(target: EditableRecord, keys: string[]) {
   return current;
 }
 
-export default function BrandEditor({ mode, initialBrand }: Props) {
+export default function BrandEditor({
+  mode,
+  initialBrand,
+  backHref,
+  backLabel = "Volver",
+  stickyActions = false,
+}: Props) {
   const router = useRouter();
   const [brand, setBrand] = useState<Brand>(() =>
     enrichBrandColorPalette(initialBrand),
@@ -358,6 +368,44 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
 
   return (
     <div className="border border-gray-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-950">
+      {stickyActions ? (
+        <div className="-mt-2 mb-8 sticky top-4 z-20 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {backHref ? (
+              <Link href={backHref} className="admin-button-secondary">
+                <ArrowLeft className="h-4 w-4" />
+                {backLabel}
+              </Link>
+            ) : (
+              <div />
+            )}
+
+            <div className="flex flex-wrap items-center justify-end gap-3">
+              {message ? (
+                <p className="text-sm text-gray-600 dark:text-slate-300">
+                  {message}
+                </p>
+              ) : null}
+
+              <button
+                type="button"
+                onClick={handleSave}
+                disabled={saving}
+                className="admin-button-primary px-5"
+              >
+                {saving
+                  ? mode === "create"
+                    ? "Creando..."
+                    : "Guardando..."
+                  : mode === "create"
+                    ? "Crear marca"
+                    : "Guardar cambios"}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <div className="mb-6">
         <p className="text-gray-600 dark:text-slate-300">
           {mode === "create"
@@ -858,26 +906,30 @@ export default function BrandEditor({ mode, initialBrand }: Props) {
         )}
       </div>
 
-      <div className="mt-6 flex items-center gap-3">
-        <button
-          type="button"
-          onClick={handleSave}
-          disabled={saving}
-          className="admin-button-primary px-5"
-        >
-          {saving
-            ? mode === "create"
-              ? "Creando..."
-              : "Guardando..."
-            : mode === "create"
-              ? "Crear marca"
-              : "Guardar cambios"}
-        </button>
+      {!stickyActions ? (
+        <div className="mt-6 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handleSave}
+            disabled={saving}
+            className="admin-button-primary px-5"
+          >
+            {saving
+              ? mode === "create"
+                ? "Creando..."
+                : "Guardando..."
+              : mode === "create"
+                ? "Crear marca"
+                : "Guardar cambios"}
+          </button>
 
-        {message ? (
-          <p className="text-sm text-gray-600 dark:text-slate-300">{message}</p>
-        ) : null}
-      </div>
+          {message ? (
+            <p className="text-sm text-gray-600 dark:text-slate-300">
+              {message}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }
