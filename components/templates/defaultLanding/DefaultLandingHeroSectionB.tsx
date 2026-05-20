@@ -119,7 +119,7 @@ export default function DefaultLandingHeroSectionB({
     >
       <div className={`${landingContainerClass} pt-5 pb-24 md:pb-32`}>
         {menuItems.length > 0 ? (
-          <div className="mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-white/10 p-3 shadow-[0_18px_40px_rgba(2,6,23,0.16)] backdrop-blur-xl">
+          <div className="mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-slate-950/15 backdrop-blur-xl p-3 shadow-[0_18px_40px_rgba(2,6,23,0.16)]">
             <nav
               aria-label="Navegación de secciones"
               className="flex flex-wrap items-center justify-between gap-4"
