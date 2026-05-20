@@ -88,8 +88,8 @@ export default function DefaultLandingHeroSectionB({
   const hiddenProgramFieldValue = form.programName || fullTitle || title;
   const campusValue = form.campus || "";
   const heroBackground = backgroundImage
-    ? `radial-gradient(circle at 8% 14%, color-mix(in srgb, var(--landing-secondary) 52%, transparent) 0%, transparent 34%), linear-gradient(115deg, rgba(2, 6, 23, 0.96) 0%, var(--landing-primary-darkest) 42%, ${heroOverlayColor} 66%, rgba(2, 6, 23, 0.72) 100%), url("${backgroundImage}") center / cover`
-    : `radial-gradient(circle at 12% 12%, var(--landing-secondary-dark) 0%, transparent 30%), linear-gradient(115deg, var(--landing-primary-darkest) 0%, var(--landing-primary-dark) 52%, var(--landing-primary) 100%)`;
+  ? `url("${backgroundImage}") center / cover no-repeat`
+  : `none`;
   const hasDiscountPricing = Boolean(discountedPrice?.trim());
   const hasBasePrice = Boolean(price?.trim());
   const hasDiscountBadge = Boolean(discountPercentage?.trim());
