@@ -39,7 +39,6 @@
   "title": "Medical Office Assistant | Medical Office Assistant Training",
   "fullTitle": "Medical Office Assistant | Medical Office Assistant Training",
   "programType": "Program",
-  "schedule": "flexible",
   "hero": {
     "eyebrow": "Estudia en PCI Health Training Center",
     "highlight": "",
@@ -47,12 +46,8 @@
     "subtitle": "",
     "description": "Medical Office Assistant! Enroll into the medical office assistant program at PCI in as little as 6 months! Call 214-630-0568 to learn how!",
     "supportText": "",
-    "modality": "Hybrid",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "As little as 6 months",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -124,37 +119,6 @@
       }
     ]
   },
-  "supportSection": {
-    "title": "Student Support",
-    "description": "PCI offers ongoing student support including career services and academic assistance from enrollment through job search.",
-    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
-    "items": [
-      {
-        "title": "Career services",
-        "text": "Job search strategies and career guidance.",
-        "description": "Job search strategies and career guidance.",
-        "icon": ""
-      },
-      {
-        "title": "Resume writing",
-        "text": "Assistance preparing professional resumes for healthcare roles.",
-        "description": "Assistance preparing professional resumes for healthcare roles.",
-        "icon": ""
-      },
-      {
-        "title": "Interviewing practice",
-        "text": "Support and practice for interview skills.",
-        "description": "Support and practice for interview skills.",
-        "icon": ""
-      },
-      {
-        "title": "Advising and student support",
-        "text": "Ongoing advising and supportive services throughout training.",
-        "description": "Ongoing advising and supportive services throughout training.",
-        "icon": ""
-      }
-    ]
-  },
   "benefits": {
     "title": "Program Benefits",
     "items": [
@@ -207,51 +171,7 @@
     "submitLabel": "Submit"
   },
   "footerScripts": [],
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "image": "https://cdn.uploadtourl.com/cd3f32b3-b3d0-4d64-bd3c-389714473325_data.png",
-    "items": [
-      {
-        "title": "Medical Front Office Assistant",
-        "description": "Front office administrative role in healthcare settings.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Medical Office Manager",
-        "description": "Management of front office operations.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Insurance Processor",
-        "description": "Processing insurance claims and related administrative tasks.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Billing and Collecting Specialist",
-        "description": "Billing procedures and collections management.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Patient Care Coordinator",
-        "description": "Coordinating patient flow and administrative support.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Support Specialist",
-        "description": "Various front office support roles in clinics and medical offices.",
-        "url": "",
-        "image": ""
-      }
-    ]
-  },
   "sourceWebsite": "https://www.pcihealth.edu/medical-office-assistant/",
-  "programUrl": "https://www.pcihealth.edu/medical-office-assistant/",
   "catalog": "",
   "shortTitle": "Medical Office Assistant",
   "degreeLevel": "",

@@ -5,6 +5,7 @@ import {
   getBrandBySlug,
   getLandingBySlug,
   normalizeLandingSchema,
+  serializeLandingForStorage,
   type Landing,
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
@@ -94,8 +95,10 @@ function hasProgramData(program: Partial<Landing> & { programUrl?: string }) {
       program.programInfo ||
       program.whyStudy ||
       program.supportSection ||
+      program.studentSupport ||
       program.benefits ||
       program.opportunityToWork ||
+      program.careerOutcomes ||
       program.programUrl,
   );
 }
@@ -217,7 +220,7 @@ export async function POST(_: Request, { params }: { params: Params }) {
 
     fs.writeFileSync(
       nextFilePath,
-      JSON.stringify(normalizedProgram, null, 2),
+      JSON.stringify(serializeLandingForStorage(normalizedProgram), null, 2),
       "utf8",
     );
 

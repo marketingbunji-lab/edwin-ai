@@ -41,7 +41,6 @@
   "sourceWebsite": "https://www.pcihealth.edu/dental-assistant/",
   "catalog": "",
   "programType": "Technology",
-  "schedule": "",
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
@@ -49,12 +48,8 @@
     "subtitle": "",
     "description": "Complete the Dental Assistant program in as little as 9 months!",
     "supportText": "",
-    "modality": "Hybrid",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "In as little as 9 months",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -95,31 +90,6 @@
       "value": "Dental Assistant Examination to become a Registered Dental Assistant in Texas"
     }
   ],
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
-    "items": [
-      {
-        "title": "Dental Assistant",
-        "description": "Prepare to work as a Dental Assistant performing clinical and administrative duties.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Dental Hygienist Assistant",
-        "description": "Training supports entry-level assisting roles that work with dental hygienists.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Dental Receptionist",
-        "description": "Program includes administrative training such as scheduling and using dental software.",
-        "url": "",
-        "image": ""
-      }
-    ]
-  },
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
@@ -148,25 +118,6 @@
         "description": "Access to career services including job search strategies, resume writing, and interview practice.",
         "url": "",
         "image": ""
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Student Support",
-    "description": "PCI provides a supportive environment and services from enrollment through job placement assistance.",
-    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
-    "items": [
-      {
-        "title": "Career Services",
-        "text": "Job searching strategies, resume writing, and interview practice.",
-        "description": "Job searching strategies, resume writing, and interview practice.",
-        "icon": ""
-      },
-      {
-        "title": "Advising & Support",
-        "text": "Ongoing student support and access to campus resources.",
-        "description": "Ongoing student support and access to campus resources.",
-        "icon": ""
       }
     ]
   },
@@ -220,7 +171,6 @@
     "verityLeadPostUrl": "https://api.verityiq.com/api/leadpost"
   },
   "footerScripts": [],
-  "programUrl": "https://www.pcihealth.edu/dental-assistant/",
   "shortTitle": "Dental Assistant | Dental Assistant Program",
   "degreeLevel": "",
   "academicArea": "",

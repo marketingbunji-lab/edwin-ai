@@ -58,6 +58,27 @@ type EditableCertificationItem = {
   enabled?: boolean;
   resolutionText?: string;
 };
+type HeroMenuOption = {
+  id: string;
+  label: string;
+};
+
+const HERO_MENU_OPTIONS: HeroMenuOption[] = [
+  { id: "landing-overview", label: "Conoce el programa" },
+  { id: "landing-why-study", label: "Por qué estudiar" },
+  { id: "landing-graduate-profile", label: "Perfil del egresado" },
+  { id: "landing-career-opportunities", label: "Oportunidades laborales" },
+  { id: "landing-curriculum", label: "Ruta formativa" },
+  { id: "landing-hands-on-training", label: "Entrenamiento práctico" },
+  { id: "landing-externship", label: "Prácticas" },
+  { id: "landing-support", label: "Apoyo al estudiante" },
+  { id: "landing-benefits", label: "Beneficios" },
+  { id: "landing-admissions", label: "Admisiones" },
+  { id: "landing-financial-aid", label: "Ayuda financiera" },
+  { id: "landing-testimonials", label: "Testimonios" },
+  { id: "landing-faq", label: "Preguntas frecuentes" },
+  { id: "landing-campuses", label: "Campus" },
+];
 
 function isRecord(value: unknown): value is EditableRecord {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -90,6 +111,59 @@ function getArrayAtPath(target: EditableRecord, path: string) {
   }
 
   return parent[arrayKey] as EditableArrayItem[];
+}
+
+function isArrayIndex(value: string) {
+  return /^\d+$/.test(value);
+}
+
+function setValueAtPath(
+  target: EditableRecord,
+  path: string,
+  value: string | boolean,
+) {
+  const keys = path.split(".");
+  const fieldKey = keys.at(-1);
+
+  if (!fieldKey) return;
+
+  let current: unknown = target;
+
+  for (let index = 0; index < keys.length - 1; index += 1) {
+    const key = keys[index];
+    const nextKey = keys[index + 1];
+    const shouldCreateArray = isArrayIndex(nextKey);
+
+    if (Array.isArray(current)) {
+      const arrayIndex = Number(key);
+
+      if (!isRecord(current[arrayIndex]) && !Array.isArray(current[arrayIndex])) {
+        current[arrayIndex] = shouldCreateArray ? [] : {};
+      }
+
+      current = current[arrayIndex];
+      continue;
+    }
+
+    if (!isRecord(current)) {
+      return;
+    }
+
+    if (!isRecord(current[key]) && !Array.isArray(current[key])) {
+      current[key] = shouldCreateArray ? [] : {};
+    }
+
+    current = current[key];
+  }
+
+  if (Array.isArray(current)) {
+    current[Number(fieldKey)] = value;
+    return;
+  }
+
+  if (isRecord(current)) {
+    current[fieldKey] = value;
+  }
 }
 
 function getCertificationKey(certification: BrandCertification) {
@@ -166,7 +240,7 @@ export default function LandingEditor({
     JSON.stringify(initialLanding),
   );
   const [analyzingColor, setAnalyzingColor] = useState(false);
-  const [liveEditEnabled, setLiveEditEnabled] = useState(false);
+  const [liveEditEnabled, setLiveEditEnabled] = useState(true);
   const [previewWidth, setPreviewWidth] = useState(1200);
   const [previewHeight, setPreviewHeight] = useState(820);
   const previewContentRef = useRef<HTMLDivElement | null>(null);
@@ -180,15 +254,8 @@ export default function LandingEditor({
   const updateValueAtPath = (path: string, value: string | boolean) => {
     setLanding((prev) => {
       const next = structuredClone(prev) as EditableLanding;
-      const keys = path.split(".");
-      const fieldKey = keys.at(-1);
 
-      if (!fieldKey) {
-        return next;
-      }
-
-      const current = getRecordAtPath(next, keys.slice(0, -1));
-      current[fieldKey] = value;
+      setValueAtPath(next, path, value);
       return next;
     });
   };
@@ -353,6 +420,30 @@ export default function LandingEditor({
         [field]: value,
       };
       next.programInfo = items;
+
+      return next;
+    });
+  };
+
+  const toggleHeroMenuItem = (itemId: string, checked: boolean) => {
+    setLanding((prev) => {
+      const next = structuredClone(prev) as EditableLanding;
+
+      if (!isRecord(next.hero)) {
+        next.hero = {};
+      }
+
+      const hero = next.hero as EditableRecord;
+      const currentItems = Array.isArray(hero.menuItems)
+        ? (hero.menuItems as string[])
+        : HERO_MENU_OPTIONS.map((option) => option.id);
+      const nextItems = checked
+        ? Array.from(new Set([...currentItems, itemId]))
+        : currentItems.filter((currentId) => currentId !== itemId);
+
+      hero.menuItems = HERO_MENU_OPTIONS
+        .map((option) => option.id)
+        .filter((optionId) => nextItems.includes(optionId));
 
       return next;
     });
@@ -543,6 +634,14 @@ export default function LandingEditor({
   };
 
   const sanitizeExportedInteractiveState = (root: HTMLElement) => {
+    for (const editable of Array.from(
+      root.querySelectorAll("[data-live-edit-path]"),
+    )) {
+      editable.removeAttribute("contenteditable");
+      editable.removeAttribute("data-live-edit-path");
+      editable.removeAttribute("title");
+    }
+
     for (const form of Array.from(root.querySelectorAll("form"))) {
       form.removeAttribute("data-verity-bound");
 
@@ -648,15 +747,26 @@ ${accordionBootstrapScript}
   };
 
   return (
-    <div className="grid gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 xl:grid-cols-[380px_minmax(0,1fr)]">
-      <div className="flex h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 xl:sticky xl:top-[81px]">
+    <div className="grid min-w-0 gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <div className="relative z-20 flex min-h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:sticky lg:top-0">
         <div className="border-b border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-50">
-            Editar landing
+            Live editor
           </h2>
           <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">
-            Edita solo los contenidos visibles en la landing.
+            Edita los textos directamente sobre el preview. Los campos de este
+            panel quedan como ajustes avanzados.
           </p>
+          <div className="mt-4 rounded-xl border border-[var(--bunji-primary)]/25 bg-[var(--bunji-primary)]/10 p-3 text-xs leading-5 text-gray-700 dark:text-slate-200">
+            <span className="inline-flex items-center gap-2 font-semibold">
+              <MousePointerClick className="h-3.5 w-3.5" />
+              Edicion visual activa
+            </span>
+            <p className="mt-1">
+              Haz click en cualquier texto marcado, ajustalo y sal del campo
+              para actualizar el JSON.
+            </p>
+          </div>
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
@@ -867,6 +977,50 @@ ${accordionBootstrapScript}
                   ]}
                 />
 
+                {(landing.hero?.variant || "default") === "option-b" ? (
+                  <div className="admin-panel-soft p-4">
+                    <div className="mb-3">
+                      <p className="text-sm font-semibold text-slate-950 dark:text-slate-100">
+                        Items del menu del hero
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                        Selecciona las secciones que quieres mostrar en el menu
+                        fijo. Si una seccion no tiene informacion en la data, no
+                        se renderiza aunque este seleccionada.
+                      </p>
+                    </div>
+
+                    <div className="grid gap-2">
+                      {HERO_MENU_OPTIONS.map((option) => {
+                        const selectedItems = landing.hero?.menuItems;
+                        const isChecked = Array.isArray(selectedItems)
+                          ? selectedItems.includes(option.id)
+                          : true;
+
+                        return (
+                          <label
+                            key={option.id}
+                            className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-800 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
+                          >
+                            <span>{option.label}</span>
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={(event) =>
+                                toggleHeroMenuItem(
+                                  option.id,
+                                  event.target.checked,
+                                )
+                              }
+                              className="h-4 w-4 rounded border-slate-300 text-[var(--bunji-primary)] focus:ring-[var(--bunji-primary)]"
+                            />
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : null}
+
                 <SelectField
                   label="Jornada"
                   value={landing.schedule || ""}
@@ -1009,6 +1163,59 @@ ${accordionBootstrapScript}
 
             {landing.form && (
               <EditorSection title="Formulario">
+                <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-950 dark:text-slate-100">
+                      Mostrar componente de formulario
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                      Renderiza una seccion independiente en dos columnas: texto editorial a la izquierda y formulario a la derecha.
+                    </p>
+                  </div>
+
+                  <SwitchField
+                    label="Mostrar componente de formulario"
+                    checked={Boolean(landing.formSection?.enabled)}
+                    onChange={(checked) =>
+                      updateBooleanField("formSection.enabled", checked)
+                    }
+                  />
+                </div>
+
+                <div className="grid gap-4 rounded-xl border border-slate-200 p-4 dark:border-white/10">
+                  <Field
+                    label="Etiqueta superior"
+                    value={landing.formSection?.eyebrow || ""}
+                    onChange={(value) =>
+                      updateField("formSection.eyebrow", value)
+                    }
+                  />
+
+                  <Field
+                    label="Titulo del componente"
+                    value={landing.formSection?.title || ""}
+                    onChange={(value) =>
+                      updateField("formSection.title", value)
+                    }
+                  />
+
+                  <Field
+                    label="Subtitulo"
+                    value={landing.formSection?.subtitle || ""}
+                    onChange={(value) =>
+                      updateField("formSection.subtitle", value)
+                    }
+                  />
+
+                  <TextareaField
+                    label="Parrafo de texto"
+                    value={landing.formSection?.description || ""}
+                    onChange={(value) =>
+                      updateField("formSection.description", value)
+                    }
+                  />
+                </div>
+
                 <Field
                   label="Script URL"
                   value={landing.form?.scriptUrl || ""}
@@ -1790,7 +1997,7 @@ ${accordionBootstrapScript}
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-950">
+      <div className="min-w-0 bg-white dark:bg-slate-950">
         <div className="flex flex-wrap items-end gap-4 border-b border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/[0.035]">
           <PreviewControl
             label="Ancho"
@@ -1849,7 +2056,7 @@ ${accordionBootstrapScript}
             }`}
           >
             <MousePointerClick className="h-3.5 w-3.5" />
-            {liveEditEnabled ? "Live edit activo" : "Live edit"}
+            {liveEditEnabled ? "Edicion visual activa" : "Activar edicion visual"}
           </button>
           {liveEditEnabled ? (
             <p className="max-w-sm text-xs leading-5 text-gray-600 dark:text-slate-300">

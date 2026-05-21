@@ -41,7 +41,6 @@
   "sourceWebsite": "https://www.pcihealth.edu/dental-assistant-hybrid/",
   "catalog": "",
   "programType": "Technology",
-  "schedule": "",
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
@@ -49,12 +48,8 @@
     "subtitle": "",
     "description": "Dental Assistant Hybrid! train for a career as a Dental Assistant in as little as nine months with PCIâ€™s Hybrid Dental Assistant Program. Call 214-630-0568 to enroll today!",
     "supportText": "",
-    "modality": "Hybrid",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "In as little as 9 months",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -95,31 +90,6 @@
       "value": "Accredited by ACCSC; approved and regulated by Texas Workforce Commission â€“ TWC Career Schools and Colleges Section"
     }
   ],
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "image": "",
-    "items": [
-      {
-        "title": "Dental Assistant",
-        "description": "Perform clinical and administrative duties in dental offices.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Dental Hygienist Assistant",
-        "description": "Support hygienists with procedures and patient care tasks.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Dental Receptionist",
-        "description": "Manage scheduling, patient coordination and front-desk tasks using dental software.",
-        "url": "",
-        "image": ""
-      }
-    ]
-  },
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
@@ -148,36 +118,6 @@
         "description": "Opens pathways to roles such as Dental Assistant, Dental Hygienist Assistant, and Dental Receptionist.",
         "url": "",
         "image": ""
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Student Support",
-    "videoUrl": "https://www.youtube.com/embed/nEylivLwVQE?si=6Wi2H0c3vmvrRV1Z",
-    "items": [
-      {
-        "title": "Career services",
-        "text": "Support with job searching strategies.",
-        "description": "Support with job searching strategies.",
-        "icon": ""
-      },
-      {
-        "title": "Resume writing",
-        "text": "Help preparing professional resumes tailored to healthcare roles.",
-        "description": "Help preparing professional resumes tailored to healthcare roles.",
-        "icon": ""
-      },
-      {
-        "title": "Interview practice",
-        "text": "Guidance and practice to prepare for job interviews.",
-        "description": "Guidance and practice to prepare for job interviews.",
-        "icon": ""
-      },
-      {
-        "title": "Advising and student support",
-        "text": "Access to advisors and a supportive learning environment.",
-        "description": "Access to advisors and a supportive learning environment.",
-        "icon": ""
       }
     ]
   },
@@ -228,7 +168,6 @@
     "campus": ""
   },
   "footerScripts": [],
-  "programUrl": "https://www.pcihealth.edu/dental-assistant-hybrid/",
   "shortTitle": "Dental Assistant Hybrid | Hybrid Dental Assistant Program",
   "degreeLevel": "",
   "academicArea": "",

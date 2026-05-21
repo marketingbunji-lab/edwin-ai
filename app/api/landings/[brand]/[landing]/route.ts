@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import { normalizeLandingSchema, type Landing } from "../../../../../lib/data";
+import { serializeLandingForStorage, type Landing } from "../../../../../lib/data";
 
 type Params = Promise<{
   brand: string;
@@ -102,7 +102,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
 
     fs.writeFileSync(
       filePath,
-      JSON.stringify(normalizeLandingSchema(body), null, 2),
+      JSON.stringify(serializeLandingForStorage(body), null, 2),
       "utf8",
     );
 

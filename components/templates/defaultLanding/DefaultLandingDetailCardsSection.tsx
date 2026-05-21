@@ -8,6 +8,7 @@ import {
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Banknote, BookOpenCheck, Hammer } from "lucide-react";
 
 type SectionItem = {
@@ -15,6 +16,8 @@ type SectionItem = {
   description?: string;
   url?: string;
   image?: string;
+  titlePath?: string;
+  descriptionPath?: string;
 };
 
 type Props = {
@@ -133,8 +136,33 @@ export default function DefaultLandingDetailCardsSection({
                   aria-hidden="true"
                   className="absolute left-0 top-0 h-1 w-full bg-[linear-gradient(90deg,var(--landing-secondary),var(--landing-primary-light))]"
                 />
-                {item.title ? <h3 className={landingCardTitleClass}>{item.title}</h3> : null}
-                {item.description ? <p className={landingCardTextClass}>{item.description}</p> : null}
+                {item.title ? (
+                  <h3 className={landingCardTitleClass}>
+                    {item.titlePath ? (
+                      <LiveEditableText
+                        path={item.titlePath}
+                        value={item.title}
+                        liveEdit={liveEdit}
+                        singleLine
+                      />
+                    ) : (
+                      item.title
+                    )}
+                  </h3>
+                ) : null}
+                {item.description ? (
+                  <p className={landingCardTextClass}>
+                    {item.descriptionPath ? (
+                      <LiveEditableText
+                        path={item.descriptionPath}
+                        value={item.description}
+                        liveEdit={liveEdit}
+                      />
+                    ) : (
+                      item.description
+                    )}
+                  </p>
+                ) : null}
                 {item.url ? (
                   <a
                     href={item.url}

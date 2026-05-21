@@ -41,7 +41,6 @@
   "sourceWebsite": "https://www.pcihealth.edu/medical-assistant/",
   "catalog": "",
   "programType": "Specialization",
-  "schedule": "hybrid",
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
@@ -49,12 +48,8 @@
     "subtitle": "",
     "description": "Medical Assistant! PCI medical assistant training will prepare you i as little as 9 months!",
     "supportText": "",
-    "modality": "Hybrid",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "As little as 9 months",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -95,37 +90,6 @@
       "value": "ACCSC accredited; Approved by Texas Workforce Commission"
     }
   ],
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
-    "items": [
-      {
-        "title": "Medical Assistant",
-        "description": "Prepare for clinical and administrative responsibilities in medical offices and clinics.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Clinic Assistant",
-        "description": "Support clinic operations and patient care under the supervision of healthcare professionals.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Medical Administrative Office Assistant",
-        "description": "Work on scheduling, patient records and front-office duties using EHR systems.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Phlebotomy / Physical Therapy Aide (specializations)",
-        "description": "Opportunities to specialize in areas such as phlebotomy or physical therapy assistance based on program tracks.",
-        "url": "",
-        "image": ""
-      }
-    ]
-  },
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
@@ -154,31 +118,6 @@
         "description": "Access to job search strategies, resume writing, interviewing practice and ongoing student support.",
         "url": "",
         "image": ""
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Student Support",
-    "description": "PCI provides a supportive environment with services to help students succeed academically and professionally, from enrollment through career placement.",
-    "videoUrl": "https://www.pcihealth.edu/vid/PCI_Kyla_480.mp4",
-    "items": [
-      {
-        "title": "Career Services",
-        "text": "Job search assistance, employer connections and placement support.",
-        "description": "Job search assistance, employer connections and placement support.",
-        "icon": ""
-      },
-      {
-        "title": "Career preparation",
-        "text": "Resume writing and interviewing practice to prepare for employment.",
-        "description": "Resume writing and interviewing practice to prepare for employment.",
-        "icon": ""
-      },
-      {
-        "title": "Advising and student support",
-        "text": "Ongoing advising and a supportive campus community throughout training.",
-        "description": "Ongoing advising and a supportive campus community throughout training.",
-        "icon": ""
       }
     ]
   },
@@ -244,7 +183,6 @@
     "verityLeadPostUrl": "https://api.verityiq.com/api/leadpost"
   },
   "footerScripts": [],
-  "programUrl": "https://www.pcihealth.edu/medical-assistant/",
   "shortTitle": "Medical Assistant | Medical Assistant Training",
   "degreeLevel": "",
   "academicArea": "",

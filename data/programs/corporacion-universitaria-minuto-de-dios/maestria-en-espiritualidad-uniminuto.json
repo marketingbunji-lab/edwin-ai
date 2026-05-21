@@ -25,9 +25,14 @@
   "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/maestria-en-espiritualidad",
   "catalog": "",
   "programType": "Maestría",
-  "schedule": "",
   "hero": {
     "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
     "eyebrow": "Virtual",
     "highlight": "",
     "title": "Maestría en Espiritualidad",
@@ -35,11 +40,9 @@
     "description": "Áreas de conocimiento: Artes y Humanidades",
     "supportText": "",
     "modality": "Virtual",
-    "semesterPrice": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio otorgado por la sede $ 3.791.900",
     "price": "$ 7.583.800",
     "discountedPrice": "$3.791.900",
     "discountPercentage": "50%",
-    "duration": "4 Semestres",
     "primaryCta": {
       "label": "Solicita informacion",
       "url": "#form"
@@ -85,26 +88,14 @@
       "value": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años"
     }
   ],
-  "opportunityToWork": {
-    "title": "Oportunidades laborales",
-    "subtitle": "",
-    "image": "",
-    "items": []
-  },
   "whyStudy": {
-    "title": "Por que estudiar este programa",
+    "title": "",
     "description": "",
     "image": "",
-    "items": []
-  },
-  "supportSection": {
-    "title": "Acompanamiento al estudiante",
-    "description": "",
-    "videoUrl": "",
     "items": []
   },
   "benefits": {
-    "title": "Beneficios del programa",
+    "title": "",
     "items": []
   },
   "cta": {
@@ -116,8 +107,8 @@
   "form": {
     "title": "Solicita informacion",
     "description": "Completa el formulario y nuestro equipo te contactara pronto.",
-    "scriptUrl": "",
-    "scriptCode": "",
+    "scriptUrl": "<script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>",
+    "scriptCode": "<div role=\"main\" id=\"ms-innovaciones-pastorales-40123212338dd4e7c1b3\"></div>\n               <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>",
     "formId": "",
     "programName": "Maestría en Espiritualidad",
     "campus": "Uniminuto",
@@ -138,13 +129,12 @@
   "footerScripts": [],
   "externship": {
     "enabled": false,
-    "title": "Practicas profesionales",
+    "title": "",
     "description": "",
     "image": "",
     "hours": "",
     "partners": []
   },
-  "programUrl": "https://www.uniminuto.edu/oferta-academica/programa/maestria-en-espiritualidad",
   "shortTitle": "Maestría en Espiritualidad | Uniminuto",
   "degreeLevel": "",
   "academicArea": "Artes y Humanidades",
@@ -205,7 +195,7 @@
   "overview": {
     "title": "Conoce el programa",
     "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-04/B2_M_espiritualidad-%28640x640%29%20%281%29.jpg?itok=GjX2K55N"
+    "image": "https://lqpqgjwxvhjttgxyhsih.supabase.co/storage/v1/object/public/edwin-ai-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/asset-2026-05-21T14-35-35-179Z.png"
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -236,41 +226,41 @@
   },
   "handsOnTraining": {
     "enabled": false,
-    "title": "Entrenamiento practico",
+    "title": "",
     "description": "",
     "items": []
   },
   "careerOutcomes": {
-    "title": "Oportunidades laborales",
+    "title": "",
     "subtitle": "",
     "image": "",
     "items": []
   },
   "studentSupport": {
-    "title": "Acompanamiento al estudiante",
+    "title": "",
     "description": "",
     "videoUrl": "",
     "items": []
   },
   "admissions": {
-    "title": "Requisitos de admision",
-    "description": "Requisitos y proceso de admisión detallados para aspirantes, incluyendo documentación y pasos del proceso.",
+    "title": "Documentos de admision",
+    "description": "",
     "items": [
       {
-        "title": "Requisitos de ingreso",
-        "description": "Ser profesional en cualquier área (preferiblemente afines a ciencias administrativas, sociales, económicas o similares). Fotocopia del diploma o acta de grado, fotocopia de documento de identidad ampliada al 150%, certificado de afiliación a EPS o Sisbén (no mayor a 30 días), pago derechos de inscripción, contrato de matrícula.",
+        "title": "",
+        "description": "Título de pregrado (Fotocopia del diploma o acta de grado profesional universitario)",
         "url": "",
         "image": ""
       },
       {
-        "title": "Perfil del aspirante",
-        "description": "Tener sensibilidad para trabajar con y para las personas, aprendizaje autónomo, trabajo en equipo y acceso a PC o móvil con conexión a internet.",
+        "title": "",
+        "description": "Fotocopia de documento de identidad",
         "url": "",
         "image": ""
       },
       {
-        "title": "Proceso de admisión",
-        "description": "Registro en línea, presentación de documentos requeridos, entrevista con el coordinador del programa y pago de matrícula. El proceso completo toma aproximadamente 2 semanas.",
+        "title": "",
+        "description": "Certificado de afiliación a la EPS",
         "url": "",
         "image": ""
       }
@@ -278,24 +268,24 @@
   },
   "financialAid": {
     "enabled": true,
-    "title": "Opciones de ayuda financiera",
-    "description": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
+    "title": "Inversión y financiamiento",
+    "description": "",
     "items": [
       {
-        "title": "Descuentos de lanzamiento",
-        "description": "Para el primer semestre de vinculación se otorgará un 50% de descuento por lanzamiento a todo el público.",
+        "title": "Valor semestre oficial $7.583.800",
+        "description": "Valor primer semestre subsidiado (50% de descuento lanzamiento) $3.791.900",
         "url": "",
         "image": ""
       },
       {
-        "title": "Subsidios por grupo",
-        "description": "Incorporados eudistas y colaboradores OMD: 50%; Externos: 25%; Comunidades religiosas o sacerdotes diocesanos y grupos de oración: 35%.",
+        "title": "Para los semestres posteriores",
+        "description": "* Incorporados eudistas (de cualquier provincia) y/o colaboradores OMD: 50%\n* Externos: 25%\n* Comunidades religiosas o sacerdotes diocesanos: 35%\n* Grupos de oración: 35%",
         "url": "",
         "image": ""
       },
       {
-        "title": "Becas y financiamiento",
-        "description": "Becas y descuentos disponibles; financiamiento de hasta el 100% de los estudios.",
+        "title": "Financiación de hasta el 100% de tus estudios",
+        "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
         "url": "",
         "image": ""
       }
@@ -344,32 +334,39 @@
   "language": "es",
   "graduateProfile": {
     "title": "Perfil del egresado",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/land.png",
+    "image": "https://lqpqgjwxvhjttgxyhsih.supabase.co/storage/v1/object/public/edwin-ai-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/asset-2026-05-21T15-08-12-225Z.png",
     "items": [
       {
-        "title": "Vida espiritual cristiana",
+        "title": "",
         "description": "Caracterizar los elementos constitutivos de la vida espiritual cristiana con sus dinámicas particulares y problemáticas.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Discernimiento y maduración espiritual",
+        "title": "",
         "description": "Acompañar procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Procesos de acompañamiento renovadores",
+        "title": "",
         "description": "Construir procesos de acompañamiento sólidos y renovadores orientados al crecimiento espiritual.",
         "url": "",
         "image": ""
       },
       {
-        "title": "Respuesta a los tiempos actuales",
+        "title": "",
         "description": "Responder a los requerimientos de los tiempos actuales con criterio, sensibilidad social y vocación clara.",
         "url": "",
         "image": ""
       }
     ]
+  },
+  "formSection": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador."
   }
 }

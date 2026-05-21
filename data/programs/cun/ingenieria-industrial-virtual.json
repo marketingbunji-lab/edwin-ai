@@ -8,7 +8,6 @@
   "title": "Industrial Engineering",
   "fullTitle": "Undergraduate in Industrial Engineering (Virtual Mode)",
   "programType": "Undergraduate",
-  "schedule": "flexible",
   "hero": {
     "eyebrow": "Undergraduate · Virtual Modality",
     "highlight": "100% virtual",
@@ -16,12 +15,8 @@
     "subtitle": "",
     "description": "Trains professionals capable of designing, managing and improving productive and administrative processes, implementing technological innovation to increase organizational efficiency.",
     "supportText": "Enroll now and access scholarships and credits",
-    "modality": "Virtual",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -60,27 +55,6 @@
       {
         "title": "Respaldo institucional y registro SNIES",
         "description": "Program supervised by the Ministry of National Education with resolutions and SNIES records for each training cycle."
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Soporte y recursos",
-    "videoUrl": "",
-    "items": [
-      {
-        "title": "Scholarships and funding",
-        "description": "Advice to access academic, sports and cultural scholarships, and guidance on credits such as ICETEX.",
-        "icon": ""
-      },
-      {
-        "title": "Virtual platform",
-        "description": "Virtual environment that facilitates autonomous and collaborative learning with interactive materials and activities.",
-        "icon": ""
-      },
-      {
-        "title": "Academic accompaniment",
-        "description": "Wellness services, internships, and vocational guidance to support your training process.",
-        "icon": ""
       }
     ]
   },
@@ -128,13 +102,7 @@
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/cun/ingenieria-industrial-virtual",
-  "programUrl": "/cun/ingenieria-industrial-virtual",
   "catalog": "",
   "shortTitle": "Industrial Engineering",
   "degreeLevel": "",

@@ -11,6 +11,9 @@ import {
   landingTwoColumnClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 
 type Props = {
   eyebrow: string;
@@ -22,6 +25,7 @@ type Props = {
   hoursLabel: string;
   partners: string[];
   partnerLabel: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingExternshipSection({
@@ -34,6 +38,7 @@ export default function DefaultLandingExternshipSection({
   hoursLabel,
   partners,
   partnerLabel,
+  liveEdit,
 }: Props) {
   const validPartners = partners.filter((partner) => partner.trim());
   const hasRenderableContent = Boolean(
@@ -67,6 +72,9 @@ export default function DefaultLandingExternshipSection({
                 eyebrow={eyebrow}
                 title={title}
                 description={description}
+                liveEdit={liveEdit}
+                titlePath="externship.title"
+                descriptionPath="externship.description"
               />
             </div>
           )}
@@ -77,6 +85,9 @@ export default function DefaultLandingExternshipSection({
                 eyebrow={eyebrow}
                 title={title}
                 description={description}
+                liveEdit={liveEdit}
+                titlePath="externship.title"
+                descriptionPath="externship.description"
               />
             ) : null}
 
@@ -84,21 +95,41 @@ export default function DefaultLandingExternshipSection({
               {hours ? (
                 <article className={landingCardClass}>
                   <p className={landingSectionKickerClass}>{hoursLabel}</p>
-                  <h3 className={landingCardTitleClass}>{hours}</h3>
+                  <h3 className={landingCardTitleClass}>
+                    <LiveEditableText
+                      path="externship.hours"
+                      value={hours}
+                      liveEdit={liveEdit}
+                      singleLine
+                    />
+                  </h3>
                 </article>
               ) : null}
 
               {validPartners.map((partner, index) => (
                 <article className={landingCardClass} key={`${partner}-${index}`}>
                   <p className={landingSectionKickerClass}>{partnerLabel}</p>
-                  <h3 className={landingCardTitleClass}>{partner}</h3>
+                  <h3 className={landingCardTitleClass}>
+                    <LiveEditableText
+                      path={`externship.partners.${index}`}
+                      value={partner}
+                      liveEdit={liveEdit}
+                      singleLine
+                    />
+                  </h3>
                 </article>
               ))}
             </div>
 
             {!image && !hours && validPartners.length === 0 && description ? (
               <div className={landingCardClass}>
-                <p className={landingCardTextClass}>{description}</p>
+                <p className={landingCardTextClass}>
+                  <LiveEditableText
+                    path="externship.description"
+                    value={description}
+                    liveEdit={liveEdit}
+                  />
+                </p>
               </div>
             ) : null}
           </div>

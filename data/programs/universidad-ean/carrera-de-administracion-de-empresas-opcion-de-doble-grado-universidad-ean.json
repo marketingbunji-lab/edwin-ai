@@ -34,7 +34,6 @@
   "sourceWebsite": "https://universidadean.edu.co/programas/carreras-profesionales/carrera-de-administracion-de-empresas",
   "catalog": "",
   "programType": "Pregrado",
-  "schedule": "",
   "hero": {
     "eyebrow": "(opción de doble grado) | Universidad Ean",
     "highlight": "",
@@ -42,12 +41,8 @@
     "subtitle": "",
     "description": " (opción de doble grado) | Universidad Ean",
     "supportText": "",
-    "modality": "Presencial y virtual",
-    "semesterPrice": "$10.260.000 (tarifa semestral 2026)",
-    "price": "$10.260.000 (tarifa semestral 2026)",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "Ocho (8) semestres (144 créditos académicos)",
     "primaryCta": {
       "label": "Recibe más información",
       "url": "#form"
@@ -103,12 +98,6 @@
     "image": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Oportunidades laborales",
-    "subtitle": "",
-    "image": "",
-    "items": []
-  },
   "whyStudy": {
     "title": "Por que estudiar este programa",
     "description": "",
@@ -146,12 +135,6 @@
     "downloadUrl": "",
     "buttonUrl": "",
     "buttonTitle": "",
-    "items": []
-  },
-  "supportSection": {
-    "title": "Acompanamiento al estudiante",
-    "description": "",
-    "videoUrl": "https://www.youtube.com/embed/nFtU7ZBpuBM?si=3bCcdsorHig0YP0_",
     "items": []
   },
   "benefits": {
@@ -225,7 +208,6 @@
     "hybridAvailable": false,
     "onCampusAvailable": true
   },
-  "programUrl": "https://universidadean.edu.co/programas/carreras-profesionales/carrera-de-administracion-de-empresas",
   "shortTitle": "Administración de Empresas (doble grado)",
   "degreeLevel": "Profesional",
   "academicArea": "",

@@ -8,7 +8,6 @@
   "title": "EMT Program",
   "fullTitle": "Emergency Medical Technician (EMT) Training Program",
   "programType": "Technology",
-  "schedule": "flexible",
   "hero": {
     "eyebrow": "Transforming Tomorrow's Heroes",
     "highlight": "Comprehensive EMT Training in Orlando",
@@ -16,12 +15,8 @@
     "subtitle": "",
     "description": "Prepare for Florida State and National EMT Certification with hands-on, interactive training designed for working professionals.",
     "supportText": "Flexible schedules including day, night and weekend classes to fit your lifestyle.",
-    "modality": "In-person with flipped classroom model",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -80,27 +75,6 @@
       }
     ]
   },
-  "supportSection": {
-    "title": "Student Support and Resources",
-    "videoUrl": "",
-    "items": [
-      {
-        "title": "Clinical Compliance",
-        "description": "Health, immunization and background checks ensure safe clinical experiences.",
-        "icon": "medical-check"
-      },
-      {
-        "title": "CPR Certification Included",
-        "description": "American Heart Association CPR certification provided during the program.",
-        "icon": "heart-pulse"
-      },
-      {
-        "title": "Admissions Assistance",
-        "description": "Dedicated advisors ready to guide you through application and financial aid.",
-        "icon": "headset"
-      }
-    ]
-  },
   "benefits": {
     "title": "Program Benefits",
     "items": [
@@ -145,13 +119,7 @@
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/omi/orlando-emt-program",
-  "programUrl": "/omi/orlando-emt-program",
   "catalog": "",
   "shortTitle": "EMT Program",
   "degreeLevel": "",

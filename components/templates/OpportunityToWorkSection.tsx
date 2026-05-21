@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Landing } from "@/lib/data";
 import { BriefcaseBusiness } from "lucide-react";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 import {
   landingContainerClass,
   landingSectionDescriptionClass,
@@ -13,25 +16,59 @@ type Props = {
   eyebrow: string;
   primaryColor: string;
   secondaryColor: string;
+  liveEdit?: LandingLiveEditConfig;
+  basePath?: "opportunityToWork" | "careerOutcomes";
 };
 
-function getItems(items?: NonNullable<Landing["opportunityToWork"]>["items"]) {
+function getItems(
+  items?: NonNullable<Landing["opportunityToWork"]>["items"],
+  basePath: "opportunityToWork" | "careerOutcomes" = "careerOutcomes",
+) {
   if (!Array.isArray(items)) {
     return [];
   }
 
   return items
-    .map((item) => {
+    .map((item, index) => {
       if (typeof item === "string") {
-        return item.trim();
+        const value = item.trim();
+
+      return value
+          ? {
+              title: "",
+              description: value,
+              titlePath: "",
+              descriptionPath: `${basePath}.items.${index}`,
+            }
+          : null;
       }
 
-      return [item?.title, item?.description || item?.content || item?.text]
-        .filter(Boolean)
-        .join(": ")
-        .trim();
+      const title = item?.title?.trim() || "";
+      const description =
+        item?.description?.trim() ||
+        item?.content?.trim() ||
+        item?.text?.trim() ||
+        "";
+
+      return title || description
+        ? {
+            title,
+            description,
+            titlePath: `${basePath}.items.${index}.title`,
+            descriptionPath: `${basePath}.items.${index}.description`,
+          }
+        : null;
     })
-    .filter(Boolean);
+    .filter(
+      (
+        item,
+      ): item is {
+        title: string;
+        description: string;
+        titlePath: string;
+        descriptionPath: string;
+      } => Boolean(item),
+    );
 }
 
 export default function OpportunityToWorkSection({
@@ -39,11 +76,13 @@ export default function OpportunityToWorkSection({
   eyebrow,
   primaryColor,
   secondaryColor,
+  liveEdit,
+  basePath = "careerOutcomes",
 }: Props) {
   const title = opportunityToWork?.title?.trim() ?? "";
   const subtitle = opportunityToWork?.subtitle?.trim() ?? "";
   const image = opportunityToWork?.image?.trim() ?? "";
-  const items = getItems(opportunityToWork?.items);
+  const items = getItems(opportunityToWork?.items, basePath);
   const hasRenderableContent = Boolean(subtitle || image || items.length > 0);
 
   if (!hasRenderableContent) {
@@ -82,13 +121,22 @@ export default function OpportunityToWorkSection({
 
             {title ? (
               <h2 className={landingSectionTitleClass}>
-                {title}
+                <LiveEditableText
+                  path={`${basePath}.title`}
+                  value={title}
+                  liveEdit={liveEdit}
+                  singleLine
+                />
               </h2>
             ) : null}
 
             {subtitle ? (
               <p className={`${landingSectionDescriptionClass} mt-[18px]`}>
-                {subtitle}
+                <LiveEditableText
+                  path={`${basePath}.subtitle`}
+                  value={subtitle}
+                  liveEdit={liveEdit}
+                />
               </p>
             ) : null}
           </div>
@@ -106,7 +154,24 @@ export default function OpportunityToWorkSection({
                   style={{ backgroundColor: secondaryColor }}
                 />
                 <p className="m-0 text-lg font-bold leading-8 text-slate-900">
-                  {item}
+                  {item.title ? (
+                    <>
+                      <LiveEditableText
+                        path={item.titlePath}
+                        value={item.title}
+                        liveEdit={liveEdit}
+                        singleLine
+                      />
+                      {item.description ? ": " : ""}
+                    </>
+                  ) : null}
+                  {item.description ? (
+                    <LiveEditableText
+                      path={item.descriptionPath}
+                      value={item.description}
+                      liveEdit={liveEdit}
+                    />
+                  ) : null}
                 </p>
               </div>
             ))}

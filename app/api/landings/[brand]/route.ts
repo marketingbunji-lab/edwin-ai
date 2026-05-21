@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import {
-  normalizeLandingSchema,
+  serializeLandingForStorage,
   type Landing,
   type ProgramInfoItem,
 } from "../../../../lib/data";
@@ -379,7 +379,7 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
 
     fs.writeFileSync(
       filePath,
-      JSON.stringify(normalizeLandingSchema(landingData), null, 2),
+      JSON.stringify(serializeLandingForStorage(landingData), null, 2),
       "utf8",
     );
 

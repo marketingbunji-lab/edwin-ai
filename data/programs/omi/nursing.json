@@ -13,12 +13,8 @@
     "subtitle": "",
     "description": "",
     "supportText": "",
-    "modality": "",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -38,14 +34,8 @@
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/omi/nursing",
   "logoMode": "dark",
-  "programUrl": "/omi/nursing",
   "catalog": "",
   "shortTitle": "Nursing",
   "programType": "",
@@ -127,11 +117,6 @@
   "studentSupport": {
     "title": "Student Support",
     "description": "",
-    "videoUrl": "",
-    "items": []
-  },
-  "supportSection": {
-    "title": "Student Support",
     "videoUrl": "",
     "items": []
   },

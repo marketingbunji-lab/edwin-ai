@@ -1,4 +1,10 @@
-import type { ElementType, FocusEvent, KeyboardEvent, ReactNode } from "react";
+import type {
+  ElementType,
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+  ReactNode,
+} from "react";
 
 export type LandingLiveEditConfig = {
   enabled: boolean;
@@ -46,6 +52,13 @@ export default function LiveEditableText({
     event.currentTarget.blur();
   };
 
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    if (!isEditable) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
     <Component
       className={`${className} ${editableClass}`.trim()}
@@ -59,6 +72,7 @@ export default function LiveEditableText({
               commitValue(event.currentTarget.innerText)
           : undefined
       }
+      onClick={isEditable ? handleClick : undefined}
       onKeyDown={isEditable ? handleKeyDown : undefined}
     >
       {children ?? value}

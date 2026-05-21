@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
-import { normalizeLandingSchema, type Landing } from "../../../../../../lib/data";
+import { serializeLandingForStorage, type Landing } from "../../../../../../lib/data";
 
 type Params = Promise<{
   brand: string;
@@ -68,7 +68,7 @@ export async function POST(_: Request, { params }: { params: Params }) {
     const targetPath = path.join(brandFolder, `${nextSlug}.json`);
     fs.writeFileSync(
       targetPath,
-      JSON.stringify(normalizeLandingSchema(nextLanding), null, 2),
+      JSON.stringify(serializeLandingForStorage(nextLanding), null, 2),
       "utf8",
     );
 

@@ -1,22 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 
 type Item = {
   title: string;
   content: string;
+  titlePath?: string;
+  contentPath?: string;
 };
 
 type Props = {
   items: Item[];
   id?: string;
   className?: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function LandingAccordion({
   items,
   id = "landing-accordion",
   className = "",
+  liveEdit,
 }: Props) {
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -47,7 +54,16 @@ export default function LandingAccordion({
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
               <span className="text-lg font-extrabold leading-6 text-slate-900">
-                {item.title}
+                {item.titlePath ? (
+                  <LiveEditableText
+                    path={item.titlePath}
+                    value={item.title}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
+                ) : (
+                  item.title
+                )}
               </span>
               <span
                 aria-hidden="true"
@@ -67,7 +83,15 @@ export default function LandingAccordion({
               className="border-t border-slate-200 px-6 py-5"
             >
               <p className="m-0 text-base leading-7 text-slate-600">
-                {item.content}
+                {item.contentPath ? (
+                  <LiveEditableText
+                    path={item.contentPath}
+                    value={item.content}
+                    liveEdit={liveEdit}
+                  />
+                ) : (
+                  item.content
+                )}
               </p>
             </div>
           </div>

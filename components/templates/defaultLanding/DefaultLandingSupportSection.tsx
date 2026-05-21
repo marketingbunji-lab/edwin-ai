@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Headphones } from "lucide-react";
 import {
   landingCardClass,
@@ -16,9 +17,16 @@ type Props = {
   title: string;
   description: string;
   videoUrl: string;
-  items: IconTextItem[];
+  items: Array<
+    IconTextItem & {
+      titlePath?: string;
+      textPath?: string;
+    }
+  >;
   isDirectVideoUrl: (url?: string) => boolean;
   liveEdit?: LandingLiveEditConfig;
+  titlePath?: string;
+  descriptionPath?: string;
 };
 
 export default function DefaultLandingSupportSection({
@@ -29,10 +37,12 @@ export default function DefaultLandingSupportSection({
   items,
   isDirectVideoUrl,
   liveEdit,
+  titlePath = "studentSupport.title",
+  descriptionPath = "studentSupport.description",
 }: Props) {
   const hasSupportVideo = Boolean(videoUrl);
 
-  if (!title && !description && !hasSupportVideo && items.length === 0) {
+  if (!description && !hasSupportVideo && items.length === 0) {
     return null;
   }
 
@@ -46,8 +56,8 @@ export default function DefaultLandingSupportSection({
           centered
           icon={<Headphones className="h-7 w-7" />}
           liveEdit={liveEdit}
-          titlePath="supportSection.title"
-          descriptionPath="supportSection.description"
+          titlePath={titlePath}
+          descriptionPath={descriptionPath}
         />
 
         <div
@@ -100,8 +110,29 @@ export default function DefaultLandingSupportSection({
                       className="mb-[18px] h-12 w-12 object-contain"
                     />
                   ) : null}
-                  <h3 className={landingCardTitleClass}>{item.title}</h3>
-                  <p className={landingCardTextClass}>{item.text}</p>
+                  <h3 className={landingCardTitleClass}>
+                    {item.titlePath ? (
+                      <LiveEditableText
+                        path={item.titlePath}
+                        value={item.title || ""}
+                        liveEdit={liveEdit}
+                        singleLine
+                      />
+                    ) : (
+                      item.title
+                    )}
+                  </h3>
+                  <p className={landingCardTextClass}>
+                    {item.textPath ? (
+                      <LiveEditableText
+                        path={item.textPath}
+                        value={item.text || ""}
+                        liveEdit={liveEdit}
+                      />
+                    ) : (
+                      item.text
+                    )}
+                  </p>
                 </article>
               ))}
             </div>

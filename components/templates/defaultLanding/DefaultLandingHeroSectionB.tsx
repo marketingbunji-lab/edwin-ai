@@ -48,6 +48,7 @@ type Props = {
   backgroundImage: string;
   heroOverlayColor: string;
   liveEdit?: LandingLiveEditConfig;
+  showMenu?: boolean;
 };
 
 export default function DefaultLandingHeroSectionB({
@@ -83,6 +84,7 @@ export default function DefaultLandingHeroSectionB({
   backgroundImage,
   heroOverlayColor,
   liveEdit,
+  showMenu = true,
 }: Props) {
   const hiddenProgramFieldName = form.hiddenProgramFieldName?.trim() || "program";
   const hiddenProgramFieldValue = form.programName || fullTitle || title;
@@ -114,12 +116,12 @@ export default function DefaultLandingHeroSectionB({
 
   return (
     <section
-      className="relative overflow-hidden text-[var(--landing-primary-text)]"
+      className="relative overflow-visible text-[var(--landing-primary-text)]"
       style={{ background: heroBackground }}
     >
-      <div className={`${landingContainerClass} pt-5 pb-24 md:pb-32`}>
-        {menuItems.length > 0 ? (
-          <div className="mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-slate-950/15 backdrop-blur-xl p-3 shadow-[0_18px_40px_rgba(2,6,23,0.16)]">
+      <div className={`${landingContainerClass} pt-5 pt-20 pb-24 md:pb-32`}>
+        {showMenu && (menuItems.length > 0 || menuCtaLabel) ? (
+          <div className="sticky top-4 z-50 mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-slate-950/35 p-3 shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl">
             <nav
               aria-label="Navegación de secciones"
               className="flex flex-wrap items-center justify-between gap-4"
@@ -138,7 +140,7 @@ export default function DefaultLandingHeroSectionB({
                     <a
                       key={item.id}
                       href={`#${item.id}`}
-                      className="text-sm font-medium lowercase text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      className="text-sm font-semibold text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {item.label}
                     </a>
@@ -148,7 +150,7 @@ export default function DefaultLandingHeroSectionB({
 
               <a
                 href="#default-form"
-                className="inline-flex items-center rounded-full border border-white/35 bg-white/14 px-4 py-2 text-sm font-semibold lowercase text-white transition hover:bg-white/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="inline-flex items-center rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {menuCtaLabel}
               </a>
@@ -156,7 +158,7 @@ export default function DefaultLandingHeroSectionB({
           </div>
         ) : null}
 
-        <div className="grid items-center gap-14 pb-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
+        <div className="grid items-center gap-14 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
           <div>
             <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
               <LiveEditableText
@@ -213,6 +215,7 @@ export default function DefaultLandingHeroSectionB({
               <DefaultLandingSummaryCardsSection
                 items={summaryItems}
                 embedded
+                liveEdit={liveEdit}
               />
             ) : null}
 
@@ -233,10 +236,10 @@ export default function DefaultLandingHeroSectionB({
               className="pointer-events-none absolute -right-20 -top-20 -z-10 h-48 w-48 rounded-full bg-white/50 blur-3xl"
             />
             <div className="relative mb-5 text-center">
-              
+
             </div>
             <div className="relative">
-              
+
             </div>
           </div>
         </div>

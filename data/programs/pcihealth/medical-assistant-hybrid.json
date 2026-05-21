@@ -16,7 +16,6 @@
   "sourceWebsite": "https://www.pcihealth.edu/medical-assistant-hybrid/",
   "catalog": "",
   "programType": "",
-  "schedule": "",
   "hero": {
     "eyebrow": "Study at PCI Health Training Center",
     "highlight": "",
@@ -24,12 +23,8 @@
     "subtitle": "",
     "description": "",
     "supportText": "",
-    "modality": "",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -44,20 +39,10 @@
     "overlayColor": "#0693e3"
   },
   "programInfo": [],
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
     "image": "",
-    "items": []
-  },
-  "supportSection": {
-    "title": "Student Support",
-    "videoUrl": "",
     "items": []
   },
   "benefits": {
@@ -82,7 +67,6 @@
     "campus": ""
   },
   "footerScripts": [],
-  "programUrl": "https://www.pcihealth.edu/medical-assistant-hybrid/",
   "shortTitle": "Medical Assistant - Hybrid",
   "degreeLevel": "",
   "academicArea": "",

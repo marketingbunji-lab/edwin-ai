@@ -12,6 +12,8 @@ import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText
 type AccordionItem = {
   title: string;
   content: string;
+  titlePath?: string;
+  contentPath?: string;
 };
 
 type Props = {
@@ -39,7 +41,11 @@ export default function DefaultLandingWhyStudySection({
   items,
   liveEdit,
 }: Props) {
-  if (!title && !description && !image && !logo && items.length === 0) {
+  const hasProgramContent = Boolean(
+    title.trim() || description.trim() || image.trim() || items.length > 0,
+  );
+
+  if (!hasProgramContent) {
     return null;
   }
 
@@ -60,7 +66,11 @@ export default function DefaultLandingWhyStudySection({
           />
 
           {items.length > 0 ? (
-            <LandingAccordion items={items} id={`default-why-study-${sectionId}`} />
+            <LandingAccordion
+              items={items}
+              id={`default-why-study-${sectionId}`}
+              liveEdit={liveEdit}
+            />
           ) : null}
         </div>
 

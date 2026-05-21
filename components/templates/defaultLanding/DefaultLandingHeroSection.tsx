@@ -43,6 +43,7 @@ type Props = {
   backgroundImage: string;
   heroOverlayColor: string;
   liveEdit?: LandingLiveEditConfig;
+  showForm?: boolean;
 };
 
 export default function DefaultLandingHeroSection({
@@ -76,6 +77,7 @@ export default function DefaultLandingHeroSection({
   backgroundImage,
   heroOverlayColor,
   liveEdit,
+  showForm = true,
 }: Props) {
   const hiddenProgramFieldName = form.hiddenProgramFieldName?.trim() || "program";
   const hiddenProgramFieldValue = form.programName || fullTitle || title;
@@ -176,19 +178,35 @@ export default function DefaultLandingHeroSection({
               <div className="mb-8 mt-8 row items-end gap-x-4 gap-y-2 text-white">
                 {hasDiscountPricing && hasBasePrice ? (
                   <p className="text-xl mb-2 font-medium leading-none text-white/55 line-through md:text-lg">
-                    {price}
+                    <LiveEditableText
+                      path="hero.price"
+                      value={price}
+                      liveEdit={liveEdit}
+                      singleLine
+                    />
                   </p>
                 ) : null}
 
                 {primaryDisplayedPrice ? (
                   <div className="flex flex-wrap items-end gap-x-3 gap-y-2">
                     <p className="text-4xl font-semibold leading-none tracking-tight text-white md:text-4xl">
-                      {primaryDisplayedPrice}
+                      <LiveEditableText
+                        path={discountedPrice?.trim() ? "hero.discountedPrice" : "hero.price"}
+                        value={primaryDisplayedPrice}
+                        liveEdit={liveEdit}
+                        singleLine
+                      />
                     </p>
 
                     {hasDiscountPricing && hasDiscountBadge ? (
                       <span className="mb-1 inline-flex items-center rounded-full border border-emerald-300/45 bg-emerald-400/18 px-3 py-1 text-sm font-extrabold uppercase tracking-[0.14em] text-white shadow-[0_10px_24px_rgba(16,185,129,0.16)] backdrop-blur">
-                        {discountPercentage} {discountSuffix}
+                        <LiveEditableText
+                          path="hero.discountPercentage"
+                          value={discountPercentage}
+                          liveEdit={liveEdit}
+                          singleLine
+                        />{" "}
+                        {discountSuffix}
                       </span>
                     ) : null}
                   </div>
@@ -200,16 +218,22 @@ export default function DefaultLandingHeroSection({
               <DefaultLandingSummaryCardsSection
                 items={summaryItems}
                 embedded
+                liveEdit={liveEdit}
               />
             ) : null}
 
             {resolutionText ? (
               <p className="mt-4 max-w-[860px] text-[11px] leading-5 text-white/58 md:text-xs">
-                {resolutionText}
+                <LiveEditableText
+                  path="certifications.resolutionText"
+                  value={resolutionText}
+                  liveEdit={liveEdit}
+                />
               </p>
             ) : null}
           </div>
 
+          {showForm ? (
           <div
             id="default-form"
             className="relative isolate overflow-hidden rounded-3xl border border-white/50 bg-white/90 p-6 text-slate-900 shadow-2xl shadow-slate-950/20 backdrop-blur-xl"
@@ -302,6 +326,7 @@ export default function DefaultLandingHeroSection({
               )}
             </div>
           </div>
+          ) : null}
         </div>
       </div>
     </section>

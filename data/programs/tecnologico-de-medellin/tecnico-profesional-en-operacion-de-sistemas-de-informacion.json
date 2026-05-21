@@ -8,7 +8,6 @@
   "title": "Information Systems Operation",
   "fullTitle": "Professional Technician in Information Systems Operation",
   "programType": "Professional Technician",
-  "schedule": "flexible",
   "hero": {
     "eyebrow": "SNIES code: 111470",
     "highlight": "Optimizes information systems for decision making and business competitiveness",
@@ -16,12 +15,8 @@
     "subtitle": "",
     "description": "Trains trained technicians to operate, maintain and support information systems, guaranteeing their availability, security and support for users in business environments.",
     "supportText": "MEN Price: $2,701,000 ⬢ Tec Subsidy: $1,215,000 ⬢ Registration Value: $1,486,000",
-    "modality": "Virtual",
-    "semesterPrice": "Registration fee: $1,486,000 COP",
-    "price": "Registration fee: $1,486,000 COP",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -60,27 +55,6 @@
       {
         "title": "Flexible virtual mode",
         "description": "Study in virtual mode with content and support to adapt it to your pace and availability."
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Support and admissions",
-    "videoUrl": "",
-    "items": [
-      {
-        "title": "Admissions counseling",
-        "description": "Support in the registration process, document review and follow-up until acceptance.",
-        "icon": "chat"
-      },
-      {
-        "title": "Financing options",
-        "description": "Information on institutional subsidies and means of payment. Consult conditions with the educational advisor.",
-        "icon": "finance"
-      },
-      {
-        "title": "Academic and virtual support",
-        "description": "Guidance on access to the virtual platform, academic calendar, institutional user and induction.",
-        "icon": "support"
       }
     ]
   },
@@ -128,13 +102,7 @@
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
-  "programUrl": "/tecnologico-de-medellin/tecnico-profesional-en-operacion-de-sistemas-de-informacion",
   "catalog": "",
   "shortTitle": "Information Systems Operation",
   "degreeLevel": "",

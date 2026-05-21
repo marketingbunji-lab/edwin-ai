@@ -1,6 +1,7 @@
 import LandingAccordion from "@/components/ui/LandingAccordion";
 import { landingContainerClass } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 
 type FaqItem = {
   question?: string;
@@ -11,13 +12,23 @@ type Props = {
   eyebrow: string;
   items: FaqItem[];
   title: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
-export default function DefaultLandingFaqSection({ eyebrow, items, title }: Props) {
-  const validItems = items.filter((item) => item.question?.trim() && item.answer?.trim());
-  const accordionItems = validItems.map((item) => ({
+export default function DefaultLandingFaqSection({
+  eyebrow,
+  items,
+  title,
+  liveEdit,
+}: Props) {
+  const validItems = items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => item.question?.trim() && item.answer?.trim());
+  const accordionItems = validItems.map(({ item, index }) => ({
     title: item.question?.trim() || "",
     content: item.answer?.trim() || "",
+    titlePath: `faq.${index}.question`,
+    contentPath: `faq.${index}.answer`,
   }));
 
   if (!validItems.length) {
@@ -33,7 +44,11 @@ export default function DefaultLandingFaqSection({ eyebrow, items, title }: Prop
           centered
         />
 
-        <LandingAccordion items={accordionItems} id="default-faq" />
+        <LandingAccordion
+          items={accordionItems}
+          id="default-faq"
+          liveEdit={liveEdit}
+        />
       </div>
     </section>
   );

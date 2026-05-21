@@ -26,7 +26,6 @@
   "sourceWebsite": "https://amhealthinstitute.com/programs/associate-of-science-in-nursing/",
   "catalog": "",
   "programType": "Associate Degree",
-  "schedule": "",
   "hero": {
     "eyebrow": "Estudia en PCI Health Training Center",
     "highlight": "",
@@ -34,9 +33,6 @@
     "subtitle": "",
     "description": "This hybrid Associate of Science in Nursing program focuses on wellness, technical nursing skills across the lifespan, critical care concepts and professional development, and prepares graduates to be eligible to sit for the NCLEX-RN. Program approved by the Florida State Board of Nursing.",
     "supportText": "",
-    "modality": "Hybrid",
-    "semesterPrice": "Contact the admissions office for detailed tuition and fee information.",
-    "price": "Contact the admissions office for detailed tuition and fee information.",
     "discountedPrice": "",
     "discountPercentage": "",
     "duration": "24 months",
@@ -89,25 +85,6 @@
     "title": "",
     "image": "",
     "items": []
-  },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "image": "",
-    "items": [
-      {
-        "title": "Entry-level nursing positions",
-        "description": "Graduates are prepared for beginning positions as associate degree nurses in hospitals or comparable healthcare facilities.",
-        "url": "",
-        "image": ""
-      },
-      {
-        "title": "Clinical and community settings",
-        "description": "Opportunities to work in acute care, long-term care and community healthcare environments.",
-        "url": "",
-        "image": ""
-      }
-    ]
   },
   "whyStudy": {
     "title": "Why Study This Program",
@@ -197,37 +174,6 @@
       }
     ]
   },
-  "supportSection": {
-    "title": "Student Support",
-    "description": "",
-    "videoUrl": "https://www.googletagmanager.com/ns.html?id=GTM-TJ6ZCRXX",
-    "items": [
-      {
-        "title": "Student Services",
-        "text": "General student services and support as listed on the site.",
-        "description": "General student services and support as listed on the site.",
-        "icon": ""
-      },
-      {
-        "title": "NCLEX Remediation",
-        "text": "NCLEX remediation resources available.",
-        "description": "NCLEX remediation resources available.",
-        "icon": ""
-      },
-      {
-        "title": "Student Portal and Online Library",
-        "text": "Access to the student portal and online library (Verity Student Online Library).",
-        "description": "Access to the student portal and online library (Verity Student Online Library).",
-        "icon": ""
-      },
-      {
-        "title": "Admission and advising",
-        "text": "Admissions support and resources to start the application online.",
-        "description": "Admissions support and resources to start the application online.",
-        "icon": ""
-      }
-    ]
-  },
   "benefits": {
     "title": "Program Benefits",
     "items": [
@@ -299,7 +245,6 @@
     "hybridAvailable": true,
     "onCampusAvailable": true
   },
-  "programUrl": "https://amhealthinstitute.com/programs/associate-of-science-in-nursing/",
   "shortTitle": "Associate of Science in Nursing",
   "degreeLevel": "Associate",
   "academicArea": "Nursing",

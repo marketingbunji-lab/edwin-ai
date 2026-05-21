@@ -6,6 +6,9 @@ import {
   landingContainerClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 
 type TestimonialItem = {
   name?: string;
@@ -18,16 +21,21 @@ type Props = {
   eyebrow: string;
   title: string;
   items: TestimonialItem[];
+  liveEdit?: LandingLiveEditConfig;
 };
 
 export default function DefaultLandingTestimonialsSection({
   eyebrow,
   title,
   items,
+  liveEdit,
 }: Props) {
-  const validItems = items.filter(
-    (item) => item.name?.trim() || item.role?.trim() || item.quote?.trim(),
-  );
+  const validItems = items
+    .map((item, index) => ({ item, index }))
+    .filter(
+      ({ item }) =>
+        item.name?.trim() || item.role?.trim() || item.quote?.trim(),
+    );
 
   if (!validItems.length) {
     return null;
@@ -43,13 +51,37 @@ export default function DefaultLandingTestimonialsSection({
         />
 
         <div className={landingCardGridClass}>
-          {validItems.map((item, index) => (
+          {validItems.map(({ item, index }) => (
             <article className={landingCardClass} key={`${item.name || "testimonial"}-${index}`}>
-              {item.quote ? <p className={landingCardTextClass}>{item.quote}</p> : null}
-              {item.name ? (
-                <h3 className={`${landingCardTitleClass} mt-[18px]`}>{item.name}</h3>
+              {item.quote ? (
+                <p className={landingCardTextClass}>
+                  <LiveEditableText
+                    path={`testimonials.${index}.quote`}
+                    value={item.quote}
+                    liveEdit={liveEdit}
+                  />
+                </p>
               ) : null}
-              {item.role ? <p className={landingCardTextClass}>{item.role}</p> : null}
+              {item.name ? (
+                <h3 className={`${landingCardTitleClass} mt-[18px]`}>
+                  <LiveEditableText
+                    path={`testimonials.${index}.name`}
+                    value={item.name}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
+                </h3>
+              ) : null}
+              {item.role ? (
+                <p className={landingCardTextClass}>
+                  <LiveEditableText
+                    path={`testimonials.${index}.role`}
+                    value={item.role}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
+                </p>
+              ) : null}
             </article>
           ))}
         </div>

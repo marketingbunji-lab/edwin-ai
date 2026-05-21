@@ -8,7 +8,6 @@
   "title": "Risk Management, Safety and Health at Work",
   "fullTitle": "Undergraduate in Risk Management, Safety and Health at Work (Distance)",
   "programType": "Undergraduate",
-  "schedule": "flexible",
   "hero": {
     "eyebrow": "Faculty of Distance Studies (FAEDIS)",
     "highlight": "SNIES 108241",
@@ -16,12 +15,8 @@
     "subtitle": "",
     "description": "Training of suitable professionals in the administration of means and procedures to recognize, evaluate and control risks that affect the community, production processes and people.",
     "supportText": "Learn about the program and sign up",
-    "modality": "at the distance",
-    "semesterPrice": "",
-    "price": "",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -60,27 +55,6 @@
       {
         "title": "Skills for self-learning",
         "description": "Development of skills for research, critical thinking and autonomous learning in the discipline."
-      }
-    ]
-  },
-  "supportSection": {
-    "title": "Information and support",
-    "videoUrl": "",
-    "items": [
-      {
-        "title": "Inscripciones",
-        "description": "Information about the registration and admission process available on the faculty website.",
-        "icon": "calendar"
-      },
-      {
-        "title": "Perfil profesional",
-        "description": "Training aimed at the management of means and procedures for safety and health at work.",
-        "icon": "user"
-      },
-      {
-        "title": "Curriculum",
-        "description": "Access to subjects and curricular structure through the Study Plan section.",
-        "icon": "book"
       }
     ]
   },
@@ -128,13 +102,7 @@
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
-  "programUrl": "/universidad-nacional-abierta-y-a-distancia/administracion-de-riesgos-seguridad-y-salud-en-el-trabajo-distancia",
   "catalog": "",
   "shortTitle": "Risk Management, Safety and Health at Work",
   "degreeLevel": "",

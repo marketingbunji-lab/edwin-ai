@@ -1,4 +1,7 @@
 import type { LabelValueItem } from "@/lib/data";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 import {
   Award,
   Banknote,
@@ -18,6 +21,7 @@ import {
 type Props = {
   items: LabelValueItem[];
   embedded?: boolean;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 const metricIcons = {
@@ -78,6 +82,7 @@ function getMetricIcon(label?: string) {
 export default function DefaultLandingSummaryCardsSection({
   items,
   embedded = false,
+  liveEdit,
 }: Props) {
   const validItems = items.filter((item) => {
     const label = normalizeLabel(item.label);
@@ -122,6 +127,7 @@ export default function DefaultLandingSummaryCardsSection({
       >
         {validItems.map((item, index) => {
           const Icon = getMetricIcon(item.label);
+          const sourceIndex = items.indexOf(item);
 
           return (
             <div
@@ -137,7 +143,7 @@ export default function DefaultLandingSummaryCardsSection({
                     ? 0
                     : undefined,
               }}
-              key={`${item.label}-${index}`}
+              key={`${item.label}-${sourceIndex}`}
             >
               <span
                 className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl shadow-[0_10px_24px_rgba(15,23,42,0.08)] ${
@@ -154,14 +160,24 @@ export default function DefaultLandingSummaryCardsSection({
                     embedded ? "text-white/68" : "text-[var(--landing-primary-dark)]"
                   }`}
                 >
-                  {item.label}
+                  <LiveEditableText
+                    path={`summaryCards.${sourceIndex}.label`}
+                    value={item.label || ""}
+                    liveEdit={sourceIndex >= 0 ? liveEdit : undefined}
+                    singleLine
+                  />
                 </p>
                 <h3
                   className={`m-0 text-lg font-bold leading-tight tracking-tight ${
                     embedded ? "text-white" : "text-[var(--landing-primary-darkest)]"
                   }`}
                 >
-                  {item.value}
+                  <LiveEditableText
+                    path={`summaryCards.${sourceIndex}.value`}
+                    value={item.value || ""}
+                    liveEdit={sourceIndex >= 0 ? liveEdit : undefined}
+                    singleLine
+                  />
                 </h3>
               </div>
             </div>

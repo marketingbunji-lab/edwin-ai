@@ -13,12 +13,8 @@
     "subtitle": "",
     "description": "High Quality Accredited University",
     "supportText": "At the UAM we build stories with passion!",
-    "modality": "Virtual Mode",
-    "semesterPrice": "$ 2.141.950",
-    "price": "$ 2.141.950",
     "discountedPrice": "",
     "discountPercentage": "",
-    "duration": "6 semestres",
     "primaryCta": {
       "label": "Request Information",
       "url": "#form"
@@ -81,27 +77,6 @@
       }
     ]
   },
-  "supportSection": {
-    "title": "At the UAM we support your training",
-    "videoUrl": "",
-    "items": [
-      {
-        "title": "Financing",
-        "description": "Multiple financing options so you can study without worries",
-        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-01.png"
-      },
-      {
-        "title": "Scholarships",
-        "description": "Scholarship and financial aid programs for outstanding students",
-        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-02.png"
-      },
-      {
-        "title": "Benefits",
-        "description": "Access to resources, digital platforms and network of professionals",
-        "icon": "https://bunjigrowth.io/wp-content/uploads/2026/04/icon-apoyamos-03.png"
-      }
-    ]
-  },
   "benefits": {
     "title": "Some of the benefits you will have with us",
     "items": [
@@ -141,21 +116,14 @@
   },
   "programType": "Technological",
   "footerScripts": [],
-  "schedule": "virtual",
   "certifications": {
     "enabled": false,
     "title": "Accreditations and Certifications",
     "resolutionText": "",
     "items": []
   },
-  "opportunityToWork": {
-    "title": "Career Opportunities",
-    "subtitle": "",
-    "items": []
-  },
   "sourceWebsite": "/uam/tecnologia-gestion-empresas-agroindustriales",
   "logoMode": "dark",
-  "programUrl": "/uam/tecnologia-gestion-empresas-agroindustriales",
   "catalog": "",
   "shortTitle": "Technology in Agroindustrial Business Management",
   "degreeLevel": "",

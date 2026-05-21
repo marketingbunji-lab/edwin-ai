@@ -1,6 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { GraduationCap } from "lucide-react";
 import type { Landing } from "@/lib/data";
+import LiveEditableText, {
+  type LandingLiveEditConfig,
+} from "@/components/editor/LiveEditableText";
 import {
   landingContainerClass,
   landingSectionDescriptionClass,
@@ -13,6 +16,7 @@ type Props = {
   eyebrow: string;
   primaryColor: string;
   secondaryColor: string;
+  liveEdit?: LandingLiveEditConfig;
 };
 
 function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
@@ -21,7 +25,7 @@ function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
   }
 
   return items
-    .map((item) => {
+    .map((item, index) => {
       if (typeof item === "string") {
         const value = item.trim();
 
@@ -29,6 +33,8 @@ function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
           ? {
               title: "",
               description: value,
+              titlePath: "",
+              descriptionPath: `graduateProfile.items.${index}`,
             }
           : null;
       }
@@ -44,6 +50,8 @@ function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
         ? {
             title,
             description,
+            titlePath: `graduateProfile.items.${index}.title`,
+            descriptionPath: `graduateProfile.items.${index}.description`,
           }
         : null;
     })
@@ -53,6 +61,8 @@ function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
       ): item is {
         title: string;
         description: string;
+        titlePath: string;
+        descriptionPath: string;
       } => Boolean(item),
     );
 }
@@ -62,6 +72,7 @@ export default function GraduateProfileSection({
   eyebrow,
   primaryColor,
   secondaryColor,
+  liveEdit,
 }: Props) {
   const title = graduateProfile?.title?.trim() ?? "";
   const image = graduateProfile?.image?.trim() ?? "";
@@ -105,7 +116,16 @@ export default function GraduateProfileSection({
               />
             ) : null}
 
-            {title ? <h2 className={landingSectionTitleClass}>{title}</h2> : null}
+            {title ? (
+              <LiveEditableText
+                as="h2"
+                path="graduateProfile.title"
+                value={title}
+                liveEdit={liveEdit}
+                singleLine
+                className={landingSectionTitleClass}
+              />
+            ) : null}
           </div>
 
           {items.length > 0 ? (
@@ -123,7 +143,16 @@ export default function GraduateProfileSection({
                   <div>
                     {item.title ? (
                       <h3 className="m-0 text-lg font-bold leading-8 text-slate-900">
-                        {item.title}
+                        {item.titlePath ? (
+                          <LiveEditableText
+                            path={item.titlePath}
+                            value={item.title}
+                            liveEdit={liveEdit}
+                            singleLine
+                          />
+                        ) : (
+                          item.title
+                        )}
                       </h3>
                     ) : null}
                     {item.description ? (
@@ -132,7 +161,15 @@ export default function GraduateProfileSection({
                           item.title ? "mt-1" : "mt-0"
                         }`}
                       >
-                        {item.description}
+                        {item.descriptionPath ? (
+                          <LiveEditableText
+                            path={item.descriptionPath}
+                            value={item.description}
+                            liveEdit={liveEdit}
+                          />
+                        ) : (
+                          item.description
+                        )}
                       </p>
                     ) : null}
                   </div>
