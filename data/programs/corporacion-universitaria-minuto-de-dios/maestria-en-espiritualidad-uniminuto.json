@@ -99,10 +99,12 @@
     "items": []
   },
   "cta": {
+    "variant": "minimal",
     "title": "Solicita informacion",
     "description": "¡Inscríbete Gratis! Completa el formulario y un asesor se contactará contigo.",
     "button": "Inscribete ahora",
-    "secondaryButton": ""
+    "secondaryButton": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita informacion",
@@ -195,7 +197,26 @@
   "overview": {
     "title": "Conoce el programa",
     "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
-    "image": "https://lqpqgjwxvhjttgxyhsih.supabase.co/storage/v1/object/public/edwin-ai-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/asset-2026-05-21T14-35-35-179Z.png"
+    "image": "https://lqpqgjwxvhjttgxyhsih.supabase.co/storage/v1/object/public/edwin-ai-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/asset-2026-05-21T14-35-35-179Z.png",
+    "items": [
+      {
+        "title": "Un programa innovador y único en su modalidad",
+        "description": ""
+      },
+      {
+        "title": "Excelencia Académica",
+        "description": "Cuerpo profesoral integrado por académicos de alto nivel, pedagogos y con amplia trayectoria en los campos teológicos, bíblico, humano y espiritual."
+      },
+      {
+        "title": "Comunidad de Aprendizaje",
+        "description": "Aprende con otros profesionales comprometidos con el liderazgo con propósito y transformación social. Con la experiencia de los eudistas en el mundo de la formación de sacerdotes y laicos."
+      },
+      {
+        "title": "Experiencia sólida en educación virtual desde el 2004, con un modelo pedagógico exitoso ",
+        "description": ""
+      }
+    ],
+    "eyebrow": "Conoce el programa"
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -222,7 +243,8 @@
         "url": "",
         "image": ""
       }
-    ]
+    ],
+    "eyebrow": "Contenido del programa"
   },
   "handsOnTraining": {
     "enabled": false,
@@ -264,7 +286,8 @@
         "url": "",
         "image": ""
       }
-    ]
+    ],
+    "eyebrow": "Admisiones"
   },
   "financialAid": {
     "enabled": true,
@@ -275,21 +298,35 @@
         "title": "Valor semestre oficial $7.583.800",
         "description": "Valor primer semestre subsidiado (50% de descuento lanzamiento) $3.791.900",
         "url": "",
-        "image": ""
+        "image": "",
+        "items": [
+          "Valor primer semestre subsidiado",
+          "50% de descuento lanzamiento",
+          "$3.791.900"
+        ]
       },
       {
         "title": "Para los semestres posteriores",
-        "description": "* Incorporados eudistas (de cualquier provincia) y/o colaboradores OMD: 50%\n* Externos: 25%\n* Comunidades religiosas o sacerdotes diocesanos: 35%\n* Grupos de oración: 35%",
+        "description": "",
         "url": "",
-        "image": ""
+        "image": "",
+        "items": [
+          "Incorporados eudistas (de cualquier provincia) y/o colaboradores OMD: 50%",
+          "Externos: 25%",
+          "Comunidades religiosas o sacerdotes diocesanos: 35%",
+          "Grupos de oración: 35%"
+        ]
       },
       {
         "title": "Financiación de hasta el 100% de tus estudios",
         "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
         "url": "",
-        "image": ""
+        "image": "",
+        "items": []
       }
-    ]
+    ],
+    "variant": "option-b",
+    "eyebrow": "Apoyo financiero"
   },
   "testimonials": [],
   "faq": [

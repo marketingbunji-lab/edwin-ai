@@ -116,41 +116,40 @@ export default function DefaultLandingHeroSectionB({
 
   return (
     <section
-      className="relative overflow-visible text-[var(--landing-primary-text)]"
+      className="relative overflow-hidden text-[var(--landing-primary-text)]"
       style={{ background: heroBackground }}
     >
       <div className={`${landingContainerClass} pt-5 pt-20 pb-24 md:pb-32`}>
         {showMenu && (menuItems.length > 0 || menuCtaLabel) ? (
-          <div className="sticky top-4 z-50 mb-10 overflow-hidden rounded-[28px] border border-white/25 bg-slate-950/35 p-3 shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl">
+          <div className="sticky top-2 z-50 mb-10 overflow-hidden rounded-[24px] border border-white/25 bg-slate-950/35 p-2 shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:top-4 sm:rounded-[28px] sm:p-3">
             <nav
               aria-label="Navegación de secciones"
-              className="flex flex-wrap items-center justify-between gap-4"
+              className="grid w-full items-center gap-3 lg:grid-cols-[auto_minmax(0,1fr)_auto]"
             >
-              <div className="flex items-center gap-4">
-                {logo ? (
-                  <img
-                    src={logo}
-                    alt={brandName}
-                    className="h-12 w-auto max-w-[150px] object-contain object-left"
-                  />
-                ) : null}
+              {logo ? (
+                <img
+                  src={logo}
+                  alt={brandName}
+                  className="h-auto max-w-full object-contain object-left"
+                  style={{ width: "clamp(180px, 24vw, 340px)" }}
+                />
+              ) : null}
 
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                  {menuItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="text-sm font-semibold text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
+              <div className="grid w-full min-w-0 grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 md:flex md:flex-wrap lg:gap-x-5">
+                {menuItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className="min-w-0 max-w-full whitespace-normal break-words text-sm font-semibold leading-snug text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:whitespace-nowrap"
+                  >
+                    {item.label}
+                  </a>
+                ))}
               </div>
 
               <a
                 href="#default-form"
-                className="inline-flex items-center rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="inline-flex min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:justify-self-end"
               >
                 {menuCtaLabel}
               </a>
@@ -158,8 +157,8 @@ export default function DefaultLandingHeroSectionB({
           </div>
         ) : null}
 
-        <div className="grid items-center gap-14 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
-          <div>
+        <div className="grid min-w-0 items-center gap-14 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
+          <div className="min-w-0">
             <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
               <LiveEditableText
                 path="hero.eyebrow"
@@ -176,7 +175,7 @@ export default function DefaultLandingHeroSectionB({
                 value={heroTitle}
                 liveEdit={liveEdit}
                 singleLine
-                className="m-0 block max-w-[940px] text-6xl font-bold leading-tight tracking-tight text-[var(--landing-primary-text)] md:text-8xl"
+                className="m-0 block max-w-full text-5xl font-bold leading-tight tracking-tight text-[var(--landing-primary-text)] sm:max-w-[940px] sm:text-6xl md:text-8xl"
               />
             ) : null}
 
@@ -187,7 +186,7 @@ export default function DefaultLandingHeroSectionB({
                 value={heroSubtitle}
                 liveEdit={liveEdit}
                 singleLine
-                className="mt-[18px] text-2xl font-bold leading-tight tracking-tight text-inherit opacity-90 md:text-3xl"
+                className="mt-[18px] max-w-full text-xl font-bold leading-tight tracking-tight text-inherit opacity-90 sm:text-2xl md:text-3xl"
               />
             ) : null}
 
@@ -197,7 +196,7 @@ export default function DefaultLandingHeroSectionB({
                 path="hero.description"
                 value={heroDescription}
                 liveEdit={liveEdit}
-                className="mt-6 mb-6 block max-w-[720px] text-lg leading-8 text-[var(--landing-primary-text)] opacity-90"
+                className="mt-6 mb-6 block max-w-full text-lg leading-8 text-[var(--landing-primary-text)] opacity-90 sm:max-w-[720px]"
               />
             ) : null}
 
@@ -207,7 +206,7 @@ export default function DefaultLandingHeroSectionB({
                 path="hero.supportText"
                 value={heroSupportText}
                 liveEdit={liveEdit}
-                className="mt-[18px] block max-w-[680px] text-lg leading-8 text-inherit opacity-90"
+                className="mt-[18px] block max-w-full text-lg leading-8 text-inherit opacity-90 sm:max-w-[680px]"
               />
             ) : null}
 
@@ -226,14 +225,14 @@ export default function DefaultLandingHeroSectionB({
             ) : null}
           </div>
 
-          <div>
+          <div className="min-w-0">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.34))]"
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-20 -top-20 -z-10 h-48 w-48 rounded-full bg-white/50 blur-3xl"
+              className="pointer-events-none absolute -right-10 -top-20 -z-10 h-40 w-40 rounded-full bg-white/45 blur-3xl sm:-right-20 sm:h-48 sm:w-48"
             />
             <div className="relative mb-5 text-center">
 

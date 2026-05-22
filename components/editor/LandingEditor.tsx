@@ -49,7 +49,7 @@ type WindowWithSavePicker = Window & {
 
 type EditableLanding = Landing & Record<string, unknown>;
 type EditableRecord = Record<string, unknown>;
-type EditableArrayItem = Record<string, string>;
+type EditableArrayItem = Record<string, string | string[]>;
 type EditableTextArray = string[];
 type EditableProgramInfoField = "key" | "label" | "value";
 type EditableCertificationItem = {
@@ -1342,8 +1342,117 @@ ${accordionBootstrapScript}
               </EditorSection>
             )}
 
+            {landing.overview && (
+              <EditorSection title="Seccion: Conoce el programa">
+                <Field
+                  label="Eyebrow"
+                  value={landing.overview?.eyebrow || ""}
+                  onChange={(value) => updateField("overview.eyebrow", value)}
+                />
+
+                <Field
+                  label="Titulo de seccion"
+                  value={landing.overview?.title || ""}
+                  onChange={(value) => updateField("overview.title", value)}
+                />
+
+                <TextareaField
+                  label="Descripcion"
+                  value={landing.overview?.description || ""}
+                  onChange={(value) =>
+                    updateField("overview.description", value)
+                  }
+                />
+
+                <Field
+                  label="URL imagen de apoyo"
+                  value={landing.overview?.image || ""}
+                  onChange={(value) => updateField("overview.image", value)}
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Items del overview
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("overview.items", {
+                          title: "Nuevo item",
+                          description: "Describe este punto del programa.",
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar item
+                    </button>
+                  </div>
+
+                  {(landing.overview?.items || []).map((item, index) => (
+                    <div key={index} className="admin-panel-soft p-4">
+                      <div className="mb-3 flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                          Item {index + 1}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() => removeArrayItem("overview.items", index)}
+                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Eliminar
+                        </button>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Field
+                          label="Titulo"
+                          value={typeof item === "string" ? "" : item?.title || ""}
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "overview.items",
+                              index,
+                              "title",
+                              value,
+                            )
+                          }
+                        />
+
+                        <TextareaField
+                          label="Parrafo"
+                          value={
+                            typeof item === "string"
+                              ? item
+                              : item?.description || item?.content || item?.text || ""
+                          }
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "overview.items",
+                              index,
+                              "description",
+                              value,
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </EditorSection>
+            )}
+
             {landing.whyStudy && (
               <EditorSection title="Sección: ¿Por qué estudiar?">
+                <Field
+                  label="Eyebrow"
+                  value={landing.whyStudy?.eyebrow || ""}
+                  onChange={(value) => updateField("whyStudy.eyebrow", value)}
+                />
+
                 <Field
                   label="Título de sección"
                   value={landing.whyStudy?.title || ""}
@@ -1448,6 +1557,12 @@ ${accordionBootstrapScript}
 
             {landing.curriculum && (
               <EditorSection title="Sección: Plan de estudios">
+                <Field
+                  label="Eyebrow"
+                  value={landing.curriculum?.eyebrow || ""}
+                  onChange={(value) => updateField("curriculum.eyebrow", value)}
+                />
+
                 <Field
                   label="Título de sección"
                   value={landing.curriculum?.title || ""}
@@ -1576,6 +1691,14 @@ ${accordionBootstrapScript}
             {landing.graduateProfile && (
               <EditorSection title="Sección: Perfil del egresado">
                 <Field
+                  label="Eyebrow"
+                  value={landing.graduateProfile?.eyebrow || ""}
+                  onChange={(value) =>
+                    updateField("graduateProfile.eyebrow", value)
+                  }
+                />
+
+                <Field
                   label="Título de sección"
                   value={landing.graduateProfile?.title || ""}
                   onChange={(value) =>
@@ -1673,6 +1796,14 @@ ${accordionBootstrapScript}
 
             {landing.supportSection && (
               <EditorSection title="Sección: Apoyamos tu carrera">
+                <Field
+                  label="Eyebrow"
+                  value={landing.supportSection?.eyebrow || ""}
+                  onChange={(value) =>
+                    updateField("supportSection.eyebrow", value)
+                  }
+                />
+
                 <Field
                   label="Título de sección"
                   value={landing.supportSection?.title || ""}
@@ -1788,6 +1919,12 @@ ${accordionBootstrapScript}
             {landing.benefits && (
               <EditorSection title="Sección: Beneficios">
                 <Field
+                  label="Eyebrow"
+                  value={landing.benefits?.eyebrow || ""}
+                  onChange={(value) => updateField("benefits.eyebrow", value)}
+                />
+
+                <Field
                   label="Título de sección"
                   value={landing.benefits?.title || ""}
                   onChange={(value) => updateField("benefits.title", value)}
@@ -1889,8 +2026,223 @@ ${accordionBootstrapScript}
               </EditorSection>
             )}
 
+            {landing.financialAid && (
+              <EditorSection title="Seccion: Ayuda financiera">
+                <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Mostrar ayuda financiera
+                    </p>
+                    <p className="mt-1 text-xs leading-5 text-gray-500 dark:text-slate-400">
+                      Activa o desactiva esta seccion en la landing.
+                    </p>
+                  </div>
+
+                  <SwitchField
+                    label="Mostrar ayuda financiera"
+                    checked={Boolean(landing.financialAid?.enabled)}
+                    onChange={(checked) =>
+                      updateBooleanField("financialAid.enabled", checked)
+                    }
+                  />
+                </div>
+
+                <SelectField
+                  label="Version del componente"
+                  value={landing.financialAid?.variant || "default"}
+                  onChange={(value) => updateField("financialAid.variant", value)}
+                  options={[
+                    { value: "default", label: "Default - cards" },
+                    { value: "option-b", label: "B - lista con bullets" },
+                  ]}
+                />
+
+                <Field
+                  label="Eyebrow"
+                  value={landing.financialAid?.eyebrow || ""}
+                  onChange={(value) =>
+                    updateField("financialAid.eyebrow", value)
+                  }
+                />
+
+                <Field
+                  label="Titulo"
+                  value={landing.financialAid?.title || ""}
+                  onChange={(value) => updateField("financialAid.title", value)}
+                />
+
+                <TextareaField
+                  label="Descripcion"
+                  value={landing.financialAid?.description || ""}
+                  onChange={(value) =>
+                    updateField("financialAid.description", value)
+                  }
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Opciones de ayuda
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("financialAid.items", {
+                          title: "Nueva opcion",
+                          description: "Nuevo contenido",
+                          url: "",
+                          image: "",
+                          items: [],
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar opcion
+                    </button>
+                  </div>
+
+                  {(landing.financialAid?.items || []).map((item, index) => {
+                    const bullets =
+                      typeof item === "string" ? [] : item?.items ?? [];
+
+                    return (
+                      <div key={index} className="admin-panel-soft p-4">
+                        <div className="mb-3 flex items-center justify-between">
+                          <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                            Opcion {index + 1}
+                          </p>
+
+                          <button
+                            type="button"
+                            onClick={() =>
+                              removeArrayItem("financialAid.items", index)
+                            }
+                            className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                            Eliminar
+                          </button>
+                        </div>
+
+                        <div className="space-y-3">
+                          <Field
+                            label="Titulo"
+                            value={typeof item === "string" ? "" : item?.title || ""}
+                            onChange={(value) =>
+                              updateArrayItem(
+                                "financialAid.items",
+                                index,
+                                "title",
+                                value,
+                              )
+                            }
+                          />
+
+                          <TextareaField
+                            label="Contenido"
+                            value={
+                              typeof item === "string"
+                                ? item
+                                : item?.description || item?.content || item?.text || ""
+                            }
+                            onChange={(value) =>
+                              updateArrayItem(
+                                "financialAid.items",
+                                index,
+                                "description",
+                                value,
+                              )
+                            }
+                          />
+
+                          <Field
+                            label="URL"
+                            value={typeof item === "string" ? "" : item?.url || ""}
+                            onChange={(value) =>
+                              updateArrayItem(
+                                "financialAid.items",
+                                index,
+                                "url",
+                                value,
+                              )
+                            }
+                          />
+
+                          <div className="rounded-xl border border-slate-200 p-3 dark:border-white/10">
+                            <div className="mb-3 flex items-center justify-between">
+                              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">
+                                Bullets internos
+                              </p>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  addTextArrayItem(
+                                    `financialAid.items.${index}.items`,
+                                    "Nuevo bullet",
+                                  )
+                                }
+                                className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                              >
+                                <Plus className="h-3.5 w-3.5" />
+                                Agregar bullet
+                              </button>
+                            </div>
+
+                            <div className="space-y-2">
+                              {bullets.map((bullet, bulletIndex) => (
+                                <div
+                                  key={bulletIndex}
+                                  className="flex items-center gap-2"
+                                >
+                                  <input
+                                    value={bullet}
+                                    onChange={(event) =>
+                                      updateTextArrayItem(
+                                        `financialAid.items.${index}.items`,
+                                        bulletIndex,
+                                        event.target.value,
+                                      )
+                                    }
+                                    className="admin-input"
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      removeArrayItem(
+                                        `financialAid.items.${index}.items`,
+                                        bulletIndex,
+                                      )
+                                    }
+                                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-500/40 text-red-500"
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </EditorSection>
+            )}
+
             {landing.cta && (
               <EditorSection title="CTA final">
+                <SelectField
+                  label="Version del componente"
+                  value={landing.cta?.variant || "default"}
+                  onChange={(value) => updateField("cta.variant", value)}
+                  options={[
+                    { value: "default", label: "Default - glass" },
+                    { value: "minimal", label: "B - minimalista" },
+                  ]}
+                />
+
                 <Field
                   label="Título CTA"
                   value={landing.cta?.title || ""}
@@ -1901,6 +2253,12 @@ ${accordionBootstrapScript}
                   label="Texto del botón"
                   value={landing.cta?.button || ""}
                   onChange={(value) => updateField("cta.button", value)}
+                />
+
+                <Field
+                  label="URL imagen de fondo"
+                  value={landing.cta?.image || ""}
+                  onChange={(value) => updateField("cta.image", value)}
                 />
               </EditorSection>
             )}

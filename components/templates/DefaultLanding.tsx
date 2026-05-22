@@ -251,6 +251,7 @@ function normalizeDetailCardItems(
         text?: string;
         url?: string;
         image?: string;
+        items?: string[];
       }
   >,
   arrayPath = "curriculum.items",
@@ -268,8 +269,10 @@ function normalizeDetailCardItems(
               description: value,
               url: "",
               image: "",
+              items: [],
               titlePath: "",
               descriptionPath: `${arrayPath}.${index}`,
+              bulletPath: "",
             }
           : null;
       }
@@ -282,8 +285,11 @@ function normalizeDetailCardItems(
         "";
       const url = item?.url?.trim() || "";
       const image = item?.image?.trim() || "";
+      const bullets = Array.isArray(item?.items)
+        ? item.items.map((bullet) => bullet.trim()).filter(Boolean)
+        : [];
 
-      if (!title && !description && !url && !image) {
+      if (!title && !description && !url && !image && bullets.length === 0) {
         return null;
       }
 
@@ -292,8 +298,10 @@ function normalizeDetailCardItems(
         description,
         url,
         image,
+        items: bullets,
         titlePath: `${arrayPath}.${index}.title`,
         descriptionPath: `${arrayPath}.${index}.description`,
+        bulletPath: `${arrayPath}.${index}.items`,
       };
     })
     .filter(
@@ -304,8 +312,10 @@ function normalizeDetailCardItems(
         description: string;
         url: string;
         image: string;
+        items: string[];
         titlePath: string;
         descriptionPath: string;
+        bulletPath: string;
       } => Boolean(item),
     );
 }
@@ -436,6 +446,10 @@ export default function DefaultLanding({
     financialAid.items,
     "financialAid.items",
   );
+  const overviewItems = normalizeDetailCardItems(
+    overview.items,
+    "overview.items",
+  );
   const legalLinks = brand.legalLinks ?? [];
   const campuses = (brand.campuses ?? []).filter(
     (campus) =>
@@ -486,6 +500,8 @@ export default function DefaultLanding({
   const ctaButton = cta.button || "";
   const ctaDescription = cta.description?.trim() || "";
   const ctaSecondaryButton = cta.secondaryButton?.trim() || "";
+  const ctaImage = cta.image?.trim() || "";
+  const ctaVariant = cta.variant === "minimal" ? "minimal" : "default";
   const formTitle = form.title ?? copy.formTitle;
   const formDescription = form.description ?? copy.formDescription;
   const hasAdmissionsSection = Boolean(
@@ -538,7 +554,10 @@ export default function DefaultLanding({
     "";
   const heroVariant = hero.variant || "default";
   const hasOverviewSection = Boolean(
-    overview.title?.trim() || overview.description?.trim() || overview.image?.trim(),
+    overview.title?.trim() ||
+      overview.description?.trim() ||
+      overview.image?.trim() ||
+      overviewItems.length > 0,
   );
   const hasWhyStudySection = Boolean(
     whyStudy.title?.trim() ||
@@ -697,7 +716,7 @@ export default function DefaultLanding({
     );
   return (
     <div
-      className="bg-[#f8fbff] text-slate-900"
+      className="overflow-x-hidden bg-[#f8fbff] text-slate-900"
       style={
         {
           fontFamily,
@@ -725,40 +744,62 @@ export default function DefaultLanding({
         <div className="sticky top-0 z-50 border-b border-white/10 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_88%,transparent)] shadow-[0_18px_48px_rgba(2,6,23,0.22)] backdrop-blur-xl">
           <div className={`${landingContainerClass} py-3`}>
             <nav
-              aria-label="Navegacion de secciones"
-              className="flex flex-wrap items-center justify-between gap-4"
+              aria-label="Navegación de secciones"
+              className="grid w-full grid-cols-[auto_auto] items-center justify-between gap-4 md:grid-cols-[auto_minmax(0,1fr)_auto]"
             >
-              <div className="flex min-w-0 flex-wrap items-center gap-4">
-                {heroLogo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={heroLogo}
-                    alt={brandName}
-                    className="h-11 w-auto max-w-[150px] object-contain object-left"
-                  />
-                ) : null}
+              {heroLogo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={heroLogo}
+                  alt={brandName}
+                  className="h-12 w-auto max-w-[220px] object-contain object-left sm:h-[60px] sm:max-w-[260px] lg:h-[84px] lg:max-w-[340px]"
+                />
+              ) : null}
 
-                {heroMenuItems.length > 0 ? (
-                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {heroMenuItems.length > 0 ? (
+                <div className="hidden min-w-0 flex-wrap items-center gap-x-5 gap-y-2 md:flex lg:gap-x-5">
+                  {heroMenuItems.map((item) => (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      className="whitespace-nowrap text-sm font-semibold leading-snug text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+
+              {heroMenuItems.length > 0 ? (
+                <details className="group relative z-20 block justify-self-end md:hidden">
+                  <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[var(--landing-secondary-light)] bg-[var(--landing-secondary)] text-[var(--landing-secondary-text)] shadow-[0_12px_28px_rgba(2,6,23,0.18)] transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [&::-webkit-details-marker]:hidden">
+                    <span className="sr-only">Abrir menú</span>
+                    <span className="grid gap-1.5">
+                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:translate-y-2 group-open:rotate-45" />
+                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:opacity-0" />
+                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:-translate-y-2 group-open:-rotate-45" />
+                    </span>
+                  </summary>
+                  <div className="absolute right-0 mt-3 grid w-[min(78vw,300px)] gap-1 rounded-2xl border border-white/18 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_94%,transparent)] p-2 shadow-2xl shadow-slate-950/35 backdrop-blur-xl">
                     {heroMenuItems.map((item) => (
                       <a
                         key={item.id}
                         href={`#${item.id}`}
-                        className="text-sm font-semibold text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="rounded-xl px-4 py-3 text-sm font-semibold leading-snug text-white/90 no-underline transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
                         {item.label}
                       </a>
                     ))}
                   </div>
-                ) : null}
-              </div>
+                </details>
+              ) : null}
 
               {ctaButton ? (
                 <a
                   href="#default-form"
-                  className="inline-flex items-center rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="hidden min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:inline-flex lg:justify-self-end"
                 >
-                  {landing.language === "en" ? "Enroll now" : "Inscribete ahora"}
+                  {landing.language === "en" ? "Enroll now" : "Inscríbete ahora"}
                 </a>
               ) : null}
             </nav>
@@ -867,10 +908,11 @@ export default function DefaultLanding({
       {hasOverviewSection ? (
         <div id="landing-overview" className="scroll-mt-24">
           <DefaultLandingOverviewSection
-            eyebrow={copy.overviewEyebrow}
+            eyebrow={overview.eyebrow || ""}
             title={overview.title || ""}
             description={overview.description || ""}
             image={overview.image || ""}
+            items={overviewItems}
             liveEdit={liveEdit}
           />
         </div>
@@ -880,7 +922,7 @@ export default function DefaultLanding({
         <div id="landing-why-study" className="scroll-mt-24">
           <DefaultLandingWhyStudySection
             brandName={brandName}
-            eyebrow={`${copy.whyChoosePrefix} ${brandName}`}
+            eyebrow={whyStudy.eyebrow || ""}
             sectionId={landing.slug}
             title={whyStudy.title || ""}
             description={whyStudy.description || ""}
@@ -897,7 +939,7 @@ export default function DefaultLanding({
         <div id="landing-graduate-profile" className="scroll-mt-24">
           <GraduateProfileSection
             graduateProfile={graduateProfile}
-            eyebrow={copy.graduateProfileEyebrow}
+            eyebrow={graduateProfile.eyebrow || ""}
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             liveEdit={liveEdit}
@@ -909,7 +951,7 @@ export default function DefaultLanding({
         <div id="landing-career-opportunities" className="scroll-mt-24">
           <OpportunityToWorkSection
             opportunityToWork={careerSectionData}
-            eyebrow={copy.careerOpportunitiesEyebrow}
+            eyebrow={careerSectionData?.eyebrow || ""}
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             liveEdit={liveEdit}
@@ -921,7 +963,7 @@ export default function DefaultLanding({
       {hasCurriculumSection ? (
         <div id="landing-curriculum" className="scroll-mt-24">
           <DefaultLandingDetailCardsSection
-            eyebrow={copy.contentEyebrow}
+            eyebrow={curriculum.eyebrow || ""}
             title={curriculum.title || ""}
             description={curriculum.description || ""}
             items={curriculumItems}
@@ -939,7 +981,7 @@ export default function DefaultLanding({
       {hasHandsOnSection ? (
         <div id="landing-hands-on-training" className="scroll-mt-24">
           <DefaultLandingDetailCardsSection
-            eyebrow={copy.experienceEyebrow}
+            eyebrow={handsOnTraining.eyebrow || ""}
             title={handsOnTraining.title || ""}
             description={handsOnTraining.description || ""}
             items={handsOnTrainingItems}
@@ -955,7 +997,7 @@ export default function DefaultLanding({
       {hasExternshipSection ? (
         <div id="landing-externship" className="scroll-mt-24">
           <DefaultLandingExternshipSection
-            eyebrow={copy.externshipEyebrow}
+            eyebrow={externship.eyebrow || ""}
             enabled={Boolean(externship.enabled)}
             title={externship.title || ""}
             description={externship.description || ""}
@@ -972,7 +1014,7 @@ export default function DefaultLanding({
       {hasSupportSection ? (
         <div id="landing-support" className="scroll-mt-24">
           <DefaultLandingSupportSection
-            eyebrow={copy.studentExperienceEyebrow}
+            eyebrow={supportSource.eyebrow || ""}
             title={supportTitle}
             description={supportDescription}
             videoUrl={supportVideoUrl}
@@ -988,7 +1030,7 @@ export default function DefaultLanding({
       {hasBenefitsSection ? (
         <div id="landing-benefits" className="scroll-mt-24">
           <DefaultLandingBenefitsSection
-            eyebrow={copy.benefitsEyebrow}
+            eyebrow={benefits.eyebrow || ""}
             title={benefits.title || ""}
             items={benefitItems}
             liveEdit={liveEdit}
@@ -999,7 +1041,7 @@ export default function DefaultLanding({
       {hasAdmissionsSection ? (
         <div id="landing-admissions" className="scroll-mt-24">
           <DefaultLandingDetailCardsSection
-            eyebrow={copy.contentEyebrow}
+            eyebrow={admissions.eyebrow || ""}
             title={admissions.title || ""}
             description={admissions.description || ""}
             items={admissionsItems}
@@ -1014,11 +1056,11 @@ export default function DefaultLanding({
       {hasFinancialAidSection ? (
         <div id="landing-financial-aid" className="scroll-mt-24">
           <DefaultLandingDetailCardsSection
-            eyebrow={copy.financialSupportEyebrow}
+            eyebrow={financialAid.eyebrow || ""}
             title={financialAid.title || ""}
             description={financialAid.description || ""}
             items={financialAidItems}
-            variant="secondary"
+            variant={financialAid.variant === "option-b" ? "secondary-b" : "secondary"}
             viewMoreLabel={copy.sectionViewMore}
             liveEdit={liveEdit}
             titlePath="financialAid.title"
@@ -1030,7 +1072,7 @@ export default function DefaultLanding({
       {hasTestimonialsSection ? (
         <div id="landing-testimonials" className="scroll-mt-24">
           <DefaultLandingTestimonialsSection
-            eyebrow={copy.studentStoriesEyebrow}
+            eyebrow=""
             title={copy.studentStoriesTitle}
             items={landing.testimonials ?? []}
             liveEdit={liveEdit}
@@ -1041,7 +1083,7 @@ export default function DefaultLanding({
       {hasFaqSection ? (
         <div id="landing-faq" className="scroll-mt-24">
           <DefaultLandingFaqSection
-            eyebrow={copy.faqEyebrow}
+            eyebrow=""
             items={landing.faq ?? []}
             title={copy.faqTitle}
             liveEdit={liveEdit}
@@ -1054,6 +1096,8 @@ export default function DefaultLanding({
         description={ctaDescription}
         button={ctaButton}
         secondaryButton={ctaSecondaryButton}
+        image={ctaImage}
+        variant={ctaVariant}
         hasForm={hasForm && hasCta}
         liveEdit={liveEdit}
       />
@@ -1061,7 +1105,7 @@ export default function DefaultLanding({
       {hasCampusesSection ? (
         <div id="landing-campuses" className="scroll-mt-24">
           <DefaultLandingCampusesSection
-            eyebrow={`${copy.campusesEyebrowPrefix} ${brandName}`}
+            eyebrow=""
             campuses={campuses}
             campusFilters={landing.delivery?.campuses ?? []}
             primaryColor={primaryColor}

@@ -10,6 +10,8 @@ type Props = {
   description: string;
   button: string;
   secondaryButton: string;
+  image: string;
+  variant?: "default" | "minimal";
   hasForm: boolean;
   liveEdit?: LandingLiveEditConfig;
 };
@@ -19,6 +21,8 @@ export default function DefaultLandingCtaSection({
   description,
   button,
   secondaryButton,
+  image,
+  variant = "default",
   hasForm,
   liveEdit,
 }: Props) {
@@ -26,28 +30,69 @@ export default function DefaultLandingCtaSection({
     return null;
   }
 
+  const hasImage = Boolean(image.trim());
+  const isMinimal = variant === "minimal";
+  const contentClassName = isMinimal
+    ? "mx-auto max-w-[980px] px-0 py-0"
+    : "mx-auto max-w-[1060px] rounded-3xl border border-white/20 bg-white/[0.13] px-6 py-12 shadow-[0_30px_90px_rgba(2,6,23,0.36)] backdrop-blur-xl md:px-12 md:py-16";
+  const titleClassName = isMinimal
+    ? "mx-auto max-w-[980px] text-5xl font-bold leading-tight tracking-tight text-white drop-shadow-[0_6px_24px_rgba(2,6,23,0.36)] md:text-7xl"
+    : "mx-auto max-w-[920px] text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl";
+  const descriptionClassName = isMinimal
+    ? "mx-auto mt-6 max-w-[760px] text-xl font-medium leading-8 text-white/90 drop-shadow-[0_4px_18px_rgba(2,6,23,0.28)] md:text-2xl md:leading-9"
+    : "mx-auto mt-6 max-w-[760px] text-xl leading-8 text-white/86 md:text-2xl md:leading-9";
+
   return (
-    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_16%_10%,color-mix(in_srgb,var(--landing-secondary)_34%,transparent),transparent_34%),radial-gradient(circle_at_82%_24%,color-mix(in_srgb,var(--landing-primary-light)_26%,transparent),transparent_34%),linear-gradient(135deg,var(--landing-primary-darkest),#0f2748_48%,var(--landing-primary-dark))] py-24 text-center text-white md:py-32">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.14]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.32) 1px, transparent 1px)",
-          backgroundSize: "52px 52px",
-          maskImage:
-            "radial-gradient(circle at center, black 0%, transparent 72%)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-28 left-1/2 h-72 w-[760px] -translate-x-1/2 rounded-full bg-[var(--landing-secondary)] opacity-25 blur-3xl"
-      />
+    <section
+      className="relative overflow-hidden py-24 text-center text-white md:py-32"
+      style={
+        hasImage
+          ? {
+              backgroundImage: `linear-gradient(135deg, color-mix(in srgb, var(--landing-primary-darkest) 82%, transparent), color-mix(in srgb, var(--landing-primary-dark) 64%, transparent)), url("${image}")`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }
+          : undefined
+      }
+    >
+      {!hasImage ? (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_10%,color-mix(in_srgb,var(--landing-secondary)_34%,transparent),transparent_34%),radial-gradient(circle_at_82%_24%,color-mix(in_srgb,var(--landing-primary-light)_26%,transparent),transparent_34%),linear-gradient(135deg,var(--landing-primary-darkest),#0f2748_48%,var(--landing-primary-dark))]" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.32) 1px, transparent 1px)",
+              backgroundSize: "52px 52px",
+              maskImage:
+                "radial-gradient(circle at center, black 0%, transparent 72%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-28 left-1/2 h-72 w-[760px] -translate-x-1/2 rounded-full bg-[var(--landing-secondary)] opacity-25 blur-3xl"
+          />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,color-mix(in_srgb,var(--landing-secondary)_32%,transparent),transparent_30%),linear-gradient(180deg,rgba(2,6,23,0.14),rgba(2,6,23,0.48))]" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.10]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.34) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px)",
+              backgroundSize: "52px 52px",
+            }}
+          />
+        </>
+      )}
 
       <div className={`${landingContainerClass} relative`}>
-        <div className="mx-auto max-w-[1060px] rounded-3xl border border-white/20 bg-white/[0.13] px-6 py-12 shadow-[0_30px_90px_rgba(2,6,23,0.36)] backdrop-blur-xl md:px-12 md:py-16">
+        <div className={contentClassName}>
           {title ? (
-            <h2 className="mx-auto max-w-[920px] text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+            <h2 className={titleClassName}>
               <LiveEditableText
                 path="cta.title"
                 value={title}
@@ -57,7 +102,7 @@ export default function DefaultLandingCtaSection({
             </h2>
           ) : null}
           {description ? (
-            <p className="mx-auto mt-6 max-w-[760px] text-xl leading-8 text-white/86 md:text-2xl md:leading-9">
+            <p className={descriptionClassName}>
               <LiveEditableText
                 path="cta.description"
                 value={description}

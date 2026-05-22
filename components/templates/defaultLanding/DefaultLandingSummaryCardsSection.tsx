@@ -111,7 +111,7 @@ export default function DefaultLandingSummaryCardsSection({
 
   const card = (
     <article
-      className={`min-h-0 overflow-hidden rounded-2xl border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+      className={`min-h-0 w-full max-w-full overflow-hidden rounded-2xl border-t-4 border-t-[var(--landing-secondary)] p-0 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
         embedded
           ? "border border-white/20 bg-slate-950/15 backdrop-blur-xl"
           : `${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`
@@ -154,7 +154,7 @@ export default function DefaultLandingSummaryCardsSection({
               >
                 <Icon className="h-5 w-5" />
               </span>
-              <div>
+              <div className="min-w-0">
                 <p
                   className={`mb-1.5 text-[11px] font-bold uppercase tracking-[0.08em] ${
                     embedded ? "text-white/68" : "text-[var(--landing-primary-dark)]"
@@ -168,7 +168,7 @@ export default function DefaultLandingSummaryCardsSection({
                   />
                 </p>
                 <h3
-                  className={`m-0 text-lg font-bold leading-tight tracking-tight ${
+                  className={`m-0 break-words text-lg font-bold leading-tight tracking-tight ${
                     embedded ? "text-white" : "text-[var(--landing-primary-darkest)]"
                   }`}
                 >

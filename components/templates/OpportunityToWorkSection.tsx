@@ -13,7 +13,7 @@ import {
 
 type Props = {
   opportunityToWork?: Landing["opportunityToWork"];
-  eyebrow: string;
+  eyebrow?: string;
   primaryColor: string;
   secondaryColor: string;
   liveEdit?: LandingLiveEditConfig;
@@ -82,6 +82,7 @@ export default function OpportunityToWorkSection({
   const title = opportunityToWork?.title?.trim() ?? "";
   const subtitle = opportunityToWork?.subtitle?.trim() ?? "";
   const image = opportunityToWork?.image?.trim() ?? "";
+  const eyebrowText = eyebrow?.trim() ?? "";
   const items = getItems(opportunityToWork?.items, basePath);
   const hasRenderableContent = Boolean(subtitle || image || items.length > 0);
 
@@ -106,13 +107,15 @@ export default function OpportunityToWorkSection({
 
         <div className="grid content-start gap-[18px]">
           <div>
-            <p className={`${landingSectionKickerClass} mb-3 inline-flex items-center gap-2`} style={{ color: primaryColor }}>
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[var(--landing-primary-dark)] shadow-[0_6px_16px_rgba(15,23,42,0.08)] ring-1 ring-[var(--landing-primary-light)]">
-                <BriefcaseBusiness className="h-4 w-4" />
-              </span>
-              {eyebrow}
-            </p>
-            {title ? (
+            {eyebrowText ? (
+              <p className={`${landingSectionKickerClass} mb-3 inline-flex items-center gap-2`} style={{ color: primaryColor }}>
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[var(--landing-primary-dark)] shadow-[0_6px_16px_rgba(15,23,42,0.08)] ring-1 ring-[var(--landing-primary-light)]">
+                  <BriefcaseBusiness className="h-4 w-4" />
+                </span>
+                {eyebrowText}
+              </p>
+            ) : null}
+            {eyebrowText ? (
               <span
                 aria-hidden="true"
                 className="mb-5 block h-1 w-16 rounded-full bg-[var(--landing-primary)]"

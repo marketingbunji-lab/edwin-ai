@@ -35,7 +35,7 @@ export default function DefaultLandingSectionHeader({
   descriptionPath,
   eyebrowPath,
 }: Props) {
-  if (!eyebrow && !title && !description && !icon) {
+  if (!eyebrow && !title && !description) {
     return null;
   }
 
@@ -67,16 +67,8 @@ export default function DefaultLandingSectionHeader({
             eyebrow
           )}
         </p>
-      ) : icon ? (
-        <div
-          className={`mb-4 inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[var(--landing-primary-dark)] shadow-[0_6px_16px_rgba(15,23,42,0.08)] ring-1 ring-[var(--landing-primary-light)] [&_svg]:h-4 [&_svg]:w-4 ${
-            centered ? "mx-auto" : ""
-          }`}
-        >
-          {icon}
-        </div>
       ) : null}
-      {title ? (
+      {eyebrow ? (
         <span
           aria-hidden="true"
           className={`mb-5 block h-1 w-16 rounded-full bg-[var(--landing-primary)] ${

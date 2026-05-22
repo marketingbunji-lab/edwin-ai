@@ -14,7 +14,7 @@ import {
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   items: Array<
     IconTextItem & {

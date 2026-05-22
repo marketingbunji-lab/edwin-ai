@@ -17,7 +17,7 @@ type Props = {
 };
 
 export default function DefaultLandingProgramInfoSection({
-  eyebrow = "Program snapshot",
+  eyebrow = "",
   title = "Program details",
   description = "",
   items,
