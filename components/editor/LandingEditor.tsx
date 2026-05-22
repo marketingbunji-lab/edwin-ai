@@ -242,7 +242,7 @@ export default function LandingEditor({
   const [analyzingColor, setAnalyzingColor] = useState(false);
   const [liveEditEnabled, setLiveEditEnabled] = useState(true);
   const [previewWidth, setPreviewWidth] = useState(1200);
-  const [previewHeight, setPreviewHeight] = useState(820);
+  const [previewHeight, setPreviewHeight] = useState(720);
   const previewContentRef = useRef<HTMLDivElement | null>(null);
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
@@ -747,26 +747,12 @@ ${accordionBootstrapScript}
   };
 
   return (
-    <div className="grid min-w-0 gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <div className="relative z-20 flex min-h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:sticky lg:top-0">
+    <div className="max-h-[calc(100vh-8rem)] grid min-w-0 gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:grid-cols-[320px_minmax(0,1fr)]">
+      <div className="relative z-20 flex max-h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:sticky lg:top-0">
         <div className="border-b border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-50">
             Live editor
           </h2>
-          <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">
-            Edita los textos directamente sobre el preview. Los campos de este
-            panel quedan como ajustes avanzados.
-          </p>
-          <div className="mt-4 rounded-xl border border-[var(--bunji-primary)]/25 bg-[var(--bunji-primary)]/10 p-3 text-xs leading-5 text-gray-700 dark:text-slate-200">
-            <span className="inline-flex items-center gap-2 font-semibold">
-              <MousePointerClick className="h-3.5 w-3.5" />
-              Edicion visual activa
-            </span>
-            <p className="mt-1">
-              Haz click en cualquier texto marcado, ajustalo y sal del campo
-              para actualizar el JSON.
-            </p>
-          </div>
         </div>
 
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
@@ -2026,6 +2012,117 @@ ${accordionBootstrapScript}
               </EditorSection>
             )}
 
+            {landing.admissions && (
+              <EditorSection title="Sección: Admisiones">
+                <Field
+                  label="Eyebrow"
+                  value={landing.admissions?.eyebrow || ""}
+                  onChange={(value) => updateField("admissions.eyebrow", value)}
+                />
+
+                <Field
+                  label="Título"
+                  value={landing.admissions?.title || ""}
+                  onChange={(value) => updateField("admissions.title", value)}
+                />
+
+                <TextareaField
+                  label="Descripción"
+                  value={landing.admissions?.description || ""}
+                  onChange={(value) => updateField("admissions.description", value)}
+                />
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Requisitos
+                    </h4>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem("admissions.items", {
+                          title: "Nuevo requisito",
+                          description: "Nuevo contenido",
+                          url: "",
+                          image: "",
+                        })
+                      }
+                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+                    >
+                      <Plus className="h-3.5 w-3.5" />
+                      Agregar item
+                    </button>
+                  </div>
+
+                  {(landing.admissions?.items || []).map((item, index) => (
+                    <div
+                      key={index}
+                      className="admin-panel-soft p-4"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                          Requisito {index + 1}
+                        </p>
+
+                        <button
+                          type="button"
+                          onClick={() => removeArrayItem("admissions.items", index)}
+                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Eliminar
+                        </button>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Field
+                          label="Título"
+                          value={typeof item === "string" ? "" : item?.title || ""}
+                          onChange={(value) =>
+                            updateArrayItem("admissions.items", index, "title", value)
+                          }
+                        />
+
+                        <TextareaField
+                          label="Contenido"
+                          value={
+                            typeof item === "string"
+                              ? item
+                              : item?.description || item?.content || item?.text || ""
+                          }
+                          onChange={(value) =>
+                            updateArrayItem(
+                              "admissions.items",
+                              index,
+                              "description",
+                              value,
+                            )
+                          }
+                        />
+
+                        <Field
+                          label="URL"
+                          value={typeof item === "string" ? "" : item?.url || ""}
+                          onChange={(value) =>
+                            updateArrayItem("admissions.items", index, "url", value)
+                          }
+                        />
+
+                        <Field
+                          label="URL imagen"
+                          value={typeof item === "string" ? "" : item?.image || ""}
+                          onChange={(value) =>
+                            updateArrayItem("admissions.items", index, "image", value)
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </EditorSection>
+            )}
+
             {landing.financialAid && (
               <EditorSection title="Seccion: Ayuda financiera">
                 <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
@@ -2316,43 +2413,6 @@ ${accordionBootstrapScript}
           </div>
         </div>
 
-        <div className="flex items-center gap-3 border-t border-gray-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
-          <button
-            onClick={saveLanding}
-            disabled={saveDisabled}
-            className="bunji-button-primary rounded-md px-4 py-3 text-sm font-medium shadow-[0_10px_30px_rgba(62,57,137,0.26)] transition hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100"
-            style={{
-              backgroundColor: "var(--bunji-primary)",
-              borderColor: "var(--bunji-primary)",
-              color: "#fff",
-            }}
-          >
-            {saving ? "Guardando..." : "Guardar cambios"}
-          </button>
-
-          <button
-            type="button"
-            onClick={exportPreviewHtml}
-            className="rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-          >
-            <span className="inline-flex items-center gap-2">
-              <FileDown className="h-4 w-4" />
-              Exportar HTML
-            </span>
-          </button>
-
-          <Link
-            href={`/landings/${landing.brand}/${landing.slug}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
-          >
-            <Eye className="h-4 w-4" />
-            Preview
-          </Link>
-
-          {message ? <p className="text-sm text-gray-600 dark:text-slate-300">{message}</p> : null}
-        </div>
       </div>
 
       <div className="min-w-0 bg-white dark:bg-slate-950">
@@ -2404,29 +2464,51 @@ ${accordionBootstrapScript}
             <Laptop className="h-3.5 w-3.5" />
             Desktop
           </button>
-          <button
-            type="button"
-            onClick={() => setLiveEditEnabled((current) => !current)}
-            className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition ${
-              liveEditEnabled
-                ? "border-[var(--bunji-primary)] bg-[var(--bunji-primary)] text-white shadow-[0_10px_24px_rgba(62,57,137,0.22)]"
-                : "border-gray-300 bg-white text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
-            }`}
-          >
-            <MousePointerClick className="h-3.5 w-3.5" />
-            {liveEditEnabled ? "Edicion visual activa" : "Activar edicion visual"}
-          </button>
-          {liveEditEnabled ? (
-            <p className="max-w-sm text-xs leading-5 text-gray-600 dark:text-slate-300">
-              Haz click en los textos marcados, edita y sal del campo para
-              actualizar el JSON.
+          <div className="ml-auto flex flex-wrap items-center gap-3">
+            <button
+              onClick={saveLanding}
+              disabled={saveDisabled}
+              className="bunji-button-primary rounded-md px-4 py-3 text-sm font-medium shadow-[0_10px_30px_rgba(62,57,137,0.26)] transition hover:brightness-110 disabled:opacity-60 disabled:hover:brightness-100"
+              style={{
+                backgroundColor: "var(--bunji-primary)",
+                borderColor: "var(--bunji-primary)",
+                color: "#fff",
+              }}
+            >
+              {saving ? "Guardando..." : "Guardar cambios"}
+            </button>
+
+            <button
+              type="button"
+              onClick={exportPreviewHtml}
+              className="rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+            >
+              <span className="inline-flex items-center gap-2">
+                <FileDown className="h-4 w-4" />
+                Exportar HTML
+              </span>
+            </button>
+
+            <Link
+              href={`/landings/${landing.brand}/${landing.slug}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+            >
+              <Eye className="h-4 w-4" />
+              Preview
+            </Link>
+          </div>
+          {message ? (
+            <p className="basis-full text-sm text-gray-600 dark:text-slate-300 lg:basis-auto">
+              {message}
             </p>
           ) : null}
         </div>
 
-        <div className="max-h-[calc(100vh-240px)] overflow-auto border-t border-gray-200 bg-gray-100 p-4 dark:border-slate-800 dark:bg-[#020617]">
+        <div className="max-h-full overflow-auto border-t border-gray-200 bg-gray-100 p-4 dark:border-slate-800 dark:bg-[#020617]">
           <div
-            className="mx-auto overflow-auto border border-slate-200 bg-white"
+            className="max-h-full mx-auto overflow-auto border border-slate-200 bg-white"
             style={{
               width: previewWidth,
               height: previewHeight,

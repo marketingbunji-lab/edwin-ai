@@ -123,14 +123,16 @@ export default function DefaultLandingHeroSection({
               />
             ) : null}
 
-            <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
-              <LiveEditableText
-                path="hero.eyebrow"
-                value={eyebrowText}
-                liveEdit={liveEdit}
-                singleLine
-              />
-            </p>
+            {eyebrowText ? (
+              <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
+                <LiveEditableText
+                  path="hero.eyebrow"
+                  value={eyebrowText}
+                  liveEdit={liveEdit}
+                  singleLine
+                />
+              </p>
+            ) : null}
 
             {heroTitle ? (
               <LiveEditableText

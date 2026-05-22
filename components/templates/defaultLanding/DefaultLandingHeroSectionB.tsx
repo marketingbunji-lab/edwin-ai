@@ -1,14 +1,8 @@
-/* eslint-disable @next/next/no-img-element, @next/next/no-sync-scripts */
-import Script from "next/script";
-import type { Landing } from "@/lib/data";
-import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
-import FormHiddenFieldInjector from "@/components/forms/FormHiddenFieldInjector";
-import VerityLeadForm from "@/components/forms/VerityLeadForm";
-import GenericLeadForm from "@/components/templates/GenericLeadForm";
+/* eslint-disable @next/next/no-img-element */
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
-import type { LabelValueItem } from "@/lib/data";
+import type { Landing, LabelValueItem } from "@/lib/data";
 import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSection";
 import { landingContainerClass } from "./classes";
 
@@ -61,65 +55,27 @@ export default function DefaultLandingHeroSectionB({
   heroSubtitle,
   heroDescription,
   heroSupportText,
-  price,
-  discountedPrice,
-  discountPercentage,
-  discountSuffix,
   resolutionText,
   summaryItems,
-  fullTitle,
-  title,
-  form,
-  ctaButton,
-  formTitle,
-  formDescription,
-  submitLabel,
-  fullNameLabel,
-  phoneLabel,
-  emailLabel,
-  zipLabel,
-  primaryColor,
   mode,
-  hasConfiguredForm,
   backgroundImage,
-  heroOverlayColor,
   liveEdit,
   showMenu = true,
 }: Props) {
-  const hiddenProgramFieldName = form.hiddenProgramFieldName?.trim() || "program";
-  const hiddenProgramFieldValue = form.programName || fullTitle || title;
-  const campusValue = form.campus || "";
   const heroBackground = backgroundImage
-  ? `url("${backgroundImage}") center / cover no-repeat`
-  : `none`;
-  const hasDiscountPricing = Boolean(discountedPrice?.trim());
-  const hasBasePrice = Boolean(price?.trim());
-  const hasDiscountBadge = Boolean(discountPercentage?.trim());
-  const showPricingBlock = hasBasePrice || hasDiscountPricing || hasDiscountBadge;
-  const primaryDisplayedPrice = discountedPrice?.trim() || price?.trim();
-  const isVerityForm = Boolean(
-    form.verityLeadPostUrl?.trim() && form.veritySysKey?.trim(),
-  );
-  const hiddenFormFields = [
-    {
-      name: hiddenProgramFieldName,
-      value: hiddenProgramFieldValue,
-    },
-    {
-      name: "campus",
-      value: campusValue,
-    },
-  ].filter((field) => field.name.trim());
-  const hiddenFieldInjectionScript = hiddenFormFields.length
-    ? `(function(){var fields=${JSON.stringify(hiddenFormFields)};var tries=0;var maxTries=20;function bindDataLayer(form){if(form.dataset.formSubmissionBound==="true"){return;}form.addEventListener("submit",function(){if(window.dataLayer&&Array.isArray(window.dataLayer)){window.dataLayer.push(Object.assign({event:"formSubmission",formId:form.id||""},Object.fromEntries(new FormData(form).entries())));}});form.dataset.formSubmissionBound="true";}function upsert(doc){var forms=Array.prototype.slice.call(doc.querySelectorAll('form'));forms.forEach(function(form){fields.forEach(function(field){var selector='input[type="hidden"][name="'+field.name.replace(/"/g,'\\"')+'"]';var hidden=form.querySelector(selector);if(!hidden){hidden=doc.createElement('input');hidden.type='hidden';hidden.name=field.name;form.appendChild(hidden);}hidden.value=field.value;});bindDataLayer(form);});return forms.length>0;}function apply(){var docs=[document];Array.prototype.forEach.call(document.querySelectorAll('iframe'),function(iframe){try{var idoc=iframe.contentDocument||(iframe.contentWindow&&iframe.contentWindow.document);if(idoc){docs.push(idoc);}}catch(e){}});var applied=false;docs.forEach(function(doc){applied=upsert(doc)||applied;});return applied;}apply();var interval=window.setInterval(function(){tries+=1;var applied=apply();if(applied||tries>=maxTries){window.clearInterval(interval);}},1000);}());`
-    : "";
+    ? `url("${backgroundImage}") center / cover no-repeat`
+    : "none";
+  const heroSpacingClass =
+    mode === "preview"
+      ? "pt-5 pb-24 md:pb-32"
+      : "pt-[108px] pb-24 sm:pt-[120px] lg:pt-[170px] md:pb-32";
 
   return (
     <section
       className="relative overflow-hidden text-[var(--landing-primary-text)]"
       style={{ background: heroBackground }}
     >
-      <div className={`${landingContainerClass} pt-5 pt-20 pb-24 md:pb-32`}>
+      <div className={`${landingContainerClass} ${heroSpacingClass}`}>
         {showMenu && (menuItems.length > 0 || menuCtaLabel) ? (
           <div className="sticky top-2 z-50 mb-10 overflow-hidden rounded-[24px] border border-white/25 bg-slate-950/35 p-2 shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:top-4 sm:rounded-[28px] sm:p-3">
             <nav
@@ -159,14 +115,16 @@ export default function DefaultLandingHeroSectionB({
 
         <div className="grid min-w-0 items-center gap-14 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
           <div className="min-w-0">
-            <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
-              <LiveEditableText
-                path="hero.eyebrow"
-                value={eyebrowText}
-                liveEdit={liveEdit}
-                singleLine
-              />
-            </p>
+            {eyebrowText ? (
+              <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
+                <LiveEditableText
+                  path="hero.eyebrow"
+                  value={eyebrowText}
+                  liveEdit={liveEdit}
+                  singleLine
+                />
+              </p>
+            ) : null}
 
             {heroTitle ? (
               <LiveEditableText
@@ -220,27 +178,16 @@ export default function DefaultLandingHeroSectionB({
 
             {resolutionText ? (
               <p className="mt-4 max-w-[860px] text-[11px] leading-5 text-white/58 md:text-xs">
-                {resolutionText}
+                <LiveEditableText
+                  path="certifications.resolutionText"
+                  value={resolutionText}
+                  liveEdit={liveEdit}
+                />
               </p>
             ) : null}
           </div>
 
-          <div className="min-w-0">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgba(255,255,255,0.72),rgba(255,255,255,0.34))]"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-10 -top-20 -z-10 h-40 w-40 rounded-full bg-white/45 blur-3xl sm:-right-20 sm:h-48 sm:w-48"
-            />
-            <div className="relative mb-5 text-center">
-
-            </div>
-            <div className="relative">
-
-            </div>
-          </div>
+          <div className="min-w-0" />
         </div>
       </div>
     </section>

@@ -350,23 +350,6 @@ function isFormatLabel(label?: string) {
   return normalizedLabel === "format" || normalizedLabel === "formato";
 }
 
-function hasGenericEyebrow(text?: string) {
-  const normalizedText = text
-    ?.trim()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-
-  if (!normalizedText) {
-    return true;
-  }
-
-  return (
-    normalizedText.startsWith("study at ") ||
-    normalizedText.startsWith("estudia en ")
-  );
-}
-
 function hasMeaningfulTitleDescriptionItems(
   items?: Array<string | TitleDescriptionItem>,
 ) {
@@ -511,12 +494,7 @@ export default function DefaultLanding({
   const hasStandaloneFormSection = Boolean(formSection.enabled);
   const hasForm = true;
   const hasCta = Boolean(ctaTitle || ctaButton);
-  const eyebrowText =
-    hero.eyebrow?.trim() && !hasGenericEyebrow(hero.eyebrow)
-      ? hero.eyebrow.trim()
-      : hero.modality
-        ? `${hero.modality} ${copy.heroModalityConnector} ${brandName}`
-        : `${copy.studyAt} ${brandName}`;
+  const eyebrowText = hero.eyebrow?.trim() || "";
   const formatProgramInfo = programInfo.find((item) =>
     isFormatLabel(item.label),
   );
@@ -714,9 +692,10 @@ export default function DefaultLanding({
       (item) =>
         !shouldFilterHeroMenu || configuredHeroMenuItems.includes(item.id),
     );
+  const isPreviewMode = mode === "preview";
   return (
     <div
-      className="overflow-x-hidden bg-[#f8fbff] text-slate-900"
+      className={`${isPreviewMode ? "overflow-x-visible" : "overflow-x-hidden"} bg-[#f8fbff] text-slate-900`}
       style={
         {
           fontFamily,
@@ -741,7 +720,12 @@ export default function DefaultLanding({
       {googleFontHref ? <style>{`@import url("${googleFontHref}");`}</style> : null}
 
       {heroVariant === "option-b" && (heroMenuItems.length > 0 || ctaButton) ? (
-        <div className="sticky top-0 z-50 border-b border-white/10 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_88%,transparent)] shadow-[0_18px_48px_rgba(2,6,23,0.22)] backdrop-blur-xl">
+        <>
+        <div
+          className={`z-50 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_88%,transparent)] shadow-[0_18px_48px_rgba(2,6,23,0.22)] backdrop-blur-xl ${
+            isPreviewMode ? "sticky top-0" : "fixed inset-x-0 top-0"
+          }`}
+        >
           <div className={`${landingContainerClass} py-3`}>
             <nav
               aria-label="Navegación de secciones"
@@ -805,6 +789,7 @@ export default function DefaultLanding({
             </nav>
           </div>
         </div>
+        </>
       ) : null}
 
       {heroVariant === "option-b" ? (
@@ -914,6 +899,7 @@ export default function DefaultLanding({
             image={overview.image || ""}
             items={overviewItems}
             liveEdit={liveEdit}
+            eyebrowPath="overview.eyebrow"
           />
         </div>
       ) : null}
@@ -931,6 +917,7 @@ export default function DefaultLanding({
             heroTitle={title}
             items={whyStudyItems}
             liveEdit={liveEdit}
+            eyebrowPath="whyStudy.eyebrow"
           />
         </div>
       ) : null}
@@ -943,6 +930,7 @@ export default function DefaultLanding({
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             liveEdit={liveEdit}
+            eyebrowPath="graduateProfile.eyebrow"
           />
         </div>
       ) : null}
@@ -972,8 +960,10 @@ export default function DefaultLanding({
             buttonLabel={curriculum.buttonTitle || copy.curriculumButton}
             viewMoreLabel={copy.sectionViewMore}
             liveEdit={liveEdit}
+            eyebrowPath="curriculum.eyebrow"
             titlePath="curriculum.title"
             descriptionPath="curriculum.description"
+            buttonLabelPath="curriculum.buttonTitle"
           />
         </div>
       ) : null}
@@ -1021,6 +1011,7 @@ export default function DefaultLanding({
             items={supportItems}
             isDirectVideoUrl={isDirectVideoUrl}
             liveEdit={liveEdit}
+            eyebrowPath={`${supportSectionPath}.eyebrow`}
             titlePath={`${supportSectionPath}.title`}
             descriptionPath={`${supportSectionPath}.description`}
           />
@@ -1034,6 +1025,7 @@ export default function DefaultLanding({
             title={benefits.title || ""}
             items={benefitItems}
             liveEdit={liveEdit}
+            eyebrowPath="benefits.eyebrow"
           />
         </div>
       ) : null}
@@ -1047,6 +1039,7 @@ export default function DefaultLanding({
             items={admissionsItems}
             viewMoreLabel={copy.sectionViewMore}
             liveEdit={liveEdit}
+            eyebrowPath="admissions.eyebrow"
             titlePath="admissions.title"
             descriptionPath="admissions.description"
           />
@@ -1063,6 +1056,7 @@ export default function DefaultLanding({
             variant={financialAid.variant === "option-b" ? "secondary-b" : "secondary"}
             viewMoreLabel={copy.sectionViewMore}
             liveEdit={liveEdit}
+            eyebrowPath="financialAid.eyebrow"
             titlePath="financialAid.title"
             descriptionPath="financialAid.description"
           />

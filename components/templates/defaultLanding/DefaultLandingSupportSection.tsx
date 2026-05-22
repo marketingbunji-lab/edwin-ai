@@ -14,6 +14,7 @@ import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   eyebrow: string;
+  eyebrowPath?: string;
   title: string;
   description: string;
   videoUrl: string;
@@ -31,6 +32,7 @@ type Props = {
 
 export default function DefaultLandingSupportSection({
   eyebrow,
+  eyebrowPath,
   title,
   description,
   videoUrl,
@@ -51,6 +53,7 @@ export default function DefaultLandingSupportSection({
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
           eyebrow={eyebrow}
+          eyebrowPath={eyebrowPath}
           title={title}
           description={description}
           centered

@@ -13,6 +13,7 @@ import {
 type Props = {
   graduateProfile?: Landing["graduateProfile"];
   eyebrow?: string;
+  eyebrowPath?: string;
   primaryColor: string;
   secondaryColor: string;
   liveEdit?: LandingLiveEditConfig;
@@ -69,6 +70,7 @@ function getItems(items?: NonNullable<Landing["graduateProfile"]>["items"]) {
 export default function GraduateProfileSection({
   graduateProfile,
   eyebrow,
+  eyebrowPath,
   primaryColor,
   secondaryColor,
   liveEdit,
@@ -114,7 +116,16 @@ export default function GraduateProfileSection({
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-white text-[var(--landing-primary-dark)] shadow-[0_6px_16px_rgba(15,23,42,0.08)] ring-1 ring-[var(--landing-primary-light)]">
                   <GraduationCap className="h-4 w-4" />
                 </span>
-                {eyebrowText}
+                {eyebrowPath ? (
+                  <LiveEditableText
+                    path={eyebrowPath}
+                    value={eyebrowText}
+                    liveEdit={liveEdit}
+                    singleLine
+                  />
+                ) : (
+                  eyebrowText
+                )}
               </p>
             ) : null}
 

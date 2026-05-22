@@ -59,31 +59,62 @@ export default function ClientifyFormEmbed({ code, className }: Props) {
       script.src.includes("rdstation-forms"),
     ) && !code.includes("RDStationForms(");
     const mountedScripts: HTMLScriptElement[] = [];
+    let isCancelled = false;
 
-    for (const script of scripts) {
-      const nextScript = document.createElement("script");
+    const mountScriptsSequentially = async () => {
+      for (const script of scripts) {
+        if (isCancelled) return;
 
-      for (const attribute of Array.from(script.attributes)) {
-        nextScript.setAttribute(attribute.name, attribute.value);
-      }
+        const nextScript = document.createElement("script");
 
-      nextScript.text = script.text;
-      nextScript.onload = () => {
+        for (const attribute of Array.from(script.attributes)) {
+          nextScript.setAttribute(attribute.name, attribute.value);
+        }
+
+        nextScript.async = false;
+        nextScript.text = script.text;
+
+        const execution = new Promise<void>((resolve) => {
+          if (nextScript.src) {
+            nextScript.onload = () => {
+              if (shouldAutoInitializeRdStation) {
+                initializeRdStationForms(container);
+              }
+              resolve();
+            };
+            nextScript.onerror = () => resolve();
+          }
+        });
+
+        script.replaceWith(nextScript);
+        mountedScripts.push(nextScript);
+
+        if (nextScript.src) {
+          await execution;
+          continue;
+        }
+
         if (shouldAutoInitializeRdStation) {
           initializeRdStationForms(container);
         }
-      };
-      script.replaceWith(nextScript);
-      mountedScripts.push(nextScript);
-    }
+      }
 
-    if (shouldAutoInitializeRdStation) {
-      window.setTimeout(() => initializeRdStationForms(container), 250);
-    }
+      if (shouldAutoInitializeRdStation && !isCancelled) {
+        window.setTimeout(() => {
+          if (!isCancelled) {
+            initializeRdStationForms(container);
+          }
+        }, 250);
+      }
+    };
+
+    void mountScriptsSequentially();
 
     return () => {
+      isCancelled = true;
       mountedScripts.forEach((script) => {
         script.onload = null;
+        script.onerror = null;
       });
       container.innerHTML = "";
     };

@@ -54,7 +54,7 @@ export default function DefaultLandingFooterSection({
             <strong>{brandName}</strong>
           )}
           {description ? (
-            <p className="mt-3 text-white/70">
+            <p className="mt-3 text-white/70 text-sm">
               {description}
             </p>
           ) : null}

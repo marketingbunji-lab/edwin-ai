@@ -16,7 +16,7 @@ export const projectDocumentation: ProjectDocPage = {
   title: "Documentación del proyecto",
   subtitle:
     "Base viva del sistema, su propósito, módulos actuales y decisiones de producto para seguir orquestando la plataforma.",
-  lastUpdated: "2026-05-20",
+  lastUpdated: "2026-05-22",
   sections: [
     {
       id: "vision",

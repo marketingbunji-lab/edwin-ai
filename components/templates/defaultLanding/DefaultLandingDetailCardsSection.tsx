@@ -24,6 +24,7 @@ type SectionItem = {
 
 type Props = {
   eyebrow?: string;
+  eyebrowPath?: string;
   title: string;
   description: string;
   items: SectionItem[];
@@ -32,6 +33,7 @@ type Props = {
   downloadUrl?: string;
   buttonUrl?: string;
   buttonLabel?: string;
+  buttonLabelPath?: string;
   viewMoreLabel?: string;
   liveEdit?: LandingLiveEditConfig;
   titlePath?: string;
@@ -56,6 +58,7 @@ function splitLabelAndAmount(value = "") {
 
 export default function DefaultLandingDetailCardsSection({
   eyebrow,
+  eyebrowPath,
   title,
   description,
   items,
@@ -64,6 +67,7 @@ export default function DefaultLandingDetailCardsSection({
   downloadUrl = "",
   buttonUrl = "",
   buttonLabel = "Descargar",
+  buttonLabelPath,
   viewMoreLabel = "Ver mas",
   liveEdit,
   titlePath,
@@ -133,6 +137,7 @@ export default function DefaultLandingDetailCardsSection({
         <div>
           <DefaultLandingSectionHeader
             eyebrow={resolvedEyebrow}
+            eyebrowPath={eyebrowPath}
             title={title}
             description={description}
             centered
@@ -323,7 +328,16 @@ export default function DefaultLandingDetailCardsSection({
               rel="noreferrer"
               className={landingPrimaryButtonClass}
             >
-              {buttonLabel}
+              {buttonLabelPath ? (
+                <LiveEditableText
+                  path={buttonLabelPath}
+                  value={buttonLabel}
+                  liveEdit={liveEdit}
+                  singleLine
+                />
+              ) : (
+                buttonLabel
+              )}
             </a>
           </div>
         ) : null}

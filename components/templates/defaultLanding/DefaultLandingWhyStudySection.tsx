@@ -19,6 +19,7 @@ type AccordionItem = {
 type Props = {
   brandName: string;
   eyebrow: string;
+  eyebrowPath?: string;
   sectionId: string;
   title: string;
   description: string;
@@ -32,6 +33,7 @@ type Props = {
 export default function DefaultLandingWhyStudySection({
   brandName,
   eyebrow,
+  eyebrowPath,
   sectionId,
   title,
   description,
@@ -58,6 +60,7 @@ export default function DefaultLandingWhyStudySection({
         <div className="relative pl-6 before:absolute before:left-0 before:top-1 before:h-24 before:w-1 before:rounded-full before:bg-[linear-gradient(180deg,var(--landing-secondary),var(--landing-primary-light))]">
           <DefaultLandingSectionHeader
             eyebrow={eyebrow}
+            eyebrowPath={eyebrowPath}
             title={title}
             description={description}
             liveEdit={liveEdit}

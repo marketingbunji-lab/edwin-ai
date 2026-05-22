@@ -15,6 +15,7 @@ import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 
 type Props = {
   eyebrow?: string;
+  eyebrowPath?: string;
   title: string;
   items: Array<
     IconTextItem & {
@@ -27,6 +28,7 @@ type Props = {
 
 export default function DefaultLandingBenefitsSection({
   eyebrow,
+  eyebrowPath,
   title,
   items,
   liveEdit,
@@ -40,6 +42,7 @@ export default function DefaultLandingBenefitsSection({
       <div className={landingContainerClass}>
         <DefaultLandingSectionHeader
           eyebrow={eyebrow}
+          eyebrowPath={eyebrowPath}
           title={title}
           centered
           icon={<Sparkles className="h-7 w-7" />}
