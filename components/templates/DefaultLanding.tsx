@@ -1014,7 +1014,7 @@ export default function DefaultLanding({
       {hasSupportSection ? (
         <div id="landing-support" className="scroll-mt-24">
           <DefaultLandingSupportSection
-            eyebrow={supportSource.eyebrow || ""}
+            eyebrow={supportSection.eyebrow || ""}
             title={supportTitle}
             description={supportDescription}
             videoUrl={supportVideoUrl}
