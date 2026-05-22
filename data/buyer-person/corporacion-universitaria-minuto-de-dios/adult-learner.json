@@ -1,0 +1,155 @@
+{
+  "id": "adult-learner",
+  "profileName": "Adult Learner",
+  "profileImage": "https://cdn.uploadtourl.com/5aa7b500-87d7-4cc7-afa9-222c549d14e4_data.png",
+  "description": "This persona represents adult learners seeking higher education opportunities, particularly in flexible formats to balance work and study.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "25-45",
+    "gender": "any",
+    "location": [
+      "Bogotá",
+      "Cali",
+      "Medellín"
+    ],
+    "educationLevel": "associate degree or higher",
+    "employmentStatus": "employed full-time",
+    "incomeRange": "$20,000 - $50,000",
+    "familySituation": "married with children",
+    "languagePreference": [
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "motivated",
+      "goal-oriented",
+      "practical"
+    ],
+    "values": [
+      "education",
+      "family",
+      "personal growth"
+    ],
+    "interests": [
+      "career advancement",
+      "lifelong learning",
+      "networking"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "gain new skills",
+      "advance in career",
+      "obtain a degree"
+    ],
+    "secondary": [
+      "expand professional network",
+      "balance education and work",
+      "achieve personal fulfillment"
+    ],
+    "successDefinition": "Successfully completing a degree while managing work and family responsibilities."
+  },
+  "painPoints": [
+    "time constraints",
+    "financial burden",
+    "fear of failing"
+  ],
+  "motivations": [
+    "enhancing employability",
+    "better job opportunities",
+    "personal achievement"
+  ],
+  "objections": [
+    "high tuition costs",
+    "time commitment",
+    "doubts about online learning effectiveness"
+  ],
+  "decisionFactors": [
+    "flexibility of schedule",
+    "affordability of programs",
+    "reputation of the institution"
+  ],
+  "buyerJourney": {
+    "stage": "deeper research",
+    "awarenessTriggers": [
+      "social media ads",
+      "referrals from friends",
+      "information webinars"
+    ],
+    "informationNeeds": [
+      "program details",
+      "financial aid options",
+      "reviews and testimonials"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "flexible degree programs",
+      "online education options",
+      "affordable universities"
+    ],
+    "commonQuestions": [
+      "How can I balance work and study?",
+      "What financial aid is available?",
+      "Are online degrees respected?"
+    ]
+  },
+  "emotionalTriggers": [
+    "fear of missing out",
+    "desire for respect",
+    "longing for personal growth"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "social media",
+      "SMS"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "weekends"
+    ],
+    "tone": [
+      "encouraging",
+      "informative",
+      "professional"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Achieve your degree on your schedule",
+      "Invest in your future with affordable programs",
+      "Join a community of motivated learners"
+    ],
+    "ctaExamples": [
+      "Request more information",
+      "Sign up for a webinar",
+      "Download our program guide"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "blog posts",
+      "infographics"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "medium",
+    "salesReadiness": "ready to learn more"
+  },
+  "metadata": {
+    "createdAt": "2026-05-22",
+    "updatedAt": "2026-05-22",
+    "source": "AI",
+    "tags": [
+      "adult learners",
+      "higher education",
+      "flexible programs"
+    ]
+  }
+}

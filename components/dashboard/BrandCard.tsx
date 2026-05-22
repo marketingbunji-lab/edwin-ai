@@ -36,7 +36,7 @@ export default function BrandCard({
 
   return (
     <div
-      className="group relative overflow-hidden rounded-lg border border-white/10 p-6 text-white shadow-[0_18px_45px_rgba(2,6,23,0.28)] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_24px_60px_rgba(2,6,23,0.38)]"
+      className="group relative overflow-hidden rounded-2xl border border-white/10 p-6 text-white shadow-[0_18px_45px_rgba(2,6,23,0.28)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(125,227,234,0.38)] hover:shadow-[0_24px_60px_rgba(2,6,23,0.38)]"
       style={{ background: brandCardBackground }}
     >
       <div
@@ -53,6 +53,7 @@ export default function BrandCard({
         className="pointer-events-none absolute -bottom-24 left-8 h-44 w-44 rounded-full blur-3xl"
         style={{ backgroundColor: `${secondaryDark}40` }}
       />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-75" />
 
       <div className="relative">
         <Link
@@ -105,7 +106,7 @@ export default function BrandCard({
 
             <Link
               href={`/admin/brands/${brand.slug}/edit`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 py-1 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 py-1 text-sm font-semibold text-white transition hover:border-[rgba(125,227,234,0.42)] hover:bg-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <Pencil className="h-4 w-4" />
               Editar

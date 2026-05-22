@@ -7,17 +7,13 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import {
   ArrowLeft,
   BookOpenText,
-  Brush,
   ChevronRight,
-  FileStack,
   FolderKanban,
   LayoutDashboard,
   Menu,
   Pencil,
   Plus,
-  Shapes,
   Sparkles,
-  Users,
   X,
 } from "lucide-react";
 import AdminUserMenu from "@/components/dashboard/AdminUserMenu";
@@ -50,6 +46,7 @@ type BrandSubNavItem = {
   href: string;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
+  matchPrefixes?: string[];
 };
 
 const themeChangeEvent = "bunji-theme-change";
@@ -137,26 +134,37 @@ function getBrandActiveState(pathname: string, brandSlug: string) {
 function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
   return [
     {
-      href: `/admin/brands/${brandSlug}/programs`,
-      label: "Programs",
-      icon: FileStack,
+      href: `/admin/brands/${brandSlug}/knowledge-base`,
+      label: "Knowledge Base",
+      icon: BookOpenText,
+      matchPrefixes: [
+        `/admin/brands/${brandSlug}/knowledge-base`,
+        `/admin/brands/${brandSlug}/edit`,
+        `/admin/brands/${brandSlug}/university`,
+        `/admin/brands/${brandSlug}/golden-circle`,
+        `/admin/brands/${brandSlug}/programs`,
+      ],
     },
     {
-      href: `/admin/brands/${brandSlug}/buyer-person`,
-      label: "Buyer Person",
-      icon: Users,
-    },
-    {
-      href: `/admin/brands/${brandSlug}/visual-assets`,
-      label: "Visual Assets",
-      icon: Brush,
-    },
-    {
-      href: `/admin/brands/${brandSlug}/landings`,
-      label: "Landings",
-      icon: Shapes,
+      href: `/admin/brands/${brandSlug}/journey`,
+      label: "Journey",
+      icon: Sparkles,
+      matchPrefixes: [
+        `/admin/brands/${brandSlug}/journey`,
+        `/admin/brands/${brandSlug}/buyer-person`,
+        `/admin/brands/${brandSlug}/visual-assets`,
+        `/admin/brands/${brandSlug}/landings`,
+      ],
     },
   ];
+}
+
+function isBrandSubNavItemActive(pathname: string, item: BrandSubNavItem) {
+  const matchPrefixes = item.matchPrefixes?.length ? item.matchPrefixes : [item.href];
+
+  return matchPrefixes.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
 }
 
 export default function DashboardShell({
@@ -237,7 +245,7 @@ export default function DashboardShell({
         <button
           type="button"
           aria-label="Cerrar menu lateral"
-          className="fixed inset-0 z-40 bg-slate-950/45 lg:hidden"
+          className="fixed inset-0 z-40 bg-[color-mix(in_srgb,var(--bunji-primary-darker)_62%,transparent)] backdrop-blur-[2px] lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       ) : null}
@@ -247,18 +255,18 @@ export default function DashboardShell({
           type="button"
           aria-label="Abrir menu lateral"
           onClick={() => setMobileOpen(true)}
-          className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-lg transition hover:bg-slate-50 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 lg:hidden"
+          className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-white/88 text-[var(--bunji-primary)] shadow-[0_16px_36px_rgba(62,57,137,0.2)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bunji-cyan)_55%,white)] hover:bg-white dark:border-white/10 dark:bg-slate-900/88 dark:text-[var(--bunji-cyan)] dark:hover:bg-slate-800 lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
       ) : null}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[286px] flex-col border-r border-slate-200 bg-white/95 text-slate-900 shadow-xl backdrop-blur-xl transition-transform duration-200 dark:border-white/10 dark:bg-[#030712]/96 dark:text-slate-100 lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[286px] flex-col border-r border-[color-mix(in_srgb,var(--bunji-primary-soft)_56%,white)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95)_0%,rgba(248,250,255,0.94)_100%),radial-gradient(circle_at_18%_12%,rgba(125,227,234,0.16)_0%,transparent_24%),radial-gradient(circle_at_82%_8%,rgba(62,57,137,0.14)_0%,transparent_26%)] text-slate-900 shadow-[0_22px_64px_rgba(34,39,74,0.18)] backdrop-blur-xl transition-transform duration-200 dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(5,8,23,0.96)_0%,rgba(2,6,23,0.95)_100%),radial-gradient(circle_at_16%_10%,rgba(125,227,234,0.12)_0%,transparent_24%),radial-gradient(circle_at_84%_8%,rgba(62,57,137,0.28)_0%,transparent_30%)] dark:text-slate-100 lg:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-slate-200 px-5 py-5 dark:border-white/10">
+        <div className="flex items-center justify-between border-b border-[color-mix(in_srgb,var(--bunji-primary-soft)_56%,white)] px-5 py-5 dark:border-white/10">
           <div className="flex items-center gap-3">
             <Image
               src="/icon.png"
@@ -272,7 +280,7 @@ export default function DashboardShell({
               <h1 className="text-base font-semibold text-slate-900 dark:text-white">
                 EDwin
               </h1>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--bunji-primary)] dark:text-[var(--bunji-cyan)]">
                 AI
               </p>
             </div>
@@ -282,7 +290,7 @@ export default function DashboardShell({
             type="button"
             aria-label="Cerrar menu"
             onClick={() => setMobileOpen(false)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border bg-white/75 text-[var(--bunji-primary)] shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-[var(--bunji-cyan)] lg:hidden"
           >
             <X className="h-5 w-5" />
           </button>
@@ -312,8 +320,8 @@ export default function DashboardShell({
                   onClick={() => setMobileOpen(false)}
                   className={`flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition ${
                     active
-                      ? "bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)] ring-1 ring-[var(--bunji-primary-soft)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-white dark:ring-[var(--bunji-primary-muted)]/30"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
+                      ? "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_70%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_80%,white))] text-[var(--bunji-primary-dark)] ring-1 ring-[color-mix(in_srgb,var(--bunji-cyan)_38%,white)] shadow-[0_12px_24px_rgba(125,227,234,0.16)] dark:bg-[linear-gradient(135deg,rgba(62,57,137,0.36),rgba(125,227,234,0.14))] dark:text-white dark:ring-[rgba(125,227,234,0.24)]"
+                      : "text-slate-600 hover:bg-white/72 hover:text-slate-950 hover:ring-1 hover:ring-[color-mix(in_srgb,var(--bunji-primary-soft)_60%,white)] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -344,8 +352,8 @@ export default function DashboardShell({
                       onClick={() => setMobileOpen(false)}
                       className={`flex items-center justify-between gap-3 rounded-lg px-4 py-3 transition ${
                         active
-                          ? "bg-slate-100 text-slate-950 ring-1 ring-slate-200 dark:bg-white/10 dark:text-white dark:ring-white/10"
-                          : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
+                          ? "bg-[linear-gradient(135deg,rgba(62,57,137,0.12),rgba(125,227,234,0.12))] text-slate-950 ring-1 ring-[color-mix(in_srgb,var(--bunji-primary-soft)_70%,white)] shadow-[0_12px_28px_rgba(62,57,137,0.12)] dark:bg-[linear-gradient(135deg,rgba(62,57,137,0.28),rgba(125,227,234,0.12))] dark:text-white dark:ring-[rgba(125,227,234,0.14)]"
+                          : "text-slate-600 hover:bg-white/72 hover:text-slate-950 hover:ring-1 hover:ring-[color-mix(in_srgb,var(--bunji-primary-soft)_55%,white)] dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
                       }`}
                     >
                       <div className="min-w-0">
@@ -358,11 +366,17 @@ export default function DashboardShell({
                     </Link>
 
                     {active ? (
-                      <div className="ml-4 space-y-1 border-l border-slate-200 pl-4 dark:border-slate-800">
+                      <div className="ml-4 space-y-1 border-l pl-4 pt-1 dark:border-slate-800"
+                        style={{
+                          borderColor:
+                            "color-mix(in srgb, var(--bunji-cyan) 30%, rgba(148, 163, 184, 0.4))",
+                        }}
+                      >
                         {subNavItems.map((item) => {
-                          const isSubNavActive =
-                            pathname === item.href ||
-                            pathname.startsWith(`${item.href}/`);
+                          const isSubNavActive = isBrandSubNavItemActive(
+                            pathname,
+                            item,
+                          );
                           const Icon = item.icon;
 
                           return (
@@ -372,8 +386,8 @@ export default function DashboardShell({
                               onClick={() => setMobileOpen(false)}
                               className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm transition ${
                                 isSubNavActive
-                                  ? "bg-[var(--bunji-primary-light)] font-medium text-[var(--bunji-primary-dark)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-white"
-                                  : "text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
+                                  ? "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_84%,white))] font-medium text-[var(--bunji-primary-dark)] dark:bg-[linear-gradient(135deg,rgba(62,57,137,0.3),rgba(125,227,234,0.12))] dark:text-white"
+                                  : "text-slate-500 hover:bg-white/68 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
                               }`}
                             >
                               <Icon className="h-4 w-4 shrink-0" />
@@ -390,7 +404,7 @@ export default function DashboardShell({
           </div>
         </div>
 
-        <div className="border-t border-slate-200 p-3 dark:border-white/10">
+        <div className="border-t border-[color-mix(in_srgb,var(--bunji-primary-soft)_56%,white)] p-3 dark:border-white/10">
           <AdminUserMenu theme={theme} onThemeChange={handleThemeChange} />
         </div>
       </aside>
@@ -400,7 +414,7 @@ export default function DashboardShell({
         (isNewLandingPage ||
           isNewLandingAiPage ||
           isLandingEditorPage) ? (
-          <section className="border-b border-slate-200/80 bg-white/90 shadow-[0_10px_35px_rgba(15,23,42,0.04)] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/90">
+          <section className="border-b border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,rgba(148,163,184,0.35))] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(247,249,255,0.86)_100%),radial-gradient(circle_at_12%_18%,rgba(125,227,234,0.1),transparent_24%),radial-gradient(circle_at_88%_8%,rgba(62,57,137,0.1),transparent_24%)] shadow-[0_10px_35px_rgba(15,23,42,0.04)] backdrop-blur-xl dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.92)_0%,rgba(6,10,26,0.88)_100%),radial-gradient(circle_at_16%_16%,rgba(125,227,234,0.08),transparent_24%),radial-gradient(circle_at_84%_12%,rgba(62,57,137,0.18),transparent_24%)]">
             <div className="flex flex-wrap items-center justify-between gap-5 px-4 py-5 sm:px-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-28 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -419,7 +433,7 @@ export default function DashboardShell({
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)]/70 dark:text-[var(--bunji-cyan)]/75">
                     {isLandingEditorPage
                       ? activeBrand.name
                       : isBrandEditPage

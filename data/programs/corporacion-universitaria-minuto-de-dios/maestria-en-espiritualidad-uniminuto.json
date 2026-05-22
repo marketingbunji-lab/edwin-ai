@@ -103,8 +103,8 @@
   "cta": {
     "variant": "minimal",
     "title": "Solicita informacion",
-    "description": "¡Inscríbete Gratis! Completa el formulario y un asesor se contactará contigo.",
-    "button": "Inscribete ahora",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
     "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
   },

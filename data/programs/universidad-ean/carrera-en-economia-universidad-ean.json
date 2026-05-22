@@ -1,0 +1,471 @@
+{
+  "slug": "carrera-en-economia-universidad-ean",
+  "brand": "universidad-ean",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-22",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES y Acreditaciones registradas en el Ministerio de Educación Nacional",
+    "items": [
+      {
+        "title": "Acreditación ACBSP",
+        "name": "Acreditación ACBSP",
+        "description": "El programa de Economía en modalidad presencial cuenta con la acreditación ACBSP.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Acreditación de Alta Calidad - MEN",
+        "name": "Acreditación de Alta Calidad - MEN",
+        "description": "Res. nº. 10552 del Ministerio de Educación - 28/06/2023, vigencia hasta 28/06/2031.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Carrera de Economía",
+  "fullTitle": "Carrera en Economía | Universidad Ean",
+  "sourceWebsite": "https://universidadean.edu.co/programas/carreras-profesionales/carrera-de-economia",
+  "catalog": "",
+  "programType": "Pregrado",
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Carrera de Economía | Universidad Ean",
+    "subtitle": "",
+    "description": "Quieres ser el mejor economista y liderar las finanzas en empresas de cualquier sector. Anímate a estudiar Economía en metodología presencial o virtual.",
+    "supportText": "",
+    "price": "Presencial: $9.252.000 / Virtual: $5.472.000 (por semestre)",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "duration": "8 semestres (144 créditos)",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://universidadean.edu.co/sites/default/files/ofertas-academicas/redes/carrera-en-economia-redes.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "titulo-que-otorga",
+      "label": "Título que otorga",
+      "value": "Economista"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "Ocho (8) semestres"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "144 créditos académicos"
+    },
+    {
+      "key": "horarios",
+      "label": "Horarios",
+      "value": "Diurno, Nocturno"
+    },
+    {
+      "key": "inicio-de-clases",
+      "label": "Inicio de clases",
+      "value": "Julio 2026"
+    },
+    {
+      "key": "inscripciones",
+      "label": "Inscripciones",
+      "value": "Abiertas 2026 (Orden de inscripción hasta 02 de junio de 2026)"
+    },
+    {
+      "key": "acreditaciones",
+      "label": "Acreditaciones",
+      "value": "Acreditación ACBSP (modalidad presencial); Acreditación de Alta Calidad - Res. Nº. 10552 - MEN"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Formación integral en economía",
+        "description": "Comprende dinámicas micro y macroeconómicas para la toma de decisiones en empresas y gobiernos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Enfoque en herramientas digitales",
+        "description": "Desarrolla capacidades para explorar y utilizar información compleja con herramientas digitales actuales.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Énfasis en emprendimiento y sostenibilidad",
+        "description": "Incluye formación en emprendimiento y sostenibilidad, articulada con la demanda del mercado.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Estándares internacionales y calidad",
+        "description": "Programa moderno ajustado a estándares internacionales y acreditado en modalidad presencial (ACBSP).",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "El pensum desarrolla competencias en análisis económico, uso de herramientas digitales, emprendimiento y gestión para la toma de decisiones empresariales y públicas.",
+    "downloadUrl": "https://universidadean.edu.co/programas/carreras-profesionales/carrera-de-economia",
+    "buttonUrl": "https://universidadean.edu.co/programas/carreras-profesionales/carrera-de-economia",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Microeconomía y Macroeconomía",
+        "description": "Fundamentos teóricos y aplicaciones para el análisis de mercados y políticas públicas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Análisis de datos y herramientas digitales",
+        "description": "Uso de información compleja y herramientas digitales para la toma de decisiones económicas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Emprendimiento y sostenibilidad",
+        "description": "Competencias para impulsar iniciativas empresariales con enfoque sostenible.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Gestión y toma de decisiones",
+        "description": "Herramientas para proponer y gestionar decisiones en empresas y organismos públicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Acreditación ACBSP",
+        "text": "El programa presencial cuenta con acreditación ACBSP.",
+        "description": "El programa presencial cuenta con acreditación ACBSP.",
+        "icon": ""
+      },
+      {
+        "title": "Acreditación de Alta Calidad",
+        "text": "Res. Nº. 10552 del MEN, vigencia hasta 28/06/2031.",
+        "description": "Res. Nº. 10552 del MEN, vigencia hasta 28/06/2031.",
+        "icon": ""
+      },
+      {
+        "title": "Incubadora reconocida",
+        "text": "Acceso a la mejor incubadora universitaria de Colombia según UBI Global.",
+        "description": "Acceso a la mejor incubadora universitaria de Colombia según UBI Global.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Carrera de Economía | Universidad Ean",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "delivery": {
+    "modality": "Presencial y Virtual",
+    "schedule": "Diurno, Nocturno",
+    "language": "es",
+    "campuses": [
+      "Bogotá D.C."
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "shortTitle": "Economía",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "Presencial: 52083; Virtual: 102065",
+  "cipCode": "",
+  "duration": {
+    "value": "8",
+    "unit": "semesters",
+    "display": "Ocho (8) semestres (144 créditos académicos)",
+    "credits": "144",
+    "semesters": "8",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "COP",
+    "period": "semestre",
+    "display": "Presencial: $9.252.000 (semestre). Virtual: $5.472.000 (semestre). Tarifa 2026.",
+    "financialAidAvailable": true,
+    "financialAidText": "Plan de Apoyo Financiero (AHORRA HASTA: Presencial $2.313.000; Virtual $1.368.000)"
+  },
+  "seo": {
+    "metaTitle": "Carrera de Economía | Universidad Ean",
+    "metaDescription": "Quieres ser el mejor economista y liderar las finanzas en empresas de cualquier sector. Anímate a estudiar Economía en metodología presencial o virtual.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "8 semestres (144 créditos)"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Presencial y Virtual"
+    },
+    {
+      "label": "Campus",
+      "value": "Bogotá D.C."
+    },
+    {
+      "label": "SNIES",
+      "value": "Presencial: 52083 (vig. hasta 28/06/2031); Virtual: 102065 (vig. hasta 27/08/2026)"
+    },
+    {
+      "label": "Tarifa semestral (2026)",
+      "value": "Presencial: $9.252.000 • Virtual: $5.472.000"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "La Carrera de Economía forma profesionales capaces de analizar, proponer y gestionar decisiones en empresas y en el sector público, integrando conocimientos de micro y macroeconomía, manejo de información compleja y herramientas digitales para fomentar el desarrollo empresarial y la sostenibilidad.",
+    "image": "/sites/default/files/oferta-academica/escritorio/carrera-en-economia-principal_0.jpg",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Economista en empresas",
+        "description": "Análisis y gestión financiera y económica dentro del sector privado.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Analista económico",
+        "description": "Elaboración de estudios, modelos y pronósticos económicos para diferentes agentes.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Asesor en políticas públicas",
+        "description": "Apoyo en diseño y evaluación de políticas a nivel local, regional o nacional.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Investigador económico",
+        "description": "Desarrollo de trabajo académico y aplicado en temas económicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "",
+    "videoUrl": "https://www.youtube.com/embed/nFtU7ZBpuBM?si=3bCcdsorHig0YP0_",
+    "items": [
+      {
+        "title": "Incubadora universitaria",
+        "text": "Acceso a la incubadora reconocida por UBI Global para apoyar emprendimientos.",
+        "description": "Acceso a la incubadora reconocida por UBI Global para apoyar emprendimientos.",
+        "icon": ""
+      },
+      {
+        "title": "Acompañamiento docente",
+        "text": "Cuerpo docente con experiencia académica y profesional que brinda seguimiento y apoyo.",
+        "description": "Cuerpo docente con experiencia académica y profesional que brinda seguimiento y apoyo.",
+        "icon": ""
+      },
+      {
+        "title": "Plan de Apoyo Financiero",
+        "text": "Opciones de apoyo económico y descuentos indicados por la universidad.",
+        "description": "Opciones de apoyo económico y descuentos indicados por la universidad.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "",
+    "items": [
+      {
+        "title": "Inscripciones",
+        "description": "Abiertas 2026. Orden de inscripción hasta el 02 de junio de 2026.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Inicio de clases",
+        "description": "Julio 2026",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Requisitos",
+        "description": "Consulta los términos y condiciones y el plan de estudios vigente en la página del programa.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "La universidad ofrece un Plan de Apoyo Financiero con descuentos y alternativas de financiación según convocatoria.",
+    "items": [
+      {
+        "title": "Plan de Apoyo Financiero",
+        "description": "AHORRA HASTA: Presencial $2.313.000; Virtual $1.368.000 (según condiciones).",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "¿Cuál es la duración del programa?",
+      "answer": "Ocho (8) semestres, equivalentes a 144 créditos académicos."
+    },
+    {
+      "question": "¿En qué modalidades se ofrece la carrera?",
+      "answer": "Se ofrece en modalidad presencial y virtual."
+    },
+    {
+      "question": "¿Cuál es la tarifa semestral para 2026?",
+      "answer": "Tarifa 2026: Presencial $9.252.000 por semestre; Virtual $5.472.000 por semestre."
+    },
+    {
+      "question": "¿Dónde se desarrolla el programa?",
+      "answer": "Lugar de desarrollo: Bogotá D.C., Cundinamarca."
+    }
+  ],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

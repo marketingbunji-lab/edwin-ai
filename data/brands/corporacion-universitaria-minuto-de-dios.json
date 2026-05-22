@@ -23,7 +23,15 @@
   "generator": "",
   "imageBrand": "/sites/default/files/logo-uniminuto-footer.png",
   "images": [],
-  "campuses": [],
+  "campuses": [
+    {
+      "name": "Bogotá - Minuto de Dios",
+      "location": "Carrera 73A No. 81B – 70. Edificio Diego Jaramillo - Piso 7",
+      "description": "Somos una institución multicampus con una amplia oferta académica en programas de pregrado y posgrado, en las modalidades presencial, a distancia y virtual, que forma excelentes seres humanos y profesionales competentes al servicio del país.",
+      "image": "",
+      "videoUrl": ""
+    }
+  ],
   "legalLinks": [
     {
       "label": "Sitio oficial",

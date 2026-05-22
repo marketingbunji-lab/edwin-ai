@@ -10,6 +10,19 @@
   --bunji-primary-light: #eeedfa;
   --bunji-primary-soft: #d9d7f3;
   --bunji-primary-muted: #b7b3e3;
+  --bunji-cyan: #7de3ea;
+  --bunji-cyan-dark: #2ea7b4;
+  --bunji-cyan-soft: #e6fbfd;
+  --bunji-red: #ff0b2e;
+  --bunji-red-soft: #ffe6eb;
+  --bunji-shell-bg:
+    radial-gradient(circle at 12% 12%, rgba(125, 227, 234, 0.12) 0%, transparent 24%),
+    radial-gradient(circle at 88% 10%, rgba(62, 57, 137, 0.14) 0%, transparent 28%),
+    linear-gradient(180deg, #f8fbff 0%, #eef3fb 100%);
+  --bunji-shell-bg-dark:
+    radial-gradient(circle at 16% 10%, rgba(125, 227, 234, 0.12) 0%, transparent 24%),
+    radial-gradient(circle at 84% 8%, rgba(62, 57, 137, 0.28) 0%, transparent 30%),
+    linear-gradient(180deg, #050817 0%, #020617 100%);
 }
 
 .dark {
@@ -18,6 +31,8 @@
   --bunji-primary-light: #1b1738;
   --bunji-primary-soft: #26214d;
   --bunji-primary-muted: #8f89cb;
+  --bunji-cyan-soft: rgba(125, 227, 234, 0.16);
+  --bunji-red-soft: rgba(255, 11, 46, 0.16);
 }
 
 @theme inline {
@@ -86,11 +101,21 @@ body {
 
 @layer components {
   .admin-shell-bg {
-    @apply bg-[#f3f5f9] text-slate-900 dark:bg-[#020617] dark:text-slate-100;
+    background-image: var(--bunji-shell-bg);
+    @apply text-slate-900 dark:text-slate-100;
+  }
+
+  .dark .admin-shell-bg {
+    background-image: var(--bunji-shell-bg-dark);
   }
 
   .admin-page {
-    @apply min-h-screen bg-[#f3f5f9] px-4 py-6 text-slate-900 dark:bg-[#020617] dark:text-slate-100 sm:px-6 sm:py-8;
+    background-image: var(--bunji-shell-bg);
+    @apply min-h-screen px-4 py-6 text-slate-900 dark:text-slate-100 sm:px-6 sm:py-8;
+  }
+
+  .dark .admin-page {
+    background-image: var(--bunji-shell-bg-dark);
   }
 
   .admin-page-inner {
@@ -98,15 +123,18 @@ body {
   }
 
   .admin-panel {
-    @apply rounded-2xl border border-slate-200 bg-white/95 shadow-[0_14px_38px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_18px_50px_rgba(0,0,0,0.28)];
+    @apply rounded-2xl border bg-white/92 shadow-[0_18px_44px_rgba(26,32,65,0.08),0_0_0_1px_rgba(125,227,234,0.08)] backdrop-blur-sm dark:bg-slate-950/88 dark:shadow-[0_18px_50px_rgba(0,0,0,0.28),0_0_0_1px_rgba(125,227,234,0.08)];
+    border-color: color-mix(in srgb, var(--bunji-primary-soft) 54%, white);
   }
 
   .admin-panel-soft {
-    @apply rounded-2xl border border-slate-200 bg-slate-50/90 shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/[0.04];
+    @apply rounded-2xl border bg-white/72 shadow-[0_12px_30px_rgba(26,32,65,0.06)] backdrop-blur-sm dark:bg-white/[0.04];
+    border-color: color-mix(in srgb, var(--bunji-cyan) 26%, rgba(148, 163, 184, 0.34));
   }
 
   .admin-empty-state {
-    @apply rounded-2xl border border-dashed border-slate-300 bg-white/90 p-10 text-center shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-slate-950/80;
+    @apply rounded-2xl border border-dashed bg-white/88 p-10 text-center shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:bg-slate-950/80;
+    border-color: color-mix(in srgb, var(--bunji-cyan) 32%, rgba(148, 163, 184, 0.45));
   }
 
   .admin-eyebrow {
@@ -122,19 +150,25 @@ body {
   }
 
   .admin-input {
-    @apply h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[var(--bunji-primary)] focus:ring-4 focus:ring-[var(--bunji-primary)]/15 read-only:bg-slate-100 read-only:text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:placeholder:text-slate-500 dark:read-only:bg-slate-950 dark:read-only:text-slate-500;
+    @apply h-12 w-full rounded-xl border bg-white/92 px-4 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[var(--bunji-primary)] focus:ring-4 read-only:bg-slate-100 read-only:text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:placeholder:text-slate-500 dark:read-only:bg-slate-950 dark:read-only:text-slate-500;
+    border-color: color-mix(in srgb, var(--bunji-primary-soft) 42%, rgba(148, 163, 184, 0.58));
+    --tw-ring-color: color-mix(in srgb, var(--bunji-cyan) 30%, transparent);
   }
 
   .admin-textarea {
-    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[var(--bunji-primary)] focus:ring-4 focus:ring-[var(--bunji-primary)]/15 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:placeholder:text-slate-500;
+    @apply w-full rounded-xl border bg-white/92 px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[var(--bunji-primary)] focus:ring-4 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 dark:placeholder:text-slate-500;
+    border-color: color-mix(in srgb, var(--bunji-primary-soft) 42%, rgba(148, 163, 184, 0.58));
+    --tw-ring-color: color-mix(in srgb, var(--bunji-cyan) 30%, transparent);
   }
 
   .admin-button-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(62,57,137,0.24)] transition hover:scale-[1.02] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-primary)] disabled:cursor-not-allowed disabled:opacity-60;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_32px_rgba(62,57,137,0.24)] transition hover:scale-[1.02] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60;
+    background-image: linear-gradient(135deg, var(--bunji-primary), color-mix(in srgb, var(--bunji-primary-dark) 84%, var(--bunji-cyan) 16%));
   }
 
   .admin-button-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-primary)] disabled:cursor-not-allowed disabled:opacity-60 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border bg-white/78 px-4 py-3 text-sm font-semibold text-slate-700 shadow-[0_10px_22px_rgba(15,23,42,0.05)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white/[0.04] dark:text-slate-100 dark:hover:bg-white/[0.08];
+    border-color: color-mix(in srgb, var(--bunji-primary-soft) 50%, rgba(148, 163, 184, 0.44));
   }
 
   .admin-button-icon {
@@ -142,23 +176,30 @@ body {
   }
 
   .admin-button-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60 dark:text-slate-950 dark:hover:bg-white;
+    background-image: linear-gradient(135deg, var(--bunji-primary-darker), color-mix(in srgb, var(--bunji-primary-dark) 78%, #020617 22%));
   }
 
   .admin-button-danger {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-red-300/70 bg-white px-4 py-3 text-sm font-semibold text-red-700 transition hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-500/40 dark:bg-transparent dark:text-red-300 dark:hover:bg-red-500/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-3 text-sm font-semibold transition hover:bg-red-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-500/40 dark:bg-transparent dark:hover:bg-red-500/10;
+    border-color: color-mix(in srgb, var(--bunji-red) 34%, white);
+    color: color-mix(in srgb, var(--bunji-red) 74%, #7f1d1d);
+    outline-color: var(--bunji-red);
   }
 
   .admin-icon-tile {
-    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--bunji-primary-light)] text-[var(--bunji-primary)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)];
+    @apply aspect-square flex h-12 w-12 items-center justify-center rounded-xl text-[var(--bunji-primary)] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] dark:text-[var(--bunji-cyan)];
+    background-image: linear-gradient(135deg, color-mix(in srgb, var(--bunji-cyan) 42%, white), color-mix(in srgb, var(--bunji-primary-light) 76%, white));
   }
 
   .admin-table-shell {
-    @apply overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-[0_12px_34px_rgba(15,23,42,0.07)] dark:border-white/10 dark:bg-slate-950/88;
+    @apply overflow-x-auto rounded-2xl border bg-white shadow-[0_12px_34px_rgba(15,23,42,0.07)] dark:bg-slate-950/88;
+    border-color: color-mix(in srgb, var(--bunji-primary-soft) 48%, rgba(148, 163, 184, 0.4));
   }
 
   .admin-table-header {
-    @apply bg-slate-100 px-5 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:bg-white/[0.04] dark:text-slate-400;
+    @apply px-5 py-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-600 dark:text-slate-300;
+    background-image: linear-gradient(90deg, color-mix(in srgb, var(--bunji-primary-light) 70%, white), color-mix(in srgb, var(--bunji-cyan-soft) 78%, white));
   }
 
   .admin-table-row {

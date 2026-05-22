@@ -86,12 +86,12 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-3 text-sm transition hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:hover:bg-white/[0.08]"
+        className="flex w-full items-center justify-between gap-3 rounded-lg border border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,white)] bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(244,247,255,0.76))] px-3 py-3 text-sm shadow-[0_10px_24px_rgba(15,23,42,0.06)] backdrop-blur-sm transition hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(240,247,255,0.88))] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(125,227,234,0.04))] dark:hover:bg-white/[0.08]"
         aria-haspopup="menu"
         aria-expanded={open}
       >
         <span className="flex min-w-0 items-center gap-3">
-          <UserCircle className="h-5 w-5 shrink-0 text-slate-500 dark:text-slate-300" />
+          <UserCircle className="h-5 w-5 shrink-0 text-[var(--bunji-primary)] dark:text-[var(--bunji-cyan)]" />
           <span className="truncate text-sm font-semibold text-slate-900 dark:text-slate-50">
             {loading ? "Cargando..." : user?.name || "Usuario"}
           </span>
@@ -106,7 +106,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
       {open ? (
         <div
           role="menu"
-          className="absolute bottom-full left-0 z-50 mb-2 w-full overflow-hidden rounded-lg border border-slate-200 bg-white p-1 shadow-xl dark:border-white/10 dark:bg-slate-950"
+          className="absolute bottom-full left-0 z-50 mb-2 w-full overflow-hidden rounded-lg border border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,white)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,249,255,0.94))] p-1 shadow-[0_22px_48px_rgba(26,32,65,0.16)] backdrop-blur-xl dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.96),rgba(7,11,28,0.94))]"
         >
           <button
             type="button"
@@ -118,7 +118,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             }}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition ${
               theme === "light"
-                ? "bg-slate-100 text-slate-950 dark:bg-white/10 dark:text-white"
+                ? "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_84%,white))] text-slate-950 dark:bg-white/10 dark:text-white"
                 : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
             }`}
           >
@@ -136,15 +136,15 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             }}
             className={`flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium transition ${
               theme === "dark"
-                ? "bg-slate-100 text-slate-950 dark:bg-white/10 dark:text-white"
+                ? "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_84%,white))] text-slate-950 dark:bg-white/10 dark:text-white"
                 : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
-            }`}
+          }`}
           >
             <Moon className="h-4 w-4" />
             Dark mode
           </button>
 
-          <div className="my-1 h-px bg-slate-200 dark:bg-white/10" />
+          <div className="my-1 h-px bg-[color-mix(in_srgb,var(--bunji-primary-soft)_58%,white)] dark:bg-white/10" />
 
           <button
             type="button"

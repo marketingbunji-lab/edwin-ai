@@ -3,14 +3,11 @@ import { notFound } from "next/navigation";
 import {
   ArrowLeft,
   Brush,
-  CheckCircle2,
-  CircleDashed,
   ExternalLink,
   FileStack,
   Pencil,
   Shapes,
   Users,
-  Clock3,
 } from "lucide-react";
 import {
   getBrandBySlug,
@@ -29,55 +26,13 @@ type Props = {
   }>;
 };
 
-type WorkflowStatus = "done" | "in_progress" | "empty";
-
 type WorkflowStage = {
-  step: string;
   title: string;
-  description: string;
-  status: WorkflowStatus;
   href: string;
   ctaLabel: string;
   unlocks: string;
-  summary: string;
   icon: React.ComponentType<{ className?: string }>;
 };
-
-function getStatusLabel(status: WorkflowStatus) {
-  if (status === "done") {
-    return "Done";
-  }
-
-  if (status === "in_progress") {
-    return "In progress";
-  }
-
-  return "Empty";
-}
-
-function getStatusStyles(status: WorkflowStatus) {
-  if (status === "done") {
-    return "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300";
-  }
-
-  if (status === "in_progress") {
-    return "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300";
-  }
-
-  return "border-slate-200 bg-slate-100 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300";
-}
-
-function getStatusIcon(status: WorkflowStatus) {
-  if (status === "done") {
-    return CheckCircle2;
-  }
-
-  if (status === "in_progress") {
-    return Clock3;
-  }
-
-  return CircleDashed;
-}
 
 export default async function BrandPage({ params }: Props) {
   const { brand: brandSlug } = await params;
@@ -119,104 +74,76 @@ export default async function BrandPage({ params }: Props) {
   ].filter((value) => Boolean(value?.trim())).length;
 
   const brandSetupDone = brandSetupSignals >= 5;
-  const brandSetupStarted = brandSetupSignals >= 2 || Boolean(brand.name?.trim());
   const buyerPersonaDone = buyerPersonRecords.length > 0;
   const programsDone = programs.length > 0;
   const assetsDone = visualAssets.length > 0;
   const landingDone = publishedLandings.length > 0;
+  const universityContentBaseDone = false;
+  const goldenCircleDone = false;
 
   const stages: WorkflowStage[] = [
     {
-      step: "01",
       title: "Brand Setup",
-      description:
-        "Consolidamos identidad, sitio oficial, logo y sistema visual para darle contexto confiable al resto de agentes.",
-      status: brandSetupDone
-        ? "done"
-        : brandSetupStarted
-          ? "in_progress"
-          : "empty",
       href: `/admin/brands/${brand.slug}/edit`,
       ctaLabel: "Configurar marca",
       unlocks:
         "Desbloquea una base clara para definir mensajes, tono y lineamientos visuales consistentes.",
-      summary: `${brandSetupSignals}/5 señales base completadas`,
       icon: Pencil,
     },
     {
-      step: "02",
       title: "Buyer Persona",
-      description:
-        "Definimos a quién le hablamos, qué le mueve a avanzar y qué objeciones debemos resolver en el journey.",
-      status: buyerPersonaDone
-        ? "done"
-        : brandSetupDone
-          ? "in_progress"
-          : "empty",
       href: `/admin/brands/${brand.slug}/buyer-person/new`,
       ctaLabel: "Crear buyer persona",
       unlocks:
         "Desbloquea mensajes más precisos para contenidos, landings, anuncios y CRM.",
-      summary: `${buyerPersonRecords.length} perfiles creados`,
       icon: Users,
     },
     {
-      step: "03",
       title: "Content Base",
-      description:
-        "Estructuramos la información de programas y el contenido central que alimenta copies, beneficios y bloques de conversión.",
-      status: programsDone
-        ? "done"
-        : buyerPersonaDone
-          ? "in_progress"
-          : "empty",
       href: `/admin/brands/${brand.slug}/programs/new`,
       ctaLabel: "Crear programa",
       unlocks:
         "Desbloquea una narrativa consistente para landings, campañas y activos por programa.",
-      summary: `${programs.length} programas estructurados`,
       icon: FileStack,
     },
     {
-      step: "04",
       title: "Visual Assets",
-      description:
-        "Organizamos piezas visuales y referencias para que creatividad, diseño y agentes trabajen con un lenguaje común.",
-      status: assetsDone
-        ? "done"
-        : programsDone
-          ? "in_progress"
-          : "empty",
       href: `/admin/brands/${brand.slug}/visual-assets`,
       ctaLabel: "Generar assets",
       unlocks:
         "Desbloquea creatividad reutilizable para campañas, anuncios, hero sections y materiales comerciales.",
-      summary: `${visualAssets.length} assets disponibles`,
       icon: Brush,
     },
     {
-      step: "05",
       title: "Landing Activation",
-      description:
-        "Diseñamos, publicamos y conectamos las landings para convertir tráfico en leads listos para CRM y campañas.",
-      status: landingDone
-        ? "done"
-        : assetsDone || landings.length > 0
-          ? "in_progress"
-          : "empty",
       href: `/admin/brands/${brand.slug}/landings`,
       ctaLabel: "Crear landing",
       unlocks:
         "Desbloquea captación activa, publicación pública y conexión directa con formularios y automatizaciones.",
-      summary: `${publishedLandings.length}/${landings.length} landings publicadas`,
       icon: Shapes,
     },
   ];
 
-  const completedStages = stages.filter((stage) => stage.status === "done").length;
-  const progressPercentage = Math.round((completedStages / stages.length) * 100);
+  const knowledgeBaseProgress = Math.round(
+    ((Number(brandSetupDone) +
+      Number(brandSetupDone && programsDone) +
+      Number(brandSetupDone && programsDone && universityContentBaseDone) +
+      Number(
+        brandSetupDone &&
+          programsDone &&
+          universityContentBaseDone &&
+          goldenCircleDone,
+      )) /
+      4) *
+      100,
+  );
   const nextStage =
-    stages.find((stage) => stage.status !== "done") ?? stages[stages.length - 1];
+    (!brandSetupDone && stages[0]) ||
+    (!buyerPersonaDone && stages[1]) ||
+    (!programsDone && stages[2]) ||
+    (!assetsDone && stages[3]) ||
+    (!landingDone && stages[4]) ||
+    stages[stages.length - 1];
   const NextStageIcon = nextStage.icon;
 
   return (
@@ -233,10 +160,7 @@ export default async function BrandPage({ params }: Props) {
               <ArrowLeft className="h-4 w-4" />
             </Link>
 
-            <Link
-              href={nextStage.href}
-              className="admin-button-primary"
-            >
+            <Link href={nextStage.href} className="admin-button-primary">
               <NextStageIcon className="h-4 w-4" />
               {nextStage.ctaLabel}
             </Link>
@@ -245,44 +169,50 @@ export default async function BrandPage({ params }: Props) {
 
         <section
           id="brand-orchestration-control-room"
-          className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.7fr)_minmax(360px,1fr)]"
+          className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(360px,1fr)]"
         >
           <div className="space-y-6">
             <section className="admin-panel p-6 sm:p-8">
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="max-w-3xl">
-                  <p className="admin-eyebrow">Control Room</p>
-                  <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-5xl">
-                    {brand.name}
-                  </h1>
-                  <p className="admin-muted mt-4 max-w-2xl text-base leading-7">
-                    Este workspace orquesta el avance de la marca desde la
-                    configuración base hasta la activación de landings. Cada
-                    etapa alimenta a la siguiente para que el sistema se sienta
-                    como un flujo y no como pantallas aisladas.
-                  </p>
-                </div>
-
-                <div className="min-w-[220px] rounded-[24px] border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                    Progreso
-                  </p>
-                  <p className="mt-3 text-4xl font-semibold text-slate-950 dark:text-slate-50">
-                    {progressPercentage}%
-                  </p>
-                  <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                    {completedStages} de {stages.length} etapas completadas
-                  </p>
-                  <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                    <div
-                      className="h-full rounded-full bg-[var(--bunji-primary)] transition-all"
-                      style={{ width: `${progressPercentage}%` }}
-                    />
-                  </div>
-                </div>
+              <div className="max-w-3xl">
+                <p className="admin-eyebrow">Control Room</p>
+                <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-5xl">
+                  {brand.name}
+                </h1>
+                <p className="admin-muted mt-4 max-w-2xl text-base leading-7">
+                  Este workspace orquesta el avance de la marca desde la
+                  configuración base hasta la activación de landings. Cada
+                  etapa alimenta a la siguiente para que el sistema se sienta
+                  como un flujo y no como pantallas aisladas.
+                </p>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-10 grid gap-5 xl:grid-cols-2">
+                <StrategicWorkflowCard
+                  href={`/admin/brands/${brand.slug}/knowledge-base`}
+                  eyebrow="Knowledge Base"
+                  title="Nutrir la Base de Conocimiento"
+                  description="Organiza programas, diferenciales, estudiantes, históricos, expertos y competidores en una columna vertebral viva."
+                  helperLabel="Porcentaje completado Base de Conocimiento"
+                  helperValue={knowledgeBaseProgress}
+                  ctaLabel="Construir conocimiento →"
+                  icon={FileStack}
+                  tone="knowledge"
+                />
+
+                <StrategicWorkflowCard
+                  href={`/admin/brands/${brand.slug}/journey`}
+                  eyebrow="Education Agents"
+                  title="Desplegar Education Agents"
+                  description="Usa agentes especializados por fase para convertir el conocimiento en tareas, entregables y siguientes acciones."
+                  helperLabel="Siguiente acción"
+                  helperValue={nextStage.title}
+                  ctaLabel="Ver journey y agentes →"
+                  icon={NextStageIcon}
+                  tone="agents"
+                />
+              </div>
+
+              <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 <SummaryMetric
                   label="Buyer Personas"
                   value={buyerPersonRecords.length}
@@ -304,89 +234,6 @@ export default async function BrandPage({ params }: Props) {
                   helper={`${landings.length} totales en la marca`}
                 />
               </div>
-            </section>
-
-            <section className="space-y-4">
-              {stages.map((stage) => {
-                const StageStatusIcon = getStatusIcon(stage.status);
-                const StageIcon = stage.icon;
-                const isNextStage = nextStage.step === stage.step;
-
-                return (
-                  <article
-                    key={stage.step}
-                    className={`admin-panel p-6 transition-all ${
-                      isNextStage
-                        ? "ring-1 ring-[var(--bunji-primary-soft)] dark:ring-[var(--bunji-primary-muted)]/30"
-                        : ""
-                    }`}
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-4">
-                      <div className="flex min-w-0 items-start gap-4">
-                        <div className="admin-icon-tile mt-1">
-                          <StageIcon className="h-5 w-5" />
-                        </div>
-
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-3">
-                            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
-                              Etapa {stage.step}
-                            </span>
-                            {isNextStage ? (
-                              <span className="rounded-full border border-[var(--bunji-primary-soft)] bg-[var(--bunji-primary-light)] px-3 py-1 text-xs font-semibold text-[var(--bunji-primary)] dark:border-[var(--bunji-primary-muted)]/30 dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)]">
-                                Siguiente paso
-                              </span>
-                            ) : null}
-                          </div>
-
-                          <h2 className="mt-3 text-2xl font-semibold text-slate-950 dark:text-slate-50">
-                            {stage.title}
-                          </h2>
-                          <p className="admin-muted mt-3 max-w-3xl leading-7">
-                            {stage.description}
-                          </p>
-
-                          <div className="mt-5 grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-                              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                                Estado derivado
-                              </p>
-                              <p className="mt-2 text-sm font-medium text-slate-700 dark:text-slate-200">
-                                {stage.summary}
-                              </p>
-                            </div>
-
-                            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
-                              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
-                                Qué desbloquea
-                              </p>
-                              <p className="mt-2 text-sm font-medium leading-6 text-slate-700 dark:text-slate-200">
-                                {stage.unlocks}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex w-full max-w-[240px] flex-col items-stretch gap-3 sm:w-auto">
-                        <div
-                          className={`inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold ${getStatusStyles(
-                            stage.status,
-                          )}`}
-                        >
-                          <StageStatusIcon className="h-4 w-4" />
-                          {getStatusLabel(stage.status)}
-                        </div>
-
-                        <Link href={stage.href} className="admin-button-primary">
-                          <StageIcon className="h-4 w-4" />
-                          {stage.ctaLabel}
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
             </section>
           </div>
 
@@ -530,30 +377,125 @@ export default async function BrandPage({ params }: Props) {
                   </div>
                 </div>
               ) : null}
-
-              <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-                  Próxima acción recomendada
-                </p>
-                <h3 className="mt-2 text-lg font-semibold text-white">
-                  {nextStage.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-white/72">
-                  {nextStage.unlocks}
-                </p>
-                <Link
-                  href={nextStage.href}
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(255,255,255,0.12)] transition hover:scale-[1.01] hover:bg-[var(--bunji-primary-muted)]"
-                >
-                  <NextStageIcon className="h-4 w-4" />
-                  {nextStage.ctaLabel}
-                </Link>
-              </div>
             </div>
           </div>
         </section>
       </div>
     </main>
+  );
+}
+
+function StrategicWorkflowCard({
+  href,
+  eyebrow,
+  title,
+  description,
+  helperLabel,
+  helperValue,
+  ctaLabel,
+  icon: Icon,
+  tone,
+}: {
+  href: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  helperLabel: string;
+  helperValue: string | number;
+  ctaLabel: string;
+  icon: React.ComponentType<{ className?: string }>;
+  tone: "knowledge" | "agents";
+}) {
+  const progressValue =
+    tone === "knowledge" && typeof helperValue === "number"
+      ? Math.max(0, Math.min(100, helperValue))
+      : null;
+  const toneClasses =
+    tone === "knowledge"
+      ? {
+          shell:
+            "border-[color-mix(in_srgb,var(--bunji-primary-soft)_70%,white)] bg-[radial-gradient(circle_at_12%_14%,rgba(125,227,234,0.16),transparent_32%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(241,244,255,0.97))] shadow-[0_24px_56px_rgba(62,57,137,0.12)]",
+          icon:
+            "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_85%,white))] text-[var(--bunji-primary-dark)]",
+          accent: "text-[var(--bunji-primary)] dark:text-[var(--bunji-cyan)]",
+        }
+      : {
+          shell:
+            "border-[color-mix(in_srgb,var(--bunji-cyan)_36%,white)] bg-[radial-gradient(circle_at_88%_10%,rgba(125,227,234,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(238,250,251,0.95))] shadow-[0_24px_56px_rgba(125,227,234,0.14)]",
+          icon:
+            "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-cyan-soft)_88%,white),color-mix(in_srgb,var(--bunji-primary-light)_62%,white))] text-[var(--bunji-primary-dark)]",
+          accent: "text-[var(--bunji-cyan-dark)] dark:text-[var(--bunji-cyan)]",
+        };
+
+  return (
+    <Link
+      href={href}
+      className={`group relative overflow-hidden rounded-[28px] border p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_64px_rgba(15,23,42,0.16)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(15,23,42,0.88),rgba(15,23,42,0.74))] ${toneClasses.shell}`}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),transparent_55%)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_55%)]" />
+      <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-80" />
+
+      <div className="relative">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+              {eyebrow}
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
+              {title}
+            </h3>
+          </div>
+
+          <div className={`admin-icon-tile h-12 w-12 ${toneClasses.icon}`}>
+            <Icon className="h-5 w-5" />
+          </div>
+        </div>
+
+        <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+          {description}
+        </p>
+
+        <div className="mt-7 rounded-2xl border border-white/60 bg-white/72 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+            {helperLabel}
+          </p>
+          {progressValue !== null ? (
+            <>
+              <div className="mt-3 flex items-end justify-between gap-4">
+                <p className="text-4xl font-bold leading-none tracking-tight text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)] sm:text-5xl">
+                  {progressValue}%
+                </p>
+                <span className="rounded-full border border-[color-mix(in_srgb,var(--bunji-cyan)_38%,white)] bg-[color-mix(in_srgb,var(--bunji-cyan-soft)_78%,white)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--bunji-primary-dark)] dark:border-white/10 dark:bg-white/[0.05] dark:text-slate-200">
+                  completado
+                </span>
+              </div>
+              <div className="mt-4">
+                <div className="h-3 overflow-hidden rounded-full bg-[linear-gradient(90deg,rgba(62,57,137,0.08),rgba(125,227,234,0.12))] ring-1 ring-[color-mix(in_srgb,var(--bunji-primary-soft)_52%,white)] dark:bg-[linear-gradient(90deg,rgba(62,57,137,0.24),rgba(125,227,234,0.12))] dark:ring-white/10">
+                  <div
+                    className="h-full rounded-full bg-[linear-gradient(90deg,var(--bunji-primary),color-mix(in_srgb,var(--bunji-cyan)_72%,white))] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_22px_rgba(125,227,234,0.28)] transition-all duration-500"
+                    style={{ width: `${progressValue}%` }}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
+              {String(helperValue)}
+            </p>
+          )}
+        </div>
+
+        <div className="mt-7 flex items-center justify-between gap-3">
+          <p
+            className={`text-sm font-semibold transition group-hover:translate-x-0.5 ${toneClasses.accent}`}
+          >
+            {ctaLabel}
+          </p>
+          <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(62,57,137,0.22),transparent)] dark:bg-[linear-gradient(90deg,rgba(125,227,234,0.18),transparent)]" />
+        </div>
+      </div>
+    </Link>
   );
 }
 

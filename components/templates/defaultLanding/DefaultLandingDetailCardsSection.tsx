@@ -164,7 +164,7 @@ export default function DefaultLandingDetailCardsSection({
                   {isPriceCard ? (
                     <div className="space-y-6">
                       <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[var(--landing-primary-dark)]">
+                        <p className="text-2xl font-bold leading-tight tracking-tight text-slate-950">
                           {descriptionPrice.label}
                         </p>
                         <p className="mt-2 text-4xl font-bold leading-tight tracking-tight text-slate-950">
