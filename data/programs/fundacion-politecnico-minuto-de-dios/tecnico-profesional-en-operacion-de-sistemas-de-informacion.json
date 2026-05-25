@@ -1,0 +1,550 @@
+{
+  "slug": "tecnico-profesional-en-operacion-de-sistemas-de-informacion",
+  "brand": "fundacion-politecnico-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-25",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "Registro calificado 000628 – 30/01/2023. Vigencia 7 años.",
+    "items": [
+      {
+        "title": "Registro calificado",
+        "name": "Registro calificado",
+        "description": "Registro calificado 000628 – 30/01/2023. Vigencia 7 años.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Técnico Profesional en Operación de Sistemas de Información",
+  "fullTitle": "Técnico Profesional en Operación de Sistemas de Información | TecMD | Fundación Politécnico Minuto de Dios",
+  "sourceWebsite": "https://tecmd.edu.co/programas_titulados/tecnico-profesional-en-operacion-de-sistemas-de-informacion/",
+  "catalog": "",
+  "programType": "Técnico Profesional",
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-career-opportunities",
+      "landing-hands-on-training",
+      "landing-faq",
+      "landing-campuses"
+    ],
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Técnico Profesional en Operación de Sistemas de Información",
+    "subtitle": "",
+    "description": "Mereces avanzar, conoce el programa en Operación de Sistemas de Información, ingresa aquí.",
+    "supportText": "",
+    "price": "Valor Matrícula: $1.486.000",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "titulo-otorgado",
+      "label": "Título otorgado",
+      "value": "Técnico (a) Profesional en Operación de Sistemas de Información"
+    },
+    {
+      "key": "nivel-de-formacion",
+      "label": "Nivel de formación",
+      "value": "Técnico profesional"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "4 Periodos académicos"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "65"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "snies",
+      "label": "SNIES",
+      "value": "111470"
+    },
+    {
+      "key": "registro-calificado",
+      "label": "Registro calificado",
+      "value": "000628 – 30/01/2023 (Vigencia 7 años)"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Formación orientada a la operación de sistemas",
+        "description": "Aprende a monitorizar, mantener y asegurar software y hardware para garantizar la continuidad operativa de los sistemas de información.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Competencias prácticas",
+        "description": "Incluye asignaturas y práctica profesional para desarrollar habilidades en mantenimiento de equipos, soporte de software y gestión de redes.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Contribuye a la competitividad empresarial",
+        "description": "Capacita para mejorar la eficiencia y productividad en las organizaciones mediante la correcta operación de los sistemas de información.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Registro calificado",
+        "description": "Programa con registro calificado (000628 – 30/01/2023) ofrecido por una institución sujeta a inspección y vigilancia del Ministerio de Educación.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "Plan de estudios compuesto por cursos transversales, comunes y disciplinarios distribuidos en 4 periodos académicos con un total de 65 créditos.",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Administración de Sistemas Operativos",
+        "description": "Gestión y configuración de sistemas operativos para asegurar su disponibilidad y rendimiento.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Sistemas de Información",
+        "description": "Conceptos y componentes de los sistemas de información y su rol en la organización.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Mantenimiento de Equipos de Cómputo",
+        "description": "Diagnóstico y reparación de hardware y periféricos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Estructura de Redes de Datos",
+        "description": "Diseño y gestión de redes de comunicación de datos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Implementación de Bases de Datos",
+        "description": "Creación y administración básica de bases de datos para soporte de sistemas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Programación y Desarrollo de Software / Programación orientada a objetos",
+        "description": "Fundamentos de programación aplicados al desarrollo y soporte de aplicaciones.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Práctica Profesional",
+        "description": "Espacio formativo para aplicar los conocimientos en escenarios reales de trabajo (4 créditos).",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Formación práctica y profesional",
+        "text": "Incluye práctica profesional y asignaturas orientadas a la operación y soporte de sistemas.",
+        "description": "Incluye práctica profesional y asignaturas orientadas a la operación y soporte de sistemas.",
+        "icon": ""
+      },
+      {
+        "title": "Modalidad virtual",
+        "text": "Flexibilidad para estudiar en línea.",
+        "description": "Flexibilidad para estudiar en línea.",
+        "icon": ""
+      },
+      {
+        "title": "Programa con registro calificado",
+        "text": "Ofrecido por una institución con registro calificado vigente.",
+        "description": "Ofrecido por una institución con registro calificado vigente.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "Solicita más información",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Técnico Profesional en Operación de Sistemas de Información | TecMD | Fundación Politécnico Minuto de Dios",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Practicas profesionales",
+    "description": "Práctica profesional incluida en el currículo para aplicar competencias en entornos laborales reales.",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "shortTitle": "Operación de Sistemas de Información",
+  "degreeLevel": "",
+  "academicArea": "Escuela de tecnología Digital",
+  "faculty": "",
+  "snies": "111470",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "Virtual",
+    "language": "es",
+    "campuses": [],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "4",
+    "unit": "periodos académicos",
+    "display": "4 Periodos académicos",
+    "credits": "65",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "1.486.000",
+    "currency": "COP",
+    "period": "matrícula",
+    "display": "Precio MEN: $2.701.000; Subsidio Tec: $1.215.000; Valor Matrícula: $1.486.000",
+    "financialAidAvailable": true,
+    "financialAidText": "Posibilidad de financiación y diferentes medios de pago (pasarela en línea, Banco de Bogotá o cesantías). Consulte con su asesor educativo."
+  },
+  "seo": {
+    "metaTitle": "Técnico Profesional en Operación de Sistemas de Información | TecMD | Fundación Politécnico Minuto de Dios",
+    "metaDescription": "Mereces avanzar, conoce el programa en Operación de Sistemas de Información, ingresa aquí.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "4 Periodos académicos"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "65"
+    },
+    {
+      "label": "SNIES",
+      "value": "111470"
+    },
+    {
+      "label": "Valor matrícula",
+      "value": "$1.486.000"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "Optimiza sistemas de información para la toma de decisiones y la competitividad empresarial: el programa forma técnicos profesionales capaces de operar, mantener y soportar software, hardware, redes y bases de datos para asegurar el correcto funcionamiento y la seguridad de los sistemas en las organizaciones.",
+    "image": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Entrenamiento practico",
+    "description": "El plan incluye componentes prácticos y una práctica profesional que desarrollan habilidades técnicas en entornos reales y simulados.",
+    "items": [
+      {
+        "title": "Mantenimiento y reparación de hardware",
+        "description": "Actividades prácticas de diagnóstico y reparaciones menores en equipos y periféricos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Soporte de software y atención al usuario",
+        "description": "Resolución de incidencias y soporte técnico siguiendo protocolos de servicio.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Gestión y configuración de redes",
+        "description": "Prácticas en implementación y administración básica de redes de datos.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Técnico en asistencia y soporte TIC",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Operador de servicio en asistencia informática",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Técnico en soporte mesa de ayuda",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Instalador de programas informáticos",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Emprendedor",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "El programa cuenta con asesoría de admisiones y apoyo en procesos de pago e inscripción.",
+    "videoUrl": "https://www.googletagmanager.com/ns.html?id=GTM-5FX2PCG",
+    "items": [
+      {
+        "title": "Asesor educativo",
+        "text": "Acompañamiento para el proceso de inscripción, pagos y solicitudes de financiación.",
+        "description": "Acompañamiento para el proceso de inscripción, pagos y solicitudes de financiación.",
+        "icon": ""
+      },
+      {
+        "title": "Departamento de Admisiones",
+        "text": "Revisión de inscripciones y confirmación de admisión.",
+        "description": "Revisión de inscripciones y confirmación de admisión.",
+        "icon": ""
+      },
+      {
+        "title": "Soporte de pago",
+        "text": "Información sobre pasarela de pagos, pagos en banco o uso de cesantías.",
+        "description": "Información sobre pasarela de pagos, pagos en banco o uso de cesantías.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "Pasos y documentos requeridos para la inscripción al programa.",
+    "items": [
+      {
+        "title": "Diligencia el formulario",
+        "description": "Completa el formulario de inscripción y selecciona el programa de interés.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Documentos a adjuntar",
+        "description": "Fotocopia del documento de identidad; fotografía digital con fondo blanco (JPG/PNG); diploma o acta de grado de bachiller; resultados de las pruebas ICFES Saber 11°.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Revisión y aceptación",
+        "description": "El Departamento de Admisiones revisará la inscripción y, si eres admitido, recibirás el link de pago online.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Pago y envío de comprobante",
+        "description": "Realiza el pago por la pasarela o en entidad autorizada y envía el comprobante al asesor educativo con el asunto “Matrícula – número de documento de identidad”.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Información adicional",
+        "description": "Recibirás por correo institucional información sobre inicio de clases, calendario y usuario institucional.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "Opciones de financiación disponibles y medios de pago. Consulte con su asesor educativo para conocer alternativas.",
+    "items": [
+      {
+        "title": "Medios de pago",
+        "description": "Pasarela de pagos en línea, sucursales del Banco de Bogotá o pago mediante cesantías.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Solicitud de financiación",
+        "description": "Consulte con su asesor educativo sobre opciones de financiación y subsidios disponibles.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "¿Cuál es la duración del programa?",
+      "answer": "El programa tiene una duración de 4 periodos académicos con un total de 65 créditos."
+    },
+    {
+      "question": "¿En qué modalidad se ofrece?",
+      "answer": "Se ofrece en modalidad virtual."
+    },
+    {
+      "question": "¿Cuáles son los requisitos de ingreso?",
+      "answer": "Ser bachiller, haber presentado la prueba ICFES y adjuntar fotocopia del documento de identidad, fotografía digital, diploma o acta de grado y resultados ICFES."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Técnico Profesional en Construcción y Operación de Sitios Web",
+      "url": "",
+      "image": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png"
+    },
+    {
+      "title": "Técnico Profesional en Servicios de Seguridad Informática",
+      "url": "",
+      "image": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png"
+    },
+    {
+      "title": "Técnico Profesional en Aseguramiento y Procesamiento de Bases de Datos",
+      "url": "",
+      "image": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png"
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "(601) 5800301 / 01-800-5189262",
+    "email": "",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  }
+}

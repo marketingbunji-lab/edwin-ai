@@ -1,0 +1,156 @@
+{
+  "id": "young-adult-aspiring-professional",
+  "profileName": "Young Adult Aspiring Professional",
+  "profileImage": "https://cdn.uploadtourl.com/3162811b-8431-461c-b186-cbee0169ce2a_data.png",
+  "description": "A motivated young individual seeking professional training in high-demand fields to enhance career prospects.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-24",
+    "gender": "all",
+    "location": [
+      "Colombia",
+      "Urban areas",
+      "Suburban areas"
+    ],
+    "educationLevel": "High School Graduate",
+    "employmentStatus": "Part-time or Full-time student",
+    "incomeRange": "$15,000 - $30,000",
+    "familySituation": "Living with family or relatives",
+    "languagePreference": [
+      "Spanish",
+      "English"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "driven",
+      "curious"
+    ],
+    "values": [
+      "education",
+      "career development",
+      "financial stability"
+    ],
+    "interests": [
+      "technology",
+      "vocational training",
+      "workshops"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "Obtain a technical profession",
+      "Secure a stable job",
+      "Gain industry-relevant skills"
+    ],
+    "secondary": [
+      "Build a professional network",
+      "Achieve financial independence",
+      "Pursue further education"
+    ],
+    "successDefinition": "Securing employment in a desired field within 6 months of graduation."
+  },
+  "painPoints": [
+    "Lack of information about programs",
+    "Financial constraints",
+    "Uncertainty about career paths"
+  ],
+  "motivations": [
+    "Improving job prospects",
+    "Desire for personal growth",
+    "Influence of family and peers"
+  ],
+  "objections": [
+    "Concern about tuition costs",
+    "Uncertainty about program relevance",
+    "Skepticism about job placement rates"
+  ],
+  "decisionFactors": [
+    "Quality of education",
+    "Costs and payment options",
+    "Industry connections and job placement support"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "Social media ads",
+      "Peer recommendations",
+      "Career fairs"
+    ],
+    "informationNeeds": [
+      "Program details",
+      "Success stories",
+      "Financial aid options"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "vocational schools in Colombia",
+      "technical courses",
+      "best career training programs"
+    ],
+    "commonQuestions": [
+      "What programs are offered?",
+      "How much do they cost?",
+      "What job opportunities are available?"
+    ]
+  },
+  "emotionalTriggers": [
+    "Fear of job market competition",
+    "Hope for a better future",
+    "Desire for family pride"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "Email",
+      "WhatsApp",
+      "Social Media"
+    ],
+    "preferredContactTime": [
+      "Afternoons",
+      "Evenings"
+    ],
+    "tone": [
+      "Supportive",
+      "Informative",
+      "Encouraging"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Transform your future with a technical degree",
+      "High-demand skills for a promising career",
+      "Join us and shape your destiny"
+    ],
+    "ctaExamples": [
+      "Get started today!",
+      "Request more information",
+      "Enroll now for early-bird discounts"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "Videos",
+      "Webinars",
+      "Infographics"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "Medium",
+    "salesReadiness": "Ready to engage"
+  },
+  "metadata": {
+    "createdAt": "2026-05-25",
+    "updatedAt": "2026-05-25",
+    "source": "AI",
+    "tags": [
+      "enrollment",
+      "vocational training",
+      "career readiness"
+    ]
+  }
+}

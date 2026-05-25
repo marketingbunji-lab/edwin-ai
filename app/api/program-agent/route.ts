@@ -1,11 +1,61 @@
 import { NextRequest, NextResponse } from "next/server";
 
-//const webhookUrl = "https://n8n.crisnnino.com/webhook/bunji-agent-program";
-const webhookUrl = "https://n8n.crisnnino.com/webhook-test/bunji-agent-program";
+const webhookUrl = "https://n8n.crisnnino.com/webhook/bunji-agent-program";
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function getWebhookError(data: unknown) {
+  if (typeof data === "string" && data.trim()) {
+    return data;
+  }
+
+  if (isRecord(data)) {
+    if (typeof data.error === "string" && data.error.trim()) {
+      return data.error;
+    }
+
+    if (typeof data.message === "string" && data.message.trim()) {
+      return data.message;
+    }
+  }
+
+  return "No se pudo ejecutar el Agent Content";
+}
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const program = isRecord(body) ? body.program : null;
+
+    if (!isRecord(body) || !isRecord(body.brand) || !isRecord(program)) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error:
+            "Faltan datos para ejecutar el agente. Se requiere brand y program.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (
+      typeof program.title !== "string" ||
+      !program.title.trim() ||
+      typeof program.sourceWebsite !== "string" ||
+      !program.sourceWebsite.trim()
+    ) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error:
+            "Completa el nombre del programa y el sitio web fuente antes de ejecutar el agente.",
+        },
+        { status: 400 },
+      );
+    }
+
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers: {
@@ -27,7 +77,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           ok: false,
-          error: "No se pudo ejecutar el Agent Content",
+          error: getWebhookError(data),
           status: response.status,
           data,
         },

@@ -1,0 +1,155 @@
+{
+  "id": "prospective-students",
+  "profileName": "Prospective Students",
+  "profileImage": "https://cdn.uploadtourl.com/2bd49c38-2f04-4514-bbc2-d6f0f4686bb3_data.png",
+  "description": "Young individuals seeking professional technical training in high-demand fields.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-25",
+    "gender": "all",
+    "location": [
+      "Colombia",
+      "main urban areas"
+    ],
+    "educationLevel": "high school graduate or equivalent",
+    "employmentStatus": "unemployed or part-time employment",
+    "incomeRange": "low to middle income",
+    "familySituation": "living with family or in shared accommodation",
+    "languagePreference": [
+      "Spanish",
+      "English (basic)"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "curious",
+      "goal-oriented"
+    ],
+    "values": [
+      "education",
+      "career advancement",
+      "community"
+    ],
+    "interests": [
+      "technology",
+      "business",
+      "hands-on learning"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "gain a professional qualification",
+      "enter the workforce",
+      "improve earning potential"
+    ],
+    "secondary": [
+      "build a professional network",
+      "develop practical skills",
+      "enhance career prospects"
+    ],
+    "successDefinition": "Securing a job in their chosen field within six months after graduation."
+  },
+  "painPoints": [
+    "high costs of education",
+    "uncertainty about program quality",
+    "lack of job placement assistance"
+  ],
+  "motivations": [
+    "desire for stable employment",
+    "interest in advanced technical skills",
+    "financial independence"
+  ],
+  "objections": [
+    "concerns about student debt",
+    "doubts about online learning effectiveness",
+    "fear of poor job prospects post-graduation"
+  ],
+  "decisionFactors": [
+    "program reputation",
+    "tuition affordability",
+    "job placement rates"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "online ads",
+      "social media influencers",
+      "word of mouth"
+    ],
+    "informationNeeds": [
+      "program details",
+      "tuition costs",
+      "career opportunities"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "technical training programs",
+      "professional courses",
+      "career education"
+    ],
+    "commonQuestions": [
+      "What are the career prospects?",
+      "How much does it cost?",
+      "Is financial aid available?"
+    ]
+  },
+  "emotionalTriggers": [
+    "fear of missing out (FOMO)",
+    "aspirational career goals",
+    "desire for personal growth"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "social media",
+      "text messaging"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "weekends"
+    ],
+    "tone": [
+      "friendly",
+      "supportive",
+      "informative"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Affordable education for your future",
+      "Hands-on learning experience",
+      "Join the workforce equipped with skills"
+    ],
+    "ctaExamples": [
+      "Request more information",
+      "Schedule a campus visit",
+      "Apply now for early enrollment"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "infographics",
+      "webinars"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "medium",
+    "salesReadiness": "high"
+  },
+  "metadata": {
+    "createdAt": "2026-05-25",
+    "updatedAt": "2026-05-25",
+    "source": "AI",
+    "tags": [
+      "education",
+      "prospective students",
+      "technical training"
+    ]
+  }
+}
