@@ -35,7 +35,7 @@ export default function LoginForm() {
       setError(
         loginError instanceof Error
           ? loginError.message
-          : "No se pudo iniciar sesión.",
+          : "Could not sign in.",
       );
     } finally {
       setLoading(false);
@@ -43,9 +43,9 @@ export default function LoginForm() {
   };
 
   return (
-    <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+    <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
       <label className="block">
-        <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-200">
+        <span className="mb-2 block text-sm font-medium text-slate-700">
           Email
         </span>
         <input
@@ -55,12 +55,13 @@ export default function LoginForm() {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           required
-          className="w-full border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          placeholder="you@company.com"
+          className="login-input"
         />
       </label>
 
       <label className="block">
-        <span className="mb-1 block text-sm font-medium text-gray-700 dark:text-slate-200">
+        <span className="mb-2 block text-sm font-medium text-slate-700">
           Password
         </span>
         <input
@@ -70,19 +71,24 @@ export default function LoginForm() {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           required
-          className="w-full border border-gray-300 px-3 py-2 text-sm text-gray-900 outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          placeholder="Enter your password"
+          className="login-input"
         />
       </label>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-black px-4 py-2 text-sm font-medium text-white disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#3e3989]"
+        className="w-full rounded-2xl bg-[linear-gradient(135deg,var(--bunji-primary)_0%,color-mix(in_srgb,var(--bunji-primary-dark)_82%,var(--bunji-cyan)_18%)_100%)] px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_35px_rgba(62,57,137,0.24)] transition hover:translate-y-[-1px] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
-        {loading ? "Ingresando..." : "Ingresar"}
+        {loading ? "Signing in..." : "Sign in"}
       </button>
 
-      {error ? <p className="text-sm text-red-600">{error}</p> : null}
+      {error ? (
+        <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </p>
+      ) : null}
     </form>
   );
 }

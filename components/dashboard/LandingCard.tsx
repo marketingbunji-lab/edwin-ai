@@ -13,6 +13,7 @@ import {
   SunMoon,
   Trash2,
 } from "lucide-react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import ExportHtmlButton from "@/components/export/ExportHtmlButton";
 
 type Props = {
@@ -33,12 +34,15 @@ export type LandingCardData = {
   };
 };
 
-function getModalityBadge(modality?: string) {
+function getModalityBadge(
+  modality: string | undefined,
+  labels: { onCampus: string; online: string },
+) {
   const normalized = modality?.toLowerCase() ?? "";
 
   if (normalized.includes("presencial")) {
     return {
-      label: "Presencial",
+      label: labels.onCampus,
       className:
         "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 dark:bg-emerald-950/45 dark:text-emerald-200 dark:ring-emerald-900",
     };
@@ -46,7 +50,7 @@ function getModalityBadge(modality?: string) {
 
   if (normalized.includes("virtual")) {
     return {
-      label: "Virtual",
+      label: labels.online,
       className:
         "bg-[var(--bunji-primary-light)] text-[var(--bunji-primary)] ring-1 ring-[var(--bunji-primary-soft)] dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)] dark:ring-[var(--bunji-primary-dark)]",
     };
@@ -55,12 +59,15 @@ function getModalityBadge(modality?: string) {
   return null;
 }
 
-function getScheduleBadge(schedule?: string) {
+function getScheduleBadge(
+  schedule: string | undefined,
+  labels: { day: string; night: string; flexible: string },
+) {
   const normalized = schedule?.toLowerCase().trim() ?? "";
 
   if (normalized === "diurna") {
     return {
-      label: "Diurna",
+      label: labels.day,
       icon: Sun,
       className:
         "bg-amber-50 text-amber-700 ring-1 ring-amber-200 dark:bg-amber-950/45 dark:text-amber-200 dark:ring-amber-900",
@@ -69,7 +76,7 @@ function getScheduleBadge(schedule?: string) {
 
   if (normalized === "nocturna") {
     return {
-      label: "Nocturna",
+      label: labels.night,
       icon: Moon,
       className:
         "bg-violet-50 text-violet-700 ring-1 ring-violet-200 dark:bg-violet-950/45 dark:text-violet-200 dark:ring-violet-900",
@@ -78,7 +85,7 @@ function getScheduleBadge(schedule?: string) {
 
   if (normalized === "flexible") {
     return {
-      label: "Flexible",
+      label: labels.flexible,
       icon: SunMoon,
       className:
         "bg-slate-100 text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700",
@@ -89,13 +96,21 @@ function getScheduleBadge(schedule?: string) {
 }
 
 export default function LandingCard({ landing }: Props) {
+  const { t } = useDashboardLanguage();
   const router = useRouter();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [duplicating, setDuplicating] = useState(false);
   const [error, setError] = useState("");
-  const modalityBadge = getModalityBadge(landing.hero?.modality);
-  const scheduleBadge = getScheduleBadge(landing.schedule);
+  const modalityBadge = getModalityBadge(landing.hero?.modality, {
+    onCampus: t("landings.modalityOnCampus"),
+    online: t("landings.modalityOnline"),
+  });
+  const scheduleBadge = getScheduleBadge(landing.schedule, {
+    day: t("landings.scheduleDay"),
+    night: t("landings.scheduleNight"),
+    flexible: t("landings.scheduleFlexible"),
+  });
 
   const duplicateLanding = async () => {
     try {
@@ -104,18 +119,22 @@ export default function LandingCard({ landing }: Props) {
 
       const response = await fetch(
         `/api/landings/${landing.brand}/${landing.slug}/duplicate`,
-        { method: "POST" }
+        { method: "POST" },
       );
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "No se pudo duplicar la landing");
+        throw new Error(data.error || t("landings.duplicateError"));
       }
 
       router.push(data.redirectTo);
       router.refresh();
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "No se pudo duplicar");
+    } catch (duplicateError) {
+      setError(
+        duplicateError instanceof Error
+          ? duplicateError.message
+          : t("landings.duplicateError"),
+      );
     } finally {
       setDuplicating(false);
     }
@@ -126,19 +145,26 @@ export default function LandingCard({ landing }: Props) {
       setDeleting(true);
       setError("");
 
-      const response = await fetch(`/api/landings/${landing.brand}/${landing.slug}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `/api/landings/${landing.brand}/${landing.slug}`,
+        {
+          method: "DELETE",
+        },
+      );
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "No se pudo eliminar la landing");
+        throw new Error(data.error || t("landings.deleteError"));
       }
 
       setShowDeleteModal(false);
       router.refresh();
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "No se pudo eliminar");
+    } catch (deleteError) {
+      setError(
+        deleteError instanceof Error
+          ? deleteError.message
+          : t("landings.deleteError"),
+      );
     } finally {
       setDeleting(false);
     }
@@ -180,10 +206,10 @@ export default function LandingCard({ landing }: Props) {
 
       <div className="mt-4 space-y-1 rounded-xl border border-slate-200 bg-slate-50/70 p-3 text-sm text-slate-600 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-300">
         <p>
-          <strong>Slug:</strong> {landing.slug}
+          <strong>{t("landings.slug")}:</strong> {landing.slug}
         </p>
         <p>
-          <strong>Actualizado:</strong> {landing.updatedAt}
+          <strong>{t("landings.updatedAt")}:</strong> {landing.updatedAt}
         </p>
       </div>
 
@@ -194,7 +220,7 @@ export default function LandingCard({ landing }: Props) {
           style={{ backgroundColor: "var(--bunji-primary)", color: "#fff" }}
         >
           <ExternalLink className="h-4 w-4" />
-          Ver detalle
+          {t("landings.viewDetail")}
         </Link>
 
         <Link
@@ -204,7 +230,7 @@ export default function LandingCard({ landing }: Props) {
           className="admin-button-secondary py-2"
         >
           <Eye className="h-4 w-4" />
-          Preview
+          {t("landings.preview")}
         </Link>
 
         <ExportHtmlButton
@@ -216,7 +242,7 @@ export default function LandingCard({ landing }: Props) {
           className="admin-button-secondary py-2"
           style={{ backgroundColor: "var(--bunji-primary-muted)", color: "#fff" }}
         >
-          Exportar
+          {t("landings.export")}
         </ExportHtmlButton>
 
         <button
@@ -226,7 +252,7 @@ export default function LandingCard({ landing }: Props) {
           className="admin-button-secondary py-2"
         >
           <Copy className="h-4 w-4" />
-          {duplicating ? "Duplicando..." : "Duplicar"}
+          {duplicating ? t("landings.duplicating") : t("landings.duplicate")}
         </button>
 
         <button
@@ -239,7 +265,7 @@ export default function LandingCard({ landing }: Props) {
           className="admin-button-danger py-2"
         >
           <Trash2 className="h-4 w-4" />
-          Eliminar
+          {t("landings.delete")}
         </button>
       </div>
 
@@ -257,11 +283,10 @@ export default function LandingCard({ landing }: Props) {
               id={`delete-${landing.slug}-title`}
               className="text-lg font-semibold text-gray-900 dark:text-slate-50"
             >
-              Eliminar landing
+              {t("landings.deleteTitle")}
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-slate-300">
-              Vas a eliminar <strong>{landing.fullTitle}</strong>. Esta acción no se
-              puede deshacer.
+              {t("landings.deleteBody", { title: landing.fullTitle })}
             </p>
 
             <div className="mt-6 flex justify-end gap-3">
@@ -271,7 +296,7 @@ export default function LandingCard({ landing }: Props) {
                 disabled={deleting}
                 className="admin-button-secondary py-2"
               >
-                Cancelar
+                {t("landings.cancel")}
               </button>
               <button
                 type="button"
@@ -280,7 +305,7 @@ export default function LandingCard({ landing }: Props) {
                 className="admin-button-danger bg-red-600 py-2 text-white hover:bg-red-700 dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
               >
                 <Trash2 className="h-4 w-4" />
-                {deleting ? "Eliminando..." : "Sí, eliminar"}
+                {deleting ? t("landings.deleting") : t("landings.confirmDelete")}
               </button>
             </div>
           </div>

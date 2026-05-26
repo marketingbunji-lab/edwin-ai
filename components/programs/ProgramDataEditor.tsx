@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Bot, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import type { Brand, Landing } from "@/lib/data";
 
 type Props = {
@@ -25,24 +26,6 @@ type EditableField =
   | "template";
 
 type CatalogInputMode = "link" | "file";
-
-const programCreationSteps = [
-  {
-    title: "Nombre del programa",
-    description:
-      "Escribe el nombre visible del programa. Con este dato se genera automaticamente el slug.",
-  },
-  {
-    title: "Sitio web fuente",
-    description:
-      "Agrega la URL del sitio oficial o pagina fuente desde donde el agente tomara contexto.",
-  },
-  {
-    title: "Catalogo del programa",
-    description:
-      "Elige si quieres asociar el catalogo por medio de un archivo o mediante un enlace.",
-  },
-];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -142,6 +125,7 @@ export default function ProgramDataEditor({
   initialProgram,
   mode = "edit",
 }: Props) {
+  const { t } = useDashboardLanguage();
   const router = useRouter();
   const [program, setProgram] = useState<Landing>(initialProgram);
   const [jsonDraft, setJsonDraft] = useState(
@@ -201,7 +185,7 @@ export default function ProgramDataEditor({
       setProgram(parsedProgram);
       setJsonError("");
     } catch {
-      setJsonError("JSON invalido. Corrigelo antes de guardar.");
+      setJsonError(t("programDataEditor.jsonInvalid"));
     }
   };
 
@@ -215,7 +199,7 @@ export default function ProgramDataEditor({
       setMessage("");
 
       if (jsonError) {
-        setMessage("Corrige el JSON completo antes de guardar el programa.");
+        setMessage(t("programDataEditor.messages.fixJsonBeforeSave"));
         return;
       }
 
@@ -226,13 +210,13 @@ export default function ProgramDataEditor({
 
       if (!title) {
         setMessage(
-          "Completa el nombre del programa para poder crearlo.",
+          t("programDataEditor.messages.missingProgramName"),
         );
         return;
       }
 
       if (isCreateMode && !agentReady) {
-        setMessage("Ejecuta el Agent Content antes de crear el programa.");
+        setMessage(t("programDataEditor.messages.runAgentBeforeCreate"));
         return;
       }
 
@@ -279,7 +263,7 @@ export default function ProgramDataEditor({
       };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "No se pudo guardar el programa");
+        throw new Error(data.error || t("programDataEditor.messages.saveError"));
       }
 
         if (isCreateMode && data.slug) {
@@ -293,7 +277,7 @@ export default function ProgramDataEditor({
         applyProgram(createdProgram);
         setPreviewProgram(createdProgram);
         setLastSavedSnapshot(JSON.stringify(createdProgram));
-        setMessage("Programa creado correctamente");
+        setMessage(t("programDataEditor.messages.created"));
         router.refresh();
         return;
       }
@@ -302,13 +286,15 @@ export default function ProgramDataEditor({
       setLastSavedSnapshot(JSON.stringify(nextProgram));
       setMessage(
         isCreateMode
-          ? "Programa creado correctamente"
-          : "Programa guardado correctamente",
+          ? t("programDataEditor.messages.created")
+          : t("programDataEditor.messages.saved"),
       );
       router.refresh();
     } catch (error) {
       setMessage(
-        error instanceof Error ? error.message : "No se pudo guardar el programa",
+        error instanceof Error
+          ? error.message
+          : t("programDataEditor.messages.saveError"),
       );
     } finally {
       setSaving(false);
@@ -322,11 +308,11 @@ export default function ProgramDataEditor({
 
     try {
       setAgentRunning(true);
-      setMessage("Ejecutando Agent Content...");
+      setMessage(t("programDataEditor.messages.running"));
       setAgentReady(false);
 
       if (jsonError) {
-        setMessage("Corrige el JSON completo antes de ejecutar el agente.");
+        setMessage(t("programDataEditor.messages.fixJsonBeforeAgent"));
         return;
       }
 
@@ -336,18 +322,18 @@ export default function ProgramDataEditor({
       const slug = slugify(title);
 
       if (!title || !slug) {
-        setMessage("Completa el nombre del programa para ejecutar el agente.");
+        setMessage(t("programDataEditor.messages.missingNameForAgent"));
         return;
       }
 
       if (!sourceWebsite) {
-        setMessage("Agrega el sitio web fuente antes de ejecutar el agente.");
+        setMessage(t("programDataEditor.messages.missingSourceWebsite"));
         return;
       }
 
       if (!isValidHttpUrl(sourceWebsite)) {
         setMessage(
-          "El sitio web fuente debe ser una URL valida que empiece por http:// o https://.",
+          t("programDataEditor.messages.invalidSourceWebsite"),
         );
         return;
       }
@@ -394,7 +380,7 @@ export default function ProgramDataEditor({
 
       if (hasAgentFailure(data.data)) {
         throw new Error(
-          "El Agent Content respondio sin exito. Revisa el flujo del bot.",
+          t("programDataEditor.messages.agentFailure"),
         );
       }
 
@@ -402,7 +388,7 @@ export default function ProgramDataEditor({
 
       if (!hasProgramData(agentProgram)) {
         throw new Error(
-          "El Agent Content no devolvio datos para completar el programa.",
+          t("programDataEditor.messages.emptyAgentData"),
         );
       }
 
@@ -426,7 +412,7 @@ export default function ProgramDataEditor({
       setPreviewProgram(nextProgram);
       setAgentReady(true);
       setMessage(
-        "Agent Content completo. Revisa el preview y crea el programa cuando este listo.",
+        t("programDataEditor.messages.agentComplete"),
       );
     } catch (error) {
       setPreviewProgram(null);
@@ -434,7 +420,7 @@ export default function ProgramDataEditor({
       setMessage(
         error instanceof Error
           ? error.message
-          : "No se pudo ejecutar el Agent Content",
+          : t("programDataEditor.messages.agentError"),
       );
     } finally {
       setAgentRunning(false);
@@ -448,8 +434,8 @@ export default function ProgramDataEditor({
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
             className="admin-button-secondary admin-button-icon"
-            aria-label="Volver a programs"
-            title="Volver a programs"
+            aria-label={t("programsEditor.backToPrograms")}
+            title={t("programsEditor.backToPrograms")}
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
@@ -462,7 +448,9 @@ export default function ProgramDataEditor({
               className="admin-button-primary disabled:cursor-not-allowed disabled:opacity-60"
             >
               <Save className="h-4 w-4" />
-              {saving ? "Guardando..." : "Guardar programa"}
+              {saving
+                ? t("programDataEditor.saving")
+                : t("programDataEditor.saveProgram")}
             </button>
           )}
         </div>
@@ -474,12 +462,13 @@ export default function ProgramDataEditor({
             {brand.name}
           </p>
           <h1 className="admin-title">
-            {isCreateMode ? "Agregar program" : "Editar programa"}
+            {isCreateMode
+              ? t("programDataEditor.addProgram")
+              : t("programDataEditor.editProgram")}
           </h1>
           {isCreateMode ? (
             <p className="admin-muted mt-2">
-              Completa la informacion paso a paso. El slug se genera
-              automaticamente desde el nombre del programa.
+              {t("programDataEditor.createDescription")}
             </p>
           ) : null}
         </div>
@@ -493,7 +482,7 @@ export default function ProgramDataEditor({
         }
       >
         <section className="admin-panel p-5">
-          <SectionTitle title="Informacion base" />
+          <SectionTitle title={t("programDataEditor.baseInfo")} />
 
           {isCreateMode ? (
             <ProgramBaseStepForm
@@ -514,27 +503,27 @@ export default function ProgramDataEditor({
           ) : (
             <>
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Nombre del programa" value={program.title} required onChange={(value) => updateField("title", value)} />
-                <Field label="Titulo completo" value={program.fullTitle} required onChange={(value) => updateField("fullTitle", value)} />
+                <Field label={t("programDataEditor.fields.programName")} value={program.title} required onChange={(value) => updateField("title", value)} />
+                <Field label={t("programDataEditor.fields.fullTitle")} value={program.fullTitle} required onChange={(value) => updateField("fullTitle", value)} />
                 <SelectField
-                  label="Idioma"
+                  label={t("programDataEditor.fields.language")}
                   value={program.language ?? "es"}
                   onChange={(value) => updateField("language", value)}
                   options={[
-                    { label: "Espanol", value: "es" },
-                    { label: "Ingles", value: "en" },
+                    { label: t("programDataEditor.actions.spanish"), value: "es" },
+                    { label: t("programDataEditor.actions.english"), value: "en" },
                   ]}
                 />
-                <Field label="Slug" value={generatedSlug} readOnly onChange={() => {}} />
-                <Field label="Sitio web fuente" value={program.sourceWebsite ?? ""} onChange={(value) => updateField("sourceWebsite", value)} />
-                <Field label="Catalogo" value={program.catalog ?? ""} onChange={(value) => updateField("catalog", value)} />
+                <Field label={t("programDataEditor.fields.slug")} value={generatedSlug} readOnly onChange={() => {}} />
+                <Field label={t("programDataEditor.fields.sourceWebsite")} value={program.sourceWebsite ?? ""} onChange={(value) => updateField("sourceWebsite", value)} />
+                <Field label={t("programDataEditor.fields.catalog")} value={program.catalog ?? ""} onChange={(value) => updateField("catalog", value)} />
               </div>
 
               <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <Field label="Program type" value={program.programType ?? ""} onChange={(value) => updateField("programType", value)} />
-              <Field label="Schedule" value={program.schedule ?? ""} onChange={(value) => updateField("schedule", value)} />
-              <Field label="Status" value={program.status} onChange={(value) => updateField("status", value)} />
-              <Field label="Template" value={program.template} onChange={(value) => updateField("template", value)} />
+              <Field label={t("programDataEditor.fields.programType")} value={program.programType ?? ""} onChange={(value) => updateField("programType", value)} />
+              <Field label={t("programDataEditor.fields.schedule")} value={program.schedule ?? ""} onChange={(value) => updateField("schedule", value)} />
+              <Field label={t("programDataEditor.fields.status")} value={program.status} onChange={(value) => updateField("status", value)} />
+              <Field label={t("programDataEditor.fields.template")} value={program.template} onChange={(value) => updateField("template", value)} />
               </div>
             </>
           )}
@@ -556,11 +545,9 @@ export default function ProgramDataEditor({
 
       <section className="admin-panel space-y-4 p-5 hidden">
         <div className="space-y-2">
-          <SectionTitle title="JSON completo del programa" />
+          <SectionTitle title={t("programDataEditor.jsonTitle")} />
           <p className="admin-muted">
-            Aqui puedes editar absolutamente toda la estructura del programa.
-            Cualquier campo que exista en el data puede modificarse desde este
-            bloque.
+            {t("programDataEditor.jsonDescription")}
           </p>
         </div>
 
@@ -583,8 +570,7 @@ export default function ProgramDataEditor({
           </p>
         ) : (
           <p className="admin-muted">
-            La informacion base y este JSON quedan sincronizados mientras el
-            contenido sea valido.
+            {t("programDataEditor.jsonSync")}
           </p>
         )}
       </section>
@@ -629,6 +615,21 @@ function ProgramBaseStepForm({
   agentRunning: boolean;
   saveDisabled: boolean;
 }) {
+  const { t } = useDashboardLanguage();
+  const programCreationSteps = [
+    {
+      title: t("programDataEditor.steps.nameTitle"),
+      description: t("programDataEditor.steps.nameDescription"),
+    },
+    {
+      title: t("programDataEditor.steps.sourceTitle"),
+      description: t("programDataEditor.steps.sourceDescription"),
+    },
+    {
+      title: t("programDataEditor.steps.catalogTitle"),
+      description: t("programDataEditor.steps.catalogDescription"),
+    },
+  ];
   const isFirstStep = activeStep === 0;
   const isLastStep = activeStep === programCreationSteps.length - 1;
   const canContinue = activeStep === 0 ? Boolean(program.title.trim()) : true;
@@ -692,8 +693,8 @@ function ProgramBaseStepForm({
         {activeStep === 0 ? (
           <div className="grid gap-4 md:grid-cols-2">
             <Field
-              label="Nombre del programa"
-              helper="Escribe el nombre que vera el usuario en la plataforma."
+              label={t("programDataEditor.fields.programName")}
+              helper={t("programDataEditor.helper.userFacingName")}
               value={program.title}
               required
               onChange={(value) => {
@@ -702,8 +703,8 @@ function ProgramBaseStepForm({
               }}
             />
             <Field
-              label="Slug"
-              helper="Se genera automaticamente desde el nombre del programa."
+              label={t("programDataEditor.fields.slug")}
+              helper={t("programDataEditor.helper.autoSlug")}
               value={generatedSlug}
               readOnly
               onChange={() => {}}
@@ -713,8 +714,8 @@ function ProgramBaseStepForm({
 
         {activeStep === 1 ? (
           <Field
-            label="Sitio web fuente"
-            helper="Pega la URL oficial del programa o la pagina que quieres usar como fuente."
+            label={t("programDataEditor.fields.sourceWebsite")}
+            helper={t("programDataEditor.helper.sourceWebsite")}
             value={program.sourceWebsite ?? ""}
             onChange={(value) => updateField("sourceWebsite", value)}
           />
@@ -724,10 +725,10 @@ function ProgramBaseStepForm({
           <div className="space-y-5">
             <div>
               <p className="text-sm font-semibold text-slate-950 dark:text-slate-100">
-                Como quieres agregar el catalogo?
+                {t("programDataEditor.helper.howAddCatalog")}
               </p>
               <p className="admin-muted mt-1">
-                Puedes dejarlo pendiente, subir un archivo o agregar un enlace.
+                {t("programDataEditor.helper.howAddCatalogDescription")}
               </p>
             </div>
 
@@ -741,7 +742,7 @@ function ProgramBaseStepForm({
                     : "border-slate-200 bg-white text-slate-700 hover:border-[var(--bunji-primary)] dark:border-white/10 dark:bg-slate-950 dark:text-slate-100"
                 }`}
               >
-                Subir catalogo
+                {t("programDataEditor.helper.uploadCatalog")}
               </button>
               <button
                 type="button"
@@ -752,21 +753,21 @@ function ProgramBaseStepForm({
                     : "border-slate-200 bg-white text-slate-700 hover:border-[var(--bunji-primary)] dark:border-white/10 dark:bg-slate-950 dark:text-slate-100"
                 }`}
               >
-                Agregar enlace
+                {t("programDataEditor.helper.addLink")}
               </button>
             </div>
 
             {catalogInputMode === "link" ? (
               <Field
-                label="Enlace del catalogo"
-                helper="Pega la URL publica del catalogo si ya la tienes disponible."
+                label={t("programDataEditor.fields.catalog")}
+                helper={t("programDataEditor.helper.catalogLink")}
                 value={program.catalog ?? ""}
                 onChange={(value) => updateField("catalog", value)}
               />
             ) : (
               <label className="block">
                 <span className="mb-1 block text-sm font-semibold text-slate-950 dark:text-slate-100">
-                  Archivo del catalogo
+                  {t("programDataEditor.helper.catalogFile")}
                 </span>
                 <input
                   type="file"
@@ -778,8 +779,7 @@ function ProgramBaseStepForm({
                   className="admin-input file:mr-4 file:rounded-lg file:border-0 file:bg-[var(--bunji-primary)] file:px-3 file:py-2 file:text-sm file:font-semibold file:text-white"
                 />
                 <span className="admin-muted mt-2 block">
-                  Por ahora se guarda la referencia del archivo en la data. La
-                  carga final del documento puede conectarse mas adelante.
+                  {t("programDataEditor.helper.fileReference")}
                 </span>
               </label>
             )}
@@ -794,7 +794,7 @@ function ProgramBaseStepForm({
           disabled={isFirstStep}
           className="admin-button-secondary disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Anterior
+          {t("programDataEditor.previous")}
         </button>
 
         {isLastStep && agentReady ? (
@@ -805,7 +805,9 @@ function ProgramBaseStepForm({
             className="admin-button-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
             <Save className="h-4 w-4" />
-            {saving ? "Creando..." : "Crear programa"}
+            {saving
+              ? t("programDataEditor.creating")
+              : t("programDataEditor.createProgram")}
           </button>
         ) : isLastStep ? (
           <button
@@ -815,7 +817,9 @@ function ProgramBaseStepForm({
             className="admin-button-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
             <Bot className="h-4 w-4" />
-            {agentRunning ? "Ejecutando..." : "Ejecutar Agent Content"}
+            {agentRunning
+              ? t("programDataEditor.runningAgent")
+              : t("programDataEditor.runAgent")}
           </button>
         ) : (
           <button
@@ -824,7 +828,7 @@ function ProgramBaseStepForm({
             disabled={!canContinue}
             className="admin-button-primary disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Continuar
+            {t("programDataEditor.continue")}
           </button>
         )}
       </div>
@@ -839,19 +843,19 @@ function ProgramPreviewCard({
   brand: Brand;
   program: Landing | null;
 }) {
+  const { t } = useDashboardLanguage();
 
   if (!program) {
     return (
       <aside className="admin-empty-state p-6 text-left">
         <p className="admin-eyebrow">
-          Preview
+          {t("programDataEditor.preview")}
         </p>
         <h2 className="mt-4 text-xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
-          Aqui se muestra la informacion del programa
+          {t("programDataEditor.previewTitle")}
         </h2>
         <p className="admin-muted mt-3">
-          Completa los tres pasos y ejecuta el Agent Content para revisar aqui
-          la informacion generada antes de crear el programa.
+          {t("programDataEditor.previewDescription")}
         </p>
       </aside>
     );
@@ -860,24 +864,26 @@ function ProgramPreviewCard({
   return (
     <aside className="admin-panel p-6">
       <p className="admin-eyebrow">
-        Preview
+        {t("programDataEditor.preview")}
       </p>
       <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
         {program.fullTitle}
       </h2>
       <dl className="mt-5 space-y-4 text-sm">
         <PreviewItem label="Brand" value={brand.name} />
-        <PreviewItem label="Program name" value={program.title} />
-        <PreviewItem label="Slug" value={program.slug} />
+        <PreviewItem label={t("programDataEditor.fields.programName")} value={program.title} />
+        <PreviewItem label={t("programDataEditor.fields.slug")} value={program.slug} />
         <PreviewItem
-          label="Source website"
-          value={program.sourceWebsite || "Pendiente"}
+          label={t("programDataEditor.fields.sourceWebsite")}
+          value={program.sourceWebsite || t("programDataEditor.empty.pending")}
         />
-        <PreviewItem label="Catalogo" value={program.catalog || "Pendiente"} />
+        <PreviewItem
+          label={t("programDataEditor.fields.catalog")}
+          value={program.catalog || t("programDataEditor.empty.pending")}
+        />
       </dl>
       <p className="admin-muted mt-6">
-        Cuando la informacion se vea correcta, vuelve al flujo y crea el
-        programa para guardarlo una sola vez.
+        {t("programDataEditor.previewFooter")}
       </p>
     </aside>
   );

@@ -1,0 +1,226 @@
+{
+  "slug": "tecnico-profesional-en-operaciones-de-comercio-electronico",
+  "brand": "fundacion-politecnico-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-26",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": false,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "",
+    "items": []
+  },
+  "title": "Tecnico Profesional En Operaciones De Comercio Electronico",
+  "fullTitle": "Tecnico Profesional En Operaciones De Comercio Electronico",
+  "sourceWebsite": "https://tecmd.edu.co/programas_titulados/tecnico-profesional-en-operaciones-de-comercio-electronico/",
+  "catalog": "",
+  "programType": "Programas Titulados",
+  "schedule": "",
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en FUNDACION-POLITECNICO-MINUTO-DE-DIOS",
+    "highlight": "",
+    "title": "Tecnico Profesional En Operaciones De Comercio Electronico",
+    "subtitle": "",
+    "description": "",
+    "supportText": "",
+    "modality": "",
+    "semesterPrice": "",
+    "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "duration": "",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "items": []
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": []
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "image": "",
+    "items": []
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "videoUrl": "",
+    "items": []
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "",
+    "items": []
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Solicita informacion",
+    "description": "Completa el formulario y nuestro equipo te contactara pronto.",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Tecnico Profesional En Operaciones De Comercio Electronico",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "shortTitle": "Tecnico Profesional En Operaciones De Comercio Electronico",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "",
+    "schedule": "",
+    "language": "es",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "",
+    "unit": "",
+    "display": "",
+    "credits": "",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": false,
+    "financialAidText": ""
+  },
+  "seo": {
+    "metaTitle": "Tecnico Profesional En Operaciones De Comercio Electronico",
+    "metaDescription": "",
+    "keywords": []
+  },
+  "summaryCards": [],
+  "overview": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "financialAid": {
+    "enabled": false,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

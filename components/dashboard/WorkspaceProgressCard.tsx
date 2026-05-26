@@ -1,0 +1,153 @@
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, Clock3, Sparkles } from "lucide-react";
+import {
+  getDashboardTranslator,
+  type DashboardLanguage,
+} from "@/lib/dashboardI18n";
+
+export type WorkspaceProgressStep = {
+  title: string;
+  complete: boolean;
+};
+
+type Props = {
+  language: DashboardLanguage;
+  state: "setup" | "active" | "ready";
+  nextActionLabel: string;
+  nextActionHref: string;
+  steps: WorkspaceProgressStep[];
+  summary: Array<{
+    label: string;
+    value: string;
+  }>;
+};
+
+export default function WorkspaceProgressCard({
+  language,
+  state,
+  nextActionLabel,
+  nextActionHref,
+  steps,
+  summary,
+}: Props) {
+  const t = getDashboardTranslator(language);
+  const completedSteps = steps.filter((step) => step.complete).length;
+
+  return (
+    <aside className="admin-panel h-fit self-start overflow-hidden rounded-[28px] border border-slate-200/90 bg-white p-6 shadow-[0_24px_60px_rgba(15,23,42,0.08)] dark:border-slate-200/90 dark:bg-white dark:text-slate-950">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+            {t("workspaceProgress.eyebrow")}
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-slate-950">
+            {t("workspaceProgress.title")}
+          </h2>
+        </div>
+
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-100 bg-cyan-50 text-cyan-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+          <Sparkles className="h-5 w-5" />
+        </div>
+      </div>
+
+      <p className="mt-4 text-sm leading-7 text-slate-600">
+        {t("workspaceProgress.description")}
+      </p>
+
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <StatusBadge language={language} state={state} />
+        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+          {completedSteps}/{steps.length} {t("workspaceProgress.stepsCompleted")}
+        </span>
+      </div>
+
+      <div className="mt-6 space-y-3">
+        {steps.map((step) => (
+          <div
+            key={step.title}
+            className="flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-3"
+          >
+            <div className="flex items-center gap-3">
+              <span
+                className={`flex h-9 w-9 items-center justify-center rounded-full border ${
+                  step.complete
+                    ? "border-emerald-200 bg-emerald-50 text-emerald-600"
+                    : "border-slate-200 bg-slate-50 text-slate-400"
+                }`}
+              >
+                {step.complete ? (
+                  <CheckCircle2 className="h-4 w-4" />
+                ) : (
+                  <Clock3 className="h-4 w-4" />
+                )}
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-slate-950">
+                  {step.title}
+                </p>
+                <p className="text-xs text-slate-500">
+                  {step.complete
+                    ? t("workspaceProgress.complete")
+                    : t("workspaceProgress.inProgress")}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        {summary.map((item) => (
+          <div
+            key={item.label}
+            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3"
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+              {item.label}
+            </p>
+            <p className="mt-2 text-base font-semibold text-slate-950">
+              {item.value}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 rounded-[24px] border border-[color-mix(in_srgb,var(--bunji-cyan)_28%,white)] bg-[linear-gradient(145deg,rgba(240,253,250,0.9),rgba(239,246,255,0.9))] p-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+          {t("workspaceProgress.recommendedMove")}
+        </p>
+        <Link
+          href={nextActionHref}
+          className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[var(--bunji-primary-dark)] transition hover:translate-x-0.5"
+        >
+          {nextActionLabel}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </aside>
+  );
+}
+
+function StatusBadge({
+  language,
+  state,
+}: {
+  language: DashboardLanguage;
+  state: "setup" | "active" | "ready";
+}) {
+  const t = getDashboardTranslator(language);
+  const styles =
+    state === "ready"
+      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+      : state === "active"
+        ? "border-cyan-200 bg-cyan-50 text-cyan-700"
+        : "border-amber-200 bg-amber-50 text-amber-700";
+
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${styles}`}
+    >
+      {t(`workspaceProgress.${state}`)}
+    </span>
+  );
+}

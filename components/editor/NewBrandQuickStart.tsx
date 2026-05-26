@@ -30,6 +30,42 @@ type GeneralContentAnalysis = {
   mainImage: string;
 };
 
+type DetectedProgram = {
+  parentCategory?: string;
+  parentCategoryLabel?: string;
+  slug?: string;
+  titleFromSlug?: string;
+  url?: string;
+  lastmod?: string | null;
+  seed?: {
+    title?: string;
+    fullTitle?: string;
+    slug?: string;
+    sourceWebsite?: string;
+    programUrl?: string;
+    template?: string;
+    status?: string;
+  };
+};
+
+type ProgramImportConfig = {
+  language?: string;
+  includeParentCategories?: string[];
+  excludeParentCategories?: string[];
+  overwriteExisting?: boolean;
+};
+
+type BrandAgentPayload = {
+  brand?: Brand;
+  brandUrl?: string;
+  detectedPrograms?: DetectedProgram[];
+  programsSummary?: {
+    totalDetected?: number;
+    importablePrograms?: number;
+  };
+  programImportConfig?: ProgramImportConfig;
+};
+
 function isN8nExpression(value: string) {
   return value.trim().startsWith("={{") || value.includes("$json.");
 }
@@ -197,6 +233,94 @@ function getBrandAgentPreview(data: unknown): Brand | null {
   };
 }
 
+function getBrandAgentPayload(data: unknown): BrandAgentPayload | null {
+  const firstValue = Array.isArray(data) ? data[0] : data;
+
+  if (!firstValue || typeof firstValue !== "object") {
+    return null;
+  }
+
+  const record = firstValue as Record<string, unknown>;
+  const previewBrand = getBrandAgentPreview(firstValue);
+  const detectedPrograms = Array.isArray(record.detectedPrograms)
+    ? (record.detectedPrograms as DetectedProgram[])
+    : [];
+  const rawImportConfig =
+    record.programImportConfig &&
+    typeof record.programImportConfig === "object" &&
+    !Array.isArray(record.programImportConfig)
+      ? (record.programImportConfig as Record<string, unknown>)
+      : null;
+  const rawSummary =
+    record.programsSummary &&
+    typeof record.programsSummary === "object" &&
+    !Array.isArray(record.programsSummary)
+      ? (record.programsSummary as Record<string, unknown>)
+      : null;
+
+  if (!previewBrand && detectedPrograms.length === 0 && !rawImportConfig) {
+    return null;
+  }
+
+  return {
+    brand: previewBrand ?? undefined,
+    brandUrl: getCleanString(record.brandUrl),
+    detectedPrograms,
+    programsSummary: rawSummary
+      ? {
+          totalDetected:
+            typeof rawSummary.totalDetected === "number"
+              ? rawSummary.totalDetected
+              : detectedPrograms.length,
+          importablePrograms:
+            typeof rawSummary.importablePrograms === "number"
+              ? rawSummary.importablePrograms
+              : detectedPrograms.length,
+        }
+      : {
+          totalDetected: detectedPrograms.length,
+          importablePrograms: detectedPrograms.length,
+        },
+    programImportConfig: rawImportConfig
+      ? {
+          language: getCleanString(rawImportConfig.language),
+          includeParentCategories: Array.isArray(
+            rawImportConfig.includeParentCategories,
+          )
+            ? rawImportConfig.includeParentCategories
+                .map(getCleanString)
+                .filter(Boolean)
+            : [],
+          excludeParentCategories: Array.isArray(
+            rawImportConfig.excludeParentCategories,
+          )
+            ? rawImportConfig.excludeParentCategories
+                .map(getCleanString)
+                .filter(Boolean)
+            : [],
+          overwriteExisting: rawImportConfig.overwriteExisting === true,
+        }
+      : undefined,
+  };
+}
+
+function getProgramTypeSummary(detectedPrograms: DetectedProgram[]) {
+  const counts = new Map<string, number>();
+
+  for (const program of detectedPrograms) {
+    const label =
+      getCleanString(program.parentCategoryLabel) ||
+      getCleanString(program.parentCategory) ||
+      "Programs";
+    counts.set(label, (counts.get(label) || 0) + 1);
+  }
+
+  return Array.from(counts.entries()).map(([label, count]) => ({
+    label,
+    count,
+  }));
+}
+
 function getGeneralContentAnalysis(data: unknown): GeneralContentAnalysis | null {
   const firstValue = Array.isArray(data) ? data[0] : data;
 
@@ -257,6 +381,7 @@ export default function NewBrandQuickStart() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [agentPreview, setAgentPreview] = useState<Brand | null>(null);
+  const [agentPayload, setAgentPayload] = useState<BrandAgentPayload | null>(null);
   const [savedBrand, setSavedBrand] = useState<Brand | null>(null);
   const [assistantLoadingMessage, setAssistantLoadingMessage] = useState(() =>
     getRandomEdwinAssistantMessage("loading"),
@@ -272,6 +397,7 @@ export default function NewBrandQuickStart() {
     setError("");
     setMessage("");
     setAgentPreview(null);
+    setAgentPayload(null);
     setAnalysisComplete(false);
     setCurrentStep("identity");
   };
@@ -338,10 +464,13 @@ export default function NewBrandQuickStart() {
       );
 
       const preview = getBrandAgentPreview(data);
+      const payload = getBrandAgentPayload(data);
 
       console.log("[NewBrandQuickStart] parsed brand agent preview", preview);
+      console.log("[NewBrandQuickStart] parsed brand agent payload", payload);
 
       setAgentPreview(preview);
+      setAgentPayload(payload);
 
       setMessage(
         preview
@@ -399,6 +528,53 @@ export default function NewBrandQuickStart() {
         ...brandData,
         slug: data.slug || brandData.slug,
       });
+
+      const createdBrandSlug = data.slug || brandData.slug;
+      const detectedPrograms = agentPayload?.detectedPrograms || [];
+
+      if (detectedPrograms.length > 0) {
+        const bootstrapResponse = await fetch(
+          `/api/programs/${createdBrandSlug}/bootstrap`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              detectedPrograms,
+              includeParentCategories:
+                agentPayload?.programImportConfig?.includeParentCategories || [],
+              excludeParentCategories:
+                agentPayload?.programImportConfig?.excludeParentCategories || [],
+              language: agentPayload?.programImportConfig?.language || "",
+              overwriteExisting:
+                agentPayload?.programImportConfig?.overwriteExisting === true,
+            }),
+          },
+        );
+        const bootstrapData = (await bootstrapResponse.json()) as {
+          ok?: boolean;
+          error?: string;
+          summary?: {
+            created?: number;
+            skipped?: number;
+          };
+        };
+
+        if (!bootstrapResponse.ok || !bootstrapData.ok) {
+          throw new Error(
+            bootstrapData.error ||
+              "La marca fue creada, pero no se pudieron importar los programas detectados",
+          );
+        }
+
+        setMessage(
+          `Marca creada. Se importaron ${bootstrapData.summary?.created ?? 0} programas base${(bootstrapData.summary?.skipped ?? 0) > 0 ? ` y se omitieron ${bootstrapData.summary?.skipped ?? 0}` : ""}.`,
+        );
+      } else {
+        setMessage("Marca creada correctamente.");
+      }
+
       setAnalysisComplete(true);
       setCurrentStep("visual");
     } catch (createError) {
@@ -701,7 +877,12 @@ export default function NewBrandQuickStart() {
           ) : null}
         </div>
 
-        <BrandPreviewCard agentPreview={agentPreview} brand={savedBrand} />
+        <BrandPreviewCard
+          agentPreview={agentPreview}
+          brand={savedBrand}
+          detectedPrograms={agentPayload?.detectedPrograms || []}
+          programsSummary={agentPayload?.programsSummary}
+        />
       </section>
     );
   }
@@ -800,6 +981,8 @@ export default function NewBrandQuickStart() {
 
       <BrandPreviewCard
         agentPreview={agentPreview}
+        detectedPrograms={agentPayload?.detectedPrograms || []}
+        programsSummary={agentPayload?.programsSummary}
         isLoading={sending}
         loadingMessage={assistantLoadingMessage}
       />
@@ -810,11 +993,15 @@ export default function NewBrandQuickStart() {
 function BrandPreviewCard({
   agentPreview,
   brand,
+  detectedPrograms = [],
+  programsSummary,
   isLoading = false,
   loadingMessage = "",
 }: {
   agentPreview: Brand | null;
   brand?: Brand | null;
+  detectedPrograms?: DetectedProgram[];
+  programsSummary?: BrandAgentPayload["programsSummary"];
   isLoading?: boolean;
   loadingMessage?: string;
 }) {
@@ -828,15 +1015,21 @@ function BrandPreviewCard({
   const primaryColor = brand?.primaryColor || agentPreview?.primaryColor || "";
   const secondaryColor =
     brand?.secondaryColor || agentPreview?.secondaryColor || "";
+  const programTypeSummary = getProgramTypeSummary(detectedPrograms);
+  const totalPrograms =
+    programsSummary?.importablePrograms ||
+    programsSummary?.totalDetected ||
+    detectedPrograms.length;
+  const typePreview = programTypeSummary.slice(0, 3);
 
   return (
-    <aside className="relative overflow-hidden border border-slate-800 bg-slate-950 p-6 text-white shadow-sm">
+    <aside className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-6 text-slate-950 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
       <div className="flex h-full min-h-[360px] flex-col">
         <div>
-          <p className="text-xs mb-5 font-semibold uppercase tracking-[0.2em] text-white/50">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
             Preview
           </p>
-          <div className="mb-8 flex h-14 w-50 items-center justify-center overflow-hidden p-2 text-white">
+          <div className="mb-8 flex h-14 w-50 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2 text-slate-950">
             {previewLogo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -845,7 +1038,7 @@ function BrandPreviewCard({
                 className="max-h-full w-full object-contain"
               />
             ) : (
-              <span className="text-lg font-semibold text-white/60">Logo</span>
+              <span className="text-lg font-semibold text-slate-400">Logo</span>
             )}
           </div>
           <h2 className="mt-4 text-3xl font-semibold leading-tight">
@@ -853,7 +1046,7 @@ function BrandPreviewCard({
               "Aqui previsualizaras las caracteristicas de tu marca"}
           </h2>
           {!agentPreview ? (
-            <p className="mt-4 text-sm leading-6 text-white/60">
+            <p className="mt-4 text-sm leading-6 text-slate-500">
               Este panel ira tomando forma a medida que agregues informacion de
               identidad.
             </p>
@@ -865,34 +1058,62 @@ function BrandPreviewCard({
 
             {description ? (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Descripcion
                 </p>
-                <p className="mt-2 text-sm leading-6 text-white/75">
+                <p className="mt-2 text-sm leading-6 text-slate-600">
                   {description}
                 </p>
               </div>
             ) : null}
 
+            {detectedPrograms.length > 0 ? (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Programas detectados
+                </p>
+                <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <p className="text-3xl font-semibold text-slate-950">
+                    {totalPrograms}
+                  </p>
+                  <p className="mt-1 text-sm text-slate-500">
+                    programas encontrados para importar
+                  </p>
+                  {typePreview.length > 0 ? (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {typePreview.map((item) => (
+                        <span
+                          key={item.label}
+                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600"
+                        >
+                          {item.label}: {item.count}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
+
             {primaryColor || secondaryColor ? (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Colores
                 </p>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   {primaryColor ? (
-                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
-                          className="h-10 w-10 rounded-lg border border-white/10"
+                          className="h-10 w-10 rounded-lg border border-slate-200"
                           style={{ backgroundColor: primaryColor }}
                         />
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                             Primario
                           </p>
-                          <p className="mt-1 text-sm font-medium text-white/80">
+                          <p className="mt-1 text-sm font-medium text-slate-700">
                             {primaryColor}
                           </p>
                         </div>
@@ -901,18 +1122,18 @@ function BrandPreviewCard({
                   ) : null}
 
                   {secondaryColor ? (
-                    <div className="rounded-md border border-white/10 bg-white/[0.04] p-3">
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
                       <div className="flex items-center gap-3">
                         <span
                           aria-hidden="true"
-                          className="h-10 w-10 rounded-lg border border-white/10"
+                          className="h-10 w-10 rounded-lg border border-slate-200"
                           style={{ backgroundColor: secondaryColor }}
                         />
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
                             Secundario
                           </p>
-                          <p className="mt-1 text-sm font-medium text-white/80">
+                          <p className="mt-1 text-sm font-medium text-slate-700">
                             {secondaryColor}
                           </p>
                         </div>
@@ -925,14 +1146,14 @@ function BrandPreviewCard({
 
             {agentPreview.officialWebsite ? (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Sitio oficial
                 </p>
                 <a
                   href={agentPreview.officialWebsite}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-2 block truncate text-sm font-semibold text-[var(--bunji-primary-muted)] underline-offset-4 hover:underline"
+                  className="mt-2 block truncate text-sm font-semibold text-[var(--bunji-primary)] underline-offset-4 hover:underline"
                 >
                   {agentPreview.officialWebsite}
                 </a>
@@ -941,10 +1162,10 @@ function BrandPreviewCard({
 
             {agentPreview.slug ? (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Slug
                 </p>
-                <p className="mt-2 truncate font-mono text-sm text-white/70">
+                <p className="mt-2 truncate font-mono text-sm text-slate-600">
                   {agentPreview.slug}
                 </p>
               </div>

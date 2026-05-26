@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ArrowLeft, Plus, Trash2 } from "lucide-react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import type {
   Brand,
   BrandCampus,
@@ -27,6 +28,8 @@ type Props = {
   backHref?: string;
   backLabel?: string;
   stickyActions?: boolean;
+  formId?: string;
+  showSaveActions?: boolean;
 };
 
 type SaveBrandResponse = {
@@ -63,7 +66,10 @@ export default function BrandEditor({
   backHref,
   backLabel = "Volver",
   stickyActions = false,
+  formId,
+  showSaveActions = true,
 }: Props) {
+  const { t } = useDashboardLanguage();
   const router = useRouter();
   const enrichedInitialBrand = enrichBrandColorPalette(initialBrand);
   const [brand, setBrand] = useState<Brand>(() => enrichedInitialBrand);
@@ -346,17 +352,17 @@ export default function BrandEditor({
       const data = (await response.json()) as SaveBrandResponse;
 
       if (!response.ok) {
-        throw new Error(data.error || "No se pudo guardar la marca");
+        throw new Error(data.error || t("brandEditor.saveError"));
       }
 
       if (mode === "create") {
         if (data.supabase?.ok) {
-          window.alert("Marca creada correctamente en Supabase.");
+          window.alert(t("brandEditor.createSuccess"));
         } else {
           window.alert(
-            `El JSON se creo, pero no se pudo crear la marca en Supabase: ${
-              data.supabase?.error || "No se recibio detalle del error."
-            }`,
+            t("brandEditor.createPartialSuccess", {
+              error: data.supabase?.error || t("brandEditor.noErrorDetail"),
+            }),
           );
         }
 
@@ -367,21 +373,30 @@ export default function BrandEditor({
       }
 
       setLastSavedSnapshot(currentSnapshot);
-      setMessage("Cambios guardados correctamente");
+      setMessage(t("brandEditor.saveSuccess"));
       router.refresh();
     } catch (error: unknown) {
-      setMessage(error instanceof Error ? error.message : "Ocurrio un error");
+      setMessage(
+        error instanceof Error ? error.message : t("brandEditor.genericError"),
+      );
     } finally {
       setSaving(false);
     }
   };
 
   return (
-    <div className="border border-gray-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-950">
-      {stickyActions ? (
-        <div className="-mt-2 mb-8 sticky top-4 z-20 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            {backHref ? (
+    <form
+      id={formId}
+      onSubmit={(event) => {
+        event.preventDefault();
+        void handleSave();
+      }}
+      className="border border-gray-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-950"
+    >
+      {stickyActions && showSaveActions ? (
+          <div className="-mt-2 mb-8 sticky top-4 z-20 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              {backHref ? (
               <Link
                 href={backHref}
                 className="admin-button-secondary admin-button-icon"
@@ -401,19 +416,18 @@ export default function BrandEditor({
                 </p>
               ) : null}
 
-              <button
-                type="button"
-                onClick={handleSave}
-                disabled={saveDisabled}
-                className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
-              >
+                <button
+                  type="submit"
+                  disabled={saveDisabled}
+                  className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
+                >
                 {saving
                   ? mode === "create"
-                    ? "Creando..."
-                    : "Guardando..."
+                    ? t("brandEditor.creating")
+                    : t("brandEditor.saving")
                   : mode === "create"
-                    ? "Crear marca"
-                    : "Guardar cambios"}
+                    ? t("brandEditor.createBrand")
+                    : t("brandEditor.saveChanges")}
               </button>
             </div>
           </div>
@@ -423,8 +437,8 @@ export default function BrandEditor({
       <div className="mb-6">
         <p className="text-gray-600 dark:text-slate-300">
           {mode === "create"
-            ? "Configura una marca nueva para empezar a crear landings."
-            : "Actualiza la informacion general, logos y links legales de la marca."}
+            ? t("brandEditor.createMessage")
+            : t("brandEditor.editMessage")}
         </p>
       </div>
 
@@ -438,7 +452,7 @@ export default function BrandEditor({
               : "text-gray-600 hover:text-gray-950 dark:text-slate-300 dark:hover:text-white"
           }`}
         >
-          Informacion General
+          {t("brandEditor.generalTab")}
         </button>
         <button
           type="button"
@@ -449,7 +463,7 @@ export default function BrandEditor({
               : "text-gray-600 hover:text-gray-950 dark:text-slate-300 dark:hover:text-white"
           }`}
         >
-          Estilos graficos
+          {t("brandEditor.stylesTab")}
         </button>
       </div>
 
@@ -458,68 +472,68 @@ export default function BrandEditor({
           <>
             <div className="space-y-4">
               <Field
-                label="Slug"
+                label={t("brandEditor.fields.slug")}
                 value={brand.slug}
                 onChange={(value) => updateField("slug", value)}
                 disabled={mode === "edit"}
               />
 
               <Field
-                label="Nombre"
+                label={t("brandEditor.fields.name")}
                 value={brand.name}
                 onChange={(value) => updateField("name", value)}
               />
 
               <Field
-                label="Nombre completo"
+                label={t("brandEditor.fields.fullName")}
                 value={brand.shortName || ""}
                 onChange={(value) => updateField("shortName", value)}
               />
 
               <Field
-                label="Descripcion"
+                label={t("brandEditor.fields.description")}
                 value={brand.description || ""}
                 onChange={(value) => updateField("description", value)}
               />
 
               <Field
-                label="Sitio oficial"
+                label={t("brandEditor.fields.officialWebsite")}
                 value={brand.officialWebsite || ""}
                 onChange={(value) => updateField("officialWebsite", value)}
               />
 
               <Field
-                label="Site name"
+                label={t("brandEditor.fields.siteName")}
                 value={brand.siteName || ""}
                 onChange={(value) => updateField("siteName", value)}
               />
 
               <TextareaField
-                label="Abstract"
+                label={t("brandEditor.fields.abstract")}
                 value={brand.abstract || ""}
                 onChange={(value) => updateField("abstract", value)}
               />
 
               <Field
-                label="Keywords"
+                label={t("brandEditor.fields.keywords")}
                 value={(brand.keywords ?? []).join(", ")}
                 onChange={updateKeywords}
               />
 
               <Field
-                label="Robots"
+                label={t("brandEditor.fields.robots")}
                 value={brand.robots || ""}
                 onChange={(value) => updateField("robots", value)}
               />
 
               <Field
-                label="Generator"
+                label={t("brandEditor.fields.generator")}
                 value={brand.generator || ""}
                 onChange={(value) => updateField("generator", value)}
               />
 
               <Field
-                label="Imagen principal de marca"
+                label={t("brandEditor.fields.brandImage")}
                 value={brand.imageBrand || ""}
                 onChange={(value) => updateField("imageBrand", value)}
               />
@@ -528,10 +542,10 @@ export default function BrandEditor({
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                      Galeria de imagenes
+                      {t("brandEditor.fields.imageGallery")}
                     </h2>
                     <p className="text-sm text-gray-500 dark:text-slate-400">
-                      Agrega URLs adicionales de imagen para la marca.
+                      {t("brandEditor.helper.gallery")}
                     </p>
                   </div>
 
@@ -541,13 +555,13 @@ export default function BrandEditor({
                     className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Agregar imagen
+                    {t("brandEditor.helper.addImage")}
                   </button>
                 </div>
 
                 {(brand.images ?? []).length === 0 ? (
                   <div className="border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
-                    Esta marca todavia no tiene imagenes adicionales configuradas.
+                    {t("brandEditor.helper.galleryEmpty")}
                   </div>
                 ) : null}
 
@@ -558,7 +572,7 @@ export default function BrandEditor({
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                        Imagen {index + 1}
+                        {t("brandEditor.item.image")} {index + 1}
                       </p>
 
                       <button
@@ -567,7 +581,7 @@ export default function BrandEditor({
                         className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Eliminar
+                        {t("brandEditor.actions.remove")}
                       </button>
                     </div>
 
@@ -584,10 +598,10 @@ export default function BrandEditor({
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                      Campuses
+                      {t("brandEditor.fields.campuses")}
                     </h2>
                     <p className="text-sm text-gray-500 dark:text-slate-400">
-                      Agrega sedes con su descripcion, imagen y video.
+                      {t("brandEditor.helper.campuses")}
                     </p>
                   </div>
 
@@ -597,13 +611,13 @@ export default function BrandEditor({
                     className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Agregar campus
+                    {t("brandEditor.helper.addCampus")}
                   </button>
                 </div>
 
                 {(brand.campuses ?? []).length === 0 ? (
                   <div className="border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
-                    Esta marca todavia no tiene campuses configurados.
+                    {t("brandEditor.helper.campusesEmpty")}
                   </div>
                 ) : null}
 
@@ -614,7 +628,7 @@ export default function BrandEditor({
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                        Campus {index + 1}
+                        {t("brandEditor.item.campus")} {index + 1}
                       </p>
 
                       <button
@@ -623,19 +637,19 @@ export default function BrandEditor({
                         className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Eliminar
+                        {t("brandEditor.actions.remove")}
                       </button>
                     </div>
 
                     <div className="space-y-3">
                       <Field
-                        label="Nombre del campus"
+                        label={t("brandEditor.helper.campusName")}
                         value={campus.name || ""}
                         onChange={(value) => updateCampus(index, "name", value)}
                       />
 
                       <Field
-                        label="Ubicacion"
+                        label={t("brandEditor.helper.campusLocation")}
                         value={campus.location || ""}
                         onChange={(value) =>
                           updateCampus(index, "location", value)
@@ -643,7 +657,7 @@ export default function BrandEditor({
                       />
 
                       <TextareaField
-                        label="Descripcion del campus"
+                        label={t("brandEditor.helper.campusDescription")}
                         value={campus.description || ""}
                         onChange={(value) =>
                           updateCampus(index, "description", value)
@@ -651,13 +665,13 @@ export default function BrandEditor({
                       />
 
                       <Field
-                        label="Imagen del campus"
+                        label={t("brandEditor.helper.campusImage")}
                         value={campus.image || ""}
                         onChange={(value) => updateCampus(index, "image", value)}
                       />
 
                       <Field
-                        label="Link de video"
+                        label={t("brandEditor.helper.campusVideo")}
                         value={campus.videoUrl || ""}
                         onChange={(value) =>
                           updateCampus(index, "videoUrl", value)
@@ -674,10 +688,10 @@ export default function BrandEditor({
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                      Links legales
+                      {t("brandEditor.fields.legalLinks")}
                     </h2>
                     <p className="text-sm text-gray-500 dark:text-slate-400">
-                      Estos links se muestran en el footer de las landings.
+                      {t("brandEditor.helper.legalLinks")}
                     </p>
                   </div>
 
@@ -687,13 +701,13 @@ export default function BrandEditor({
                     className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Agregar link
+                    {t("brandEditor.helper.addLegalLink")}
                   </button>
                 </div>
 
                 {(brand.legalLinks ?? []).length === 0 ? (
                   <div className="border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
-                    Esta marca todavia no tiene links legales configurados.
+                    {t("brandEditor.helper.legalLinksEmpty")}
                   </div>
                 ) : null}
 
@@ -704,7 +718,7 @@ export default function BrandEditor({
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                        Link {index + 1}
+                        {t("brandEditor.item.link")} {index + 1}
                       </p>
 
                       <button
@@ -713,13 +727,13 @@ export default function BrandEditor({
                         className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Eliminar
+                        {t("brandEditor.actions.remove")}
                       </button>
                     </div>
 
                     <div className="space-y-3">
                       <Field
-                        label="Etiqueta"
+                        label={t("brandEditor.helper.linkLabel")}
                         value={link.label}
                         onChange={(value) => updateLegalLink(index, "label", value)}
                       />
@@ -738,10 +752,10 @@ export default function BrandEditor({
                 <div className="flex items-center justify-between gap-3">
                   <div>
                     <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                      Certificaciones
+                      {t("brandEditor.fields.certifications")}
                     </h2>
                     <p className="text-sm text-gray-500 dark:text-slate-400">
-                      Agrega acreditaciones o certificaciones de la institucion.
+                      {t("brandEditor.helper.certifications")}
                     </p>
                   </div>
 
@@ -751,13 +765,13 @@ export default function BrandEditor({
                     className="admin-button-secondary px-3 py-2 text-xs"
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Agregar certificacion
+                    {t("brandEditor.helper.addCertification")}
                   </button>
                 </div>
 
                 {(brand.certifications ?? []).length === 0 ? (
                   <div className="border border-dashed border-gray-300 bg-white p-4 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-400">
-                    Esta marca todavia no tiene certificaciones configuradas.
+                    {t("brandEditor.helper.certificationsEmpty")}
                   </div>
                 ) : null}
 
@@ -768,7 +782,7 @@ export default function BrandEditor({
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <p className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                        Certificacion {index + 1}
+                        {t("brandEditor.item.certification")} {index + 1}
                       </p>
 
                       <button
@@ -777,13 +791,13 @@ export default function BrandEditor({
                         className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                        Eliminar
+                        {t("brandEditor.actions.remove")}
                       </button>
                     </div>
 
                     <div className="space-y-3">
                       <Field
-                        label="Nombre de la acreditacion"
+                        label={t("brandEditor.helper.accreditationName")}
                         value={certification.name}
                         onChange={(value) =>
                           updateCertification(index, "name", value)
@@ -791,7 +805,7 @@ export default function BrandEditor({
                       />
 
                       <Field
-                        label="URL de la entidad acreditadora"
+                        label={t("brandEditor.helper.accreditorUrl")}
                         value={certification.url}
                         onChange={(value) =>
                           updateCertification(index, "url", value)
@@ -824,23 +838,23 @@ export default function BrandEditor({
             <div className="space-y-4">
               <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                  Logos
+                  {t("brandEditor.fields.logo")}
                 </h2>
 
                 <Field
-                  label="Logo principal"
+                  label={t("brandEditor.fields.logo")}
                   value={brand.logo}
                   onChange={(value) => updateField("logo", value)}
                 />
 
                 <Field
-                  label="Logo light"
+                  label={t("brandEditor.fields.logoLight")}
                   value={brand.logos?.light || ""}
                   onChange={(value) => updateField("logos.light", value)}
                 />
 
                 <Field
-                  label="Logo dark"
+                  label={t("brandEditor.fields.logoDark")}
                   value={brand.logos?.dark || ""}
                   onChange={(value) => updateField("logos.dark", value)}
                 />
@@ -850,25 +864,25 @@ export default function BrandEditor({
             <div className="space-y-4">
               <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                  Colores
+                  {t("brandEditor.fields.primaryColor")}
                 </h2>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <ColorField
-                    label="Color primario"
+                    label={t("brandEditor.fields.primaryColor")}
                     value={brand.primaryColor}
                     onChange={(value) => updateField("primaryColor", value)}
                   />
 
                   <ColorField
-                    label="Color secundario"
+                    label={t("brandEditor.fields.secondaryColor")}
                     value={brand.secondaryColor}
                     onChange={(value) => updateField("secondaryColor", value)}
                   />
                 </div>
 
                 <PaletteEditor
-                  title="Variantes del color primario"
+                  title={t("brandEditor.helper.colorVariantsPrimary")}
                   scale={
                     brand.colorPalette?.primary ??
                     createBrandColorScale(brand.primaryColor)
@@ -879,7 +893,7 @@ export default function BrandEditor({
                 />
 
                 <PaletteEditor
-                  title="Variantes del color secundario"
+                  title={t("brandEditor.helper.colorVariantsSecondary")}
                   scale={
                     brand.colorPalette?.secondary ??
                     createBrandColorScale(brand.secondaryColor)
@@ -892,17 +906,17 @@ export default function BrandEditor({
 
               <div className="admin-panel-soft space-y-4 p-4">
                 <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-50">
-                  Tipografia
+                  {t("brandEditor.fields.fontFamily")}
                 </h2>
 
                 <Field
-                  label="Font family"
+                  label={t("brandEditor.fields.fontFamily")}
                   value={brand.typography?.fontFamily || ""}
                   onChange={(value) => updateField("typography.fontFamily", value)}
                 />
 
                 <Field
-                  label="Google Fonts URL"
+                  label={t("brandEditor.fields.googleFontsUrl")}
                   value={brand.typography?.googleFontHref || ""}
                   onChange={(value) =>
                     updateField("typography.googleFontHref", value)
@@ -910,7 +924,7 @@ export default function BrandEditor({
                 />
 
                 <Field
-                  label="Manual de identidad"
+                  label={t("brandEditor.fields.identityManual")}
                   value={brand.identityManual || ""}
                   onChange={(value) => updateField("identityManual", value)}
                 />
@@ -920,21 +934,20 @@ export default function BrandEditor({
         )}
       </div>
 
-      {!stickyActions ? (
+      {!stickyActions && showSaveActions ? (
         <div className="mt-6 flex items-center gap-3">
           <button
-            type="button"
-            onClick={handleSave}
+            type="submit"
             disabled={saveDisabled}
             className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {saving
               ? mode === "create"
-                ? "Creando..."
-                : "Guardando..."
+                ? t("brandEditor.creating")
+                : t("brandEditor.saving")
               : mode === "create"
-                ? "Crear marca"
-                : "Guardar cambios"}
+                ? t("brandEditor.createBrand")
+                : t("brandEditor.saveChanges")}
           </button>
 
           {message ? (
@@ -944,7 +957,7 @@ export default function BrandEditor({
           ) : null}
         </div>
       ) : null}
-    </div>
+    </form>
   );
 }
 

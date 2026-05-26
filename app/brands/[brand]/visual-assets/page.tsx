@@ -30,28 +30,26 @@ export default async function BrandVisualAssetsPage({ params }: Props) {
       <div className="admin-page-inner">
         <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link
-              href={`/admin/brands/${brand.slug}`}
-              className="admin-button-secondary admin-button-icon"
-              aria-label="Volver a marca"
-              title="Volver a marca"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label="Volver a marca"
+                title="Volver a marca"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
 
-        <div className="mb-8">
-          <p className="admin-eyebrow">
-            {brand.name}
-          </p>
-          <h1 className="admin-title">
-            Visual Assets
-          </h1>
-          <p className="admin-muted mt-2 max-w-2xl">
-            Organiza los recursos visuales por tipo de uso para alimentar
-            landings, campanas y piezas generadas por agentes.
-          </p>
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  Visual Assets
+                </h1>
+              </div>
+            </div>
+          </div>
         </div>
 
         <section className="grid gap-5 lg:grid-cols-2">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import DashboardLanguageProvider from "@/components/dashboard/DashboardLanguageProvider";
 import DashboardShell from "@/components/dashboard/DashboardShell";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrands, getLandingsByBrand } from "@/lib/data";
 import { getSupabaseBrands } from "@/lib/supabaseBrands";
 import "./globals.css";
@@ -27,6 +29,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const dashboardLanguage = await getDashboardLanguage();
   const jsonBrands = getBrands();
   const supabaseBrands = await getSupabaseBrands();
   const brands = [
@@ -47,17 +50,19 @@ export default async function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang={dashboardLanguage}
       suppressHydrationWarning
       className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col">
-        <DashboardShell
-          brands={brands}
-          landingSummaries={landingSummaries}
-        >
-          {children}
-        </DashboardShell>
+        <DashboardLanguageProvider initialLanguage={dashboardLanguage}>
+          <DashboardShell
+            brands={brands}
+            landingSummaries={landingSummaries}
+          >
+            {children}
+          </DashboardShell>
+        </DashboardLanguageProvider>
       </body>
     </html>
   );

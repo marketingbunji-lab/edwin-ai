@@ -11,6 +11,11 @@ import {
   Pencil,
   Target,
 } from "lucide-react";
+import {
+  getDashboardTranslator,
+  type DashboardLanguage,
+} from "@/lib/dashboardI18n";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
@@ -25,6 +30,8 @@ type Props = {
 type WorkflowState = "completed" | "in_progress" | "locked" | "pending";
 
 export default async function BrandKnowledgeBasePage({ params }: Props) {
+  const language = await getDashboardLanguage();
+  const t = getDashboardTranslator(language);
   const { brand: brandSlug } = await params;
   const brand =
     getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
@@ -45,17 +52,13 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
   const brandSetupCompleted = brandSetupSignals >= 5;
   const brandSetupInProgress = !brandSetupCompleted && brandSetupSignals > 0;
   const contentBaseCompleted = programs.length > 0;
-  const contentBaseState: WorkflowState = !brandSetupCompleted
-    ? "locked"
-    : contentBaseCompleted
-      ? "completed"
-      : "pending";
   const universityContentBaseCompleted = false;
-  const universityContentBaseState: WorkflowState = !contentBaseCompleted
-    ? "locked"
-    : universityContentBaseCompleted
-      ? "completed"
-      : "pending";
+  const universityContentBaseState: WorkflowState = universityContentBaseCompleted
+    ? "completed"
+    : "pending";
+  const contentBaseState: WorkflowState = contentBaseCompleted
+    ? "completed"
+    : "pending";
   const goldenCircleState: WorkflowState = !universityContentBaseCompleted
     ? "locked"
     : "pending";
@@ -65,37 +68,52 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
       <div className="admin-page-inner">
         <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link
-              href={`/admin/brands/${brand.slug}`}
-              className="admin-button-secondary admin-button-icon"
-              aria-label="Volver a marca"
-              title="Volver a marca"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label={t("shell.backToBrand")}
+                title={t("shell.backToBrand")}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  {t("knowledgeBasePage.title")}
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
 
         <section className="admin-panel p-6 sm:p-8">
-          <p className="admin-eyebrow">{brand.name}</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
-            Knowledge Base
-          </h1>
-          <p className="admin-muted mt-4 max-w-3xl text-base leading-7">
-            Esta capa concentra la configuracion fundacional de la marca y la
-            base de contenido que alimenta el resto del sistema.
-          </p>
 
-          <div className="relative mt-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+          <div className="relative grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
             <div className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-10 hidden h-px bg-[linear-gradient(90deg,rgba(62,57,137,0.18),rgba(125,227,234,0.48),rgba(62,57,137,0.18))] xl:block" />
             <div className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-[34px] hidden h-3 bg-[radial-gradient(circle,rgba(125,227,234,0.28)_0%,transparent_62%)] blur-xl xl:block" />
 
             <WorkspaceCard
+              href={`/admin/brands/${brand.slug}/university`}
+              title={t("knowledgeBasePage.universityContentBaseTitle")}
+              description={t("knowledgeBasePage.universityContentBaseDescription")}
+              helper={t("knowledgeBasePage.institutionalContentHelper")}
+              ctaLabel={t("knowledgeBasePage.goToUniversityContentBase")}
+              icon={LibraryBig}
+              state={universityContentBaseState}
+              stepLabel={t("knowledgeBasePage.step01")}
+              language={language}
+            />
+
+            <WorkspaceCard
               href={`/admin/brands/${brand.slug}/edit`}
-              title="Brand Setup"
-              description="Consolida identidad, sitio oficial, logos, colores y lineamientos base para que los agentes trabajen con contexto confiable."
-              helper={`${brandSetupSignals}/5 senales base completadas`}
-              ctaLabel="Configurar marca"
+              title={t("knowledgeBasePage.brandSetupTitle")}
+              description={t("knowledgeBasePage.brandSetupDescription")}
+              helper={`${brandSetupSignals}/5 ${t("knowledgeBasePage.baseSignalsCompleted")}`}
+              ctaLabel={t("knowledgeBasePage.setupBrand")}
               icon={Pencil}
               state={
                 brandSetupCompleted
@@ -104,41 +122,33 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
                     ? "in_progress"
                     : "pending"
               }
-              stepLabel="Paso 01"
+              stepLabel={t("knowledgeBasePage.step02")}
+              language={language}
             />
 
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/programs`}
-              title="Program Content Base"
-              description="Estructura programas y contenido central que luego alimenta copies, beneficios, mensajes y bloques de conversion."
-              helper={`${programs.length} programas estructurados`}
-              ctaLabel="Ir a contenido base"
+              title={t("knowledgeBasePage.programContentBaseTitle")}
+              description={t("knowledgeBasePage.programContentBaseDescription")}
+              helper={`${programs.length} ${t("knowledgeBasePage.structuredPrograms")}`}
+              ctaLabel={t("knowledgeBasePage.goToContentBase")}
               icon={FileStack}
               state={contentBaseState}
-              stepLabel="Paso 02"
-            />
-
-            <WorkspaceCard
-              href={`/admin/brands/${brand.slug}/university`}
-              title="University Content Base"
-              description="Configura una base singleton con el contexto institucional que acompana programas, narrativa y decisiones estrategicas de marca."
-              helper="Configuracion viva de contenido institucional"
-              ctaLabel="Ir a University Content Base"
-              icon={LibraryBig}
-              state={universityContentBaseState}
-              stepLabel="Paso 03"
+              stepLabel={t("knowledgeBasePage.step03")}
+              language={language}
             />
 
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/golden-circle`}
-              title="Golden Circle"
-              subtitle="Why, How, What"
-              description="Ordena el proposito institucional en una narrativa simple para alinear comunicacion y crecimiento."
-              helper="Marco fundacional de narrativa"
-              ctaLabel="Ir a Golden Circle"
+              title={t("knowledgeBasePage.goldenCircleTitle")}
+              subtitle={t("knowledgeBasePage.goldenCircleSubtitle")}
+              description={t("knowledgeBasePage.goldenCircleDescription")}
+              helper={t("knowledgeBasePage.narrativeFramework")}
+              ctaLabel={t("knowledgeBasePage.goToGoldenCircle")}
               icon={Target}
               state={goldenCircleState}
-              stepLabel="Paso 04"
+              stepLabel={t("knowledgeBasePage.step04")}
+              language={language}
             />
           </div>
         </section>
@@ -157,6 +167,7 @@ function WorkspaceCard({
   icon: Icon,
   state,
   stepLabel,
+  language,
 }: {
   href: string;
   title: string;
@@ -167,8 +178,10 @@ function WorkspaceCard({
   icon: React.ComponentType<{ className?: string }>;
   state: WorkflowState;
   stepLabel: string;
+  language: DashboardLanguage;
 }) {
-  const statusConfig = getWorkflowStatusConfig(state);
+  const t = getDashboardTranslator(language);
+  const statusConfig = getWorkflowStatusConfig(state, language);
   const StatusIcon = statusConfig.icon;
   const isLocked = state === "locked";
   const cardClassName = `admin-panel-soft group relative block overflow-hidden p-6 transition-all duration-300 ${
@@ -207,7 +220,7 @@ function WorkspaceCard({
         ) : null}
         <p className="admin-muted mt-3">{description}</p>
         <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">
-          {isLocked ? "Completa el paso anterior para activarlo." : helper}
+          {isLocked ? t("knowledgeBasePage.completePreviousStep") : helper}
         </p>
         <p
           className={`mt-5 text-sm font-semibold ${
@@ -216,7 +229,7 @@ function WorkspaceCard({
               : "text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]"
           }`}
         >
-          {isLocked ? "Disponible despues" : ctaLabel}
+          {isLocked ? t("knowledgeBasePage.availableLater") : ctaLabel}
         </p>
       </div>
     </>
@@ -233,10 +246,15 @@ function WorkspaceCard({
   );
 }
 
-function getWorkflowStatusConfig(state: WorkflowState) {
+function getWorkflowStatusConfig(
+  state: WorkflowState,
+  language: DashboardLanguage,
+) {
+  const t = getDashboardTranslator(language);
+
   if (state === "completed") {
     return {
-      label: "Completed",
+      label: t("knowledgeBasePage.statusCompleted"),
       icon: CheckCircle2,
       className:
         "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300",
@@ -245,7 +263,7 @@ function getWorkflowStatusConfig(state: WorkflowState) {
 
   if (state === "in_progress") {
     return {
-      label: "In Progress",
+      label: t("knowledgeBasePage.statusInProgress"),
       icon: Clock3,
       className:
         "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300",
@@ -254,7 +272,7 @@ function getWorkflowStatusConfig(state: WorkflowState) {
 
   if (state === "locked") {
     return {
-      label: "Locked",
+      label: t("knowledgeBasePage.statusLocked"),
       icon: Lock,
       className:
         "border-slate-200 bg-slate-100 text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400",
@@ -262,7 +280,7 @@ function getWorkflowStatusConfig(state: WorkflowState) {
   }
 
   return {
-    label: "Pending",
+    label: t("knowledgeBasePage.statusPending"),
     icon: CircleDashed,
     className:
       "border-[color-mix(in_srgb,var(--bunji-primary-soft)_68%,white)] bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)] dark:border-[var(--bunji-primary-muted)]/20 dark:bg-[var(--bunji-primary-soft)]/20 dark:text-[var(--bunji-primary-muted)]",

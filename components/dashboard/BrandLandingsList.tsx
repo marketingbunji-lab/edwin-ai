@@ -2,8 +2,10 @@
 
 import { Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import LandingCard from "./LandingCard";
 import type { LandingCardData } from "./LandingCard";
+import { formatCountLabel } from "@/lib/dashboardI18n";
 
 export type BrandLandingListItem = LandingCardData & {
   programType: string;
@@ -54,6 +56,7 @@ function groupLandingsByProgramType(landings: BrandLandingListItem[]) {
 }
 
 export default function BrandLandingsList({ landings }: Props) {
+  const { language, t } = useDashboardLanguage();
   const [query, setQuery] = useState("");
   const normalizedQuery = normalizeSearchText(query.trim());
 
@@ -75,14 +78,14 @@ export default function BrandLandingsList({ landings }: Props) {
       <div className="admin-panel p-4">
         <label className="block">
           <span className="mb-2 block text-sm font-semibold text-slate-950 dark:text-slate-50">
-            Buscar landings
+            {t("landings.searchLabel")}
           </span>
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Busca por programa, slug, modalidad, jornada o estado"
+              placeholder={t("landings.searchPlaceholder")}
               className="admin-input pl-11 pr-12"
             />
             {query ? (
@@ -90,7 +93,7 @@ export default function BrandLandingsList({ landings }: Props) {
                 type="button"
                 onClick={() => setQuery("")}
                 className="absolute right-3 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                aria-label="Limpiar busqueda"
+                aria-label={t("landings.clearSearch")}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -99,14 +102,25 @@ export default function BrandLandingsList({ landings }: Props) {
         </label>
 
         <p className="admin-muted mt-3">
-          {filteredLandings.length} de {landings.length} landing
-          {landings.length === 1 ? "" : "s"}
+          {language === "en"
+            ? `${filteredLandings.length} of ${formatCountLabel(
+                language,
+                landings.length,
+                "landing",
+                "landings",
+              )}`
+            : `${filteredLandings.length} de ${formatCountLabel(
+                language,
+                landings.length,
+                "landing",
+                "landings",
+              )}`}
         </p>
       </div>
 
       {filteredLandings.length === 0 ? (
         <div className="admin-empty-state text-slate-500 dark:text-slate-400">
-          No encontramos landings con esa busqueda.
+          {t("landings.empty")}
         </div>
       ) : (
         <div className="space-y-10">
@@ -115,11 +129,17 @@ export default function BrandLandingsList({ landings }: Props) {
               <div className="mb-4 flex items-center justify-between gap-4">
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
-                    {group.programType}
+                    {group.programType === "Sin tipo"
+                      ? t("landings.noType")
+                      : group.programType}
                   </h2>
                   <p className="admin-muted">
-                    {group.items.length} landing
-                    {group.items.length === 1 ? "" : "s"}
+                    {formatCountLabel(
+                      language,
+                      group.items.length,
+                      "landing",
+                      "landings",
+                    )}
                   </p>
                 </div>
 

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 
 type Props = {
   brandName: string;
@@ -15,16 +16,23 @@ export default function DeleteBrandButton({
   brandSlug,
   source = "json",
 }: Props) {
+  const { language } = useDashboardLanguage();
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
 
   async function handleDelete() {
     const target =
       source === "supabase"
-        ? "el registro de Supabase"
-        : "el JSON de la marca";
+        ? language === "en"
+          ? "the Supabase record"
+          : "el registro de Supabase"
+        : language === "en"
+          ? "the brand JSON"
+          : "el JSON de la marca";
     const confirmed = window.confirm(
-      `Seguro que quieres eliminar la marca "${brandName}"? Esto eliminara ${target}.`
+      language === "en"
+        ? `Are you sure you want to delete the brand "${brandName}"? This will remove ${target}.`
+        : `Seguro que quieres eliminar la marca "${brandName}"? Esto eliminara ${target}.`
     );
 
     if (!confirmed) {
@@ -45,7 +53,12 @@ export default function DeleteBrandButton({
       };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "No se pudo eliminar la marca");
+        throw new Error(
+          data.error ||
+            (language === "en"
+              ? "The brand could not be deleted"
+              : "No se pudo eliminar la marca"),
+        );
       }
 
       router.refresh();
@@ -53,7 +66,9 @@ export default function DeleteBrandButton({
       window.alert(
         error instanceof Error
           ? error.message
-          : "No se pudo eliminar la marca"
+          : language === "en"
+            ? "The brand could not be deleted"
+            : "No se pudo eliminar la marca"
       );
     } finally {
       setIsDeleting(false);
@@ -68,7 +83,13 @@ export default function DeleteBrandButton({
       className="inline-flex items-center gap-2 rounded-full border border-red-200 px-3 py-1 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
     >
       <Trash2 className="h-4 w-4" />
-      {isDeleting ? "Eliminando" : "Eliminar"}
+      {isDeleting
+        ? language === "en"
+          ? "Deleting"
+          : "Eliminando"
+        : language === "en"
+          ? "Delete"
+          : "Eliminar"}
     </button>
   );
 }

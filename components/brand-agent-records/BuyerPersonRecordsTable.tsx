@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import type { BuyerPersonRecord } from "@/lib/brandAgentRecords";
 
 type Props = {
@@ -15,6 +16,7 @@ export default function BuyerPersonRecordsTable({
   brandSlug,
   records,
 }: Props) {
+  const { t } = useDashboardLanguage();
   const router = useRouter();
   const [deletingId, setDeletingId] = useState("");
   const [message, setMessage] = useState("");
@@ -36,16 +38,16 @@ export default function BuyerPersonRecordsTable({
       };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "No se pudo eliminar el buyer person");
+        throw new Error(data.error || t("buyerPersonTable.deleteError"));
       }
 
-      setMessage("Buyer person eliminado correctamente");
+      setMessage(t("buyerPersonTable.deleteSuccess"));
       router.refresh();
     } catch (error) {
       setMessage(
         error instanceof Error
           ? error.message
-          : "No se pudo eliminar el buyer person",
+          : t("buyerPersonTable.deleteError"),
       );
     } finally {
       setDeletingId("");
@@ -57,11 +59,11 @@ export default function BuyerPersonRecordsTable({
       <section className="admin-table-shell">
         <div className="min-w-[1060px]">
           <div className="admin-table-header grid grid-cols-[minmax(220px,1fr)_minmax(160px,0.5fr)_minmax(240px,1fr)_150px_260px]">
-            <span>Perfil</span>
-            <span>Etapa</span>
-            <span>Motivaciones</span>
-            <span>Actualizado</span>
-            <span className="text-right">Acciones</span>
+            <span>{t("buyerPersonTable.profile")}</span>
+            <span>{t("buyerPersonTable.stage")}</span>
+            <span>{t("buyerPersonTable.motivations")}</span>
+            <span>{t("buyerPersonTable.updatedAt")}</span>
+            <span className="text-right">{t("buyerPersonTable.actions")}</span>
           </div>
           {records.map((record) => (
             <article
@@ -77,12 +79,12 @@ export default function BuyerPersonRecordsTable({
                 </p>
               </div>
               <p className="text-slate-600 dark:text-slate-300">
-                {record.stage || "Pendiente"}
+                {record.stage || t("buyerPersonTable.pending")}
               </p>
               <p className="line-clamp-2 text-slate-600 dark:text-slate-400">
                 {record.motivations.length
                   ? record.motivations.join(", ")
-                  : "Pendiente"}
+                  : t("buyerPersonTable.pending")}
               </p>
               <p className="text-slate-500 dark:text-slate-400">
                 {record.metadata.updatedAt}
@@ -93,14 +95,14 @@ export default function BuyerPersonRecordsTable({
                   className="admin-button-secondary px-3 py-2 text-xs"
                 >
                   <Eye className="h-3.5 w-3.5" />
-                  Ver
+                  {t("buyerPersonTable.view")}
                 </Link>
                 <Link
                   href={`/admin/brands/${brandSlug}/buyer-person/${record.id}/edit`}
                   className="admin-button-primary px-3 py-2 text-xs"
                 >
                   <Pencil className="h-3.5 w-3.5" />
-                  Editar
+                  {t("buyerPersonTable.edit")}
                 </Link>
                 <button
                   type="button"
@@ -109,7 +111,9 @@ export default function BuyerPersonRecordsTable({
                   className="admin-button-danger px-3 py-2 text-xs"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
-                  {deletingId === record.id ? "Eliminando..." : "Eliminar"}
+                  {deletingId === record.id
+                    ? t("buyerPersonTable.deleting")
+                    : t("buyerPersonTable.delete")}
                 </button>
               </div>
             </article>

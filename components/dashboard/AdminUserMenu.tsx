@@ -1,12 +1,14 @@
 "use client";
 
-import { ChevronUp, LogOut, Moon, Sun, UserCircle } from "lucide-react";
+import { Check, ChevronUp, Languages, LogOut, Moon, Sun, UserCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import { createClient } from "@/utils/supabase/client";
 
 type AdminUser = {
   name: string;
+  email: string;
 };
 
 type ThemeMode = "light" | "dark";
@@ -18,6 +20,7 @@ type Props = {
 
 export default function AdminUserMenu({ theme, onThemeChange }: Props) {
   const router = useRouter();
+  const { language, setLanguage, t } = useDashboardLanguage();
   const [user, setUser] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [signingOut, setSigningOut] = useState(false);
@@ -43,14 +46,15 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             authUser.user_metadata?.full_name ||
             authUser.user_metadata?.name ||
             authUser.email ||
-            "Usuario";
+            "User";
 
           setUser({
             name: profileName,
+            email: authUser.email || "",
           });
         }
       } finally {
-        if (isMounted) setLoading(false);
+            if (isMounted) setLoading(false);
       }
     }
 
@@ -93,7 +97,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
         <span className="flex min-w-0 items-center gap-3">
           <UserCircle className="h-5 w-5 shrink-0 text-[var(--bunji-primary)] dark:text-[var(--bunji-cyan)]" />
           <span className="truncate text-sm font-semibold text-slate-900 dark:text-slate-50">
-            {loading ? "Cargando..." : user?.name || "Usuario"}
+            {loading ? t("userMenu.loading") : user?.email || user?.name || t("userMenu.user")}
           </span>
         </span>
         <ChevronUp
@@ -108,6 +112,55 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
           role="menu"
           className="absolute bottom-full left-0 z-50 mb-2 w-full overflow-hidden rounded-lg border border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,white)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,249,255,0.94))] p-1 shadow-[0_22px_48px_rgba(26,32,65,0.16)] backdrop-blur-xl dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.96),rgba(7,11,28,0.94))]"
         >
+          <div className="rounded-md px-3 py-3">
+            <p className="truncate text-sm font-semibold text-slate-950 dark:text-slate-50">
+              {loading ? t("userMenu.loading") : user?.name || t("userMenu.user")}
+            </p>
+            {user?.email ? (
+              <p className="mt-1 truncate text-xs text-slate-500 dark:text-slate-400">
+                {user.email}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="my-1 h-px bg-[color-mix(in_srgb,var(--bunji-primary-soft)_58%,white)] dark:bg-white/10" />
+
+          <div className="px-3 pb-2 pt-2">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+              {t("userMenu.language")}
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {(["en", "es"] as const).map((option) => {
+                const active = language === option;
+
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    role="menuitemradio"
+                    aria-checked={active}
+                    onClick={() => setLanguage(option)}
+                    className={`flex items-center justify-between rounded-md px-3 py-2 text-left text-sm font-medium transition ${
+                      active
+                        ? "bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_84%,white))] text-slate-950 dark:bg-white/10 dark:text-white"
+                        : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
+                    }`}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <Languages className="h-4 w-4" />
+                      {option === "en"
+                        ? t("userMenu.english")
+                        : t("userMenu.spanish")}
+                    </span>
+                    {active ? <Check className="h-4 w-4" /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="my-1 h-px bg-[color-mix(in_srgb,var(--bunji-primary-soft)_58%,white)] dark:bg-white/10" />
+
           <button
             type="button"
             role="menuitemradio"
@@ -123,7 +176,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             }`}
           >
             <Sun className="h-4 w-4" />
-            Light mode
+            {t("userMenu.lightMode")}
           </button>
 
           <button
@@ -141,7 +194,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
           }`}
           >
             <Moon className="h-4 w-4" />
-            Dark mode
+            {t("userMenu.darkMode")}
           </button>
 
           <div className="my-1 h-px bg-[color-mix(in_srgb,var(--bunji-primary-soft)_58%,white)] dark:bg-white/10" />
@@ -154,7 +207,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
             className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:text-red-300 dark:hover:bg-red-950/30"
           >
             <LogOut className="h-4 w-4" />
-            {signingOut ? "Saliendo..." : "Cerrar sesion"}
+            {signingOut ? t("userMenu.signingOut") : t("userMenu.signOut")}
           </button>
         </div>
       ) : null}

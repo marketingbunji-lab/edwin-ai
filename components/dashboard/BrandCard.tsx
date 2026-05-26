@@ -1,8 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, FolderOpen, Pencil } from "lucide-react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import DeleteBrandButton from "./DeleteBrandButton";
 import { normalizeBrandColorPalette } from "@/lib/brandColors";
+import { formatCountLabel } from "@/lib/dashboardI18n";
 import { getBrandLogo } from "@/lib/brandLogo";
 import type { Brand } from "@/lib/data";
 
@@ -19,6 +23,7 @@ export default function BrandCard({
   canDeleteJson = true,
   canDeleteSupabase = false,
 }: Props) {
+  const { language, t } = useDashboardLanguage();
   const lightLogo = getBrandLogo(brand, "light");
   const darkLogo = getBrandLogo(brand, "dark");
   const colorPalette = normalizeBrandColorPalette(brand);
@@ -89,7 +94,12 @@ export default function BrandCard({
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
           <span className="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-sm font-medium text-white/80">
-            {landingCount} landing{landingCount === 1 ? "" : "s"}
+            {formatCountLabel(
+              language,
+              landingCount,
+              t("brandCard.landingSingular"),
+              t("brandCard.landingPlural"),
+            )}
           </span>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -109,7 +119,7 @@ export default function BrandCard({
               className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-3 py-1 text-sm font-semibold text-white transition hover:border-[rgba(125,227,234,0.42)] hover:bg-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <Pencil className="h-4 w-4" />
-              Editar
+              {t("brandCard.edit")}
             </Link>
 
             <Link
@@ -120,7 +130,7 @@ export default function BrandCard({
               }}
             >
               <FolderOpen className="h-4 w-4" />
-              Ver marca
+              {t("brandCard.viewBrand")}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

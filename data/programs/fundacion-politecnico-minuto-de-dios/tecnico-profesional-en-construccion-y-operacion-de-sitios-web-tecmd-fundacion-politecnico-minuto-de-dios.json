@@ -1,0 +1,525 @@
+{
+  "slug": "tecnico-profesional-en-construccion-y-operacion-de-sitios-web-tecmd-fundacion-politecnico-minuto-de-dios",
+  "brand": "fundacion-politecnico-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-05-26",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "Registro calificado 002375 – 16/02/2023. Vigencia: 7 años.",
+    "items": [
+      {
+        "title": "Registro calificado 002375 – 16/02/2023",
+        "name": "Registro calificado 002375 – 16/02/2023",
+        "description": "Programa con registro calificado otorgado el 16/02/2023, vigente por 7 años.",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+  "fullTitle": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+  "sourceWebsite": "https://tecmd.edu.co/programas_titulados/tecnico-profesional-en-construccion-y-operacion-de-sitios-web/",
+  "catalog": "",
+  "programType": "Técnico Profesional",
+  "schedule": "",
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+    "subtitle": "",
+    "description": "Mereces avanzar, conoce el programa Técnico Profesional en Construcción y Operación de Sitios Web, ingresa aquí.",
+    "supportText": "",
+    "price": "Valor Matrícula: $1.486.000",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "primaryCta": {
+      "label": "Solicitar Información",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://tecmd.edu.co/wp-content/uploads/2024/05/BANNER-WEB-_CONSTRUCCION-Y-OPERACION-DE-SITIOS-WEB.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Título otorgado",
+      "value": "Técnico (a) Profesional en Construcción y Operación de Sitios Web"
+    },
+    {
+      "key": "",
+      "label": "Duración",
+      "value": "4 Periodos académicos"
+    },
+    {
+      "key": "",
+      "label": "Créditos",
+      "value": "65"
+    },
+    {
+      "key": "",
+      "label": "Nivel de formación",
+      "value": "Técnico profesional"
+    },
+    {
+      "key": "",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "",
+      "label": "Registro calificado",
+      "value": "002375 – 16/02/2023"
+    },
+    {
+      "key": "",
+      "label": "Vigencia",
+      "value": "7 años"
+    },
+    {
+      "key": "",
+      "label": "SNIES",
+      "value": "111504"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Alta demanda por presencia digital",
+        "description": "El auge del comercio electrónico y la presencia en línea ha incrementado la necesidad de sitios web funcionales y adaptativos para organizaciones y empresas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Formación técnica integral",
+        "description": "Aprende diseño y programación web, administración de sistemas operativos y bases de datos, y procesos de cloud computing y seguridad web.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Práctica profesional incluida",
+        "description": "El plan contempla práctica profesional para aplicar conocimientos en entornos reales y operaciones de despliegue y mantenimiento.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Competencias para publicar y administrar sitios",
+        "description": "Capacitación para publicar sitios en internet, realizar copias de seguridad, recuperación y soporte técnico en servidores web.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "El plan de estudios está organizado en cuatro periodos académicos con cursos transversales, comunes y disciplinarios, que suman 65 créditos.",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Periodo académico 1",
+        "description": "Razonamiento cuantitativo y competencias digitales; Administración de sistemas operativos; Componentes de la computación; Implementación de bases de datos; Fundamentos de programación; Diseño y programación web. Total créditos: 18",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Periodo académico 2",
+        "description": "Basic English; Producción de textos e hipertextos; Estructura de datos; Desarrollo Front End; Programación orientada a objetos; Cátedra TecMINUTO. Total créditos: 17",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Periodo académico 3",
+        "description": "Intermediate English; Emprendimiento; Desarrollo Back End; Web Service; Electiva. Total créditos: 14",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Periodo académico 4",
+        "description": "Seguridad Web; Estructura de redes de datos; Procesos de desarrollos ágiles; Modelos de servicio en Cloud Computing; Práctica profesional (4 créditos). Total créditos: 16",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Créditos totales",
+        "description": "Total créditos: 65",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Operador web",
+        "description": "Desempeñarse en la publicación, operación y soporte de sitios web.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Técnico de diseño de página web",
+        "description": "Participar en el diseño y construcción de sitios web efectivos y adaptativos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Webmaster",
+        "description": "Administrar servidores, gestionar bases de datos y asegurar la disponibilidad de sitios.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Emprendedor",
+        "description": "Desarrollar proyectos web propios o servicios para clientes.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "Servicios de admisiones y asesoría para inscripción, apoyo en trámites de pago y acompañamiento en el proceso de matrícula.",
+    "videoUrl": "",
+    "items": [
+      {
+        "title": "Asesor educativo",
+        "text": "Acompañamiento por asesor para inscripciones y procesos de matrícula.",
+        "description": "Acompañamiento por asesor para inscripciones y procesos de matrícula.",
+        "icon": ""
+      },
+      {
+        "title": "Departamento de Admisiones",
+        "text": "Revisión de documentación y gestión de la aceptación del aspirante.",
+        "description": "Revisión de documentación y gestión de la aceptación del aspirante.",
+        "icon": ""
+      },
+      {
+        "title": "Soporte de pagos",
+        "text": "Opciones de pago por pasarela en línea, banco o solicitud de recibo para pago mediante cesantías.",
+        "description": "Opciones de pago por pasarela en línea, banco o solicitud de recibo para pago mediante cesantías.",
+        "icon": ""
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Formación práctica y técnica",
+        "text": "Competencias para construir, publicar y mantener sitios web adaptativos y funcionales.",
+        "description": "Competencias para construir, publicar y mantener sitios web adaptativos y funcionales.",
+        "icon": ""
+      },
+      {
+        "title": "Práctica profesional incluida",
+        "text": "Espacio formativo para aplicar conocimientos en contextos reales.",
+        "description": "Espacio formativo para aplicar conocimientos en contextos reales.",
+        "icon": ""
+      },
+      {
+        "title": "Registro calificado",
+        "text": "Programa con registro calificado (002375 – 16/02/2023), vigente por 7 años.",
+        "description": "Programa con registro calificado (002375 – 16/02/2023), vigente por 7 años.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicitar Información",
+    "description": "",
+    "button": "Solicitar Información",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Solicitar Información",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Solicitar Información"
+  },
+  "footerScripts": [],
+  "shortTitle": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "111504",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "",
+    "language": "es",
+    "campuses": [],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "4",
+    "unit": "periodos academicos",
+    "display": "4 Periodos académicos",
+    "credits": "65",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "1.486.000",
+    "currency": "$",
+    "period": "Valor Matrícula",
+    "display": "Valor Matrícula: $1.486.000 (Precio MEN: $2.701.000, Subsidio Tec: $1.215.000)",
+    "financialAidAvailable": true,
+    "financialAidText": "Financia con... Requieres financiación? Si No Tal vez"
+  },
+  "seo": {
+    "metaTitle": "Técnico Profesional en Construcción y Operación de Sitios Web |TecMD | Fundación Politécnico Minuto de Dios",
+    "metaDescription": "Mereces avanzar, conoce el programa Técnico Profesional en Construcción y Operación de Sitios Web, ingresa aquí.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "4 Periodos académicos"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "65"
+    },
+    {
+      "label": "SNIES",
+      "value": "111504"
+    },
+    {
+      "label": "Registro calificado",
+      "value": "002375 – 16/02/2023 (vigencia 7 años)"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "Da vida a tus ideas construyendo sitios web efectivos y atractivos; el programa forma técnicos profesionales capaces de construir, publicar, mantener y apoyar la operación de sitios web, adaptándolos a diferentes dispositivos y garantizando la gestión de bases de datos y la seguridad según especificaciones técnicas y principios éticos.",
+    "image": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Entrenamiento practico",
+    "description": "El programa incluye actividades prácticas como implementación y publicación de sitios web, administración de servidores y bases de datos, y realización de copias de seguridad y recuperación.",
+    "items": [
+      {
+        "title": "Publicación y operación de sitios web",
+        "description": "Publicar sitios en internet e intranet y asegurar su funcionamiento en servidores web.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Administración de bases de datos",
+        "description": "Administrar bases de datos según estándares y requisitos técnicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Gestión de respaldo y recuperación",
+        "description": "Realizar copias de seguridad y operaciones de recuperación en servidores web.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Práctica profesional",
+        "description": "Práctica profesional incluida en el plan de estudios para aplicación en entornos reales.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Practicas profesionales",
+    "description": "Práctica profesional integrada en el plan de estudios como componente formativo.",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "Proceso de inscripción y documentos requeridos para aspirar al programa.",
+    "items": [
+      {
+        "title": "Proceso de inscripción",
+        "description": "1. Diligencia el formulario de inscripción. 2. Revisión de inscripción por el Departamento de Admisiones. 3. Aceptación y pago: se enviará link de pago online. 4. Envío del comprobante de pago al asesor educativo. 5. Recepción de información sobre inicio de clases y usuario institucional.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Requisitos de ingreso",
+        "description": "Ser bachiller académico y haber presentado la prueba ICFES.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Documentos de ingreso",
+        "description": "Fotocopia del documento de identidad; fotografía digital con fondo blanco (JPG/PNG); diploma o acta de grado de bachiller; resultados de las pruebas ICFES Saber 11°.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "El programa presenta opciones de financiación y subsidio (subsidio Tec reportado).",
+    "items": [
+      {
+        "title": "Subsidio Tec",
+        "description": "Subsidio Tec: $1.215.000 (indicado en información de precios).",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Opciones de financiación",
+        "description": "Se dispone de financiación y asesoría para el proceso; la página señala 'Financia con...' y pregunta 'Requieres financiación? Si No Tal vez'.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "¿Cuál es la duración del programa?",
+      "answer": "La duración es de 4 periodos académicos."
+    },
+    {
+      "question": "¿Cuál es la modalidad del programa?",
+      "answer": "Modalidad Virtual."
+    },
+    {
+      "question": "¿Cuántos créditos tiene el programa?",
+      "answer": "El plan contempla un total de 65 créditos."
+    },
+    {
+      "question": "¿Qué documentos necesito para inscribirme?",
+      "answer": "Fotocopia del documento de identidad, fotografía digital fondo blanco, diploma o acta de grado de bachiller y resultados de las pruebas ICFES Saber 11°."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Técnico profesional en Operación de Sistemas de Información",
+      "url": "",
+      "image": "https://tecmd.edu.co/wp-content/uploads/2023/12/BANNER-WEB-LANDING_1-OPERACION-SISTEMAS-INFORMACION_opt.png"
+    },
+    {
+      "title": "Técnico profesional en Servicios de Seguridad Informática",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Técnico profesional en Desarrollo de Aplicaciones Web Móviles",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "(601) 5800301",
+    "email": "",
+    "image": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  }
+}

@@ -1,0 +1,811 @@
+{
+  "name": "BrandNew AI v02",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "brand-agent-edwin-ai-v2",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -720,
+        -384
+      ],
+      "id": "1f3a00f8-5c3c-4e01-a2a3-eea5659b64f9",
+      "name": "Webhook",
+      "webhookId": "5023c2c1-ee9d-4e0e-81d9-4a9a8cb99d13"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "meta",
+              "cssSelector": "meta",
+              "returnValue": "attribute",
+              "returnArray": true
+            },
+            {
+              "key": "imgSrc",
+              "cssSelector": "img",
+              "returnValue": "attribute",
+              "returnArray": true
+            },
+            {
+              "key": "h1",
+              "cssSelector": "h1",
+              "returnArray": true
+            },
+            {
+              "key": "h2",
+              "cssSelector": "h2",
+              "returnArray": true
+            },
+            {
+              "key": "h3",
+              "cssSelector": "h3",
+              "returnArray": true
+            },
+            {
+              "key": "h4",
+              "cssSelector": "h4",
+              "returnArray": true
+            },
+            {
+              "key": "h5",
+              "cssSelector": "h5",
+              "returnArray": true
+            },
+            {
+              "key": "h6",
+              "cssSelector": "h6",
+              "returnArray": true
+            },
+            {
+              "key": "p",
+              "cssSelector": "p",
+              "returnArray": true
+            },
+            {
+              "key": "li",
+              "cssSelector": "li",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        272,
+        -176
+      ],
+      "id": "65fd1863-cbf5-4813-812e-265558e014dc",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        3040,
+        -112
+      ],
+      "id": "5730b517-367e-4515-bfaa-4d1e113e685b",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.userPrompt }}",
+        "options": {
+          "systemMessage": "={{ $json.systemPrompt }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2368,
+        -96
+      ],
+      "id": "2de6f0d5-3f07-492e-b442-85f5e47de79e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        2368,
+        112
+      ],
+      "id": "32636283-f8a2-4fd8-9c76-66d1477a0017",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawOutput = $json.output || '';\n\nlet parsed = {};\n\ntry {\n  const clean = String(rawOutput)\n    .replace(/```json/g, '')\n    .replace(/```/g, '')\n    .trim();\n\n  parsed = JSON.parse(clean);\n} catch (error) {\n  parsed = {\n    error: true,\n    message: 'No se pudo parsear el JSON del AI',\n    rawOutput,\n  };\n}\n\nfunction getProgramsNode() {\n  try {\n    return $('Normalize Program URLs').first();\n  } catch (error) {}\n\n  try {\n    return $('Normalize Program URLs1').first();\n  } catch (error) {}\n\n  return null;\n}\n\nconst programsNode = getProgramsNode();\nconst detectedPrograms = programsNode?.json?.detectedPrograms || [];\nconst programsSummary = programsNode?.json?.programsSummary || {\n  totalDetected: detectedPrograms.length,\n  importablePrograms: detectedPrograms.length,\n};\n\nconst categoryCounts = detectedPrograms.reduce((acc, program) => {\n  const category = String(program.parentCategory || 'uncategorized');\n  acc[category] = (acc[category] || 0) + 1;\n  return acc;\n}, {});\n\nconst preferredCategories = Object.entries(categoryCounts)\n  .sort((a, b) => b[1] - a[1])\n  .map(([category]) => category)\n  .filter((category) => !['cursos', 'course', 'courses'].includes(category));\n\nconst brandSlug = parsed?.brand?.slug || '';\nconst language = brandSlug ? (/-|universidad|fundacion|politecnico|tecmd|ean|minuto/i.test(brandSlug) ? 'es' : 'en') : 'es';\n\nconst programImportConfig = {\n  language,\n  includeParentCategories: preferredCategories.length > 0 ? preferredCategories : [],\n  excludeParentCategories: ['cursos'],\n  overwriteExisting: false,\n};\n\nreturn [\n  {\n    json: {\n      ...parsed,\n      detectedPrograms,\n      programsSummary,\n      programImportConfig,\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        -96
+      ],
+      "id": "4c7b4484-dac0-43e2-9eb1-6893f316e7d5",
+      "name": "Formatear Respuesta"
+    },
+    {
+      "parameters": {
+        "url": "={{$json.cssUrl}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        464,
+        -944
+      ],
+      "id": "369ec4b1-2b87-4207-b2b9-086cefe2d3fc",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const allCss = items\n  .map(item => item.json.data || item.json.body || '')\n  .join('\\n');\n\nconst getVar = (name) => {\n  const regex = new RegExp(`${name}\\\\s*:\\\\s*([^;]+);`, 'i');\n  const match = allCss.match(regex);\n  return match ? match[1].trim().replaceAll('\"', '') : null;\n};\n\nconst brand = {\n  colors: {\n    primary: getVar('--e-global-color-primary'),\n    secondary: getVar('--e-global-color-secondary'),\n    text: getVar('--e-global-color-text'),\n    accent: getVar('--e-global-color-accent'),\n  },\n  fonts: {\n    primary: getVar('--e-global-typography-primary-font-family'),\n    secondary: getVar('--e-global-typography-secondary-font-family'),\n    text: getVar('--e-global-typography-text-font-family'),\n    accent: getVar('--e-global-typography-accent-font-family'),\n  }\n};\n\nreturn [\n  {\n    json: {\n      brand\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        -944
+      ],
+      "id": "b8fc994d-bf0f-4eb1-ad1c-c216000e5aa9",
+      "name": "Code in JavaScript4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        1312,
+        -480
+      ],
+      "id": "6aca19dd-d81b-4bae-8599-81982c8b4dec",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        864,
+        -688
+      ],
+      "id": "aae870a2-e0ab-410f-b228-4e0df43cb7ae",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst first = items[0]?.json || {};\nconst second = items[1]?.json || {};\nconst third = items[2]?.json || {};\n\nreturn [\n  {\n    json: {\n      brandFromCssLinks: first.brand || null,\n      brandFromBody: second.brandCandidate || null,\n      brandFromLogo: third.imgSrc || null,\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        -688
+      ],
+      "id": "f19ccb53-32b8-4b3e-b2d0-9f41a1f2fc78",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawOutput = $json.output || '';\n\nlet parsed;\n\ntry {\n  parsed = JSON.parse(rawOutput);\n} catch (error) {\n  throw new Error('El output del bot no es un JSON válido: ' + error.message);\n}\n\nreturn [\n  {\n    json: parsed\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1632,
+        -480
+      ],
+      "id": "11f3b069-28be-4dd0-b8a0-424f31010307",
+      "name": "Code in JavaScript6"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1920,
+        -96
+      ],
+      "id": "74edae79-0aa5-40c0-ae6c-5930d38ef742",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const rawMessage =\n    item.json.body?.message ||\n    item.json.message ||\n    item.json.body?.brandName ||\n    item.json.brandName ||\n    \"\";\n\n  const text = String(rawMessage).trim();\n\n  const urlRegex = /(https?:\\/\\/[^\\s\"'<>]+|www\\.[^\\s\"'<>]+)/i;\n  const match = text.match(urlRegex);\n\n  let normalizedUrl = null;\n\n  if (match) {\n    let url = match[0].trim();\n\n    // quitar caracteres finales\n    url = url.replace(/[),.;]+$/g, \"\");\n\n    // agregar https si viene como www...\n    if (!/^https?:\\/\\//i.test(url)) {\n      url = `https://${url}`;\n    }\n\n    // limpiar a solo protocolo + dominio\n    const domainMatch = url.match(/^(https?:\\/\\/[^\\/?#]+)/i);\n\n    if (domainMatch) {\n      normalizedUrl = domainMatch[1].replace(/\\/+$/, \"\");\n    }\n  }\n\n  return {\n    json: {\n      ...item.json,\n      normalizedUrl,\n      hasValidUrl: Boolean(normalizedUrl),\n      originalMessage: text\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -512,
+        -384
+      ],
+      "id": "9010f303-92f1-4542-adb2-62d304161fce",
+      "name": "URL limpia"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = items[0].json;\nconst meta = input.meta || [];\n\nfunction getMeta(key, type = \"name\") {\n  const found = meta.find(m => m[type] === key);\n  return found?.content || null;\n}\n\nfunction getAllImages() {\n  const imageKeys = [\n    [\"og:image\", \"property\"],\n    [\"og:image:url\", \"property\"],\n    [\"og:image:secure_url\", \"property\"],\n    [\"twitter:image\", \"name\"]\n  ];\n\n  const images = imageKeys\n    .map(([key, type]) => getMeta(key, type))\n    .filter(Boolean);\n\n  return [...new Set(images)];\n}\n\nconst cleaned = {\n  title: getMeta(\"og:title\", \"property\") || null,\n  site_name: getMeta(\"og:site_name\", \"property\") || null,\n  description:\n    getMeta(\"description\", \"name\") ||\n    getMeta(\"og:description\", \"property\") ||\n    null,\n  abstract: getMeta(\"abstract\", \"name\") || null,\n  keywords: getMeta(\"keywords\", \"name\")\n    ? getMeta(\"keywords\", \"name\")\n        .split(\",\")\n        .map(k => k.trim())\n        .filter(Boolean)\n    : [],\n  official_website: getMeta(\"og:url\", \"property\") || null,\n  robots: getMeta(\"robots\", \"name\") || null,\n  generator: getMeta(\"Generator\", \"name\") || null,\n  images: getAllImages(),\n  main_image: getAllImages()[0] || null\n};\n\nreturn [\n  {\n    json: cleaned\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        592,
+        -64
+      ],
+      "id": "7ca5bf8b-c0cc-468f-97c2-3e806c8ec395",
+      "name": "meta description"
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $input.first().json.data || '';\n\nconst baseUrl = $input.first().json.programUrl || '';\n\nconst styleTags = [...html.matchAll(/<style[^>]*>([\\s\\S]*?)<\\/style>/gi)]\n  .map(match => match[1].trim())\n  .filter(Boolean);\n\nconst inlineStyles = [...html.matchAll(/style=[\"']([^\"']+)[\"']/gi)]\n  .map(match => match[1].trim())\n  .filter(Boolean);\n\nconst cssLinks = [...html.matchAll(/<link[^>]+rel=[\"']?stylesheet[\"']?[^>]*>/gi)]\n  .map(match => match[0])\n  .map(tag => {\n    const href = tag.match(/href=[\"']([^\"']+)[\"']/i);\n    return href ? href[1] : null;\n  })\n  .filter(Boolean)\n  .map(link => {\n    try {\n      return baseUrl ? new URL(link, baseUrl).href : link;\n    } catch {\n      return link;\n    }\n  });\n\nreturn [\n  {\n    json: {\n      cssLinks: [...new Set(cssLinks)],\n      styleTags,\n      inlineStyles,\n      totalCssLinks: cssLinks.length,\n      totalStyleTags: styleTags.length,\n      totalInlineStyles: inlineStyles.length\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -48,
+        -720
+      ],
+      "id": "66701803-d795-460e-a73a-f194ec1e27d6",
+      "name": "Hojas de estilo e internos"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\n\nconst cssLinks = input.cssLinks || [];\nconst styleTags = input.styleTags || [];\nconst inlineStyles = input.inlineStyles || [];\n\nconst allInlineCss = [\n  ...styleTags,\n  ...inlineStyles\n].join('\\n');\n\n/**\n * 1. Extraer colores del CSS inline y style tags\n */\nconst colors = [...allInlineCss.matchAll(\n  /#(?:[0-9a-fA-F]{3,8})\\b|rgba?\\([^)]+\\)|hsla?\\([^)]+\\)/g\n)].map(m => m[0]);\n\n/**\n * 2. Extraer variables CSS\n */\nconst cssVariables = [...allInlineCss.matchAll(\n  /--([\\w-]+)\\s*:\\s*([^;]+);/g\n)].map(m => ({\n  token: `--${m[1]}`,\n  value: m[2].trim()\n}));\n\n/**\n * 3. Extraer fuentes desde font-family\n */\nconst fontFamiliesFromCss = [...allInlineCss.matchAll(\n  /font-family\\s*:\\s*([^;]+);/gi\n)].map(m => m[1].trim());\n\n/**\n * 4. Extraer fuentes desde Google Fonts links\n */\nconst googleFonts = cssLinks\n  .filter(url => url.includes('fonts.googleapis.com'))\n  .map(url => {\n    const match = url.match(/family=([^&]+)/i);\n    if (!match) return null;\n\n    return decodeURIComponent(match[1])\n      .replace(/\\+/g, ' ')\n      .split(':')[0]\n      .trim();\n  })\n  .filter(Boolean);\n\n/**\n * 5. Detectar CSS importantes para siguiente paso\n */\nconst priorityCssLinks = cssLinks.filter(url =>\n  url.includes('/uploads/elementor/css/post-') ||\n  url.includes('/uploads/elementor/css/global') ||\n  url.includes('/wp-content/themes/')\n);\n\n/**\n * 6. Organizar salida\n */\nconst unique = arr => [...new Set(arr.filter(Boolean))];\n\nreturn [\n  {\n    json: {\n      brandCandidate: {\n        colors: unique(colors),\n        fonts: unique([\n          ...googleFonts,\n          ...fontFamiliesFromCss\n        ])\n      },\n      cssVariables,\n      priorityCssLinks,\n      allCssLinks: cssLinks,\n      summary: {\n        totalColorsFound: unique(colors).length,\n        totalFontsFound: unique([\n          ...googleFonts,\n          ...fontFamiliesFromCss\n        ]).length,\n        totalCssVariables: cssVariables.length,\n        totalPriorityCssLinks: priorityCssLinks.length\n      }\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        -672
+      ],
+      "id": "ea87b409-cdae-4b60-b047-72ead0331d0a",
+      "name": "internos"
+    },
+    {
+      "parameters": {
+        "jsCode": "const links = $input.first().json.cssLinks || [];\n\nconst rawProgramUrl =\n  $('Webhook').first().json.body.message ||\n  $('Preparar Mensaje').first().json.programUrl ||\n  '';\n\nif (!rawProgramUrl) {\n  throw new Error('No encontré programUrl/baseUrl.');\n}\n\nconst baseUrl = rawProgramUrl.startsWith('http')\n  ? rawProgramUrl\n  : `https://${rawProgramUrl}`;\n\nreturn links.map(link => {\n  const cleanLink = String(link).replaceAll('&amp;', '&');\n\n  let finalUrl = cleanLink;\n\n  if (cleanLink.startsWith('//')) {\n    finalUrl = 'https:' + cleanLink;\n  } else if (cleanLink.startsWith('/')) {\n    finalUrl = baseUrl.replace(/\\/$/, '') + cleanLink;\n  } else if (!cleanLink.startsWith('http')) {\n    finalUrl = baseUrl.replace(/\\/$/, '') + '/' + cleanLink;\n  }\n\n  return {\n    json: {\n      originalCssUrl: link,\n      cssUrl: finalUrl\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        -944
+      ],
+      "id": "546670a5-34aa-48b5-89d3-8f024177981f",
+      "name": "hojas de estilo"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=brandFromCssLinks:\n{{ JSON.stringify($json.brandFromCssLinks, null, 2) }}\n\nbrandFromBody:\n{{ JSON.stringify($json.brandFromBody, null, 2) }}\n\nbrandFromLogo:\n{{ JSON.stringify($json.brandFromLogo, null, 2) }}",
+        "options": {
+          "systemMessage": "=Actúa como un analista experto en identidad visual web.\n\nVas a recibir dos fuentes de información:\n\n1. brandFromCssLinks:\nDatos extraídos desde archivos CSS externos. \nEsta fuente tiene prioridad alta, especialmente si contiene variables de Elementor como:\n--e-global-color-primary\n--e-global-color-secondary\n--e-global-color-text\n--e-global-color-accent\n\n2. brandFromBody:\nDatos extraídos desde estilos inline, style tags y HTML del body.\nEsta fuente tiene prioridad secundaria. Puede contener presets genéricos de WordPress, colores repetidos o colores no necesariamente de marca.\n\n3. brandFromLogo:\nLista de imágenes extraídas desde el HTML.\nDebes analizar cuáles imágenes son realmente logos de marca.\n\nReglas para analizar logos:\n- Prioriza imágenes cuyo alt, title o src contengan:\n  - logo\n  - brand\n  - universidad\n  - nombre de la institución\n- Prioriza SVG sobre PNG/JPG/WEBP.\n- Prioriza logos horizontales y limpios.\n- Descarta:\n  - redes sociales\n  - accesibilidad\n  - íconos\n  - banners\n  - fotografías\n  - campañas\n  - descuentos\n  - hero images\n  - tiktok\n  - app store\n  - pse\n  - sellos\n  - acreditaciones\n  - botones\n  - back to top\n- Si existe un logo oscuro y uno claro:\n  - usa el logo normal en brand.logo y brand.logos.light\n  - usa el logo blanco/oscuro en brand.logos.dark\n- Si solo existe un logo confiable:\n  - úsalo en brand.logo y brand.logos.light\n  - deja brand.logos.dark vacío\n- Si encuentras \"Logo Blanco\" o similares, úsalo como dark logo.\n- Si encuentras \"Logo Verde\", úsalo como logo principal/light.\n- No inventes URLs.\n\nObjetivo:\nAnalizar ambas fuentes y devolver una identidad visual limpia y útil para construir una landing page.\n\nReglas:\n- No inventes colores.\n- No inventes fuentes.\n- Si hay conflicto, prioriza brandFromCssLinks.\n- Ignora colores genéricos de WordPress si ya existen colores de Elementor.\n- No uses “inherit” como fuente principal.\n- Identifica qué colores son realmente de marca y cuáles son secundarios o de apoyo.\n- Devuelve únicamente JSON válido.\n- Usa brandFromLogo para completar:\n  - brand.logo\n  - brand.logos.light\n  - brand.logos.dark\n\nFormato de salida obligatorio:\n\nFormato de salida obligatorio:\n\n{\n  \"brandAnalysis\": {\n    \"confidence\": \"high | medium | low\",\n    \"reason\": \"\",\n\n    \"logos\": {\n      \"primary\": \"\",\n      \"light\": \"\",\n      \"dark\": \"\",\n      \"faviconCandidate\": \"\",\n      \"reason\": \"\"\n    },\n\n    \"colors\": {\n      \"primary\": {\n        \"value\": \"\",\n        \"role\": \"\",\n        \"source\": \"\"\n      },\n      \"secondary\": {\n        \"value\": \"\",\n        \"role\": \"\",\n        \"source\": \"\"\n      },\n      \"text\": {\n        \"value\": \"\",\n        \"role\": \"\",\n        \"source\": \"\"\n      },\n      \"accent\": {\n        \"value\": \"\",\n        \"role\": \"\",\n        \"source\": \"\"\n      },\n      \"supportingColors\": []\n    },\n\n    \"typography\": {\n      \"headingFont\": {\n        \"value\": \"\",\n        \"source\": \"\"\n      },\n      \"bodyFont\": {\n        \"value\": \"\",\n        \"source\": \"\"\n      },\n      \"buttonFont\": {\n        \"value\": \"\",\n        \"source\": \"\"\n      }\n    },\n\n    \"visualStyle\": {\n      \"summary\": \"\",\n      \"tone\": [],\n      \"landingPageRecommendations\": []\n    },\n\n    \"ignoredData\": {\n      \"reason\": \"\",\n      \"examples\": []\n    }\n  }\n}\n\nbrandFromCssLinks:\n{{ JSON.stringify($json.brandFromCssLinks) }}\n\nbrandFromBody:\n{{ JSON.stringify($json.brandFromBody) }}\n\nbrandFromLogo:\n{{JSON.stringify($json.brandFromLogo), null, 2}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1312,
+        -688
+      ],
+      "id": "4388d6e0-ba4e-4f7b-885b-a6e5798acae8",
+      "name": "Graphic Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst brandItem = items.find(item => item.json.brandAnalysis)?.json || {};\nconst metaItem = items.find(item => item.json.title || item.json.site_name || item.json.description)?.json || {};\n\nconst brandAnalysis = brandItem.brandAnalysis || {};\nconst siteMeta = {\n  title: metaItem.title || \"\",\n  site_name: metaItem.site_name || \"\",\n  description: metaItem.description || \"\",\n  abstract: metaItem.abstract || \"\",\n  keywords: metaItem.keywords || [],\n  official_website: metaItem.official_website || \"\",\n  robots: metaItem.robots || \"\",\n  generator: metaItem.generator || \"\",\n  images: metaItem.images || [],\n  main_image: metaItem.main_image || \"\"\n};\n\nconst systemPrompt = `\nEres un asistente experto en crear configuraciones JSON de marca para Bunji Landing Engine.\n\nDebes analizar dos fuentes:\n\n1. brandAnalysis:\nAnálisis visual de marca con colores, tipografías, estilo visual y recomendaciones.\n\n2. siteMeta:\nMetadatos oficiales extraídos del sitio web: título, descripción, nombre del sitio, URL oficial e imágenes.\n\nObjetivo:\nConstruir una configuración JSON limpia de marca para usar en una landing page.\n\nReglas:\n- Devuelve únicamente JSON válido.\n- No uses markdown.\n- No expliques nada fuera del JSON.\n- No inventes información.\n- Si un dato no aparece de forma clara, usa \"\" o [].\n- Usa brandAnalysis para colores, tipografía y estilo visual.\n- Usa siteMeta para nombre, descripción, URL oficial e imágenes.\n- Si existe siteMeta.site_name, úsalo como brand.name.\n- Si no existe siteMeta.site_name, intenta usar siteMeta.title.\n- Usa siteMeta.main_image como brand.logo solo si no tienes otro logo más claro.\n- No uses fotografías como logo si parece imagen de banner o hero.\n- brand.slug debe estar en minúsculas, sin tildes, sin ñ, sin caracteres especiales y separado por guiones.\n- brand.typography.fontFamily debe incluir una fuente en formato CSS, por ejemplo: \"\\\\\"Poppins\\\\\", sans-serif\".\n- brand.primaryColor debe salir de brandAnalysis.colors.primary.value.\n- brand.secondaryColor debe salir de brandAnalysis.colors.secondary.value.\n- brand.description debe salir principalmente de siteMeta.description.\n- brandUrl debe salir de siteMeta.official_website.\n- Si official_website tiene path, conserva la URL tal cual.\n- legalLinks debe ser [] si no existen enlaces legales claros.\n\nEstructura obligatoria de salida:\n\n{\n  \"reply\": \"\",\n  \"brand\": {\n    \"slug\": \"\",\n    \"name\": \"\",\n    \"logo\": \"\",\n    \"logos\": {\n      \"light\": \"\",\n      \"dark\": \"\"\n    },\n    \"typography\": {\n      \"fontFamily\": \"\",\n      \"googleFontHref\": \"\"\n    },\n    \"primaryColor\": \"\",\n    \"secondaryColor\": \"\",\n    \"description\": \"\",\n    \"legalLinks\": []\n  },\n  \"brandUrl\": \"\"\n}\n`.trim();\n\nconst userPrompt = `\nbrandAnalysis:\n${JSON.stringify(brandAnalysis, null, 2)}\n\nsiteMeta:\n${JSON.stringify(siteMeta, null, 2)}\n`.trim();\n\nreturn [\n  {\n    json: {\n      brandAnalysis,\n      siteMeta,\n      systemPrompt,\n      userPrompt\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2128,
+        -96
+      ],
+      "id": "a2b2241a-9de4-464c-9678-c740330e280f",
+      "name": "Une datos meta y visual"
+    },
+    {
+      "parameters": {
+        "jsCode": "const images = $json.imgSrc || [];\n\nconst imgSrc = images\n  .map(img => ({\n    src: img.src || \"\",\n    alt: img.alt || \"\",\n    title: img.title || \"\",\n    class: img.class || \"\"\n  }))\n  .filter(img => img.src);\n\nreturn [\n  {\n    json: {\n      imgSrc\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        592,
+        -304
+      ],
+      "id": "5ab3bd08-a95b-426d-8f95-a42f800882b9",
+      "name": "Extract Image"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.normalizedUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -320,
+        -384
+      ],
+      "id": "7b369646-a3ad-44af-82c3-91bcf989f207",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.normalizedUrl.replace(/\\/$/, '') + '/sitemap.xml' }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -240,
+        -1216
+      ],
+      "id": "1f96074c-c186-496b-a5cd-e60ad3997905",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        -1216
+      ],
+      "id": "b6b4eefb-40cd-40f3-9c54-20bf1048fc8e",
+      "name": "XML"
+    },
+    {
+      "parameters": {
+        "jsCode": "const sitemaps = $json.sitemapindex?.sitemap || [];\n\nreturn sitemaps.map(item => ({\n  json: {\n    sitemapUrl: item.loc\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        -1216
+      ],
+      "id": "3dbf235c-8fc0-4d20-91b1-fb4284c141df",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "const patterns = [\n  'program',\n  'programa',\n  'career',\n  'careers',\n  'curso',\n  'cursos',\n  'pregrado',\n  'posgrado',\n  'maestria',\n  'doctorado',\n  'faculty',\n  'facultad',\n  'academic',\n  'academico',\n  'oferta',\n  'education',\n  'educacion',\n  'titulado',\n  'degree',\n  'degrees',\n  'certification',\n  'diplomado',\n  'training'\n];\n\nreturn items\n  .map(item => {\n    const url = item.json.sitemapUrl.toLowerCase();\n\n    const score = patterns.reduce((acc, pattern) => {\n      return url.includes(pattern) ? acc + 1 : acc;\n    }, 0);\n\n    return {\n      json: {\n        sitemapUrl: item.json.sitemapUrl,\n        score\n      }\n    };\n  })\n  .filter(item => item.json.score > 0)\n  .sort((a, b) => b.json.score - a.json.score);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        -1216
+      ],
+      "id": "4e764724-84cf-482e-b0d6-1578bce0e88e",
+      "name": "Detect Program Sitemaps"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.sitemapUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        608,
+        -1216
+      ],
+      "id": "eead11d3-4cca-45fa-a13d-1968663a3653",
+      "name": "Get Program Sitemap XML"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        816,
+        -1216
+      ],
+      "id": "28916fd7-c80b-4843-b163-91b2f22ce79e",
+      "name": "Parse Program Sitemap"
+    },
+    {
+      "parameters": {
+        "jsCode": "function getPathFromUrl(url) {\n  return String(url || '')\n    .replace(/^https?:\\/\\/[^/]+/i, '')\n    .split('?')[0]\n    .split('#')[0];\n}\n\nfunction getPathParts(url) {\n  return getPathFromUrl(url)\n    .split('/')\n    .filter(Boolean);\n}\n\nfunction slugToTitle(slug = '') {\n  return String(slug)\n    .replace(/[-_]/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .replace(/\\b\\w/g, (char) => char.toUpperCase());\n}\n\nfunction shouldKeepUrl(url = '') {\n  return !/landing-page|copy|prueba/i.test(url);\n}\n\nconst seen = new Set();\nconst detectedPrograms = [];\n\nfor (const item of items) {\n  const urls = item.json.urlset?.url || [];\n\n  for (const entry of urls) {\n    const loc = typeof entry.loc === 'string' ? entry.loc.trim() : '';\n\n    if (!loc || !shouldKeepUrl(loc)) {\n      continue;\n    }\n\n    const parts = getPathParts(loc);\n    const parentCategory = parts[0] || '';\n    const slug = parts[parts.length - 1] || '';\n\n    if (!slug) {\n      continue;\n    }\n\n    const dedupeKey = slug + '::' + loc.toLowerCase();\n\n    if (seen.has(dedupeKey)) {\n      continue;\n    }\n\n    seen.add(dedupeKey);\n\n    const title = slugToTitle(slug);\n\n    detectedPrograms.push({\n      parentCategory,\n      parentCategoryLabel: slugToTitle(parentCategory),\n      slug,\n      titleFromSlug: title,\n      url: loc,\n      lastmod: entry.lastmod || null,\n      seed: {\n        title,\n        fullTitle: title,\n        slug,\n        sourceWebsite: loc,\n        programUrl: loc,\n        template: 'DefaultLanding',\n        status: 'draft'\n      }\n    });\n  }\n}\n\nreturn [\n  {\n    json: {\n      detectedPrograms,\n      programsSummary: {\n        totalDetected: detectedPrograms.length,\n        importablePrograms: detectedPrograms.length\n      }\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1024,
+        -1216
+      ],
+      "id": "09e80d7e-12e6-4ed8-a5f6-43237990d2ec",
+      "name": "Normalize Program URLs"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "URL limpia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML": {
+      "main": [
+        [
+          {
+            "node": "meta description",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Extract Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Formatear Respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Graphic Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "Graphic Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript6": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Une datos meta y visual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL limpia": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "meta description": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Formatear Respuesta": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hojas de estilo e internos": {
+      "main": [
+        [
+          {
+            "node": "internos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "hojas de estilo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "internos": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "hojas de estilo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Graphic Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Une datos meta y visual": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Image": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Hojas de estilo e internos",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Detect Program Sitemaps",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Detect Program Sitemaps": {
+      "main": [
+        [
+          {
+            "node": "Get Program Sitemap XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Program Sitemap XML": {
+      "main": [
+        [
+          {
+            "node": "Parse Program Sitemap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Program Sitemap": {
+      "main": [
+        [
+          {
+            "node": "Normalize Program URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "ff6c3b5a-de7e-4cfb-85e9-30fd5b9a72e8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8874de15b47c80f0b0eec824cc0f11205ea41b15268d32d142543fcb20af9153"
+  },
+  "id": "dJoG2gurwQ9O2FGs",
+  "tags": []
+}

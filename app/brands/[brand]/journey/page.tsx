@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Brush, Shapes, Users } from "lucide-react";
-import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
+import { getDashboardTranslator } from "@/lib/dashboardI18n";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
+import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +16,8 @@ type Props = {
 };
 
 export default async function BrandJourneyPage({ params }: Props) {
+  const language = await getDashboardLanguage();
+  const t = getDashboardTranslator(language);
   const { brand: brandSlug } = await params;
   const brand =
     getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
@@ -34,53 +38,62 @@ export default async function BrandJourneyPage({ params }: Props) {
       <div className="admin-page-inner">
         <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link
-              href={`/admin/brands/${brand.slug}`}
-              className="admin-button-secondary admin-button-icon"
-              aria-label="Volver a marca"
-              title="Volver a marca"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label={language === "en" ? "Back to brand" : "Volver a marca"}
+                title={language === "en" ? "Back to brand" : "Volver a marca"}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  {t("journeyPage.title")}
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
 
         <section className="admin-panel p-6 sm:p-8">
-          <p className="admin-eyebrow">{brand.name}</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
-            Journey
-          </h1>
-          <p className="admin-muted mt-4 max-w-3xl text-base leading-7">
-            Esta capa reúne los módulos de activación comercial y de marketing
-            para convertir la base de la marca en experiencias, assets y
-            captación activa.
-          </p>
 
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-3">
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/buyer-person`}
-              title="Buyer Persona"
-              description="Define audiencias, motivaciones y objeciones para que el journey hable con claridad a los perfiles correctos."
-              helper={`${buyerPersonRecords.length} perfiles creados`}
-              ctaLabel="Ir a buyer persona"
+              title={t("journeyPage.buyerPersonaTitle")}
+              description={t("journeyPage.buyerPersonaDescription")}
+              helper={t("journeyPage.buyerPersonaHelper", {
+                count: buyerPersonRecords.length,
+              })}
+              ctaLabel={t("journeyPage.buyerPersonaCta")}
               icon={Users}
             />
 
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/visual-assets`}
-              title="Visual Assets"
-              description="Organiza los recursos visuales y referencias que activan creatividad, anuncios, piezas y experiencias de marca."
-              helper={`${visualAssets.length} assets disponibles`}
-              ctaLabel="Ir a visual assets"
+              title={t("journeyPage.visualAssetsTitle")}
+              description={t("journeyPage.visualAssetsDescription")}
+              helper={t("journeyPage.visualAssetsHelper", {
+                count: visualAssets.length,
+              })}
+              ctaLabel={t("journeyPage.visualAssetsCta")}
               icon={Brush}
             />
 
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/landings`}
-              title="Landing Activation"
-              description="Diseña y publica landings conectadas al journey para convertir tráfico en leads listos para CRM y automatización."
-              helper={`${publishedLandings.length}/${landings.length} publicadas`}
-              ctaLabel="Ir a landings"
+              title={t("journeyPage.landingActivationTitle")}
+              description={t("journeyPage.landingActivationDescription")}
+              helper={t("journeyPage.landingActivationHelper", {
+                published: publishedLandings.length,
+                total: landings.length,
+              })}
+              ctaLabel={t("journeyPage.landingActivationCta")}
               icon={Shapes}
             />
           </div>

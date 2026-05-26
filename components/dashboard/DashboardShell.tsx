@@ -17,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import AdminUserMenu from "@/components/dashboard/AdminUserMenu";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import { getBrandLogo } from "@/lib/brandLogo";
 import type { Brand } from "@/lib/data";
 
@@ -37,14 +38,14 @@ type ThemeMode = "light" | "dark";
 
 type NavItem = {
   href: string;
-  label: string;
+  labelKey: string;
   icon: React.ComponentType<{ className?: string }>;
   exact?: boolean;
 };
 
 type BrandSubNavItem = {
   href: string;
-  label: string;
+  labelKey: string;
   icon: React.ComponentType<{ className?: string }>;
   matchPrefixes?: string[];
 };
@@ -81,19 +82,14 @@ function saveTheme(theme: ThemeMode) {
 const primaryNav: NavItem[] = [
   {
     href: "/admin",
-    label: "Dashboard",
+    labelKey: "shell.dashboard",
     icon: LayoutDashboard,
     exact: true,
   },
   {
     href: "/admin/brands",
-    label: "Marcas",
+    labelKey: "shell.brands",
     icon: FolderKanban,
-  },
-  {
-    href: "/admin/docs",
-    label: "Docs",
-    icon: BookOpenText,
   },
 ];
 
@@ -135,7 +131,7 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
   return [
     {
       href: `/admin/brands/${brandSlug}/knowledge-base`,
-      label: "Knowledge Base",
+      labelKey: "shell.knowledgeBase",
       icon: BookOpenText,
       matchPrefixes: [
         `/admin/brands/${brandSlug}/knowledge-base`,
@@ -147,7 +143,7 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
     },
     {
       href: `/admin/brands/${brandSlug}/journey`,
-      label: "Journey",
+      labelKey: "shell.journey",
       icon: Sparkles,
       matchPrefixes: [
         `/admin/brands/${brandSlug}/journey`,
@@ -173,6 +169,7 @@ export default function DashboardShell({
   children,
 }: Props) {
   const pathname = usePathname();
+  const { t } = useDashboardLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window === "undefined") {
@@ -244,7 +241,7 @@ export default function DashboardShell({
       {mobileOpen ? (
         <button
           type="button"
-          aria-label="Cerrar menu lateral"
+          aria-label={t("shell.closeSidebar")}
           className="fixed inset-0 z-40 bg-[color-mix(in_srgb,var(--bunji-primary-darker)_62%,transparent)] backdrop-blur-[2px] lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
@@ -253,7 +250,7 @@ export default function DashboardShell({
       {!mobileOpen ? (
         <button
           type="button"
-          aria-label="Abrir menu lateral"
+          aria-label={t("shell.openSidebar")}
           onClick={() => setMobileOpen(true)}
           className="fixed left-4 top-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-xl border bg-white/88 text-[var(--bunji-primary)] shadow-[0_16px_36px_rgba(62,57,137,0.2)] backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bunji-cyan)_55%,white)] hover:bg-white dark:border-white/10 dark:bg-slate-900/88 dark:text-[var(--bunji-cyan)] dark:hover:bg-slate-800 lg:hidden"
         >
@@ -288,7 +285,8 @@ export default function DashboardShell({
 
           <button
             type="button"
-            aria-label="Cerrar menu"
+            aria-label={t("shell.closeSidebar")}
+            title={t("shell.closeSidebar")}
             onClick={() => setMobileOpen(false)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-lg border bg-white/75 text-[var(--bunji-primary)] shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-[var(--bunji-cyan)] lg:hidden"
           >
@@ -304,7 +302,7 @@ export default function DashboardShell({
               className="admin-button-primary w-full"
             >
               <Plus className="h-4 w-4" />
-              Nueva marca
+              {t("shell.newBrand")}
             </Link>
           </div>
 
@@ -325,7 +323,7 @@ export default function DashboardShell({
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
+                  <span>{t(item.labelKey)}</span>
                 </Link>
               );
             })}
@@ -335,7 +333,7 @@ export default function DashboardShell({
             <div className="mb-3 flex items-center gap-2 px-4">
               <Sparkles className="h-4 w-4 text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                Marcas activas
+                {t("shell.activeBrands")}
               </p>
             </div>
 
@@ -391,7 +389,7 @@ export default function DashboardShell({
                               }`}
                             >
                               <Icon className="h-4 w-4 shrink-0" />
-                              <span>{item.label}</span>
+                              <span>{t(item.labelKey)}</span>
                             </Link>
                           );
                         })}
@@ -437,12 +435,12 @@ export default function DashboardShell({
                     {isLandingEditorPage
                       ? activeBrand.name
                       : isBrandEditPage
-                        ? "Editar marca"
+                        ? t("shell.editBrand")
                         : isNewLandingAiPage
-                          ? "Crear con AI"
+                          ? t("shell.createWithAi")
                           : isNewLandingPage
-                            ? "Nueva landing"
-                            : "Marca activa"}
+                            ? t("shell.newLanding")
+                            : t("shell.activeBrand")}
                   </p>
                   <h2 className="text-3xl font-bold text-slate-950 dark:text-slate-50">
                     {isLandingEditorPage
@@ -465,7 +463,7 @@ export default function DashboardShell({
                       className="admin-button-secondary"
                     >
                       <Pencil className="h-4 w-4" />
-                      Editar marca
+                      {t("shell.editBrand")}
                     </Link>
 
                     <Link
@@ -473,7 +471,7 @@ export default function DashboardShell({
                       className="admin-button-primary"
                     >
                       <Plus className="h-4 w-4" />
-                      Nueva landing
+                      {t("shell.newLanding")}
                     </Link>
                   </>
                 ) : null}
@@ -482,8 +480,8 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}`}
                     className={backButtonClassName}
-                    aria-label="Volver a marca"
-                    title="Volver a marca"
+                    aria-label={t("shell.backToBrand")}
+                    title={t("shell.backToBrand")}
                   >
                     <ArrowLeft className="h-4 w-4" />
                   </Link>
@@ -496,14 +494,14 @@ export default function DashboardShell({
                       className="admin-button-primary"
                     >
                       <Sparkles className="h-4 w-4" />
-                      Crear con AI
+                      {t("shell.createWithAi")}
                     </Link>
 
                     <Link
                       href={`/admin/brands/${activeBrand.slug}/landings`}
                       className={backButtonClassName}
-                      aria-label="Volver a landings"
-                      title="Volver a landings"
+                      aria-label={t("shell.backToLandings")}
+                      title={t("shell.backToLandings")}
                     >
                       <ArrowLeft className="h-4 w-4" />
                     </Link>
@@ -514,8 +512,8 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}/new`}
                     className={backButtonClassName}
-                    aria-label="Volver a nueva landing"
-                    title="Volver a nueva landing"
+                    aria-label={t("shell.backToNewLanding")}
+                    title={t("shell.backToNewLanding")}
                   >
                     <ArrowLeft className="h-4 w-4" />
                   </Link>
@@ -525,8 +523,8 @@ export default function DashboardShell({
                   <Link
                     href={`/admin/brands/${activeBrand.slug}/landings`}
                     className={backButtonClassName}
-                    aria-label="Volver a landings"
-                    title="Volver a landings"
+                    aria-label={t("shell.backToLandings")}
+                    title={t("shell.backToLandings")}
                   >
                     <ArrowLeft className="h-4 w-4" />
                   </Link>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Pencil } from "lucide-react";
 import DeleteProgramButton from "./DeleteProgramButton";
 import UpdateProgramButton from "./UpdateProgramButton";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import type { Brand, Program } from "@/lib/data";
 
 type Props = {
@@ -10,22 +11,18 @@ type Props = {
 };
 
 export default function ProgramsList({ brand, programs }: Props) {
+  const languagePromise = getDashboardLanguage();
+  return <ProgramsListContent brand={brand} programs={programs} languagePromise={languagePromise} />;
+}
+
+async function ProgramsListContent({
+  brand,
+  programs,
+  languagePromise,
+}: Props & { languagePromise: ReturnType<typeof getDashboardLanguage> }) {
+  const language = await languagePromise;
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="admin-eyebrow">
-            {brand.name}
-          </p>
-          <h1 className="admin-title">
-            Programs
-          </h1>
-          <p className="admin-muted mt-2 max-w-2xl">
-            Registros base del Agente de Contenido para organizar la oferta
-            academica de esta marca.
-          </p>
-        </div>
-      </div>
 
       {programs.length === 0 ? (
         <section className="admin-empty-state">
@@ -33,11 +30,14 @@ export default function ProgramsList({ brand, programs }: Props) {
             Content Agent
           </p>
           <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
-            Aun no hay programs registrados
+            {language === "en"
+              ? "No programs have been added yet"
+              : "Aun no hay programs registrados"}
           </h2>
           <p className="admin-muted mx-auto mt-3 max-w-xl">
-            Agrega el nombre del programa, sitio fuente y catalogo para empezar
-            a alimentar el agente de contenido.
+            {language === "en"
+              ? "Add the program name, source website, and catalog to start feeding the content agent."
+              : "Agrega el nombre del programa, sitio fuente y catalogo para empezar a alimentar el agente de contenido."}
           </p>
         </section>
       ) : (
@@ -46,9 +46,9 @@ export default function ProgramsList({ brand, programs }: Props) {
             <thead className="admin-table-header">
               <tr>
                 <th className="px-5 py-4">Program</th>
-                <th className="px-5 py-4">Status</th>
-                <th className="px-5 py-4">Actualizado</th>
-                <th className="px-5 py-4 text-right">Acciones</th>
+                <th className="px-5 py-4">{language === "en" ? "Status" : "Status"}</th>
+                <th className="px-5 py-4">{language === "en" ? "Updated" : "Actualizado"}</th>
+                <th className="px-5 py-4 text-right">{language === "en" ? "Actions" : "Acciones"}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-slate-800">
@@ -67,7 +67,7 @@ export default function ProgramsList({ brand, programs }: Props) {
                   </td>
                   <td className="px-5 py-4">
                     <span className="inline-flex bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
-                      Activo
+                      {language === "en" ? "Active" : "Activo"}
                     </span>
                   </td>
                   <td className="px-5 py-4 text-sm text-gray-600 dark:text-slate-400">
@@ -80,7 +80,7 @@ export default function ProgramsList({ brand, programs }: Props) {
                         className="admin-button-primary px-3 py-2 text-xs"
                       >
                         <Pencil className="h-3.5 w-3.5" />
-                        Editar
+                        {language === "en" ? "Edit" : "Editar"}
                       </Link>
                       <UpdateProgramButton
                         brandSlug={brand.slug}

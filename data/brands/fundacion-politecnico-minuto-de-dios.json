@@ -8,8 +8,8 @@
     "dark": "https://tecmd.edu.co/wp-content/uploads/2020/09/logos-TEC-MD-white_pq.png"
   },
   "typography": {
-    "fontFamily": "\"Roboto\", sans-serif",
-    "googleFontHref": "https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap"
+    "fontFamily": "\"Roboto Slab\", serif",
+    "googleFontHref": "https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto&display=swap"
   },
   "identityManual": "",
   "primaryColor": "#212844",

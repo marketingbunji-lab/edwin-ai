@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Plus, Save, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
 import type { Brand, Program } from "@/lib/data";
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default function ProgramsEditor({ brand, initialPrograms }: Props) {
+  const { t } = useDashboardLanguage();
   const router = useRouter();
   const [programs, setPrograms] = useState<Program[]>(initialPrograms);
   const [saving, setSaving] = useState(false);
@@ -72,17 +74,15 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
       };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error || "No se pudieron guardar los programs");
+        throw new Error(data.error || t("programsEditor.saveError"));
       }
 
       setPrograms(data.programs ?? programs);
-      setMessage("Programs guardados correctamente");
+      setMessage(t("programsEditor.saveSuccess"));
       router.refresh();
     } catch (error) {
       setMessage(
-        error instanceof Error
-          ? error.message
-          : "No se pudieron guardar los programs",
+        error instanceof Error ? error.message : t("programsEditor.saveError"),
       );
     } finally {
       setSaving(false);
@@ -96,17 +96,13 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
           <Link
             href={`/admin/brands/${brand.slug}/programs`}
             className="admin-button-secondary admin-button-icon mb-3"
-            aria-label="Volver a programs"
-            title="Volver a programs"
+            aria-label={t("programsEditor.backToPrograms")}
+            title={t("programsEditor.backToPrograms")}
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
-          <p className="admin-eyebrow">
-            {brand.name}
-          </p>
-          <h1 className="admin-title">
-            Editar Programs
-          </h1>
+          <p className="admin-eyebrow">{brand.name}</p>
+          <h1 className="admin-title">{t("programsEditor.title")}</h1>
         </div>
 
         <div className="flex flex-wrap gap-3">
@@ -116,7 +112,7 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
             className="admin-button-secondary"
           >
             <Plus className="h-4 w-4" />
-            Agregar program
+            {t("programsEditor.addProgram")}
           </button>
           <button
             type="button"
@@ -125,20 +121,17 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
             className="admin-button-primary"
           >
             <Save className="h-4 w-4" />
-            {saving ? "Guardando..." : "Guardar"}
+            {saving ? t("programsEditor.saving") : t("programsEditor.save")}
           </button>
         </div>
       </div>
 
       <div className="grid gap-4">
         {programs.map((program, index) => (
-          <section
-            key={program.id}
-            className="admin-panel p-5"
-          >
+          <section key={program.id} className="admin-panel p-5">
             <div className="mb-4 flex items-center justify-between gap-4">
               <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
-                Program {index + 1}
+                {t("programsEditor.programLabel")} {index + 1}
               </h2>
               <button
                 type="button"
@@ -146,25 +139,25 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-red-600 dark:text-red-300"
               >
                 <Trash2 className="h-4 w-4" />
-                Eliminar
+                {t("programsEditor.remove")}
               </button>
             </div>
 
             <div className="grid gap-4">
               <Field
-                label="Program name"
+                label={t("programsEditor.fields.programName")}
                 value={program.programName}
                 onChange={(value) => updateProgram(index, "programName", value)}
               />
               <Field
-                label="Source website"
+                label={t("programsEditor.fields.sourceWebsite")}
                 value={program.sourceWebsite}
                 onChange={(value) =>
                   updateProgram(index, "sourceWebsite", value)
                 }
               />
               <Field
-                label="Catalogo"
+                label={t("programsEditor.fields.catalog")}
                 value={program.catalog}
                 onChange={(value) => updateProgram(index, "catalog", value)}
               />
@@ -179,7 +172,7 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
           onClick={addProgram}
           className="admin-empty-state w-full text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/[0.04]"
         >
-          Agregar primer program
+          {t("programsEditor.addFirstProgram")}
         </button>
       ) : null}
 
