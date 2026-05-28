@@ -39,6 +39,7 @@ export type Brand = {
   campuses?: BrandCampus[];
   legalLinks?: LegalLink[];
   certifications?: BrandCertification[];
+  documents?: BrandDocuments;
 };
 
 export type BrandCampus = {
@@ -74,6 +75,26 @@ export type BrandCertification = {
     dark?: string;
   };
 };
+
+export type BrandDocumentCategoryId =
+  | "legal"
+  | "catalogs"
+  | "brandBook"
+  | "curriculum";
+
+export type BrandDocumentSourceMode = "file" | "link";
+
+export type BrandDocumentCategory = {
+  mode?: BrandDocumentSourceMode;
+  fileName?: string;
+  fileUrl?: string;
+  link?: string;
+  updatedAt?: string;
+};
+
+export type BrandDocuments = Partial<
+  Record<BrandDocumentCategoryId, BrandDocumentCategory>
+>;
 
 export type Program = {
   id: string;

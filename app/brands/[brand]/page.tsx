@@ -54,6 +54,9 @@ export default async function BrandPage({ params }: Props) {
   const publishedLandings = landings.filter(
     (landing) => landing.status === "published",
   );
+  const hasDocuments = Object.values(brand.documents ?? {}).some((document) =>
+    Boolean(document?.fileName || document?.fileUrl || document?.link),
+  );
 
   const brandSetupSignals = [
     brand.description,
@@ -70,6 +73,7 @@ export default async function BrandPage({ params }: Props) {
   const landingDone = publishedLandings.length > 0;
   const universityContentBaseDone = false;
   const goldenCircleDone = false;
+  const documentsDone = hasDocuments;
 
   const stages: WorkflowStage[] = [
     {
@@ -111,14 +115,9 @@ export default async function BrandPage({ params }: Props) {
 
   const knowledgeBaseProgress = Math.round(
     ((Number(brandSetupDone) +
-      Number(brandSetupDone && programsDone) +
-      Number(brandSetupDone && programsDone && universityContentBaseDone) +
-      Number(
-        brandSetupDone &&
-          programsDone &&
-          universityContentBaseDone &&
-          goldenCircleDone,
-      )) /
+      Number(programsDone) +
+      Number(universityContentBaseDone) +
+      Number(documentsDone)) /
       4) *
       100,
   );
@@ -225,22 +224,40 @@ export default async function BrandPage({ params }: Props) {
               { title: ui(language, "visualAssets"), complete: assetsDone },
               { title: ui(language, "landingActivation"), complete: landingDone },
             ]}
-            summary={[
+            knowledgeBaseItems={[
               {
-                label: ui(language, "publishedLandings"),
-                value: `${publishedLandings.length}/${landings.length}`,
+                title: ui(language, "universityContentBase"),
+                complete: universityContentBaseDone,
               },
               {
-                label: ui(language, "knowledgeBase"),
-                value: `${knowledgeBaseProgress}%`,
+                title: ui(language, "brandSetup"),
+                complete: brandSetupDone,
               },
               {
-                label: ui(language, "buyerPersona"),
-                value: String(buyerPersonRecords.length),
+                title: ui(language, "contentBase"),
+                complete: programsDone,
               },
               {
-                label: ui(language, "programs"),
-                value: String(programs.length),
+                title: ui(language, "documents"),
+                complete: documentsDone,
+              },
+            ]}
+            educationAgentItems={[
+              {
+                title: ui(language, "buyerPersona"),
+                complete: buyerPersonaDone,
+              },
+              {
+                title: ui(language, "visualAssets"),
+                complete: assetsDone,
+              },
+              {
+                title: ui(language, "landingActivation"),
+                complete: landingDone,
+              },
+              {
+                title: ui(language, "goldenCircle"),
+                complete: goldenCircleDone,
               },
             ]}
           />
@@ -341,7 +358,7 @@ function StrategicWorkflowCard({
               <div className="mt-4">
                 <div className="h-3 overflow-hidden rounded-full bg-[linear-gradient(90deg,rgba(62,57,137,0.08),rgba(125,227,234,0.12))] ring-1 ring-[color-mix(in_srgb,var(--bunji-primary-soft)_52%,white)] dark:bg-[linear-gradient(90deg,rgba(62,57,137,0.24),rgba(125,227,234,0.12))] dark:ring-white/10">
                   <div
-                    className="h-full rounded-full bg-[linear-gradient(90deg,var(--bunji-primary),color-mix(in_srgb,var(--bunji-cyan)_72%,white))] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_22px_rgba(125,227,234,0.28)] transition-all duration-500"
+                    className="h-full rounded-full bg-[linear-gradient(100deg,var(--bunji-cyan)_0%,var(--bunji-red)_38%,color-mix(in_srgb,var(--bunji-red)_42%,var(--bunji-primary)_58%)_62%,var(--bunji-primary)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_24px_rgba(125,227,234,0.22),0_0_28px_rgba(255,11,46,0.12)] transition-all duration-500"
                     style={{ width: `${progressValue}%` }}
                   />
                 </div>
@@ -401,6 +418,9 @@ function ui(
     | "contentBase"
     | "visualAssets"
     | "landingActivation"
+    | "universityContentBase"
+    | "documents"
+    | "goldenCircle"
     | "programs"
     | "landings"
     | "publishedLandings"
@@ -448,6 +468,9 @@ function ui(
       contentBase: "Content Base",
       visualAssets: "Visual Assets",
       landingActivation: "Landing Activation",
+      universityContentBase: "University Content Base",
+      documents: "Documents",
+      goldenCircle: "Golden Circle",
       programs: "Programs",
       landings: "Landings",
       publishedLandings: "Published landings",
@@ -493,6 +516,9 @@ function ui(
       contentBase: "Content Base",
       visualAssets: "Visual Assets",
       landingActivation: "Landing Activation",
+      universityContentBase: "University Content Base",
+      documents: "Documents",
+      goldenCircle: "Golden Circle",
       programs: "Programs",
       landings: "Landings",
       publishedLandings: "Landings publicadas",

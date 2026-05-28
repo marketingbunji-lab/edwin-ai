@@ -3,7 +3,7 @@ import {
   formatCountLabel,
 } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
-import { getBrands, getLandingsByBrand } from "@/lib/data";
+import { getBrands, getProgramsByBrand } from "@/lib/data";
 
 export default async function HomePage() {
   const language = await getDashboardLanguage();
@@ -59,13 +59,13 @@ export default async function HomePage() {
 
           <div className="mt-8 grid gap-8 border border-none dark:border-none md:grid-cols-2 xl:grid-cols-3">
             {brands.map((brand) => {
-              const landings = getLandingsByBrand(brand.slug);
+              const programs = getProgramsByBrand(brand.slug);
 
               return (
                 <BrandCard
                   key={brand.slug}
                   brand={brand}
-                  landingCount={landings.length}
+                  programCount={programs.length}
                 />
               );
             })}

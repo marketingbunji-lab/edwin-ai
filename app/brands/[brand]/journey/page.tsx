@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Brush, Shapes, Users } from "lucide-react";
+import { ArrowLeft, Brush, Shapes, Target, Users } from "lucide-react";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
 import { getDashboardTranslator } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
@@ -62,7 +62,7 @@ export default async function BrandJourneyPage({ params }: Props) {
 
         <section className="admin-panel p-6 sm:p-8">
 
-          <div className="grid gap-5 lg:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
             <WorkspaceCard
               href={`/admin/brands/${brand.slug}/buyer-person`}
               title={t("journeyPage.buyerPersonaTitle")}
@@ -95,6 +95,15 @@ export default async function BrandJourneyPage({ params }: Props) {
               })}
               ctaLabel={t("journeyPage.landingActivationCta")}
               icon={Shapes}
+            />
+
+            <WorkspaceCard
+              href={`/admin/brands/${brand.slug}/golden-circle`}
+              title={t("knowledgeBasePage.goldenCircleTitle")}
+              description={t("knowledgeBasePage.goldenCircleDescription")}
+              helper={t("knowledgeBasePage.narrativeFramework")}
+              ctaLabel={t("knowledgeBasePage.goToGoldenCircle")}
+              icon={Target}
             />
           </div>
         </section>

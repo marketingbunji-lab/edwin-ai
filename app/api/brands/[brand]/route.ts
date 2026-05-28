@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Brand } from "../../../../lib/data";
+import type { Brand, BrandDocumentCategoryId, BrandDocuments } from "../../../../lib/data";
 import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../../utils/supabase/admin";
 
@@ -14,6 +14,13 @@ type SyncSupabaseResponse = {
   skipped?: boolean;
   error?: string;
 };
+
+const brandDocumentCategoryIds: BrandDocumentCategoryId[] = [
+  "legal",
+  "catalogs",
+  "brandBook",
+  "curriculum",
+];
 
 function normalizeCertifications(brand: Brand) {
   return (brand.certifications ?? []).map((certification) => ({
@@ -34,6 +41,37 @@ function normalizeCampuses(brand: Brand) {
     image: campus.image || "",
     videoUrl: campus.videoUrl || "",
   }));
+}
+
+function normalizeDocuments(brand: Partial<Brand>) {
+  const normalized: BrandDocuments = {};
+
+  for (const categoryId of brandDocumentCategoryIds) {
+    const document = brand.documents?.[categoryId];
+
+    if (!document) {
+      continue;
+    }
+
+    const mode = document.mode === "link" ? "link" : "file";
+    const fileName = (document.fileName || "").trim();
+    const fileUrl = (document.fileUrl || "").trim();
+    const link = (document.link || "").trim();
+
+    if (!fileName && !fileUrl && !link) {
+      continue;
+    }
+
+    normalized[categoryId] = {
+      mode,
+      fileName,
+      fileUrl,
+      link,
+      updatedAt: document.updatedAt || "",
+    };
+  }
+
+  return normalized;
 }
 
 export async function PUT(req: NextRequest, { params }: { params: Params }) {
@@ -68,6 +106,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       campuses: normalizeCampuses(body),
       legalLinks: body.legalLinks || [],
       certifications: normalizeCertifications(body),
+      documents: normalizeDocuments(body),
     });
 
     const filePath = path.join(

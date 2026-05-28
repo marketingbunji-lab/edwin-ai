@@ -5,11 +5,11 @@ import {
   CheckCircle2,
   CircleDashed,
   Clock3,
+  FileText,
   FileStack,
   LibraryBig,
   Lock,
   Pencil,
-  Target,
 } from "lucide-react";
 import {
   getDashboardTranslator,
@@ -59,9 +59,7 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
   const contentBaseState: WorkflowState = contentBaseCompleted
     ? "completed"
     : "pending";
-  const goldenCircleState: WorkflowState = !universityContentBaseCompleted
-    ? "locked"
-    : "pending";
+  const documentsState: WorkflowState = "pending";
 
   return (
     <main className="admin-page">
@@ -139,14 +137,13 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
             />
 
             <WorkspaceCard
-              href={`/admin/brands/${brand.slug}/golden-circle`}
-              title={t("knowledgeBasePage.goldenCircleTitle")}
-              subtitle={t("knowledgeBasePage.goldenCircleSubtitle")}
-              description={t("knowledgeBasePage.goldenCircleDescription")}
-              helper={t("knowledgeBasePage.narrativeFramework")}
-              ctaLabel={t("knowledgeBasePage.goToGoldenCircle")}
-              icon={Target}
-              state={goldenCircleState}
+              href={`/admin/brands/${brand.slug}/documents`}
+              title={t("knowledgeBasePage.documentsTitle")}
+              description={t("knowledgeBasePage.documentsDescription")}
+              helper={t("knowledgeBasePage.documentsHelper")}
+              ctaLabel={t("knowledgeBasePage.goToDocuments")}
+              icon={FileText}
+              state={documentsState}
               stepLabel={t("knowledgeBasePage.step04")}
               language={language}
             />

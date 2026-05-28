@@ -136,6 +136,7 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
       matchPrefixes: [
         `/admin/brands/${brandSlug}/knowledge-base`,
         `/admin/brands/${brandSlug}/edit`,
+        `/admin/brands/${brandSlug}/documents`,
         `/admin/brands/${brandSlug}/university`,
         `/admin/brands/${brandSlug}/golden-circle`,
         `/admin/brands/${brandSlug}/programs`,

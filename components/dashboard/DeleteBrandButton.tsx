@@ -8,12 +8,14 @@ import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguagePr
 type Props = {
   brandName: string;
   brandSlug: string;
+  className?: string;
   source?: "json" | "supabase";
 };
 
 export default function DeleteBrandButton({
   brandName,
   brandSlug,
+  className = "",
   source = "json",
 }: Props) {
   const { language } = useDashboardLanguage();
@@ -80,7 +82,7 @@ export default function DeleteBrandButton({
       type="button"
       onClick={handleDelete}
       disabled={isDeleting}
-      className="inline-flex items-center gap-2 rounded-full border border-red-200 px-3 py-1 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+      className={`inline-flex items-center gap-2 rounded-full border border-red-200 px-3 py-1 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40 ${className}`.trim()}
     >
       <Trash2 className="h-4 w-4" />
       {isDeleting

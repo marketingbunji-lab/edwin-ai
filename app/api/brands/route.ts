@@ -1,11 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Brand } from "../../../lib/data";
+import type { Brand, BrandDocumentCategoryId, BrandDocuments } from "../../../lib/data";
 import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../utils/supabase/admin";
 
 const brandsDir = path.join(process.cwd(), "data", "brands");
+const brandDocumentCategoryIds: BrandDocumentCategoryId[] = [
+  "legal",
+  "catalogs",
+  "brandBook",
+  "curriculum",
+];
 
 function slugify(text: string) {
   return text
@@ -35,6 +41,37 @@ function normalizeCampuses(brand: Brand) {
     image: campus.image || "",
     videoUrl: campus.videoUrl || "",
   }));
+}
+
+function normalizeDocuments(brand: Partial<Brand>) {
+  const normalized: BrandDocuments = {};
+
+  for (const categoryId of brandDocumentCategoryIds) {
+    const document = brand.documents?.[categoryId];
+
+    if (!document) {
+      continue;
+    }
+
+    const mode = document.mode === "link" ? "link" : "file";
+    const fileName = (document.fileName || "").trim();
+    const fileUrl = (document.fileUrl || "").trim();
+    const link = (document.link || "").trim();
+
+    if (!fileName && !fileUrl && !link) {
+      continue;
+    }
+
+    normalized[categoryId] = {
+      mode,
+      fileName,
+      fileUrl,
+      link,
+      updatedAt: document.updatedAt || "",
+    };
+  }
+
+  return normalized;
 }
 
 async function createBrandInSupabase(brand: Brand) {
@@ -144,6 +181,7 @@ export async function POST(req: NextRequest) {
       campuses: normalizeCampuses(body),
       legalLinks: body.legalLinks || [],
       certifications: normalizeCertifications(body),
+      documents: normalizeDocuments(body),
     });
 
     fs.writeFileSync(filePath, JSON.stringify(brandData, null, 2), "utf8");

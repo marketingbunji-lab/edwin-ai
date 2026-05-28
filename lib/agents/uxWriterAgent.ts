@@ -239,6 +239,18 @@ const sectionMeta: Record<
       "Keep labels aligned with educational workflows",
     ],
   },
+  documentsPage: {
+    id: "documentsPage",
+    title: "Documents Page",
+    summary:
+      "Document hub labels, PDF upload guidance, repository messaging, and setup scaffolding for institutional files.",
+    routeHints: ["/brands/[brand]/documents"],
+    audience: ["content teams", "admissions teams", "academic staff"],
+    goals: [
+      "Keep document flows simple for non-technical users",
+      "Make PDF upload and repository language feel guided and practical",
+    ],
+  },
   workspaceProgress: {
     id: "workspaceProgress",
     title: "Workspace Progress Card",
