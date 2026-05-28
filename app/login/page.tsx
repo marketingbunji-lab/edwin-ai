@@ -8,7 +8,7 @@ export default function LoginPage() {
       <div className="mx-auto max-w-md bg-white p-6 dark:bg-slate-950">
         <div className="mb-8 flex items-center gap-3">
           <Image
-            src="/icon.png"
+            src="/edwin-logo.png"
             alt=""
             width={28}
             height={28}

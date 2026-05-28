@@ -79,7 +79,7 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full rounded-2xl bg-[linear-gradient(135deg,var(--bunji-primary)_0%,color-mix(in_srgb,var(--bunji-primary-dark)_82%,var(--bunji-cyan)_18%)_100%)] px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_35px_rgba(62,57,137,0.24)] transition hover:translate-y-[-1px] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+        className="edwin-button-gradient-spectrum w-full"
       >
         {loading ? "Signing in..." : "Sign in"}
       </button>

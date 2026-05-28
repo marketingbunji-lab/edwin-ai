@@ -41,7 +41,7 @@ export default async function HomePage() {
           <div className="relative mx-auto w-full max-w-xl">
             <div className="mb-10 flex items-center gap-3">
               <Image
-                src="/icon.png"
+                src="/edwin-logo.png"
                 alt=""
                 width={32}
                 height={32}

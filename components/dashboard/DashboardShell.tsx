@@ -266,7 +266,7 @@ export default function DashboardShell({
         <div className="flex items-center justify-between border-b border-[color-mix(in_srgb,var(--bunji-primary-soft)_56%,white)] px-5 py-5 dark:border-white/10">
           <div className="flex items-center gap-3">
             <Image
-              src="/icon.png"
+              src="/edwin-logo.png"
               alt=""
               width={28}
               height={28}

@@ -7,13 +7,21 @@
   --bunji-primary: #3e3989;
   --bunji-primary-dark: #2f2b69;
   --bunji-primary-darker: #24204f;
-  --bunji-primary-light: #eeedfa;
+  --bunji-primary-light: #d9d7f3;
+  --bunji-primary-lightest: #eeedfa;
   --bunji-primary-soft: #d9d7f3;
   --bunji-primary-muted: #b7b3e3;
   --bunji-cyan: #7de3ea;
   --bunji-cyan-dark: #2ea7b4;
+  --bunji-cyan-darker: #147180;
+  --bunji-cyan-light: #c9f6fa;
+  --bunji-cyan-lightest: #ecfdff;
   --bunji-cyan-soft: #e6fbfd;
   --bunji-red: #ff0b2e;
+  --bunji-red-dark: #c80824;
+  --bunji-red-darker: #8f061a;
+  --bunji-red-light: #ff8fa0;
+  --bunji-red-lightest: #ffe6eb;
   --bunji-red-soft: #ffe6eb;
   --bunji-shell-bg:
     radial-gradient(circle at 12% 12%, rgba(125, 227, 234, 0.12) 0%, transparent 24%),
@@ -226,6 +234,26 @@ body {
     border-color: color-mix(in srgb, var(--bunji-red) 34%, white);
     color: color-mix(in srgb, var(--bunji-red) 74%, #7f1d1d);
     outline-color: var(--bunji-red);
+  }
+
+  .edwin-button-red {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_32px_rgba(255,11,46,0.24)] transition hover:scale-[1.02] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60;
+    background-image: linear-gradient(135deg, var(--bunji-red), color-mix(in srgb, var(--bunji-red-dark) 86%, var(--bunji-primary) 14%));
+  }
+
+  .edwin-button-gradient-cyan-purple {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(125,227,234,0.18),0_10px_28px_rgba(62,57,137,0.28),inset_0_1px_0_rgba(255,255,255,0.36)] transition hover:translate-y-[-1px] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+    background-image: linear-gradient(110deg, var(--bunji-cyan-dark) 0%, var(--bunji-cyan) 18%, var(--bunji-primary) 72%, var(--bunji-primary-darker) 100%);
+  }
+
+  .edwin-button-gradient-red-purple {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(255,11,46,0.24),0_10px_28px_rgba(62,57,137,0.28),inset_0_1px_0_rgba(255,255,255,0.34)] transition hover:translate-y-[-1px] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+    background-image: linear-gradient(110deg, var(--bunji-red) 0%, var(--bunji-red-dark) 34%, var(--bunji-primary) 76%, var(--bunji-primary-darker) 100%);
+  }
+
+  .edwin-button-gradient-spectrum {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-4 py-3 text-sm font-semibold text-white shadow-[0_14px_34px_rgba(125,227,234,0.16),0_12px_32px_rgba(255,11,46,0.18),0_10px_28px_rgba(62,57,137,0.30),inset_0_1px_0_rgba(255,255,255,0.42)] transition hover:translate-y-[-1px] hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
+    background-image: linear-gradient(100deg, var(--bunji-cyan) 0%, var(--bunji-red) 38%, color-mix(in srgb, var(--bunji-red) 42%, var(--bunji-primary) 58%) 62%, var(--bunji-primary) 100%);
   }
 
   .admin-icon-tile {
