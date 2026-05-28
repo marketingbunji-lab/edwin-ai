@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import BrandAgentRecordForm from "@/components/brand-agent-records/BrandAgentRecordForm";
 import {
   getBrandAgentRecords,
@@ -13,7 +13,6 @@ import {
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -105,3 +104,4 @@ function slugify(text: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
+

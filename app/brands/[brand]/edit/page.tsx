@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import BrandSnapshotCard from "../../../../components/dashboard/BrandSnapshotCard";
@@ -7,7 +7,6 @@ import { getDashboardLanguage } from "../../../../lib/dashboardI18nServer";
 import { getBrandBySlug } from "../../../../lib/data";
 import { getSupabaseBrandBySlug } from "../../../../lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -79,3 +78,4 @@ export default async function EditBrandPage({ params }: Props) {
     </main>
   );
 }
+

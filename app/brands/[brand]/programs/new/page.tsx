@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import ProgramDataEditor from "@/components/programs/ProgramDataEditor";
 import { getBrandBySlug, type Landing } from "@/lib/data";
 import {
@@ -7,7 +7,6 @@ import {
 } from "@/lib/landingLanguage";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -143,3 +142,4 @@ export default async function NewBrandProgramPage({ params }: Props) {
     </main>
   );
 }
+

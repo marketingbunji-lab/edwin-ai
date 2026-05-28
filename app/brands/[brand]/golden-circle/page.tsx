@@ -1,10 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Orbit, Pencil, Plus } from "lucide-react";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -13,6 +13,7 @@ type Props = {
 };
 
 export default async function BrandGoldenCirclePage({ params }: Props) {
+  const language = await getDashboardLanguage();
   const { brand: brandSlug } = await params;
   const brand =
     getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
@@ -26,14 +27,33 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
       <div className="admin-page-inner">
         <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link
-              href={`/admin/brands/${brand.slug}/knowledge-base`}
-              className="admin-button-secondary admin-button-icon"
-              aria-label="Volver a knowledge base"
-              title="Volver a knowledge base"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}/knowledge-base`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label={
+                  language === "en"
+                    ? "Back to Knowledge Base"
+                    : "Volver a Knowledge Base"
+                }
+                title={
+                  language === "en"
+                    ? "Back to Knowledge Base"
+                    : "Volver a Knowledge Base"
+                }
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  Golden Circle
+                </h1>
+              </div>
+            </div>
 
             <div className="flex flex-wrap items-center gap-3">
               <Link
@@ -55,12 +75,8 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
         </div>
 
         <section className="admin-panel p-6 sm:p-8">
-          <p className="admin-eyebrow">{brand.name}</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
-            Golden Circle
-          </h1>
           <p className="admin-muted mt-4 max-w-3xl text-base leading-7">
-            Estructura el propósito institucional desde el <strong>Why</strong>,
+            Estructura el propÃ³sito institucional desde el <strong>Why</strong>,
             el <strong>How</strong> y el <strong>What</strong> para alinear el
             lenguaje de marca, la narrativa comercial y el crecimiento.
           </p>
@@ -68,15 +84,15 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
           <div className="mt-8 grid gap-5 xl:grid-cols-3">
             <GoldenCirclePillar
               title="Why"
-              description="El propósito central que moviliza a la institución y conecta emocionalmente con su audiencia."
+              description="El propÃ³sito central que moviliza a la instituciÃ³n y conecta emocionalmente con su audiencia."
             />
             <GoldenCirclePillar
               title="How"
-              description="La manera en la que la marca convierte ese propósito en una experiencia educativa y diferencial."
+              description="La manera en la que la marca convierte ese propÃ³sito en una experiencia educativa y diferencial."
             />
             <GoldenCirclePillar
               title="What"
-              description="La expresión tangible de ese propósito en programas, servicios, activos y puntos de contacto."
+              description="La expresiÃ³n tangible de ese propÃ³sito en programas, servicios, activos y puntos de contacto."
             />
           </div>
 
@@ -92,11 +108,11 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
                 Crear Golden Circle
               </h2>
               <p className="admin-muted mt-3">
-                Inicia la definición del Why, How y What para dejar lista la
+                Inicia la definiciÃ³n del Why, How y What para dejar lista la
                 base narrativa de la marca.
               </p>
               <p className="mt-5 text-sm font-semibold text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-                Abrir modo creación
+                Abrir modo creaciÃ³n
               </p>
             </Link>
 
@@ -111,11 +127,11 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
                 Editar Golden Circle
               </h2>
               <p className="admin-muted mt-3">
-                Refina la narrativa estratégica para que comunicación,
-                diferenciación y crecimiento sigan alineados.
+                Refina la narrativa estratÃ©gica para que comunicaciÃ³n,
+                diferenciaciÃ³n y crecimiento sigan alineados.
               </p>
               <p className="mt-5 text-sm font-semibold text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-                Abrir modo edición
+                Abrir modo ediciÃ³n
               </p>
             </Link>
           </div>
@@ -144,3 +160,4 @@ function GoldenCirclePillar({
     </div>
   );
 }
+

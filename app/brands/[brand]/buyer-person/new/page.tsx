@@ -1,11 +1,10 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import BrandAgentRecordForm from "@/components/brand-agent-records/BrandAgentRecordForm";
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -46,3 +45,4 @@ export default async function NewBrandBuyerPersonPage({ params }: Props) {
     </main>
   );
 }
+

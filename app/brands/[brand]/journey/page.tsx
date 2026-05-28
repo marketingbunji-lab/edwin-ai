@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Brush, Shapes, Target, Users } from "lucide-react";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
@@ -7,7 +7,6 @@ import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -149,3 +148,4 @@ function WorkspaceCard({
     </Link>
   );
 }
+

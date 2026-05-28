@@ -1,6 +1,6 @@
 {
   "slug": "corporacion-universitaria-minuto-de-dios",
-  "name": "Corporación Universitaria Minuto de Dios",
+  "name": "Uniminuto",
   "shortName": "Corporación Universitaria Minuto de Dios",
   "logo": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/652b8dae367803925cafa91517259b11705aa029/public/uniminuto/logo-uniminuto-light.svg",
   "logos": {
@@ -39,6 +39,7 @@
     }
   ],
   "certifications": [],
+  "documents": {},
   "colorPalette": {
     "primary": {
       "lightest": "#E0E6F0",

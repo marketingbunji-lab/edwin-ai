@@ -1,8 +1,7 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import { getBrandBySlug, getLandingBySlug } from "@/lib/data";
 import { renderLandingTemplate } from "@/components/templates/renderLandingTemplate";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -26,3 +25,4 @@ export default async function BrandLandingPage({ params }: Props) {
     mode: "preview",
   });
 }
+

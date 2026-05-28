@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -10,6 +10,10 @@ import {
 } from "lucide-react";
 import WorkspaceProgressCard from "@/components/dashboard/WorkspaceProgressCard";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
+import {
+  getDashboardTranslator,
+  type DashboardLanguage,
+} from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import {
   getBrandBySlug,
@@ -18,7 +22,6 @@ import {
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -34,10 +37,9 @@ type WorkflowStage = {
   icon: React.ComponentType<{ className?: string }>;
 };
 
-type DashboardLanguage = "en" | "es";
-
 export default async function BrandPage({ params }: Props) {
   const language = await getDashboardLanguage();
+  const t = getDashboardTranslator(language);
   const { brand: brandSlug } = await params;
 
   const brand =
@@ -77,38 +79,38 @@ export default async function BrandPage({ params }: Props) {
 
   const stages: WorkflowStage[] = [
     {
-      title: ui(language, "brandSetup"),
+      title: t("brandOverviewPage.brandSetup"),
       href: `/admin/brands/${brand.slug}/edit`,
-      ctaLabel: ui(language, "setupBrand"),
-      unlocks: ui(language, "setupBrandUnlock"),
+      ctaLabel: t("brandOverviewPage.setupBrand"),
+      unlocks: t("brandOverviewPage.setupBrandUnlock"),
       icon: Pencil,
     },
     {
-      title: ui(language, "buyerPersona"),
+      title: t("brandOverviewPage.buyerPersona"),
       href: `/admin/brands/${brand.slug}/buyer-person/new`,
-      ctaLabel: ui(language, "createBuyerPersona"),
-      unlocks: ui(language, "buyerPersonaUnlock"),
+      ctaLabel: t("brandOverviewPage.createBuyerPersona"),
+      unlocks: t("brandOverviewPage.buyerPersonaUnlock"),
       icon: Users,
     },
     {
-      title: ui(language, "contentBase"),
+      title: t("brandOverviewPage.contentBase"),
       href: `/admin/brands/${brand.slug}/programs/new`,
-      ctaLabel: ui(language, "createProgram"),
-      unlocks: ui(language, "contentBaseUnlock"),
+      ctaLabel: t("brandOverviewPage.createProgram"),
+      unlocks: t("brandOverviewPage.contentBaseUnlock"),
       icon: FileStack,
     },
     {
-      title: ui(language, "visualAssets"),
+      title: t("brandOverviewPage.visualAssets"),
       href: `/admin/brands/${brand.slug}/visual-assets`,
-      ctaLabel: ui(language, "generateAssets"),
-      unlocks: ui(language, "visualAssetsUnlock"),
+      ctaLabel: t("brandOverviewPage.generateAssets"),
+      unlocks: t("brandOverviewPage.visualAssetsUnlock"),
       icon: Brush,
     },
     {
-      title: ui(language, "landingActivation"),
+      title: t("brandOverviewPage.landingActivation"),
       href: `/admin/brands/${brand.slug}/landings`,
-      ctaLabel: ui(language, "createLanding"),
-      unlocks: ui(language, "landingActivationUnlock"),
+      ctaLabel: t("brandOverviewPage.createLanding"),
+      unlocks: t("brandOverviewPage.landingActivationUnlock"),
       icon: Shapes,
     },
   ];
@@ -121,13 +123,6 @@ export default async function BrandPage({ params }: Props) {
       4) *
       100,
   );
-  const completedWorkflowStages =
-    Number(brandSetupDone) +
-    Number(buyerPersonaDone) +
-    Number(programsDone) +
-    Number(assetsDone) +
-    Number(landingDone);
-
   const nextStage =
     (!brandSetupDone && stages[0]) ||
     (!buyerPersonaDone && stages[1]) ||
@@ -136,13 +131,6 @@ export default async function BrandPage({ params }: Props) {
     (!landingDone && stages[4]) ||
     stages[stages.length - 1];
   const NextStageIcon = nextStage.icon;
-  const workspaceState =
-    completedWorkflowStages >= 5
-      ? "ready"
-      : completedWorkflowStages >= 2
-        ? "active"
-        : "setup";
-
   return (
     <main className="admin-page">
       <div className="admin-page-inner">
@@ -152,15 +140,15 @@ export default async function BrandPage({ params }: Props) {
               <Link
                 href="/admin/brands"
                 className="admin-button-secondary admin-button-icon"
-                aria-label={ui(language, "backToBrands")}
-                title={ui(language, "backToBrands")}
+                aria-label={t("brandOverviewPage.backToBrands")}
+                title={t("brandOverviewPage.backToBrands")}
               >
                 <ArrowLeft className="h-4 w-4" />
               </Link>
 
               <div className="min-w-0">
                 <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {ui(language, "controlRoom")}
+                  {t("brandOverviewPage.controlRoom")}
                 </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   {brand.name}
@@ -184,12 +172,14 @@ export default async function BrandPage({ params }: Props) {
               <div className="grid gap-5 xl:grid-cols-2">
                 <StrategicWorkflowCard
                   href={`/admin/brands/${brand.slug}/knowledge-base`}
-                  eyebrow={ui(language, "knowledgeBase")}
-                  title={ui(language, "buildKnowledgeBase")}
-                  description={ui(language, "buildKnowledgeBaseDescription")}
-                  helperLabel={ui(language, "knowledgeBaseCompletion")}
+                  eyebrow={t("brandOverviewPage.knowledgeBase")}
+                  title={t("brandOverviewPage.buildKnowledgeBase")}
+                  description={t(
+                    "brandOverviewPage.buildKnowledgeBaseDescription",
+                  )}
+                  helperLabel={t("brandOverviewPage.knowledgeBaseCompletion")}
                   helperValue={knowledgeBaseProgress}
-                  ctaLabel={ui(language, "buildKnowledge")}
+                  ctaLabel={t("brandOverviewPage.buildKnowledge")}
                   icon={FileStack}
                   tone="knowledge"
                   language={language}
@@ -197,12 +187,14 @@ export default async function BrandPage({ params }: Props) {
 
                 <StrategicWorkflowCard
                   href={`/admin/brands/${brand.slug}/journey`}
-                  eyebrow="Education Agents"
-                  title={ui(language, "deployEducationAgents")}
-                  description={ui(language, "deployEducationAgentsDescription")}
-                  helperLabel={ui(language, "nextAction")}
+                  eyebrow={t("brandOverviewPage.educationAgentsEyebrow")}
+                  title={t("brandOverviewPage.deployEducationAgents")}
+                  description={t(
+                    "brandOverviewPage.deployEducationAgentsDescription",
+                  )}
+                  helperLabel={t("brandOverviewPage.nextAction")}
                   helperValue={nextStage.title}
-                  ctaLabel={ui(language, "viewJourneyAndAgents")}
+                  ctaLabel={t("brandOverviewPage.viewJourneyAndAgents")}
                   icon={NextStageIcon}
                   tone="agents"
                   language={language}
@@ -214,49 +206,41 @@ export default async function BrandPage({ params }: Props) {
 
           <WorkspaceProgressCard
             language={language}
-            state={workspaceState}
             nextActionLabel={nextStage.ctaLabel}
             nextActionHref={nextStage.href}
-            steps={[
-              { title: ui(language, "brandSetup"), complete: brandSetupDone },
-              { title: ui(language, "buyerPersona"), complete: buyerPersonaDone },
-              { title: ui(language, "contentBase"), complete: programsDone },
-              { title: ui(language, "visualAssets"), complete: assetsDone },
-              { title: ui(language, "landingActivation"), complete: landingDone },
-            ]}
             knowledgeBaseItems={[
               {
-                title: ui(language, "universityContentBase"),
+                title: t("brandOverviewPage.universityContentBase"),
                 complete: universityContentBaseDone,
               },
               {
-                title: ui(language, "brandSetup"),
+                title: t("brandOverviewPage.brandSetup"),
                 complete: brandSetupDone,
               },
               {
-                title: ui(language, "contentBase"),
+                title: t("brandOverviewPage.contentBase"),
                 complete: programsDone,
               },
               {
-                title: ui(language, "documents"),
+                title: t("brandOverviewPage.documents"),
                 complete: documentsDone,
               },
             ]}
             educationAgentItems={[
               {
-                title: ui(language, "buyerPersona"),
+                title: t("brandOverviewPage.buyerPersona"),
                 complete: buyerPersonaDone,
               },
               {
-                title: ui(language, "visualAssets"),
+                title: t("brandOverviewPage.visualAssets"),
                 complete: assetsDone,
               },
               {
-                title: ui(language, "landingActivation"),
+                title: t("brandOverviewPage.landingActivation"),
                 complete: landingDone,
               },
               {
-                title: ui(language, "goldenCircle"),
+                title: t("brandOverviewPage.goldenCircle"),
                 complete: goldenCircleDone,
               },
             ]}
@@ -290,6 +274,7 @@ function StrategicWorkflowCard({
   tone: "knowledge" | "agents";
   language: DashboardLanguage;
 }) {
+  const t = getDashboardTranslator(language);
   const progressValue =
     tone === "knowledge" && typeof helperValue === "number"
       ? Math.max(0, Math.min(100, helperValue))
@@ -352,7 +337,7 @@ function StrategicWorkflowCard({
                   {progressValue}%
                 </p>
                 <span className="rounded-full border border-[color-mix(in_srgb,var(--bunji-cyan)_38%,white)] bg-[color-mix(in_srgb,var(--bunji-cyan-soft)_78%,white)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--bunji-primary-dark)] dark:border-white/10 dark:bg-white/[0.05] dark:text-slate-200">
-                  {ui(language, "completed")}
+                  {t("brandOverviewPage.completed")}
                 </span>
               </div>
               <div className="mt-4">
@@ -384,147 +369,3 @@ function StrategicWorkflowCard({
   );
 }
 
-function ui(
-  language: DashboardLanguage,
-  key:
-    | "setupBrand"
-    | "setupBrandUnlock"
-    | "createBuyerPersona"
-    | "buyerPersonaUnlock"
-    | "createProgram"
-    | "contentBaseUnlock"
-    | "generateAssets"
-    | "visualAssetsUnlock"
-    | "createLanding"
-    | "landingActivationUnlock"
-    | "backToBrands"
-    | "controlRoom"
-    | "controlRoomDescription"
-    | "knowledgeBase"
-    | "buildKnowledgeBase"
-    | "buildKnowledgeBaseDescription"
-    | "knowledgeBaseCompletion"
-    | "buildKnowledge"
-    | "deployEducationAgents"
-    | "deployEducationAgentsDescription"
-    | "nextAction"
-    | "viewJourneyAndAgents"
-    | "audienceProfiles"
-    | "structuredContent"
-    | "creativeReadyAssets"
-    | "brandLandingsTotal"
-    | "brandSetup"
-    | "buyerPersona"
-    | "contentBase"
-    | "visualAssets"
-    | "landingActivation"
-    | "universityContentBase"
-    | "documents"
-    | "goldenCircle"
-    | "programs"
-    | "landings"
-    | "publishedLandings"
-    | "completed",
-  count?: number,
-) {
-  const map = {
-    en: {
-      setupBrand: "Set up brand",
-      setupBrandUnlock:
-        "Unlocks a clear foundation for messaging, tone, and consistent visual guidelines.",
-      createBuyerPersona: "Create buyer persona",
-      buyerPersonaUnlock:
-        "Unlocks sharper messaging for content, landings, ads, and CRM.",
-      createProgram: "Create program",
-      contentBaseUnlock:
-        "Unlocks a consistent narrative for landings, campaigns, and program-specific assets.",
-      generateAssets: "Generate assets",
-      visualAssetsUnlock:
-        "Unlocks reusable creative for campaigns, ads, hero sections, and sales materials.",
-      createLanding: "Create landing",
-      landingActivationUnlock:
-        "Unlocks active lead capture, public publishing, and direct connection to forms and automations.",
-      backToBrands: "Back to brands",
-      controlRoom: "Control Room",
-      controlRoomDescription:
-        "This workspace orchestrates brand progress from foundational setup to landing activation. Each stage feeds the next so the system feels like a connected flow rather than isolated screens.",
-      knowledgeBase: "Knowledge Base",
-      buildKnowledgeBase: "Build the Knowledge Base",
-      buildKnowledgeBaseDescription:
-        "Organize programs, differentiators, students, historical context, experts, and competitors into a living backbone.",
-      knowledgeBaseCompletion: "Knowledge Base completion",
-      buildKnowledge: "Build knowledge ->",
-      deployEducationAgents: "Deploy Education Agents",
-      deployEducationAgentsDescription:
-        "Use phase-specific agents to turn knowledge into tasks, deliverables, and next actions.",
-      nextAction: "Next action",
-      viewJourneyAndAgents: "Open journey and agents ->",
-      audienceProfiles: "Audience profiles",
-      structuredContent: "Structured content",
-      creativeReadyAssets: "Creative-ready assets",
-      brandLandingsTotal: `${count ?? 0} total in this brand`,
-      brandSetup: "Brand Setup",
-      buyerPersona: "Buyer Persona",
-      contentBase: "Content Base",
-      visualAssets: "Visual Assets",
-      landingActivation: "Landing Activation",
-      universityContentBase: "University Content Base",
-      documents: "Documents",
-      goldenCircle: "Golden Circle",
-      programs: "Programs",
-      landings: "Landings",
-      publishedLandings: "Published landings",
-      completed: "Completed",
-    },
-    es: {
-      setupBrand: "Configurar marca",
-      setupBrandUnlock:
-        "Desbloquea una base clara para definir mensajes, tono y lineamientos visuales consistentes.",
-      createBuyerPersona: "Crear buyer persona",
-      buyerPersonaUnlock:
-        "Desbloquea mensajes mas precisos para contenidos, landings, anuncios y CRM.",
-      createProgram: "Crear programa",
-      contentBaseUnlock:
-        "Desbloquea una narrativa consistente para landings, campanas y activos por programa.",
-      generateAssets: "Generar assets",
-      visualAssetsUnlock:
-        "Desbloquea creatividad reutilizable para campanas, anuncios, hero sections y materiales comerciales.",
-      createLanding: "Crear landing",
-      landingActivationUnlock:
-        "Desbloquea captacion activa, publicacion publica y conexion directa con formularios y automatizaciones.",
-      backToBrands: "Volver a marcas",
-      controlRoom: "Control Room",
-      controlRoomDescription:
-        "Este workspace orquesta el avance de la marca desde la configuracion base hasta la activacion de landings. Cada etapa alimenta a la siguiente para que el sistema se sienta como un flujo y no como pantallas aisladas.",
-      knowledgeBase: "Knowledge Base",
-      buildKnowledgeBase: "Nutrir la Base de Conocimiento",
-      buildKnowledgeBaseDescription:
-        "Organiza programas, diferenciales, estudiantes, historicos, expertos y competidores en una columna vertebral viva.",
-      knowledgeBaseCompletion: "Porcentaje completado Base de Conocimiento",
-      buildKnowledge: "Construir conocimiento ->",
-      deployEducationAgents: "Desplegar Education Agents",
-      deployEducationAgentsDescription:
-        "Usa agentes especializados por fase para convertir el conocimiento en tareas, entregables y siguientes acciones.",
-      nextAction: "Siguiente accion",
-      viewJourneyAndAgents: "Ver journey y agentes ->",
-      audienceProfiles: "Perfiles de audiencia",
-      structuredContent: "Contenido estructurado",
-      creativeReadyAssets: "Recursos listos para creatividad",
-      brandLandingsTotal: `${count ?? 0} totales en la marca`,
-      brandSetup: "Brand Setup",
-      buyerPersona: "Buyer Persona",
-      contentBase: "Content Base",
-      visualAssets: "Visual Assets",
-      landingActivation: "Landing Activation",
-      universityContentBase: "University Content Base",
-      documents: "Documents",
-      goldenCircle: "Golden Circle",
-      programs: "Programs",
-      landings: "Landings",
-      publishedLandings: "Landings publicadas",
-      completed: "Completado",
-    },
-  } as const;
-
-  return map[language][key];
-}

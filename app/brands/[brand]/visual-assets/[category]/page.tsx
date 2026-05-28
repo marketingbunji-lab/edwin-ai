@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Eye, ImageIcon, Plus } from "lucide-react";
 import VisualAssetsTable from "@/components/brand-agent-records/VisualAssetsTable";
@@ -10,7 +10,6 @@ import {
 import { getBrandBySlug, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -74,7 +73,7 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
                   {generalAssets.length} assets creados sin `programId`. Estos
                   recursos viven en `Programs Assets`, pero no aparecen dentro
-                  de una card específica de programa.
+                  de una card especÃ­fica de programa.
                 </p>
               </div>
 
@@ -262,3 +261,4 @@ function EmptyState({
     </section>
   );
 }
+

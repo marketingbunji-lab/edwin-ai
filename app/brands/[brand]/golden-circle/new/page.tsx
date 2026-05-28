@@ -1,10 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Orbit } from "lucide-react";
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -43,8 +42,8 @@ export default async function NewGoldenCirclePage({ params }: Props) {
             Crear Golden Circle
           </h1>
           <p className="admin-muted mt-4 max-w-3xl text-base leading-7">
-            Prepara la base estratégica del Why, How y What para que luego la
-            podamos conectar con contenido, agentes y activación.
+            Prepara la base estratÃ©gica del Why, How y What para que luego la
+            podamos conectar con contenido, agentes y activaciÃ³n.
           </p>
 
           <div className="admin-empty-state mt-8">
@@ -53,11 +52,11 @@ export default async function NewGoldenCirclePage({ params }: Props) {
             </div>
             <p className="admin-eyebrow mt-5">Golden Circle</p>
             <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
-              Página de creación lista
+              PÃ¡gina de creaciÃ³n lista
             </h2>
             <p className="admin-muted mx-auto mt-3 max-w-2xl">
-              Esta vista ya quedó creada dentro del flujo de marca. El siguiente
-              paso natural es conectar aquí un editor estructurado para capturar
+              Esta vista ya quedÃ³ creada dentro del flujo de marca. El siguiente
+              paso natural es conectar aquÃ­ un editor estructurado para capturar
               el <strong>Why</strong>, <strong>How</strong> y <strong>What</strong>.
             </p>
           </div>
@@ -66,3 +65,4 @@ export default async function NewGoldenCirclePage({ params }: Props) {
     </main>
   );
 }
+

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+﻿import { notFound } from "next/navigation";
 import BrandAgentRecordForm from "@/components/brand-agent-records/BrandAgentRecordForm";
 import {
   getBrandAgentRecords,
@@ -9,7 +9,6 @@ import {
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -59,3 +58,4 @@ export default async function NewVisualAssetCategoryPage({ params }: Props) {
     </main>
   );
 }
+

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -917,7 +917,7 @@ export default function NewBrandQuickStart() {
                   type="button"
                   onClick={createBrandFromPreview}
                   disabled={creating}
-                  className="inline-flex items-center gap-2 bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--bunji-primary)] disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[var(--bunji-primary)] dark:hover:bg-[var(--bunji-primary-dark)]"
+                  className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {creating ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -930,7 +930,7 @@ export default function NewBrandQuickStart() {
                   type="button"
                   onClick={resetSearch}
                   disabled={creating}
-                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-slate-300 bg-white px-0 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+                  className="admin-button-secondary admin-button-icon h-11 w-11 shrink-0 disabled:cursor-not-allowed disabled:opacity-60"
                   aria-label="Volver a buscar"
                   title="Volver a buscar"
                 >
@@ -1020,6 +1020,12 @@ function BrandPreviewCard({
   const primaryColor = brand?.primaryColor || agentPreview?.primaryColor || "";
   const secondaryColor =
     brand?.secondaryColor || agentPreview?.secondaryColor || "";
+  const previewPrimary = primaryColor || "#3e3989";
+  const previewSecondary = secondaryColor || "#7de3ea";
+  const previewAccent = "#ff0b2e";
+  const previewGlowA = `${previewPrimary}26`;
+  const previewGlowB = `${previewSecondary}30`;
+  const previewGlowC = `${previewAccent}2e`;
   const programTypeSummary = getProgramTypeSummary(detectedPrograms);
   const totalPrograms =
     programsSummary?.importablePrograms ||
@@ -1028,9 +1034,12 @@ function BrandPreviewCard({
   const typePreview = programTypeSummary.slice(0, 3);
 
   return (
-    <aside className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-white p-6 text-slate-950 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+    <aside className="relative overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bunji-cyan)_36%,white)] bg-[radial-gradient(circle_at_88%_10%,rgba(125,227,234,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(238,250,251,0.95))] p-6 text-slate-950 shadow-[0_24px_56px_rgba(125,227,234,0.14)]">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),transparent_55%)]" />
+      <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-80" />
       <div className="flex h-full min-h-[360px] flex-col">
-        <div>
+        <div className="relative">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
             Preview
           </p>
@@ -1181,28 +1190,235 @@ function BrandPreviewCard({
 
       <div
         aria-hidden={!isLoading}
-        className={`absolute inset-0 z-10 flex items-center justify-center bg-[#020617]/92 backdrop-blur-sm transition-all duration-700 ease-out ${
+        className={`absolute inset-0 z-10 flex items-center justify-center overflow-hidden backdrop-blur-md transition-all duration-700 ease-out ${
           isLoading
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(255,255,255,0.84), rgba(248,250,252,0.9))",
+        }}
       >
         <div
-          className={`transition-all duration-700 ease-out ${
-            isLoading ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          className={`pointer-events-none absolute inset-0 z-0 rounded-[28px] transition-all duration-700 ${
+            isLoading ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/edwin-preview-loader.gif"
-            alt="EDwin analizando la informacion de la marca"
-            className="h-72 w-72 object-contain"
+          <div
+            className="absolute left-1/2 top-1/2 h-[185%] w-[185%] -translate-x-1/2 -translate-y-1/2 rounded-full p-[1.5px]"
+            style={{
+              background: `conic-gradient(from 0deg, ${previewSecondary}00 0deg, ${previewSecondary}aa 48deg, ${previewAccent}cc 98deg, ${previewPrimary}cc 160deg, ${previewPrimary}00 224deg, ${previewSecondary}cc 286deg, ${previewAccent}aa 326deg, ${previewSecondary}00 360deg)`,
+              animation: isLoading
+                ? "preview-rotating-halo 6s linear infinite"
+                : undefined,
+            }}
+          >
+            <div className="h-full w-full rounded-[999px] bg-transparent" />
+          </div>
+          <div
+            className="absolute left-1/2 top-1/2 h-[165%] w-[165%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+            style={{
+              background: `conic-gradient(from 0deg, ${previewSecondary}00 0deg, ${previewSecondary}55 64deg, ${previewGlowC} 116deg, ${previewPrimary}88 172deg, ${previewPrimary}00 236deg, ${previewSecondary}66 300deg, ${previewGlowC} 336deg, ${previewPrimary}44 360deg)`,
+              animation: isLoading
+                ? "preview-rotating-halo 8s linear infinite reverse"
+                : undefined,
+            }}
           />
-          <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-100">
-            {loadingMessage}
-          </p>
+        </div>
+        <div
+          className={`pointer-events-none absolute inset-[1px] z-10 rounded-[26px] transition-all duration-700 ${
+            isLoading ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background: `linear-gradient(135deg, ${previewGlowA}, ${previewGlowC} 48%, ${previewGlowB})`,
+            opacity: 0.34,
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute -left-16 top-8 h-40 w-40 rounded-full blur-3xl transition-opacity duration-700 ${
+            isLoading ? "opacity-100 animate-[pulse_5s_ease-in-out_infinite]" : "opacity-0"
+          }`}
+          style={{
+            background: `radial-gradient(circle, ${previewGlowA} 0%, transparent 72%)`,
+            animation: isLoading
+              ? "preview-glow-drift-a 9s ease-in-out infinite"
+              : undefined,
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute -right-20 bottom-4 h-44 w-44 rounded-full blur-3xl transition-opacity duration-700 ${
+            isLoading ? "opacity-100 animate-[pulse_6s_ease-in-out_infinite]" : "opacity-0"
+          }`}
+          style={{
+            background: `radial-gradient(circle, ${previewGlowB} 0%, transparent 72%)`,
+            animation: isLoading
+              ? "preview-glow-drift-b 11s ease-in-out infinite"
+              : undefined,
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute inset-3 rounded-[22px] transition-all duration-700 ${
+            isLoading ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <div
+          className={`relative z-20 transition-all duration-700 ease-out w-full h-full p-[4px] ${
+            isLoading ? "scale-100 opacity-100" : "scale-100 opacity-0"
+          }`}
+        >
+          <div className="p-[2px] flex flex-col items-center h-full justify-center rounded-[24px] bg-[#F5F7FE] backdrop-blur-xl">
+            <div
+              className="fingerprint-spinner"
+              aria-hidden="true"
+              style={
+                {
+                  "--spinner-primary": previewPrimary,
+                  "--spinner-secondary": previewSecondary,
+                  "--spinner-accent": previewAccent,
+                } as CSSProperties
+              }
+            >
+              {Array.from({ length: 9 }).map((_, index) => (
+                <div key={index} className="spinner-ring" />
+              ))}
+            </div>
+            <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-950">
+              {loadingMessage}
+            </p>
+          </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes preview-glow-drift-a {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(52px, 24px, 0) scale(1.12);
+          }
+        }
+
+        @keyframes preview-glow-drift-b {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(-54px, -28px, 0) scale(1.16);
+          }
+        }
+
+        @keyframes preview-rotating-halo {
+          0% {
+            transform: rotate(0deg) scale(1);
+          }
+          100% {
+            transform: rotate(360deg) scale(1);
+          }
+        }
+
+        .fingerprint-spinner,
+        .fingerprint-spinner * {
+          box-sizing: border-box;
+        }
+
+        .fingerprint-spinner {
+          position: relative;
+          height: 88px;
+          width: 88px;
+          padding: 4px;
+          overflow: hidden;
+          margin-bottom: 1.5rem;
+          filter: drop-shadow(0 8px 24px ${previewGlowA});
+        }
+
+        .fingerprint-spinner .spinner-ring {
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          border-radius: 999px;
+          border: 2px solid transparent;
+          animation: fingerprint-spinner-animation 1500ms
+            cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(3n + 1) {
+          border-top-color: var(--spinner-primary);
+          border-right-color: color-mix(in srgb, var(--spinner-primary) 54%, transparent);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(3n + 2) {
+          border-top-color: var(--spinner-secondary);
+          border-right-color: color-mix(in srgb, var(--spinner-secondary) 54%, transparent);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(3n) {
+          border-top-color: var(--spinner-accent);
+          border-right-color: color-mix(in srgb, var(--spinner-accent) 54%, transparent);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(1) {
+          height: calc(76px / 9 + 0 * 76px / 9);
+          width: calc(76px / 9 + 0 * 76px / 9);
+          animation-delay: calc(50ms * 1);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(2) {
+          height: calc(76px / 9 + 1 * 76px / 9);
+          width: calc(76px / 9 + 1 * 76px / 9);
+          animation-delay: calc(50ms * 2);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(3) {
+          height: calc(76px / 9 + 2 * 76px / 9);
+          width: calc(76px / 9 + 2 * 76px / 9);
+          animation-delay: calc(50ms * 3);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(4) {
+          height: calc(76px / 9 + 3 * 76px / 9);
+          width: calc(76px / 9 + 3 * 76px / 9);
+          animation-delay: calc(50ms * 4);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(5) {
+          height: calc(76px / 9 + 4 * 76px / 9);
+          width: calc(76px / 9 + 4 * 76px / 9);
+          animation-delay: calc(50ms * 5);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(6) {
+          height: calc(76px / 9 + 5 * 76px / 9);
+          width: calc(76px / 9 + 5 * 76px / 9);
+          animation-delay: calc(50ms * 6);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(7) {
+          height: calc(76px / 9 + 6 * 76px / 9);
+          width: calc(76px / 9 + 6 * 76px / 9);
+          animation-delay: calc(50ms * 7);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(8) {
+          height: calc(76px / 9 + 7 * 76px / 9);
+          width: calc(76px / 9 + 7 * 76px / 9);
+          animation-delay: calc(50ms * 8);
+        }
+
+        .fingerprint-spinner .spinner-ring:nth-child(9) {
+          height: calc(76px / 9 + 8 * 76px / 9);
+          width: calc(76px / 9 + 8 * 76px / 9);
+          animation-delay: calc(50ms * 9);
+        }
+
+        @keyframes fingerprint-spinner-animation {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </aside>
   );
 }

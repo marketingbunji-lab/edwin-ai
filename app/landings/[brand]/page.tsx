@@ -1,9 +1,8 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Eye } from "lucide-react";
 import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -74,3 +73,4 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
     </main>
   );
 }
+

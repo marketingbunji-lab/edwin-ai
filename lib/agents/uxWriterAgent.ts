@@ -251,6 +251,19 @@ const sectionMeta: Record<
       "Make PDF upload and repository language feel guided and practical",
     ],
   },
+  brandOverviewPage: {
+    id: "brandOverviewPage",
+    title: "Brand Overview",
+    summary:
+      "Control Room header, strategic cards, workflow actions, and workspace orchestration copy.",
+    routeHints: ["/brands/[brand]", "/admin/brands/[brand]"],
+    audience: ["marketing", "enrollment", "content", "academic staff"],
+    goals: [
+      "Make the workspace feel guided and executive",
+      "Clarify the next best action without technical language",
+      "Keep strategic card copy concise and easy to scan",
+    ],
+  },
   workspaceProgress: {
     id: "workspaceProgress",
     title: "Workspace Progress Card",

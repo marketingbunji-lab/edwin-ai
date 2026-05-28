@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, FileStack, Pencil, Plus } from "lucide-react";
 import { getDashboardTranslator } from "@/lib/dashboardI18n";
@@ -6,7 +6,6 @@ import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug, getLandingsByBrand, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -138,3 +137,4 @@ export default async function BrandUniversityContentBasePage({
     </main>
   );
 }
+

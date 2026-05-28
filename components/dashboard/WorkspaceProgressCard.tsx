@@ -22,25 +22,20 @@ type WorkspaceProgressTabId = "knowledgeBase" | "educationAgents";
 
 type Props = {
   language: DashboardLanguage;
-  state: "setup" | "active" | "ready";
   nextActionLabel: string;
   nextActionHref: string;
-  steps: WorkspaceProgressStep[];
   knowledgeBaseItems: WorkspaceProgressSectionItem[];
   educationAgentItems: WorkspaceProgressSectionItem[];
 };
 
 export default function WorkspaceProgressCard({
   language,
-  state,
   nextActionLabel,
   nextActionHref,
-  steps,
   knowledgeBaseItems,
   educationAgentItems,
 }: Props) {
   const t = getDashboardTranslator(language);
-  const completedSteps = steps.filter((step) => step.complete).length;
   const [activeTab, setActiveTab] =
     useState<WorkspaceProgressTabId>("knowledgeBase");
   const activeItems =
@@ -63,13 +58,6 @@ export default function WorkspaceProgressCard({
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-100 bg-cyan-50 text-cyan-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
           <Sparkles className="h-5 w-5" />
         </div>
-      </div>
-
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        <StatusBadge language={language} state={state} />
-        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
-          {completedSteps}/{steps.length} {t("workspaceProgress.stepsCompleted")}
-        </span>
       </div>
 
       <div className="mt-6 rounded-[24px] border border-slate-200 bg-slate-50/70 p-3">
@@ -101,7 +89,6 @@ export default function WorkspaceProgressCard({
 
       <div className="mt-6 space-y-5">
         <ProgressGroup
-          title={t("workspaceProgress.completedList")}
           items={completedItems}
           emptyLabel={t("workspaceProgress.noneCompleted")}
           tone="complete"
@@ -109,7 +96,6 @@ export default function WorkspaceProgressCard({
           pendingLabel={t("workspaceProgress.inProgress")}
         />
         <ProgressGroup
-          title={t("workspaceProgress.inProgressList")}
           items={inProgressItems}
           emptyLabel={t("workspaceProgress.noneInProgress")}
           tone="progress"
@@ -135,14 +121,12 @@ export default function WorkspaceProgressCard({
 }
 
 function ProgressGroup({
-  title,
   items,
   emptyLabel,
   tone,
   completeLabel,
   pendingLabel,
 }: {
-  title: string;
   items: WorkspaceProgressSectionItem[];
   emptyLabel: string;
   tone: "complete" | "progress";
@@ -151,15 +135,6 @@ function ProgressGroup({
 }) {
   return (
     <div>
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-          {title}
-        </p>
-        <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
-          {items.length}
-        </span>
-      </div>
-
       {items.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500">
           {emptyLabel}
@@ -171,7 +146,7 @@ function ProgressGroup({
 
             return (
               <div
-                key={`${title}-${item.title}`}
+                key={`${tone}-${item.title}`}
                 className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3"
               >
                 <span
@@ -201,29 +176,5 @@ function ProgressGroup({
         </div>
       )}
     </div>
-  );
-}
-
-function StatusBadge({
-  language,
-  state,
-}: {
-  language: DashboardLanguage;
-  state: "setup" | "active" | "ready";
-}) {
-  const t = getDashboardTranslator(language);
-  const styles =
-    state === "ready"
-      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-      : state === "active"
-        ? "border-cyan-200 bg-cyan-50 text-cyan-700"
-        : "border-amber-200 bg-amber-50 text-amber-700";
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${styles}`}
-    >
-      {t(`workspaceProgress.${state}`)}
-    </span>
   );
 }

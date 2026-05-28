@@ -1,10 +1,8 @@
-import BrandCard from "@/components/dashboard/BrandCard";
+﻿import BrandCard from "@/components/dashboard/BrandCard";
 import { formatCountLabel, getDashboardTranslator } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrands, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrands } from "@/lib/supabaseBrands";
-
-export const dynamic = "force-dynamic";
 
 export default async function BrandsPage() {
   const language = await getDashboardLanguage();
@@ -60,3 +58,4 @@ export default async function BrandsPage() {
     </main>
   );
 }
+

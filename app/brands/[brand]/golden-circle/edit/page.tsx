@@ -1,10 +1,9 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Orbit } from "lucide-react";
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -53,12 +52,12 @@ export default async function EditGoldenCirclePage({ params }: Props) {
             </div>
             <p className="admin-eyebrow mt-5">Golden Circle</p>
             <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
-              Página de edición lista
+              PÃ¡gina de ediciÃ³n lista
             </h2>
             <p className="admin-muted mx-auto mt-3 max-w-2xl">
               Ya puedes navegar a esta subruta como parte del flujo de marca.
-              El siguiente paso sería conectar un editor persistente para
-              actualizar el marco estratégico del Golden Circle.
+              El siguiente paso serÃ­a conectar un editor persistente para
+              actualizar el marco estratÃ©gico del Golden Circle.
             </p>
           </div>
         </section>
@@ -66,3 +65,4 @@ export default async function EditGoldenCirclePage({ params }: Props) {
     </main>
   );
 }
+

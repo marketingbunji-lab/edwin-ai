@@ -1,6 +1,6 @@
 {
   "slug": "fundacion-politecnico-minuto-de-dios",
-  "name": "Fundación Politécnico Minuto de Dios",
+  "name": "TecMD",
   "shortName": "Fundación Politécnico Minuto de Dios",
   "logo": "https://tecmd.edu.co/wp-content/uploads/2020/09/logos-TEC-MD-yellow_pq.png",
   "logos": {
@@ -31,6 +31,15 @@
     }
   ],
   "certifications": [],
+  "documents": {
+    "brandBook": {
+      "mode": "link",
+      "fileName": "",
+      "fileUrl": "",
+      "link": "https://tecmd.edu.co/wp-content/uploads/2022/04/Manual-identidad-Tec-y-TecMD-.pdf",
+      "updatedAt": "2026-05-28T15:32:31.243Z"
+    }
+  },
   "colorPalette": {
     "primary": {
       "lightest": "#E4E5E9",
@@ -43,15 +52,6 @@
       "light": "#B8CBE5",
       "dark": "#305587",
       "darkest": "#223B5E"
-    }
-  },
-  "documents": {
-    "brandBook": {
-      "mode": "link",
-      "updatedAt": "2026-05-28T15:32:31.243Z",
-      "link": "https://tecmd.edu.co/wp-content/uploads/2022/04/Manual-identidad-Tec-y-TecMD-.pdf",
-      "fileName": "",
-      "fileUrl": ""
     }
   }
 }

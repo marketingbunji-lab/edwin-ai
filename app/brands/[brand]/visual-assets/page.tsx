@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Images, Layers } from "lucide-react";
 import {
@@ -8,7 +8,6 @@ import {
 import { getBrandBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
-export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -90,3 +89,4 @@ export default async function BrandVisualAssetsPage({ params }: Props) {
     </main>
   );
 }
+
