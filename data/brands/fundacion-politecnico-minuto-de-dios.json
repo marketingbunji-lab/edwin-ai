@@ -11,7 +11,7 @@
     "fontFamily": "\"Roboto Slab\", serif",
     "googleFontHref": "https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Roboto&display=swap"
   },
-  "identityManual": "",
+  "identityManual": "https://tecmd.edu.co/wp-content/uploads/2022/04/Manual-identidad-Tec-y-TecMD-.pdf",
   "primaryColor": "#212844",
   "secondaryColor": "#4376BB",
   "description": "Bienvenido a la Fundación Politécnico Minuto de Dios. Formación InTECligente en programas de formación técnico profesional de mayor demanda laboral. ¡Ingresa!",
@@ -43,6 +43,15 @@
       "light": "#B8CBE5",
       "dark": "#305587",
       "darkest": "#223B5E"
+    }
+  },
+  "documents": {
+    "brandBook": {
+      "mode": "link",
+      "updatedAt": "2026-05-28T15:32:31.243Z",
+      "link": "https://tecmd.edu.co/wp-content/uploads/2022/04/Manual-identidad-Tec-y-TecMD-.pdf",
+      "fileName": "",
+      "fileUrl": ""
     }
   }
 }

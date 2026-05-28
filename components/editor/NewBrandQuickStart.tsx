@@ -891,10 +891,15 @@ export default function NewBrandQuickStart() {
     <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
       <form
         onSubmit={sendBrandPrompt}
-        className="flex min-h-[560px] flex-col justify-between border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 sm:p-8 lg:p-10"
+        className="relative flex min-h-[560px] flex-col justify-between overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bunji-primary-soft)_70%,white)] bg-[radial-gradient(circle_at_12%_14%,rgba(125,227,234,0.16),transparent_32%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(241,244,255,0.97))] p-6 shadow-[0_24px_56px_rgba(62,57,137,0.12)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(15,23,42,0.88),rgba(15,23,42,0.74))] sm:p-8 lg:p-10"
       >
-        <div>
-          <div className="mb-10 inline-flex items-center gap-2 border border-[var(--bunji-primary-soft)] bg-[var(--bunji-primary-light)] px-3 py-2 text-sm font-semibold text-[var(--bunji-primary)] dark:border-[var(--bunji-primary-muted)]/30 dark:bg-[var(--bunji-primary-soft)]/30 dark:text-[var(--bunji-primary-muted)]">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),transparent_55%)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_55%)]" />
+        <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
+        <div className="pointer-events-none absolute left-6 top-6 h-16 w-16 rounded-full bg-[radial-gradient(circle,rgba(125,227,234,0.22),transparent_70%)] blur-2xl" />
+        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-80" />
+
+        <div className="relative">
+          <div className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] border-[color-mix(in_srgb,var(--bunji-primary-soft)_68%,white)] bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)] dark:border-[var(--bunji-primary-muted)]/20 dark:bg-[var(--bunji-primary-soft)]/20 dark:text-[var(--bunji-primary-muted)]">
             <Sparkles className="h-4 w-4" />
             Nueva marca
           </div>
@@ -953,11 +958,11 @@ export default function NewBrandQuickStart() {
                   <SendHorizontal className="h-5 w-5" />
                 )}
               </button>
-            </span>
+              </span>
             )}
           </label>
 
-          <p className="mt-5 max-w-2xl text-base leading-7 text-slate-500 dark:text-slate-400">
+          <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
             {agentPreview
               ? "Confirma la institucion encontrada por el agente o vuelve a buscar con otro nombre."
               : "Con esta URL buscaremos la institucion y prepararemos su informacion base."}

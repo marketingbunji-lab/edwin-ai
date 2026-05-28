@@ -65,7 +65,12 @@ export default function WorkspaceProgressCard({
         </div>
       </div>
 
-      
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <StatusBadge language={language} state={state} />
+        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+          {completedSteps}/{steps.length} {t("workspaceProgress.stepsCompleted")}
+        </span>
+      </div>
 
       <div className="mt-6 rounded-[24px] border border-slate-200 bg-slate-50/70 p-3">
         <div className="grid grid-cols-2 gap-2">
