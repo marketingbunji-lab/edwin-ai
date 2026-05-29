@@ -150,6 +150,8 @@ function getBrandSubNavItems(brandSlug: string): BrandSubNavItem[] {
       matchPrefixes: [
         `/admin/brands/${brandSlug}/journey`,
         `/admin/brands/${brandSlug}/buyer-person`,
+        `/admin/brands/${brandSlug}/buyer-person-university`,
+        `/admin/brands/${brandSlug}/buyer-person-program`,
         `/admin/brands/${brandSlug}/visual-assets`,
         `/admin/brands/${brandSlug}/landings`,
       ],

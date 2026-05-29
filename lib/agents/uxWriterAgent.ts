@@ -179,6 +179,18 @@ const sectionMeta: Record<
       "Use professional but human action labels",
     ],
   },
+  buyerPersonDetail: {
+    id: "buyerPersonDetail",
+    title: "Buyer Persona Detail",
+    summary:
+      "Detail labels and section copy for individual buyer persona profiles.",
+    routeHints: ["/buyer-person/[record]", "/buyer-person-university/[record]"],
+    audience: ["marketing", "enrollment", "content strategists"],
+    goals: [
+      "Make profile details easy to scan",
+      "Keep labels clear across English and Spanish dashboard modes",
+    ],
+  },
   programsPage: {
     id: "programsPage",
     title: "Programs Page",
