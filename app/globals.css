@@ -275,3 +275,132 @@ body {
     @apply border-t border-slate-200 px-5 py-4 text-sm transition hover:bg-slate-50 dark:border-white/10 dark:hover:bg-white/[0.035];
   }
 }
+
+@keyframes record-preview-glow-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(52px, 24px, 0) scale(1.12);
+  }
+}
+
+@keyframes record-preview-glow-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-54px, -28px, 0) scale(1.16);
+  }
+}
+
+@keyframes record-preview-rotating-halo {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+.record-fingerprint-spinner,
+.record-fingerprint-spinner * {
+  box-sizing: border-box;
+}
+
+.record-fingerprint-spinner {
+  position: relative;
+  height: 88px;
+  width: 88px;
+  padding: 4px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 8px 24px rgba(62, 57, 137, 0.22));
+}
+
+.record-fingerprint-spinner .spinner-ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  animation: record-fingerprint-spinner-animation 1500ms cubic-bezier(0.68, -0.75, 0.265, 1.75) infinite forwards;
+  will-change: transform;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(3n + 1) {
+  border-top-color: var(--spinner-primary);
+  border-right-color: color-mix(in srgb, var(--spinner-primary) 54%, transparent);
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(3n + 2) {
+  border-top-color: var(--spinner-secondary);
+  border-right-color: color-mix(in srgb, var(--spinner-secondary) 54%, transparent);
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(3n) {
+  border-top-color: var(--spinner-accent);
+  border-right-color: color-mix(in srgb, var(--spinner-accent) 54%, transparent);
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(1) {
+  height: calc(76px / 9 + 0 * 76px / 9);
+  width: calc(76px / 9 + 0 * 76px / 9);
+  animation-delay: 50ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(2) {
+  height: calc(76px / 9 + 1 * 76px / 9);
+  width: calc(76px / 9 + 1 * 76px / 9);
+  animation-delay: 100ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(3) {
+  height: calc(76px / 9 + 2 * 76px / 9);
+  width: calc(76px / 9 + 2 * 76px / 9);
+  animation-delay: 150ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(4) {
+  height: calc(76px / 9 + 3 * 76px / 9);
+  width: calc(76px / 9 + 3 * 76px / 9);
+  animation-delay: 200ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(5) {
+  height: calc(76px / 9 + 4 * 76px / 9);
+  width: calc(76px / 9 + 4 * 76px / 9);
+  animation-delay: 250ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(6) {
+  height: calc(76px / 9 + 5 * 76px / 9);
+  width: calc(76px / 9 + 5 * 76px / 9);
+  animation-delay: 300ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(7) {
+  height: calc(76px / 9 + 6 * 76px / 9);
+  width: calc(76px / 9 + 6 * 76px / 9);
+  animation-delay: 350ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(8) {
+  height: calc(76px / 9 + 7 * 76px / 9);
+  width: calc(76px / 9 + 7 * 76px / 9);
+  animation-delay: 400ms;
+}
+
+.record-fingerprint-spinner .spinner-ring:nth-child(9) {
+  height: calc(76px / 9 + 8 * 76px / 9);
+  width: calc(76px / 9 + 8 * 76px / 9);
+  animation-delay: 450ms;
+}
+
+@keyframes record-fingerprint-spinner-animation {
+  100% {
+    transform: rotate(360deg);
+  }
+}

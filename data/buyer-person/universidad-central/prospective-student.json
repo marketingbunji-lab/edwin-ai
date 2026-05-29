@@ -1,0 +1,153 @@
+{
+  "id": "prospective-student",
+  "profileName": "Prospective Student",
+  "profileImage": "https://cdn.uploadtourl.com/e885a612-4beb-4b08-9bd0-7f6835cb8018_data.png",
+  "description": "High school graduates or working professionals seeking further education in diverse fields to enhance their skills and career opportunities.",
+  "stage": "awareness",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "17-30",
+    "gender": "all",
+    "location": [
+      "Colombia"
+    ],
+    "educationLevel": "high school diploma or equivalent",
+    "employmentStatus": "student or early career professional",
+    "incomeRange": "0-20,000,000 COP",
+    "familySituation": "single or living with parents",
+    "languagePreference": [
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "curious",
+      "social"
+    ],
+    "values": [
+      "education",
+      "community",
+      "innovation"
+    ],
+    "interests": [
+      "career advancement",
+      "personal growth",
+      "networking"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "pursue higher education",
+      "gain professional qualifications",
+      "develop a career path"
+    ],
+    "secondary": [
+      "build a professional network",
+      "enhance personal skills",
+      "explore various fields of study"
+    ],
+    "successDefinition": "Enrollment in a suitable program and successful completion of the degree."
+  },
+  "painPoints": [
+    "uncertainty about career direction",
+    "affordability of education",
+    "lack of information about programs"
+  ],
+  "motivations": [
+    "career advancement",
+    "personal fulfillment",
+    "influence from peers"
+  ],
+  "objections": [
+    "cost of tuition",
+    "location convenience",
+    "program relevance"
+  ],
+  "decisionFactors": [
+    "reputation of the institution",
+    "available programs",
+    "financial aid opportunities"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "social media ads",
+      "word of mouth",
+      "university website"
+    ],
+    "informationNeeds": [
+      "program details",
+      "tuition costs",
+      "financial aid options"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "universities in Colombia",
+      "higher education programs",
+      "financial aid for students"
+    ],
+    "commonQuestions": [
+      "What programs do you offer?",
+      "How much is tuition?",
+      "What scholarships are available?"
+    ]
+  },
+  "emotionalTriggers": [
+    "desire for success",
+    "fear of missing out",
+    "hope for a better future"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "social media",
+      "website"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "weekends"
+    ],
+    "tone": [
+      "informal",
+      "encouraging",
+      "supportive"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Join a community of learners",
+      "Unlock your potential with our programs",
+      "Explore your future today"
+    ],
+    "ctaExamples": [
+      "Learn More",
+      "Apply Now",
+      "Schedule a Consultation"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "infographics",
+      "blogs"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "high",
+    "salesReadiness": "medium"
+  },
+  "metadata": {
+    "createdAt": "2026-05-29",
+    "updatedAt": "2026-05-29",
+    "source": "AI",
+    "tags": [
+      "student",
+      "education",
+      "prospective"
+    ]
+  }
+}

@@ -1,9 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, type CSSProperties, type RefObject } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Bot, ImageIcon, Save, Users } from "lucide-react";
+import {
+  ArrowLeft,
+  Bot,
+  ImageIcon,
+  Link2,
+  Save,
+  UploadCloud,
+  Users,
+} from "lucide-react";
 import type { Brand } from "@/lib/data";
 import type {
   BrandAgentCollection,
@@ -472,16 +480,32 @@ export default function BrandAgentRecordForm({
     () => getRandomEdwinAssistantMessage("loading"),
   );
   const [message, setMessage] = useState("");
+  const [buyerPersonSourceMode, setBuyerPersonSourceMode] =
+    useState<"file" | "link">("file");
+  const [buyerPersonPdfName, setBuyerPersonPdfName] = useState("");
+  const [buyerPersonPdfLink, setBuyerPersonPdfLink] = useState("");
   const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
     JSON.stringify(initialFormState),
   );
+  const buyerPersonPdfInputRef = useRef<HTMLInputElement | null>(null);
 
   const isBuyerPerson = collection === "buyer-person";
   const isVisualAsset = collection === "visual-assets";
   const isEditMode = mode === "edit";
+  const isAutomaticBuyerPersonCreate = isBuyerPerson && !isEditMode;
   const currentSnapshot = JSON.stringify(form);
   const hasChanges = currentSnapshot !== lastSavedSnapshot;
   const saveDisabled = saving || !hasChanges;
+
+  const handleBuyerPersonPdfSelection = (files: FileList | null) => {
+    const file = files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    setBuyerPersonPdfName(file.name);
+  };
 
   const generateWithAi = async () => {
     try {
@@ -515,6 +539,17 @@ export default function BrandAgentRecordForm({
                   task: "generate-buyer-persona",
                   agent: "edwin-agent-test",
                   brand,
+                  source: {
+                    mode: buyerPersonSourceMode,
+                    fileName:
+                      buyerPersonSourceMode === "file"
+                        ? buyerPersonPdfName
+                        : "",
+                    link:
+                      buyerPersonSourceMode === "link"
+                        ? buyerPersonPdfLink
+                        : "",
+                  },
                   requestedOutput: "buyer-person-v1",
                 }
               : {
@@ -561,7 +596,7 @@ export default function BrandAgentRecordForm({
 
         setForm(formStateFromRecord(buyerPersona));
         setPreviewRecord(buyerPersona);
-        setMessage("Buyer persona generado. Revisa los campos y guarda.");
+        setMessage("Buyer persona generado. Revisa la preview y guarda.");
         return;
       }
 
@@ -700,15 +735,17 @@ export default function BrandAgentRecordForm({
 
   const actionButtons = (
     <div className="flex flex-wrap gap-3">
-      <button
-        type="button"
-        onClick={generateWithAi}
-        disabled={generating}
-        className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        <Bot className="h-4 w-4" />
-        {generating ? "Generando..." : "Generar con AI"}
-      </button>
+      {!isAutomaticBuyerPersonCreate ? (
+        <button
+          type="button"
+          onClick={generateWithAi}
+          disabled={generating}
+          className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <Bot className="h-4 w-4" />
+          {generating ? "Generando..." : "Generar con AI"}
+        </button>
+      ) : null}
 
       <button
         type="button"
@@ -724,7 +761,7 @@ export default function BrandAgentRecordForm({
 
   const formContent = (
     <>
-      {isBuyerPerson ? (
+      {isAutomaticBuyerPersonCreate ? null : isBuyerPerson ? (
         <BuyerPersonFields form={form} updateField={updateField} />
       ) : (
         <VisualAssetFields form={form} updateField={updateField} />
@@ -748,18 +785,31 @@ export default function BrandAgentRecordForm({
     <div className="space-y-6">
       <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          {backHref && backLabel ? (
-            <Link
-              href={backHref}
-              className="admin-button-secondary admin-button-icon"
-              aria-label={backLabel}
-              title={backLabel}
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
-          ) : (
-            <div />
-          )}
+          <div className="flex min-w-0 items-center gap-3">
+            {backHref && backLabel ? (
+              <Link
+                href={backHref}
+                className="admin-button-secondary admin-button-icon"
+                aria-label={backLabel}
+                title={backLabel}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+            ) : null}
+
+            <div className="min-w-0">
+              {eyebrow ? (
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {eyebrow}
+                </p>
+              ) : null}
+              {title ? (
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  {title}
+                </h1>
+              ) : null}
+            </div>
+          </div>
 
           {actionButtons}
         </div>
@@ -767,18 +817,33 @@ export default function BrandAgentRecordForm({
 
       <section className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]">
         <div className="admin-panel p-6">
-        {eyebrow ? (
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-            {eyebrow}
-          </p>
-        ) : null}
-        {title ? (
-          <h1 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-slate-50">
-            {title}
-          </h1>
-        ) : null}
-        {description ? (
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+        {isAutomaticBuyerPersonCreate ? (
+          <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
+            <BuyerPersonAiGenerateCard
+              generating={generating}
+              onGenerate={generateWithAi}
+            />
+
+            <BuyerPersonPdfUpload
+              fileName={buyerPersonPdfName}
+              inputRef={buyerPersonPdfInputRef}
+              link={buyerPersonPdfLink}
+              mode={buyerPersonSourceMode}
+              onChangeLink={setBuyerPersonPdfLink}
+              onChangeMode={(nextMode) => {
+                setBuyerPersonSourceMode(nextMode);
+
+                if (nextMode === "file") {
+                  setBuyerPersonPdfLink("");
+                } else {
+                  setBuyerPersonPdfName("");
+                }
+              }}
+              onSelectFiles={handleBuyerPersonPdfSelection}
+            />
+          </div>
+        ) : description ? (
+          <p className="max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
             {description}
           </p>
         ) : null}
@@ -793,6 +858,216 @@ export default function BrandAgentRecordForm({
           loadingMessage={assistantLoadingMessage}
         />
       </section>
+    </div>
+  );
+}
+
+function BuyerPersonAiGenerateCard({
+  generating,
+  onGenerate,
+}: {
+  generating: boolean;
+  onGenerate: () => void;
+}) {
+  return (
+    <div className="admin-panel-soft flex h-full flex-col p-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            Generacion automatica
+          </p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
+            Generar con AI
+          </h2>
+        </div>
+
+
+      </div>
+
+      <p className="admin-muted mt-3">
+        El agente puede crear el buyer person usando el conocimiento que ya
+        tiene de la universidad: informacion de marca, contexto institucional y
+        datos disponibles en el sistema.
+      </p>
+
+      <div className="mt-6 flex flex-1 rounded-2xl border border-dashed border-[color-mix(in_srgb,var(--bunji-primary-soft)_62%,white)] bg-white/78 p-6 dark:border-white/10 dark:bg-white/[0.04]">
+        <div className="flex w-full flex-col justify-between gap-5">
+          <div className="space-y-4">
+            <div className="admin-icon-tile h-12 w-12">
+              <Bot className="h-5 w-5" />
+            </div>
+            <p className="text-sm font-semibold text-slate-950 dark:text-slate-50">
+              Crear buyer person sin cargar archivo
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+              Ideal cuando quieres una primera version estrategica para revisar
+              y guardar rapidamente.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onGenerate}
+            disabled={generating}
+            className="admin-button-primary px-5 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <Bot className="h-4 w-4" />
+            {generating ? "Generando..." : "Generar con AI"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BuyerPersonPdfUpload({
+  fileName,
+  inputRef,
+  link,
+  mode,
+  onChangeLink,
+  onChangeMode,
+  onSelectFiles,
+}: {
+  fileName: string;
+  inputRef: RefObject<HTMLInputElement | null>;
+  link: string;
+  mode: "file" | "link";
+  onChangeLink: (value: string) => void;
+  onChangeMode: (mode: "file" | "link") => void;
+  onSelectFiles: (files: FileList | null) => void;
+}) {
+  return (
+    <div className="admin-panel-soft flex h-full flex-col p-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+            Flujo de carga
+          </p>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
+            Carga un buyer person
+          </h2>
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => onChangeMode("file")}
+            className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
+              mode === "file"
+                ? "bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)]"
+                : "border border-slate-200 bg-white text-slate-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
+            }`}
+          >
+            Cargar archivo
+          </button>
+          <button
+            type="button"
+            onClick={() => onChangeMode("link")}
+            className={`rounded-xl px-3 py-2 text-sm font-semibold transition ${
+              mode === "link"
+                ? "bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)]"
+                : "border border-slate-200 bg-white text-slate-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-300"
+            }`}
+          >
+            Agregar link
+          </button>
+        </div>
+      </div>
+
+      <p className="admin-muted mt-3">
+        Agrega un PDF o un enlace publico con investigaciones, perfiles,
+        audiencias, objeciones o hallazgos para usarlo como base del buyer
+        person.
+      </p>
+      <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
+        Formato soportado: documentos PDF
+      </p>
+
+      {mode === "file" ? (
+        <div className="mt-6 flex flex-1 rounded-2xl border border-dashed border-[color-mix(in_srgb,var(--bunji-primary-soft)_62%,white)] bg-white/78 p-6 dark:border-white/10 dark:bg-white/[0.04]">
+          <label
+            className="block cursor-pointer"
+            onDragOver={(event) => event.preventDefault()}
+            onDrop={(event) => {
+              event.preventDefault();
+              onSelectFiles(event.dataTransfer.files);
+            }}
+          >
+            <input
+              ref={inputRef}
+              type="file"
+              accept="application/pdf"
+              className="sr-only"
+              onChange={(event) => onSelectFiles(event.target.files)}
+            />
+
+            <div className="flex items-start gap-4">
+              <div className="admin-icon-tile h-12 w-12">
+                <UploadCloud className="h-5 w-5" />
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm font-semibold text-slate-950 dark:text-slate-50">
+                    Arrastra y suelta tu PDF aqui
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                    Puedes soltar el archivo en esta zona o usar el boton para
+                    buscarlo en tu computador.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => inputRef.current?.click()}
+                  className="admin-button-secondary"
+                >
+                  {fileName ? "Reemplazar PDF" : "Buscar PDF"}
+                </button>
+
+                {fileName ? (
+                  <div className="space-y-3">
+                    <div className="rounded-xl border border-slate-200 bg-white/90 px-4 py-3 dark:border-white/10 dark:bg-white/[0.04]">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+                        Archivo seleccionado
+                      </p>
+                      <p className="mt-2 text-sm font-semibold text-slate-950 dark:text-slate-50">
+                        {fileName}
+                      </p>
+                    </div>
+                    <button type="button" className="admin-button-primary">
+                      <Bot className="h-4 w-4" />
+                      Generar
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </label>
+        </div>
+      ) : (
+        <div className="mt-6 flex flex-1 rounded-2xl border border-dashed border-[color-mix(in_srgb,var(--bunji-primary-soft)_62%,white)] bg-white/78 p-6 dark:border-white/10 dark:bg-white/[0.04]">
+          <div className="flex items-start gap-4">
+            <div className="admin-icon-tile h-12 w-12">
+              <Link2 className="h-5 w-5" />
+            </div>
+            <div className="w-full">
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-slate-950 dark:text-slate-50">
+                  Link del buyer person
+                </span>
+                <input
+                  type="url"
+                  value={link}
+                  onChange={(event) => onChangeLink(event.target.value)}
+                  className="admin-input"
+                  placeholder="https://..."
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -925,48 +1200,130 @@ function PreviewCard({
 }) {
   const isBuyerPerson = collection === "buyer-person";
   const Icon = isBuyerPerson ? Users : ImageIcon;
+  const previewPrimary = "#3e3989";
+  const previewSecondary = "#7de3ea";
+  const previewAccent = "#ff0b2e";
+  const previewGlowA = `${previewPrimary}26`;
+  const previewGlowB = `${previewSecondary}30`;
+  const previewGlowC = `${previewAccent}2e`;
 
   return (
-    <aside className="admin-panel relative overflow-hidden p-6">
-      <div className="admin-icon-tile">
-        <Icon className="h-5 w-5" />
+    <aside className="relative overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bunji-cyan)_36%,white)] bg-[radial-gradient(circle_at_88%_10%,rgba(125,227,234,0.18),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(238,250,251,0.95))] p-6 text-slate-950 shadow-[0_24px_56px_rgba(125,227,234,0.14)] dark:border-white/10 dark:bg-[radial-gradient(circle_at_88%_10%,rgba(125,227,234,0.14),transparent_34%),linear-gradient(145deg,rgba(15,23,42,0.92),rgba(15,23,42,0.76))] dark:text-slate-50">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),transparent_55%)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_55%)]" />
+      <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-80" />
+
+      <div className="relative flex h-full min-h-[520px] flex-col">
+        <div className="admin-icon-tile">
+          <Icon className="h-5 w-5" />
+        </div>
+        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
+          Preview
+        </p>
+
+        {isBuyerPerson ? (
+          <BuyerPersonPreview record={record as BuyerPersonRecord | null} />
+        ) : (
+          <VisualAssetPreview record={record as VisualAssetRecord | null} />
+        )}
       </div>
-      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
-        Preview
-      </p>
 
-      {isBuyerPerson ? (
-        <BuyerPersonPreview record={record as BuyerPersonRecord | null} />
-      ) : (
-        <VisualAssetPreview record={record as VisualAssetRecord | null} />
-      )}
-
-      {!isBuyerPerson ? (
+      <div
+        aria-hidden={!isGenerating}
+        className={`absolute inset-0 z-10 flex items-center justify-center overflow-hidden backdrop-blur-md transition-all duration-700 ease-out ${
+          isGenerating
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(255,255,255,0.84), rgba(248,250,252,0.9))",
+        }}
+      >
         <div
-          aria-hidden={!isGenerating}
-          className={`absolute inset-0 z-10 flex items-center justify-center bg-[#020617]/92 backdrop-blur-sm transition-all duration-700 ease-out ${
-            isGenerating
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
+          className={`pointer-events-none absolute inset-0 z-0 rounded-[28px] transition-all duration-700 ${
+            isGenerating ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
-            className={`transition-all duration-700 ease-out ${
-              isGenerating ? "scale-100 opacity-100" : "scale-95 opacity-0"
-            }`}
+            className="absolute left-1/2 top-1/2 h-[185%] w-[185%] -translate-x-1/2 -translate-y-1/2 rounded-full p-[1.5px]"
+            style={{
+              background: `conic-gradient(from 0deg, ${previewSecondary}00 0deg, ${previewSecondary}aa 48deg, ${previewAccent}cc 98deg, ${previewPrimary}cc 160deg, ${previewPrimary}00 224deg, ${previewSecondary}cc 286deg, ${previewAccent}aa 326deg, ${previewSecondary}00 360deg)`,
+              animation: isGenerating
+                ? "record-preview-rotating-halo 6s linear infinite"
+                : undefined,
+            }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/edwin-preview-loader.gif"
-              alt=""
-              className="h-72 w-72 object-contain"
-            />
-            <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-100">
+            <div className="h-full w-full rounded-[999px] bg-transparent" />
+          </div>
+          <div
+            className="absolute left-1/2 top-1/2 h-[165%] w-[165%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+            style={{
+              background: `conic-gradient(from 0deg, ${previewSecondary}00 0deg, ${previewSecondary}55 64deg, ${previewGlowC} 116deg, ${previewPrimary}88 172deg, ${previewPrimary}00 236deg, ${previewSecondary}66 300deg, ${previewGlowC} 336deg, ${previewPrimary}44 360deg)`,
+              animation: isGenerating
+                ? "record-preview-rotating-halo 8s linear infinite reverse"
+                : undefined,
+            }}
+          />
+        </div>
+        <div
+          className={`pointer-events-none absolute inset-[1px] z-10 rounded-[26px] transition-all duration-700 ${
+            isGenerating ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background: `linear-gradient(135deg, ${previewGlowA}, ${previewGlowC} 48%, ${previewGlowB})`,
+            opacity: 0.34,
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute -left-16 top-8 h-40 w-40 rounded-full blur-3xl transition-opacity duration-700 ${
+            isGenerating ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background: `radial-gradient(circle, ${previewGlowA} 0%, transparent 72%)`,
+            animation: isGenerating
+              ? "record-preview-glow-drift-a 9s ease-in-out infinite"
+              : undefined,
+          }}
+        />
+        <div
+          className={`pointer-events-none absolute -right-20 bottom-4 h-44 w-44 rounded-full blur-3xl transition-opacity duration-700 ${
+            isGenerating ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background: `radial-gradient(circle, ${previewGlowB} 0%, transparent 72%)`,
+            animation: isGenerating
+              ? "record-preview-glow-drift-b 11s ease-in-out infinite"
+              : undefined,
+          }}
+        />
+        <div
+          className={`relative z-20 h-full w-full p-[4px] transition-all duration-700 ease-out ${
+            isGenerating ? "scale-100 opacity-100" : "scale-100 opacity-0"
+          }`}
+        >
+          <div className="flex h-full flex-col items-center justify-center rounded-[24px] bg-[#f5f7fe] p-[2px] backdrop-blur-xl">
+            <div
+              className="record-fingerprint-spinner"
+              aria-hidden="true"
+              style={
+                {
+                  "--spinner-primary": previewPrimary,
+                  "--spinner-secondary": previewSecondary,
+                  "--spinner-accent": previewAccent,
+                } as CSSProperties
+              }
+            >
+              {Array.from({ length: 9 }).map((_, index) => (
+                <div key={index} className="spinner-ring" />
+              ))}
+            </div>
+            <p className="mx-auto -mt-6 max-w-[260px] text-center text-sm font-semibold leading-6 text-slate-950">
               {loadingMessage}
             </p>
           </div>
         </div>
-      ) : null}
+      </div>
     </aside>
   );
 }

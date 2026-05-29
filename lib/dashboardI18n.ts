@@ -302,6 +302,9 @@ export const dashboardMessages = {
       deleteError: "We couldn't delete the buyer persona.",
       deleteSuccess: "Buyer persona deleted successfully.",
     },
+    buyerPersonDetail: {
+      descriptionTitle: "Description",
+    },
     programsPage: {
       title: "Programs",
       addProgram: "Add program",
@@ -811,6 +814,9 @@ export const dashboardMessages = {
       deleting: "Eliminando...",
       deleteError: "No pudimos eliminar el buyer persona.",
       deleteSuccess: "Buyer persona eliminado correctamente.",
+    },
+    buyerPersonDetail: {
+      descriptionTitle: "Descripcion",
     },
     programsPage: {
       title: "Programas",

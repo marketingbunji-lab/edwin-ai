@@ -38,27 +38,32 @@ export default async function EditBuyerPersonPage({ params }: Props) {
 
   return (
     <main className="admin-page">
-      <div className="w-full">
-        <Link
-          href={`/admin/brands/${brand.slug}/buyer-person`}
-          className="mb-6 inline-flex h-11 w-11 shrink-0 items-center justify-center bg-slate-950 px-0 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
-          aria-label="Volver a buyer person"
-          title="Volver a buyer person"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </Link>
+      <div className="w-full space-y-6">
+        <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}/buyer-person`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label="Volver a buyer person"
+                title="Volver a buyer person"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  Editar buyer person
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <section className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-            {brand.shortName || brand.name}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-slate-50">
-            Editar buyer person
-          </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-            Actualiza el perfil, la etapa y las motivaciones del segmento.
-          </p>
-
           <BrandAgentRecordForm
             brand={brand}
             collection="buyer-person"
@@ -70,4 +75,3 @@ export default async function EditBuyerPersonPage({ params }: Props) {
     </main>
   );
 }
-

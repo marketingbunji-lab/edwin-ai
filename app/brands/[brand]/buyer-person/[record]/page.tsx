@@ -6,6 +6,8 @@ import {
   type BuyerPersonRecord,
 } from "@/lib/brandAgentRecords";
 import { getBrandBySlug } from "@/lib/data";
+import { getDashboardTranslator } from "@/lib/dashboardI18n";
+import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 
@@ -18,6 +20,8 @@ type Props = {
 
 export default async function BuyerPersonDetailPage({ params }: Props) {
   const { brand: brandSlug, record: recordId } = await params;
+  const language = await getDashboardLanguage();
+  const t = getDashboardTranslator(language);
   const brand =
     getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
 
@@ -38,23 +42,36 @@ export default async function BuyerPersonDetailPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="w-full space-y-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href={`/admin/brands/${brand.slug}/buyer-person`}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center bg-slate-950 px-0 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 dark:bg-slate-900 dark:hover:bg-slate-800"
-            aria-label="Volver a buyer person"
-            title="Volver a buyer person"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
+        <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <Link
+                href={`/admin/brands/${brand.slug}/buyer-person`}
+                className="admin-button-secondary admin-button-icon"
+                aria-label="Volver a buyer person"
+                title="Volver a buyer person"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
 
-          <Link
-            href={`/admin/brands/${brand.slug}/buyer-person/${record.id}/edit`}
-            className="inline-flex items-center gap-2 bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white transition hover:brightness-110"
-          >
-            <Pencil className="h-4 w-4" />
-            Editar
-          </Link>
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                  {brand.name}
+                </p>
+                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                  {record.profileName}
+                </h1>
+              </div>
+            </div>
+
+            <Link
+              href={`/admin/brands/${brand.slug}/buyer-person/${record.id}/edit`}
+              className="admin-button-primary"
+            >
+              <Pencil className="h-4 w-4" />
+              Editar
+            </Link>
+          </div>
         </div>
 
         <article className="overflow-hidden border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-950">
@@ -90,16 +107,15 @@ export default async function BuyerPersonDetailPage({ params }: Props) {
             </aside>
 
             <section>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-                {brand.shortName || brand.name}
-              </p>
-              <h1 className="mt-3 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
-                {record.profileName}
-              </h1>
               {record.description ? (
-                <p className="mt-4 max-w-4xl text-base leading-7 text-slate-600 dark:text-slate-300">
-                  {record.description}
-                </p>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900/40">
+                  <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+                    {t("buyerPersonDetail.descriptionTitle")}
+                  </h2>
+                  <p className="mt-4 max-w-4xl text-base leading-7 text-slate-600 dark:text-slate-300">
+                    {record.description}
+                  </p>
+                </div>
               ) : null}
 
               <div className="mt-8 grid gap-5 xl:grid-cols-2">
@@ -269,4 +285,3 @@ function List({ label, items }: { label: string; items?: string[] }) {
     </div>
   );
 }
-

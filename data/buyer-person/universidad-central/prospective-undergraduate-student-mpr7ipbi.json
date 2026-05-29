@@ -1,0 +1,154 @@
+{
+  "id": "prospective-undergraduate-student-mpr7ipbi",
+  "profileName": "Prospective Undergraduate Student",
+  "profileImage": "https://cdn.uploadtourl.com/256ca745-1e56-446f-aceb-749660ca5f85_data.png",
+  "description": "A high school graduate seeking higher education opportunities at Universidad Central.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-24",
+    "gender": "any",
+    "location": [
+      "Colombia",
+      "major cities"
+    ],
+    "educationLevel": "high school diploma",
+    "employmentStatus": "student",
+    "incomeRange": "low to medium income",
+    "familySituation": "living with parents or guardians",
+    "languagePreference": [
+      "Spanish",
+      "English"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "curious",
+      "social"
+    ],
+    "values": [
+      "education",
+      "community involvement",
+      "personal growth"
+    ],
+    "interests": [
+      "science",
+      "art",
+      "technology",
+      "sports"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "enroll in a reputable university",
+      "pursue a bachelor's degree"
+    ],
+    "secondary": [
+      "gain practical skills",
+      "network with peers"
+    ],
+    "successDefinition": "Accepted into a program that aligns with career aspirations"
+  },
+  "painPoints": [
+    "financial constraints",
+    "uncertainty about career paths",
+    "lack of guidance"
+  ],
+  "motivations": [
+    "desire for self-improvement",
+    "career aspirations",
+    "influence from family and peers"
+  ],
+  "objections": [
+    "tuition costs",
+    "study location",
+    "program reputation"
+  ],
+  "decisionFactors": [
+    "program accreditation",
+    "flexibility of courses",
+    "student support services"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "school fairs",
+      "social media ads",
+      "college information sessions"
+    ],
+    "informationNeeds": [
+      "program details",
+      "tuition fees",
+      "campus facilities"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "universidad central programs",
+      "tuition fees universidad central",
+      "apply universidad central"
+    ],
+    "commonQuestions": [
+      "What is the application process?",
+      "What are the scholarships available?",
+      "How can I visit the campus?"
+    ]
+  },
+  "emotionalTriggers": [
+    "excitement about college life",
+    "fear of missing out",
+    "desire for independence"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "social media",
+      "text messages"
+    ],
+    "preferredContactTime": [
+      "afternoons",
+      "evenings"
+    ],
+    "tone": [
+      "informal",
+      "encouraging",
+      "supportive"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Join a vibrant academic community!",
+      "Explore your passions at Universidad Central.",
+      "We support your educational journey."
+    ],
+    "ctaExamples": [
+      "Apply Now",
+      "Schedule a Campus Tour",
+      "Request More Information"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "infographics",
+      "webinars"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "high",
+    "salesReadiness": "medium"
+  },
+  "metadata": {
+    "createdAt": "2026-05-29",
+    "updatedAt": "2026-05-29",
+    "source": "AI",
+    "tags": [
+      "prospective student",
+      "undergraduate",
+      "Colombia"
+    ]
+  }
+}

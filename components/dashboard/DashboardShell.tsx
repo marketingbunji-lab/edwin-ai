@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import AdminUserMenu from "@/components/dashboard/AdminUserMenu";
 import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
+import EdwinMascot from "@/components/dashboard/EdwinMascot";
 import { getBrandLogo } from "@/lib/brandLogo";
 import type { Brand } from "@/lib/data";
 
@@ -537,6 +538,7 @@ export default function DashboardShell({
 
         <div>{children}</div>
       </div>
+      <EdwinMascot />
     </div>
   );
 }
