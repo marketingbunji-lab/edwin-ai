@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import {
+  getProgramDataBySlug,
   serializeLandingForStorage,
   type Landing,
   type ProgramInfoItem,
@@ -20,9 +21,10 @@ type Params = Promise<{
 type LandingPayload = Partial<Landing> & {
   title: string;
   fullTitle: string;
+  sourceProgramSlug?: string;
 };
 
-const programsDir = path.join(process.cwd(), "data", "programs");
+const landingsDir = path.join(process.cwd(), "data", "landings");
 
 function slugify(text: string) {
   return text
@@ -364,17 +366,29 @@ export async function POST(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    const brandFolder = path.join(programsDir, brand);
+    const brandFolder = path.join(landingsDir, brand);
 
     if (!fs.existsSync(brandFolder)) {
       fs.mkdirSync(brandFolder, { recursive: true });
     }
 
-    const landingData = normalizeLanding(body, brand, template);
+    const sourceProgram =
+      body.sourceProgramSlug && typeof body.sourceProgramSlug === "string"
+        ? getProgramDataBySlug(brand, body.sourceProgramSlug)
+        : null;
+    const landingData = normalizeLanding(
+      sourceProgram ? { ...sourceProgram, ...body } : body,
+      brand,
+      template,
+    );
     const slug = getAvailableSlug(brandFolder, landingData.slug || title);
     const filePath = path.join(brandFolder, `${slug}.json`);
 
     landingData.slug = slug;
+    landingData.sourceProgramId =
+      body.sourceProgramId || body.sourceProgramSlug || sourceProgram?.slug || "";
+    landingData.sourceProgramSlug =
+      body.sourceProgramSlug || sourceProgram?.slug || "";
     landingData.sourceWebsite = landingData.sourceWebsite || `/${brand}/${slug}`;
 
     fs.writeFileSync(

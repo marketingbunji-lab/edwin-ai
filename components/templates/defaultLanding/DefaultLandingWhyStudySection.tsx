@@ -7,6 +7,7 @@ import {
   landingTwoColumnClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import EditableImageSlot, { editableImageClass } from "./EditableImageSlot";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 
 type AccordionItem = {
@@ -77,10 +78,26 @@ export default function DefaultLandingWhyStudySection({
           ) : null}
         </div>
 
-        {image || logo ? (
+        {image || liveEdit?.enabled || logo ? (
           <div className={landingImageFrameClass}>
             {image ? (
-              <img src={image} alt={title || heroTitle} className={landingImageClass} />
+              <img
+                src={image}
+                alt={title || heroTitle}
+                data-live-image-path={liveEdit?.enabled ? "whyStudy.image" : undefined}
+                data-live-image-label="Imagen de por que estudiar"
+                data-live-image-value={image}
+                title={liveEdit?.enabled ? "Click para reemplazar esta imagen" : undefined}
+                className={`${landingImageClass} ${
+                  liveEdit?.enabled ? editableImageClass : ""
+                }`}
+              />
+            ) : liveEdit?.enabled ? (
+              <EditableImageSlot
+                path="whyStudy.image"
+                label="Imagen de por que estudiar"
+                className="h-full w-full"
+              />
             ) : logo ? (
               <img
                 src={logo}

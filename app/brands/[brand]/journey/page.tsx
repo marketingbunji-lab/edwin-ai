@@ -4,7 +4,7 @@ import { ArrowLeft, Brush, Shapes, Target, Users } from "lucide-react";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
 import { getDashboardTranslator } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
-import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
+import { getBrandBySlug, getEditableLandingsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 
@@ -27,7 +27,7 @@ export default async function BrandJourneyPage({ params }: Props) {
 
   const buyerPersonRecords = getBrandAgentRecords(brand.slug, "buyer-person");
   const visualAssets = getBrandAgentRecords(brand.slug, "visual-assets");
-  const landings = getLandingsByBrand(brand.slug);
+  const landings = getEditableLandingsByBrand(brand.slug);
   const publishedLandings = landings.filter(
     (landing) => landing.status === "published",
   );
@@ -148,4 +148,3 @@ function WorkspaceCard({
     </Link>
   );
 }
-

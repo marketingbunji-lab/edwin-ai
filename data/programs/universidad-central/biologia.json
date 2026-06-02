@@ -1,0 +1,534 @@
+{
+  "slug": "biologia",
+  "brand": "universidad-central",
+  "language": "es",
+  "title": "Biología",
+  "fullTitle": "Biología",
+  "sourceWebsite": "https://www.ucentral.edu.co/oferta-academica/biologia",
+  "catalog": "",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-06-02",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "Registro calificado: Resolución n.º 16960 (27/12/2019). Acreditación institucional de alta calidad: Resolución del MEN n.º 008910 de 2023.",
+    "items": [
+      {
+        "title": "Registro calificado",
+        "name": "Registro calificado",
+        "description": "Resolución n.º 16960 (27/12/2019), 7 años de vigencia",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      },
+      {
+        "title": "Acreditación institucional de alta calidad",
+        "name": "Acreditación institucional de alta calidad",
+        "description": "Resolución MEN n.º 008910 de 2023, vigente por 6 años",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Biología",
+    "subtitle": "",
+    "description": "Estudia Biología en la UCentral para comprender la naturaleza, abordar el deterioro de los ecosistemas y responder a la demanda ambiental. ¡Inscríbete!",
+    "supportText": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.ucentral.edu.co/sites/default/files/2025-12/pregrado-biologia-ucentral-2025-12-01_0.webp",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "",
+      "label": "Título otorgado",
+      "value": "Biólogo/Bióloga"
+    },
+    {
+      "key": "",
+      "label": "Créditos académicos",
+      "value": "135"
+    },
+    {
+      "key": "",
+      "label": "Duración estimada",
+      "value": "8 semestres"
+    },
+    {
+      "key": "",
+      "label": "Nivel de formación",
+      "value": "Profesional universitaria"
+    },
+    {
+      "key": "",
+      "label": "Modalidad",
+      "value": "Presencial"
+    },
+    {
+      "key": "",
+      "label": "Registro calificado",
+      "value": "Resolución n.º 16960 (27/12/2019), 7 años de vigencia"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Liderar la respuesta ante el cambio climático",
+        "description": "Formación para comprender el componente biótico y proponer soluciones sostenibles frente a retos ambientales.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Dominio de ciencias de la vida",
+        "description": "Conocimientos teórico-prácticos en campo y laboratorio que permiten desempeñarse en investigación y gestión.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Innovación en biotecnología y ómicas",
+        "description": "Exploración de bioprocesos desde biología molecular hasta biología sintética y análisis ómico.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Manejo de herramientas computacionales",
+        "description": "Especialización en bioinformática y análisis de datos biológicos para investigación y desarrollo.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Biología celular y fundamentos de biología",
+        "description": "Bases celulares y moleculares que soportan la comprensión de los sistemas vivos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Zoología y Botánica",
+        "description": "Estudio de la diversidad animal y vegetal, su identificación y ecología.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Bioquímica y microbiología",
+        "description": "Procesos bioquímicos y microbiológicos aplicados a laboratorio y biotecnología.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Biología molecular, genética y fisiología",
+        "description": "Bases de la genética, desarrollo y funcionamiento de organismos para investigación avanzada.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Modelado, simulación y análisis estadístico",
+        "description": "Herramientas cuantitativas para el análisis de datos biológicos y modelos ecológicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Ecología funcional y conservación",
+        "description": "Evaluación de ecosistemas y propuestas de conservación, restauración y regeneración.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Bioinformática y metodologías ómicas",
+        "description": "Manejo computacional de datos biológicos para investigación y aplicación biotecnológica.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Pasantía/práctica y curso de fin de ciclo",
+        "description": "Experiencias prácticas en campo y proyecto final con costo adicional para los créditos correspondientes.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "externship": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Practicas profesionales",
+    "description": "El plan incluye pasantía/práctica laboral o proyecto aplicado en entornos productivos o institucionales.",
+    "image": "",
+    "hours": "",
+    "partners": [
+      "Instituto Humboldt",
+      "CorpoGen"
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Acreditación institucional de alta calidad",
+        "text": "La Universidad Central cuenta con acreditación institucional de alta calidad vigente.",
+        "description": "La Universidad Central cuenta con acreditación institucional de alta calidad vigente.",
+        "icon": ""
+      },
+      {
+        "title": "Formación práctica y STEM",
+        "text": "Enfoque STEM con énfasis en prácticas de campo, laboratorio y manejo de datos.",
+        "description": "Enfoque STEM con énfasis en prácticas de campo, laboratorio y manejo de datos.",
+        "icon": ""
+      },
+      {
+        "title": "Redes y respaldo institucional",
+        "text": "Apoyo y colaboración con entidades como el Instituto Humboldt y CorpoGen para trabajos de grado y publicaciones.",
+        "description": "Apoyo y colaboración con entidades como el Instituto Humboldt y CorpoGen para trabajos de grado y publicaciones.",
+        "icon": ""
+      },
+      {
+        "title": "Flexibilidad financiera",
+        "text": "Descuentos, convenios y opciones de financiación que facilitan el acceso al programa.",
+        "description": "Descuentos, convenios y opciones de financiación que facilitan el acceso al programa.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "¿Quieres más información? ¡Tu futuro empieza aquí!",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Biología",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "shortTitle": "Biología",
+  "programType": "Pregrado",
+  "degreeLevel": "Profesional universitaria",
+  "academicArea": "",
+  "faculty": "Facultad de Ingeniería y Ciencias Básicas",
+  "snies": "102509",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Presencial",
+    "schedule": "presencial",
+    "language": "es",
+    "campuses": [],
+    "onlineAvailable": false,
+    "hybridAvailable": false,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "8",
+    "unit": "semesters",
+    "display": "8 semestres",
+    "credits": "135",
+    "semesters": "8",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "7324045",
+    "currency": "COP",
+    "period": "por matrícula",
+    "display": "$ 7.324.045 (valor matrícula 2026)",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiación: hasta el 100 % de la matrícula. Descuentos y convenios aplican según términos y condiciones."
+  },
+  "seo": {
+    "metaTitle": "Biología",
+    "metaDescription": "Estudia Biología en la UCentral para comprender la naturaleza, abordar el deterioro de los ecosistemas y responder a la demanda ambiental. ¡Inscríbete!",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "8 semestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Presencial"
+    },
+    {
+      "label": "Créditos",
+      "value": "135"
+    },
+    {
+      "label": "SNIES",
+      "value": "102509"
+    },
+    {
+      "label": "Valor matrícula 2026",
+      "value": "$ 7.324.045"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "El programa de Biología de la Universidad Central forma profesionales capaces de comprender la naturaleza y afrontar el deterioro de los ecosistemas mediante investigación, conservación, biotecnología y gestión sostenible, integrando trabajo de campo, laboratorio y herramientas computacionales para la solución de retos ambientales y productivos.",
+    "image": "https://www.ucentral.edu.co/sites/default/files/imagenes-ucentral/oferta-academica/biologia/biologia.webp",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Entrenamiento practico",
+    "description": "El programa incluye formación práctica en técnicas de campo y laboratorios especializados en biotecnología, ciencias ómicas y ecología funcional.",
+    "items": [
+      {
+        "title": "Técnicas de campo",
+        "description": "Trabajo en diversos ecosistemas para inventarios, monitoreo y proyectos de restauración.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Laboratorio en biotecnología",
+        "description": "Prácticas en laboratorio enfocadas en bioprocesos y técnicas moleculares.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Manejo de herramientas computacionales",
+        "description": "Aplicación de bioinformática, modelado y análisis de datos biológicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Trabajo de laboratorio y campo para consultoría y evaluación",
+        "description": "Desempeño en actividades de laboratorio y en terreno para la toma de decisiones asociadas al componente biótico y al licenciamiento ambiental.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Participación en equipos interdisciplinares",
+        "description": "Colaboración con otros profesionales para abordar problemas complejos en investigación y gestión.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Desarrollo de proyectos de conservación e investigación",
+        "description": "Intervención en proyectos de conservación, restauración ecológica y producción en la industria biológica.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "La Universidad ofrece procesos de inscripción, descuentos, sistemas de financiación y acompañamiento académico por parte de docentes y coordinadores.",
+    "videoUrl": "https://www.googletagmanager.com/ns.html?id=GTM-5J3KL6QN",
+    "items": [
+      {
+        "title": "Proceso de inscripción",
+        "text": "Información sobre el proceso de admisión, calendario y módulos de pago.",
+        "description": "Información sobre el proceso de admisión, calendario y módulos de pago.",
+        "icon": ""
+      },
+      {
+        "title": "Descuentos y convenios",
+        "text": "Programas de descuentos aplicables a estudiantes nuevos y convenios vigentes.",
+        "description": "Programas de descuentos aplicables a estudiantes nuevos y convenios vigentes.",
+        "icon": ""
+      },
+      {
+        "title": "Sistemas de financiación",
+        "text": "Opciones de financiación, crédito directo y planes de pago para matrícula.",
+        "description": "Opciones de financiación, crédito directo y planes de pago para matrícula.",
+        "icon": ""
+      },
+      {
+        "title": "Acompañamiento académico",
+        "text": "Guía de docentes con maestría y doctorado y asesoría por parte del coordinador del programa.",
+        "description": "Guía de docentes con maestría y doctorado y asesoría por parte del coordinador del programa.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "",
+    "items": [
+      {
+        "title": "Proceso de admisión",
+        "description": "Consultar proceso de inscripción y calendario de admisiones en la página institucional.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Inscripciones",
+        "description": "Información disponible en el portal de inscripciones de la Universidad Central.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Descuentos y financiación",
+        "description": "Revisar condiciones de descuentos para estudiantes nuevos y sistemas de financiación.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "La Universidad ofrece sistemas de financiación, crédito directo y descuentos; la financiación puede cubrir hasta el 100 % de la matrícula según condiciones.",
+    "items": [
+      {
+        "title": "Financiación",
+        "description": "Opciones de financiación disponibles, incluida la posibilidad de cubrir hasta el 100 % de la matrícula.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Crédito directo",
+        "description": "Crédito directo ofrecido por la Universidad para pregrados, especializaciones y maestrías.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Descuentos y convenios",
+        "description": "Descuentos aplicables a estudiantes nuevos de primer semestre y convenios institucionales.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "¿Cuál es la modalidad del programa?",
+      "answer": "Presencial."
+    },
+    {
+      "question": "¿Cuál es la duración del programa?",
+      "answer": "8 semestres."
+    },
+    {
+      "question": "¿Cuántos créditos tiene el programa?",
+      "answer": "135 créditos académicos."
+    },
+    {
+      "question": "¿Qué opciones de financiación hay?",
+      "answer": "La Universidad ofrece financiación, crédito directo y descuentos; la financiación puede cubrir hasta el 100 % de la matrícula según condiciones."
+    }
+  ],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "601 7442680",
+    "email": "coordinacioncolegios@ucentral.edu.co",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  }
+}

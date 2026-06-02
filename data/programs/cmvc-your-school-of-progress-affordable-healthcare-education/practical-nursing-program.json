@@ -1,0 +1,561 @@
+{
+  "slug": "practical-nursing-program",
+  "brand": "cmvc-your-school-of-progress-affordable-healthcare-education",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-06-02",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": false,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "",
+        "name": "",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Practical Nursing Program",
+  "fullTitle": "Practical Nursing Program - CMVC - Your School of Progress | Affordable Healthcare Education",
+  "sourceWebsite": "https://www.compumed.edu/practical-nursing-program/",
+  "catalog": "",
+  "programType": "Diploma",
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Practical Nursing Program - CMVC - Your School of Progress | Affordable Healthcare Education",
+    "subtitle": "",
+    "description": "Compu-Med Vocational Careers (CMVC) has equipped healthcare professionals with the specialized skills needed to excel in this ever-changing industry for over 30 years. From experienced instructors and multiple locations throughout Hialeah and Miami, Florida – CMVC is committed to providing its students with quality instruction that will enable them to reach their highest potential within the field",
+    "supportText": "",
+    "semesterPrice": "",
+    "price": "",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.compumed.edu/wp-content/uploads/2023/07/Group-296.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "program",
+      "label": "Program",
+      "value": "Practical Nursing Program"
+    },
+    {
+      "key": "credential",
+      "label": "Credential",
+      "value": "Diploma"
+    },
+    {
+      "key": "length",
+      "label": "Length",
+      "value": "52 Weeks"
+    },
+    {
+      "key": "credits",
+      "label": "Credits",
+      "value": "46 Semester Credits"
+    },
+    {
+      "key": "format",
+      "label": "Format",
+      "value": "Theoretical instruction, clinical experiences, and clinical simulation"
+    },
+    {
+      "key": "certification",
+      "label": "Certification",
+      "value": "Eligible to sit for NCLEX-PN"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Accelerated pathway",
+        "description": "Complete the program in approximately one year (52 weeks) to enter the workforce as an LPN.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Hands-on clinical training",
+        "description": "Strong emphasis on clinical experiences and clinical simulation to prepare students for real-world nursing environments.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "NCLEX-PN preparation",
+        "description": "Program prepares graduates to sit for the NCLEX-PN state board exam required for LPN licensure.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Multiple campus locations",
+        "description": "CMVC operates in multiple locations including Hialeah, Miami, Oakland Park and Dallas to support student access.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "The curriculum covers foundational and specialty nursing topics through classroom instruction, labs, clinical rotations and simulation.",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Medical Terminology",
+        "description": "Working knowledge of medical language, word-building skills, prefixes, suffixes and healthcare terminology.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Introduction to Nursing",
+        "description": "Fundamentals of nursing, communication, ethics, professionalism, and the role of practical nurses.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Long-Term Care Nursing",
+        "description": "Care for patients in long-term care settings under supervision of licensed providers.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Anatomy and Physiology",
+        "description": "In-depth study of body systems essential for practical nursing practice.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Fundamentals of Nursing",
+        "description": "Foundational nursing skills including patient safety, asepsis, pain management and geriatric care.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Pharmacology and IV Therapy",
+        "description": "Safe medication administration, pharmacological principles and basics of IV therapy.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Medical-Surgical Nursing I & II",
+        "description": "Nursing care of adult patients with various medical-surgical conditions.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Maternal Newborn Nursing",
+        "description": "Care of pregnant women, newborns and families.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Pediatric Nursing",
+        "description": "Care considerations for pediatric patients including growth, development and common illnesses.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Mental Health Nursing",
+        "description": "Care for patients with emotional, mental and social well-being needs.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Community Health",
+        "description": "Role of the nurse in health promotion, maintenance and community outreach.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Transition to Practice",
+        "description": "Preparation for transition from student to licensed practical nurse focusing on professional practice.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "NCLEX-PN Eligibility",
+        "text": "Graduates are eligible to sit for the NCLEX-PN state board exam upon completion.",
+        "description": "Graduates are eligible to sit for the NCLEX-PN state board exam upon completion.",
+        "icon": ""
+      },
+      {
+        "title": "Comprehensive Clinical Training",
+        "text": "Includes clinical rotations and simulation across key nursing specialties.",
+        "description": "Includes clinical rotations and simulation across key nursing specialties.",
+        "icon": ""
+      },
+      {
+        "title": "Multiple Locations",
+        "text": "Programs available at campuses in Hialeah, Miami, Oakland Park and Dallas.",
+        "description": "Programs available at campuses in Hialeah, Miami, Oakland Park and Dallas.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Practical Nursing Program - CMVC - Your School of Progress | Affordable Healthcare Education",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Practicas profesionales",
+    "description": "The program includes clinical rotations and practicum experiences in healthcare settings as part of training.",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "shortTitle": "Practical Nursing Program",
+  "degreeLevel": "",
+  "academicArea": "",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "52 Weeks",
+    "language": "es",
+    "campuses": [
+      "2900 West 12th Avenue. 3rd Floor. Hialeah, FL 33012",
+      "11401 SW 40 Street. Suite 150, 1st Floor. Miami, FL 33165",
+      "3075 W Oakland Park Blvd - Oakland Park, FL 33311",
+      "8131 Lyndon B. Johnson, Suite 300, Dallas, TX 75251"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "52",
+    "unit": "weeks",
+    "display": "52 Weeks",
+    "credits": "46",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "",
+    "currency": "",
+    "period": "",
+    "display": "",
+    "financialAidAvailable": true,
+    "financialAidText": "CMVC Financial Aid System; TFC Tuition Funding"
+  },
+  "seo": {
+    "metaTitle": "Practical Nursing Program - CMVC - Your School of Progress | Affordable Healthcare Education",
+    "metaDescription": "Compu-Med Vocational Careers (CMVC) has equipped healthcare professionals with the specialized skills needed to excel in this ever-changing industry for over 30 years. From experienced instructors and multiple locations throughout Hialeah and Miami, Florida – CMVC is committed to providing its students with quality instruction that will enable them to reach their highest potential within the field",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Credential",
+      "value": "Diploma"
+    },
+    {
+      "label": "Length",
+      "value": "52 Weeks"
+    },
+    {
+      "label": "Credits",
+      "value": "46 Semester Credits"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid (Online courses + Clinical experiences)"
+    },
+    {
+      "label": "NCLEX Eligibility",
+      "value": "Eligible to sit for NCLEX-PN"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "The Practical Nursing Program at Compu-Med Vocational Careers (CMVC) is a comprehensive 52-week diploma designed to prepare students for a career as licensed practical nurses (LPNs). The program combines theoretical instruction with clinical experiences and clinical simulation across specialties such as medical-surgical, pharmacology, geriatrics, obstetrics and pediatrics, and prepares graduates to be eligible to take the NCLEX-PN state board exam.",
+    "image": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Entrenamiento practico",
+    "description": "Clinical experiences and clinical simulation are integrated into the program to develop practical nursing skills.",
+    "items": [
+      {
+        "title": "Clinical Rotations",
+        "description": "Structured clinical experiences in various healthcare settings.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Clinical Simulation",
+        "description": "Simulation-based training to practice nursing procedures and patient care scenarios.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Skills Labs",
+        "description": "Laboratory practice for foundational nursing procedures and patient safety techniques.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Licensed Practical Nurse (LPN)",
+        "description": "Prepare to work as an LPN providing patient care under supervision in multiple settings.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Hospitals",
+        "description": "Patient care roles under the supervision of registered nurses and physicians.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Long-Term Care Facilities",
+        "description": "Assist elderly or chronically ill patients with daily living and medical needs.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Home Healthcare and Clinics",
+        "description": "Deliver in-home nursing care and support patient care in outpatient facilities and clinics.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Rehabilitation Centers",
+        "description": "Support patient recovery and rehabilitation after surgeries or major health events.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "CMVC provides student services, financial aid resources and online portals to support student success.",
+    "videoUrl": "https://www.googletagmanager.com/ns.html?id=GTM-KJWBTFDT",
+    "items": [
+      {
+        "title": "Advising & Admissions Support",
+        "text": "Admissions advisors and student services to guide enrollment and program steps.",
+        "description": "Admissions advisors and student services to guide enrollment and program steps.",
+        "icon": ""
+      },
+      {
+        "title": "Financial Aid Assistance",
+        "text": "CMVC Financial Aid System and TFC Tuition Funding resources.",
+        "description": "CMVC Financial Aid System and TFC Tuition Funding resources.",
+        "icon": ""
+      },
+      {
+        "title": "Student Portals & Handbooks",
+        "text": "Access to CANVAS, CMVC Student Services, Verity Student Nursing Handbook and online resources.",
+        "description": "Access to CANVAS, CMVC Student Services, Verity Student Nursing Handbook and online resources.",
+        "icon": ""
+      },
+      {
+        "title": "Jobwise Portal",
+        "text": "Career resources and placement support via Jobwise Portal.",
+        "description": "Career resources and placement support via Jobwise Portal.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "",
+    "items": [
+      {
+        "title": "Admissions Information",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "CMVC Financial Aid System and TFC Tuition Funding are available to eligible students.",
+    "items": [
+      {
+        "title": "CMVC Financial Aid System",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "TFC Tuition Funding",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "What is the Practical Nursing Program?",
+      "answer": "The Practical Nursing Program at CMVC is a comprehensive 52-week diploma designed to prepare students for a career as licensed practical nurses (LPNs), combining theoretical instruction with clinical experiences and simulation."
+    },
+    {
+      "question": "How long is the program and how many credits are required?",
+      "answer": "The program is 52 weeks in length and requires 46 semester credits."
+    },
+    {
+      "question": "Will I be eligible to take the NCLEX-PN after completing the program?",
+      "answer": "Yes. Upon successful completion of the Practical Nursing Program, graduates will be eligible to sit for the NCLEX-PN state board exam."
+    },
+    {
+      "question": "Are there online course requirements?",
+      "answer": "Students taking online courses must meet technical requirements such as a current operating system, stable internet, up-to-date browsers, antivirus software, and word processing software; some courses may require additional software."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Associate of Science in Nursing",
+      "url": "",
+      "image": "https://www.compumed.edu/wp-content/uploads/2023/08/13.png"
+    },
+    {
+      "title": "Medical Assistant Program",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Dental Assistant",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "(305) 888-9200",
+    "email": "info@compumed.edu",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  }
+}

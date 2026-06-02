@@ -1,0 +1,515 @@
+{
+  "slug": "associate-of-science-in-nursing-asn",
+  "brand": "cmvc-your-school-of-progress-affordable-healthcare-education",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "draft",
+  "updatedAt": "2026-06-02",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": false,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "",
+    "items": [
+      {
+        "title": "",
+        "name": "",
+        "description": "",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Associate of Science in Nursing (ASN)",
+  "fullTitle": "Associate of Science in Nursing Degree - CMVC - Your School of Progress | Affordable Healthcare Education",
+  "sourceWebsite": "https://www.compumed.edu/nursing/",
+  "catalog": "",
+  "programType": "Associate Degree",
+  "hero": {
+    "variant": "default",
+    "eyebrow": "Estudia en PCI Health Training Center",
+    "highlight": "",
+    "title": "Associate of Science in Nursing (ASN)",
+    "subtitle": "",
+    "description": "The ASN nursing program at CompuMed Vocational Careers prepares students for entry-level nursing positions. Learn how to provide safe, supportive environments and display cultural sensitivity in nursing practice.",
+    "supportText": "",
+    "price": "$51,350.00 total",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "duration": "Approximately 24 months",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://www.compumed.edu/wp-content/uploads/2023/08/13.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "degree",
+      "label": "Degree",
+      "value": "Associate of Science in Nursing (ASN)"
+    },
+    {
+      "key": "program-length",
+      "label": "Program Length",
+      "value": "Approximately 24 months / 6 semesters"
+    },
+    {
+      "key": "total-credits",
+      "label": "Total Credits",
+      "value": "76"
+    },
+    {
+      "key": "clinical-experience",
+      "label": "Clinical Experience",
+      "value": "Hands-on classroom instruction, clinical practice opportunities, and clinical laboratory simulation"
+    },
+    {
+      "key": "admissions",
+      "label": "Admissions",
+      "value": "High School diploma or GED, entrance exam (TEAS) or proof of bachelor's degree, age 18 or proof of emancipation"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "",
+    "image": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "Por que estudiar este programa",
+    "description": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Preparation for entry-level nursing",
+        "description": "The program readies students for entry-level RN roles and the responsibilities of patient care in healthcare settings.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Hands-on clinical experience",
+        "description": "Includes classroom instruction, clinical practice opportunities, and clinical laboratory simulation to build practical skills and confidence.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Focus on critical thinking",
+        "description": "Emphasizes critical thinking and decision-making for fast-paced clinical environments and real-life scenarios.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Cultural sensitivity and wellness",
+        "description": "Teaches students to provide safe, supportive environments and to promote healthy habits for total wellness.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Lo que aprenderas",
+    "description": "",
+    "downloadUrl": "",
+    "buttonUrl": "",
+    "buttonTitle": "",
+    "items": [
+      {
+        "title": "Care planning and coordination",
+        "description": "Create care plans with patients and families that reflect patient needs, goals, and beliefs.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Clinical assessment and patient care",
+        "description": "Evaluate medical conditions and prioritize vital client information for effective care delivery.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Medication administration and safety",
+        "description": "Promote patient safety through accurate medication administration and documentation.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Electronic health records (EHR) analysis",
+        "description": "Analyze and interpret data from EHRs to identify trends and improve patient outcomes.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Clinical simulation and laboratory skills",
+        "description": "Hands-on laboratory simulation to practice clinical procedures and scenarios.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Evidence-based practice",
+        "description": "Combine evidence-based practices with patient preferences to provide effective care.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "Beneficios del programa",
+    "items": [
+      {
+        "title": "Practical clinical experience",
+        "text": "Hands-on labs, simulation, and clinical placements to build competency and confidence.",
+        "description": "Hands-on labs, simulation, and clinical placements to build competency and confidence.",
+        "icon": ""
+      },
+      {
+        "title": "Preparation for nursing practice",
+        "text": "Curriculum emphasizes critical thinking, patient safety, and evidence-based care for entry-level nursing roles.",
+        "description": "Curriculum emphasizes critical thinking, patient safety, and evidence-based care for entry-level nursing roles.",
+        "icon": ""
+      },
+      {
+        "title": "Financial support options",
+        "text": "Payment plans and financial aid options may be available; contact the bursar’s office for details.",
+        "description": "Payment plans and financial aid options may be available; contact the bursar’s office for details.",
+        "icon": ""
+      }
+    ]
+  },
+  "cta": {
+    "variant": "default",
+    "title": "Solicita informacion",
+    "description": "",
+    "button": "Inscribete ahora",
+    "secondaryButton": "",
+    "image": ""
+  },
+  "form": {
+    "title": "Request Information",
+    "description": "",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
+    "programName": "Associate of Science in Nursing Degree - CMVC - Your School of Progress | Affordable Healthcare Education",
+    "campus": "",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Practicas profesionales",
+    "description": "Clinical practice opportunities are provided as part of the program to reinforce classroom learning in healthcare settings.",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "shortTitle": "Associate of Science in Nursing",
+  "degreeLevel": "Associate",
+  "academicArea": "Nursing",
+  "faculty": "",
+  "snies": "",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Hybrid",
+    "schedule": "Hybrid (online coursework with on-campus labs and clinicals)",
+    "language": "es",
+    "campuses": [
+      "Kendall",
+      "Hialeah",
+      "Fort Lauderdale",
+      "Dallas"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": true,
+    "onCampusAvailable": true
+  },
+  "duration": {
+    "value": "24",
+    "unit": "months",
+    "display": "Approximately 24 months (6 semesters)",
+    "credits": "76",
+    "semesters": "6",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "51350.00",
+    "currency": "USD",
+    "period": "total",
+    "display": "$51,350.00 (total program tuition, 76 credits)",
+    "financialAidAvailable": true,
+    "financialAidText": "Payment plans may be offered, along with financial aid options. Discuss payment with the Compu-Med Vocational Careers bursar’s office."
+  },
+  "seo": {
+    "metaTitle": "Associate of Science in Nursing Degree - CMVC - Your School of Progress | Affordable Healthcare Education",
+    "metaDescription": "The ASN nursing program at CompuMed Vocational Careers prepares students for entry-level nursing positions. Learn how to provide safe, supportive environments and display cultural sensitivity in nursing practice.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duration",
+      "value": "Approximately 24 months (6 semesters)"
+    },
+    {
+      "label": "Modality",
+      "value": "Hybrid (online coursework with on-campus labs and clinicals)"
+    },
+    {
+      "label": "Campuses",
+      "value": "Kendall, Hialeah, Fort Lauderdale, Dallas"
+    },
+    {
+      "label": "Total Credits",
+      "value": "76 credits"
+    },
+    {
+      "label": "Tuition (Total)",
+      "value": "$51,350.00"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Resumen del programa",
+    "description": "The ASN program at Compu-Med Vocational Careers prepares students for entry‑level nursing positions by developing essential nursing skills, emphasizing safe and supportive care, cultural sensitivity, promotion of wellness, and practical experience through classroom instruction, clinical practice, and simulation.",
+    "image": "https://www.compumed.edu/wp-content/uploads/2023/08/13.png",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Entrenamiento practico",
+    "description": "The program includes practical learning through classroom instruction, clinical laboratory simulation, and supervised clinical practice.",
+    "items": [
+      {
+        "title": "Clinical laboratory simulation",
+        "description": "Simulated clinical scenarios to practice assessment and procedural skills.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Supervised clinical practice",
+        "description": "Clinical placements to apply skills in real patient-care settings.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Patient care skills",
+        "description": "Direct practice of nursing care, documentation, and teamwork in clinical environments.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "Oportunidades laborales",
+    "subtitle": "",
+    "image": "",
+    "items": [
+      {
+        "title": "Entry-level Registered Nurse (RN)",
+        "description": "Prepare for roles providing patient care and overseeing medical information in healthcare settings.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Opportunities in hospitals and healthcare facilities",
+        "description": "Graduates may seek positions in hospitals and other healthcare environments that hire nurses with associate degrees.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "Acompanamiento al estudiante",
+    "description": "",
+    "videoUrl": "https://www.googletagmanager.com/ns.html?id=GTM-KJWBTFDT",
+    "items": [
+      {
+        "title": "Admissions advising",
+        "text": "Prospective students meet with an admissions advisor for an interview, school tour, and class invitation.",
+        "description": "Prospective students meet with an admissions advisor for an interview, school tour, and class invitation.",
+        "icon": ""
+      },
+      {
+        "title": "Bursar’s office",
+        "text": "Discuss tuition, payment plans, and financial aid options with the bursar’s office.",
+        "description": "Discuss tuition, payment plans, and financial aid options with the bursar’s office.",
+        "icon": ""
+      },
+      {
+        "title": "Student services and portals",
+        "text": "Access to student services, learning platforms (Canvas), and career resources such as Jobwise.",
+        "description": "Access to student services, learning platforms (Canvas), and career resources such as Jobwise.",
+        "icon": ""
+      }
+    ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Requisitos de admision",
+    "description": "",
+    "items": [
+      {
+        "title": "Age and documentation",
+        "description": "Must be 18 or older or provide proof of emancipation.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Education requirement",
+        "description": "High School Diploma or GED. Foreign non-English diplomas require a certified English translation verifying US high school equivalency.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Entrance assessment",
+        "description": "Pass a distance education assessment (minimum scores: 70 Lifestyle, 70 Technical Competency, 70 Technical Knowledge) and achieve an entrance exam score (e.g., TEAS) or provide proof of a completed bachelor’s degree or BSN.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Admissions process",
+        "description": "Interview with an admissions advisor, followed by a school tour and invitation to sit in on a class before enrolling.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "default",
+    "eyebrow": "",
+    "title": "Opciones de ayuda financiera",
+    "description": "Tuition charges vary by semester. Payment plans may be offered, and financial aid options are available through the institution's financial aid system and TFC Tuition Funding.",
+    "items": [
+      {
+        "title": "Payment plans",
+        "description": "Payment plans may be offered; contact the bursar’s office for specifics.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Financial aid services",
+        "description": "Compu-Med Vocational Careers provides information on financial aid options through its financial aid system.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "TFC Tuition Funding",
+        "description": "TFC Tuition Funding is referenced as a resource for students in need of assistance.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "What is the difference between an LPN and an RN?",
+      "answer": "An LPN is a licensed practical nurse with vocational training (about 12 months) who works under supervision and provides basic patient care. An RN has an undergraduate degree (associate or bachelor) with broader training and a wider scope of practice."
+    },
+    {
+      "question": "Should I pursue an associate’s degree in nursing?",
+      "answer": "Yes. Beginning your nursing career with an associate’s degree allows you to start as an RN in a minimum timeframe of about 24 months or less."
+    },
+    {
+      "question": "Can I sit for the NCLEX-RN with an associate’s degree?",
+      "answer": "Yes. To sit for the NCLEX-RN and become a Registered Nurse, a candidate must have an undergraduate degree of an associate or bachelor’s degree in Nursing."
+    },
+    {
+      "question": "How long does the ASN program typically take?",
+      "answer": "The program is approximately 24 months in length and is structured across six semesters."
+    }
+  ],
+  "relatedPrograms": [
+    {
+      "title": "Practical Nursing Program",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "Associate of Science in Medical Assisting",
+      "url": "",
+      "image": ""
+    },
+    {
+      "title": "RN to BSN Program",
+      "url": "",
+      "image": ""
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "(305) 888-9200",
+    "email": "info@compumed.edu",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "formSection": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": ""
+  }
+}

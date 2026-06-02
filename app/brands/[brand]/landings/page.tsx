@@ -6,7 +6,7 @@ import BrandLandingsList, {
 } from "../../../../components/dashboard/BrandLandingsList";
 import { getDashboardTranslator } from "../../../../lib/dashboardI18n";
 import { getDashboardLanguage } from "../../../../lib/dashboardI18nServer";
-import { getBrandBySlug, getLandingsByBrand } from "../../../../lib/data";
+import { getBrandBySlug, getEditableLandingsByBrand } from "../../../../lib/data";
 import { getSupabaseBrandBySlug } from "../../../../lib/supabaseBrands";
 
 
@@ -27,7 +27,7 @@ export default async function BrandLandingsPage({ params }: Props) {
     notFound();
   }
 
-  const landings = getLandingsByBrand(brand.slug);
+  const landings = getEditableLandingsByBrand(brand.slug);
   const landingItems: BrandLandingListItem[] = landings.map((landing) => ({
     ...landing,
     programType: landing.programType || "Sin tipo",
@@ -59,7 +59,7 @@ export default async function BrandLandingsPage({ params }: Props) {
             </div>
 
             <Link
-              href={`/admin/brands/${brand.slug}/new`}
+              href={`/admin/brands/${brand.slug}/landings/new`}
               className="admin-button-primary"
             >
               <Plus className="h-4 w-4" />
@@ -79,7 +79,7 @@ export default async function BrandLandingsPage({ params }: Props) {
             </p>
             <div className="mt-6">
               <Link
-                href={`/admin/brands/${brand.slug}/new`}
+                href={`/admin/brands/${brand.slug}/landings/new`}
                 className="admin-button-primary"
               >
                 <Plus className="h-4 w-4" />
@@ -94,4 +94,3 @@ export default async function BrandLandingsPage({ params }: Props) {
     </main>
   );
 }
-

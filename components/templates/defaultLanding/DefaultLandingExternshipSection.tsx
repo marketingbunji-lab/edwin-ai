@@ -11,6 +11,7 @@ import {
   landingTwoColumnClass,
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
+import EditableImageSlot, { editableImageClass } from "./EditableImageSlot";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
@@ -57,14 +58,30 @@ export default function DefaultLandingExternshipSection({
     <section className={landingSectionSoftClass}>
       <div className={landingContainerClass}>
         <div className={landingTwoColumnClass}>
-          {image ? (
+          {image || liveEdit?.enabled ? (
             <div className={landingImageFrameClass}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={image}
-                alt={title || "Externship"}
-                className={landingImageClass}
-              />
+              {image ? (
+                <>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={image}
+                    alt={title || "Externship"}
+                    data-live-image-path={liveEdit?.enabled ? "externship.image" : undefined}
+                    data-live-image-label="Imagen de practicas"
+                    data-live-image-value={image}
+                    title={liveEdit?.enabled ? "Click para reemplazar esta imagen" : undefined}
+                    className={`${landingImageClass} ${
+                      liveEdit?.enabled ? editableImageClass : ""
+                    }`}
+                  />
+                </>
+              ) : (
+                <EditableImageSlot
+                  path="externship.image"
+                  label="Imagen de practicas"
+                  className="h-full w-full"
+                />
+              )}
             </div>
           ) : (
             <div>
@@ -80,7 +97,7 @@ export default function DefaultLandingExternshipSection({
           )}
 
           <div>
-            {image ? (
+            {image || liveEdit?.enabled ? (
               <DefaultLandingSectionHeader
                 eyebrow={eyebrow}
                 title={title}

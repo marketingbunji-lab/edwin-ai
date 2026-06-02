@@ -17,7 +17,7 @@ import {
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import {
   getBrandBySlug,
-  getLandingsByBrand,
+  getEditableLandingsByBrand,
   getProgramsByBrand,
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
@@ -54,7 +54,7 @@ export default async function BrandPage({ params }: Props) {
   }
 
   const programs = getProgramsByBrand(brand.slug);
-  const landings = getLandingsByBrand(brand.slug);
+  const landings = getEditableLandingsByBrand(brand.slug);
   const universityProfile = getUniversityProfileByBrand(brand.slug);
   const buyerPersonRecords = getBrandAgentRecords(brand.slug, "buyer-person");
   const visualAssets = getBrandAgentRecords(brand.slug, "visual-assets");

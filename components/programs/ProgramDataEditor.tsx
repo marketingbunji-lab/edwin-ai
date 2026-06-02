@@ -5,6 +5,7 @@ import { ArrowLeft, Bot, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
+import PreviewLoadingState from "@/components/ui/PreviewLoadingState";
 import type { Brand, Landing } from "@/lib/data";
 
 type Props = {
@@ -246,8 +247,8 @@ export default function ProgramDataEditor({
 
       const response = await fetch(
         isCreateMode
-          ? `/api/landings/${brand.slug}`
-          : `/api/landings/${brand.slug}/${initialProgram.slug}`,
+          ? `/api/programs/${brand.slug}`
+          : `/api/programs/${brand.slug}/${initialProgram.slug}`,
         {
           method: isCreateMode ? "POST" : "PUT",
           headers: {
@@ -430,15 +431,28 @@ export default function ProgramDataEditor({
   return (
     <div className="space-y-6">
       <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href={`/admin/brands/${brand.slug}/programs`}
-            className="admin-button-secondary admin-button-icon"
-            aria-label={t("programsEditor.backToPrograms")}
-            title={t("programsEditor.backToPrograms")}
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
+        <div className="relative flex flex-wrap items-center justify-between gap-3">
+          <div className="relative flex min-w-0 items-center gap-4">
+            <Link
+              href={`/admin/brands/${brand.slug}/programs`}
+              className="admin-button-secondary admin-button-icon"
+              aria-label={t("programsEditor.backToPrograms")}
+              title={t("programsEditor.backToPrograms")}
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+
+            {isCreateMode ? (
+              <div className="min-w-0">
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)]/70 dark:text-[var(--bunji-cyan)]/75">
+                  {brand.shortName || brand.name}
+                </p>
+                <h1 className="truncate text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
+                  {t("programDataEditor.addProgram")}
+                </h1>
+              </div>
+            ) : null}
+          </div>
 
           {isCreateMode ? null : (
             <button
@@ -456,6 +470,7 @@ export default function ProgramDataEditor({
         </div>
       </div>
 
+      {!isCreateMode ? (
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="admin-eyebrow">
@@ -473,6 +488,7 @@ export default function ProgramDataEditor({
           ) : null}
         </div>
       </div>
+      ) : null}
 
       <div
         className={
@@ -532,6 +548,7 @@ export default function ProgramDataEditor({
         {isCreateMode ? (
           <ProgramPreviewCard
             brand={brand}
+            isLoading={agentRunning}
             program={previewProgram}
           />
         ) : null}
@@ -653,7 +670,7 @@ function ProgramBaseStepForm({
               key={step.title}
               className={`rounded-2xl border p-4 transition ${
                 isActive
-                  ? "border-[color-mix(in_srgb,var(--bunji-cyan)_56%,var(--bunji-primary)_44%)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-darker)_88%,#020617_12%),color-mix(in_srgb,var(--bunji-primary-dark)_76%,#020617_24%))] shadow-[0_18px_42px_rgba(62,57,137,0.34),0_0_0_1px_rgba(125,227,234,0.10)] ring-1 ring-[color-mix(in_srgb,var(--bunji-cyan)_30%,transparent)]"
+                  ? "border-[color-mix(in_srgb,var(--bunji-cyan)_58%,var(--bunji-primary-soft)_42%)] bg-[linear-gradient(135deg,rgba(255,255,255,0.98),color-mix(in_srgb,var(--bunji-cyan-soft)_82%,white))] text-slate-950 shadow-[0_18px_42px_rgba(62,57,137,0.14),0_0_0_1px_rgba(125,227,234,0.16)] ring-1 ring-[color-mix(in_srgb,var(--bunji-cyan)_38%,transparent)] dark:border-[rgba(125,227,234,0.62)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.96),color-mix(in_srgb,var(--bunji-cyan-soft)_72%,white))] dark:text-slate-950"
                   : "border-slate-200 bg-white/60 dark:border-white/10 dark:bg-white/[0.03]"
               }`}
             >
@@ -669,7 +686,7 @@ function ProgramBaseStepForm({
               <h3
                 className={`mt-3 text-sm font-semibold ${
                   isActive
-                    ? "text-white"
+                    ? "text-slate-950"
                     : "text-slate-950 dark:text-slate-50"
                 }`}
               >
@@ -678,7 +695,7 @@ function ProgramBaseStepForm({
               <p
                 className={`mt-2 text-sm leading-6 ${
                   isActive
-                    ? "text-slate-200"
+                    ? "text-slate-600"
                     : "text-slate-600 dark:text-slate-400"
                 }`}
               >
@@ -838,12 +855,31 @@ function ProgramBaseStepForm({
 
 function ProgramPreviewCard({
   brand,
+  isLoading,
   program,
 }: {
   brand: Brand;
+  isLoading: boolean;
   program: Landing | null;
 }) {
   const { t } = useDashboardLanguage();
+  const previewPrimary = brand.primaryColor || "#3e3989";
+  const previewSecondary = brand.secondaryColor || "#7de3ea";
+  const previewAccent = "#ff0b2e";
+
+  if (isLoading) {
+    return (
+      <PreviewLoadingState
+        eyebrow={t("programDataEditor.preview")}
+        title="EDwin esta generando la informacion del programa"
+        description="El Agent Content esta revisando la URL fuente y preparando la data para el preview."
+        message="Analizando contenido, estructura y oportunidades de la landing..."
+        primaryColor={previewPrimary}
+        secondaryColor={previewSecondary}
+        accentColor={previewAccent}
+      />
+    );
+  }
 
   if (!program) {
     return (

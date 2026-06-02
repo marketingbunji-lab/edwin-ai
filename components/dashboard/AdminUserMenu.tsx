@@ -90,18 +90,18 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="flex w-full items-center justify-between gap-3 rounded-lg border border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,white)] bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(244,247,255,0.76))] px-3 py-3 text-sm shadow-[0_10px_24px_rgba(15,23,42,0.06)] backdrop-blur-sm transition hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(240,247,255,0.88))] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(125,227,234,0.04))] dark:hover:bg-white/[0.08]"
+        className="group flex w-full items-center justify-between gap-3 rounded-lg border border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,white)] bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(244,247,255,0.76))] px-3 py-3 text-sm text-slate-900 shadow-[0_10px_24px_rgba(15,23,42,0.06)] backdrop-blur-sm transition hover:border-[color-mix(in_srgb,var(--bunji-cyan)_50%,var(--bunji-primary-soft))] hover:bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(232,240,255,0.9))] hover:text-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(125,227,234,0.04))] dark:text-slate-100 dark:hover:border-[var(--bunji-cyan)]/30 dark:hover:bg-[linear-gradient(135deg,rgba(62,57,137,0.34),rgba(125,227,234,0.12))] dark:hover:text-white"
         aria-haspopup="menu"
         aria-expanded={open}
       >
         <span className="flex min-w-0 items-center gap-3">
-          <UserCircle className="h-5 w-5 shrink-0 text-[var(--bunji-primary)] dark:text-[var(--bunji-cyan)]" />
-          <span className="truncate text-sm font-semibold text-slate-900 dark:text-slate-50">
+          <UserCircle className="h-5 w-5 shrink-0 text-[var(--bunji-primary)] transition group-hover:text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)] dark:group-hover:text-[var(--bunji-cyan-light)]" />
+          <span className="truncate text-sm font-semibold text-slate-900 transition group-hover:text-slate-950 dark:text-slate-50 dark:group-hover:text-white">
             {loading ? t("userMenu.loading") : user?.email || user?.name || t("userMenu.user")}
           </span>
         </span>
         <ChevronUp
-          className={`h-4 w-4 shrink-0 text-slate-400 transition ${
+          className={`h-4 w-4 shrink-0 text-slate-500 transition group-hover:text-slate-700 dark:text-slate-400 dark:group-hover:text-slate-100 ${
             open ? "rotate-180" : ""
           }`}
         />

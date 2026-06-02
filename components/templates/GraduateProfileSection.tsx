@@ -9,6 +9,9 @@ import {
   landingSectionKickerClass,
   landingSectionTitleClass,
 } from "./defaultLanding/classes";
+import EditableImageSlot, {
+  editableImageClass,
+} from "./defaultLanding/EditableImageSlot";
 
 type Props = {
   graduateProfile?: Landing["graduateProfile"];
@@ -80,6 +83,7 @@ export default function GraduateProfileSection({
   const eyebrowText = eyebrow?.trim() ?? "";
   const items = getItems(graduateProfile?.items);
   const hasImage = Boolean(image);
+  const showImageSlot = Boolean(hasImage || liveEdit?.enabled);
 
   if (!title && !image && items.length === 0) {
     return null;
@@ -89,19 +93,33 @@ export default function GraduateProfileSection({
     <section className="bg-[linear-gradient(180deg,#fff,var(--landing-secondary-lightest))] py-24 md:py-32">
       <div
         className={`${landingContainerClass} grid items-start gap-10 ${
-          hasImage
+          showImageSlot
             ? "lg:grid-cols-[minmax(320px,0.9fr)_minmax(0,1.1fr)]"
             : "max-w-[920px]"
         }`}
       >
-        {hasImage ? (
+        {showImageSlot ? (
           <div>
             <div className="min-h-[320px] overflow-hidden rounded-3xl bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))] shadow-xl ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 lg:min-h-[520px]">
-              <img
-                src={image}
-                alt={title || eyebrowText}
-                className="h-full min-h-[320px] w-full object-cover lg:min-h-[520px]"
-              />
+              {hasImage ? (
+                <img
+                  src={image}
+                  alt={title || eyebrowText}
+                  data-live-image-path={liveEdit?.enabled ? "graduateProfile.image" : undefined}
+                  data-live-image-label="Imagen del perfil del egresado"
+                  data-live-image-value={image}
+                  title={liveEdit?.enabled ? "Click para reemplazar esta imagen" : undefined}
+                  className={`h-full min-h-[320px] w-full object-cover lg:min-h-[520px] ${
+                    liveEdit?.enabled ? editableImageClass : ""
+                  }`}
+                />
+              ) : (
+                <EditableImageSlot
+                  path="graduateProfile.image"
+                  label="Imagen del perfil del egresado"
+                  className="h-full w-full"
+                />
+              )}
             </div>
           </div>
         ) : null}

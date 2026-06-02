@@ -31,7 +31,7 @@ export default function DeleteProgramButton({
 
     try {
       setDeleting(true);
-      const response = await fetch(`/api/landings/${brandSlug}/${programId}`, {
+      const response = await fetch(`/api/programs/${brandSlug}/${programId}`, {
         method: "DELETE",
       });
       const data = (await response.json()) as { ok?: boolean; error?: string };

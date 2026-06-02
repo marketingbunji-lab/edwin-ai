@@ -1,7 +1,7 @@
 ﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Eye } from "lucide-react";
-import { getBrandBySlug, getLandingsByBrand } from "@/lib/data";
+import { getBrandBySlug, getEditableLandingsByBrand } from "@/lib/data";
 
 
 type Props = {
@@ -18,7 +18,7 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
     notFound();
   }
 
-  const landings = getLandingsByBrand(brandSlug).filter(
+  const landings = getEditableLandingsByBrand(brandSlug).filter(
     (landing) => landing.status === "published",
   );
 
@@ -73,4 +73,3 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
     </main>
   );
 }
-

@@ -3,7 +3,7 @@ import path from "node:path";
 import { NextResponse } from "next/server";
 import {
   getBrandBySlug,
-  getLandingBySlug,
+  getProgramDataBySlug,
   normalizeLandingSchema,
   serializeLandingForStorage,
   type Landing,
@@ -108,7 +108,7 @@ export async function POST(_: Request, { params }: { params: Params }) {
     const { brand: brandSlug, program: programSlug } = await params;
     const brand =
       getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
-    const program = getLandingBySlug(brandSlug, programSlug);
+    const program = getProgramDataBySlug(brandSlug, programSlug);
     const filePath = getProgramPath(brandSlug, programSlug);
 
     if (!brand || !program || !filePath) {

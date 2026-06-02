@@ -1,6 +1,6 @@
 import BrandLandingsList from "@/components/dashboard/BrandLandingsList";
 import type { LandingCardData } from "@/components/dashboard/LandingCard";
-import { getBrands, getLandingsByBrand } from "@/lib/data";
+import { getBrands, getEditableLandingsByBrand } from "@/lib/data";
 import type { Landing } from "@/lib/data";
 
 function toLandingCardData(
@@ -24,7 +24,7 @@ function toLandingCardData(
 
 export default function AdminLandingsPage() {
   const landings = getBrands().flatMap((brand) =>
-    getLandingsByBrand(brand.slug).map(toLandingCardData),
+    getEditableLandingsByBrand(brand.slug).map(toLandingCardData),
   );
 
   return (

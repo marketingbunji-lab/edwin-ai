@@ -44,7 +44,15 @@ export default function DefaultLandingCtaSection({
 
   return (
     <section
-      className="relative overflow-hidden py-24 text-center text-white md:py-32"
+      data-live-image-path={liveEdit?.enabled && hasImage ? "cta.image" : undefined}
+      data-live-image-label="Imagen de fondo del CTA"
+      data-live-image-value={image}
+      title={liveEdit?.enabled && hasImage ? "Click para reemplazar esta imagen" : undefined}
+      className={`relative overflow-hidden py-24 text-center text-white md:py-32 ${
+        liveEdit?.enabled && hasImage
+          ? "cursor-pointer outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-[-8px]"
+          : ""
+      }`}
       style={
         hasImage
           ? {

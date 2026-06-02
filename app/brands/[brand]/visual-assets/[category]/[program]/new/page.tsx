@@ -7,7 +7,7 @@ import {
 } from "@/lib/brandAgentRecords";
 import {
   getBrandBySlug,
-  getLandingBySlug,
+  getProgramDataBySlug,
   getProgramsByBrand,
   type Program,
 } from "@/lib/data";
@@ -38,7 +38,7 @@ export default async function NewProgramVisualAssetPage({ params }: Props) {
   const program = resolveProgram(getProgramsByBrand(brand.slug), programId);
   const resolvedProgramId = program?.id ?? programId;
   const programName = program?.programName ?? titleFromSlug(programId);
-  const programLanding = getLandingBySlug(brand.slug, resolvedProgramId);
+  const programLanding = getProgramDataBySlug(brand.slug, resolvedProgramId);
   const programData = programLanding ?? program ?? {
     id: resolvedProgramId,
     programName,
@@ -104,4 +104,3 @@ function slugify(text: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
-

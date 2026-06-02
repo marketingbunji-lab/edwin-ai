@@ -1,19 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   Droplets,
   ChevronDown,
   ChevronUp,
   Eye,
   FileDown,
+  ImagePlus,
   Laptop,
-  MousePointerClick,
   Plus,
   Smartphone,
   Tablet,
   Trash2,
+  X,
 } from "lucide-react";
 import type {
   Brand,
@@ -60,6 +61,30 @@ type EditableCertificationItem = {
 };
 type HeroMenuOption = {
   id: string;
+  label: string;
+};
+
+type VariantControlConfig = {
+  id: string;
+  label: string;
+  selector: string;
+  path: string;
+  currentValue: string;
+  options: Array<{
+    label: string;
+    value: string;
+    title: string;
+  }>;
+};
+
+type VariantControlPosition = {
+  id: string;
+  top: number;
+  left: number | undefined;
+};
+
+type ImageEditTarget = {
+  path: string;
   label: string;
 };
 
@@ -240,9 +265,15 @@ export default function LandingEditor({
     JSON.stringify(initialLanding),
   );
   const [analyzingColor, setAnalyzingColor] = useState(false);
-  const [liveEditEnabled, setLiveEditEnabled] = useState(true);
+  const liveEditEnabled = true;
   const [previewWidth, setPreviewWidth] = useState(1200);
   const [previewHeight, setPreviewHeight] = useState(720);
+  const [variantControlPositions, setVariantControlPositions] = useState<
+    VariantControlPosition[]
+  >([]);
+  const [imageEditTarget, setImageEditTarget] =
+    useState<ImageEditTarget | null>(null);
+  const [imageUrlDraft, setImageUrlDraft] = useState("");
   const previewContentRef = useRef<HTMLDivElement | null>(null);
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
@@ -250,6 +281,133 @@ export default function LandingEditor({
   const currentSnapshot = JSON.stringify(landing);
   const hasChanges = currentSnapshot !== lastSavedSnapshot;
   const saveDisabled = saving || !hasChanges;
+  const variantControls = useMemo<VariantControlConfig[]>(
+    () => [
+      {
+        id: "logo",
+        label: "Logo",
+        selector: "[data-landing-logo-mode-control]",
+        path: "logoMode",
+        currentValue: landing.logoMode || "dark",
+        options: [
+          { label: "Light", value: "light", title: "Usar logo light" },
+          { label: "Dark", value: "dark", title: "Usar logo dark" },
+        ],
+      },
+      {
+        id: "hero",
+        label: "Hero",
+        selector: "#landing-hero",
+        path: "hero.variant",
+        currentValue: landing.hero?.variant || "default",
+        options: [
+          { label: "A", value: "default", title: "Hero A" },
+          { label: "B", value: "option-b", title: "Hero B" },
+        ],
+      },
+      ...(landing.financialAid
+        ? [
+            {
+              id: "financial-aid",
+              label: "Ayuda financiera",
+              selector: "#landing-financial-aid",
+              path: "financialAid.variant",
+              currentValue: landing.financialAid?.variant || "default",
+              options: [
+                {
+                  label: "A" as const,
+                  value: "default",
+                  title: "Financial Aid A",
+                },
+                {
+                  label: "B" as const,
+                  value: "option-b",
+                  title: "Financial Aid B",
+                },
+              ],
+            },
+          ]
+        : []),
+      ...(landing.cta
+        ? [
+            {
+              id: "cta",
+              label: "CTA",
+              selector: "#landing-cta",
+              path: "cta.variant",
+              currentValue: landing.cta?.variant || "default",
+              options: [
+                { label: "A" as const, value: "default", title: "CTA A" },
+                { label: "B" as const, value: "minimal", title: "CTA B" },
+              ],
+            },
+          ]
+        : []),
+    ],
+    [landing.cta, landing.financialAid, landing.hero?.variant, landing.logoMode],
+  );
+
+  useEffect(() => {
+    const updateVariantControlPositions = () => {
+      const previewContent = previewContentRef.current;
+
+      if (!previewContent) {
+        setVariantControlPositions([]);
+        return;
+      }
+
+      const nextPositions = variantControls
+        .map((control) => {
+          const element = previewContent.querySelector(control.selector);
+
+          if (!(element instanceof HTMLElement)) {
+            return null;
+          }
+
+          const previewRect = previewContent.getBoundingClientRect();
+          const elementRect = element.getBoundingClientRect();
+          const left =
+            control.id === "logo"
+              ? Math.max(
+                  16,
+                  Math.min(
+                    elementRect.left - previewRect.left + elementRect.width + 18,
+                    previewContent.clientWidth - 180,
+                  ),
+                )
+              : undefined;
+
+          return {
+            id: control.id,
+            top: Math.max(elementRect.top - previewRect.top, 16),
+            left,
+          };
+        })
+        .filter((position): position is VariantControlPosition =>
+          Boolean(position),
+        );
+
+      setVariantControlPositions(nextPositions);
+    };
+
+    updateVariantControlPositions();
+
+    const resizeObserver =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(updateVariantControlPositions);
+
+    if (previewContentRef.current && resizeObserver) {
+      resizeObserver.observe(previewContentRef.current);
+    }
+
+    window.addEventListener("resize", updateVariantControlPositions);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateVariantControlPositions);
+    };
+  }, [landing, previewHeight, previewWidth, variantControls]);
 
   const updateValueAtPath = (path: string, value: string | boolean) => {
     setLanding((prev) => {
@@ -262,6 +420,59 @@ export default function LandingEditor({
 
   const updateField = (path: string, value: string) => {
     updateValueAtPath(path, value);
+  };
+
+  const openImageEditor = (path: string, label: string, value: string) => {
+    setImageEditTarget({ path, label });
+    setImageUrlDraft(value);
+  };
+
+  const closeImageEditor = () => {
+    setImageEditTarget(null);
+    setImageUrlDraft("");
+  };
+
+  const saveImageUrl = () => {
+    if (!imageEditTarget) return;
+
+    updateField(imageEditTarget.path, imageUrlDraft.trim());
+    closeImageEditor();
+  };
+
+  const handlePreviewImageClick = (
+    event: MouseEvent<HTMLDivElement>,
+  ) => {
+    if (!liveEditEnabled) return;
+
+    const target = event.target as HTMLElement | null;
+    const interactiveTarget = target?.closest(
+      'a, button, input, textarea, select, [contenteditable="true"]',
+    );
+
+    if (interactiveTarget) {
+      return;
+    }
+
+    const imageTarget = target?.closest<HTMLElement>("[data-live-image-path]");
+
+    if (!imageTarget) {
+      return;
+    }
+
+    const path = imageTarget.dataset.liveImagePath;
+
+    if (!path) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    openImageEditor(
+      path,
+      imageTarget.dataset.liveImageLabel || "Imagen",
+      imageTarget.dataset.liveImageValue || "",
+    );
   };
 
   const liveEditConfig = {
@@ -757,50 +968,6 @@ ${accordionBootstrapScript}
 
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           <div className="space-y-3">
-            <EditorSection title="Estado" defaultOpen>
-              <SelectField
-                label="Estado de la landing"
-                value={landing.status || "draft"}
-                onChange={(value) => updateField("status", value)}
-                options={[
-                  { value: "draft", label: "Draft" },
-                  { value: "published", label: "Published" },
-                ]}
-              />
-
-              <p className="text-xs leading-5 text-gray-500 dark:text-slate-400">
-                El estado se guarda junto con el resto de cambios de la landing.
-              </p>
-            </EditorSection>
-
-            <EditorSection title="Logo" defaultOpen>
-              <div>
-                <span className="mb-2 block text-sm font-semibold text-gray-900 dark:text-slate-100">
-                  Versión del logo
-                </span>
-                <div className="inline-flex rounded-md border border-gray-300 bg-gray-100 p-1 dark:border-slate-700 dark:bg-slate-900">
-                  {(["light", "dark"] as const).map((mode) => {
-                    const isSelected = (landing.logoMode || "dark") === mode;
-
-                    return (
-                      <button
-                        key={mode}
-                        type="button"
-                        onClick={() => updateField("logoMode", mode)}
-                        className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-                          isSelected
-                            ? "bg-white text-gray-950 dark:bg-slate-800 dark:text-white"
-                            : "text-gray-600 hover:text-gray-950 dark:text-slate-300 dark:hover:text-white"
-                        }`}
-                      >
-                        {mode === "light" ? "Light" : "Dark"}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </EditorSection>
-
             <EditorSection title="Certificaciones">
               <div className="space-y-4">
                 <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
@@ -905,53 +1072,6 @@ ${accordionBootstrapScript}
 
             {(landing.hero || landing.title || landing.fullTitle) && (
               <EditorSection title="Hero" defaultOpen>
-                <Field
-                  label="Título corto"
-                  value={landing.title || ""}
-                  onChange={(value) => updateField("title", value)}
-                />
-
-                <Field
-                  label="Título completo"
-                  value={landing.fullTitle || ""}
-                  onChange={(value) => updateField("fullTitle", value)}
-                />
-
-                <Field
-                  label="Texto superior"
-                  value={landing.hero?.eyebrow || ""}
-                  onChange={(value) => updateField("hero.eyebrow", value)}
-                />
-
-                <Field
-                  label="Texto resaltado"
-                  value={landing.hero?.highlight || ""}
-                  onChange={(value) => updateField("hero.highlight", value)}
-                />
-
-                <Field
-                  label="Título principal"
-                  value={landing.hero?.title || ""}
-                  onChange={(value) => updateField("hero.title", value)}
-                />
-
-                <Field
-                  label="Descripción"
-                  value={landing.hero?.description || ""}
-                  onChange={(value) => updateField("hero.description", value)}
-                />
-
-                <Field
-                  label="Texto de apoyo"
-                  value={landing.hero?.supportText || ""}
-                  onChange={(value) => updateField("hero.supportText", value)}
-                />
-
-                <Field
-                  label="Modalidad"
-                  value={landing.hero?.modality || ""}
-                  onChange={(value) => updateField("hero.modality", value)}
-                />
 
                 <SelectField
                   label="Variante del hero"
@@ -1168,40 +1288,6 @@ ${accordionBootstrapScript}
                   />
                 </div>
 
-                <div className="grid gap-4 rounded-xl border border-slate-200 p-4 dark:border-white/10">
-                  <Field
-                    label="Etiqueta superior"
-                    value={landing.formSection?.eyebrow || ""}
-                    onChange={(value) =>
-                      updateField("formSection.eyebrow", value)
-                    }
-                  />
-
-                  <Field
-                    label="Titulo del componente"
-                    value={landing.formSection?.title || ""}
-                    onChange={(value) =>
-                      updateField("formSection.title", value)
-                    }
-                  />
-
-                  <Field
-                    label="Subtitulo"
-                    value={landing.formSection?.subtitle || ""}
-                    onChange={(value) =>
-                      updateField("formSection.subtitle", value)
-                    }
-                  />
-
-                  <TextareaField
-                    label="Parrafo de texto"
-                    value={landing.formSection?.description || ""}
-                    onChange={(value) =>
-                      updateField("formSection.description", value)
-                    }
-                  />
-                </div>
-
                 <Field
                   label="Script URL"
                   value={landing.form?.scriptUrl || ""}
@@ -1330,25 +1416,6 @@ ${accordionBootstrapScript}
 
             {landing.overview && (
               <EditorSection title="Seccion: Conoce el programa">
-                <Field
-                  label="Eyebrow"
-                  value={landing.overview?.eyebrow || ""}
-                  onChange={(value) => updateField("overview.eyebrow", value)}
-                />
-
-                <Field
-                  label="Titulo de seccion"
-                  value={landing.overview?.title || ""}
-                  onChange={(value) => updateField("overview.title", value)}
-                />
-
-                <TextareaField
-                  label="Descripcion"
-                  value={landing.overview?.description || ""}
-                  onChange={(value) =>
-                    updateField("overview.description", value)
-                  }
-                />
 
                 <Field
                   label="URL imagen de apoyo"
@@ -1394,37 +1461,7 @@ ${accordionBootstrapScript}
                         </button>
                       </div>
 
-                      <div className="space-y-3">
-                        <Field
-                          label="Titulo"
-                          value={typeof item === "string" ? "" : item?.title || ""}
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "overview.items",
-                              index,
-                              "title",
-                              value,
-                            )
-                          }
-                        />
-
-                        <TextareaField
-                          label="Parrafo"
-                          value={
-                            typeof item === "string"
-                              ? item
-                              : item?.description || item?.content || item?.text || ""
-                          }
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "overview.items",
-                              index,
-                              "description",
-                              value,
-                            )
-                          }
-                        />
-                      </div>
+                      <PreviewEditableHint />
                     </div>
                   ))}
                 </div>
@@ -1433,25 +1470,6 @@ ${accordionBootstrapScript}
 
             {landing.whyStudy && (
               <EditorSection title="Sección: ¿Por qué estudiar?">
-                <Field
-                  label="Eyebrow"
-                  value={landing.whyStudy?.eyebrow || ""}
-                  onChange={(value) => updateField("whyStudy.eyebrow", value)}
-                />
-
-                <Field
-                  label="Título de sección"
-                  value={landing.whyStudy?.title || ""}
-                  onChange={(value) => updateField("whyStudy.title", value)}
-                />
-
-                <TextareaField
-                  label="Descripción"
-                  value={landing.whyStudy?.description || ""}
-                  onChange={(value) =>
-                    updateField("whyStudy.description", value)
-                  }
-                />
 
                 <Field
                   label="URL imagen de apoyo"
@@ -1503,37 +1521,7 @@ ${accordionBootstrapScript}
                           </button>
                         </div>
 
-                        <div className="space-y-3">
-                          <Field
-                            label="Título"
-                            value={typeof item === "string" ? "" : item?.title || ""}
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "whyStudy.items",
-                                index,
-                                "title",
-                                value,
-                              )
-                            }
-                          />
-
-                          <TextareaField
-                            label="Contenido"
-                            value={
-                              typeof item === "string"
-                                ? item
-                                : item?.content || item?.description || ""
-                            }
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "whyStudy.items",
-                                index,
-                                "content",
-                                value,
-                              )
-                            }
-                          />
-                        </div>
+                        <PreviewEditableHint />
                       </div>
                     ),
                   )}
@@ -1543,25 +1531,6 @@ ${accordionBootstrapScript}
 
             {landing.curriculum && (
               <EditorSection title="Sección: Plan de estudios">
-                <Field
-                  label="Eyebrow"
-                  value={landing.curriculum?.eyebrow || ""}
-                  onChange={(value) => updateField("curriculum.eyebrow", value)}
-                />
-
-                <Field
-                  label="Título de sección"
-                  value={landing.curriculum?.title || ""}
-                  onChange={(value) => updateField("curriculum.title", value)}
-                />
-
-                <TextareaField
-                  label="Descripción"
-                  value={landing.curriculum?.description || ""}
-                  onChange={(value) =>
-                    updateField("curriculum.description", value)
-                  }
-                />
 
                 <Field
                   label="URL botón"
@@ -1571,14 +1540,6 @@ ${accordionBootstrapScript}
                     ""
                   }
                   onChange={(value) => updateField("curriculum.buttonUrl", value)}
-                />
-
-                <Field
-                  label="Texto botón"
-                  value={landing.curriculum?.buttonTitle || ""}
-                  onChange={(value) =>
-                    updateField("curriculum.buttonTitle", value)
-                  }
                 />
 
                 <div className="space-y-4">
@@ -1625,35 +1586,6 @@ ${accordionBootstrapScript}
                       </div>
 
                       <div className="space-y-3">
-                        <Field
-                          label="Título"
-                          value={typeof item === "string" ? "" : item?.title || ""}
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "curriculum.items",
-                              index,
-                              "title",
-                              value,
-                            )
-                          }
-                        />
-
-                        <TextareaField
-                          label="Contenido"
-                          value={
-                            typeof item === "string"
-                              ? item
-                              : item?.content || item?.description || ""
-                          }
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "curriculum.items",
-                              index,
-                              "content",
-                              value,
-                            )
-                          }
-                        />
 
                         <Field
                           label="URL"
@@ -1676,21 +1608,6 @@ ${accordionBootstrapScript}
 
             {landing.graduateProfile && (
               <EditorSection title="Sección: Perfil del egresado">
-                <Field
-                  label="Eyebrow"
-                  value={landing.graduateProfile?.eyebrow || ""}
-                  onChange={(value) =>
-                    updateField("graduateProfile.eyebrow", value)
-                  }
-                />
-
-                <Field
-                  label="Título de sección"
-                  value={landing.graduateProfile?.title || ""}
-                  onChange={(value) =>
-                    updateField("graduateProfile.title", value)
-                  }
-                />
 
                 <Field
                   label="URL imagen de apoyo"
@@ -1743,37 +1660,7 @@ ${accordionBootstrapScript}
                         </button>
                       </div>
 
-                      <div className="space-y-3">
-                        <Field
-                          label="Título"
-                          value={typeof item === "string" ? "" : item?.title || ""}
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "graduateProfile.items",
-                              index,
-                              "title",
-                              value,
-                            )
-                          }
-                        />
-
-                        <TextareaField
-                          label="Contenido"
-                          value={
-                            typeof item === "string"
-                              ? item
-                              : item?.content || item?.description || ""
-                          }
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "graduateProfile.items",
-                              index,
-                              "content",
-                              value,
-                            )
-                          }
-                        />
-                      </div>
+                      <PreviewEditableHint />
                     </div>
                   ))}
                 </div>
@@ -1782,21 +1669,6 @@ ${accordionBootstrapScript}
 
             {landing.supportSection && (
               <EditorSection title="Sección: Apoyamos tu carrera">
-                <Field
-                  label="Eyebrow"
-                  value={landing.supportSection?.eyebrow || ""}
-                  onChange={(value) =>
-                    updateField("supportSection.eyebrow", value)
-                  }
-                />
-
-                <Field
-                  label="Título de sección"
-                  value={landing.supportSection?.title || ""}
-                  onChange={(value) =>
-                    updateField("supportSection.title", value)
-                  }
-                />
 
                 <Field
                   label="URL del video"
@@ -1852,35 +1724,6 @@ ${accordionBootstrapScript}
                         </div>
 
                         <div className="space-y-3">
-                          <Field
-                            label="Título"
-                            value={typeof item === "string" ? "" : item?.title || ""}
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "supportSection.items",
-                                index,
-                                "title",
-                                value,
-                              )
-                            }
-                          />
-
-                          <TextareaField
-                            label="Contenido"
-                            value={
-                              typeof item === "string"
-                                ? item
-                                : item?.text || item?.description || ""
-                            }
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "supportSection.items",
-                                index,
-                                "text",
-                                value,
-                              )
-                            }
-                          />
 
                           <Field
                             label="URL icono"
@@ -1904,17 +1747,6 @@ ${accordionBootstrapScript}
 
             {landing.benefits && (
               <EditorSection title="Sección: Beneficios">
-                <Field
-                  label="Eyebrow"
-                  value={landing.benefits?.eyebrow || ""}
-                  onChange={(value) => updateField("benefits.eyebrow", value)}
-                />
-
-                <Field
-                  label="Título de sección"
-                  value={landing.benefits?.title || ""}
-                  onChange={(value) => updateField("benefits.title", value)}
-                />
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -1962,35 +1794,6 @@ ${accordionBootstrapScript}
                         </div>
 
                         <div className="space-y-3">
-                          <Field
-                            label="Título"
-                            value={typeof item === "string" ? "" : item?.title || ""}
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "benefits.items",
-                                index,
-                                "title",
-                                value,
-                              )
-                            }
-                          />
-
-                          <TextareaField
-                            label="Contenido"
-                            value={
-                              typeof item === "string"
-                                ? item
-                                : item?.text || item?.description || ""
-                            }
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "benefits.items",
-                                index,
-                                "text",
-                                value,
-                              )
-                            }
-                          />
 
                           <Field
                             label="URL icono"
@@ -2014,23 +1817,6 @@ ${accordionBootstrapScript}
 
             {landing.admissions && (
               <EditorSection title="Sección: Admisiones">
-                <Field
-                  label="Eyebrow"
-                  value={landing.admissions?.eyebrow || ""}
-                  onChange={(value) => updateField("admissions.eyebrow", value)}
-                />
-
-                <Field
-                  label="Título"
-                  value={landing.admissions?.title || ""}
-                  onChange={(value) => updateField("admissions.title", value)}
-                />
-
-                <TextareaField
-                  label="Descripción"
-                  value={landing.admissions?.description || ""}
-                  onChange={(value) => updateField("admissions.description", value)}
-                />
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -2076,30 +1862,6 @@ ${accordionBootstrapScript}
                       </div>
 
                       <div className="space-y-3">
-                        <Field
-                          label="Título"
-                          value={typeof item === "string" ? "" : item?.title || ""}
-                          onChange={(value) =>
-                            updateArrayItem("admissions.items", index, "title", value)
-                          }
-                        />
-
-                        <TextareaField
-                          label="Contenido"
-                          value={
-                            typeof item === "string"
-                              ? item
-                              : item?.description || item?.content || item?.text || ""
-                          }
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "admissions.items",
-                              index,
-                              "description",
-                              value,
-                            )
-                          }
-                        />
 
                         <Field
                           label="URL"
@@ -2154,28 +1916,6 @@ ${accordionBootstrapScript}
                   ]}
                 />
 
-                <Field
-                  label="Eyebrow"
-                  value={landing.financialAid?.eyebrow || ""}
-                  onChange={(value) =>
-                    updateField("financialAid.eyebrow", value)
-                  }
-                />
-
-                <Field
-                  label="Titulo"
-                  value={landing.financialAid?.title || ""}
-                  onChange={(value) => updateField("financialAid.title", value)}
-                />
-
-                <TextareaField
-                  label="Descripcion"
-                  value={landing.financialAid?.description || ""}
-                  onChange={(value) =>
-                    updateField("financialAid.description", value)
-                  }
-                />
-
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -2224,35 +1964,6 @@ ${accordionBootstrapScript}
                         </div>
 
                         <div className="space-y-3">
-                          <Field
-                            label="Titulo"
-                            value={typeof item === "string" ? "" : item?.title || ""}
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "financialAid.items",
-                                index,
-                                "title",
-                                value,
-                              )
-                            }
-                          />
-
-                          <TextareaField
-                            label="Contenido"
-                            value={
-                              typeof item === "string"
-                                ? item
-                                : item?.description || item?.content || item?.text || ""
-                            }
-                            onChange={(value) =>
-                              updateArrayItem(
-                                "financialAid.items",
-                                index,
-                                "description",
-                                value,
-                              )
-                            }
-                          />
 
                           <Field
                             label="URL"
@@ -2341,18 +2052,6 @@ ${accordionBootstrapScript}
                 />
 
                 <Field
-                  label="Título CTA"
-                  value={landing.cta?.title || ""}
-                  onChange={(value) => updateField("cta.title", value)}
-                />
-
-                <Field
-                  label="Texto del botón"
-                  value={landing.cta?.button || ""}
-                  onChange={(value) => updateField("cta.button", value)}
-                />
-
-                <Field
                   label="URL imagen de fondo"
                   value={landing.cta?.image || ""}
                   onChange={(value) => updateField("cta.image", value)}
@@ -2424,12 +2123,14 @@ ${accordionBootstrapScript}
             value={previewWidth}
             onChange={setPreviewWidth}
           />
-          <PreviewControl
-            label="Alto"
-            min={480}
-            max={1200}
-            value={previewHeight}
-            onChange={setPreviewHeight}
+          <ToolbarSelect
+            label="Estado"
+            value={landing.status || "draft"}
+            onChange={(value) => updateField("status", value)}
+            options={[
+              { value: "draft", label: "Draft" },
+              { value: "published", label: "Published" },
+            ]}
           />
           <button
             type="button"
@@ -2515,7 +2216,30 @@ ${accordionBootstrapScript}
               maxWidth: "100%",
             }}
           >
-            <div ref={previewContentRef}>
+            <div
+              ref={previewContentRef}
+              className="relative"
+              onClick={handlePreviewImageClick}
+            >
+              {variantControls.map((control) => {
+                const position = variantControlPositions.find(
+                  (item) => item.id === control.id,
+                );
+
+                if (!position) {
+                  return null;
+                }
+
+                return (
+                  <LandingVariantControl
+                    key={control.id}
+                    control={control}
+                    top={position.top}
+                    left={position.left}
+                    onChange={(value) => updateField(control.path, value)}
+                  />
+                );
+              })}
               {renderLandingTemplate({
                 brand,
                 landing,
@@ -2525,7 +2249,195 @@ ${accordionBootstrapScript}
           </div>
         </div>
       </div>
+      {imageEditTarget ? (
+        <ImageUrlModal
+          target={imageEditTarget}
+          value={imageUrlDraft}
+          onChange={setImageUrlDraft}
+          onClose={closeImageEditor}
+          onSave={saveImageUrl}
+        />
+      ) : null}
     </div>
+  );
+}
+
+function ImageUrlModal({
+  target,
+  value,
+  onChange,
+  onClose,
+  onSave,
+}: {
+  target: ImageEditTarget;
+  value: string;
+  onChange: (value: string) => void;
+  onClose: () => void;
+  onSave: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/50 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Editar ${target.label}`}
+    >
+      <div className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
+              Imagen editable
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+              {target.label}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Agrega una URL de imagen o reemplaza la actual. El cambio se vera
+              en el preview antes de guardar la landing.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Cerrar modal"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <label className="mt-6 grid gap-2">
+          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+            URL de la imagen
+          </span>
+          <input
+            value={value}
+            onChange={(event) => onChange(event.target.value)}
+            placeholder="https://..."
+            className="admin-input h-12 rounded-xl"
+            autoFocus
+          />
+        </label>
+
+        {value ? (
+          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.03]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={value}
+              alt="Preview de imagen"
+              className="max-h-64 w-full object-cover"
+            />
+          </div>
+        ) : null}
+
+        <div className="mt-6 flex flex-wrap justify-end gap-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={onSave}
+            className="inline-flex items-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(62,57,137,0.25)] transition hover:scale-[1.02]"
+          >
+            <ImagePlus className="h-4 w-4" />
+            Guardar imagen
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LandingVariantControl({
+  control,
+  top,
+  left,
+  onChange,
+}: {
+  control: VariantControlConfig;
+  top: number;
+  left?: number;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div
+      className="absolute right-4 z-40 flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/92 px-2 py-2 text-slate-950 shadow-[0_16px_38px_rgba(15,23,42,0.16)] backdrop-blur-xl"
+      style={{
+        top,
+        left,
+        right: typeof left === "number" ? "auto" : 16,
+      }}
+      aria-label={`Cambiar variante de ${control.label}`}
+    >
+      <span className="hidden px-2 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 lg:inline">
+        {control.label}
+      </span>
+      <div className="flex rounded-full bg-slate-100 p-1">
+        {control.options.map((option) => {
+          const active = control.currentValue === option.value;
+
+          return (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => onChange(option.value)}
+              title={option.title}
+              className={`flex h-8 min-w-8 items-center justify-center rounded-full px-3 text-xs font-black transition ${
+                active
+                  ? "bg-[var(--bunji-primary)] text-white shadow-[0_10px_22px_rgba(62,57,137,0.28)]"
+                  : "text-slate-600 hover:bg-white hover:text-slate-950"
+              }`}
+            >
+              {option.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function PreviewEditableHint() {
+  return (
+    <p className="rounded-xl border border-dashed border-slate-200 bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400">
+      Edita el texto directamente en la previsualizacion.
+    </p>
+  );
+}
+
+function ToolbarSelect({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  options: Array<{ value: string; label: string }>;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="grid gap-1">
+      <span className="text-xs font-semibold text-gray-700 dark:text-slate-200">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="h-8 rounded-lg border border-gray-300 bg-white px-3 text-xs font-medium text-gray-900 outline-none transition focus:border-[var(--bunji-primary)] focus:ring-2 focus:ring-[var(--bunji-primary)]/20 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 

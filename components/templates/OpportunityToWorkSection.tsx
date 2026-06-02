@@ -10,6 +10,9 @@ import {
   landingSectionKickerClass,
   landingSectionTitleClass,
 } from "./defaultLanding/classes";
+import EditableImageSlot, {
+  editableImageClass,
+} from "./defaultLanding/EditableImageSlot";
 
 type Props = {
   opportunityToWork?: Landing["opportunityToWork"];
@@ -99,9 +102,20 @@ export default function OpportunityToWorkSection({
               <img
                 src={image}
                 alt={title || "Career opportunities"}
-                className="h-full min-h-[320px] w-full object-cover lg:min-h-[520px]"
+                data-live-image-path={liveEdit?.enabled ? `${basePath}.image` : undefined}
+                data-live-image-label="Imagen de oportunidades"
+                data-live-image-value={image}
+                title={liveEdit?.enabled ? "Click para reemplazar esta imagen" : undefined}
+                className={`h-full min-h-[320px] w-full object-cover lg:min-h-[520px] ${
+                  liveEdit?.enabled ? editableImageClass : ""
+                }`}
               />
             </div>
+          ) : liveEdit?.enabled ? (
+            <EditableImageSlot
+              path={`${basePath}.image`}
+              label="Imagen de oportunidades"
+            />
           ) : null}
         </div>
 

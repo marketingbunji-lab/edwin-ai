@@ -209,6 +209,8 @@ export type LandingHero = {
 export type Landing = {
   slug: string;
   brand: string;
+  sourceProgramId?: string;
+  sourceProgramSlug?: string;
   language?: LandingLanguage;
   title: string;
   fullTitle: string;
@@ -534,7 +536,7 @@ function resolveRelatedProgramImage(
     return currentImage;
   }
 
-  const brandFolder = getProgramLandingFolder(brandSlug);
+  const brandFolder = getProgramDataFolder(brandSlug);
 
   if (!fs.existsSync(brandFolder)) {
     return "";
@@ -1481,24 +1483,39 @@ export function getBrandBySlug(slug: string): Brand | null {
   return normalizeBrand(JSON.parse(content) as Brand);
 }
 
-export function getLandingsByBrand(brandSlug: string): Landing[] {
-  const brandFolder = getProgramLandingFolder(brandSlug);
-
+function readLandingFilesFromFolder(brandFolder: string): Landing[] {
   if (!fs.existsSync(brandFolder)) return [];
 
-  const files = fs
+  return fs
     .readdirSync(brandFolder)
-    .filter((file) => file.endsWith(".json") && file !== programsRegistryFile);
+    .filter((file) => file.endsWith(".json") && file !== programsRegistryFile)
+    .map((file) => {
+      const filePath = path.join(brandFolder, file);
+      const content = fs.readFileSync(filePath, "utf8");
+      return normalizeLandingSchema(JSON.parse(content) as Landing);
+    });
+}
 
-  return files.map((file) => {
-    const filePath = path.join(brandFolder, file);
-    const content = fs.readFileSync(filePath, "utf8");
-    return normalizeLandingSchema(JSON.parse(content) as Landing);
-  });
+export function getProgramDataByBrand(brandSlug: string): Landing[] {
+  return readLandingFilesFromFolder(getProgramDataFolder(brandSlug));
+}
+
+export function getEditableLandingsByBrand(brandSlug: string): Landing[] {
+  return readLandingFilesFromFolder(getEditableLandingFolder(brandSlug));
+}
+
+export function getLandingsByBrand(brandSlug: string): Landing[] {
+  const editableLandings = getEditableLandingsByBrand(brandSlug);
+  const editableSlugs = new Set(editableLandings.map((landing) => landing.slug));
+  const legacyProgramLandings = getProgramDataByBrand(brandSlug).filter(
+    (landing) => !editableSlugs.has(landing.slug),
+  );
+
+  return [...editableLandings, ...legacyProgramLandings];
 }
 
 export function getProgramsByBrand(brandSlug: string): Program[] {
-  const inferredPrograms = getLandingsByBrand(brandSlug).map((landing) =>
+  const inferredPrograms = getProgramDataByBrand(brandSlug).map((landing) =>
     landingToProgram(landing),
   );
   const filePath = path.join(programsDir, brandSlug, programsRegistryFile);
@@ -1521,7 +1538,21 @@ export function getLandingBySlug(
   brandSlug: string,
   landingSlug: string
 ): Landing | null {
-  const filePath = getProgramLandingPath(brandSlug, landingSlug);
+  const filePath = getEditableLandingPath(brandSlug, landingSlug);
+
+  if (!fs.existsSync(filePath)) {
+    return getProgramDataBySlug(brandSlug, landingSlug);
+  }
+
+  const content = fs.readFileSync(filePath, "utf8");
+  return normalizeLandingSchema(JSON.parse(content) as Landing);
+}
+
+export function getProgramDataBySlug(
+  brandSlug: string,
+  programSlug: string,
+): Landing | null {
+  const filePath = getProgramDataPath(brandSlug, programSlug);
 
   if (!fs.existsSync(filePath)) return null;
 
@@ -1529,23 +1560,19 @@ export function getLandingBySlug(
   return normalizeLandingSchema(JSON.parse(content) as Landing);
 }
 
-function getProgramLandingFolder(brandSlug: string) {
-  const programsFolder = path.join(programsDir, brandSlug);
+function getProgramDataFolder(brandSlug: string) {
+  return path.join(programsDir, brandSlug);
+}
 
-  if (fs.existsSync(programsFolder)) {
-    return programsFolder;
-  }
-
+function getEditableLandingFolder(brandSlug: string) {
   return path.join(legacyLandingsDir, brandSlug);
 }
 
-function getProgramLandingPath(brandSlug: string, landingSlug: string) {
-  const programsPath = path.join(programsDir, brandSlug, `${landingSlug}.json`);
+function getProgramDataPath(brandSlug: string, programSlug: string) {
+  return path.join(programsDir, brandSlug, `${programSlug}.json`);
+}
 
-  if (fs.existsSync(programsPath)) {
-    return programsPath;
-  }
-
+function getEditableLandingPath(brandSlug: string, landingSlug: string) {
   return path.join(legacyLandingsDir, brandSlug, `${landingSlug}.json`);
 }
 

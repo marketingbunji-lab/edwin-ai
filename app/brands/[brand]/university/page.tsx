@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { getDashboardTranslator } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
-import { getBrandBySlug, getLandingsByBrand, getProgramsByBrand } from "@/lib/data";
+import { getBrandBySlug, getEditableLandingsByBrand, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 import {
   getUniversityProfileByBrand,
@@ -46,7 +46,7 @@ export default async function BrandUniversityContentBasePage({
   const profile = getUniversityProfileByBrand(brand.slug);
   const hasProfile = hasUniversityProfileContent(profile);
   const programs = getProgramsByBrand(brand.slug);
-  const landingPrograms = getLandingsByBrand(brand.slug);
+  const landingPrograms = getEditableLandingsByBrand(brand.slug);
   const uniqueProgramTypes = Array.from(
     new Set(
       landingPrograms

@@ -72,7 +72,15 @@ export default function DefaultLandingHeroSectionB({
 
   return (
     <section
-      className="relative overflow-hidden text-[var(--landing-primary-text)]"
+      data-live-image-path={liveEdit?.enabled && backgroundImage ? "hero.backgroundImage" : undefined}
+      data-live-image-label="Imagen de fondo del hero"
+      data-live-image-value={backgroundImage}
+      title={liveEdit?.enabled && backgroundImage ? "Click para reemplazar esta imagen" : undefined}
+      className={`relative overflow-hidden text-[var(--landing-primary-text)] ${
+        liveEdit?.enabled && backgroundImage
+          ? "cursor-pointer outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-[-8px]"
+          : ""
+      }`}
       style={{ background: heroBackground }}
     >
       <div className={`${landingContainerClass} ${heroSpacingClass}`}>
@@ -86,7 +94,12 @@ export default function DefaultLandingHeroSectionB({
                 <img
                   src={logo}
                   alt={brandName}
-                  className="h-auto max-w-full object-contain object-left"
+                  data-landing-logo-mode-control={liveEdit?.enabled ? "true" : undefined}
+                  className={`h-auto max-w-full rounded-lg object-contain object-left ${
+                    liveEdit?.enabled
+                      ? "outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-4 transition hover:bg-[var(--bunji-primary,#6d5dfc)]/10"
+                      : ""
+                  }`}
                   style={{ width: "clamp(180px, 24vw, 340px)" }}
                 />
               ) : null}

@@ -1,6 +1,6 @@
 ﻿import { notFound } from "next/navigation";
 import ProgramDataEditor from "@/components/programs/ProgramDataEditor";
-import { getBrandBySlug, getLandingBySlug } from "@/lib/data";
+import { getBrandBySlug, getProgramDataBySlug } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 
@@ -20,7 +20,7 @@ export default async function BrandProgramEditPage({ params }: Props) {
     notFound();
   }
 
-  const program = getLandingBySlug(brand.slug, programSlug);
+  const program = getProgramDataBySlug(brand.slug, programSlug);
 
   if (!program) {
     notFound();
@@ -34,4 +34,3 @@ export default async function BrandProgramEditPage({ params }: Props) {
     </main>
   );
 }
-

@@ -53,15 +53,26 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
     <main className="admin-page">
       <div className="w-full">
         <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <Link
-              href={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}`}
-              className="admin-button-secondary admin-button-icon"
-              aria-label="Volver a Programs Assets"
-              title="Volver a Programs Assets"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+          <div className="relative flex flex-wrap items-center justify-between gap-4">
+            <div className="flex min-w-0 items-center gap-4">
+              <Link
+                href={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}`}
+                className="admin-button-secondary admin-button-icon shrink-0"
+                aria-label="Volver a Programs Assets"
+                title="Volver a Programs Assets"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+
+              <div className="min-w-0">
+                <p className="admin-eyebrow truncate">
+                  {brand.shortName || brand.name}
+                </p>
+                <h1 className="mt-1 truncate text-2xl font-semibold leading-tight text-gray-950 dark:text-slate-50 md:text-3xl">
+                  {title}
+                </h1>
+              </div>
+            </div>
 
             <Link
               href={
@@ -77,21 +88,11 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <p className="text-sm text-gray-500 dark:text-slate-400">
-              {brand.name}
-            </p>
-            <h1 className="text-3xl font-semibold text-gray-950 dark:text-slate-50">
-              {title}
-            </h1>
-            <p className="mt-2 max-w-2xl text-sm text-gray-600 dark:text-slate-400">
-              {isAll
-                ? "Vista completa de todos los assets asociados a programas."
-                : "Assets visuales asociados a este programa."}
-            </p>
-          </div>
-        </div>
+        <p className="mb-8 max-w-2xl text-sm text-gray-600 dark:text-slate-400">
+          {isAll
+            ? "Vista completa de todos los assets asociados a programas."
+            : "Assets visuales asociados a este programa."}
+        </p>
 
         {records.length === 0 ? (
           <section className="border border-dashed border-gray-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-950">
@@ -108,7 +109,7 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
                     ? `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/new`
                     : `/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}/new`
                 }
-                className="inline-flex items-center gap-2 bg-black px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 dark:bg-[var(--bunji-primary)]"
+                className="admin-button-primary"
               >
                 <Plus className="h-4 w-4" />
                 Crear primer asset
@@ -160,4 +161,3 @@ function slugify(text: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
-

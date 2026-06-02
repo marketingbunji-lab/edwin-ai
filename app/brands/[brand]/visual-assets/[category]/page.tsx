@@ -44,9 +44,9 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
       <main className="admin-page">
         <div className="admin-page-inner">
           <Header
-            brandName={brand.name}
+            brandName={brand.shortName || brand.name}
             brandSlug={brand.slug}
-            title={category.title}
+            title="Programs Assets"
             description={category.description}
             actionHref={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/new`}
           />
@@ -154,7 +154,7 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
     <main className="admin-page">
       <div className="admin-page-inner">
         <Header
-          brandName={brand.name}
+          brandName={brand.shortName || brand.name}
           brandSlug={brand.slug}
           title={category.title}
           description={category.description}
@@ -194,16 +194,27 @@ function Header({
 }) {
   return (
     <>
-      <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <Link
-            href={`/admin/brands/${brandSlug}/visual-assets`}
-            className="admin-button-secondary admin-button-icon"
-            aria-label="Volver a visual assets"
-            title="Volver a visual assets"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
+      <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white/90 p-4 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.30),transparent_62%)] before:content-[''] dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_20px_50px_rgba(2,6,23,0.28)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.07),transparent_62%)]">
+        <div className="relative flex flex-wrap items-center justify-between gap-3">
+          <div className="flex min-w-0 items-center gap-3">
+            <Link
+              href={`/admin/brands/${brandSlug}/visual-assets`}
+              className="admin-button-secondary admin-button-icon"
+              aria-label="Volver a visual assets"
+              title="Volver a visual assets"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+
+            <div className="min-w-0">
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+                {brandName}
+              </p>
+              <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                {title}
+              </h1>
+            </div>
+          </div>
 
           {actionHref ? (
             <Link
@@ -217,17 +228,9 @@ function Header({
         </div>
       </div>
 
-      <div className="mb-8">
-        <p className="admin-eyebrow">
-          {brandName}
-        </p>
-        <h1 className="admin-title">
-          {title}
-        </h1>
-        <p className="admin-muted mt-2 max-w-2xl">
-          {description}
-        </p>
-      </div>
+      <p className="admin-muted mb-8 max-w-2xl">
+        {description}
+      </p>
     </>
   );
 }
@@ -261,4 +264,3 @@ function EmptyState({
     </section>
   );
 }
-

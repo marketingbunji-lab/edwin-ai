@@ -9,7 +9,7 @@ type Params = Promise<{
 }>;
 
 const programsDir = path.join(process.cwd(), "data", "programs");
-const legacyLandingsDir = path.join(process.cwd(), "data", "landings");
+const landingsDir = path.join(process.cwd(), "data", "landings");
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -31,22 +31,17 @@ function getSafeLandingPath(rootDir: string, brand: string, landing: string) {
   return filePath;
 }
 
-function getLandingPath(brand: string, landing: string) {
+function getEditableLandingPath(brand: string, landing: string) {
   if (!isSafeSlug(brand) || !isSafeSlug(landing)) {
     return null;
   }
 
+  return getSafeLandingPath(landingsDir, brand, landing);
+}
+
+function legacyProgramLandingExists(brand: string, landing: string) {
   const programsPath = getSafeLandingPath(programsDir, brand, landing);
-
-  if (!programsPath) {
-    return null;
-  }
-
-  if (fs.existsSync(programsPath)) {
-    return programsPath;
-  }
-
-  return getSafeLandingPath(legacyLandingsDir, brand, landing);
+  return Boolean(programsPath && fs.existsSync(programsPath));
 }
 
 function isValidLandingPayload(
@@ -75,7 +70,7 @@ function isValidLandingPayload(
 export async function PUT(req: NextRequest, { params }: { params: Params }) {
   try {
     const { brand, landing } = await params;
-    const filePath = getLandingPath(brand, landing);
+    const filePath = getEditableLandingPath(brand, landing);
 
     if (!filePath) {
       return NextResponse.json(
@@ -84,7 +79,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       );
     }
 
-    if (!fs.existsSync(filePath)) {
+    if (!fs.existsSync(filePath) && !legacyProgramLandingExists(brand, landing)) {
       return NextResponse.json(
         { ok: false, error: "Landing no encontrada" },
         { status: 404 },
@@ -98,6 +93,12 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
         { ok: false, error: "Datos de landing inválidos" },
         { status: 400 },
       );
+    }
+
+    const brandFolder = path.dirname(filePath);
+
+    if (!fs.existsSync(brandFolder)) {
+      fs.mkdirSync(brandFolder, { recursive: true });
     }
 
     fs.writeFileSync(
@@ -118,7 +119,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
 export async function DELETE(_: NextRequest, { params }: { params: Params }) {
   try {
     const { brand, landing } = await params;
-    const filePath = getLandingPath(brand, landing);
+    const filePath = getEditableLandingPath(brand, landing);
 
     if (!filePath) {
       return NextResponse.json(

@@ -33,11 +33,11 @@ export async function POST(_: Request, { params }: { params: Params }) {
   try {
     const { brand, landing } = await params;
 
-    const brandFolder = path.join(process.cwd(), "data", "programs", brand);
-    const legacyBrandFolder = path.join(process.cwd(), "data", "landings", brand);
+    const programBrandFolder = path.join(process.cwd(), "data", "programs", brand);
+    const brandFolder = path.join(process.cwd(), "data", "landings", brand);
     const sourcePath = fs.existsSync(path.join(brandFolder, `${landing}.json`))
       ? path.join(brandFolder, `${landing}.json`)
-      : path.join(legacyBrandFolder, `${landing}.json`);
+      : path.join(programBrandFolder, `${landing}.json`);
 
     if (!fs.existsSync(sourcePath)) {
       return NextResponse.json(
@@ -57,6 +57,8 @@ export async function POST(_: Request, { params }: { params: Params }) {
       title,
       fullTitle,
       sourceWebsite: `/${brand}/${nextSlug}`,
+      sourceProgramId: source.sourceProgramId || source.sourceProgramSlug || landing,
+      sourceProgramSlug: source.sourceProgramSlug || source.sourceProgramId || landing,
       status: "draft",
       updatedAt: new Date().toISOString().slice(0, 10),
     };

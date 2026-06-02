@@ -736,7 +736,12 @@ export default function DefaultLanding({
                 <img
                   src={heroLogo}
                   alt={brandName}
-                  className="h-12 w-auto max-w-[220px] object-contain object-left sm:h-[60px] sm:max-w-[260px] lg:h-[84px] lg:max-w-[340px]"
+                  data-landing-logo-mode-control={liveEdit?.enabled ? "true" : undefined}
+                  className={`h-12 w-auto max-w-[220px] rounded-lg object-contain object-left sm:h-[60px] sm:max-w-[260px] lg:h-[84px] lg:max-w-[340px] ${
+                    liveEdit?.enabled
+                      ? "outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-4 transition hover:bg-[var(--bunji-primary,#6d5dfc)]/10"
+                      : ""
+                  }`}
                 />
               ) : null}
 
@@ -792,6 +797,7 @@ export default function DefaultLanding({
         </>
       ) : null}
 
+      <div id="landing-hero" className="scroll-mt-24">
       {heroVariant === "option-b" ? (
         <DefaultLandingHeroSectionB
         menuItems={heroMenuItems}
@@ -863,6 +869,7 @@ export default function DefaultLanding({
           showForm={!hasStandaloneFormSection}
         />
       )}
+      </div>
 
       {hasStandaloneFormSection ? (
         <DefaultLandingFormSection
@@ -1085,16 +1092,18 @@ export default function DefaultLanding({
         </div>
       ) : null}
 
-      <DefaultLandingCtaSection
-        title={ctaTitle}
-        description={ctaDescription}
-        button={ctaButton}
-        secondaryButton={ctaSecondaryButton}
-        image={ctaImage}
-        variant={ctaVariant}
-        hasForm={hasForm && hasCta}
-        liveEdit={liveEdit}
-      />
+      <div id="landing-cta" className="scroll-mt-24">
+        <DefaultLandingCtaSection
+          title={ctaTitle}
+          description={ctaDescription}
+          button={ctaButton}
+          secondaryButton={ctaSecondaryButton}
+          image={ctaImage}
+          variant={ctaVariant}
+          hasForm={hasForm && hasCta}
+          liveEdit={liveEdit}
+        />
+      </div>
 
       {hasCampusesSection ? (
         <div id="landing-campuses" className="scroll-mt-24">
