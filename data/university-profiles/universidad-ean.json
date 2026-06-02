@@ -1,0 +1,333 @@
+{
+  "institutionalEssence": {
+    "whatItIs": "La Universidad EAN es una institucion de educacion superior colombiana con una identidad historicamente ligada al emprendimiento, la innovacion, la sostenibilidad y la formacion integral.",
+    "whatItDoes": "Forma profesionales, lideres y emprendedores capaces de crear, transformar y fortalecer organizaciones con impacto economico, social y ambiental positivo.",
+    "whoItServes": "Sirve a estudiantes, emprendedores, empresas, organizaciones publicas y privadas, egresados y comunidades que buscan desarrollar capacidades para emprender, innovar y aportar al desarrollo sostenible."
+  },
+  "mission": {
+    "statement": "Contribuir a la formacion integral de las personas y estimular su aptitud emprendedora, para que su accion aporte al desarrollo economico y social de los pueblos.",
+    "keyFocusAreas": [
+      "Formacion integral",
+      "Espiritu emprendedor",
+      "Emprendimiento sostenible",
+      "Innovacion y liderazgo",
+      "Desarrollo economico y social",
+      "Relacion con empresas, territorios y comunidades"
+    ]
+  },
+  "vision": {
+    "statement": "Ser referente en formacion e investigacion en emprendimiento sostenible mediante una entrega innovadora del conocimiento.",
+    "targetYear": "2027",
+    "aspirations": [
+      "Consolidar el emprendimiento sostenible como sello institucional",
+      "Fortalecer la investigacion aplicada y la transferencia de conocimiento",
+      "Impulsar modelos educativos flexibles, pertinentes e innovadores",
+      "Aumentar el impacto positivo en organizaciones, territorios y comunidades",
+      "Promover liderazgo, sostenibilidad y prosperidad en Colombia y la region"
+    ]
+  },
+  "coreValues": [
+    {
+      "title": "Emprendimiento",
+      "description": "Impulsa la capacidad de identificar oportunidades, crear soluciones y transformar ideas en iniciativas con valor."
+    },
+    {
+      "title": "Sostenibilidad",
+      "description": "Orienta las decisiones institucionales hacia el equilibrio entre prosperidad economica, bienestar social y cuidado ambiental."
+    },
+    {
+      "title": "Innovacion",
+      "description": "Promueve nuevas formas de aprender, investigar, emprender y resolver problemas reales."
+    },
+    {
+      "title": "Liderazgo",
+      "description": "Forma personas capaces de movilizar equipos, organizaciones y comunidades hacia objetivos de impacto."
+    },
+    {
+      "title": "Vision global",
+      "description": "Conecta el aprendizaje con retos internacionales, diversidad cultural y oportunidades de colaboracion."
+    },
+    {
+      "title": "Diversidad e inclusion",
+      "description": "Reconoce las diferencias como fuente de aprendizaje, creatividad y valor compartido."
+    }
+  ],
+  "guidingPrinciples": [
+    {
+      "title": "Calidad con pertinencia",
+      "description": "Desarrollar capacidades utiles para los retos cambiantes de las personas, las organizaciones y la sociedad."
+    },
+    {
+      "title": "Aprendizaje orientado a la accion",
+      "description": "Conectar teoria, practica, investigacion y proyectos aplicados para transformar contextos reales."
+    },
+    {
+      "title": "Emprendimiento sostenible",
+      "description": "Diseñar iniciativas que generen valor economico mientras cuidan la vida, el entorno y las relaciones sociales."
+    },
+    {
+      "title": "Inteligencia colectiva",
+      "description": "Resolver problemas desde la colaboracion, la transdisciplinariedad y la participacion de multiples actores."
+    },
+    {
+      "title": "Mejora continua",
+      "description": "Gestionar procesos academicos e institucionales con enfoque de evaluacion, aprendizaje y evolucion permanente."
+    }
+  ],
+  "institutionalPhilosophy": {
+    "educationalModel": "Modelo educativo centrado en la formacion integral, el emprendimiento sostenible, la innovacion y el desarrollo de capacidades para actuar en contextos reales.",
+    "learningApproach": "Aprendizaje activo, aplicado y colaborativo, con proyectos, retos, relacion con organizaciones y uso de conocimiento para crear soluciones.",
+    "studentCenteredFocus": "Acompana al estudiante en la construccion de su proyecto personal, profesional y emprendedor, fortaleciendo autonomia, criterio, liderazgo y capacidad de impacto."
+  },
+  "history": {
+    "overview": "La historia de la Universidad EAN inicia en la decada de 1960, cuando un grupo de profesionales visualizo una institucion dedicada a formar personas con mentalidad empresarial. En 1967 comenzaron las clases en una pequena sede en la Plazoleta de Las Nieves, con 14 estudiantes. Desde entonces, la universidad ha evolucionado de una apuesta pionera por la formacion empresarial hacia una identidad centrada en el emprendimiento sostenible.",
+    "milestones": [
+      {
+        "year": "1967",
+        "event": "Inicio de clases con 14 estudiantes en la Plazoleta de Las Nieves, en Bogota."
+      },
+      {
+        "year": "1971",
+        "event": "Primera promocion de Tecnologos en Administracion de Empresas."
+      },
+      {
+        "year": "2012",
+        "event": "Creacion de una unidad estrategica orientada a emprendimiento, liderazgo e innovacion."
+      },
+      {
+        "year": "2016",
+        "event": "Fortalecimiento del enfoque institucional hacia el emprendimiento sostenible."
+      },
+      {
+        "year": "2020",
+        "event": "Adopcion de la Politica de Sostenibilidad y Emprendimiento Sostenible."
+      },
+      {
+        "year": "2021",
+        "event": "Consolidacion de IMPACTA como plataforma de emprendimiento sostenible y accion con proposito."
+      }
+    ]
+  },
+  "strategicObjectives": [
+    {
+      "title": "Formacion para el emprendimiento sostenible",
+      "description": "Integrar competencias emprendedoras, pensamiento sostenible e innovacion en la experiencia formativa."
+    },
+    {
+      "title": "Investigacion con impacto",
+      "description": "Generar y transferir conocimiento util para empresas, organizaciones, territorios y comunidades."
+    },
+    {
+      "title": "Relacion con el entorno",
+      "description": "Conectar la universidad con sectores empresariales, gubernamentales y sociales para desarrollar soluciones pertinentes."
+    },
+    {
+      "title": "Transformacion digital",
+      "description": "Usar tecnologia y modelos flexibles para ampliar el acceso, la calidad y la innovacion educativa."
+    },
+    {
+      "title": "Cultura sostenible",
+      "description": "Permear los procesos institucionales con acciones de impacto positivo ambiental, social y economico."
+    }
+  ],
+  "studentExperience": {
+    "campusLife": "La experiencia del estudiante Eanista combina aprendizaje academico, cultura emprendedora, sostenibilidad, colaboracion, retos aplicados y relacion con organizaciones. Su sede Ean Legacy refuerza la identidad de sostenibilidad e innovacion institucional.",
+    "studentSupportServices": [
+      "Acompanamiento academico y bienestar universitario",
+      "Orientacion para proyectos de emprendimiento",
+      "Acceso a espacios de aprendizaje colaborativo",
+      "Servicios de empleabilidad y relacion con egresados",
+      "Apoyo para experiencias internacionales y movilidad"
+    ],
+    "clubsAndOrganizations": [
+      "Comunidades de emprendimiento",
+      "Iniciativas de sostenibilidad",
+      "Grupos estudiantiles y actividades de bienestar",
+      "Espacios de networking y colaboracion"
+    ],
+    "leadershipOpportunities": [
+      "Participacion en proyectos aplicados",
+      "Retos de innovacion y emprendimiento",
+      "Iniciativas de impacto social y ambiental",
+      "Relacion con empresas y ecosistemas emprendedores"
+    ],
+    "internationalPrograms": [
+      "Experiencias de movilidad academica",
+      "Relacion con redes y aliados internacionales",
+      "Formacion con vision global",
+      "Proyectos con enfoque intercultural"
+    ]
+  },
+  "researchAndInnovation": {
+    "researchAreas": [
+      "Emprendimiento sostenible",
+      "Innovacion y liderazgo",
+      "Sostenibilidad organizacional",
+      "Transformacion digital",
+      "Economia circular",
+      "Gestion empresarial",
+      "Educacion y modelos de aprendizaje"
+    ],
+    "innovationInitiatives": [
+      "IMPACTA",
+      "Innovacion abierta",
+      "Aceleracion y transformacion de emprendimientos",
+      "Proyectos aplicados con organizaciones",
+      "Soluciones basadas en sostenibilidad"
+    ],
+    "industryPartnerships": [
+      "Relacion con empresas y organizaciones",
+      "Acompanamiento a emprendedores",
+      "Transferencia de conocimiento al sector productivo",
+      "Consultoria e investigacion aplicada",
+      "Alianzas con actores territoriales"
+    ]
+  },
+  "communityEngagement": {
+    "socialImpactPrograms": [
+      "IMPACTA Rural",
+      "Programas de emprendimiento sostenible",
+      "Iniciativas de proyeccion social",
+      "Pedaleando a la U",
+      "Cultura sostenible"
+    ],
+    "communityPartnerships": [
+      "Emprendedores de diversas regiones",
+      "Sector empresarial",
+      "Sector publico y privado",
+      "Comunidades territoriales",
+      "Aliados del ecosistema de sostenibilidad"
+    ],
+    "sustainabilityInitiatives": [
+      "Politica de Sostenibilidad y Emprendimiento Sostenible",
+      "Gestion ambiental con enfoque preventivo",
+      "Economia circular",
+      "Movilidad sostenible",
+      "Carbono neutralidad",
+      "Canopy Urbano",
+      "Ean Orinoquia"
+    ]
+  },
+  "graduateProfile": {
+    "description": "El egresado Eanista se caracteriza por su mentalidad emprendedora, liderazgo, criterio innovador y capacidad para generar soluciones sostenibles en organizaciones, empresas, territorios y comunidades.",
+    "competencies": [
+      "Identificacion de oportunidades",
+      "Creacion y gestion de proyectos",
+      "Pensamiento estrategico",
+      "Innovacion aplicada",
+      "Liderazgo colaborativo",
+      "Vision sostenible"
+    ],
+    "professionalSkills": [
+      "Gestion empresarial",
+      "Analisis de contextos",
+      "Diseno de modelos de negocio",
+      "Trabajo interdisciplinario",
+      "Toma de decisiones",
+      "Comunicacion efectiva"
+    ],
+    "ethicalCommitments": [
+      "Responsabilidad social",
+      "Cuidado ambiental",
+      "Generacion de valor compartido",
+      "Integridad profesional",
+      "Compromiso con el desarrollo sostenible"
+    ]
+  },
+  "facultyProfile": {
+    "overview": "El cuerpo docente se orienta a conectar conocimiento academico, experiencia profesional, investigacion aplicada y aprendizaje practico para desarrollar capacidades emprendedoras y sostenibles.",
+    "qualifications": [
+      "Experiencia academica y profesional",
+      "Conocimiento en gestion, emprendimiento, innovacion y sostenibilidad",
+      "Capacidad para orientar proyectos aplicados",
+      "Relacion con redes empresariales y sociales"
+    ],
+    "teachingStrengths": [
+      "Aprendizaje basado en retos",
+      "Acompanamiento a proyectos",
+      "Enfoque practico y aplicado",
+      "Mentoria emprendedora",
+      "Conexion con problemas reales"
+    ]
+  },
+  "competitiveAdvantages": [
+    {
+      "title": "ADN emprendedor",
+      "description": "La universidad nacio con una vocacion empresarial y ha convertido el emprendimiento en un eje transversal de su propuesta educativa."
+    },
+    {
+      "title": "Sostenibilidad como sello",
+      "description": "Integra sostenibilidad en politicas, cultura, programas, investigacion, gestion ambiental y relacion con el entorno."
+    },
+    {
+      "title": "IMPACTA",
+      "description": "Cuenta con una plataforma institucional para fortalecer emprendimientos, proyectos y organizaciones con accion con proposito."
+    },
+    {
+      "title": "Ean Legacy",
+      "description": "Su sede es un referente de arquitectura sostenible y comunica fisicamente la apuesta institucional por innovacion y sostenibilidad."
+    },
+    {
+      "title": "Conexion con organizaciones",
+      "description": "Su enfoque aplicado facilita la relacion con empresas, emprendedores, territorios y sectores productivos."
+    }
+  ],
+  "brandIdentity": {
+    "brandPromise": "Emprender un mundo mejor desde la formacion integral, la innovacion y el emprendimiento sostenible.",
+    "brandPersonality": [
+      "Emprendedora",
+      "Innovadora",
+      "Sostenible",
+      "Global",
+      "Colaborativa",
+      "Transformadora",
+      "Practica"
+    ],
+    "uniqueValueProposition": "Formar personas capaces de crear y transformar organizaciones mediante emprendimiento sostenible, investigacion, liderazgo e innovacion."
+  },
+  "institutionalCulture": {
+    "cultureDescription": "La cultura Eanista se construye alrededor de la accion emprendedora, la sostenibilidad, la colaboracion y la capacidad de generar soluciones que transformen organizaciones y comunidades.",
+    "diversityAndInclusion": "Reconoce las diversidades como componente estrategico para la calidad, la innovacion, la prosperidad y la formacion integral.",
+    "innovationMindset": "Promueve la experimentacion, la creatividad, la transformacion digital, el diseno de soluciones y la aplicacion de conocimiento en retos reales.",
+    "collaborationApproach": "Fomenta inteligencia colectiva y trabajo conjunto entre estudiantes, docentes, egresados, emprendedores, empresas, sector publico y comunidades."
+  },
+  "recognitionsAndAchievements": [
+    {
+      "year": "",
+      "recognition": "Reconocimiento por orientacion al espiritu empresarial y emprendimiento",
+      "organization": "ACCEU"
+    },
+    {
+      "year": "",
+      "recognition": "Certificado de carbono neutral",
+      "organization": "Icontec"
+    },
+    {
+      "year": "",
+      "recognition": "Sede Ean Legacy como referente de arquitectura sostenible",
+      "organization": "Universidad EAN"
+    }
+  ],
+  "futureOutlook": {
+    "growthPlans": [
+      "Fortalecer el liderazgo en emprendimiento sostenible",
+      "Expandir el impacto de IMPACTA y las iniciativas territoriales",
+      "Ampliar la transferencia de conocimiento hacia empresas y comunidades",
+      "Consolidar modelos educativos innovadores y flexibles"
+    ],
+    "strategicPriorities": [
+      "Sostenibilidad transversal",
+      "Investigacion aplicada",
+      "Transformacion digital",
+      "Vision global",
+      "Prosperidad y valor compartido",
+      "Relacion universidad-empresa-estado-comunidad"
+    ],
+    "longTermGoals": [
+      "Ser referente regional en emprendimiento sostenible",
+      "Aumentar el impacto positivo en organizaciones y territorios",
+      "Formar lideres capaces de responder a retos sociales, ambientales y economicos",
+      "Contribuir a una cultura de abundancia, innovacion y sostenibilidad"
+    ]
+  }
+}

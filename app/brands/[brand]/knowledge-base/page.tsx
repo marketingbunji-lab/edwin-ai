@@ -18,6 +18,10 @@ import {
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug, getProgramsByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
+import {
+  getUniversityProfileByBrand,
+  hasUniversityProfileContent,
+} from "@/lib/universityProfiles";
 
 
 type Props = {
@@ -40,6 +44,7 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
   }
 
   const programs = getProgramsByBrand(brand.slug);
+  const universityProfile = getUniversityProfileByBrand(brand.slug);
   const brandSetupSignals = [
     brand.description,
     brand.officialWebsite,
@@ -51,7 +56,8 @@ export default async function BrandKnowledgeBasePage({ params }: Props) {
   const brandSetupCompleted = brandSetupSignals >= 5;
   const brandSetupInProgress = !brandSetupCompleted && brandSetupSignals > 0;
   const contentBaseCompleted = programs.length > 0;
-  const universityContentBaseCompleted = false;
+  const universityContentBaseCompleted =
+    hasUniversityProfileContent(universityProfile);
   const universityContentBaseState: WorkflowState = universityContentBaseCompleted
     ? "completed"
     : "pending";
@@ -282,4 +288,3 @@ function getWorkflowStatusConfig(
       "border-[color-mix(in_srgb,var(--bunji-primary-soft)_68%,white)] bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)] dark:border-[var(--bunji-primary-muted)]/20 dark:bg-[var(--bunji-primary-soft)]/20 dark:text-[var(--bunji-primary-muted)]",
   };
 }
-

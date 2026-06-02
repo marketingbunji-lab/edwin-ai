@@ -1,0 +1,357 @@
+{
+  "name": "edwin-university-profile-agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "edwin-university-profile-agent",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "8fcd25a6-9f9a-47a3-8f0b-81f4308fef01",
+      "name": "Webhook - University Profile Agent",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        -80
+      ],
+      "webhookId": "edwin-university-profile-agent"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const incoming = items[0]?.json || {};\nconst body = incoming.body && typeof incoming.body === 'object' ? incoming.body : incoming;\nconst brand = body.brand || incoming.brand || {};\nconst officialWebsite = String(body.officialWebsite || incoming.officialWebsite || brand.officialWebsite || brand.website || '').trim();\nconst requestedUrls = Array.isArray(body.researchUrls) ? body.researchUrls : Array.isArray(incoming.researchUrls) ? incoming.researchUrls : [];\nconst requestedSitemaps = Array.isArray(body.sitemapUrls) ? body.sitemapUrls : Array.isArray(incoming.sitemapUrls) ? incoming.sitemapUrls : [];\n\nfunction normalizeUrl(value) {\n  const raw = String(value || '').trim();\n  if (!raw) return '';\n  try {\n    const url = new URL(raw.startsWith('http') ? raw : 'https://' + raw);\n    url.hash = '';\n    return url.toString();\n  } catch (error) {\n    return '';\n  }\n}\n\nfunction sameOriginPath(baseUrl, pathname) {\n  try {\n    const url = new URL(baseUrl);\n    url.pathname = pathname;\n    url.search = '';\n    url.hash = '';\n    return url.toString();\n  } catch (error) {\n    return '';\n  }\n}\n\nfunction inferLanguage({ brand, officialWebsite }) {\n  const explicit = String(brand.language || brand.defaultLanguage || brand.locale || body.language || '').toLowerCase();\n  if (explicit.startsWith('en')) return 'en';\n  if (explicit.startsWith('es')) return 'es';\n\n  const haystack = [brand.slug, brand.name, brand.shortName, brand.description, brand.officialWebsite, officialWebsite]\n    .filter(Boolean)\n    .join(' ')\n    .toLowerCase();\n\n  if (/\\.edu\\.co|universidad|fundacion|fundaci?n|politecnico|polit?cnico|corporacion|corporaci?n|uniminuto|ean|minuto|bogota|bogot?|colombia/.test(haystack)) return 'es';\n  if (/\\.edu|college|school|institute|health|training|center|academy|university|campus|career/.test(haystack)) return 'en';\n  return 'es';\n}\n\nconst preferredLanguage = inferLanguage({ brand, officialWebsite });\nconst urls = new Map();\n\nfunction addUrl(value, sourceType = 'page', priority = 10) {\n  const url = normalizeUrl(value);\n  if (!url) return;\n  const current = urls.get(url);\n  if (!current || priority < current.priority) urls.set(url, { url, sourceType, priority });\n}\n\n[officialWebsite, ...requestedUrls].forEach((url) => addUrl(url, 'manual-or-official', 1));\n\nif (officialWebsite) {\n  const normalizedOfficial = normalizeUrl(officialWebsite);\n  const hostname = normalizedOfficial ? new URL(normalizedOfficial).hostname : '';\n  const sitemapPaths = ['/sitemap.xml', '/sitemap_index.xml', '/page-sitemap.xml', '/wp-sitemap-posts-page-1.xml', '/sitemap-pages.xml'];\n\n  [...requestedSitemaps, ...sitemapPaths.map((itemPath) => sameOriginPath(normalizedOfficial, itemPath))]\n    .filter(Boolean)\n    .forEach((url) => addUrl(url, 'sitemap', 2));\n\n  const bilingualInstitutionalPaths = [\n    '/', '/about', '/about-us', '/about-us/mission-vision', '/mission', '/mission-and-vision', '/mission-vision', '/vision-mission', '/history', '/leadership', '/accreditation', '/academics', '/programs', '/student-services', '/career-services', '/consumer-information', '/financial-aid', '/community', '/diversity', '/sustainability', '/research', '/innovation',\n    '/la-universidad', '/la-universidad/quienes-somos', '/quienes-somos', '/mision', '/mision-y-vision', '/historia', '/sostenibilidad', '/investigacion', '/innovacion', '/proyeccion-social', '/bienestar-universitario'\n  ];\n\n  bilingualInstitutionalPaths\n    .map((itemPath) => sameOriginPath(normalizedOfficial, itemPath))\n    .filter(Boolean)\n    .forEach((url) => addUrl(url, 'institutional-page', preferredLanguage === 'en' ? 5 : 6));\n\n  if (hostname.includes('universidadean.edu.co')) {\n    ['/la-universidad', '/la-universidad/quienes-somos', '/la-universidad/emprendimiento-sostenible', '/la-universidad/sedes/edificio-ean-legacy', '/noticias/el-instituto-para-el-emprendimiento-sostenible-se-transforma-en-impacta', '/la-universidad/quienes-somos/organigrama/procesos-misionales/proyeccion-social']\n      .map((itemPath) => sameOriginPath(normalizedOfficial, itemPath))\n      .filter(Boolean)\n      .forEach((url) => addUrl(url, 'ean-known-source', 3));\n  }\n}\n\nconst sortedTargets = Array.from(urls.values())\n  .sort((a, b) => a.priority - b.priority || a.url.localeCompare(b.url))\n  .slice(0, 18);\n\nconst output = sortedTargets.map((target, index) => ({\n  json: {\n    url: target.url,\n    sourceIndex: index + 1,\n    sourceType: target.sourceType,\n    preferredLanguage,\n    brand,\n    requestedDocumentText: String(body.documentText || body.text || '').slice(0, 18000)\n  }\n}));\n\nif (output.length === 0) {\n  return [{ json: { url: '', sourceIndex: 1, sourceType: 'fallback-no-url', preferredLanguage, brand, requestedDocumentText: String(body.documentText || incoming.documentText || body.text || incoming.text || '').slice(0, 18000), skipFetch: true } }];\n}\n\nreturn output;"
+      },
+      "id": "84fce93e-bb61-42f1-9aa4-5ec4f68924fb",
+      "name": "Prepare Research Targets",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -480,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.skipFetch || !$json.url ? 'https://example.com' : $json.url }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": false,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "f4b13d7f-756d-47c6-bd3d-b04279d90083",
+      "name": "Fetch Official Pages",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -224,
+        -80
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "title",
+              "cssSelector": "title",
+              "returnArray": true
+            },
+            {
+              "key": "metaDescription",
+              "cssSelector": "meta[name=\"description\"]",
+              "returnValue": "attribute",
+              "attribute": "content",
+              "returnArray": true
+            },
+            {
+              "key": "h1",
+              "cssSelector": "h1",
+              "returnArray": true
+            },
+            {
+              "key": "h2",
+              "cssSelector": "h2",
+              "returnArray": true
+            },
+            {
+              "key": "h3",
+              "cssSelector": "h3",
+              "returnArray": true
+            },
+            {
+              "key": "p",
+              "cssSelector": "p",
+              "returnArray": true
+            },
+            {
+              "key": "li",
+              "cssSelector": "li",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2df938b3-36f4-4ed3-9bdf-eb700b2e00c0",
+      "name": "Extract Page Content",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        32,
+        -80
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const webhookInput = $('Webhook - University Profile Agent').first().json || {};\nconst webhookBody = webhookInput.body && typeof webhookInput.body === 'object' ? webhookInput.body : webhookInput;\nconst initialTargets = $('Prepare Research Targets').all();\nconst initialFetched = $('Fetch Official Pages').all();\nconst discoveredTargets = $('Select Valuable Sitemap Pages').all();\nconst discoveredFetched = items;\nconst brand = webhookBody.brand || webhookInput.brand || initialTargets[0]?.json?.brand || discoveredTargets[0]?.json?.brand || {};\nconst manualText = String(webhookBody.documentText || webhookInput.documentText || webhookBody.text || webhookInput.text || initialTargets[0]?.json?.requestedDocumentText || '').trim();\nconst preferredLanguage = String(webhookBody.language || initialTargets[0]?.json?.preferredLanguage || discoveredTargets[0]?.json?.preferredLanguage || 'es').startsWith('en') ? 'en' : 'es';\n\nfunction stripTags(value) {\n  return String(value || '')\n    .replace(/<script[\\s\\S]*?<\\/script>/gi, ' ')\n    .replace(/<style[\\s\\S]*?<\\/style>/gi, ' ')\n    .replace(/<noscript[\\s\\S]*?<\\/noscript>/gi, ' ')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nfunction arrayText(value) {\n  if (Array.isArray(value)) return value.map((item) => String(item || '').trim()).filter(Boolean);\n  const text = String(value || '').trim();\n  return text ? [text] : [];\n}\n\nfunction extractSitemapUrls(raw) {\n  const text = String(raw || '');\n  const matches = Array.from(text.matchAll(/<loc>\\s*([^<]+)\\s*<\\/loc>/gi)).map((match) => match[1].trim());\n  return matches.filter(Boolean).filter((url) => /about|mission|vision|history|accredit|student|career|consumer|community|sustain|research|innovation|quienes|mision|historia|sostenibilidad|investigacion|proyeccion|bienestar|universidad|institution|leadership|diversity/i.test(url)).slice(0, 30).map((url) => 'Sitemap candidate: ' + url).join('\\n');\n}\n\nfunction compactText(parts) {\n  return parts.flatMap(arrayText).join('\\n').replace(/\\s+/g, ' ').replace(/\\s+([.,;:])/g, '$1').trim().slice(0, 9000);\n}\n\nfunction getRaw(item) {\n  const json = item?.json || {};\n  return String(json.data || json.body || json.html || json.text || json.response || '').trim();\n}\n\nfunction buildSource(item, target, fallbackIndex, sourceTypeOverride) {\n  const json = item?.json || {};\n  const targetJson = target?.json || target || {};\n  const raw = getRaw(item);\n  const sourceType = sourceTypeOverride || targetJson.sourceType || 'page';\n  const isSitemap = sourceType === 'sitemap' || /sitemap/i.test(targetJson.url || '');\n  const sitemapHints = isSitemap ? extractSitemapUrls(raw) : '';\n  const rawText = raw ? stripTags(raw).slice(0, isSitemap ? 7000 : 11000) : '';\n  const extractedText = compactText([json.title, json.metaDescription, json.h1, json.h2, json.h3, json.p, json.li]);\n  const content = [extractedText, sitemapHints, rawText].filter(Boolean).join('\\n').slice(0, isSitemap ? 7000 : 12000);\n  return { url: targetJson.url || json.url || '', sourceIndex: targetJson.sourceIndex || fallbackIndex, sourceType, score: targetJson.score || 0, discoveredFrom: targetJson.discoveredFrom || '', content };\n}\n\nconst initialSources = initialFetched.map((item, index) => buildSource(item, initialTargets[index], index + 1));\nconst discoveredSources = discoveredFetched.map((item, index) => buildSource(item, discoveredTargets[index], index + 1, 'sitemap-discovered-page'));\nconst sources = [...discoveredSources, ...initialSources]\n  .filter((source) => source.content || source.url)\n  .sort((a, b) => {\n    const typeWeight = (source) => source.sourceType === 'manual-document' ? -1 : source.sourceType === 'sitemap-discovered-page' ? 0 : 1;\n    return typeWeight(a) - typeWeight(b) || (b.score || 0) - (a.score || 0);\n  })\n  .slice(0, 14);\n\nif (manualText) sources.unshift({ url: 'manual-document-or-pasted-context', sourceIndex: 0, sourceType: 'manual-document', score: 100, discoveredFrom: '', content: manualText.slice(0, 12000) });\n\nconst researchContext = sources.map((source) => '[Source ' + source.sourceIndex + '] Type: ' + source.sourceType + (source.score ? ' Score: ' + source.score : '') + (source.discoveredFrom ? '\\nDiscovered from: ' + source.discoveredFrom : '') + '\\nURL: ' + source.url + '\\n' + source.content).join('\\n\\n---\\n\\n').slice(0, 68000);\n\nconst expectedShape = {\n  institutionalEssence: { whatItIs: '', whatItDoes: '', whoItServes: '' },\n  mission: { statement: '', keyFocusAreas: [] },\n  vision: { statement: '', targetYear: '', aspirations: [] },\n  coreValues: [{ title: '', description: '' }],\n  guidingPrinciples: [{ title: '', description: '' }],\n  institutionalPhilosophy: { educationalModel: '', learningApproach: '', studentCenteredFocus: '' },\n  history: { overview: '', milestones: [{ year: '', event: '' }] },\n  strategicObjectives: [{ title: '', description: '' }],\n  studentExperience: { campusLife: '', studentSupportServices: [], clubsAndOrganizations: [], leadershipOpportunities: [], internationalPrograms: [] },\n  researchAndInnovation: { researchAreas: [], innovationInitiatives: [], industryPartnerships: [] },\n  communityEngagement: { socialImpactPrograms: [], communityPartnerships: [], sustainabilityInitiatives: [] },\n  graduateProfile: { description: '', competencies: [], professionalSkills: [], ethicalCommitments: [] },\n  facultyProfile: { overview: '', qualifications: [], teachingStrengths: [] },\n  competitiveAdvantages: [{ title: '', description: '' }],\n  brandIdentity: { brandPromise: '', brandPersonality: [], uniqueValueProposition: '' },\n  institutionalCulture: { cultureDescription: '', diversityAndInclusion: '', innovationMindset: '', collaborationApproach: '' },\n  recognitionsAndAchievements: [{ year: '', recognition: '', organization: '' }],\n  futureOutlook: { growthPlans: [], strategicPriorities: [], longTermGoals: [] }\n};\n\nconst languageName = preferredLanguage === 'en' ? 'English' : 'Spanish';\nconst languageInstruction = preferredLanguage === 'en'\n  ? 'Write every human-readable value in natural English. Do not translate section titles into Spanish. Use English titles such as Mission, Vision, Core Values, Student Support, Career Services, Accreditation when relevant.'\n  : 'Write every human-readable value in natural Spanish. Use Spanish titles naturally when relevant.';\n\nconst systemPrompt = [\n  'You are EDwin AI University Profile Agent.',\n  'You are an expert higher-education researcher, institutional strategist, and enrollment marketing analyst.',\n  'Use only the supplied official website content, sitemap-discovered page content, provided documents, and brand JSON.',\n  'Prioritize sitemap-discovered pages with high scores because those were selected as likely institutional pages.',\n  'Do not invent precise facts. If a field cannot be supported, leave it empty or infer cautiously using neutral language.',\n  'Avoid duplicating basic brand fields such as logo, colors, website, official institution name, or landing/program data.',\n  'Return strict JSON only. No markdown. No surrounding array.',\n  'Output language: ' + languageName + '. ' + languageInstruction,\n  'Use concise but useful strings. Arrays should contain 3 to 8 high-signal items when evidence supports them.',\n  'The output must match the exact schema provided by the user prompt.'\n].join(' ');\n\nconst userPrompt = ['Build a University Content Base profile for EDwin AI.', 'Output language: ' + languageName + '.', '', 'Brand JSON:', JSON.stringify(brand, null, 2), '', 'Research sources:', researchContext || 'No research sources were available. Return a mostly empty schema with any safe information from the brand JSON only.', '', 'Return only valid JSON matching this exact shape:', JSON.stringify(expectedShape, null, 2)].join('\\n');\n\nreturn [{ json: { ok: true, agent: 'edwin-university-profile-agent', brand, preferredLanguage, sourceCount: sources.length, sources: sources.map((source) => ({ url: source.url, sourceIndex: source.sourceIndex, sourceType: source.sourceType, score: source.score, discoveredFrom: source.discoveredFrom, hasContent: Boolean(source.content) })), systemPrompt, userPrompt } }];"
+      },
+      "id": "979c3cc7-3b28-4515-a540-a452c8a627fb",
+      "name": "Build University Profile Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        544,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.userPrompt }}",
+        "options": {
+          "systemMessage": "={{ $json.systemPrompt }}"
+        }
+      },
+      "id": "2c8e1581-e3f3-4858-a24d-c4dfb1354a6e",
+      "name": "AI Agent - University Profile",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        816,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list"
+        },
+        "options": {}
+      },
+      "id": "c29d6684-fdbf-466d-a9aa-2179da9b1147",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        816,
+        144
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "yvjcXGgO2GfXdUZc",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const raw = $json.output ?? $json.text ?? $json.response ?? $json.message ?? $json;\nconst promptContext = $('Build University Profile Prompt').first().json;\n\nfunction parseJsonCandidate(value) {\n  if (typeof value === 'object' && value !== null) return value;\n  if (typeof value !== 'string') return null;\n  const cleaned = value\n    .replace(/^```json\\s*/i, '')\n    .replace(/^```\\s*/i, '')\n    .replace(/```$/i, '')\n    .trim();\n  try {\n    return JSON.parse(cleaned);\n  } catch (error) {\n    const match = cleaned.match(/\\{[\\s\\S]*\\}/);\n    if (!match) return null;\n    try {\n      return JSON.parse(match[0]);\n    } catch {\n      return null;\n    }\n  }\n}\n\nfunction text(value) {\n  return typeof value === 'string' ? value.trim() : '';\n}\n\nfunction list(value) {\n  if (Array.isArray(value)) return value.map(text).filter(Boolean);\n  const current = text(value);\n  return current ? [current] : [];\n}\n\nfunction descriptionItems(value) {\n  if (!Array.isArray(value)) return [];\n  return value.map((item) => {\n    if (!item || typeof item !== 'object') return null;\n    return {\n      title: text(item.title || item.name || item.objective),\n      description: text(item.description)\n    };\n  }).filter((item) => item && (item.title || item.description));\n}\n\nconst parsed = parseJsonCandidate(raw);\n\nif (!parsed || !parsed.institutionalEssence) {\n  return {\n    json: {\n      ok: false,\n      agent: 'edwin-university-profile-agent',\n      message: 'No se pudo generar un university profile valido',\n      sourceCount: promptContext.sourceCount || 0,\n      sources: promptContext.sources || [],\n      rawOutput: raw\n    }\n  };\n}\n\nconst profile = {\n  institutionalEssence: {\n    whatItIs: text(parsed.institutionalEssence?.whatItIs),\n    whatItDoes: text(parsed.institutionalEssence?.whatItDoes),\n    whoItServes: text(parsed.institutionalEssence?.whoItServes)\n  },\n  mission: {\n    statement: text(parsed.mission?.statement),\n    keyFocusAreas: list(parsed.mission?.keyFocusAreas)\n  },\n  vision: {\n    statement: text(parsed.vision?.statement),\n    targetYear: text(parsed.vision?.targetYear),\n    aspirations: list(parsed.vision?.aspirations)\n  },\n  coreValues: descriptionItems(parsed.coreValues),\n  guidingPrinciples: descriptionItems(parsed.guidingPrinciples),\n  institutionalPhilosophy: {\n    educationalModel: text(parsed.institutionalPhilosophy?.educationalModel),\n    learningApproach: text(parsed.institutionalPhilosophy?.learningApproach),\n    studentCenteredFocus: text(parsed.institutionalPhilosophy?.studentCenteredFocus)\n  },\n  history: {\n    overview: text(parsed.history?.overview),\n    milestones: Array.isArray(parsed.history?.milestones) ? parsed.history.milestones.map((item) => ({ year: text(item.year), event: text(item.event) })).filter((item) => item.year || item.event) : []\n  },\n  strategicObjectives: descriptionItems(parsed.strategicObjectives),\n  studentExperience: {\n    campusLife: text(parsed.studentExperience?.campusLife),\n    studentSupportServices: list(parsed.studentExperience?.studentSupportServices),\n    clubsAndOrganizations: list(parsed.studentExperience?.clubsAndOrganizations),\n    leadershipOpportunities: list(parsed.studentExperience?.leadershipOpportunities),\n    internationalPrograms: list(parsed.studentExperience?.internationalPrograms)\n  },\n  researchAndInnovation: {\n    researchAreas: list(parsed.researchAndInnovation?.researchAreas),\n    innovationInitiatives: list(parsed.researchAndInnovation?.innovationInitiatives),\n    industryPartnerships: list(parsed.researchAndInnovation?.industryPartnerships)\n  },\n  communityEngagement: {\n    socialImpactPrograms: list(parsed.communityEngagement?.socialImpactPrograms),\n    communityPartnerships: list(parsed.communityEngagement?.communityPartnerships),\n    sustainabilityInitiatives: list(parsed.communityEngagement?.sustainabilityInitiatives)\n  },\n  graduateProfile: {\n    description: text(parsed.graduateProfile?.description),\n    competencies: list(parsed.graduateProfile?.competencies),\n    professionalSkills: list(parsed.graduateProfile?.professionalSkills),\n    ethicalCommitments: list(parsed.graduateProfile?.ethicalCommitments)\n  },\n  facultyProfile: {\n    overview: text(parsed.facultyProfile?.overview),\n    qualifications: list(parsed.facultyProfile?.qualifications),\n    teachingStrengths: list(parsed.facultyProfile?.teachingStrengths)\n  },\n  competitiveAdvantages: descriptionItems(parsed.competitiveAdvantages),\n  brandIdentity: {\n    brandPromise: text(parsed.brandIdentity?.brandPromise),\n    brandPersonality: list(parsed.brandIdentity?.brandPersonality),\n    uniqueValueProposition: text(parsed.brandIdentity?.uniqueValueProposition)\n  },\n  institutionalCulture: {\n    cultureDescription: text(parsed.institutionalCulture?.cultureDescription),\n    diversityAndInclusion: text(parsed.institutionalCulture?.diversityAndInclusion),\n    innovationMindset: text(parsed.institutionalCulture?.innovationMindset),\n    collaborationApproach: text(parsed.institutionalCulture?.collaborationApproach)\n  },\n  recognitionsAndAchievements: Array.isArray(parsed.recognitionsAndAchievements) ? parsed.recognitionsAndAchievements.map((item) => ({ year: text(item.year), recognition: text(item.recognition), organization: text(item.organization) })).filter((item) => item.year || item.recognition || item.organization) : [],\n  futureOutlook: {\n    growthPlans: list(parsed.futureOutlook?.growthPlans),\n    strategicPriorities: list(parsed.futureOutlook?.strategicPriorities),\n    longTermGoals: list(parsed.futureOutlook?.longTermGoals)\n  }\n};\n\nreturn {\n  json: {\n    ok: true,\n    agent: 'edwin-university-profile-agent',\n    message: 'university profile generado correctamente',\n    universityProfile: profile,\n    sourceCount: promptContext.sourceCount || 0,\n    sources: promptContext.sources || [],\n    rawOutput: raw\n  }\n};"
+      },
+      "id": "d8b78f3f-7024-4a30-9024-f9d05555b547",
+      "name": "Normalize University Profile JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "801177ed-647c-4c03-a9e9-9480790b8fc8",
+      "name": "Respond - University Profile",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1376,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const initialTargets = $('Prepare Research Targets').all().map((item) => item.json || {});\nconst fetchedItems = items.map((item) => item.json || {});\nconst webhookInput = $('Webhook - University Profile Agent').first().json || {};\nconst webhookBody = webhookInput.body && typeof webhookInput.body === 'object' ? webhookInput.body : webhookInput;\nconst brand = webhookBody.brand || webhookInput.brand || initialTargets[0]?.brand || {};\nconst preferredLanguage = initialTargets[0]?.preferredLanguage || 'es';\n\nfunction normalizeUrl(value) {\n  const raw = String(value || '').trim();\n  if (!raw) return '';\n  try {\n    const url = new URL(raw.startsWith('http') ? raw : 'https://' + raw);\n    url.hash = '';\n    return url.toString();\n  } catch (error) {\n    return '';\n  }\n}\n\nfunction getRawContent(item) {\n  return String(item.data || item.body || item.html || item.text || item.response || '').trim();\n}\n\nfunction extractLocUrls(raw) {\n  return Array.from(String(raw || '').matchAll(/<loc>\\s*([^<]+)\\s*<\\/loc>/gi))\n    .map((match) => normalizeUrl(match[1]))\n    .filter(Boolean);\n}\n\nfunction scoreUrl(url) {\n  const lower = url.toLowerCase();\n  let score = 0;\n  const positiveWeights = [\n    [/about-us|about|quienes-somos|la-universidad|institution|who-we-are/, 90],\n    [/mission|vision|mision|visi[o?]n|purpose|values|valores/, 85],\n    [/history|historia|legacy|leadership|governance/, 70],\n    [/accredit|approvals|consumer-information|certification|licensing|licensure|acreditaci[o?]n/, 68],\n    [/student-services|career-services|student-life|campus-life|bienestar|servicios/, 62],\n    [/sustainability|sostenibilidad|community|proyeccion|social-impact|diversity|inclusion/, 58],\n    [/research|innovation|investigaci[o?]n|innovaci[o?]n/, 52],\n    [/programs|academics|academic|areas|faculties|escuelas|programas/, 38]\n  ];\n  for (const [pattern, weight] of positiveWeights) if (pattern.test(lower)) score += weight;\n  const negativePatterns = [\n    /wp-content|uploads|\\.jpg|\\.jpeg|\\.png|\\.gif|\\.webp|\\.svg|\\.pdf|\\.doc|\\.zip/,\n    /tag\\/|category\\/|author\\/|feed|cart|checkout|privacy|terms|cookie|login|wp-json/,\n    /blog\\/page\\/|page\\/\\d+|\\?/,\n    /event|events|news|noticias|admission|apply|tuition|payment|contact|directory|search/\n  ];\n  for (const pattern of negativePatterns) if (pattern.test(lower)) score -= 45;\n  if (lower.endsWith('/')) score += 3;\n  return score;\n}\n\nconst seen = new Set(initialTargets.map((target) => normalizeUrl(target.url)).filter(Boolean));\nconst candidates = [];\n\nfetchedItems.forEach((item, index) => {\n  const target = initialTargets[index] || {};\n  const isSitemap = target.sourceType === 'sitemap' || /sitemap/i.test(target.url || '');\n  if (!isSitemap) return;\n  const urls = extractLocUrls(getRawContent(item));\n  urls.forEach((url) => {\n    if (!url || seen.has(url)) return;\n    const score = scoreUrl(url);\n    if (score < 35) return;\n    seen.add(url);\n    candidates.push({ url, score, sourceType: 'sitemap-discovered-page', discoveredFrom: target.url || '', brand, preferredLanguage });\n  });\n});\n\nconst selected = candidates.sort((a, b) => b.score - a.score || a.url.localeCompare(b.url)).slice(0, 8);\n\nif (selected.length === 0) {\n  const fallback = initialTargets.find((target) => target.url && target.sourceType !== 'sitemap') || initialTargets.find((target) => target.url) || {};\n  return [{ json: { url: fallback.url || '', sourceIndex: 1, sourceType: 'fallback-existing-page', score: 0, discoveredFrom: 'no-sitemap-candidates', brand, preferredLanguage } }];\n}\n\nreturn selected.map((candidate, index) => ({ json: { ...candidate, sourceIndex: index + 1 } }));"
+      },
+      "id": "0f0f2f91-9f75-4e51-8f64-f5209095f73d",
+      "name": "Select Valuable Sitemap Pages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        32,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "timeout": 15000,
+          "response": {
+            "response": {
+              "fullResponse": false,
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "78d85518-569c-47a0-98fc-b701ea240de8",
+      "name": "Fetch Valuable Sitemap Pages",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        288,
+        -80
+      ],
+      "continueOnFail": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - University Profile Agent": {
+      "main": [
+        [
+          {
+            "node": "Prepare Research Targets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Research Targets": {
+      "main": [
+        [
+          {
+            "node": "Fetch Official Pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Official Pages": {
+      "main": [
+        [
+          {
+            "node": "Select Valuable Sitemap Pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Page Content": {
+      "main": []
+    },
+    "Build University Profile Prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent - University Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent - University Profile",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent - University Profile": {
+      "main": [
+        [
+          {
+            "node": "Normalize University Profile JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize University Profile JSON": {
+      "main": [
+        [
+          {
+            "node": "Respond - University Profile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Valuable Sitemap Pages": {
+      "main": [
+        [
+          {
+            "node": "Fetch Valuable Sitemap Pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Valuable Sitemap Pages": {
+      "main": [
+        [
+          {
+            "node": "Build University Profile Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "edwin-university-profile-agent-v4-sitemap-deep-fetch",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": [
+    {
+      "name": "EDwin AI"
+    },
+    {
+      "name": "university-profile"
+    }
+  ]
+}

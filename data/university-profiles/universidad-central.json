@@ -1,0 +1,105 @@
+{
+  "institutionalEssence": {
+    "whatItIs": "",
+    "whatItDoes": "",
+    "whoItServes": ""
+  },
+  "mission": {
+    "statement": "",
+    "keyFocusAreas": []
+  },
+  "vision": {
+    "statement": "",
+    "targetYear": "",
+    "aspirations": []
+  },
+  "coreValues": [
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "guidingPrinciples": [
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "institutionalPhilosophy": {
+    "educationalModel": "",
+    "learningApproach": "",
+    "studentCenteredFocus": ""
+  },
+  "history": {
+    "overview": "",
+    "milestones": [
+      {
+        "year": "",
+        "event": ""
+      }
+    ]
+  },
+  "strategicObjectives": [
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "studentExperience": {
+    "campusLife": "",
+    "studentSupportServices": [],
+    "clubsAndOrganizations": [],
+    "leadershipOpportunities": [],
+    "internationalPrograms": []
+  },
+  "researchAndInnovation": {
+    "researchAreas": [],
+    "innovationInitiatives": [],
+    "industryPartnerships": []
+  },
+  "communityEngagement": {
+    "socialImpactPrograms": [],
+    "communityPartnerships": [],
+    "sustainabilityInitiatives": []
+  },
+  "graduateProfile": {
+    "description": "",
+    "competencies": [],
+    "professionalSkills": [],
+    "ethicalCommitments": []
+  },
+  "facultyProfile": {
+    "overview": "",
+    "qualifications": [],
+    "teachingStrengths": []
+  },
+  "competitiveAdvantages": [
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "brandIdentity": {
+    "brandPromise": "",
+    "brandPersonality": [],
+    "uniqueValueProposition": ""
+  },
+  "institutionalCulture": {
+    "cultureDescription": "",
+    "diversityAndInclusion": "",
+    "innovationMindset": "",
+    "collaborationApproach": ""
+  },
+  "recognitionsAndAchievements": [
+    {
+      "year": "",
+      "recognition": "",
+      "organization": ""
+    }
+  ],
+  "futureOutlook": {
+    "growthPlans": [],
+    "strategicPriorities": [],
+    "longTermGoals": []
+  }
+}

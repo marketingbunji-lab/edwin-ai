@@ -21,6 +21,10 @@ import {
   getProgramsByBrand,
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
+import {
+  getUniversityProfileByBrand,
+  hasUniversityProfileContent,
+} from "@/lib/universityProfiles";
 
 
 type Props = {
@@ -51,6 +55,7 @@ export default async function BrandPage({ params }: Props) {
 
   const programs = getProgramsByBrand(brand.slug);
   const landings = getLandingsByBrand(brand.slug);
+  const universityProfile = getUniversityProfileByBrand(brand.slug);
   const buyerPersonRecords = getBrandAgentRecords(brand.slug, "buyer-person");
   const visualAssets = getBrandAgentRecords(brand.slug, "visual-assets");
   const publishedLandings = landings.filter(
@@ -73,7 +78,8 @@ export default async function BrandPage({ params }: Props) {
   const programsDone = programs.length > 0;
   const assetsDone = visualAssets.length > 0;
   const landingDone = publishedLandings.length > 0;
-  const universityContentBaseDone = false;
+  const universityContentBaseDone =
+    hasUniversityProfileContent(universityProfile);
   const goldenCircleDone = false;
   const documentsDone = hasDocuments;
 
@@ -368,4 +374,3 @@ function StrategicWorkflowCard({
     </Link>
   );
 }
-

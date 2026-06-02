@@ -1,0 +1,165 @@
+{
+  "institutionalEssence": {
+    "whatItIs": "Una institución dedicada a la formación técnica y profesional.",
+    "whatItDoes": "Ofrece programas de formación en áreas de alta demanda laboral.",
+    "whoItServes": "Estudiantes que buscan mejorar su empleabilidad y conocimientos técnicos."
+  },
+  "mission": {
+    "statement": "Formar individuos competentes y emprendedores a través de una educación técnica de calidad.",
+    "keyFocusAreas": [
+      "Educación técnica",
+      "Desarrollo profesional",
+      "Empleabilidad"
+    ]
+  },
+  "vision": {
+    "statement": "Ser reconocidos como líderes en la formación técnica profesional en el país.",
+    "targetYear": "2030",
+    "aspirations": [
+      "Innovación constante en programas educativos",
+      "Colaboración con la industria",
+      "Impacto en la comunidad"
+    ]
+  },
+  "coreValues": [
+    {
+      "title": "Compromiso",
+      "description": "Dedicación a la excelencia educativa y profesional de nuestros estudiantes."
+    },
+    {
+      "title": "Innovación",
+      "description": "Fomento de un ambiente que estimule la creatividad y las nuevas ideas."
+    },
+    {
+      "title": "Inclusión",
+      "description": "Promover un ambiente educativo que respete y valore la diversidad."
+    }
+  ],
+  "guidingPrinciples": [
+    {
+      "title": "Calidad educativa",
+      "description": "Compromiso con el mejoramiento continuo de los programas académicos."
+    },
+    {
+      "title": "Desarrollo sostenible",
+      "description": "Fomentar prácticas que contribuyan al bienestar social y ambiental."
+    }
+  ],
+  "institutionalPhilosophy": {
+    "educationalModel": "Modelo centrado en el estudiante con enfoque práctico.",
+    "learningApproach": "Aprendizaje activo y participativo.",
+    "studentCenteredFocus": "Atención a las necesidades y potencialidades de cada estudiante."
+  },
+  "history": {
+    "overview": "Fundada para ofrecer educación técnica de calidad en áreas de alta demanda.",
+    "milestones": [
+      {
+        "year": "2000",
+        "event": "Fundación de la institución."
+      },
+      {
+        "year": "2010",
+        "event": "Ampliación de programas académicos."
+      }
+    ]
+  },
+  "strategicObjectives": [
+    {
+      "title": "Incrementar la tasa de empleabilidad",
+      "description": "Desarrollar programas alineados con las necesidades del mercado laboral."
+    },
+    {
+      "title": "Expandir la oferta académica",
+      "description": "Introducir nuevas especializaciones y tecnologías en la enseñanza."
+    }
+  ],
+  "studentExperience": {
+    "campusLife": "Ambiente dinámico con instalaciones modernas y accesibles.",
+    "studentSupportServices": [
+      "Consejería académica",
+      "Orientación profesional"
+    ],
+    "clubsAndOrganizations": [],
+    "leadershipOpportunities": [
+      "Proyectos estudiantiles",
+      "Representación estudiantil"
+    ],
+    "internationalPrograms": []
+  },
+  "researchAndInnovation": {
+    "researchAreas": [],
+    "innovationInitiatives": [],
+    "industryPartnerships": []
+  },
+  "communityEngagement": {
+    "socialImpactPrograms": [],
+    "communityPartnerships": [],
+    "sustainabilityInitiatives": []
+  },
+  "graduateProfile": {
+    "description": "Profesionales competentes en su campo con un fuerte enfoque en la ética.",
+    "competencies": [
+      "Pensamiento crítico",
+      "Resolución de problemas"
+    ],
+    "professionalSkills": [
+      "Trabajo en equipo",
+      "Comunicación efectiva"
+    ],
+    "ethicalCommitments": [
+      "Responsabilidad social",
+      "Integridad profesional"
+    ]
+  },
+  "facultyProfile": {
+    "overview": "Profesores con experiencia en la industria y dedicación a la enseñanza.",
+    "qualifications": [
+      "Títulos de posgrado",
+      "Certificaciones en áreas específicas"
+    ],
+    "teachingStrengths": [
+      "Metodología activa",
+      "Enfoque en el aprendizaje práctico"
+    ]
+  },
+  "competitiveAdvantages": [
+    {
+      "title": "Conexiones con la industria",
+      "description": "Colaboraciones que benefician la formación práctica de los estudiantes."
+    },
+    {
+      "title": "Programas actualizados",
+      "description": "Currículos alineados con las tendencias del mercado laboral."
+    }
+  ],
+  "brandIdentity": {
+    "brandPromise": "Formación técnica de calidad que impulsa el futuro profesional.",
+    "brandPersonality": [
+      "Accesible",
+      "Innovador",
+      "Comprometido"
+    ],
+    "uniqueValueProposition": "Educación centrada en el aprendizaje práctico y la empleabilidad."
+  },
+  "institutionalCulture": {
+    "cultureDescription": "Un entorno de respeto, diversidad e inclusión.",
+    "diversityAndInclusion": "Comprometidos con un campus diverso y acogedor.",
+    "innovationMindset": "Estimular la creatividad y las ideas nuevas en la educación.",
+    "collaborationApproach": "Trabajo en equipo entre estudiantes, profesores y la comunidad."
+  },
+  "recognitionsAndAchievements": [],
+  "futureOutlook": {
+    "growthPlans": [
+      "Aumentar la capacidad de matricula",
+      "Implementar nuevos programas en línea"
+    ],
+    "strategicPriorities": [
+      "Mejorar la infraestructura",
+      "Fomentar la innovación en la enseñanza"
+    ],
+    "longTermGoals": [
+      "Establecer alianzas con instituciones internacionales",
+      "Mantener altos estándares académicos"
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import { useState, type CSSProperties } from "react";
 import {
   ArrowRight,
   CheckCircle2,
+  FileText,
   Loader2,
   RotateCcw,
   SendHorizontal,
@@ -792,46 +793,59 @@ export default function NewBrandQuickStart() {
   if (savedBrand) {
     return (
       <section className="grid min-h-[calc(100vh-9rem)] gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
-        <div className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950 sm:p-8 lg:p-10">
-          <div className="mb-10 inline-flex items-center gap-2 border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300">
-            <CheckCircle2 className="h-4 w-4" />
+        <div className="relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_22px_60px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-950 sm:p-8 lg:p-10">
+          <div className="pointer-events-none absolute -right-24 top-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(125,227,234,0.16),transparent_70%)] blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 left-12 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(62,57,137,0.14),transparent_70%)] blur-3xl" />
+
+          <div className="relative mb-10 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-[linear-gradient(135deg,rgba(236,253,245,0.96),rgba(209,250,229,0.78))] px-4 py-2 text-sm font-semibold text-emerald-800 shadow-[0_14px_34px_rgba(16,185,129,0.14)] dark:border-emerald-400/20 dark:bg-[linear-gradient(135deg,rgba(6,78,59,0.46),rgba(6,95,70,0.22))] dark:text-emerald-200">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white shadow-[0_8px_18px_rgba(16,185,129,0.28)]">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+            </span>
             Marca creada
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-5xl lg:text-6xl">
+          <h1 className="relative max-w-4xl text-4xl font-bold leading-tight tracking-tight text-slate-950 dark:text-slate-50 sm:text-5xl lg:text-6xl">
             {currentStep === "visual"
               ? "vamos a configurar tu identidad grafica"
               : "Vamos a revisar el sitio web de tu Universidad para tener mas contexto"}
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-slate-500 dark:text-slate-400">
+          <p className="relative mt-5 max-w-3xl text-base leading-7 text-slate-600 dark:text-slate-300">
             {currentStep === "visual"
               ? "Carga el manual de identidad grafica de la universidad en formato PDF para analizar logos, colores, tipografias y lineamientos visuales."
               : "Usaremos el sitio oficial para entender mejor su contenido, estructura, tono institucional y datos clave antes de seguir."}
           </p>
 
           {currentStep === "visual" ? (
-            <div className="mt-10 max-w-2xl">
-              <label className="block border border-dashed border-slate-300 bg-slate-50 p-6 dark:border-slate-700 dark:bg-slate-900">
-                <span className="block text-sm font-semibold text-slate-950 dark:text-slate-50">
-                  Manual de identidad grafica
-                </span>
-                <span className="mt-2 block text-sm leading-6 text-slate-500 dark:text-slate-400">
-                  Agrega la URL del manual de identidad para analizar logos, colores, tipografias y lineamientos visuales.
-                </span>
-                <input
-                  type="url"
-                  value={brandManualUrl}
-                  onChange={(event) => setBrandManualUrl(event.target.value)}
-                  placeholder="https://..."
-                  className="mt-5 block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-black dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
-                />
-              </label>
+            <div className="relative mt-10 max-w-2xl">
+              <div className="rounded-[24px] border border-[color-mix(in_srgb,var(--bunji-cyan)_32%,white)] bg-[linear-gradient(145deg,rgba(255,255,255,0.98),rgba(248,250,255,0.95))] p-5 shadow-[0_18px_48px_rgba(62,57,137,0.1)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(15,23,42,0.86),rgba(15,23,42,0.68))] sm:p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[color-mix(in_srgb,var(--bunji-primary-soft)_72%,white)] bg-white text-[var(--bunji-primary)] shadow-[0_12px_28px_rgba(62,57,137,0.12)] dark:border-white/10 dark:bg-white/5 dark:text-[var(--bunji-cyan)]">
+                    <FileText className="h-5 w-5" />
+                  </div>
+
+                  <label className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold text-slate-950 dark:text-slate-50">
+                      Manual de identidad grafica
+                    </span>
+                    <span className="mt-2 block text-sm leading-6 text-slate-600 dark:text-slate-400">
+                      Agrega la URL del manual de identidad para analizar logos, colores, tipografias y lineamientos visuales.
+                    </span>
+                    <input
+                      type="url"
+                      value={brandManualUrl}
+                      onChange={(event) => setBrandManualUrl(event.target.value)}
+                      placeholder="https://..."
+                      className="mt-5 block h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-[var(--bunji-primary)] focus:ring-4 focus:ring-[color-mix(in_srgb,var(--bunji-primary)_16%,transparent)] dark:border-slate-700 dark:bg-slate-950/80 dark:text-slate-100 dark:focus:border-[var(--bunji-cyan)]"
+                    />
+                  </label>
+                </div>
+              </div>
 
               <button
                 type="button"
                 onClick={sendBrandManual}
                 disabled={!brandManualUrl.trim() || sendingManual}
-                className="mt-5 inline-flex items-center gap-2 bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--bunji-primary)] disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[var(--bunji-primary)]"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[linear-gradient(135deg,var(--bunji-primary),color-mix(in_srgb,var(--bunji-primary-dark)_84%,var(--bunji-cyan)_16%))] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(62,57,137,0.22)] transition hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_20px_42px_rgba(62,57,137,0.28)] disabled:cursor-not-allowed disabled:bg-none disabled:bg-slate-500 disabled:text-white disabled:opacity-80 disabled:shadow-none disabled:hover:translate-y-0 disabled:hover:scale-100"
               >
                 {sendingManual ? (
                   <Loader2 className="h-4 w-4 animate-spin" />

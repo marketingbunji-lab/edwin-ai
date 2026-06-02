@@ -1,0 +1,154 @@
+{
+  "id": "healthcare-enthusiast",
+  "profileName": "Healthcare Enthusiast",
+  "profileImage": "https://cdn.uploadtourl.com/efb678bd-0359-42e3-b4a9-2eb786a71556_data.png",
+  "description": "Motivated individuals seeking a career in healthcare, particularly in assisting roles.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-35",
+    "gender": "All",
+    "location": [
+      "Urban",
+      "Suburban"
+    ],
+    "educationLevel": "High School Graduate or GED",
+    "employmentStatus": "Part-time or Unemployed",
+    "incomeRange": "$25,000 - $50,000",
+    "familySituation": "Single or with dependents",
+    "languagePreference": [
+      "English",
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "ambitious",
+      "caring",
+      "detail-oriented"
+    ],
+    "values": [
+      "education",
+      "career advancement",
+      "community service"
+    ],
+    "interests": [
+      "healthcare trends",
+      "volunteering",
+      "personal development"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "Pursue a rewarding career in healthcare",
+      "Gain specialized training"
+    ],
+    "secondary": [
+      "Achieve financial stability",
+      "Work in a supportive environment"
+    ],
+    "successDefinition": "Securing a job in a healthcare role within 6 months of completion."
+  },
+  "painPoints": [
+    "High tuition costs",
+    "Balancing work and studies",
+    "Concerns about job placement"
+  ],
+  "motivations": [
+    "Desire to help others",
+    "Job security in the healthcare field",
+    "Opportunity for career growth"
+  ],
+  "objections": [
+    "Perceived cost of education",
+    "Time commitment for classes",
+    "Uncertainty about job prospects"
+  ],
+  "decisionFactors": [
+    "Tuition affordability",
+    "Flexible class schedules",
+    "Career services offered"
+  ],
+  "buyerJourney": {
+    "stage": "evaluation",
+    "awarenessTriggers": [
+      "Social media ads",
+      "Word-of-mouth referrals",
+      "Community events"
+    ],
+    "informationNeeds": [
+      "Program descriptions",
+      "Tuition financing options",
+      "Success stories of alumni"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "affordable healthcare education",
+      "dental assisting programs",
+      "medical assisting",
+      "phlebotomy courses"
+    ],
+    "commonQuestions": [
+      "What are the entry requirements?",
+      "How long is the program?",
+      "What is the job placement rate?"
+    ]
+  },
+  "emotionalTriggers": [
+    "Desire for fulfillment",
+    "Fear of missing out on opportunities",
+    "Hope for a better future"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "Email",
+      "Social Media",
+      "Text"
+    ],
+    "preferredContactTime": [
+      "Evenings",
+      "Weekends"
+    ],
+    "tone": [
+      "Supportive",
+      "Encouraging",
+      "Informative"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Your career in healthcare starts here!",
+      "Affordable training for a better future.",
+      "Join a community that cares."
+    ],
+    "ctaExamples": [
+      "Apply Now",
+      "Get More Information",
+      "Schedule a Campus Visit"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "Video testimonials",
+      "Infographics about career paths",
+      "Webinars on program details"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "High",
+    "salesReadiness": "Ready"
+  },
+  "metadata": {
+    "createdAt": "2026-06-01",
+    "updatedAt": "2026-06-01",
+    "source": "AI",
+    "tags": [
+      "healthcare",
+      "education",
+      "enrollment"
+    ]
+  }
+}

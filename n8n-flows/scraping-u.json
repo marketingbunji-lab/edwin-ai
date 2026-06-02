@@ -1,0 +1,87 @@
+{
+  "name": "scraping-u",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "scraping-u",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "7d0ef2f5-5eb9-45fa-8d88-c0af6db7f433",
+      "name": "Webhook - scraping-u",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        720,
+        360
+      ],
+      "webhookId": "scraping-u"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const incoming = $json || {};\nconst body = incoming.body && typeof incoming.body === 'object' ? incoming.body : incoming;\nconst url = typeof body.url === 'string' ? body.url.trim() : '';\n\nreturn {\n  json: {\n    ok: Boolean(url),\n    agent: 'scraping-u',\n    message: url ? 'URL recibida correctamente' : 'No se recibio una URL valida',\n    url,\n    receivedAt: new Date().toISOString()\n  }\n};"
+      },
+      "id": "f13c59b7-187d-4bf7-87a4-903a8e4f5a9b",
+      "name": "Prepare URL Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "3322fd5f-cf93-47b1-957e-f3ff468eaa35",
+      "name": "Respond - scraping-u",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        360
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook - scraping-u": {
+      "main": [
+        [
+          {
+            "node": "Prepare URL Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare URL Payload": {
+      "main": [
+        [
+          {
+            "node": "Respond - scraping-u",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "scraping-u-v2-url-only",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "description": "Flujo minimo para recibir una URL y devolverla como JSON."
+  },
+  "id": "scraping-u",
+  "tags": []
+}
