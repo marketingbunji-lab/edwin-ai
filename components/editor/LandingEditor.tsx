@@ -296,6 +296,9 @@ export default function LandingEditor({
   const [heroSettingsModalOpen, setHeroSettingsModalOpen] = useState(false);
   const [heroSettingsPosition, setHeroSettingsPosition] =
     useState<VariantControlPosition | null>(null);
+  const [curriculumLinkModalOpen, setCurriculumLinkModalOpen] = useState(false);
+  const [curriculumLinkSettingsPosition, setCurriculumLinkSettingsPosition] =
+    useState<VariantControlPosition | null>(null);
   const previewContentRef = useRef<HTMLDivElement | null>(null);
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
@@ -377,6 +380,7 @@ export default function LandingEditor({
         setVariantControlPositions([]);
         setFormSettingsPosition(null);
         setHeroSettingsPosition(null);
+        setCurriculumLinkSettingsPosition(null);
         return;
       }
 
@@ -453,6 +457,31 @@ export default function LandingEditor({
         });
       } else {
         setFormSettingsPosition(null);
+      }
+
+      const curriculumLinkElement = previewContent.querySelector(
+        '[data-live-link-path="curriculum.buttonUrl"]',
+      );
+
+      if (curriculumLinkElement instanceof HTMLElement) {
+        const previewRect = previewContent.getBoundingClientRect();
+        const linkRect = curriculumLinkElement.getBoundingClientRect();
+        const preferredLeft = linkRect.right - previewRect.left + 12;
+        const fallbackLeft = linkRect.left - previewRect.left - 56;
+
+        setCurriculumLinkSettingsPosition({
+          id: "curriculum-link-settings",
+          top: Math.max(
+            linkRect.top - previewRect.top + (linkRect.height - 44) / 2,
+            16,
+          ),
+          left:
+            preferredLeft <= previewContent.clientWidth - 64
+              ? preferredLeft
+              : Math.max(16, fallbackLeft),
+        });
+      } else {
+        setCurriculumLinkSettingsPosition(null);
       }
     };
 
@@ -951,6 +980,12 @@ export default function LandingEditor({
       editable.removeAttribute("contenteditable");
       editable.removeAttribute("data-live-edit-path");
       editable.removeAttribute("title");
+    }
+
+    for (const editableLink of Array.from(
+      root.querySelectorAll("[data-live-link-path]"),
+    )) {
+      editableLink.removeAttribute("data-live-link-path");
     }
 
     for (const form of Array.from(root.querySelectorAll("form"))) {
@@ -2174,6 +2209,21 @@ ${accordionBootstrapScript}
                   <Settings className="h-4 w-4" />
                 </button>
               ) : null}
+              {curriculumLinkSettingsPosition ? (
+                <button
+                  type="button"
+                  onClick={() => setCurriculumLinkModalOpen(true)}
+                  className="absolute z-[56] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-slate-950/90 text-white shadow-[0_16px_34px_rgba(15,23,42,0.24)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[var(--bunji-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)]"
+                  style={{
+                    top: curriculumLinkSettingsPosition.top,
+                    left: curriculumLinkSettingsPosition.left,
+                  }}
+                  aria-label="Configurar enlace del plan de estudios"
+                  title="Configurar enlace del plan de estudios"
+                >
+                  <Settings className="h-4 w-4" />
+                </button>
+              ) : null}
               {renderLandingTemplate({
                 brand,
                 landing,
@@ -2246,6 +2296,159 @@ ${accordionBootstrapScript}
           onClose={() => setHeroSettingsModalOpen(false)}
         />
       ) : null}
+      {curriculumLinkModalOpen ? (
+        <LinkSettingsModal
+          currentUrl={
+            landing.curriculum?.buttonUrl ||
+            landing.curriculum?.downloadUrl ||
+            ""
+          }
+          onSave={(value) => {
+            updateField("curriculum.buttonUrl", value);
+            updateField("curriculum.downloadUrl", value);
+            setCurriculumLinkModalOpen(false);
+          }}
+          onClose={() => setCurriculumLinkModalOpen(false)}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function isValidLinkUrl(value: string) {
+  const normalizedValue = value.trim();
+
+  if (
+    !normalizedValue ||
+    normalizedValue.startsWith("/") ||
+    normalizedValue.startsWith("#")
+  ) {
+    return true;
+  }
+
+  try {
+    const url = new URL(normalizedValue);
+    return ["http:", "https:", "mailto:", "tel:"].includes(url.protocol);
+  } catch {
+    return false;
+  }
+}
+
+function LinkSettingsModal({
+  currentUrl,
+  onSave,
+  onClose,
+}: {
+  currentUrl: string;
+  onSave: (value: string) => void;
+  onClose: () => void;
+}) {
+  const [draft, setDraft] = useState(currentUrl);
+  const [showValidation, setShowValidation] = useState(false);
+  const normalizedDraft = draft.trim();
+  const isValid = isValidLinkUrl(normalizedDraft);
+
+  const handleSave = () => {
+    setShowValidation(true);
+
+    if (!isValid) return;
+
+    onSave(normalizedDraft);
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/55 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Configurar enlace del plan de estudios"
+    >
+      <div className="w-full max-w-xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-6 dark:border-white/10">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
+              Plan de estudios
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+              Configurar enlace de descarga
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Define el enlace que se abrirá cuando una persona seleccione el
+              botón del plan de estudios.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Cerrar configuración del enlace"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="space-y-5 p-6">
+          <label className="grid gap-2">
+            <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+              URL del plan de estudios
+            </span>
+            <input
+              value={draft}
+              onChange={(event) => {
+                setDraft(event.target.value);
+                setShowValidation(false);
+              }}
+              onBlur={() => setShowValidation(true)}
+              placeholder="https://..."
+              className={`admin-input h-12 rounded-xl ${
+                showValidation && !isValid
+                  ? "border-red-400 focus:border-red-500"
+                  : ""
+              }`}
+              aria-invalid={showValidation && !isValid}
+              aria-describedby="curriculum-link-help"
+              autoFocus
+            />
+            <span
+              id="curriculum-link-help"
+              className={`text-xs leading-5 ${
+                showValidation && !isValid
+                  ? "font-medium text-red-600 dark:text-red-300"
+                  : "text-slate-500 dark:text-slate-400"
+              }`}
+            >
+              {showValidation && !isValid
+                ? "Ingresa una URL válida, por ejemplo https://universidad.edu/plan.pdf."
+                : "Puedes usar un enlace web, una ruta interna o dejarlo vacío para quitar el botón público."}
+            </span>
+          </label>
+
+          <div className="flex flex-wrap justify-end gap-3">
+            {normalizedDraft ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setDraft("");
+                  setShowValidation(false);
+                }}
+                className="rounded-xl border border-red-200 px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 dark:border-red-500/30 dark:text-red-300 dark:hover:bg-red-500/10"
+              >
+                Quitar enlace
+              </button>
+            ) : null}
+
+            <button
+              type="button"
+              onClick={handleSave}
+              className="inline-flex items-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(62,57,137,0.25)] transition hover:scale-[1.02]"
+            >
+              <Settings className="h-4 w-4" />
+              Guardar enlace
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

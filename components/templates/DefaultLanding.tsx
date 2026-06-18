@@ -971,6 +971,7 @@ export default function DefaultLanding({
             titlePath="curriculum.title"
             descriptionPath="curriculum.description"
             buttonLabelPath="curriculum.buttonTitle"
+            buttonUrlPath="curriculum.buttonUrl"
             itemsPath="curriculum.items"
           />
         </div>

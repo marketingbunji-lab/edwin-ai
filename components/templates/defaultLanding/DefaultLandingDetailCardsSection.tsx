@@ -35,6 +35,7 @@ type Props = {
   buttonUrl?: string;
   buttonLabel?: string;
   buttonLabelPath?: string;
+  buttonUrlPath?: string;
   viewMoreLabel?: string;
   liveEdit?: LandingLiveEditConfig;
   titlePath?: string;
@@ -70,6 +71,7 @@ export default function DefaultLandingDetailCardsSection({
   buttonUrl = "",
   buttonLabel = "Descargar",
   buttonLabelPath,
+  buttonUrlPath,
   viewMoreLabel = "Ver mas",
   liveEdit,
   titlePath,
@@ -329,12 +331,13 @@ export default function DefaultLandingDetailCardsSection({
           </div>
         ) : null}
 
-        {resolvedButtonUrl ? (
+        {resolvedButtonUrl || (liveEdit?.enabled && buttonUrlPath) ? (
           <div className="mt-10 flex justify-center">
             <a
-              href={resolvedButtonUrl}
+              href={resolvedButtonUrl || "#"}
               target="_blank"
               rel="noreferrer"
+              data-live-link-path={liveEdit?.enabled ? buttonUrlPath : undefined}
               className={landingPrimaryButtonClass}
             >
               {buttonLabelPath ? (
