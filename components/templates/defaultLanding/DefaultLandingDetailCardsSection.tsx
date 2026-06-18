@@ -8,6 +8,7 @@ import {
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Banknote, BookOpenCheck, Hammer } from "lucide-react";
 
@@ -38,6 +39,7 @@ type Props = {
   liveEdit?: LandingLiveEditConfig;
   titlePath?: string;
   descriptionPath?: string;
+  itemsPath?: string;
 };
 
 function splitLabelAndAmount(value = "") {
@@ -72,6 +74,7 @@ export default function DefaultLandingDetailCardsSection({
   liveEdit,
   titlePath,
   descriptionPath,
+  itemsPath = "curriculum.items",
 }: Props) {
   const validItems = items.filter(
     (item) =>
@@ -248,6 +251,9 @@ export default function DefaultLandingDetailCardsSection({
                 </article>
               );
             })}
+            <div className="flex min-h-[220px] items-center justify-center">
+              <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
+            </div>
           </div>
         ) : validItems.length > 0 ? (
           <div className={landingCardGridClass}>
@@ -317,6 +323,9 @@ export default function DefaultLandingDetailCardsSection({
                 ) : null}
               </article>
             ))}
+            <div className="flex min-h-[220px] items-center justify-center">
+              <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
+            </div>
           </div>
         ) : null}
 

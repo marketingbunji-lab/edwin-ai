@@ -9,6 +9,7 @@ import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 
 type TestimonialItem = {
   name?: string;
@@ -84,6 +85,9 @@ export default function DefaultLandingTestimonialsSection({
               ) : null}
             </article>
           ))}
+          <div className="flex min-h-[220px] items-center justify-center">
+            <LiveAddItemButton path="testimonials" liveEdit={liveEdit} />
+          </div>
         </div>
       </div>
     </section>

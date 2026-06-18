@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Sparkles } from "lucide-react";
 import {
@@ -91,6 +92,9 @@ export default function DefaultLandingBenefitsSection({
                 </p>
               </article>
             ))}
+            <div className="flex min-h-[220px] items-center justify-center">
+              <LiveAddItemButton path="benefits.items" liveEdit={liveEdit} />
+            </div>
           </div>
         ) : null}
       </div>

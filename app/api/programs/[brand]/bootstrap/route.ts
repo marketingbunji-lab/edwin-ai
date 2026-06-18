@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { requireAuthenticatedUser } from "@/lib/serverAuth";
 import { serializeLandingForStorage, type Landing, type Program } from "@/lib/data";
 import {
   defaultLandingLanguageForBrand,
@@ -9,8 +9,6 @@ import {
   normalizeLandingLanguage,
   type LandingLanguage,
 } from "@/lib/landingLanguage";
-import { getSupabaseConfig } from "@/utils/supabase/config";
-import { createClient } from "@/utils/supabase/server";
 
 type Params = Promise<{
   brand: string;
@@ -284,26 +282,6 @@ function createProgramRegistryEntry(landing: Landing): Program {
     catalog: landing.catalog || "",
     updatedAt: landing.updatedAt,
   };
-}
-
-async function requireAuthenticatedUser() {
-  if (!getSupabaseConfig()) {
-    return null;
-  }
-
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return NextResponse.json(
-      { ok: false, error: "No autorizado" },
-      { status: 401 },
-    );
-  }
-
-  return null;
 }
 
 export async function POST(req: NextRequest, { params }: { params: Params }) {

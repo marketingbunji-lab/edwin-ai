@@ -3,17 +3,31 @@ import Image from "next/image";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import LoginForm from "./login/LoginForm";
+import { LOCAL_AUTH_COOKIE, isLocalAuthEnabled, isValidLocalSession } from "@/lib/localAuth";
 import { createClient } from "@/utils/supabase/server";
 
+const authTimeoutMs = 1500;
+
 async function getCurrentUser() {
+  if (isLocalAuthEnabled()) {
+    const cookieStore = await cookies();
+
+    return isValidLocalSession(cookieStore.get(LOCAL_AUTH_COOKIE)?.value)
+      ? { id: "local" }
+      : null;
+  }
+
   try {
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore);
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    const result = await Promise.race([
+      supabase.auth.getUser(),
+      new Promise<null>((resolve) => {
+        setTimeout(() => resolve(null), authTimeoutMs);
+      }),
+    ]);
 
-    return user;
+    return result?.data.user ?? null;
   } catch {
     return null;
   }

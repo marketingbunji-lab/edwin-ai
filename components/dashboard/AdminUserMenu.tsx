@@ -11,6 +11,11 @@ type AdminUser = {
   email: string;
 };
 
+type LocalUserResponse = {
+  ok?: boolean;
+  user?: AdminUser;
+};
+
 type ThemeMode = "light" | "dark";
 
 type Props = {
@@ -24,6 +29,9 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [signingOut, setSigningOut] = useState(false);
+  const [authProvider, setAuthProvider] = useState<"local" | "supabase">(
+    "supabase",
+  );
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -31,6 +39,18 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
 
     async function loadUser() {
       try {
+        const localResponse = await fetch("/api/auth/local/me");
+
+        if (localResponse.ok) {
+          const payload = (await localResponse.json()) as LocalUserResponse;
+
+          if (payload.user && isMounted) {
+            setAuthProvider("local");
+            setUser(payload.user);
+            return;
+          }
+        }
+
         const supabase = createClient();
         const {
           data: { user: authUser },
@@ -69,8 +89,13 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
     try {
       setSigningOut(true);
 
-      const supabase = createClient();
-      await supabase.auth.signOut();
+      if (authProvider === "local") {
+        await fetch("/api/auth/local/logout", { method: "POST" });
+      } else {
+        const supabase = createClient();
+        await supabase.auth.signOut();
+      }
+
       router.replace("/login");
       router.refresh();
     } finally {

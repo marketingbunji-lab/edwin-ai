@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
+  Code2,
   Droplets,
   ChevronDown,
   ChevronUp,
@@ -11,6 +12,7 @@ import {
   ImagePlus,
   Laptop,
   Plus,
+  Settings,
   Smartphone,
   Tablet,
   Trash2,
@@ -29,6 +31,7 @@ type Props = {
   brand: Brand;
   initialLanding: Landing;
   exportFilename: string;
+  imageAssets?: LandingImageAsset[];
 };
 
 type FilePickerHandle = {
@@ -87,6 +90,17 @@ type ImageEditTarget = {
   path: string;
   label: string;
 };
+
+export type LandingImageAsset = {
+  id: string;
+  name: string;
+  url: string;
+  source: "program" | "brand";
+  categoryLabel: string;
+  notes?: string;
+};
+
+type AssetSourceTab = "url" | "program" | "brand";
 
 const HERO_MENU_OPTIONS: HeroMenuOption[] = [
   { id: "landing-overview", label: "Conoce el programa" },
@@ -257,6 +271,7 @@ export default function LandingEditor({
   brand,
   initialLanding,
   exportFilename,
+  imageAssets = [],
 }: Props) {
   const [landing, setLanding] = useState<Landing>(initialLanding);
   const [saving, setSaving] = useState(false);
@@ -274,6 +289,13 @@ export default function LandingEditor({
   const [imageEditTarget, setImageEditTarget] =
     useState<ImageEditTarget | null>(null);
   const [imageUrlDraft, setImageUrlDraft] = useState("");
+  const [footerScriptsModalOpen, setFooterScriptsModalOpen] = useState(false);
+  const [formSettingsModalOpen, setFormSettingsModalOpen] = useState(false);
+  const [formSettingsPosition, setFormSettingsPosition] =
+    useState<VariantControlPosition | null>(null);
+  const [heroSettingsModalOpen, setHeroSettingsModalOpen] = useState(false);
+  const [heroSettingsPosition, setHeroSettingsPosition] =
+    useState<VariantControlPosition | null>(null);
   const previewContentRef = useRef<HTMLDivElement | null>(null);
   const brandCertifications = brand.certifications ?? [];
   const hasBrandCertifications = brandCertifications.length > 0;
@@ -353,6 +375,8 @@ export default function LandingEditor({
 
       if (!previewContent) {
         setVariantControlPositions([]);
+        setFormSettingsPosition(null);
+        setHeroSettingsPosition(null);
         return;
       }
 
@@ -388,6 +412,48 @@ export default function LandingEditor({
         );
 
       setVariantControlPositions(nextPositions);
+
+      const heroElement = previewContent.querySelector("#landing-hero");
+
+      if (heroElement instanceof HTMLElement) {
+        const previewRect = previewContent.getBoundingClientRect();
+        const heroRect = heroElement.getBoundingClientRect();
+
+        setHeroSettingsPosition({
+          id: "hero-settings",
+          top: Math.max(heroRect.top - previewRect.top + 72, 16),
+          left: Math.max(
+            16,
+            Math.min(
+              heroRect.right - previewRect.left - 56,
+              previewContent.clientWidth - 64,
+            ),
+          ),
+        });
+      } else {
+        setHeroSettingsPosition(null);
+      }
+
+      const formElement = previewContent.querySelector("#default-form");
+
+      if (formElement instanceof HTMLElement) {
+        const previewRect = previewContent.getBoundingClientRect();
+        const formRect = formElement.getBoundingClientRect();
+
+        setFormSettingsPosition({
+          id: "form-settings",
+          top: Math.max(formRect.top - previewRect.top + 16, 16),
+          left: Math.max(
+            16,
+            Math.min(
+              formRect.right - previewRect.left - 56,
+              previewContent.clientWidth - 64,
+            ),
+          ),
+        });
+      } else {
+        setFormSettingsPosition(null);
+      }
     };
 
     updateVariantControlPositions();
@@ -475,9 +541,43 @@ export default function LandingEditor({
     );
   };
 
+  const createLiveItemForPath = (path: string): EditableArrayItem => {
+    if (path === "summaryCards" || path === "programInfo") {
+      return {
+        label: "Nuevo dato",
+        value: "Describe este dato",
+      };
+    }
+
+    if (path === "faq") {
+      return {
+        question: "Nueva pregunta",
+        answer: "Escribe aqui la respuesta.",
+      };
+    }
+
+    if (path === "testimonials") {
+      return {
+        name: "Nombre del estudiante",
+        role: "Rol o programa",
+        quote: "Escribe aqui el testimonio.",
+      };
+    }
+
+    return {
+      title: "Nuevo item",
+      description: "Describe este nuevo punto.",
+    };
+  };
+
+  const addLiveItem = (path: string) => {
+    addArrayItem(path, createLiveItemForPath(path));
+  };
+
   const liveEditConfig = {
     enabled: liveEditEnabled,
     onTextChange: updateField,
+    onAddItem: addLiveItem,
   };
 
   const updateBooleanField = (path: string, value: boolean) => {
@@ -958,8 +1058,8 @@ ${accordionBootstrapScript}
   };
 
   return (
-    <div className="max-h-[calc(100vh-8rem)] grid min-w-0 gap-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <div className="relative z-20 flex max-h-[calc(100vh-8rem)] flex-col overflow-hidden border-r border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:sticky lg:top-0">
+    <div className="max-h-[calc(100vh-8rem)] min-w-0 border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+      <div className="hidden">
         <div className="border-b border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-50">
             Live editor
@@ -1267,152 +1367,6 @@ ${accordionBootstrapScript}
               </EditorSection>
             )}
 
-            {landing.form && (
-              <EditorSection title="Formulario">
-                <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
-                  <div>
-                    <p className="text-sm font-semibold text-slate-950 dark:text-slate-100">
-                      Mostrar componente de formulario
-                    </p>
-                    <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
-                      Renderiza una seccion independiente en dos columnas: texto editorial a la izquierda y formulario a la derecha.
-                    </p>
-                  </div>
-
-                  <SwitchField
-                    label="Mostrar componente de formulario"
-                    checked={Boolean(landing.formSection?.enabled)}
-                    onChange={(checked) =>
-                      updateBooleanField("formSection.enabled", checked)
-                    }
-                  />
-                </div>
-
-                <Field
-                  label="Script URL"
-                  value={landing.form?.scriptUrl || ""}
-                  onChange={(value) => updateField("form.scriptUrl", value)}
-                />
-
-                <TextareaField
-                  label="Código del script del formulario"
-                  value={landing.form?.scriptCode || ""}
-                  onChange={(value) => updateField("form.scriptCode", value)}
-                />
-
-                <Field
-                  label="Nombre del programa"
-                  value={landing.form?.programName || ""}
-                  onChange={(value) => updateField("form.programName", value)}
-                />
-
-                <Field
-                  label="Campus"
-                  value={landing.form?.campus || ""}
-                  onChange={(value) => updateField("form.campus", value)}
-                />
-
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
-                      Opciones de campus
-                    </h4>
-
-                    <button
-                      type="button"
-                      onClick={() =>
-                        addArrayItem("form.campusOptions", {
-                          label: "Nuevo campus",
-                          campus: "",
-                          campaigntype: "",
-                        })
-                      }
-                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
-                    >
-                      <Plus className="h-3.5 w-3.5" />
-                      Agregar campus
-                    </button>
-                  </div>
-
-                  {(landing.form?.campusOptions || []).map((item, index) => (
-                    <div
-                      key={index}
-                      className="admin-panel-soft p-4"
-                    >
-                      <div className="mb-3 flex items-center justify-between">
-                        <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
-                          Campus {index + 1}
-                        </p>
-
-                        <button
-                          type="button"
-                          onClick={() =>
-                            removeArrayItem("form.campusOptions", index)
-                          }
-                          className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                          Eliminar
-                        </button>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Field
-                          label="Label visible"
-                          value={typeof item === "string" ? "" : item?.label || ""}
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "form.campusOptions",
-                              index,
-                              "label",
-                              value,
-                            )
-                          }
-                        />
-
-                        <Field
-                          label="Valor campus"
-                          value={typeof item === "string" ? "" : item?.campus || ""}
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "form.campusOptions",
-                              index,
-                              "campus",
-                              value,
-                            )
-                          }
-                        />
-
-                        <Field
-                          label="Valor campaigntype"
-                          value={
-                            typeof item === "string"
-                              ? ""
-                              : item?.campaigntype || ""
-                          }
-                          onChange={(value) =>
-                            updateArrayItem(
-                              "form.campusOptions",
-                              index,
-                              "campaigntype",
-                              value,
-                            )
-                          }
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <Field
-                  label="Nombre input hidden"
-                  value={landing.form?.hiddenProgramFieldName || ""}
-                  onChange={(value) =>
-                    updateField("form.hiddenProgramFieldName", value)
-                  }
-                />
-              </EditorSection>
-            )}
 
             {landing.overview && (
               <EditorSection title="Seccion: Conoce el programa">
@@ -2059,56 +2013,6 @@ ${accordionBootstrapScript}
               </EditorSection>
             )}
 
-            <EditorSection title="Scripts finales">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
-                    Scripts al final de la landing
-                  </h4>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      addTextArrayItem("footerScripts", "<script>\n</script>")
-                    }
-                      className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-3 py-2 text-xs font-medium text-gray-700 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
-                  >
-                    <Plus className="h-3.5 w-3.5" />
-                    Agregar script
-                  </button>
-                </div>
-
-                {(landing.footerScripts || []).map((script: string, index) => (
-                  <div
-                    key={index}
-                  className="admin-panel-soft p-4"
-                  >
-                    <div className="mb-3 flex items-center justify-between">
-                      <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
-                        Script {index + 1}
-                      </p>
-
-                      <button
-                        type="button"
-                        onClick={() => removeArrayItem("footerScripts", index)}
-                        className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                        Eliminar
-                      </button>
-                    </div>
-
-                    <TextareaField
-                      label="Código"
-                      value={script || ""}
-                      onChange={(value) =>
-                        updateTextArrayItem("footerScripts", index, value)
-                      }
-                    />
-                  </div>
-                ))}
-              </div>
-            </EditorSection>
           </div>
         </div>
 
@@ -2209,7 +2113,7 @@ ${accordionBootstrapScript}
 
         <div className="max-h-full overflow-auto border-t border-gray-200 bg-gray-100 p-4 dark:border-slate-800 dark:bg-[#020617]">
           <div
-            className="max-h-full mx-auto overflow-auto border border-slate-200 bg-white"
+            className="relative max-h-full mx-auto overflow-auto border border-slate-200 bg-white"
             style={{
               width: previewWidth,
               height: previewHeight,
@@ -2240,12 +2144,53 @@ ${accordionBootstrapScript}
                   />
                 );
               })}
+              {landing.form && formSettingsPosition ? (
+                <button
+                  type="button"
+                  onClick={() => setFormSettingsModalOpen(true)}
+                  className="absolute z-[55] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-slate-950/90 text-white shadow-[0_16px_34px_rgba(15,23,42,0.24)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[var(--bunji-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)]"
+                  style={{
+                    top: formSettingsPosition.top,
+                    left: formSettingsPosition.left,
+                  }}
+                  aria-label="Configurar formulario"
+                  title="Configurar formulario"
+                >
+                  <Settings className="h-4 w-4" />
+                </button>
+              ) : null}
+              {heroSettingsPosition ? (
+                <button
+                  type="button"
+                  onClick={() => setHeroSettingsModalOpen(true)}
+                  className="absolute z-[56] inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-slate-950/90 text-white shadow-[0_16px_34px_rgba(15,23,42,0.24)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[var(--bunji-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)]"
+                  style={{
+                    top: heroSettingsPosition.top,
+                    left: heroSettingsPosition.left,
+                  }}
+                  aria-label="Configurar imagen de fondo del hero"
+                  title="Configurar imagen de fondo del hero"
+                >
+                  <Settings className="h-4 w-4" />
+                </button>
+              ) : null}
               {renderLandingTemplate({
                 brand,
                 landing,
                 liveEdit: liveEditConfig,
               })}
             </div>
+            <button
+              type="button"
+              onClick={() => setFooterScriptsModalOpen(true)}
+              className="absolute bottom-5 right-5 z-[60] inline-flex items-center gap-2 rounded-full border border-white/70 bg-slate-950/90 px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_18px_44px_rgba(15,23,42,0.26)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:bg-[var(--bunji-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bunji-cyan)]"
+            >
+              <Code2 className="h-4 w-4" />
+              Scripts finales
+              <span className="rounded-full bg-white/15 px-2 py-0.5 text-[10px] tracking-normal">
+                {(landing.footerScripts || []).length}
+              </span>
+            </button>
           </div>
         </div>
       </div>
@@ -2253,11 +2198,577 @@ ${accordionBootstrapScript}
         <ImageUrlModal
           target={imageEditTarget}
           value={imageUrlDraft}
+          imageAssets={imageAssets}
           onChange={setImageUrlDraft}
           onClose={closeImageEditor}
           onSave={saveImageUrl}
         />
       ) : null}
+      {footerScriptsModalOpen ? (
+        <FooterScriptsModal
+          scripts={landing.footerScripts || []}
+          onAdd={() =>
+            addTextArrayItem("footerScripts", "<script>\n</script>")
+          }
+          onRemove={(index) => removeArrayItem("footerScripts", index)}
+          onChange={(index, value) =>
+            updateTextArrayItem("footerScripts", index, value)
+          }
+          onClose={() => setFooterScriptsModalOpen(false)}
+        />
+      ) : null}
+      {formSettingsModalOpen && landing.form ? (
+        <FormSettingsModal
+          landing={landing}
+          onAddCampus={() =>
+            addArrayItem("form.campusOptions", {
+              label: "Nuevo campus",
+              campus: "",
+              campaigntype: "",
+            })
+          }
+          onChangeField={updateField}
+          onChangeBoolean={updateBooleanField}
+          onRemoveCampus={(index) =>
+            removeArrayItem("form.campusOptions", index)
+          }
+          onUpdateCampus={(index, field, value) =>
+            updateArrayItem("form.campusOptions", index, field, value)
+          }
+          onClose={() => setFormSettingsModalOpen(false)}
+        />
+      ) : null}
+      {heroSettingsModalOpen ? (
+        <HeroBackgroundSettingsModal
+          imageUrl={landing.hero?.backgroundImage || ""}
+          imageAssets={imageAssets}
+          onChangeField={updateField}
+          onClose={() => setHeroSettingsModalOpen(false)}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function FooterScriptsModal({
+  scripts,
+  onAdd,
+  onRemove,
+  onChange,
+  onClose,
+}: {
+  scripts: string[];
+  onAdd: () => void;
+  onRemove: (index: number) => void;
+  onChange: (index: number, value: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/55 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Editar scripts finales"
+    >
+      <div className="flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-6 dark:border-white/10">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
+              Scripts finales
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+              Scripts al final de la landing
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Agrega o edita scripts que se inyectan al final del HTML exportado
+              y de la landing renderizada.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Cerrar scripts finales"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="min-h-0 overflow-y-auto p-6">
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+              {scripts.length
+                ? `${scripts.length} script${scripts.length === 1 ? "" : "s"} configurado${scripts.length === 1 ? "" : "s"}`
+                : "Todavia no hay scripts configurados."}
+            </p>
+
+            <button
+              type="button"
+              onClick={onAdd}
+              className="inline-flex items-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(62,57,137,0.24)] transition hover:scale-[1.02]"
+            >
+              <Plus className="h-4 w-4" />
+              Agregar script
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {scripts.map((script: string, index) => (
+              <div key={index} className="admin-panel-soft p-4">
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                    Script {index + 1}
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => onRemove(index)}
+                    className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    Eliminar
+                  </button>
+                </div>
+
+                <TextareaField
+                  label="Codigo"
+                  value={script || ""}
+                  onChange={(value) => onChange(index, value)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FormSettingsModal({
+  landing,
+  onAddCampus,
+  onChangeField,
+  onChangeBoolean,
+  onRemoveCampus,
+  onUpdateCampus,
+  onClose,
+}: {
+  landing: Landing;
+  onAddCampus: () => void;
+  onChangeField: (path: string, value: string) => void;
+  onChangeBoolean: (path: string, value: boolean) => void;
+  onRemoveCampus: (index: number) => void;
+  onUpdateCampus: (index: number, field: string, value: string) => void;
+  onClose: () => void;
+}) {
+  const campusOptions = landing.form?.campusOptions || [];
+
+  return (
+    <div
+      className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/55 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Configurar formulario"
+    >
+      <div className="flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-6 dark:border-white/10">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
+              Formulario
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+              Configuracion del formulario
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Ajusta embeds, datos ocultos y opciones de campus sin salir del
+              preview visual.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Cerrar formulario"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="min-h-0 overflow-y-auto p-6">
+          <div className="space-y-5">
+            <div className="admin-panel-soft flex items-start justify-between gap-4 p-4">
+              <div>
+                <p className="text-sm font-semibold text-slate-950 dark:text-slate-100">
+                  Mostrar componente de formulario
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
+                  Renderiza una seccion independiente en dos columnas: texto
+                  editorial a la izquierda y formulario a la derecha.
+                </p>
+              </div>
+
+              <SwitchField
+                label="Mostrar componente de formulario"
+                checked={Boolean(landing.formSection?.enabled)}
+                onChange={(checked) =>
+                  onChangeBoolean("formSection.enabled", checked)
+                }
+              />
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <Field
+                label="Script URL"
+                value={landing.form?.scriptUrl || ""}
+                onChange={(value) => onChangeField("form.scriptUrl", value)}
+              />
+
+              <Field
+                label="Nombre del programa"
+                value={landing.form?.programName || ""}
+                onChange={(value) => onChangeField("form.programName", value)}
+              />
+
+              <Field
+                label="Campus"
+                value={landing.form?.campus || ""}
+                onChange={(value) => onChangeField("form.campus", value)}
+              />
+
+              <Field
+                label="Nombre input hidden"
+                value={landing.form?.hiddenProgramFieldName || ""}
+                onChange={(value) =>
+                  onChangeField("form.hiddenProgramFieldName", value)
+                }
+              />
+            </div>
+
+            <TextareaField
+              label="Codigo del script del formulario"
+              value={landing.form?.scriptCode || ""}
+              onChange={(value) => onChangeField("form.scriptCode", value)}
+            />
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                    Opciones de campus
+                  </h4>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Estos valores se pasan al formulario embebido cuando aplica.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={onAddCampus}
+                  className="inline-flex items-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(62,57,137,0.24)] transition hover:scale-[1.02]"
+                >
+                  <Plus className="h-4 w-4" />
+                  Agregar campus
+                </button>
+              </div>
+
+              {campusOptions.map((item, index) => (
+                <div key={index} className="admin-panel-soft p-4">
+                  <div className="mb-3 flex items-center justify-between gap-4">
+                    <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                      Campus {index + 1}
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() => onRemoveCampus(index)}
+                      className="inline-flex items-center gap-1 text-xs font-medium text-red-600"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      Eliminar
+                    </button>
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-3">
+                    <Field
+                      label="Label visible"
+                      value={typeof item === "string" ? "" : item?.label || ""}
+                      onChange={(value) =>
+                        onUpdateCampus(index, "label", value)
+                      }
+                    />
+
+                    <Field
+                      label="Valor campus"
+                      value={
+                        typeof item === "string" ? "" : item?.campus || ""
+                      }
+                      onChange={(value) =>
+                        onUpdateCampus(index, "campus", value)
+                      }
+                    />
+
+                    <Field
+                      label="Valor campaigntype"
+                      value={
+                        typeof item === "string"
+                          ? ""
+                          : item?.campaigntype || ""
+                      }
+                      onChange={(value) =>
+                        onUpdateCampus(index, "campaigntype", value)
+                      }
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroBackgroundSettingsModal({
+  imageUrl,
+  imageAssets,
+  onChangeField,
+  onClose,
+}: {
+  imageUrl: string;
+  imageAssets: LandingImageAsset[];
+  onChangeField: (path: string, value: string) => void;
+  onClose: () => void;
+}) {
+  const [activeTab, setActiveTab] = useState<AssetSourceTab>("url");
+
+  return (
+    <div
+      className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/55 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Configurar imagen de fondo del hero"
+    >
+      <div className="w-full max-w-2xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-slate-950">
+        <div className="flex items-start justify-between gap-4 border-b border-slate-200 p-6 dark:border-white/10">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
+              Hero
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+              Imagen de fondo
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Agrega o reemplaza la imagen principal del hero. El cambio se
+              vera directamente en el preview antes de guardar.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:border-white/10 dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Cerrar configuracion del hero"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="space-y-5 p-6">
+          <ImageAssetTabs
+            activeTab={activeTab}
+            imageAssets={imageAssets}
+            onChangeTab={setActiveTab}
+          />
+
+          {activeTab === "url" ? (
+            <label className="grid gap-2">
+              <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                URL de imagen de fondo
+              </span>
+              <input
+                value={imageUrl}
+                onChange={(event) =>
+                  onChangeField("hero.backgroundImage", event.target.value)
+                }
+                placeholder="https://..."
+                className="admin-input h-12 rounded-xl"
+                autoFocus
+              />
+            </label>
+          ) : (
+            <ImageAssetGrid
+              assets={imageAssets.filter((asset) => asset.source === activeTab)}
+              selectedUrl={imageUrl}
+              emptyMessage={
+                activeTab === "program"
+                  ? "Aun no hay assets de imagen creados para este programa."
+                  : "Aun no hay assets de imagen creados para esta universidad."
+              }
+              onSelect={(asset) =>
+                onChangeField("hero.backgroundImage", asset.url)
+              }
+            />
+          )}
+
+          {imageUrl ? (
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.03]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageUrl}
+                alt="Preview del fondo del hero"
+                className="max-h-72 w-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400">
+              Todavia no hay una imagen configurada. El hero usara el fondo por
+              defecto basado en los colores de la marca.
+            </div>
+          )}
+
+          <div className="flex flex-wrap justify-end gap-3">
+            {imageUrl ? (
+              <button
+                type="button"
+                onClick={() => onChangeField("hero.backgroundImage", "")}
+                className="rounded-xl border border-red-200 px-4 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-50 dark:border-red-500/30 dark:text-red-300 dark:hover:bg-red-500/10"
+              >
+                Quitar imagen
+              </button>
+            ) : null}
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 rounded-xl bg-[var(--bunji-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(62,57,137,0.25)] transition hover:scale-[1.02]"
+            >
+              <ImagePlus className="h-4 w-4" />
+              Listo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ImageAssetTabs({
+  activeTab,
+  imageAssets,
+  onChangeTab,
+}: {
+  activeTab: AssetSourceTab;
+  imageAssets: LandingImageAsset[];
+  onChangeTab: (tab: AssetSourceTab) => void;
+}) {
+  const programAssetsCount = imageAssets.filter(
+    (asset) => asset.source === "program",
+  ).length;
+  const brandAssetsCount = imageAssets.filter(
+    (asset) => asset.source === "brand",
+  ).length;
+  const tabs: Array<{
+    id: AssetSourceTab;
+    label: string;
+    count?: number;
+  }> = [
+    { id: "url", label: "URL manual" },
+    { id: "program", label: "Assets del programa", count: programAssetsCount },
+    { id: "brand", label: "Assets universidad", count: brandAssetsCount },
+  ];
+
+  return (
+    <div className="flex flex-wrap gap-2 rounded-2xl border border-slate-200 bg-slate-50 p-1.5 dark:border-white/10 dark:bg-white/[0.03]">
+      {tabs.map((tab) => {
+        const active = activeTab === tab.id;
+
+        return (
+          <button
+            key={tab.id}
+            type="button"
+            onClick={() => onChangeTab(tab.id)}
+            className={`inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-bold transition ${
+              active
+                ? "bg-[var(--bunji-primary)] text-white shadow-[0_10px_24px_rgba(62,57,137,0.24)]"
+                : "text-slate-600 hover:bg-white hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+            }`}
+          >
+            {tab.label}
+            {typeof tab.count === "number" ? (
+              <span
+                className={`rounded-full px-2 py-0.5 text-[10px] ${
+                  active
+                    ? "bg-white/18 text-white"
+                    : "bg-slate-200 text-slate-600 dark:bg-white/10 dark:text-slate-300"
+                }`}
+              >
+                {tab.count}
+              </span>
+            ) : null}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function ImageAssetGrid({
+  assets,
+  selectedUrl,
+  emptyMessage,
+  onSelect,
+}: {
+  assets: LandingImageAsset[];
+  selectedUrl: string;
+  emptyMessage: string;
+  onSelect: (asset: LandingImageAsset) => void;
+}) {
+  if (!assets.length) {
+    return (
+      <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm leading-6 text-slate-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400">
+        {emptyMessage}
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid max-h-72 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
+      {assets.map((asset) => {
+        const active = selectedUrl.trim() === asset.url.trim();
+
+        return (
+          <button
+            key={asset.id}
+            type="button"
+            onClick={() => onSelect(asset)}
+            className={`group overflow-hidden rounded-2xl border text-left transition hover:-translate-y-0.5 hover:shadow-lg ${
+              active
+                ? "border-[var(--bunji-primary)] bg-[var(--bunji-primary)]/8 shadow-[0_12px_30px_rgba(62,57,137,0.18)]"
+                : "border-slate-200 bg-white hover:border-[var(--bunji-primary)]/50 dark:border-white/10 dark:bg-white/[0.03]"
+            }`}
+          >
+            <div className="aspect-[16/9] overflow-hidden bg-slate-100 dark:bg-white/[0.04]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset.url}
+                alt={asset.name}
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="space-y-1 p-3">
+              <p className="line-clamp-2 text-sm font-semibold text-slate-950 dark:text-slate-50">
+                {asset.name}
+              </p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                {asset.categoryLabel}
+              </p>
+            </div>
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -2265,16 +2776,20 @@ ${accordionBootstrapScript}
 function ImageUrlModal({
   target,
   value,
+  imageAssets,
   onChange,
   onClose,
   onSave,
 }: {
   target: ImageEditTarget;
   value: string;
+  imageAssets: LandingImageAsset[];
   onChange: (value: string) => void;
   onClose: () => void;
   onSave: () => void;
 }) {
+  const [activeTab, setActiveTab] = useState<AssetSourceTab>("url");
+
   return (
     <div
       className="fixed inset-0 z-[90] grid place-items-center bg-slate-950/50 p-4 backdrop-blur-sm"
@@ -2282,7 +2797,7 @@ function ImageUrlModal({
       aria-modal="true"
       aria-label={`Editar ${target.label}`}
     >
-      <div className="w-full max-w-xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-slate-950">
+      <div className="w-full max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-slate-950">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[var(--bunji-primary)]">
@@ -2307,18 +2822,39 @@ function ImageUrlModal({
           </button>
         </div>
 
-        <label className="mt-6 grid gap-2">
-          <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-            URL de la imagen
-          </span>
-          <input
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            placeholder="https://..."
-            className="admin-input h-12 rounded-xl"
-            autoFocus
+        <div className="mt-6 space-y-5">
+          <ImageAssetTabs
+            activeTab={activeTab}
+            imageAssets={imageAssets}
+            onChangeTab={setActiveTab}
           />
-        </label>
+
+          {activeTab === "url" ? (
+            <label className="grid gap-2">
+              <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                URL de la imagen
+              </span>
+              <input
+                value={value}
+                onChange={(event) => onChange(event.target.value)}
+                placeholder="https://..."
+                className="admin-input h-12 rounded-xl"
+                autoFocus
+              />
+            </label>
+          ) : (
+            <ImageAssetGrid
+              assets={imageAssets.filter((asset) => asset.source === activeTab)}
+              selectedUrl={value}
+              emptyMessage={
+                activeTab === "program"
+                  ? "Aun no hay assets de imagen creados para este programa."
+                  : "Aun no hay assets de imagen creados para esta universidad."
+              }
+              onSelect={(asset) => onChange(asset.url)}
+            />
+          )}
+        </div>
 
         {value ? (
           <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.03]">

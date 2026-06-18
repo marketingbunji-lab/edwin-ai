@@ -971,6 +971,7 @@ export default function DefaultLanding({
             titlePath="curriculum.title"
             descriptionPath="curriculum.description"
             buttonLabelPath="curriculum.buttonTitle"
+            itemsPath="curriculum.items"
           />
         </div>
       ) : null}
@@ -987,6 +988,7 @@ export default function DefaultLanding({
             liveEdit={liveEdit}
             titlePath="handsOnTraining.title"
             descriptionPath="handsOnTraining.description"
+            itemsPath="handsOnTraining.items"
           />
         </div>
       ) : null}
@@ -1021,6 +1023,7 @@ export default function DefaultLanding({
             eyebrowPath={`${supportSectionPath}.eyebrow`}
             titlePath={`${supportSectionPath}.title`}
             descriptionPath={`${supportSectionPath}.description`}
+            itemsPath={`${supportSectionPath}.items`}
           />
         </div>
       ) : null}
@@ -1049,6 +1052,7 @@ export default function DefaultLanding({
             eyebrowPath="admissions.eyebrow"
             titlePath="admissions.title"
             descriptionPath="admissions.description"
+            itemsPath="admissions.items"
           />
         </div>
       ) : null}
@@ -1066,6 +1070,7 @@ export default function DefaultLanding({
             eyebrowPath="financialAid.eyebrow"
             titlePath="financialAid.title"
             descriptionPath="financialAid.description"
+            itemsPath="financialAid.items"
           />
         </div>
       ) : null}

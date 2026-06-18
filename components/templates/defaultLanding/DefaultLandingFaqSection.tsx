@@ -2,6 +2,7 @@ import LandingAccordion from "@/components/ui/LandingAccordion";
 import { landingContainerClass } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 
 type FaqItem = {
   question?: string;
@@ -49,6 +50,10 @@ export default function DefaultLandingFaqSection({
           id="default-faq"
           liveEdit={liveEdit}
         />
+
+        <div className="mt-8 flex justify-center">
+          <LiveAddItemButton path="faq" liveEdit={liveEdit} />
+        </div>
       </div>
     </section>
   );

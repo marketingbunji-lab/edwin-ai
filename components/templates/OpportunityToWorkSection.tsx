@@ -4,6 +4,7 @@ import { BriefcaseBusiness } from "lucide-react";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import {
   landingContainerClass,
   landingSectionDescriptionClass,
@@ -192,6 +193,12 @@ export default function OpportunityToWorkSection({
                 </p>
               </div>
             ))}
+            <div className="flex justify-center py-3">
+              <LiveAddItemButton
+                path={`${basePath}.items`}
+                liveEdit={liveEdit}
+              />
+            </div>
             </div>
           ) : null}
         </div>

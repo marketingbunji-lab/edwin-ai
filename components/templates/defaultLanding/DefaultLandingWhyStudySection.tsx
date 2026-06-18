@@ -8,6 +8,7 @@ import {
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import EditableImageSlot, { editableImageClass } from "./EditableImageSlot";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 
 type AccordionItem = {
@@ -76,6 +77,10 @@ export default function DefaultLandingWhyStudySection({
               liveEdit={liveEdit}
             />
           ) : null}
+
+          <div className={items.length > 0 ? "mt-8" : "mt-6"}>
+            <LiveAddItemButton path="whyStudy.items" liveEdit={liveEdit} />
+          </div>
         </div>
 
         {image || liveEdit?.enabled || logo ? (

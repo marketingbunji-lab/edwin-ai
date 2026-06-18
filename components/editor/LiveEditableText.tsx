@@ -9,6 +9,7 @@ import type {
 export type LandingLiveEditConfig = {
   enabled: boolean;
   onTextChange: (path: string, value: string) => void;
+  onAddItem?: (path: string) => void;
 };
 
 type Props = {

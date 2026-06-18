@@ -2,6 +2,7 @@ import type { LabelValueItem } from "@/lib/data";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import {
   Award,
   Banknote,
@@ -183,6 +184,17 @@ export default function DefaultLandingSummaryCardsSection({
             </div>
           );
         })}
+        <div
+          className={`flex items-center justify-center px-5 py-5 ${
+            embedded ? "border-white/20" : "border-[var(--landing-primary-light)]"
+          }`}
+        >
+          <LiveAddItemButton
+            path="summaryCards"
+            liveEdit={liveEdit}
+            label="Agregar dato"
+          />
+        </div>
       </div>
     </article>
   );

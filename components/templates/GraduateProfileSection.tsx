@@ -4,6 +4,7 @@ import type { Landing } from "@/lib/data";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import {
   landingContainerClass,
   landingSectionKickerClass,
@@ -215,6 +216,13 @@ export default function GraduateProfileSection({
               ))}
             </ul>
           ) : null}
+
+          <div className={items.length > 0 ? "mt-8" : "mt-6"}>
+            <LiveAddItemButton
+              path="graduateProfile.items"
+              liveEdit={liveEdit}
+            />
+          </div>
         </div>
       </div>
     </section>

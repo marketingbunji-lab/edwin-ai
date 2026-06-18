@@ -1,35 +1,13 @@
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { requireAuthenticatedUser } from "@/lib/serverAuth";
 import {
   getUniversityProfileByBrand,
   saveUniversityProfile,
 } from "@/lib/universityProfiles";
-import { getSupabaseConfig } from "@/utils/supabase/config";
-import { createClient } from "@/utils/supabase/server";
 
 type Params = Promise<{
   brand: string;
 }>;
-
-async function requireAuthenticatedUser() {
-  if (!getSupabaseConfig()) {
-    return null;
-  }
-
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return NextResponse.json(
-      { ok: false, error: "No autorizado" },
-      { status: 401 },
-    );
-  }
-
-  return null;
-}
 
 export async function GET(_: NextRequest, { params }: { params: Params }) {
   const { brand } = await params;

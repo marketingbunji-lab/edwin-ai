@@ -8,6 +8,7 @@ import {
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import EditableImageSlot, { editableImageClass } from "./EditableImageSlot";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import LiveEditableText from "@/components/editor/LiveEditableText";
 
@@ -99,6 +100,10 @@ export default function DefaultLandingOverviewSection({
               ))}
             </ul>
           ) : null}
+
+          <div className={validItems.length > 0 ? "mt-8" : "mt-6"}>
+            <LiveAddItemButton path="overview.items" liveEdit={liveEdit} />
+          </div>
         </div>
 
         {image ? (

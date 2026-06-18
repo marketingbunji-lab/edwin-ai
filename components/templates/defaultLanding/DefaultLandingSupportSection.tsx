@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { IconTextItem } from "@/lib/data";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Headphones } from "lucide-react";
 import {
@@ -28,6 +29,7 @@ type Props = {
   liveEdit?: LandingLiveEditConfig;
   titlePath?: string;
   descriptionPath?: string;
+  itemsPath?: string;
 };
 
 export default function DefaultLandingSupportSection({
@@ -41,6 +43,7 @@ export default function DefaultLandingSupportSection({
   liveEdit,
   titlePath = "studentSupport.title",
   descriptionPath = "studentSupport.description",
+  itemsPath = "studentSupport.items",
 }: Props) {
   const hasSupportVideo = Boolean(videoUrl);
 
@@ -93,53 +96,56 @@ export default function DefaultLandingSupportSection({
             </div>
           ) : null}
 
-          {items.length > 0 ? (
-            <div
-              className={
-                hasSupportVideo
-                  ? "grid gap-4"
-                  : "grid gap-4 md:grid-cols-2"
-              }
-            >
-              {items.map((item, index) => (
-                <article
-                  className={`${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`}
-                  key={index}
-                >
-                  {item.icon ? (
-                    <img
-                      src={item.icon}
-                      alt={item.title}
-                      className="mb-[18px] h-12 w-12 object-contain"
-                    />
-                  ) : null}
-                  <h3 className={landingCardTitleClass}>
-                    {item.titlePath ? (
-                      <LiveEditableText
-                        path={item.titlePath}
-                        value={item.title || ""}
-                        liveEdit={liveEdit}
-                        singleLine
+          <div
+            className={
+              hasSupportVideo
+                ? "grid gap-4"
+                : "grid gap-4 md:grid-cols-2"
+            }
+          >
+            {items.length > 0
+              ? items.map((item, index) => (
+                  <article
+                    className={`${landingCardClass} bg-[linear-gradient(180deg,#fff,var(--landing-primary-lightest))]`}
+                    key={index}
+                  >
+                    {item.icon ? (
+                      <img
+                        src={item.icon}
+                        alt={item.title}
+                        className="mb-[18px] h-12 w-12 object-contain"
                       />
-                    ) : (
-                      item.title
-                    )}
-                  </h3>
-                  <p className={landingCardTextClass}>
-                    {item.textPath ? (
-                      <LiveEditableText
-                        path={item.textPath}
-                        value={item.text || ""}
-                        liveEdit={liveEdit}
-                      />
-                    ) : (
-                      item.text
-                    )}
-                  </p>
-                </article>
-              ))}
+                    ) : null}
+                    <h3 className={landingCardTitleClass}>
+                      {item.titlePath ? (
+                        <LiveEditableText
+                          path={item.titlePath}
+                          value={item.title || ""}
+                          liveEdit={liveEdit}
+                          singleLine
+                        />
+                      ) : (
+                        item.title
+                      )}
+                    </h3>
+                    <p className={landingCardTextClass}>
+                      {item.textPath ? (
+                        <LiveEditableText
+                          path={item.textPath}
+                          value={item.text || ""}
+                          liveEdit={liveEdit}
+                        />
+                      ) : (
+                        item.text
+                      )}
+                    </p>
+                  </article>
+                ))
+              : null}
+            <div className="flex min-h-[160px] items-center justify-center">
+              <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
     </section>

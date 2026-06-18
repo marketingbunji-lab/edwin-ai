@@ -4,6 +4,48 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 
+function getLoginErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    const message = error.message.toLowerCase();
+
+    if (
+      message.includes("failed to fetch") ||
+      message.includes("network") ||
+      message.includes("fetch failed")
+    ) {
+      return "No pudimos conectar con Supabase. Revisa tu conexion, DNS o la URL del proyecto en .env.local.";
+    }
+
+    return error.message;
+  }
+
+  return "Could not sign in.";
+}
+
+async function signInWithLocalAuth(email: string, password: string) {
+  const response = await fetch("/api/auth/local/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (response.status === 404) {
+    return false;
+  }
+
+  const payload = (await response.json().catch(() => null)) as {
+    error?: string;
+  } | null;
+
+  if (!response.ok) {
+    throw new Error(payload?.error || "No se pudo iniciar sesion.");
+  }
+
+  return true;
+}
+
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -19,24 +61,24 @@ export default function LoginForm() {
       setLoading(true);
       setError("");
 
-      const supabase = createClient();
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const localAuthHandled = await signInWithLocalAuth(email, password);
 
-      if (signInError) {
-        throw signInError;
+      if (!localAuthHandled) {
+        const supabase = createClient();
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (signInError) {
+          throw signInError;
+        }
       }
 
       router.replace(searchParams.get("next") || "/admin");
       router.refresh();
     } catch (loginError) {
-      setError(
-        loginError instanceof Error
-          ? loginError.message
-          : "Could not sign in.",
-      );
+      setError(getLoginErrorMessage(loginError));
     } finally {
       setLoading(false);
     }

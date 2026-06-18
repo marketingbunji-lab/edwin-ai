@@ -52,20 +52,24 @@ export async function getSupabaseBrands(): Promise<Brand[]> {
     return [];
   }
 
-  const { data, error } = await supabase
-    .from("brands")
-    .select(
-      "slug,name,shortName,logo,logos,typography,primary_color,secondary_color,description,legal_links,certifications"
-    )
-    .order("created_at", { ascending: false });
+  try {
+    const { data, error } = await supabase
+      .from("brands")
+      .select(
+        "slug,name,shortName,logo,logos,typography,primary_color,secondary_color,description,legal_links,certifications",
+      )
+      .order("created_at", { ascending: false });
 
-  if (error || !data) {
+    if (error || !data) {
+      return [];
+    }
+
+    return (data as SupabaseBrandRow[])
+      .filter((brand) => brand.slug && brand.name)
+      .map(toBrand);
+  } catch {
     return [];
   }
-
-  return (data as SupabaseBrandRow[])
-    .filter((brand) => brand.slug && brand.name)
-    .map(toBrand);
 }
 
 export async function getSupabaseBrandBySlug(slug: string): Promise<Brand | null> {
@@ -75,17 +79,21 @@ export async function getSupabaseBrandBySlug(slug: string): Promise<Brand | null
     return null;
   }
 
-  const { data, error } = await supabase
-    .from("brands")
-    .select(
-      "slug,name,shortName,logo,logos,typography,primary_color,secondary_color,description,legal_links,certifications"
-    )
-    .eq("slug", slug)
-    .maybeSingle();
+  try {
+    const { data, error } = await supabase
+      .from("brands")
+      .select(
+        "slug,name,shortName,logo,logos,typography,primary_color,secondary_color,description,legal_links,certifications",
+      )
+      .eq("slug", slug)
+      .maybeSingle();
 
-  if (error || !data || !data.slug || !data.name) {
+    if (error || !data || !data.slug || !data.name) {
+      return null;
+    }
+
+    return toBrand(data as SupabaseBrandRow);
+  } catch {
     return null;
   }
-
-  return toBrand(data as SupabaseBrandRow);
 }

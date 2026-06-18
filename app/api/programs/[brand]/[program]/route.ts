@@ -1,15 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
+import { requireAuthenticatedUser } from "../../../../../lib/serverAuth";
 import {
   normalizeLandingSchema,
   serializeLandingForStorage,
   type Landing,
   type Program,
 } from "../../../../../lib/data";
-import { getSupabaseConfig } from "../../../../../utils/supabase/config";
-import { createClient } from "../../../../../utils/supabase/server";
 
 type Params = Promise<{
   brand: string;
@@ -77,26 +75,6 @@ function isValidProgramPayload(
     typeof value.template === "string" &&
     value.template.trim().length > 0
   );
-}
-
-async function requireAuthenticatedUser() {
-  if (!getSupabaseConfig()) {
-    return null;
-  }
-
-  const supabase = createClient(await cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return NextResponse.json(
-      { ok: false, error: "No autorizado" },
-      { status: 401 },
-    );
-  }
-
-  return null;
 }
 
 function removeProgramFromRegistry(brand: string, program: string) {
