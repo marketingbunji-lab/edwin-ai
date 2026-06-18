@@ -1,0 +1,440 @@
+{
+  "slug": "maestria-en-espiritualidad-uniminuto",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-06-18",
+  "logoMode": "dark",
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
+    "items": [
+      {
+        "title": "Registro calificado",
+        "name": "Registro calificado",
+        "description": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "title": "Maestría en Espiritualidad | Uniminuto",
+  "fullTitle": "Maestría en Espiritualidad | Uniminuto",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/maestria-en-espiritualidad",
+  "catalog": "",
+  "programType": "Maestría",
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "highlight": "",
+    "title": "Maestría en Espiritualidad",
+    "subtitle": "",
+    "description": "Áreas de conocimiento: Artes y Humanidades",
+    "supportText": "",
+    "modality": "Virtual",
+    "price": "$ 7.583.800",
+    "discountedPrice": "$3.791.900",
+    "discountPercentage": "50%",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/maestria-en-espiritualidad-02.jpg",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": ""
+  },
+  "programInfo": [
+    {
+      "key": "nivel-de-formacion",
+      "label": "Nivel de formación",
+      "value": "Maestría"
+    },
+    {
+      "key": "area",
+      "label": "Área",
+      "value": "Artes y Humanidades"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "4 Semestres"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "42"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "registro-calificado",
+      "label": "Registro calificado",
+      "value": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años"
+    }
+  ],
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "Perfil del egresado",
+    "image": "https://cdn.uploadtourl.com/d50956b7-81ea-4e15-8ef7-f4eecc83525d_data.png",
+    "items": [
+      {
+        "title": "",
+        "description": "Caracterizar los elementos constitutivos de la vida espiritual cristiana con sus dinámicas particulares y problemáticas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Acompañar procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Construir procesos de acompañamiento sólidos y renovadores orientados al crecimiento espiritual.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Responder a los requerimientos de los tiempos actuales con criterio, sensibilidad social y vocación clara.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "items": []
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Ruta formativa",
+    "description": "",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-04/Maestria-en-espiritualidad.pdf",
+    "buttonTitle": "Descarga el Plan de Estudios",
+    "items": [
+      {
+        "title": "Fundamentación",
+        "description": "Se afirman los tres pilares de la Sagrada Escritura, la Antropología y la Teología Mística.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Profundización",
+        "description": "Se aprende la historia, el desarrollo, las formas de vivencia y los recursos de apoyo para la vida espiritual, en diálogo interdisciplinar con la Biblia y la sicología aplicada a la vida espiritual.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Investigación",
+        "description": "Se afinan las habilidades para el acompañamiento espiritual y la producción de investigaciones que aporten al campo de estudio.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "",
+    "items": []
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita informacion",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "secondaryButton": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita informacion",
+    "description": "Completa el formulario y nuestro equipo te contactara pronto.",
+    "scriptUrl": "",
+    "scriptCode": "<div class=\"contenedor-formulario-embebido\">\n  <div role=\"main\" id=\"ms-innovaciones-pastorales-40123212338dd4e7c1b3\"></div>\n  <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>\n  <script>\n    new RDStationForms('ms-innovaciones-pastorales-40123212338dd4e7c1b3', 'UA-263596197-1').createForm();\n  </script>\n</div>\n<script>\n  const PROGRAM_NAME = 'Maestr\\u00eda en Espiritualidad';\n  let userIP = '';\n  let countryIP = '';\n  let stateIP = '';\n  let ciudadIP = '';\n  let ispIP = '';\n  let postalCode = '';\n  const userAgent = navigator.userAgent;\n  const urlParams = new URLSearchParams(window.location.search);\n  const utmParams = {};\n\n  urlParams.forEach((value, key) => {\n    utmParams[key] = value;\n  });\n\n  function hideField(field) {\n    if (!field) return;\n    field.style.display = 'none';\n    const label = field.closest('label') || document.querySelector(`label[for=\"${field.id}\"]`);\n    if (label) {\n      label.style.display = 'none';\n    }\n  }\n\n  function replaceInputWithSelect(name, options) {\n    const input = document.querySelector(`input[name=\"${name}\"]`);\n    if (!input || input.dataset.replaced === 'true') return;\n\n    const select = document.createElement('select');\n    select.name = name;\n    select.id = input.id || name;\n    select.className = input.className || 'bricks-form__input required';\n\n    options.forEach(({ value, label, disabled }) => {\n      const option = document.createElement('option');\n      option.value = value;\n      option.textContent = label;\n      option.disabled = Boolean(disabled);\n      select.appendChild(option);\n    });\n\n    select.dataset.replaced = 'true';\n    input.parentNode.replaceChild(select, input);\n  }\n\n  function applyProgramValue(scope) {\n    const programField = scope.querySelector('[name=\"cf_programas\"]');\n    if (!programField) return;\n\n    programField.value = PROGRAM_NAME;\n\n    if (programField.tagName === 'SELECT') {\n      const option = Array.from(programField.options || []).find((item) => item.value === PROGRAM_NAME);\n      if (option) {\n        option.selected = true;\n      }\n    }\n\n    hideField(programField);\n  }\n\n  function configureMainForm() {\n    const form = document.querySelector('#conversion-form-ms-innovaciones-pastorales');\n    if (!form) return false;\n\n    const consent = form.querySelector(\"input[name='privacy_data[consent]']\");\n    if (consent) consent.checked = true;\n\n    const origenField = form.querySelector('[name=\"cf_origen\"]');\n    if (origenField) {\n      origenField.value = 'google';\n      hideField(origenField);\n    }\n\n    replaceInputWithSelect('cf_canales_de_contactabilidad', [\n      { value: 'WhatsApp', label: 'WhatsApp' },\n      { value: 'Llamada', label: 'Llamada' },\n      { value: 'Correo', label: 'Correo' },\n    ]);\n\n    replaceInputWithSelect('cf_horario_preferido_para_contacto', [\n      { value: '7_am_a_12_pm', label: '7_am_a_12_pm' },\n      { value: 'de_12_pm_a_2_pm', label: 'de_12_pm_a_2_pm' },\n      { value: 'de_2_pm_a_6_pm', label: 'de_2_pm_a_6_pm' },\n      { value: 'de_6_pm_a_8_pm', label: 'de_6_pm_a_8_pm' },\n    ]);\n\n    replaceInputWithSelect('cf_tu_ciudad', [\n      { value: '', label: 'Selecciona tu ciudad', disabled: true },\n      { value: 'Bogot\\u00e1 D.C.', label: 'Bogot\\u00e1 D.C.' },\n      { value: 'Soacha', label: 'Soacha' },\n      { value: 'Zipaquir\\u00e1', label: 'Zipaquir\\u00e1' },\n      { value: 'Medell\\u00edn', label: 'Medell\\u00edn' },\n      { value: 'Bello', label: 'Bello' },\n      { value: 'Envigado', label: 'Envigado' },\n      { value: 'Itag\\u00fc\\u00ed', label: 'Itag\\u00fc\\u00ed' },\n      { value: 'Rionegro', label: 'Rionegro' },\n      { value: 'Barranquilla', label: 'Barranquilla' },\n      { value: 'Soledad', label: 'Soledad' },\n      { value: 'Malambo', label: 'Malambo' },\n      { value: 'Bucaramanga', label: 'Bucaramanga' },\n      { value: 'Floridablanca', label: 'Floridablanca' },\n      { value: 'Barrancabermeja', label: 'Barrancabermeja' },\n      { value: 'Cali', label: 'Cali' },\n      { value: 'Palmira', label: 'Palmira' },\n      { value: 'Buenaventura', label: 'Buenaventura' },\n      { value: 'Otra', label: 'Otra' },\n    ]);\n\n    const documentInput = form.querySelector('input[name=\"cf_numero_de_documento\"]');\n    if (documentInput) {\n      documentInput.setAttribute('maxlength', '10');\n      const parentDiv = documentInput.parentElement;\n      if (parentDiv) {\n        parentDiv.style.width = '100%';\n      }\n    }\n\n    const mobilePhoneInput = form.querySelector('input[name=\"mobile_phone\"]');\n    if (mobilePhoneInput) {\n      mobilePhoneInput.setAttribute('maxlength', '15');\n      mobilePhoneInput.style.width = '100%';\n    }\n\n    applyProgramValue(form);\n\n    if (form.dataset.analyticsBound !== 'true') {\n      form.addEventListener('submit', function () {\n        if (!form.checkValidity()) {\n          form.reportValidity();\n          return;\n        }\n\n        const formData = new FormData(form);\n        const data = {\n          name: formData.get('cf_nombre_completo')?.trim() ?? '',\n          phone: formData.get('mobile_phone')?.trim() ?? '',\n          email: formData.get('email')?.trim() ?? '',\n          documentType: formData.get('cf_tu_tipo_de_documento')?.trim() ?? '',\n          documento: formData.get('cf_numero_de_documento')?.trim() ?? '',\n          program: formData.get('cf_programas')?.trim() ?? '',\n        };\n\n        if (!data.name || !data.phone || !data.email || !data.documentType || !data.documento || !data.program) {\n          return;\n        }\n\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push({\n          event: 'formSubmission',\n          nombre: data.name,\n          telefono: data.phone,\n          email: data.email,\n          tipodoc: data.documentType,\n          documento: data.documento,\n          programa: data.program,\n          utm_campaign: utmParams?.utm_campaign ?? '',\n          utm_content: utmParams?.utm_content ?? '',\n          utm_device: utmParams?.utm_device ?? '',\n          utm_matchtype: utmParams?.utm_matchtype ?? '',\n          utm_medium: utmParams?.utm_medium ?? '',\n          utm_source: utmParams?.utm_source ?? '',\n          utm_term: utmParams?.utm_term ?? '',\n          Code_Id: utmParams?.Code_Id ?? '',\n          adposition: utmParams?.adposition ?? '',\n          creative_id: utmParams?.creative_id ?? '',\n          network: utmParams?.network ?? '',\n          formIp: userIP ?? '',\n          formNavegador: userAgent ?? '',\n          formCountryIP: countryIP ?? '',\n          formStateIP: stateIP ?? '',\n          formCiudadIP: ciudadIP ?? '',\n          formIspIP: ispIP ?? '',\n          formPostalCode: postalCode ?? '',\n        });\n      });\n\n      form.dataset.analyticsBound = 'true';\n    }\n\n    return true;\n  }\n\n  function configurePopupForm() {\n    const formPopup = document.querySelector('.rdstation-popup-js-form-identifier');\n    if (!formPopup) return false;\n\n    const consent = formPopup.querySelector(\"input[name='privacy_data[consent]']\");\n    if (consent) consent.checked = true;\n\n    applyProgramValue(formPopup);\n\n    if (formPopup.dataset.listenerAdded === 'true') {\n      return true;\n    }\n\n    formPopup.addEventListener('submit', function () {\n      if (!formPopup.checkValidity()) {\n        formPopup.reportValidity();\n        return;\n      }\n\n      const formDataWa = new FormData(formPopup);\n      const dataWa = {\n        fullname: formDataWa.get('cf_nombre_completo')?.trim() ?? '',\n        phone: formDataWa.get('mobile_phone')?.trim() ?? '',\n        email: formDataWa.get('email')?.trim() ?? '',\n        documento: formDataWa.get('cf_numero_de_documento')?.trim() ?? '',\n        program: formDataWa.get('cf_programas')?.trim() ?? '',\n        formacion: formDataWa.get('cf_nivel_de_formacion_de_interes')?.trim() ?? '',\n      };\n\n      if (!dataWa.fullname || !dataWa.phone || !dataWa.email || !dataWa.documento || !dataWa.program || !dataWa.formacion) {\n        return;\n      }\n\n      window.dataLayer = window.dataLayer || [];\n      window.dataLayer.push({\n        event: 'formWhatsapp',\n        nombre: dataWa.fullname,\n        telefono: dataWa.phone,\n        email: dataWa.email,\n        documento: dataWa.documento,\n        programa: dataWa.program,\n        formacion: dataWa.formacion,\n      });\n    });\n\n    formPopup.dataset.listenerAdded = 'true';\n    return true;\n  }\n\n  fetch('https://api64.ipify.org?format=json')\n    .then((response) => response.json())\n    .then((data) => {\n      userIP = data.ip;\n      return fetch(`https://ipinfo.io/${userIP}/json`);\n    })\n    .then((response) => response.json())\n    .then((data) => {\n      countryIP = data.country;\n      stateIP = data.region;\n      ciudadIP = data.city;\n      ispIP = data.org;\n      postalCode = data.postal;\n    })\n    .catch((error) => console.error('Error obteniendo la informaci\\u00f3n:', error));\n\n  document.addEventListener('DOMContentLoaded', function () {\n    const interval = setInterval(() => {\n      const hasMainForm = configureMainForm();\n      const hasPopupForm = configurePopupForm();\n      if (hasMainForm || hasPopupForm) {\n        clearInterval(interval);\n      }\n    }, 100);\n\n    document.querySelectorAll('.back-to-top').forEach(function (btn) {\n      btn.addEventListener('click', function () {\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push({ event: 'botonAncla' });\n      });\n    });\n  });\n</script>",
+    "formId": "",
+    "programName": "Maestría en Espiritualidad",
+    "campus": "Uniminuto",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "shortTitle": "Maestría en Espiritualidad | Uniminuto",
+  "degreeLevel": "",
+  "academicArea": "Artes y Humanidades",
+  "faculty": "",
+  "snies": "En proceso de asignación - Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
+  "cipCode": "",
+  "delivery": {
+    "modality": "Online",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "4",
+    "unit": "semestres",
+    "display": "4 Semestres",
+    "credits": "42",
+    "semesters": "4",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "7.583.800",
+    "currency": "",
+    "period": "",
+    "display": "Precio oficial $ 7.583.800. Precio de matrícula con subsidio otorgado por la sede $ 3.791.900",
+    "financialAidAvailable": true,
+    "financialAidText": "Becas y descuentos disponibles. Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Maestría en Espiritualidad | Uniminuto",
+    "metaDescription": "La Maestría en Espiritualidad busca formar maestros de vida espiritual capaces de acompañar procesos de encuentro con Dios, desde fundamentos bíblicos, históricos y del acompañamiento espiritual.",
+    "keywords": []
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "4 Semestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "42"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Magíster en Espiritualidad"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
+    "image": "https://cdn.uploadtourl.com/b8d1f8ed-a461-4eaf-9327-5f57654be63a_data.png",
+    "items": [
+      {
+        "title": "Un programa innovador y único en su modalidad",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Excelencia Académica",
+        "description": "Cuerpo profesoral integrado por académicos de alto nivel, pedagogos y con amplia trayectoria en los campos teológicos, bíblico, humano y espiritual.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Comunidad de Aprendizaje",
+        "description": "Aprende con otros profesionales comprometidos con el liderazgo con propósito y transformación social. Con la experiencia de los eudistas en el mundo de la formación de sacerdotes y laicos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Experiencia sólida en educación virtual desde el 2004, con un modelo pedagógico exitoso ",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "image": "",
+    "items": []
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "videoUrl": "",
+    "items": []
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Documentos de admision",
+    "description": "",
+    "items": [
+      {
+        "title": "",
+        "description": "Título de pregrado (Fotocopia del diploma o acta de grado profesional universitario)",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Fotocopia de documento de identidad",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Certificado de afiliación a la EPS",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "eyebrow": "",
+    "title": "Inversión y financiamiento",
+    "description": "",
+    "items": [
+      {
+        "title": "Valor semestre oficial $7.583.800",
+        "description": "Valor primer semestre subsidiado (50% de descuento lanzamiento) $3.791.900",
+        "url": "",
+        "image": "",
+        "items": [
+          "Valor primer semestre subsidiado",
+          "50% de descuento lanzamiento",
+          "$3.791.900"
+        ]
+      },
+      {
+        "title": "Para los semestres posteriores",
+        "description": "",
+        "url": "",
+        "image": "",
+        "items": [
+          "Incorporados eudistas (de cualquier provincia) y/o colaboradores OMD: 50%",
+          "Externos: 25%",
+          "Comunidades religiosas o sacerdotes diocesanos: 35%",
+          "Grupos de oración: 35%"
+        ]
+      },
+      {
+        "title": "Financiación de hasta el 100% de tus estudios",
+        "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": [],
+  "faq": [
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    },
+    {
+      "question": "",
+      "answer": ""
+    }
+  ],
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu",
+    "image": ""
+  },
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "formSection": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador."
+  },
+  "sourceProgramId": "maestria-en-espiritualidad-uniminuto",
+  "sourceProgramSlug": "maestria-en-espiritualidad-uniminuto"
+}

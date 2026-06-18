@@ -185,7 +185,7 @@ export default function DefaultLandingSummaryCardsSection({
           );
         })}
         <div
-          className={`flex items-center justify-center px-5 py-5 ${
+          className={`flex items-center justify-center px-5 py-5 empty:hidden ${
             embedded ? "border-white/20" : "border-[var(--landing-primary-light)]"
           }`}
         >

@@ -101,7 +101,7 @@ export default function DefaultLandingOverviewSection({
             </ul>
           ) : null}
 
-          <div className={validItems.length > 0 ? "mt-8" : "mt-6"}>
+          <div className={`${validItems.length > 0 ? "mt-8" : "mt-6"} empty:hidden`}>
             <LiveAddItemButton path="overview.items" liveEdit={liveEdit} />
           </div>
         </div>

@@ -217,7 +217,7 @@ export default function GraduateProfileSection({
             </ul>
           ) : null}
 
-          <div className={items.length > 0 ? "mt-8" : "mt-6"}>
+          <div className={`${items.length > 0 ? "mt-8" : "mt-6"} empty:hidden`}>
             <LiveAddItemButton
               path="graduateProfile.items"
               liveEdit={liveEdit}

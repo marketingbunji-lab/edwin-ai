@@ -142,7 +142,7 @@ export default function DefaultLandingSupportSection({
                   </article>
                 ))
               : null}
-            <div className="flex min-h-[160px] items-center justify-center">
+            <div className="flex min-h-[160px] items-center justify-center empty:hidden">
               <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
             </div>
           </div>

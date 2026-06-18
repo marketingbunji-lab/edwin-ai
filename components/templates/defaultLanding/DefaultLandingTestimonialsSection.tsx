@@ -85,7 +85,7 @@ export default function DefaultLandingTestimonialsSection({
               ) : null}
             </article>
           ))}
-          <div className="flex min-h-[220px] items-center justify-center">
+          <div className="flex min-h-[220px] items-center justify-center empty:hidden">
             <LiveAddItemButton path="testimonials" liveEdit={liveEdit} />
           </div>
         </div>

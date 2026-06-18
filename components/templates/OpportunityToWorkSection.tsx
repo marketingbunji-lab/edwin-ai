@@ -193,7 +193,7 @@ export default function OpportunityToWorkSection({
                 </p>
               </div>
             ))}
-            <div className="flex justify-center py-3">
+            <div className="flex justify-center py-3 empty:hidden">
               <LiveAddItemButton
                 path={`${basePath}.items`}
                 liveEdit={liveEdit}

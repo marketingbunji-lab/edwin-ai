@@ -78,7 +78,7 @@ export default function DefaultLandingWhyStudySection({
             />
           ) : null}
 
-          <div className={items.length > 0 ? "mt-8" : "mt-6"}>
+          <div className={`${items.length > 0 ? "mt-8" : "mt-6"} empty:hidden`}>
             <LiveAddItemButton path="whyStudy.items" liveEdit={liveEdit} />
           </div>
         </div>

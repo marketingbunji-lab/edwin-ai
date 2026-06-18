@@ -51,7 +51,7 @@ export default function DefaultLandingFaqSection({
           liveEdit={liveEdit}
         />
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center empty:hidden">
           <LiveAddItemButton path="faq" liveEdit={liveEdit} />
         </div>
       </div>
