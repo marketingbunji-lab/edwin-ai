@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  acceptsAnyLocalCredentials,
   LOCAL_AUTH_COOKIE,
   getLocalAuthCredentials,
   getLocalAuthUser,
@@ -21,30 +22,40 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!isLocalAuthConfigured()) {
-    return NextResponse.json(
-      {
-        ok: false,
-        error:
-          "Configura EDWIN_ADMIN_EMAIL y EDWIN_ADMIN_PASSWORD en .env.local.",
-      },
-      { status: 500 },
-    );
-  }
-
   const body = (await req.json()) as LoginPayload;
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const password = typeof body.password === "string" ? body.password : "";
-  const credentials = getLocalAuthCredentials();
 
-  if (
-    email.toLowerCase() !== credentials.email.toLowerCase() ||
-    password !== credentials.password
-  ) {
-    return NextResponse.json(
-      { ok: false, error: "Usuario o password invalidos." },
-      { status: 401 },
-    );
+  if (acceptsAnyLocalCredentials()) {
+    if (!email || !password) {
+      return NextResponse.json(
+        { ok: false, error: "Ingresa cualquier email y password para continuar." },
+        { status: 400 },
+      );
+    }
+  } else {
+    if (!isLocalAuthConfigured()) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error:
+            "Configura EDWIN_ADMIN_EMAIL y EDWIN_ADMIN_PASSWORD en .env.local.",
+        },
+        { status: 500 },
+      );
+    }
+
+    const credentials = getLocalAuthCredentials();
+
+    if (
+      email.toLowerCase() !== credentials.email.toLowerCase() ||
+      password !== credentials.password
+    ) {
+      return NextResponse.json(
+        { ok: false, error: "Usuario o password invalidos." },
+        { status: 401 },
+      );
+    }
   }
 
   const response = NextResponse.json({ ok: true, user: getLocalAuthUser() });

@@ -4,7 +4,7 @@
   "language": "es",
   "template": "DefaultLanding",
   "status": "published",
-  "updatedAt": "2026-06-18",
+  "updatedAt": "2026-08-20",
   "logoMode": "dark",
   "certifications": {
     "enabled": true,
@@ -38,9 +38,9 @@
     "highlight": "",
     "title": "Maestría en Espiritualidad",
     "subtitle": "",
-    "description": "Áreas de conocimiento: Artes y Humanidades",
-    "supportText": "",
-    "modality": "Virtual",
+    "description": "SNIES 118706 · Resolución de registro calificado: 023380 del 28/11/25 · Vigencia 7 años.",
+    "supportText": "Acreditación en Alta Calidad: Resolución 118706 · Vigencia 7 años.",
+    "modality": "100% Virtual",
     "price": "$ 7.583.800",
     "discountedPrice": "$3.791.900",
     "discountPercentage": "50%",
@@ -52,10 +52,10 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/maestria-en-espiritualidad-02.jpg",
+    "backgroundImage": "/uniminuto/maestria-espiritualidad-hero-grupo.jpeg",
     "personImage": "",
     "videoUrl": "",
-    "overlayColor": ""
+    "overlayColor": "rgba(8,16,33,0.42)"
   },
   "programInfo": [
     {
@@ -92,7 +92,7 @@
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "https://cdn.uploadtourl.com/d50956b7-81ea-4e15-8ef7-f4eecc83525d_data.png",
+    "image": "/uniminuto/maestria-en-espiritualidad-perfil.jpg",
     "items": [
       {
         "title": "",
@@ -211,7 +211,7 @@
   "degreeLevel": "",
   "academicArea": "Artes y Humanidades",
   "faculty": "",
-  "snies": "En proceso de asignación - Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
+  "snies": "SNIES 118706",
   "cipCode": "",
   "delivery": {
     "modality": "Online",
@@ -253,11 +253,15 @@
     },
     {
       "label": "Modalidad",
-      "value": "Virtual"
+      "value": "100% Virtual"
     },
     {
       "label": "Créditos",
       "value": "42"
+    },
+    {
+      "label": "Área de conocimiento",
+      "value": "Artes y Humanidades"
     },
     {
       "label": "Título otorgado",
@@ -268,7 +272,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
-    "image": "https://cdn.uploadtourl.com/b8d1f8ed-a461-4eaf-9327-5f57654be63a_data.png",
+    "image": "/uniminuto/maestria-en-espiritualidad-conoce.jpg",
     "items": [
       {
         "title": "Un programa innovador y único en su modalidad",
@@ -300,6 +304,139 @@
       }
     ]
   },
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "Información importante del programa",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "El perfil del egresado está representado en competencias que integran atributos, conocimientos, habilidades y actitudes que se proyectan en los egresados de la Maestría en Espiritualidad, así:",
+        "listStyle": "bullets",
+        "items": [
+          "Caracterizar los elementos constitutivos de la vida espiritual cristiana, con sus dinámicas particulares y problemáticas, a partir de los fundamentos epistemológicos e históricos de la disciplina, en diálogo interdisciplinar, para el acompañamiento de procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
+          "Construir procesos de acompañamiento sólidos y renovadores, orientados al crecimiento de la vida espiritual desde la práctica del discernimiento, que respondan a los requerimientos de los tiempos actuales."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 42 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Fundamentación",
+            "items": [
+              { "label": "Introducción a la Experiencia Espiritual", "value": "2" },
+              { "label": "Antropología Subyacente a la Vida Espiritual", "value": "2" },
+              { "label": "Teología Espiritual", "value": "2" },
+              { "label": "La Oración en la Biblia", "value": "2" },
+              { "label": "La Biblia como Paradigma de la Vida Espiritual", "value": "2" }
+            ]
+          },
+          {
+            "title": "Profundización",
+            "items": [
+              { "label": "Escuelas de Espiritualidad", "value": "2" },
+              { "label": "Desarrollo Espiritual", "value": "2" },
+              { "label": "Discernimiento", "value": "3" },
+              { "label": "Psicología y Vida Espiritual", "value": "3" },
+              { "label": "Estudios de Caso en la Vida Espiritual", "value": "2" },
+              { "label": "Nuevas Corrientes de Espiritualidad", "value": "3" },
+              { "label": "Crisis y Combate Espiritual", "value": "2" },
+              { "label": "Electiva", "value": "2" }
+            ]
+          },
+          {
+            "title": "Investigación",
+            "items": [
+              { "label": "Metodologías de Investigación", "value": "3" },
+              { "label": "Proyecto de Investigación I", "value": "3" },
+              { "label": "Proyecto de Investigación II", "value": "3" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Ser profesional en cualquier área, preferiblemente afines a las ciencias administrativas, sociales, económicas o similares (fotocopia del diploma o acta de grado profesional universitario).",
+          "Fotocopia de documento de identidad ampliada al 150%.",
+          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-extranjeros",
+        "label": "Requisitos para extranjeros",
+        "title": "Requisitos de admisión para extranjeros",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
+          "Permiso de permanencia o cédula de extranjería.",
+          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-ruta",
+        "label": "Ruta de aprendizaje",
+        "title": "Ruta de aprendizaje",
+        "description": "",
+        "listStyle": "steps",
+        "items": [
+          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
+          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
+          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
+          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": [
+      {
+        "title": "Docentes Calificados y Microcertificaciones",
+        "icon": "award",
+        "items": [
+          "Profesores con amplia experiencia profesional y académica.",
+          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
+          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+        ]
+      },
+      {
+        "title": "Convenios Internacionales",
+        "icon": "globe",
+        "items": [
+          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
+          "Sesiones virtuales con estudiantes y docentes de otros países.",
+          "Actividades de internacionalización y culturales en casa, sin salir del país.",
+          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
+          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
+        ]
+      },
+      {
+        "title": "Prácticas Profesionales",
+        "icon": "briefcase",
+        "items": [
+          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
+          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
+          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+        ]
+      }
+    ]
+  },
   "handsOnTraining": {
     "enabled": false,
     "eyebrow": "",
@@ -325,29 +462,7 @@
     "eyebrow": "",
     "title": "Documentos de admision",
     "description": "",
-    "items": [
-      {
-        "title": "",
-        "description": "Título de pregrado (Fotocopia del diploma o acta de grado profesional universitario)",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Fotocopia de documento de identidad",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Certificado de afiliación a la EPS",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ]
+    "items": []
   },
   "financialAid": {
     "enabled": true,
@@ -433,7 +548,10 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador."
+    "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador.",
+    "backgroundImage": "/uniminuto/maestria-en-espiritualidad-form-bg.jpg",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
   },
   "sourceProgramId": "maestria-en-espiritualidad-uniminuto",
   "sourceProgramSlug": "maestria-en-espiritualidad-uniminuto"

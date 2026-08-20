@@ -1,0 +1,311 @@
+{
+  "slug": "especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-20",
+  "logoMode": "dark",
+  "title": "Especialización en Gerencia y Auditoría de la Calidad en Salud | Uniminuto",
+  "fullTitle": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
+  "shortTitle": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud",
+  "programType": "Especialización Universitaria",
+  "degreeLevel": "Especialización Universitaria",
+  "academicArea": "Economía, administración, contaduría y afines",
+  "snies": "SNIES 119409",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true
+  },
+  "duration": {
+    "value": "2",
+    "unit": "cuatrimestres",
+    "display": "2 Cuatrimestres",
+    "credits": "24"
+  },
+  "tuition": {
+    "amount": "6.192.100",
+    "display": "Precio oficial $ 6.192.100. Precio de matrícula con subsidio otorgado por la sede $ 5.375.800",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Especialización en Gerencia y Auditoría de la Calidad en Salud | Uniminuto",
+    "metaDescription": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 119409 - Resolución registro calificado: 14037 del 22/05/2026 - Vigencia 7 años",
+    "items": [
+      {
+        "name": "Registro calificado",
+        "title": "Registro calificado",
+        "description": "Resolución 14037 del 22/05/2026 - Vigencia 7 años",
+        "enabled": true
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "title": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
+    "description": "SNIES 119409 · Resolución de registro calificado 14037 del 22/05/2026 · Vigencia 7 años.",
+    "supportText": "Título otorgado: Especialista en Gerencia y Auditoría de la Calidad en Salud.",
+    "modality": "Virtual",
+    "primaryCta": {
+      "label": "Solicita información",
+      "url": "#form"
+    },
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/6%20Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud.webp?itok=TrtWQs_-",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "2 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "24"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Especialista en Gerencia y Auditoría de la Calidad en Salud"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Especialización Universitaria"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Economía, administración, contaduría y afines"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "2 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "24"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 14037 del 22/05/2026 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "title": "Presentación del programa",
+    "description": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud. A través de una formación innovadora, ética y orientada a resultados, el programa fortalece competencias en calidad, seguridad del paciente, normatividad y transformación digital, contribuyendo al desarrollo de servicios de salud más eficientes, humanizados y sostenibles.",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES"
+  },
+  "graduateProfile": {
+    "title": "Perfil del egresado",
+    "items": [
+      {
+        "description": "Verificar el cumplimiento de requisitos legales y reglamentarios en el sector salud a partir del proceso de auditoría como una herramienta de la gestión gerencial y de calidad, para la mejora del desempeño del sistema de salud y la atención centrada en el cliente."
+      }
+    ]
+  },
+  "curriculum": {
+    "title": "Plan de estudios",
+    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 24. Modalidad: Virtual.",
+    "buttonTitle": "Descargar pensum",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf"
+  },
+  "admissions": {
+    "title": "Documentos de ingreso",
+    "items": [
+      "Fotocopia del diploma o acta de grado de bachiller.",
+      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+      "Fotocopia de documento de identidad al 150%.",
+      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+      "Pago derechos de inscripción.",
+      "Contrato de matrícula.",
+      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "title": "Inversión y financiamiento",
+    "items": [
+      {
+        "title": "Precio oficial $ 6.192.100",
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 5.375.800"
+      }
+    ]
+  },
+  "relatedPrograms": [
+    {
+      "title": "Maestría en Gerencia Estratégica de Operaciones",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-gerencia-estrategica-de-operaciones"
+    },
+    {
+      "title": "Maestría en Evaluación y Aseguramiento de la Calidad de la Educación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion"
+    },
+    {
+      "title": "Maestría en Neuroeducación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion"
+    }
+  ],
+  "contact": {
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu"
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita información",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "programName": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
+    "campus": "Uniminuto",
+    "language": "Spanish",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  },
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Verificar el cumplimiento de requisitos legales y reglamentarios en el sector salud a partir del proceso de auditoría como una herramienta de la gestión gerencial y de calidad, para la mejora del desempeño del sistema de salud y la atención centrada en el cliente."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 24 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Fundamentación",
+            "items": [
+              {
+                "label": "Fundamentos de la Calidad en Salud",
+                "value": "2"
+              },
+              {
+                "label": "Normatividad y Regulación en Salud",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Profundización",
+            "items": [
+              {
+                "label": "Indicadores y Evaluación del Desempeño en Salud",
+                "value": "3"
+              },
+              {
+                "label": "Gerencia del Riesgo en Salud",
+                "value": "3"
+              },
+              {
+                "label": "Auditoría de la Calidad en Salud",
+                "value": "3"
+              },
+              {
+                "label": "Electiva",
+                "value": "3"
+              },
+              {
+                "label": "Gerencia Estratégica y Financiera en Organizaciones de Salud",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Investigación",
+            "items": [
+              {
+                "label": "Investigación I",
+                "value": "2"
+              },
+              {
+                "label": "Investigación II",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Fotocopia del diploma o acta de grado de bachiller.",
+          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad al 150%.",
+          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+          "Pago derechos de inscripción.",
+          "Contrato de matrícula.",
+          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": []
+  }
+}

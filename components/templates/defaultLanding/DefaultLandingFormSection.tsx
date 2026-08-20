@@ -64,16 +64,30 @@ export default function DefaultLandingFormSection({
   const sectionTitle = formSection.title || "";
   const sectionSubtitle = formSection.subtitle || "";
   const sectionDescription = formSection.description || "";
+  const hasBackgroundImage = Boolean(formSection.backgroundImage?.trim());
+  const usesLightText = formSection.textTheme === "light";
+  const sectionBackground = hasBackgroundImage
+    ? `${formSection.overlayColor?.trim() || "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))"}, url("${formSection.backgroundImage}") center / cover no-repeat`
+    : undefined;
+  const eyebrowClass = usesLightText
+    ? "text-white/82"
+    : "text-[var(--landing-primary)]";
+  const titleClass = usesLightText ? "text-white" : "text-slate-950";
+  const subtitleClass = usesLightText
+    ? "text-white/90"
+    : "text-[var(--landing-primary)]";
+  const descriptionClass = usesLightText ? "text-white/90" : "text-slate-700";
 
   return (
     <section
       id="default-form"
-      className="bg-[linear-gradient(180deg,var(--landing-page-bg),var(--landing-primary-lightest))] py-24 md:py-32"
+      className={`py-24 md:py-32 ${hasBackgroundImage ? "relative overflow-hidden" : "bg-[linear-gradient(180deg,var(--landing-page-bg),var(--landing-primary-lightest))]"}`}
+      style={hasBackgroundImage ? { background: sectionBackground } : undefined}
     >
       <div className={`${landingContainerClass} grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,520px)]`}>
         <div className="max-w-2xl">
           {formSection.eyebrow ? (
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--landing-primary)]">
+            <p className={`mb-4 text-xs font-semibold uppercase tracking-[0.2em] ${eyebrowClass}`}>
               <LiveEditableText
                 path="formSection.eyebrow"
                 value={formSection.eyebrow}
@@ -90,7 +104,7 @@ export default function DefaultLandingFormSection({
               value={sectionTitle}
               liveEdit={liveEdit}
               singleLine
-              className="m-0 block text-4xl font-bold leading-tight tracking-tight text-slate-950 md:text-5xl"
+              className={`m-0 block text-4xl font-bold leading-tight tracking-tight md:text-5xl ${titleClass}`}
             />
           ) : null}
 
@@ -100,7 +114,7 @@ export default function DefaultLandingFormSection({
               path="formSection.subtitle"
               value={sectionSubtitle}
               liveEdit={liveEdit}
-              className="mt-5 block text-2xl font-semibold leading-tight text-[var(--landing-primary)]"
+              className={`mt-5 block text-2xl font-semibold leading-tight ${subtitleClass}`}
             />
           ) : null}
 
@@ -110,7 +124,7 @@ export default function DefaultLandingFormSection({
               path="formSection.description"
               value={sectionDescription}
               liveEdit={liveEdit}
-              className="mt-6 block text-lg leading-8 text-slate-700"
+              className={`mt-6 block text-lg leading-8 ${descriptionClass}`}
             />
           ) : null}
         </div>

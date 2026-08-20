@@ -1,0 +1,460 @@
+{
+  "slug": "licenciatura-en-diseno-tecnologico",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-20",
+  "logoMode": "dark",
+  "title": "Licenciatura en Diseño Tecnológico | Uniminuto",
+  "fullTitle": "Licenciatura en Diseño Tecnológico",
+  "shortTitle": "Licenciatura en Diseño Tecnológico",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/licenciatura-en-diseno-tecnologico",
+  "programType": "Profesional Universitario",
+  "degreeLevel": "Profesional Universitario",
+  "academicArea": "Ciencias de la educación",
+  "snies": "SNIES 119435",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true
+  },
+  "duration": {
+    "value": "10",
+    "unit": "cuatrimestres",
+    "display": "10 Cuatrimestres",
+    "credits": "144"
+  },
+  "tuition": {
+    "amount": "3.892.000",
+    "display": "Precio oficial $ 3.892.000. Precio de matrícula con subsidio otorgado por la sede $ 2.296.200",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Licenciatura en Diseño Tecnológico | Uniminuto",
+    "metaDescription": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 119435 - Resolución registro calificado: 14342 del 26/05/2026 - Vigencia 7 años",
+    "items": [
+      {
+        "name": "Registro calificado",
+        "title": "Registro calificado",
+        "description": "Resolución 14342 del 26/05/2026 - Vigencia 7 años",
+        "enabled": true
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "title": "Licenciatura en Diseño Tecnológico",
+    "description": "SNIES 119435 · Resolución de registro calificado 14342 del 26/05/2026 · Vigencia 7 años.",
+    "supportText": "Título otorgado: Licenciado/a/e en Diseño Tecnológico.",
+    "modality": "Virtual",
+    "primaryCta": {
+      "label": "Solicita información",
+      "url": "#form"
+    },
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%201.png?itok=oC4UbKjk",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Licenciado/a/e en Diseño Tecnológico"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Profesional Universitario"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Ciencias de la educación"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 14342 del 26/05/2026 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "title": "Presentación del programa",
+    "description": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño. Su propuesta académica fortalece la investigación, la inclusión y el uso estratégico de tecnologías para responder a los desafíos de la educación actual y futura, promoviendo experiencias de aprendizaje dinámicas, humanas y de alta calidad.",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0"
+  },
+  "graduateProfile": {
+    "title": "Perfil del egresado",
+    "items": [
+      {
+        "description": "Estructurar los conocimientos pedagógicos y tecnológicos en el diseño educativo a partir del análisis en la planificación e innovación de los procesos de enseñanza y aprendizaje, para la toma de decisiones en la mejora de las prácticas educativas."
+      },
+      {
+        "description": "Diseñar propuestas de intervención pedagógica fundamentadas en el uso de tecnologías a partir de la integración de estrategias innovadoras para la gestión y transformación de los procesos de enseñanza y aprendizaje en entornos educativos dinámicos, efectivos e inclusivos."
+      },
+      {
+        "description": "Explicar el desarrollo del área de Tecnología e Informática en el sistema educativo y su relación con otras áreas del conocimiento a partir del liderazgo pedagógico basado en la investigación formativa para el fortalecimiento de las habilidades del siglo XXI en las comunidades educativas."
+      }
+    ]
+  },
+  "curriculum": {
+    "title": "Plan de estudios",
+    "description": "Consulta el pensum oficial del programa. La página oficial reporta 144 créditos y el documento del plan de estudios detalla la estructura curricular completa del programa en modalidad virtual.",
+    "buttonTitle": "Descargar pensum",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Licenciatura-en-Diseno-tecnologico.pdf",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Licenciatura-en-Diseno-tecnologico.pdf"
+  },
+  "admissions": {
+    "title": "Documentos de ingreso",
+    "items": [
+      "Fotocopia del diploma o acta de grado de bachiller.",
+      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+      "Fotocopia de documento de identidad al 150%.",
+      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+      "Pago derechos de inscripción.",
+      "Contrato de matrícula.",
+      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "title": "Inversión y financiamiento",
+    "items": [
+      {
+        "title": "Precio oficial $ 3.892.000",
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.200"
+      }
+    ]
+  },
+  "relatedPrograms": [
+    {
+      "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-ciencias-naturales-y-educacion-ambiental"
+    },
+    {
+      "title": "Maestría en Neuroeducación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion"
+    },
+    {
+      "title": "Maestría en Evaluación y Aseguramiento de la Calidad de la Educación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion"
+    }
+  ],
+  "contact": {
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu"
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita información",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "programName": "Licenciatura en Diseño Tecnológico",
+    "campus": "Uniminuto",
+    "language": "Spanish",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  },
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Estructurar los conocimientos pedagógicos y tecnológicos en el diseño educativo a partir del análisis en la planificación e innovación de los procesos de enseñanza y aprendizaje, para la toma de decisiones en la mejora de las prácticas educativas.",
+          "Diseñar propuestas de intervención pedagógica fundamentadas en el uso de tecnologías a partir de la integración de estrategias innovadoras para la gestión y transformación de los procesos de enseñanza y aprendizaje en entornos educativos dinámicos, efectivos e inclusivos.",
+          "Explicar el desarrollo del área de Tecnología e Informática en el sistema educativo y su relación con otras áreas del conocimiento a partir del liderazgo pedagógico basado en la investigación formativa para el fortalecimiento de las habilidades del siglo XXI en las comunidades educativas."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 136 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Básico",
+            "items": [
+              {
+                "label": "Habilidades Digitales para el Aprendizaje",
+                "value": "3"
+              },
+              {
+                "label": "Lectura y Escritura en el Contexto Digital",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Matemáticas",
+                "value": "2"
+              },
+              {
+                "label": "Fundamentos en Educación y Pedagogía",
+                "value": "2"
+              },
+              {
+                "label": "Psicología Educativa",
+                "value": "2"
+              },
+              {
+                "label": "Modelos Pedagógicos",
+                "value": "2"
+              },
+              {
+                "label": "Inglés I",
+                "value": "3"
+              },
+              {
+                "label": "Teorías y Diseño Curricular",
+                "value": "2"
+              },
+              {
+                "label": "Práctica de Observación Educativa y Pedagógica",
+                "value": "2"
+              },
+              {
+                "label": "Inglés II",
+                "value": "3"
+              },
+              {
+                "label": "Evaluación Educativa",
+                "value": "2"
+              },
+              {
+                "label": "Inglés III",
+                "value": "3"
+              },
+              {
+                "label": "Administración y Gestión Educativa",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "title": "Profesional",
+            "items": [
+              {
+                "label": "Tecnología Educativa para la Inclusión y las Infancias",
+                "value": "3"
+              },
+              {
+                "label": "Sistemas Tecnológicos y Tecnología Educativa",
+                "value": "3"
+              },
+              {
+                "label": "Metodologías del Diseño",
+                "value": "3"
+              },
+              {
+                "label": "Pedagogías y Didácticas para la Enseñanza con Tecnología",
+                "value": "3"
+              },
+              {
+                "label": "Liderazgo Pedagógico",
+                "value": "2"
+              },
+              {
+                "label": "Creatividad y Tendencias del Diseño",
+                "value": "3"
+              },
+              {
+                "label": "Diseño de Experiencias de Aprendizaje con Tecnologías",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa I",
+                "value": "4"
+              },
+              {
+                "label": "Paradigmas Contemporáneos en Educación",
+                "value": "2"
+              },
+              {
+                "label": "Diseño de Contenido Digital Educativo",
+                "value": "3"
+              },
+              {
+                "label": "Metodología de la Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa II",
+                "value": "4"
+              },
+              {
+                "label": "Tecnologías Digitales para la Enseñanza",
+                "value": "3"
+              },
+              {
+                "label": "Diseño de Ambientes de Aprendizaje",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa III",
+                "value": "6"
+              },
+              {
+                "label": "Resultados de Investigación en Diseño Tecnológico en Educación",
+                "value": "3"
+              },
+              {
+                "label": "Educación Virtual y Entornos Híbridos",
+                "value": "2"
+              },
+              {
+                "label": "Tecnologías Emergentes e Innovación Educativa",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "title": "Minuto de Dios",
+            "items": [
+              {
+                "label": "Proyecto de Vida",
+                "value": "2"
+              },
+              {
+                "label": "Cátedra Minuto de Dios",
+                "value": "2"
+              },
+              {
+                "label": "Práctica en Responsabilidad Social",
+                "value": "3"
+              },
+              {
+                "label": "Ética Profesional",
+                "value": "2"
+              },
+              {
+                "label": "Emprendimiento",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "title": "Profesional complementario",
+            "items": [
+              {
+                "label": "Práctica de Profundización I",
+                "value": "8"
+              },
+              {
+                "label": "Electiva I",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización II",
+                "value": "9"
+              },
+              {
+                "label": "Electiva II",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización III",
+                "value": "9"
+              },
+              {
+                "label": "Opción de Grado",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Fotocopia del diploma o acta de grado de bachiller.",
+          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad al 150%.",
+          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+          "Pago derechos de inscripción.",
+          "Contrato de matrícula.",
+          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": []
+  }
+}

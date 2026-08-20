@@ -1,0 +1,335 @@
+{
+  "slug": "maestria-en-didactica-de-las-ciencias-sociales",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-20",
+  "logoMode": "dark",
+  "title": "Maestría en Didáctica de las Ciencias Sociales | Uniminuto",
+  "fullTitle": "Maestría en Didáctica de las Ciencias Sociales",
+  "shortTitle": "Maestría en Didáctica de las Ciencias Sociales",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/maestria-en-didactica-de-las-ciencias-sociales",
+  "programType": "Maestría",
+  "degreeLevel": "Maestría",
+  "academicArea": "Ciencias de la educación",
+  "snies": "SNIES 119433",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true
+  },
+  "duration": {
+    "value": "4",
+    "unit": "cuatrimestres",
+    "display": "4 Cuatrimestres",
+    "credits": "42"
+  },
+  "tuition": {
+    "amount": "7.930.900",
+    "display": "Precio oficial $ 7.930.900. Precio de matrícula con subsidio otorgado por la sede $ 6.625.800",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Maestría en Didáctica de las Ciencias Sociales | Uniminuto",
+    "metaDescription": "La Maestría en Didáctica de las Ciencias Sociales forma profesionales capaces de transformar los procesos de enseñanza y aprendizaje desde una mirada crítica, interdisciplinaria e innovadora.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 119433 - Resolución registro calificado: 14339 del 26/05/2026 - Vigencia 7 años",
+    "items": [
+      {
+        "name": "Registro calificado",
+        "title": "Registro calificado",
+        "description": "Resolución 14339 del 26/05/2026 - Vigencia 7 años",
+        "enabled": true
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "title": "Maestría en Didáctica de las Ciencias Sociales",
+    "description": "SNIES 119433 · Resolución de registro calificado 14339 del 26/05/2026 · Vigencia 7 años.",
+    "supportText": "Título otorgado: Magister en Didáctica de las Ciencias Sociales.",
+    "modality": "Virtual",
+    "primaryCta": {
+      "label": "Solicita información",
+      "url": "#form"
+    },
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "4 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "42"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Magister en Didáctica de las Ciencias Sociales"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Maestría"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Ciencias de la educación"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "4 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "42"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 14339 del 26/05/2026 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "title": "Presentación del programa",
+    "description": "La Maestría en Didáctica de las Ciencias Sociales forma profesionales capaces de transformar los procesos de enseñanza y aprendizaje desde una mirada crítica, interdisciplinaria e innovadora. El programa fortalece competencias pedagógicas, investigativas y sociales para promover la construcción de paz, la justicia social y la formación ciudadana en contextos educativos diversos y contemporáneos.",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales%20%282%29.png?itok=C007h2gI"
+  },
+  "graduateProfile": {
+    "title": "Perfil del egresado",
+    "items": [
+      {
+        "description": "Integrar los campos disciplinares, interdisciplinares y transdisciplinares de las ciencias sociales con el ejercicio pedagógico, por medio de diversos ambientes de aprendizaje para la formulación de proyectos curriculares transversales contextualizados."
+      },
+      {
+        "description": "Estructurar propuestas de formación ciudadana con base en la transposición didáctica de las ciencias sociales en perspectiva latinoamericana, para la construcción de paz, equidad y justicia social."
+      }
+    ]
+  },
+  "curriculum": {
+    "title": "Plan de estudios",
+    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 42. Modalidad: Virtual.",
+    "buttonTitle": "Descargar pensum",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Maestria-en-Didactica-de-las-Ciencias-Sociales-Editable.pdf",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Maestria-en-Didactica-de-las-Ciencias-Sociales-Editable.pdf"
+  },
+  "admissions": {
+    "title": "Documentos de ingreso",
+    "items": [
+      "Fotocopia del diploma o acta de grado de bachiller.",
+      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+      "Fotocopia de documento de identidad al 150%.",
+      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+      "Pago derechos de inscripción.",
+      "Contrato de matrícula.",
+      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "title": "Inversión y financiamiento",
+    "items": [
+      {
+        "title": "Precio oficial $ 7.930.900",
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 6.625.800"
+      }
+    ]
+  },
+  "relatedPrograms": [
+    {
+      "title": "Maestría en Neuroeducación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion"
+    },
+    {
+      "title": "Maestría en Evaluación y Aseguramiento de la Calidad de la Educación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion"
+    },
+    {
+      "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-ciencias-naturales-y-educacion-ambiental"
+    }
+  ],
+  "contact": {
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu"
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita información",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "programName": "Maestría en Didáctica de las Ciencias Sociales",
+    "campus": "Uniminuto",
+    "language": "Spanish",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales%20%282%29.png?itok=C007h2gI",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  },
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Integrar los campos disciplinares, interdisciplinares y transdisciplinares de las ciencias sociales con el ejercicio pedagógico, por medio de diversos ambientes de aprendizaje para la formulación de proyectos curriculares transversales contextualizados.",
+          "Estructurar propuestas de formación ciudadana con base en la transposición didáctica de las ciencias sociales en perspectiva latinoamericana, para la construcción de paz, equidad y justicia social."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 42 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Fundamentación",
+            "items": [
+              {
+                "label": "Trayectorias y Divergencias de las Ciencias Sociales",
+                "value": "3"
+              },
+              {
+                "label": "Debates Contemporáneos sobre la Didáctica",
+                "value": "3"
+              },
+              {
+                "label": "Enseñanza de las Ciencias Sociales desde Latinoamérica",
+                "value": "3"
+              },
+              {
+                "label": "Mediaciones Tecnológicas en las Didácticas de las Ciencias Sociales",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Profundización",
+            "items": [
+              {
+                "label": "Enseñanza de las Ciencias Sociales en Perspectiva Medioambiental",
+                "value": "3"
+              },
+              {
+                "label": "Enseñanza de la Historia en Perspectiva Interseccional",
+                "value": "3"
+              },
+              {
+                "label": "Didácticas del Espacio Geográfico",
+                "value": "3"
+              },
+              {
+                "label": "Didácticas sobre el Conflicto y Construcción de Paz en Colombia",
+                "value": "3"
+              },
+              {
+                "label": "Enseñanza de la Geopolítica y los Conflictos Multiescalares",
+                "value": "3"
+              },
+              {
+                "label": "Electiva",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Investigación",
+            "items": [
+              {
+                "label": "Fundamentos de Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Diseño de la Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Análisis de la Información",
+                "value": "3"
+              },
+              {
+                "label": "Generación de Conocimiento",
+                "value": "3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Fotocopia del diploma o acta de grado de bachiller.",
+          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad al 150%.",
+          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+          "Pago derechos de inscripción.",
+          "Contrato de matrícula.",
+          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": []
+  }
+}

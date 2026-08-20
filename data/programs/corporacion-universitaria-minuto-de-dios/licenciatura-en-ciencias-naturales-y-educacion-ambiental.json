@@ -1,0 +1,330 @@
+{
+  "slug": "licenciatura-en-ciencias-naturales-y-educacion-ambiental",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-20",
+  "logoMode": "dark",
+  "title": "Licenciatura en Ciencias Naturales y Educación Ambiental | Uniminuto",
+  "fullTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+  "shortTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/licenciatura-en-ciencias-naturales-y-educacion-ambiental",
+  "programType": "Profesional Universitario",
+  "degreeLevel": "Profesional Universitario",
+  "academicArea": "Ciencias de la educación",
+  "snies": "SNIES 119434",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true
+  },
+  "duration": {
+    "value": "10",
+    "unit": "cuatrimestres",
+    "display": "10 Cuatrimestres",
+    "credits": "144"
+  },
+  "tuition": {
+    "amount": "3.892.000",
+    "display": "Precio oficial $ 3.892.000. Precio de matrícula con subsidio otorgado por la sede $ 2.296.300",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental | Uniminuto",
+    "metaDescription": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 119434 - Resolución registro calificado: 14341 del 26/05/2026 - Vigencia 7 años",
+    "items": [
+      {
+        "name": "Registro calificado",
+        "title": "Registro calificado",
+        "description": "Resolución 14341 del 26/05/2026 - Vigencia 7 años",
+        "enabled": true
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+    "description": "SNIES 119434 · Resolución de registro calificado 14341 del 26/05/2026 · Vigencia 7 años.",
+    "supportText": "Título otorgado: Licenciado/a/e en Ciencias Naturales y Educación Ambiental.",
+    "modality": "Virtual",
+    "primaryCta": {
+      "label": "Solicita información",
+      "url": "#form"
+    },
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%201.png?itok=kga9dgOg",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Licenciado/a/e en Ciencias Naturales y Educación Ambiental"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Profesional Universitario"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Ciencias de la educación"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 14341 del 26/05/2026 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "title": "Presentación del programa",
+    "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x"
+  },
+  "programExplorer": {
+    "enabled": true,
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "El egresado del programa desarrolla capacidades para integrar saberes disciplinares, pedagógicos y ambientales en contextos educativos diversos.",
+        "listStyle": "bullets",
+        "items": [
+          "Integrar los fundamentos disciplinares, didácticos y pedagógicos de los procesos asociados a los diferentes fenómenos naturales de la biología, la física, la química y la educación ambiental, a través de su articulación con el reconocimiento de los contextos locales y globales para el fomento del pensamiento científico en diferentes comunidades.",
+          "Diseñar estrategias de transposición didáctica propias del campo de las ciencias naturales y educación ambiental con base en principios epistemológicos, enfoque crítico y sostenible para la comprensión de las implicaciones sociales y éticas de diversos contextos.",
+          "Caracterizar escenarios de enseñanza y aprendizaje para las ciencias naturales y educación ambiental, mediante la vinculación de la investigación formativa como estrategia pedagógica y didáctica para el acercamiento al conocimiento científico, que responda a la solución de problemáticas educativas."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 144 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Básico",
+            "items": [
+              { "label": "Habilidades Digitales para el Aprendizaje", "value": "3" },
+              { "label": "Lectura y Escritura en el Contexto Digital", "value": "3" },
+              { "label": "Fundamentos de Matemáticas", "value": "3" },
+              { "label": "Fundamentos en Educación y Pedagogía", "value": "3" },
+              { "label": "Modelos Pedagógicos", "value": "2" },
+              { "label": "Inglés I", "value": "3" },
+              { "label": "Práctica de Observación Educativa y Pedagógica", "value": "3" },
+              { "label": "Inglés II", "value": "3" },
+              { "label": "Teorías y Diseño Curricular", "value": "3" },
+              { "label": "Inglés III", "value": "3" },
+              { "label": "Evaluación Educativa", "value": "3" },
+              { "label": "Administración y Gestión Educativa", "value": "3" }
+            ]
+          },
+          {
+            "title": "Profesional",
+            "items": [
+              { "label": "Fundamentos de las Ciencias Naturales", "value": "3" },
+              { "label": "Didáctica de las Ciencias Naturales", "value": "2" },
+              { "label": "Biología Celular", "value": "3" },
+              { "label": "Química General", "value": "3" },
+              { "label": "Educación Ambiental", "value": "2" },
+              { "label": "Física Mecánica en las Ciencias Naturales", "value": "3" },
+              { "label": "Biología Vegetal", "value": "3" },
+              { "label": "Química Inorgánica", "value": "3" },
+              { "label": "Calor, Ondas y Electricidad", "value": "3" },
+              { "label": "Fundamentos de Investigación", "value": "3" },
+              { "label": "Química Orgánica", "value": "3" },
+              { "label": "Bioquímica", "value": "3" },
+              { "label": "Práctica Formativa I", "value": "4" },
+              { "label": "Metodología de la Investigación", "value": "3" },
+              { "label": "Práctica Formativa II", "value": "4" },
+              { "label": "Biología Animal", "value": "3" },
+              { "label": "Políticas Públicas en Educación y Ambiente", "value": "3" },
+              { "label": "Ecología, Biodiversidad y Gestión Ambiental", "value": "3" },
+              { "label": "Práctica Formativa III", "value": "6" },
+              { "label": "Resultados de Investigación en Ciencias Naturales", "value": "3" }
+            ]
+          },
+          {
+            "title": "Minuto de Dios",
+            "items": [
+              { "label": "Proyecto de Vida", "value": "2" },
+              { "label": "Cátedra Minuto de Dios", "value": "2" },
+              { "label": "Práctica en Responsabilidad Social", "value": "3" },
+              { "label": "Constitución Política", "value": "2" },
+              { "label": "Ética Profesional", "value": "2" },
+              { "label": "Emprendimiento", "value": "3" }
+            ]
+          },
+          {
+            "title": "Profesional complementario",
+            "items": [
+              { "label": "Práctica de Profundización I", "value": "8" },
+              { "label": "Electiva I", "value": "3" },
+              { "label": "Práctica de Profundización II", "value": "9" },
+              { "label": "Electiva II", "value": "3" },
+              { "label": "Práctica de Profundización III", "value": "9" },
+              { "label": "Opción de grado", "value": "0" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Fotocopia del diploma o acta de grado de bachiller.",
+          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad al 150%.",
+          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+          "Pago derechos de inscripción.",
+          "Contrato de matrícula.",
+          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": []
+  },
+  "graduateProfile": {
+    "title": "Perfil del egresado",
+    "items": [
+      {
+        "description": "Integrar los fundamentos disciplinares, didácticos y pedagógicos de los procesos asociados a los diferentes fenómenos naturales de la biología, la física, la química y la educación ambiental, a través de su articulación con el reconocimiento de los contextos locales y globales para el fomento del pensamiento científico en diferentes comunidades."
+      },
+      {
+        "description": "Diseñar estrategias de transposición didáctica propias del campo de las ciencias naturales y educación ambiental con base en principios epistemológicos, enfoque crítico y sostenible para la comprensión de las implicaciones sociales y éticas de diversos contextos."
+      },
+      {
+        "description": "Caracterizar escenarios de enseñanza y aprendizaje para las ciencias naturales y educación ambiental, mediante la vinculación de la investigación formativa como estrategia pedagógica y didáctica para el acercamiento al conocimiento científico, que responda a la solución de problemáticas educativas."
+      }
+    ]
+  },
+  "curriculum": {
+    "title": "Plan de estudios",
+    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 144. Modalidad: Virtual.",
+    "buttonTitle": "Descargar pensum",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf"
+  },
+  "admissions": {
+    "title": "Documentos de ingreso",
+    "items": [
+      "Fotocopia del diploma o acta de grado de bachiller.",
+      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+      "Fotocopia de documento de identidad al 150%.",
+      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+      "Pago derechos de inscripción.",
+      "Contrato de matrícula.",
+      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "title": "Inversión y financiamiento",
+    "items": [
+      {
+        "title": "Precio oficial $ 3.892.000",
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.300"
+      }
+    ]
+  },
+  "relatedPrograms": [
+    {
+      "title": "Licenciatura en Diseño Tecnológico",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-diseno-tecnologico"
+    },
+    {
+      "title": "Maestría en Neuroeducación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion"
+    },
+    {
+      "title": "Maestría en Didáctica de las Ciencias Sociales",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-didactica-de-las-ciencias-sociales"
+    }
+  ],
+  "contact": {
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu"
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita información",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "programName": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+    "campus": "Uniminuto",
+    "language": "Spanish",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  }
+}

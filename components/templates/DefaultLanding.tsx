@@ -26,6 +26,7 @@ import DefaultLandingFormSection from "./defaultLanding/DefaultLandingFormSectio
 import DefaultLandingHeroSection from "./defaultLanding/DefaultLandingHeroSection";
 import DefaultLandingHeroSectionB from "./defaultLanding/DefaultLandingHeroSectionB";
 import DefaultLandingOverviewSection from "./defaultLanding/DefaultLandingOverviewSection";
+import DefaultLandingProgramExplorerSection from "./defaultLanding/DefaultLandingProgramExplorerSection";
 import DefaultLandingSupportSection from "./defaultLanding/DefaultLandingSupportSection";
 import DefaultLandingTestimonialsSection from "./defaultLanding/DefaultLandingTestimonialsSection";
 import DefaultLandingWhyStudySection from "./defaultLanding/DefaultLandingWhyStudySection";
@@ -371,6 +372,28 @@ function hasMeaningfulTitleDescriptionItems(
   );
 }
 
+function hasProgramExplorerContent(explorer?: Landing["programExplorer"]) {
+  return Boolean(
+    explorer?.enabled &&
+      ((explorer.tabs ?? []).some(
+        (tab) =>
+          tab.title?.trim() ||
+          tab.description?.trim() ||
+          tab.items?.some((item) => item.trim()) ||
+          tab.groups?.some(
+            (group) =>
+              group.title?.trim() ||
+              group.items?.some(
+                (item) => item.label?.trim() || item.value?.trim(),
+              ),
+          ),
+      ) ||
+        (explorer.cards ?? []).some(
+          (card) => card.title?.trim() || card.items?.some((item) => item.trim()),
+        )),
+  );
+}
+
 export default function DefaultLanding({
   brand,
   landing,
@@ -399,6 +422,7 @@ export default function DefaultLanding({
   const form = landing.form ?? {};
   const formSection = landing.formSection ?? {};
   const overview = landing.overview ?? {};
+  const programExplorer = landing.programExplorer ?? {};
   const graduateProfile = landing.graduateProfile ?? {};
   const curriculum = landing.curriculum ?? {};
   const handsOnTraining = landing.handsOnTraining ?? {};
@@ -490,6 +514,7 @@ export default function DefaultLanding({
   const hasAdmissionsSection = Boolean(
     admissions.description?.trim() || admissionsItems.length > 0,
   );
+  const hasProgramExplorerSection = hasProgramExplorerContent(programExplorer);
   const hasConfiguredForm = Boolean(form.scriptCode || form.scriptUrl);
   const hasStandaloneFormSection = Boolean(formSection.enabled);
   const hasForm = true;
@@ -909,6 +934,13 @@ export default function DefaultLanding({
             eyebrowPath="overview.eyebrow"
           />
         </div>
+      ) : null}
+
+      {hasProgramExplorerSection ? (
+        <DefaultLandingProgramExplorerSection
+          explorer={programExplorer}
+          liveEdit={liveEdit}
+        />
       ) : null}
 
       {hasWhyStudySection ? (

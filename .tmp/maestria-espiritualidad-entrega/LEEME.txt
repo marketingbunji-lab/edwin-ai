@@ -1,0 +1,45 @@
+MAESTRÍA EN ESPIRITUALIDAD — UNIMINUTO
+Landing modificada · Entrega
+========================================================
+
+CONTENIDO DEL ZIP
+-----------------
+- "EDwin AI 2.html" + carpeta "EDwin AI 2_files/"  → landing en formato original.
+- "PREVIEW-Maestria-Espiritualidad.html"            → la misma en UN SOLO archivo.
+Ábrelas con doble clic (Chrome recomendado).
+Necesita internet solo para el formulario de RD Station.
+
+CAMBIOS APLICADOS
+-----------------
+HERO
+  - Imagen de fondo nueva (alta calidad) + overlay de gradiente.
+  - Título destacado; SNIES/acreditación como texto secundario con separador dorado.
+  - Tarjeta glassmorphism: "Título otorgado" destacado + grid 2x2
+    (Duración, Créditos, Modalidad, Área de conocimiento).
+
+COLOR
+  - Todo el naranja cambiado a amarillo/dorado de la marca.
+
+INVERSIÓN
+  - Cuadro destacado (amarillo): $3.791.900 (1er semestre, 50% lanzamiento) + financiamiento.
+
+CONOCE EL PROGRAMA
+  - Menú de pestañas: Perfil · Plan de estudios · Requisitos de admisión ·
+    Requisitos para extranjeros · Ruta de aprendizaje.
+  - Plan de estudios con la malla real (42 créditos).
+  - 3 tarjetas: Docentes Calificados y Microcertificaciones · Convenios
+    Internacionales · Prácticas Profesionales.
+  - Eliminado el recuadro "Documentos de admisión" (info movida al menú).
+  - Imagen de la sección: grupo de estudio.
+
+PERFIL DE EGRESADO
+  - Imagen nueva (egresado profesional).
+
+FORMULARIO
+  - Imagen de pasillo UNIMINUTO como FONDO de la sección, texto en blanco.
+  - Estados rojos de validación limpiados.
+
+NOTA
+----
+Este archivo es el PREVIEW para revisión. Para el sitio en vivo, los cambios
+deben pasarse a la app EDwin AI (ahí vive la data de cada sección).

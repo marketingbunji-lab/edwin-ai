@@ -1,0 +1,639 @@
+{
+  "slug": "licenciatura-en-ciencias-naturales-y-educacion-ambiental",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-20",
+  "logoMode": "dark",
+  "title": "Licenciatura en Ciencias Naturales y Educación Ambiental | Uniminuto",
+  "fullTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+  "shortTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+  "sourceWebsite": "https://www.uniminuto.edu/oferta-academica/programa/licenciatura-en-ciencias-naturales-y-educacion-ambiental",
+  "programType": "Profesional Universitario",
+  "degreeLevel": "Profesional Universitario",
+  "academicArea": "Ciencias de la educación",
+  "snies": "SNIES 119434",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "10",
+    "unit": "cuatrimestres",
+    "display": "10 Cuatrimestres",
+    "credits": "144",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "3.892.000",
+    "currency": "",
+    "period": "",
+    "display": "Precio oficial $ 3.892.000. Precio de matrícula con subsidio otorgado por la sede $ 2.296.300",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Licenciatura en Ciencias Naturales y Educación Ambiental | Uniminuto",
+    "metaDescription": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 119434 - Resolución registro calificado: 14341 del 26/05/2026 - Vigencia 7 años",
+    "items": [
+      {
+        "title": "Registro calificado",
+        "name": "Registro calificado",
+        "description": "Resolución 14341 del 26/05/2026 - Vigencia 7 años",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-graduate-profile",
+      "landing-curriculum",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "Virtual",
+    "highlight": "",
+    "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+    "subtitle": "",
+    "description": "SNIES 119434 · Resolución de registro calificado 14341 del 26/05/2026 · Vigencia 7 años.",
+    "supportText": "Título otorgado: Licenciado/a/e en Ciencias Naturales y Educación Ambiental.",
+    "discountedPrice": "",
+    "discountPercentage": "",
+    "primaryCta": {
+      "label": "Solicita informacion",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://cdn.uploadtourl.com/8b70da04-c394-46fb-9460-9616dbdd4784_data.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Licenciado/a/e en Ciencias Naturales y Educación Ambiental"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Profesional Universitario"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Ciencias de la educación"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "144"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 14341 del 26/05/2026 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Presentación del programa",
+    "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x",
+    "items": []
+  },
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "Perfil del egresado",
+    "image": "https://cdn.uploadtourl.com/8b70da04-c394-46fb-9460-9616dbdd4784_data.png",
+    "items": [
+      {
+        "title": "",
+        "description": "Integrar los fundamentos disciplinares, didácticos y pedagógicos de los procesos asociados a los diferentes fenómenos naturales de la biología, la física, la química y la educación ambiental, a través de su articulación con el reconocimiento de los contextos locales y globales para el fomento del pensamiento científico en diferentes comunidades.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Diseñar estrategias de transposición didáctica propias del campo de las ciencias naturales y educación ambiental con base en principios epistemológicos, enfoque crítico y sostenible para la comprensión de las implicaciones sociales y éticas de diversos contextos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Caracterizar escenarios de enseñanza y aprendizaje para las ciencias naturales y educación ambiental, mediante la vinculación de la investigación formativa como estrategia pedagógica y didáctica para el acercamiento al conocimiento científico, que responda a la solución de problemáticas educativas.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Plan de estudios",
+    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 144. Modalidad: Virtual.",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
+    "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
+    "buttonTitle": "Descargar pensum",
+    "items": []
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Documentos de ingreso",
+    "description": "",
+    "items": [
+      {
+        "title": "",
+        "description": "Fotocopia del diploma o acta de grado de bachiller.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Fotocopia de documento de identidad al 150%.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Pago derechos de inscripción.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Contrato de matrícula.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Obligatorio tener acceso a un PC o móvil con conexión a internet.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "eyebrow": "",
+    "title": "Inversión y financiamiento",
+    "description": "",
+    "items": [
+      {
+        "title": "Precio oficial $ 3.892.000",
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.300",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "relatedPrograms": [
+    {
+      "title": "Licenciatura en Diseño Tecnológico",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-diseno-tecnologico",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%201.png?itok=oC4UbKjk"
+    },
+    {
+      "title": "Maestría en Neuroeducación",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Imagen%20Banners.webp?itok=XXg9wi8v"
+    },
+    {
+      "title": "Maestría en Didáctica de las Ciencias Sociales",
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-didactica-de-las-ciencias-sociales",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n"
+    }
+  ],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
+    "email": "admisiones@uniminuto.edu",
+    "image": ""
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita informacion",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "secondaryButton": "",
+    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "scriptUrl": "",
+    "scriptCode": "<div class=\"contenedor-formulario-embebido\">\n  <div role=\"main\" id=\"ms-innovaciones-pastorales-40123212338dd4e7c1b3\"></div>\n  <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>\n  <script>\n    new RDStationForms('ms-innovaciones-pastorales-40123212338dd4e7c1b3', 'UA-263596197-1').createForm();\n  </script>\n</div>\n<script>\n  const PROGRAM_NAME = 'Maestr\\u00eda en Espiritualidad';\n  let userIP = '';\n  let countryIP = '';\n  let stateIP = '';\n  let ciudadIP = '';\n  let ispIP = '';\n  let postalCode = '';\n  const userAgent = navigator.userAgent;\n  const urlParams = new URLSearchParams(window.location.search);\n  const utmParams = {};\n\n  urlParams.forEach((value, key) => {\n    utmParams[key] = value;\n  });\n\n  function hideField(field) {\n    if (!field) return;\n    field.style.display = 'none';\n    const label = field.closest('label') || document.querySelector(`label[for=\"${field.id}\"]`);\n    if (label) {\n      label.style.display = 'none';\n    }\n  }\n\n  function replaceInputWithSelect(name, options) {\n    const input = document.querySelector(`input[name=\"${name}\"]`);\n    if (!input || input.dataset.replaced === 'true') return;\n\n    const select = document.createElement('select');\n    select.name = name;\n    select.id = input.id || name;\n    select.className = input.className || 'bricks-form__input required';\n\n    options.forEach(({ value, label, disabled }) => {\n      const option = document.createElement('option');\n      option.value = value;\n      option.textContent = label;\n      option.disabled = Boolean(disabled);\n      select.appendChild(option);\n    });\n\n    select.dataset.replaced = 'true';\n    input.parentNode.replaceChild(select, input);\n  }\n\n  function applyProgramValue(scope) {\n    const programField = scope.querySelector('[name=\"cf_programas\"]');\n    if (!programField) return;\n\n    programField.value = PROGRAM_NAME;\n\n    if (programField.tagName === 'SELECT') {\n      const option = Array.from(programField.options || []).find((item) => item.value === PROGRAM_NAME);\n      if (option) {\n        option.selected = true;\n      }\n    }\n\n    hideField(programField);\n  }\n\n  function configureMainForm() {\n    const form = document.querySelector('#conversion-form-ms-innovaciones-pastorales');\n    if (!form) return false;\n\n    const consent = form.querySelector(\"input[name='privacy_data[consent]']\");\n    if (consent) consent.checked = true;\n\n    const origenField = form.querySelector('[name=\"cf_origen\"]');\n    if (origenField) {\n      origenField.value = 'google';\n      hideField(origenField);\n    }\n\n    replaceInputWithSelect('cf_canales_de_contactabilidad', [\n      { value: 'WhatsApp', label: 'WhatsApp' },\n      { value: 'Llamada', label: 'Llamada' },\n      { value: 'Correo', label: 'Correo' },\n    ]);\n\n    replaceInputWithSelect('cf_horario_preferido_para_contacto', [\n      { value: '7_am_a_12_pm', label: '7_am_a_12_pm' },\n      { value: 'de_12_pm_a_2_pm', label: 'de_12_pm_a_2_pm' },\n      { value: 'de_2_pm_a_6_pm', label: 'de_2_pm_a_6_pm' },\n      { value: 'de_6_pm_a_8_pm', label: 'de_6_pm_a_8_pm' },\n    ]);\n\n    replaceInputWithSelect('cf_tu_ciudad', [\n      { value: '', label: 'Selecciona tu ciudad', disabled: true },\n      { value: 'Bogot\\u00e1 D.C.', label: 'Bogot\\u00e1 D.C.' },\n      { value: 'Soacha', label: 'Soacha' },\n      { value: 'Zipaquir\\u00e1', label: 'Zipaquir\\u00e1' },\n      { value: 'Medell\\u00edn', label: 'Medell\\u00edn' },\n      { value: 'Bello', label: 'Bello' },\n      { value: 'Envigado', label: 'Envigado' },\n      { value: 'Itag\\u00fc\\u00ed', label: 'Itag\\u00fc\\u00ed' },\n      { value: 'Rionegro', label: 'Rionegro' },\n      { value: 'Barranquilla', label: 'Barranquilla' },\n      { value: 'Soledad', label: 'Soledad' },\n      { value: 'Malambo', label: 'Malambo' },\n      { value: 'Bucaramanga', label: 'Bucaramanga' },\n      { value: 'Floridablanca', label: 'Floridablanca' },\n      { value: 'Barrancabermeja', label: 'Barrancabermeja' },\n      { value: 'Cali', label: 'Cali' },\n      { value: 'Palmira', label: 'Palmira' },\n      { value: 'Buenaventura', label: 'Buenaventura' },\n      { value: 'Otra', label: 'Otra' },\n    ]);\n\n    const documentInput = form.querySelector('input[name=\"cf_numero_de_documento\"]');\n    if (documentInput) {\n      documentInput.setAttribute('maxlength', '10');\n      const parentDiv = documentInput.parentElement;\n      if (parentDiv) {\n        parentDiv.style.width = '100%';\n      }\n    }\n\n    const mobilePhoneInput = form.querySelector('input[name=\"mobile_phone\"]');\n    if (mobilePhoneInput) {\n      mobilePhoneInput.setAttribute('maxlength', '15');\n      mobilePhoneInput.style.width = '100%';\n    }\n\n    applyProgramValue(form);\n\n    if (form.dataset.analyticsBound !== 'true') {\n      form.addEventListener('submit', function () {\n        if (!form.checkValidity()) {\n          form.reportValidity();\n          return;\n        }\n\n        const formData = new FormData(form);\n        const data = {\n          name: formData.get('cf_nombre_completo')?.trim() ?? '',\n          phone: formData.get('mobile_phone')?.trim() ?? '',\n          email: formData.get('email')?.trim() ?? '',\n          documentType: formData.get('cf_tu_tipo_de_documento')?.trim() ?? '',\n          documento: formData.get('cf_numero_de_documento')?.trim() ?? '',\n          program: formData.get('cf_programas')?.trim() ?? '',\n        };\n\n        if (!data.name || !data.phone || !data.email || !data.documentType || !data.documento || !data.program) {\n          return;\n        }\n\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push({\n          event: 'formSubmission',\n          nombre: data.name,\n          telefono: data.phone,\n          email: data.email,\n          tipodoc: data.documentType,\n          documento: data.documento,\n          programa: data.program,\n          utm_campaign: utmParams?.utm_campaign ?? '',\n          utm_content: utmParams?.utm_content ?? '',\n          utm_device: utmParams?.utm_device ?? '',\n          utm_matchtype: utmParams?.utm_matchtype ?? '',\n          utm_medium: utmParams?.utm_medium ?? '',\n          utm_source: utmParams?.utm_source ?? '',\n          utm_term: utmParams?.utm_term ?? '',\n          Code_Id: utmParams?.Code_Id ?? '',\n          adposition: utmParams?.adposition ?? '',\n          creative_id: utmParams?.creative_id ?? '',\n          network: utmParams?.network ?? '',\n          formIp: userIP ?? '',\n          formNavegador: userAgent ?? '',\n          formCountryIP: countryIP ?? '',\n          formStateIP: stateIP ?? '',\n          formCiudadIP: ciudadIP ?? '',\n          formIspIP: ispIP ?? '',\n          formPostalCode: postalCode ?? '',\n        });\n      });\n\n      form.dataset.analyticsBound = 'true';\n    }\n\n    return true;\n  }\n\n  function configurePopupForm() {\n    const formPopup = document.querySelector('.rdstation-popup-js-form-identifier');\n    if (!formPopup) return false;\n\n    const consent = formPopup.querySelector(\"input[name='privacy_data[consent]']\");\n    if (consent) consent.checked = true;\n\n    applyProgramValue(formPopup);\n\n    if (formPopup.dataset.listenerAdded === 'true') {\n      return true;\n    }\n\n    formPopup.addEventListener('submit', function () {\n      if (!formPopup.checkValidity()) {\n        formPopup.reportValidity();\n        return;\n      }\n\n      const formDataWa = new FormData(formPopup);\n      const dataWa = {\n        fullname: formDataWa.get('cf_nombre_completo')?.trim() ?? '',\n        phone: formDataWa.get('mobile_phone')?.trim() ?? '',\n        email: formDataWa.get('email')?.trim() ?? '',\n        documento: formDataWa.get('cf_numero_de_documento')?.trim() ?? '',\n        program: formDataWa.get('cf_programas')?.trim() ?? '',\n        formacion: formDataWa.get('cf_nivel_de_formacion_de_interes')?.trim() ?? '',\n      };\n\n      if (!dataWa.fullname || !dataWa.phone || !dataWa.email || !dataWa.documento || !dataWa.program || !dataWa.formacion) {\n        return;\n      }\n\n      window.dataLayer = window.dataLayer || [];\n      window.dataLayer.push({\n        event: 'formWhatsapp',\n        nombre: dataWa.fullname,\n        telefono: dataWa.phone,\n        email: dataWa.email,\n        documento: dataWa.documento,\n        programa: dataWa.program,\n        formacion: dataWa.formacion,\n      });\n    });\n\n    formPopup.dataset.listenerAdded = 'true';\n    return true;\n  }\n\n  fetch('https://api64.ipify.org?format=json')\n    .then((response) => response.json())\n    .then((data) => {\n      userIP = data.ip;\n      return fetch(`https://ipinfo.io/${userIP}/json`);\n    })\n    .then((response) => response.json())\n    .then((data) => {\n      countryIP = data.country;\n      stateIP = data.region;\n      ciudadIP = data.city;\n      ispIP = data.org;\n      postalCode = data.postal;\n    })\n    .catch((error) => console.error('Error obteniendo la informaci\\u00f3n:', error));\n\n  document.addEventListener('DOMContentLoaded', function () {\n    const interval = setInterval(() => {\n      const hasMainForm = configureMainForm();\n      const hasPopupForm = configurePopupForm();\n      if (hasMainForm || hasPopupForm) {\n        clearInterval(interval);\n      }\n    }, 100);\n\n    document.querySelectorAll('.back-to-top').forEach(function (btn) {\n      btn.addEventListener('click', function () {\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push({ event: 'botonAncla' });\n      });\n    });\n  });\n</script>",
+    "formId": "",
+    "programName": "Licenciatura en Ciencias Naturales y Educación Ambiental",
+    "campus": "Uniminuto",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  },
+  "catalog": "",
+  "faculty": "",
+  "cipCode": "",
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil",
+        "title": "Perfil del egresado",
+        "description": "El egresado del programa desarrolla capacidades para integrar saberes disciplinares, pedagógicos y ambientales en contextos educativos diversos.",
+        "listStyle": "bullets",
+        "items": [
+          "Integrar los fundamentos disciplinares, didácticos y pedagógicos de los procesos asociados a los diferentes fenómenos naturales de la biología, la física, la química y la educación ambiental, a través de su articulación con el reconocimiento de los contextos locales y globales para el fomento del pensamiento científico en diferentes comunidades.",
+          "Diseñar estrategias de transposición didáctica propias del campo de las ciencias naturales y educación ambiental con base en principios epistemológicos, enfoque crítico y sostenible para la comprensión de las implicaciones sociales y éticas de diversos contextos.",
+          "Caracterizar escenarios de enseñanza y aprendizaje para las ciencias naturales y educación ambiental, mediante la vinculación de la investigación formativa como estrategia pedagógica y didáctica para el acercamiento al conocimiento científico, que responda a la solución de problemáticas educativas."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 144 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "Básico",
+            "items": [
+              {
+                "label": "Habilidades Digitales para el Aprendizaje",
+                "value": "3"
+              },
+              {
+                "label": "Lectura y Escritura en el Contexto Digital",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Matemáticas",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos en Educación y Pedagogía",
+                "value": "3"
+              },
+              {
+                "label": "Modelos Pedagógicos",
+                "value": "2"
+              },
+              {
+                "label": "Inglés I",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Observación Educativa y Pedagógica",
+                "value": "3"
+              },
+              {
+                "label": "Inglés II",
+                "value": "3"
+              },
+              {
+                "label": "Teorías y Diseño Curricular",
+                "value": "3"
+              },
+              {
+                "label": "Inglés III",
+                "value": "3"
+              },
+              {
+                "label": "Evaluación Educativa",
+                "value": "3"
+              },
+              {
+                "label": "Administración y Gestión Educativa",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Profesional",
+            "items": [
+              {
+                "label": "Fundamentos de las Ciencias Naturales",
+                "value": "3"
+              },
+              {
+                "label": "Didáctica de las Ciencias Naturales",
+                "value": "2"
+              },
+              {
+                "label": "Biología Celular",
+                "value": "3"
+              },
+              {
+                "label": "Química General",
+                "value": "3"
+              },
+              {
+                "label": "Educación Ambiental",
+                "value": "2"
+              },
+              {
+                "label": "Física Mecánica en las Ciencias Naturales",
+                "value": "3"
+              },
+              {
+                "label": "Biología Vegetal",
+                "value": "3"
+              },
+              {
+                "label": "Química Inorgánica",
+                "value": "3"
+              },
+              {
+                "label": "Calor, Ondas y Electricidad",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Química Orgánica",
+                "value": "3"
+              },
+              {
+                "label": "Bioquímica",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa I",
+                "value": "4"
+              },
+              {
+                "label": "Metodología de la Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa II",
+                "value": "4"
+              },
+              {
+                "label": "Biología Animal",
+                "value": "3"
+              },
+              {
+                "label": "Políticas Públicas en Educación y Ambiente",
+                "value": "3"
+              },
+              {
+                "label": "Ecología, Biodiversidad y Gestión Ambiental",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa III",
+                "value": "6"
+              },
+              {
+                "label": "Resultados de Investigación en Ciencias Naturales",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Minuto de Dios",
+            "items": [
+              {
+                "label": "Proyecto de Vida",
+                "value": "2"
+              },
+              {
+                "label": "Cátedra Minuto de Dios",
+                "value": "2"
+              },
+              {
+                "label": "Práctica en Responsabilidad Social",
+                "value": "3"
+              },
+              {
+                "label": "Constitución Política",
+                "value": "2"
+              },
+              {
+                "label": "Ética Profesional",
+                "value": "2"
+              },
+              {
+                "label": "Emprendimiento",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "title": "Profesional complementario",
+            "items": [
+              {
+                "label": "Práctica de Profundización I",
+                "value": "8"
+              },
+              {
+                "label": "Electiva I",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización II",
+                "value": "9"
+              },
+              {
+                "label": "Electiva II",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización III",
+                "value": "9"
+              },
+              {
+                "label": "Opción de grado",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-admision",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Fotocopia del diploma o acta de grado de bachiller.",
+          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad al 150%.",
+          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+          "Pago derechos de inscripción.",
+          "Contrato de matrícula.",
+          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "image": "",
+    "items": []
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "videoUrl": "",
+    "items": []
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "footerScripts": []
+}

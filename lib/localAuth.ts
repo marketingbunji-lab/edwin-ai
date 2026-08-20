@@ -5,8 +5,19 @@ export type LocalAuthUser = {
   name: string;
 };
 
+function isDevLocalAuthBypassEnabled() {
+  return (
+    process.env.NODE_ENV !== "production" &&
+    process.env.EDWIN_AUTH_MODE !== "supabase"
+  );
+}
+
 export function isLocalAuthEnabled() {
-  return process.env.EDWIN_AUTH_MODE === "local";
+  return process.env.EDWIN_AUTH_MODE === "local" || isDevLocalAuthBypassEnabled();
+}
+
+export function acceptsAnyLocalCredentials() {
+  return isDevLocalAuthBypassEnabled() && !isLocalAuthConfigured();
 }
 
 export function getLocalAuthCredentials() {
@@ -18,7 +29,11 @@ export function getLocalAuthCredentials() {
 }
 
 export function getLocalSessionValue() {
-  return process.env.EDWIN_AUTH_SECRET || process.env.EDWIN_ADMIN_PASSWORD || "";
+  return (
+    process.env.EDWIN_AUTH_SECRET ||
+    process.env.EDWIN_ADMIN_PASSWORD ||
+    "edwin-dev-local-session"
+  );
 }
 
 export function isLocalAuthConfigured() {
@@ -35,7 +50,7 @@ export function getLocalAuthUser(): LocalAuthUser {
   const credentials = getLocalAuthCredentials();
 
   return {
-    email: credentials.email,
+    email: credentials.email || "local-admin@edwin.dev",
     name: credentials.name,
   };
 }

@@ -1,10 +1,16 @@
-/* eslint-disable @next/next/no-img-element */
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
 import type { Landing, LabelValueItem } from "@/lib/data";
-import DefaultLandingSummaryCardsSection from "./DefaultLandingSummaryCardsSection";
 import { landingContainerClass } from "./classes";
+import {
+  Award,
+  BookOpen,
+  CalendarDays,
+  Clock,
+  GraduationCap,
+  Monitor,
+} from "lucide-react";
 
 type Props = {
   menuItems: Array<{
@@ -46,10 +52,6 @@ type Props = {
 };
 
 export default function DefaultLandingHeroSectionB({
-  menuItems,
-  menuCtaLabel,
-  logo,
-  brandName,
   eyebrowText,
   heroTitle,
   heroSubtitle,
@@ -59,16 +61,42 @@ export default function DefaultLandingHeroSectionB({
   summaryItems,
   mode,
   backgroundImage,
+  heroOverlayColor,
   liveEdit,
-  showMenu = true,
 }: Props) {
   const heroBackground = backgroundImage
     ? `url("${backgroundImage}") center / cover no-repeat`
     : "none";
   const heroSpacingClass =
     mode === "preview"
-      ? "pt-5 pb-24 md:pb-32"
+      ? "pt-5 pb-24 md:pb-28"
       : "pt-[108px] pb-24 sm:pt-[120px] lg:pt-[170px] md:pb-32";
+  const highlightItem =
+    summaryItems.find((item) =>
+      /titulo|degree|credential/i.test(item.label?.trim() || ""),
+    ) ?? summaryItems[0];
+  const detailItems = summaryItems
+    .filter((item) => item !== highlightItem)
+    .slice(0, 4);
+  const metaLines = [heroDescription, heroSupportText].filter((value) =>
+    value?.trim(),
+  );
+
+  const getItemIcon = (label?: string) => {
+    const normalizedLabel = label
+      ?.trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    if (!normalizedLabel) return BookOpen;
+    if (/duracion|duration|semestre|semester|time/.test(normalizedLabel)) return Clock;
+    if (/credito|credit|snies|registro|acredit/.test(normalizedLabel)) return Award;
+    if (/modalidad|modality|format|virtual|online/.test(normalizedLabel)) return Monitor;
+    if (/area|knowledge|disciplina|field/.test(normalizedLabel)) return BookOpen;
+    if (/titulo|degree|credential/.test(normalizedLabel)) return GraduationCap;
+    return CalendarDays;
+  };
 
   return (
     <section
@@ -83,50 +111,15 @@ export default function DefaultLandingHeroSectionB({
       }`}
       style={{ background: heroBackground }}
     >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(90deg, rgba(8,16,33,0.94) 0%, rgba(8,16,33,0.72) 40%, rgba(8,16,33,0.28) 66%, rgba(8,16,33,0) 100%), linear-gradient(180deg, rgba(8,16,33,0.18), ${heroOverlayColor})`,
+        }}
+      />
       <div className={`${landingContainerClass} ${heroSpacingClass}`}>
-        {showMenu && (menuItems.length > 0 || menuCtaLabel) ? (
-          <div className="sticky top-2 z-50 mb-10 overflow-hidden rounded-[24px] border border-white/25 bg-slate-950/35 p-2 shadow-[0_18px_40px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:top-4 sm:rounded-[28px] sm:p-3">
-            <nav
-              aria-label="Navegación de secciones"
-              className="grid w-full items-center gap-3 lg:grid-cols-[auto_minmax(0,1fr)_auto]"
-            >
-              {logo ? (
-                <img
-                  src={logo}
-                  alt={brandName}
-                  data-landing-logo-mode-control={liveEdit?.enabled ? "true" : undefined}
-                  className={`h-auto max-w-full rounded-lg object-contain object-left ${
-                    liveEdit?.enabled
-                      ? "outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-4 transition hover:bg-[var(--bunji-primary,#6d5dfc)]/10"
-                      : ""
-                  }`}
-                  style={{ width: "clamp(180px, 24vw, 340px)" }}
-                />
-              ) : null}
-
-              <div className="grid w-full min-w-0 grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 md:flex md:flex-wrap lg:gap-x-5">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="min-w-0 max-w-full whitespace-normal break-words text-sm font-semibold leading-snug text-white/88 transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:whitespace-nowrap"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-
-              <a
-                href="#default-form"
-                className="inline-flex min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:justify-self-end"
-              >
-                {menuCtaLabel}
-              </a>
-            </nav>
-          </div>
-        ) : null}
-
-        <div className="grid min-w-0 items-center gap-14 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(340px,460px)] max-sm:pb-[72px]">
+        <div className="relative z-10 grid min-w-0 items-center gap-8 py-4 lg:min-h-[520px] lg:content-center max-sm:pb-[72px]">
           <div className="min-w-0">
             {eyebrowText ? (
               <p className="mb-[18px] inline-flex items-center rounded-full border border-white/70 bg-white/10 px-[14px] py-2 text-[13px] font-extrabold text-[var(--landing-primary-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
@@ -161,32 +154,86 @@ export default function DefaultLandingHeroSectionB({
               />
             ) : null}
 
-            {heroDescription ? (
-              <LiveEditableText
-                as="p"
-                path="hero.description"
-                value={heroDescription}
-                liveEdit={liveEdit}
-                className="mt-6 mb-6 block max-w-full text-lg leading-8 text-[var(--landing-primary-text)] opacity-90 sm:max-w-[720px]"
-              />
+            {metaLines.length > 0 ? (
+              <div className="mt-6 max-w-[600px]">
+                <div className="mb-4 h-[3px] w-12 rounded-full bg-[var(--landing-secondary)]" />
+                {heroDescription ? (
+                  <LiveEditableText
+                    as="p"
+                    path="hero.description"
+                    value={heroDescription}
+                    liveEdit={liveEdit}
+                    className="text-sm leading-[1.55] text-white/82"
+                  />
+                ) : null}
+                {heroSupportText ? (
+                  <LiveEditableText
+                    as="p"
+                    path="hero.supportText"
+                    value={heroSupportText}
+                    liveEdit={liveEdit}
+                    className="mt-1.5 text-sm leading-[1.55] text-white/62"
+                  />
+                ) : null}
+              </div>
             ) : null}
 
-            {heroSupportText ? (
-              <LiveEditableText
-                as="p"
-                path="hero.supportText"
-                value={heroSupportText}
-                liveEdit={liveEdit}
-                className="mt-[18px] block max-w-full text-lg leading-8 text-inherit opacity-90 sm:max-w-[680px]"
-              />
-            ) : null}
+            {highlightItem ? (
+              <article className="mt-6 w-full max-w-[560px] rounded-[20px] border border-white/18 bg-white/10 p-6 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] backdrop-blur-[20px]">
+                <div className="border-b border-white/14 pb-5">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[var(--landing-secondary)]">
+                    <LiveEditableText
+                      path={`summaryCards.${summaryItems.indexOf(highlightItem)}.label`}
+                      value={highlightItem.label || ""}
+                      liveEdit={liveEdit}
+                      singleLine
+                    />
+                  </p>
+                  <p className="mt-1.5 text-[22px] font-bold leading-[1.15] text-white">
+                    <LiveEditableText
+                      path={`summaryCards.${summaryItems.indexOf(highlightItem)}.value`}
+                      value={highlightItem.value || ""}
+                      liveEdit={liveEdit}
+                      singleLine
+                    />
+                  </p>
+                </div>
 
-            {summaryItems.length > 0 ? (
-              <DefaultLandingSummaryCardsSection
-                items={summaryItems}
-                embedded
-                liveEdit={liveEdit}
-              />
+                {detailItems.length > 0 ? (
+                  <div className="grid gap-x-4 gap-y-5 pt-5 sm:grid-cols-2">
+                    {detailItems.map((item) => {
+                      const Icon = getItemIcon(item.label);
+                      const itemIndex = summaryItems.indexOf(item);
+
+                      return (
+                        <div key={`${item.label}-${itemIndex}`} className="flex gap-3">
+                          <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[11px] border border-white/14 bg-white/10 text-white">
+                            <Icon className="h-[18px] w-[18px]" />
+                          </span>
+                          <div className="min-w-0">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.07em] text-white/62">
+                              <LiveEditableText
+                                path={`summaryCards.${itemIndex}.label`}
+                                value={item.label || ""}
+                                liveEdit={liveEdit}
+                                singleLine
+                              />
+                            </p>
+                            <p className="mt-1 text-[15px] font-bold leading-[1.2] text-white">
+                              <LiveEditableText
+                                path={`summaryCards.${itemIndex}.value`}
+                                value={item.value || ""}
+                                liveEdit={liveEdit}
+                                singleLine
+                              />
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </article>
             ) : null}
 
             {resolutionText ? (
@@ -200,7 +247,6 @@ export default function DefaultLandingHeroSectionB({
             ) : null}
           </div>
 
-          <div className="min-w-0" />
         </div>
       </div>
     </section>

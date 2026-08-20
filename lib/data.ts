@@ -130,6 +130,32 @@ export type LabelValueItem = {
   value?: string;
 };
 
+export type ProgramExplorerTabGroupItem = {
+  label?: string;
+  value?: string;
+};
+
+export type ProgramExplorerTabGroup = {
+  title?: string;
+  items?: ProgramExplorerTabGroupItem[];
+};
+
+export type ProgramExplorerTab = {
+  id?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  listStyle?: "bullets" | "steps";
+  items?: string[];
+  groups?: ProgramExplorerTabGroup[];
+};
+
+export type ProgramExplorerCard = {
+  title?: string;
+  icon?: string;
+  items?: string[];
+};
+
 export type FormCampusOption = {
   label?: string;
   campus?: string;
@@ -271,6 +297,15 @@ export type Landing = {
     image?: string;
     items?: Array<string | TitleDescriptionItem>;
   };
+  programExplorer?: {
+    enabled?: boolean;
+    eyebrow?: string;
+    title?: string;
+    description?: string;
+    cardsTitle?: string;
+    tabs?: ProgramExplorerTab[];
+    cards?: ProgramExplorerCard[];
+  };
   graduateProfile?: GraduateProfile;
   opportunityToWork?: OpportunityToWork;
   whyStudy?: {
@@ -404,6 +439,9 @@ export type Landing = {
     title?: string;
     subtitle?: string;
     description?: string;
+    backgroundImage?: string;
+    overlayColor?: string;
+    textTheme?: "light" | "dark";
   };
   tracking?: {
     googleAdsProgram?: string;
@@ -1117,6 +1155,15 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         : "",
       items: hasOverviewContent ? overviewItems.items : [],
     },
+    programExplorer: {
+      enabled: Boolean(landing.programExplorer?.enabled),
+      eyebrow: landing.programExplorer?.eyebrow || "",
+      title: landing.programExplorer?.title || "",
+      description: landing.programExplorer?.description || "",
+      cardsTitle: landing.programExplorer?.cardsTitle || "",
+      tabs: landing.programExplorer?.tabs ?? [],
+      cards: landing.programExplorer?.cards ?? [],
+    },
     graduateProfile: {
       eyebrow: hasGraduateProfileContent ? landing.graduateProfile?.eyebrow || "" : "",
       title: hasGraduateProfileContent ? landing.graduateProfile?.title || "" : "",
@@ -1367,6 +1414,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       title: landing.formSection?.title || "",
       subtitle: landing.formSection?.subtitle || "",
       description: landing.formSection?.description || "",
+      backgroundImage: landing.formSection?.backgroundImage || "",
+      overlayColor: landing.formSection?.overlayColor || "",
+      textTheme: landing.formSection?.textTheme || "dark",
     },
     tracking: {
       googleAdsProgram: landing.tracking?.googleAdsProgram || "",
