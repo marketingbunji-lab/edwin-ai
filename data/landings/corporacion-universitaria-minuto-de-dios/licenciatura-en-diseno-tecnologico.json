@@ -21,16 +21,23 @@
     "campuses": [
       "Virtual"
     ],
-    "onlineAvailable": true
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
   },
   "duration": {
     "value": "10",
     "unit": "cuatrimestres",
     "display": "10 Cuatrimestres",
-    "credits": "144"
+    "credits": "144",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
   },
   "tuition": {
     "amount": "3.892.000",
+    "currency": "",
+    "period": "",
     "display": "Precio oficial $ 3.892.000. Precio de matrícula con subsidio otorgado por la sede $ 2.296.200",
     "financialAidAvailable": true,
     "financialAidText": "Financiamiento de hasta el 100% de tus estudios."
@@ -46,10 +53,12 @@
     "resolutionText": "SNIES 119435 - Resolución registro calificado: 14342 del 26/05/2026 - Vigencia 7 años",
     "items": [
       {
-        "name": "Registro calificado",
         "title": "Registro calificado",
+        "name": "Registro calificado",
         "description": "Resolución 14342 del 26/05/2026 - Vigencia 7 años",
-        "enabled": true
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
       }
     ]
   },
@@ -62,15 +71,24 @@
       "landing-financial-aid"
     ],
     "eyebrow": "Virtual",
+    "highlight": "",
     "title": "Licenciatura en Diseño Tecnológico",
+    "subtitle": "",
     "description": "SNIES 119435 · Resolución de registro calificado 14342 del 26/05/2026 · Vigencia 7 años.",
     "supportText": "Título otorgado: Licenciado/a/e en Diseño Tecnológico.",
-    "modality": "Virtual",
+    "discountedPrice": "",
+    "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita información",
+      "label": "Solicita informacion",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%201.png?itok=oC4UbKjk",
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/hero-licenciatura-en-diseno-tecnologico-generated-image.png",
+    "personImage": "",
+    "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -124,91 +142,187 @@
     }
   ],
   "overview": {
+    "eyebrow": "",
     "title": "Presentación del programa",
     "description": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño. Su propuesta académica fortalece la investigación, la inclusión y el uso estratégico de tecnologías para responder a los desafíos de la educación actual y futura, promoviendo experiencias de aprendizaje dinámicas, humanas y de alta calidad.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0"
+    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0",
+    "items": []
   },
   "graduateProfile": {
+    "eyebrow": "",
     "title": "Perfil del egresado",
+    "image": "",
     "items": [
       {
-        "description": "Estructurar los conocimientos pedagógicos y tecnológicos en el diseño educativo a partir del análisis en la planificación e innovación de los procesos de enseñanza y aprendizaje, para la toma de decisiones en la mejora de las prácticas educativas."
+        "title": "",
+        "description": "Estructurar los conocimientos pedagógicos y tecnológicos en el diseño educativo a partir del análisis en la planificación e innovación de los procesos de enseñanza y aprendizaje, para la toma de decisiones en la mejora de las prácticas educativas.",
+        "url": "",
+        "image": "",
+        "items": []
       },
       {
-        "description": "Diseñar propuestas de intervención pedagógica fundamentadas en el uso de tecnologías a partir de la integración de estrategias innovadoras para la gestión y transformación de los procesos de enseñanza y aprendizaje en entornos educativos dinámicos, efectivos e inclusivos."
+        "title": "",
+        "description": "Diseñar propuestas de intervención pedagógica fundamentadas en el uso de tecnologías a partir de la integración de estrategias innovadoras para la gestión y transformación de los procesos de enseñanza y aprendizaje en entornos educativos dinámicos, efectivos e inclusivos.",
+        "url": "",
+        "image": "",
+        "items": []
       },
       {
-        "description": "Explicar el desarrollo del área de Tecnología e Informática en el sistema educativo y su relación con otras áreas del conocimiento a partir del liderazgo pedagógico basado en la investigación formativa para el fortalecimiento de las habilidades del siglo XXI en las comunidades educativas."
+        "title": "",
+        "description": "Explicar el desarrollo del área de Tecnología e Informática en el sistema educativo y su relación con otras áreas del conocimiento a partir del liderazgo pedagógico basado en la investigación formativa para el fortalecimiento de las habilidades del siglo XXI en las comunidades educativas.",
+        "url": "",
+        "image": "",
+        "items": []
       }
     ]
   },
   "curriculum": {
+    "eyebrow": "",
     "title": "Plan de estudios",
     "description": "Consulta el pensum oficial del programa. La página oficial reporta 144 créditos y el documento del plan de estudios detalla la estructura curricular completa del programa en modalidad virtual.",
-    "buttonTitle": "Descargar pensum",
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Licenciatura-en-Diseno-tecnologico.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Licenciatura-en-Diseno-tecnologico.pdf",
-    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Licenciatura-en-Diseno-tecnologico.pdf"
+    "buttonTitle": "Descargar pensum",
+    "items": []
   },
   "admissions": {
+    "eyebrow": "",
     "title": "Documentos de ingreso",
+    "description": "",
     "items": [
-      "Fotocopia del diploma o acta de grado de bachiller.",
-      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-      "Fotocopia de documento de identidad al 150%.",
-      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-      "Pago derechos de inscripción.",
-      "Contrato de matrícula.",
-      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+      {
+        "title": "",
+        "description": "Fotocopia del diploma o acta de grado de bachiller.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Fotocopia de documento de identidad al 150%.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Pago derechos de inscripción.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Contrato de matrícula.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "",
+        "description": "Obligatorio tener acceso a un PC o móvil con conexión a internet.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
     ]
   },
   "financialAid": {
     "enabled": true,
     "variant": "option-b",
+    "eyebrow": "",
     "title": "Inversión y financiamiento",
+    "description": "",
     "items": [
       {
         "title": "Precio oficial $ 3.892.000",
-        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.200"
+        "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.200",
+        "url": "",
+        "image": "",
+        "items": []
       }
     ]
   },
   "relatedPrograms": [
     {
       "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
-      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-ciencias-naturales-y-educacion-ambiental"
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-ciencias-naturales-y-educacion-ambiental",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%201.png?itok=kga9dgOg"
     },
     {
       "title": "Maestría en Neuroeducación",
-      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion"
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Imagen%20Banners.webp?itok=XXg9wi8v"
     },
     {
       "title": "Maestría en Evaluación y Aseguramiento de la Calidad de la Educación",
-      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion"
+      "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion",
+      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Evaluaci%C3%B3n%20y%20Aseguramiento%20de%20la%20Calidad%20de%20la%20Educaci%C3%B3n.png?itok=L2keyMCr"
     }
   ],
   "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
     "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
-    "email": "admisiones@uniminuto.edu"
+    "email": "admisiones@uniminuto.edu",
+    "image": ""
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita información",
+    "title": "Solicita informacion",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
+    "secondaryButton": "",
     "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
     "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "scriptUrl": "",
+    "scriptCode": "",
+    "formId": "",
     "programName": "Licenciatura en Diseño Tecnológico",
     "campus": "Uniminuto",
+    "campusOptions": [],
     "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
     "hiddenProgramFieldName": "program",
     "submitLabel": "Enviar"
   },
   "formSection": {
     "enabled": true,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
     "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
@@ -456,5 +570,66 @@
       }
     ],
     "cards": []
-  }
+  },
+  "catalog": "",
+  "faculty": "",
+  "cipCode": "",
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "items": []
+  },
+  "handsOnTraining": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  },
+  "careerOutcomes": {
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "image": "",
+    "items": []
+  },
+  "studentSupport": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "videoUrl": "",
+    "items": []
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "",
+    "items": []
+  },
+  "testimonials": [],
+  "faq": [],
+  "tracking": {
+    "googleAdsProgram": "",
+    "facebookEventName": "Lead",
+    "utmCampaign": ""
+  },
+  "branding": {
+    "themeVariant": "",
+    "backgroundBody": "",
+    "primaryColor": "",
+    "secondaryColor": "",
+    "accentColor": "",
+    "textColor": ""
+  },
+  "footerScripts": []
 }
