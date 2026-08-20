@@ -1,0 +1,156 @@
+{
+  "id": "uniminuto-student-aspirant",
+  "programId": "",
+  "programName": "",
+  "profileName": "Uniminuto Student Aspirant",
+  "profileImage": "https://cdn.uploadtourl.com/49a784f6-cdd6-4ec7-8f9c-9a46da39d57b_data.png",
+  "description": "Prospective students interested in pursuing higher education at Uniminuto, seeking flexible and quality academic programs.",
+  "stage": "awareness",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "18-30",
+    "gender": "all",
+    "location": [
+      "Bogotá",
+      "Colombia"
+    ],
+    "educationLevel": "high school graduate",
+    "employmentStatus": "part-time or unemployed",
+    "incomeRange": "low to medium",
+    "familySituation": "living with family or independent",
+    "languagePreference": [
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "motivated",
+      "curious",
+      "goal-oriented"
+    ],
+    "values": [
+      "education",
+      "career growth",
+      "social responsibility"
+    ],
+    "interests": [
+      "online learning",
+      "community service",
+      "professional development"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "pursue higher education",
+      "develop professional skills",
+      "gain employment opportunities"
+    ],
+    "secondary": [
+      "balance studies with work",
+      "network with peers",
+      "engage in extracurricular activities"
+    ],
+    "successDefinition": "successfully completing a degree program that aligns with career aspirations"
+  },
+  "painPoints": [
+    "limited financial resources",
+    "work-life balance",
+    "access to comprehensive program information"
+  ],
+  "motivations": [
+    "career advancement",
+    "personal fulfillment",
+    "social impact"
+  ],
+  "objections": [
+    "concerns about affordability",
+    "fear of academic rigor",
+    "uncertainty about future job prospects"
+  ],
+  "decisionFactors": [
+    "program flexibility",
+    "tuition costs",
+    "institution reputation"
+  ],
+  "buyerJourney": {
+    "stage": "consideration",
+    "awarenessTriggers": [
+      "social media ads",
+      "word of mouth",
+      "informational webinars"
+    ],
+    "informationNeeds": [
+      "program details",
+      "financial aid options",
+      "student testimonials"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "Uniminuto programs",
+      "affordable universities in Bogotá",
+      "distance learning options"
+    ],
+    "commonQuestions": [
+      "What programs does Uniminuto offer?",
+      "How can I pay for my education?",
+      "What is the admission process?"
+    ]
+  },
+  "emotionalTriggers": [
+    "fear of missing out",
+    "hope for a better future",
+    "excitement about new opportunities"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "social media",
+      "sms"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "weekends"
+    ],
+    "tone": [
+      "friendly",
+      "supportive",
+      "informative"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Affordable education for all",
+      "Flexible learning options for busy lives",
+      "Join a community that cares"
+    ],
+    "ctaExamples": [
+      "Apply now for our programs!",
+      "Request more information today!",
+      "Join our upcoming webinar!"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "videos",
+      "blog posts",
+      "infographics"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 70,
+    "urgency": "high",
+    "salesReadiness": "medium"
+  },
+  "metadata": {
+    "createdAt": "2026-08-20",
+    "updatedAt": "2026-08-20",
+    "source": "AI",
+    "tags": [
+      "student",
+      "aspirant",
+      "uniminuto"
+    ]
+  }
+}

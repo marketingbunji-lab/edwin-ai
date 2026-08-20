@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Bot, GraduationCap } from "lucide-react";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
 import { getBrandBySlug, getProgramsByBrand } from "@/lib/data";
+import { getBuyerPersonProgramRecords } from "@/lib/brandAgentRecords";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
 
 type Props = {
@@ -22,11 +23,22 @@ export default async function BrandBuyerPersonProgramPage({ params }: Props) {
   }
 
   const programs = getProgramsByBrand(brand.slug);
+  const programsWithRecords = programs.map((program) => {
+    const records = getBuyerPersonProgramRecords(brand.slug, program.id);
+    const lastUpdated =
+      records[0]?.metadata?.updatedAt || program.updatedAt || "Pending";
+
+    return {
+      program,
+      records,
+      lastUpdated,
+    };
+  });
 
   return (
     <main className="admin-page">
       <div className="w-full">
-        <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+        <div className="sticky z-20 mb-8 overflow-hidden border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-3">
               <Link
@@ -93,7 +105,7 @@ export default async function BrandBuyerPersonProgramPage({ params }: Props) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-slate-800">
-                {programs.map((program) => (
+                {programsWithRecords.map(({ program, records, lastUpdated }) => (
                   <tr
                     key={program.id}
                     className="transition hover:bg-slate-50 dark:hover:bg-white/[0.035]"
@@ -108,11 +120,12 @@ export default async function BrandBuyerPersonProgramPage({ params }: Props) {
                     </td>
                     <td className="px-5 py-4">
                       <span className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-                        0 {language === "en" ? "configured" : "configurados"}
+                        {records.length}{" "}
+                        {language === "en" ? "configured" : "configurados"}
                       </span>
                     </td>
                     <td className="px-5 py-4 text-sm text-gray-600 dark:text-slate-400">
-                      {program.updatedAt}
+                      {lastUpdated}
                     </td>
                     <td className="px-5 py-4 text-right">
                       <Link

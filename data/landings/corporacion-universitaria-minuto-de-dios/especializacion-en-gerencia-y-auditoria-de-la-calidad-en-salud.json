@@ -145,13 +145,13 @@
     "eyebrow": "",
     "title": "Presentación del programa",
     "description": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud. A través de una formación innovadora, ética y orientada a resultados, el programa fortalece competencias en calidad, seguridad del paciente, normatividad y transformación digital, contribuyendo al desarrollo de servicios de salud más eficientes, humanizados y sostenibles.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES",
+    "image": "https://cdn.uploadtourl.com/7a3c911e-f7e2-47ba-ac03-bf354f18a9ec_data.png",
     "items": []
   },
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "",
+    "image": "https://cdn.uploadtourl.com/561459ca-ccd8-4060-8a9b-457906d066b5_data.png",
     "items": [
       {
         "title": "",
@@ -272,7 +272,7 @@
     "advisorTitle": "",
     "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
     "email": "admisiones@uniminuto.edu",
-    "image": ""
+    "image": "https://cdn.uploadtourl.com/f8e53d02-bc03-4827-bfbe-902489f1ca5a_data.png"
   },
   "cta": {
     "variant": "minimal",
@@ -310,7 +310,7 @@
     "title": "",
     "subtitle": "",
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES",
+    "backgroundImage": "https://cdn.uploadtourl.com/f8e53d02-bc03-4827-bfbe-902489f1ca5a_data.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

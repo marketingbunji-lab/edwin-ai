@@ -2647,6 +2647,22 @@ function FormSettingsModal({
                   onChangeField("form.hiddenProgramFieldName", value)
                 }
               />
+
+              <Field
+                label="URL imagen de fondo"
+                value={landing.formSection?.backgroundImage || ""}
+                onChange={(value) =>
+                  onChangeField("formSection.backgroundImage", value)
+                }
+              />
+
+              <Field
+                label="Overlay de fondo"
+                value={landing.formSection?.overlayColor || ""}
+                onChange={(value) =>
+                  onChangeField("formSection.overlayColor", value)
+                }
+              />
             </div>
 
             <TextareaField

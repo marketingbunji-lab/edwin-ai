@@ -36,23 +36,23 @@ export default async function BrandLandingsPage({ params }: Props) {
   return (
     <main className="admin-page">
       <div className="admin-page-inner">
-        <div className="sticky top-4 z-20 mb-8 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+        <div className="sticky z-20 mb-5 overflow-hidden border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.88),rgba(255,255,255,0.56))] px-5 py-2.5 shadow-[0_16px_36px_rgba(15,23,42,0.1)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex min-w-0 items-center gap-3">
               <Link
                 href={`/admin/brands/${brand.slug}`}
-                className="admin-button-secondary admin-button-icon"
+                className="admin-button-secondary admin-button-icon h-11 w-11 rounded-[14px]"
                 aria-label={language === "en" ? "Back to brand" : "Volver a marca"}
                 title={language === "en" ? "Back to brand" : "Volver a marca"}
               >
                 <ArrowLeft className="h-4 w-4" />
               </Link>
 
-              <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+              <div className="min-w-0 leading-none">
+                <p className="truncate text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-400 dark:text-slate-500">
                   {brand.name}
                 </p>
-                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                <h1 className="mt-1 truncate text-[1rem] font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-[1.12rem]">
                   {t("landingsPage.title")}
                 </h1>
               </div>
@@ -60,7 +60,7 @@ export default async function BrandLandingsPage({ params }: Props) {
 
             <Link
               href={`/admin/brands/${brand.slug}/landings/new`}
-              className="admin-button-primary"
+              className="admin-button-primary shrink-0 px-5 py-2.5 text-sm"
             >
               <Plus className="h-4 w-4" />
               {t("landingsPage.createLanding")}

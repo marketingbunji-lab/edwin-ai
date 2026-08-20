@@ -2,11 +2,16 @@ import fs from "node:fs";
 import path from "node:path";
 import type { VisualAssetImageCategory } from "./visualAssetCategories";
 
-export type BrandAgentCollection = "buyer-person" | "visual-assets";
+export type BrandAgentCollection =
+  | "buyer-person"
+  | "buyer-person-program"
+  | "visual-assets";
 export type VisualAssetCategory = "brand-assets" | "programs-assets";
 
 export type BuyerPersonRecord = {
   id: string;
+  programId?: string;
+  programName?: string;
   profileName: string;
   profileImage: string;
   description: string;
@@ -101,6 +106,11 @@ export const brandAgentCollectionLabels: Record<
     plural: "Buyer Persons",
     folder: "buyer-person",
   },
+  "buyer-person-program": {
+    singular: "Program Buyer Person",
+    plural: "Program Buyer Persons",
+    folder: "buyer-person-program",
+  },
   "visual-assets": {
     singular: "Visual Asset",
     plural: "Visual Assets",
@@ -110,6 +120,11 @@ export const brandAgentCollectionLabels: Record<
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const buyerPersonDir = path.join(process.cwd(), "data", "buyer-person");
+const buyerPersonProgramDir = path.join(
+  process.cwd(),
+  "data",
+  "buyer-person-program",
+);
 const visualAssetsDir = path.join(process.cwd(), "data", "visual-assets");
 export const visualAssetCategories: Array<{
   slug: VisualAssetCategory;
@@ -133,7 +148,11 @@ export const visualAssetCategories: Array<{
 export function isBrandAgentCollection(
   value: string,
 ): value is BrandAgentCollection {
-  return value === "buyer-person" || value === "visual-assets";
+  return (
+    value === "buyer-person" ||
+    value === "buyer-person-program" ||
+    value === "visual-assets"
+  );
 }
 
 export function isSafeBrandAgentSlug(value: string) {
@@ -153,6 +172,16 @@ export function getVisualAssetsByCategory(
   return getBrandAgentRecords(brandSlug, "visual-assets").filter(
     (record): record is VisualAssetRecord =>
       "category" in record && record.category === category,
+  );
+}
+
+export function getBuyerPersonProgramRecords(
+  brandSlug: string,
+  programId: string,
+) {
+  return getBrandAgentRecords(brandSlug, "buyer-person-program").filter(
+    (record): record is BuyerPersonRecord =>
+      "profileName" in record && record.programId === programId,
   );
 }
 
@@ -219,7 +248,7 @@ export function createBrandAgentRecord(
     fs.mkdirSync(folderPath, { recursive: true });
   }
 
-  if (collection === "buyer-person") {
+  if (collection === "buyer-person" || collection === "buyer-person-program") {
     let nextId = record.id;
     let filePath = path.join(folderPath, `${nextId}.json`);
 
@@ -318,7 +347,11 @@ function getBrandAgentFolderPath(
   }
 
   const baseDir =
-    collection === "buyer-person" ? buyerPersonDir : visualAssetsDir;
+    collection === "buyer-person"
+      ? buyerPersonDir
+      : collection === "buyer-person-program"
+        ? buyerPersonProgramDir
+        : visualAssetsDir;
   const folderPath = path.resolve(baseDir, brandSlug);
   const relativePath = path.relative(baseDir, folderPath);
 
@@ -343,10 +376,20 @@ function normalizeBrandAgentRecord(
   const createdAt = getRecordCreatedAt(current) || today;
   const id = current?.id;
 
-  if (collection === "buyer-person") {
+  if (collection === "buyer-person" || collection === "buyer-person-program") {
     const profileName = toText(value.profileName) || toText(value.name);
     const description = toText(value.description);
     const stage = toText(value.stage);
+    const programId =
+      collection === "buyer-person-program"
+        ? toText(value.programId) ||
+          toText((current as BuyerPersonRecord | undefined)?.programId)
+        : "";
+    const programName =
+      collection === "buyer-person-program"
+        ? toText(value.programName) ||
+          toText((current as BuyerPersonRecord | undefined)?.programName)
+        : "";
 
     if (!profileName) {
       return null;
@@ -354,6 +397,8 @@ function normalizeBrandAgentRecord(
 
     return {
       id: id ?? toPlainRecordId(profileName),
+      programId,
+      programName,
       profileName,
       profileImage: toText(value.profileImage),
       description,
@@ -499,7 +544,7 @@ function normalizeStoredBrandAgentRecord(
   collection: BrandAgentCollection,
   value: BrandAgentRecord,
 ) {
-  if (collection !== "buyer-person") {
+  if (collection !== "buyer-person" && collection !== "buyer-person-program") {
     return value;
   }
 

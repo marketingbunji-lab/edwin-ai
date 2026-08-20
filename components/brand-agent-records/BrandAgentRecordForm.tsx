@@ -168,6 +168,8 @@ function formStateFromRecord(record?: BrandAgentRecord): FormState {
   if ("profileName" in record) {
     return {
       ...initialState,
+      programId: record.programId || "",
+      programName: record.programName || "",
       profileName: record.profileName,
       profileImage: record.profileImage || "",
       description: record.description,
@@ -257,6 +259,8 @@ function buyerPersonFromForm(
 
   return {
     id: current?.id ?? "",
+    programId: form.programId || current?.programId || "",
+    programName: form.programName || current?.programName || "",
     profileName: form.profileName,
     profileImage: form.profileImage,
     description: form.description,
@@ -403,6 +407,38 @@ function extractVisualAssetFromResponse(value: unknown) {
     return parsedVisualAsset;
   }
 
+  const directUrl =
+    toOptionalText((parsedVisualAsset as Record<string, unknown> | null)?.url) ||
+    toOptionalText(
+      (parsedVisualAsset as Record<string, unknown> | null)?.imageUrl,
+    ) ||
+    toOptionalText(payload.imageUrl) ||
+    toOptionalText((payload.upload as Record<string, unknown> | undefined)?.url);
+
+  if (directUrl) {
+    return {
+      url: directUrl,
+      imageUrl: directUrl,
+      name:
+        toOptionalText(
+          (parsedVisualAsset as Record<string, unknown> | null)?.name,
+        ) ||
+        toOptionalText(
+          (parsedVisualAsset as Record<string, unknown> | null)?.assetName,
+        ) ||
+        toOptionalText(payload.message) ||
+        "Generated visual asset",
+      assetType:
+        toOptionalText(
+          (parsedVisualAsset as Record<string, unknown> | null)?.assetType,
+        ) || "Image",
+      notes:
+        toOptionalText(
+          (parsedVisualAsset as Record<string, unknown> | null)?.notes,
+        ) || "",
+    };
+  }
+
   if (isVisualAssetRecordLike(payload)) {
     return payload;
   }
@@ -434,10 +470,13 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
+function toOptionalText(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
 function isVisualAssetRecordLike(value: unknown): value is Partial<VisualAssetRecord> {
   return (
     isRecord(value) &&
-    (typeof value.name === "string" || typeof value.assetName === "string") &&
     (typeof value.url === "string" || typeof value.imageUrl === "string")
   );
 }
@@ -489,7 +528,9 @@ export default function BrandAgentRecordForm({
   );
   const buyerPersonPdfInputRef = useRef<HTMLInputElement | null>(null);
 
-  const isBuyerPerson = collection === "buyer-person";
+  const isBuyerPerson =
+    collection === "buyer-person" || collection === "buyer-person-program";
+  const isProgramBuyerPerson = collection === "buyer-person-program";
   const isVisualAsset = collection === "visual-assets";
   const isEditMode = mode === "edit";
   const isAutomaticBuyerPersonCreate = isBuyerPerson && !isEditMode;
@@ -539,6 +580,13 @@ export default function BrandAgentRecordForm({
                   task: "generate-buyer-persona",
                   agent: "edwin-agent-test",
                   brand,
+                  ...(isProgramBuyerPerson
+                    ? {
+                        program: visualAssetProgramData,
+                        programId: form.programId,
+                        programName: form.programName,
+                      }
+                    : {}),
                   source: {
                     mode: buyerPersonSourceMode,
                     fileName:
@@ -783,7 +831,7 @@ export default function BrandAgentRecordForm({
 
   return (
     <div className="space-y-6">
-      <div className="sticky top-4 z-20 overflow-hidden rounded-[22px] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
+      <div className="sticky z-20 overflow-hidden border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82),rgba(255,255,255,0.54))] p-4 shadow-[0_22px_55px_rgba(15,23,42,0.14)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(135deg,rgba(255,255,255,0.34),transparent_58%)] before:content-[''] dark:border-white/10 dark:bg-[linear-gradient(135deg,rgba(15,23,42,0.78),rgba(15,23,42,0.62))] dark:shadow-[0_22px_55px_rgba(2,6,23,0.32)] dark:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_58%)]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
             {backHref && backLabel ? (

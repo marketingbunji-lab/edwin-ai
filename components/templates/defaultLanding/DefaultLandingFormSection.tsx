@@ -77,12 +77,19 @@ export default function DefaultLandingFormSection({
     ? "text-white/90"
     : "text-[var(--landing-primary)]";
   const descriptionClass = usesLightText ? "text-white/90" : "text-slate-700";
+  const editableSectionImageClass = liveEdit?.enabled
+    ? "cursor-pointer outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-[-10px] transition hover:outline-[var(--bunji-cyan,#7de3ea)]/70"
+    : "";
 
   return (
     <section
       id="default-form"
-      className={`py-24 md:py-32 ${hasBackgroundImage ? "relative overflow-hidden" : "bg-[linear-gradient(180deg,var(--landing-page-bg),var(--landing-primary-lightest))]"}`}
+      className={`py-24 md:py-32 ${hasBackgroundImage ? "relative overflow-hidden" : "bg-[linear-gradient(180deg,var(--landing-page-bg),var(--landing-primary-lightest))]"} ${editableSectionImageClass}`}
       style={hasBackgroundImage ? { background: sectionBackground } : undefined}
+      data-live-image-path={liveEdit?.enabled ? "formSection.backgroundImage" : undefined}
+      data-live-image-label={liveEdit?.enabled ? "Imagen de fondo del formulario" : undefined}
+      data-live-image-value={liveEdit?.enabled ? formSection.backgroundImage || "" : undefined}
+      title={liveEdit?.enabled ? "Click para reemplazar la imagen de fondo" : undefined}
     >
       <div className={`${landingContainerClass} grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(360px,520px)]`}>
         <div className="max-w-2xl">

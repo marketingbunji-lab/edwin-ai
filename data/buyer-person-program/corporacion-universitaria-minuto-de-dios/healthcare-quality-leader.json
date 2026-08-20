@@ -1,0 +1,160 @@
+{
+  "id": "healthcare-quality-leader",
+  "programId": "especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud",
+  "programName": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
+  "profileName": "Healthcare Quality Leader",
+  "profileImage": "https://cdn.uploadtourl.com/5aa7b500-87d7-4cc7-afa9-222c549d14e4_data.png",
+  "description": "Profesional del sector salud que busca fortalecer su perfil en gerencia, auditoría y mejoramiento continuo para asumir roles de liderazgo en instituciones de salud.",
+  "stage": "consideration",
+  "priority": 1,
+  "status": "active",
+  "demographics": {
+    "ageRange": "27-45",
+    "gender": "any",
+    "location": [
+      "Bogotá",
+      "Medellín",
+      "Cali",
+      "Virtual"
+    ],
+    "educationLevel": "professional degree",
+    "employmentStatus": "employed full-time",
+    "incomeRange": "$30,000 - $60,000",
+    "familySituation": "independent or with family responsibilities",
+    "languagePreference": [
+      "Spanish"
+    ]
+  },
+  "psychographics": {
+    "personalityTraits": [
+      "analytical",
+      "goal-oriented",
+      "responsible"
+    ],
+    "values": [
+      "service quality",
+      "professional growth",
+      "ethics"
+    ],
+    "interests": [
+      "health management",
+      "patient safety",
+      "continuous improvement"
+    ]
+  },
+  "goals": {
+    "primary": [
+      "advance into leadership roles",
+      "specialize in healthcare quality",
+      "strengthen audit and compliance skills"
+    ],
+    "secondary": [
+      "improve job stability",
+      "increase professional recognition",
+      "apply best practices in healthcare organizations"
+    ],
+    "successDefinition": "Completar la especialización y aplicar sus aprendizajes para liderar procesos de calidad y auditoría con impacto real en el sector salud."
+  },
+  "painPoints": [
+    "limited time due to work responsibilities",
+    "need for a flexible virtual program",
+    "uncertainty about how to grow into strategic roles"
+  ],
+  "motivations": [
+    "career advancement",
+    "greater impact in healthcare organizations",
+    "professional specialization in quality and audit"
+  ],
+  "objections": [
+    "cost of postgraduate study",
+    "balancing study with work",
+    "questions about return on investment"
+  ],
+  "decisionFactors": [
+    "virtual modality",
+    "program relevance to healthcare sector needs",
+    "institutional credibility"
+  ],
+  "buyerJourney": {
+    "stage": "deeper research",
+    "awarenessTriggers": [
+      "desire for promotion",
+      "organizational quality challenges",
+      "interest in postgraduate growth"
+    ],
+    "informationNeeds": [
+      "curriculum details",
+      "tuition and financing options",
+      "career outcomes"
+    ]
+  },
+  "searchBehavior": {
+    "keywords": [
+      "especializacion virtual calidad en salud",
+      "auditoria en salud posgrado",
+      "gerencia de calidad en salud"
+    ],
+    "commonQuestions": [
+      "¿La modalidad virtual me permite estudiar mientras trabajo?",
+      "¿Qué competencias voy a desarrollar en auditoría y calidad?",
+      "¿Cómo puede ayudarme este programa a crecer profesionalmente?"
+    ]
+  },
+  "emotionalTriggers": [
+    "desire for advancement",
+    "confidence in becoming a leader",
+    "need to stay competitive"
+  ],
+  "preferredCommunication": {
+    "channels": [
+      "email",
+      "WhatsApp",
+      "phone"
+    ],
+    "preferredContactTime": [
+      "evenings",
+      "lunch breaks",
+      "weekends"
+    ],
+    "tone": [
+      "professional",
+      "clear",
+      "supportive"
+    ]
+  },
+  "messagingRecommendations": {
+    "keyMessages": [
+      "Especialízate en calidad y auditoría con una modalidad virtual que se adapta a tu ritmo.",
+      "Fortalece tu perfil para liderar procesos estratégicos en organizaciones del sector salud.",
+      "Desarrolla competencias aplicables en calidad, normatividad y mejoramiento continuo."
+    ],
+    "ctaExamples": [
+      "Solicita información del programa",
+      "Descarga el plan de estudios",
+      "Habla con un asesor de admisiones"
+    ]
+  },
+  "contentPreferences": {
+    "formats": [
+      "program guides",
+      "videos",
+      "testimonials"
+    ]
+  },
+  "scoring": {
+    "conversionLikelihood": 0,
+    "urgency": "medium",
+    "salesReadiness": "ready to compare options"
+  },
+  "metadata": {
+    "createdAt": "2026-08-20",
+    "updatedAt": "2026-08-20",
+    "source": "AI",
+    "tags": [
+      "healthcare",
+      "postgraduate",
+      "quality",
+      "audit"
+    ]
+  }
+}
