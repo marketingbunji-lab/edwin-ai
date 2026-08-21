@@ -229,9 +229,9 @@ const sectionMeta: Record<
   },
   knowledgeBasePage: {
     id: "knowledgeBasePage",
-    title: "Knowledge Base Page",
+    title: "My University Page",
     summary:
-      "Workflow states, section labels, and CTAs for the institutional knowledge base.",
+      "Workflow states, section labels, and CTAs for the My University area.",
     routeHints: ["/brands/[brand]/knowledge-base"],
     audience: ["content", "academic teams", "institutional users"],
     goals: [
@@ -472,8 +472,8 @@ export function getUxWriterAgentDefinition() {
       guidelines: {
         tone: ["clear", "guided", "human", "concise"],
         terminology: {
-          en: ["Programs", "Knowledge Base", "Journey"],
-          es: ["Programas", "Base de conocimiento", "Journey"],
+          en: ["Programs", "My University", "Journey"],
+          es: ["Programas", "Mi Universidad", "Journey"],
         },
       },
     },

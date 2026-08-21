@@ -57,9 +57,6 @@ export default async function ProgramBuyerPersonPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {brand.name}
-                </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   {program.programName}
                 </h1>
@@ -75,7 +72,6 @@ export default async function ProgramBuyerPersonPage({ params }: Props) {
             initialRecord={currentRecord ?? undefined}
             mode={currentRecord ? "edit" : "create"}
             showPreview
-            eyebrow={brand.name}
             title={currentRecord ? "Editar buyer person del programa" : "Agregar buyer person del programa"}
             description={
               currentRecord

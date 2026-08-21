@@ -419,33 +419,35 @@ export default function DashboardShell({
           <section className="border-b border-[color-mix(in_srgb,var(--bunji-primary-soft)_54%,rgba(148,163,184,0.35))] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(247,249,255,0.86)_100%),radial-gradient(circle_at_12%_18%,rgba(125,227,234,0.1),transparent_24%),radial-gradient(circle_at_88%_8%,rgba(62,57,137,0.1),transparent_24%)] shadow-[0_10px_35px_rgba(15,23,42,0.04)] backdrop-blur-xl dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(2,6,23,0.92)_0%,rgba(6,10,26,0.88)_100%),radial-gradient(circle_at_16%_16%,rgba(125,227,234,0.08),transparent_24%),radial-gradient(circle_at_84%_12%,rgba(62,57,137,0.18),transparent_24%)]">
             <div className="flex flex-wrap items-center justify-between gap-5 px-4 py-5 sm:px-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-16 w-28 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={getBrandLogo(activeBrand, "light")}
-                    alt={activeBrand.name}
-                    className="max-h-full w-full object-contain dark:hidden"
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={getBrandLogo(activeBrand, "dark")}
-                    alt={activeBrand.name}
-                    className="hidden max-h-full w-full object-contain dark:block"
-                  />
-                </div>
+                {!isLandingEditorPage ? (
+                  <div className="flex h-16 w-28 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={getBrandLogo(activeBrand, "light")}
+                      alt={activeBrand.name}
+                      className="max-h-full w-full object-contain dark:hidden"
+                    />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={getBrandLogo(activeBrand, "dark")}
+                      alt={activeBrand.name}
+                      className="hidden max-h-full w-full object-contain dark:block"
+                    />
+                  </div>
+                ) : null}
 
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)]/70 dark:text-[var(--bunji-cyan)]/75">
-                    {isLandingEditorPage
-                      ? activeBrand.name
-                      : isBrandEditPage
+                  {!isLandingEditorPage ? (
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)]/70 dark:text-[var(--bunji-cyan)]/75">
+                      {isBrandEditPage
                         ? t("shell.editBrand")
                         : isNewLandingAiPage
                           ? t("shell.createWithAi")
                           : isNewLandingPage
                             ? t("shell.newLanding")
                             : t("shell.activeBrand")}
-                  </p>
+                    </p>
+                  ) : null}
                   <h2 className="text-3xl font-bold text-slate-950 dark:text-slate-50">
                     {isLandingEditorPage
                       ? activeLanding?.fullTitle || activeLanding?.title

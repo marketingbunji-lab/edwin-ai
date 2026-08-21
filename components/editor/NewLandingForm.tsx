@@ -8,14 +8,12 @@ import type { Program } from "@/lib/data";
 
 type Props = {
   brandSlug: string;
-  brandName: string;
   programs: Program[];
   totalProgramCount: number;
 };
 
 export default function NewLandingForm({
   brandSlug,
-  brandName,
   programs,
   totalProgramCount,
 }: Props) {
@@ -76,7 +74,6 @@ export default function NewLandingForm({
   return (
     <div className="admin-panel p-8">
       <div className="mb-6">
-        <p className="admin-eyebrow">{brandName}</p>
         <h1 className="admin-title">Nueva landing</h1>
         <p className="admin-muted mt-2">
           Crea una landing editable desde un programa sin modificar la data base

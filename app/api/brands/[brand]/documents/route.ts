@@ -21,6 +21,7 @@ type DocumentsPayload = Partial<
       fileName?: string;
       fileUrl?: string;
       link?: string;
+      deleted?: boolean;
     }
   >
 >;
@@ -30,6 +31,7 @@ const brandDocumentCategoryIds: BrandDocumentCategoryId[] = [
   "catalogs",
   "brandBook",
   "curriculum",
+  "website",
 ];
 
 function slugifySegment(value: string) {
@@ -56,6 +58,18 @@ function normalizeDocuments(documents: Brand["documents"] | undefined) {
     const fileUrl = (document.fileUrl || "").trim();
     const link = (document.link || "").trim();
 
+    if (document.deleted) {
+      normalized[categoryId] = {
+        mode,
+        fileName: "",
+        fileUrl: "",
+        link: "",
+        updatedAt: document.updatedAt || "",
+        deleted: true,
+      };
+      continue;
+    }
+
     if (!fileName && !fileUrl && !link) {
       continue;
     }
@@ -70,6 +84,44 @@ function normalizeDocuments(documents: Brand["documents"] | undefined) {
   }
 
   return normalized;
+}
+
+function removePersistedDocumentFile(
+  brandSlug: string,
+  categoryId: BrandDocumentCategoryId,
+  document: BrandDocumentCategory | undefined,
+) {
+  const fileUrl = (document?.fileUrl || "").trim();
+  const expectedPrefix = `/uploads/brands/${brandSlug}/documents/${categoryId}/`;
+
+  if (!fileUrl.startsWith(expectedPrefix)) return;
+
+  const allowedDirectory = path.resolve(
+    process.cwd(),
+    "public",
+    "uploads",
+    "brands",
+    brandSlug,
+    "documents",
+    categoryId,
+  );
+  const absoluteFilePath = path.resolve(
+    process.cwd(),
+    "public",
+    fileUrl.replace(/^\/+/, ""),
+  );
+  const relativePath = path.relative(allowedDirectory, absoluteFilePath);
+
+  if (
+    relativePath.startsWith("..") ||
+    path.isAbsolute(relativePath) ||
+    !fs.existsSync(absoluteFilePath) ||
+    !fs.statSync(absoluteFilePath).isFile()
+  ) {
+    return;
+  }
+
+  fs.unlinkSync(absoluteFilePath);
 }
 
 function parseDocumentsPayload(value: FormDataEntryValue | null) {
@@ -164,6 +216,19 @@ export async function PUT(
       const currentDocument = currentDocuments[categoryId];
 
       if (!nextInput && !currentDocument) {
+        continue;
+      }
+
+      if (nextInput?.deleted) {
+        removePersistedDocumentFile(brandSlug, categoryId, currentDocument);
+        nextDocuments[categoryId] = {
+          mode: nextInput.mode === "link" ? "link" : "file",
+          fileName: "",
+          fileUrl: "",
+          link: "",
+          updatedAt: new Date().toISOString(),
+          deleted: true,
+        };
         continue;
       }
 

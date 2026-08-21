@@ -1,4 +1,5 @@
 import path from "node:path";
+import { mkdir, writeFile } from "node:fs/promises";
 import { createAdminClient } from "@/utils/supabase/admin";
 
 export const AI_ASSETS_BUCKET = "edwin-ai-assets";
@@ -57,7 +58,11 @@ function decodeDataUrl(dataUrl: string) {
   };
 }
 
-function buildStoragePath(sourceUrl: string, context: UploadContext, contentType: string) {
+function buildStoragePath(
+  sourceUrl: string,
+  context: UploadContext,
+  contentType: string,
+) {
   const brandSlug = slugifySegment(context.brandSlug) || "shared";
   const category = slugifySegment(context.category) || "generated";
   const programId = slugifySegment(context.programId) || "brand";
@@ -66,6 +71,54 @@ function buildStoragePath(sourceUrl: string, context: UploadContext, contentType
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
 
   return `${brandSlug}/${category}/${programId}/${assetName}-${timestamp}.${extension}`;
+}
+
+async function downloadImage(sourceUrl: string) {
+  if (sourceUrl.startsWith("data:image/")) {
+    const decoded = decodeDataUrl(sourceUrl);
+
+    if (!decoded) {
+      throw new Error("No se pudo decodificar el data URL de la imagen.");
+    }
+
+    return decoded;
+  }
+
+  const response = await fetch(sourceUrl, {
+    headers: {
+      Accept: "image/*",
+    },
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`No se pudo descargar la imagen remota: ${response.status}`);
+  }
+
+  const contentType = response.headers.get("content-type") || "";
+
+  if (!contentType.toLowerCase().startsWith("image/")) {
+    throw new Error("La URL remota no devolvio una imagen valida.");
+  }
+
+  return {
+    contentType,
+    buffer: Buffer.from(await response.arrayBuffer()),
+  };
+}
+
+async function saveImageToPublic(buffer: Buffer, storagePath: string) {
+  const relativePath = path.posix.join("generated-assets", storagePath);
+  const absolutePath = path.join(
+    process.cwd(),
+    "public",
+    ...relativePath.split("/"),
+  );
+
+  await mkdir(path.dirname(absolutePath), { recursive: true });
+  await writeFile(absolutePath, buffer, { flag: "wx" });
+
+  return `/${relativePath}`;
 }
 
 async function ensureBucketExists() {
@@ -106,38 +159,7 @@ export async function uploadRemoteImageToSupabase(
   context: UploadContext,
 ) {
   const supabase = await ensureBucketExists();
-  let contentType = "";
-  let buffer = Buffer.alloc(0);
-
-  if (sourceUrl.startsWith("data:image/")) {
-    const decoded = decodeDataUrl(sourceUrl);
-
-    if (!decoded) {
-      throw new Error("No se pudo decodificar el data URL de la imagen.");
-    }
-
-    contentType = decoded.contentType;
-    buffer = decoded.buffer;
-  } else {
-    const response = await fetch(sourceUrl, {
-      headers: {
-        Accept: "image/*",
-      },
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      throw new Error(`No se pudo descargar la imagen remota: ${response.status}`);
-    }
-
-    contentType = response.headers.get("content-type") || "";
-
-    if (!contentType.toLowerCase().startsWith("image/")) {
-      throw new Error("La URL remota no devolvio una imagen valida.");
-    }
-
-    buffer = Buffer.from(await response.arrayBuffer());
-  }
+  const { contentType, buffer } = await downloadImage(sourceUrl);
 
   const storagePath = buildStoragePath(sourceUrl, context, contentType);
   const { error: uploadError } = await supabase.storage
@@ -162,6 +184,38 @@ export async function uploadRemoteImageToSupabase(
   };
 }
 
+async function persistRemoteImage(sourceUrl: string, context: UploadContext) {
+  const { contentType, buffer } = await downloadImage(sourceUrl);
+  const storagePath = buildStoragePath(sourceUrl, context, contentType);
+  const localUrl = await saveImageToPublic(buffer, storagePath);
+
+  try {
+    const supabase = await ensureBucketExists();
+    const { error: uploadError } = await supabase.storage
+      .from(AI_ASSETS_BUCKET)
+      .upload(storagePath, buffer, {
+        contentType,
+        upsert: false,
+      });
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from(AI_ASSETS_BUCKET).getPublicUrl(storagePath);
+
+    return publicUrl;
+  } catch (error) {
+    console.error(
+      "La imagen se guardo en public, pero no se pudo subir a Supabase:",
+      error,
+    );
+    return localUrl;
+  }
+}
+
 export async function persistVisualAssetResponseImages<T>(
   payload: T,
   context: UploadContext,
@@ -184,7 +238,8 @@ export async function persistVisualAssetResponseImages<T>(
       if (
         (key === "url" || key === "imageUrl") &&
         typeof currentValue === "string" &&
-        currentValue.startsWith("http")
+        (currentValue.startsWith("http") ||
+          currentValue.startsWith("data:image/"))
       ) {
         if (cache.has(currentValue)) {
           nextRecord[key] = cache.get(currentValue);
@@ -192,9 +247,9 @@ export async function persistVisualAssetResponseImages<T>(
         }
 
         try {
-          const upload = await uploadRemoteImageToSupabase(currentValue, context);
-          cache.set(currentValue, upload.publicUrl);
-          nextRecord[key] = upload.publicUrl;
+          const persistedUrl = await persistRemoteImage(currentValue, context);
+          cache.set(currentValue, persistedUrl);
+          nextRecord[key] = persistedUrl;
         } catch {
           nextRecord[key] = currentValue;
         }

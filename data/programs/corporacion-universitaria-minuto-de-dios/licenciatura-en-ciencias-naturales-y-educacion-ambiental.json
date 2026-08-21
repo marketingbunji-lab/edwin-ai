@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%201.png?itok=kga9dgOg",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-1-08c3441284d6.png",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-2-photoroom-1-ea464226ec07.png"
   },
   "programExplorer": {
     "enabled": true,
@@ -157,65 +157,197 @@
           {
             "title": "Básico",
             "items": [
-              { "label": "Habilidades Digitales para el Aprendizaje", "value": "3" },
-              { "label": "Lectura y Escritura en el Contexto Digital", "value": "3" },
-              { "label": "Fundamentos de Matemáticas", "value": "3" },
-              { "label": "Fundamentos en Educación y Pedagogía", "value": "3" },
-              { "label": "Modelos Pedagógicos", "value": "2" },
-              { "label": "Inglés I", "value": "3" },
-              { "label": "Práctica de Observación Educativa y Pedagógica", "value": "3" },
-              { "label": "Inglés II", "value": "3" },
-              { "label": "Teorías y Diseño Curricular", "value": "3" },
-              { "label": "Inglés III", "value": "3" },
-              { "label": "Evaluación Educativa", "value": "3" },
-              { "label": "Administración y Gestión Educativa", "value": "3" }
+              {
+                "label": "Habilidades Digitales para el Aprendizaje",
+                "value": "3"
+              },
+              {
+                "label": "Lectura y Escritura en el Contexto Digital",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Matemáticas",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos en Educación y Pedagogía",
+                "value": "3"
+              },
+              {
+                "label": "Modelos Pedagógicos",
+                "value": "2"
+              },
+              {
+                "label": "Inglés I",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Observación Educativa y Pedagógica",
+                "value": "3"
+              },
+              {
+                "label": "Inglés II",
+                "value": "3"
+              },
+              {
+                "label": "Teorías y Diseño Curricular",
+                "value": "3"
+              },
+              {
+                "label": "Inglés III",
+                "value": "3"
+              },
+              {
+                "label": "Evaluación Educativa",
+                "value": "3"
+              },
+              {
+                "label": "Administración y Gestión Educativa",
+                "value": "3"
+              }
             ]
           },
           {
             "title": "Profesional",
             "items": [
-              { "label": "Fundamentos de las Ciencias Naturales", "value": "3" },
-              { "label": "Didáctica de las Ciencias Naturales", "value": "2" },
-              { "label": "Biología Celular", "value": "3" },
-              { "label": "Química General", "value": "3" },
-              { "label": "Educación Ambiental", "value": "2" },
-              { "label": "Física Mecánica en las Ciencias Naturales", "value": "3" },
-              { "label": "Biología Vegetal", "value": "3" },
-              { "label": "Química Inorgánica", "value": "3" },
-              { "label": "Calor, Ondas y Electricidad", "value": "3" },
-              { "label": "Fundamentos de Investigación", "value": "3" },
-              { "label": "Química Orgánica", "value": "3" },
-              { "label": "Bioquímica", "value": "3" },
-              { "label": "Práctica Formativa I", "value": "4" },
-              { "label": "Metodología de la Investigación", "value": "3" },
-              { "label": "Práctica Formativa II", "value": "4" },
-              { "label": "Biología Animal", "value": "3" },
-              { "label": "Políticas Públicas en Educación y Ambiente", "value": "3" },
-              { "label": "Ecología, Biodiversidad y Gestión Ambiental", "value": "3" },
-              { "label": "Práctica Formativa III", "value": "6" },
-              { "label": "Resultados de Investigación en Ciencias Naturales", "value": "3" }
+              {
+                "label": "Fundamentos de las Ciencias Naturales",
+                "value": "3"
+              },
+              {
+                "label": "Didáctica de las Ciencias Naturales",
+                "value": "2"
+              },
+              {
+                "label": "Biología Celular",
+                "value": "3"
+              },
+              {
+                "label": "Química General",
+                "value": "3"
+              },
+              {
+                "label": "Educación Ambiental",
+                "value": "2"
+              },
+              {
+                "label": "Física Mecánica en las Ciencias Naturales",
+                "value": "3"
+              },
+              {
+                "label": "Biología Vegetal",
+                "value": "3"
+              },
+              {
+                "label": "Química Inorgánica",
+                "value": "3"
+              },
+              {
+                "label": "Calor, Ondas y Electricidad",
+                "value": "3"
+              },
+              {
+                "label": "Fundamentos de Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Química Orgánica",
+                "value": "3"
+              },
+              {
+                "label": "Bioquímica",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa I",
+                "value": "4"
+              },
+              {
+                "label": "Metodología de la Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa II",
+                "value": "4"
+              },
+              {
+                "label": "Biología Animal",
+                "value": "3"
+              },
+              {
+                "label": "Políticas Públicas en Educación y Ambiente",
+                "value": "3"
+              },
+              {
+                "label": "Ecología, Biodiversidad y Gestión Ambiental",
+                "value": "3"
+              },
+              {
+                "label": "Práctica Formativa III",
+                "value": "6"
+              },
+              {
+                "label": "Resultados de Investigación en Ciencias Naturales",
+                "value": "3"
+              }
             ]
           },
           {
             "title": "Minuto de Dios",
             "items": [
-              { "label": "Proyecto de Vida", "value": "2" },
-              { "label": "Cátedra Minuto de Dios", "value": "2" },
-              { "label": "Práctica en Responsabilidad Social", "value": "3" },
-              { "label": "Constitución Política", "value": "2" },
-              { "label": "Ética Profesional", "value": "2" },
-              { "label": "Emprendimiento", "value": "3" }
+              {
+                "label": "Proyecto de Vida",
+                "value": "2"
+              },
+              {
+                "label": "Cátedra Minuto de Dios",
+                "value": "2"
+              },
+              {
+                "label": "Práctica en Responsabilidad Social",
+                "value": "3"
+              },
+              {
+                "label": "Constitución Política",
+                "value": "2"
+              },
+              {
+                "label": "Ética Profesional",
+                "value": "2"
+              },
+              {
+                "label": "Emprendimiento",
+                "value": "3"
+              }
             ]
           },
           {
             "title": "Profesional complementario",
             "items": [
-              { "label": "Práctica de Profundización I", "value": "8" },
-              { "label": "Electiva I", "value": "3" },
-              { "label": "Práctica de Profundización II", "value": "9" },
-              { "label": "Electiva II", "value": "3" },
-              { "label": "Práctica de Profundización III", "value": "9" },
-              { "label": "Opción de grado", "value": "0" }
+              {
+                "label": "Práctica de Profundización I",
+                "value": "8"
+              },
+              {
+                "label": "Electiva I",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización II",
+                "value": "9"
+              },
+              {
+                "label": "Electiva II",
+                "value": "3"
+              },
+              {
+                "label": "Práctica de Profundización III",
+                "value": "9"
+              },
+              {
+                "label": "Opción de grado",
+                "value": "0"
+              }
             ]
           }
         ]
@@ -309,7 +441,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -323,7 +455,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-2-photoroom-1-ea464226ec07.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   }

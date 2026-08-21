@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/6%20Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud.webp?itok=TrtWQs_-",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/6-especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-5c3b38c87537.webp",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud. A través de una formación innovadora, ética y orientada a resultados, el programa fortalece competencias en calidad, seguridad del paciente, normatividad y transformación digital, contribuyendo al desarrollo de servicios de salud más eficientes, humanizados y sostenibles.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-2-photoroom-1-556a1b031ee1.png"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -190,7 +190,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -204,7 +204,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Especializaci%C3%B3n%20en%20Gerencia%20y%20Auditor%C3%ADa%20de%20la%20Calidad%20en%20Salud%202-Photoroom%20%281%29.png?itok=0DvGEKES",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-2-photoroom-1-556a1b031ee1.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

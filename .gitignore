@@ -54,6 +54,9 @@ next-env.d.ts
 # Generated exports
 output*.html
 
+# Local asset consolidation backups
+.tmp/asset-consolidation-backup-*/
+
 # Misc
 .DS_Store
 *.pem

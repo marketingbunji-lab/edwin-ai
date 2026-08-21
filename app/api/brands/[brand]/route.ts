@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Brand, BrandDocumentCategoryId, BrandDocuments } from "../../../../lib/data";
+import type {
+  Brand,
+  BrandDocumentCategoryId,
+  BrandDocuments,
+} from "../../../../lib/data";
 import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../../utils/supabase/admin";
 
@@ -20,6 +24,7 @@ const brandDocumentCategoryIds: BrandDocumentCategoryId[] = [
   "catalogs",
   "brandBook",
   "curriculum",
+  "website",
 ];
 
 function normalizeCertifications(brand: Brand) {
@@ -57,6 +62,18 @@ function normalizeDocuments(brand: Partial<Brand>) {
     const fileName = (document.fileName || "").trim();
     const fileUrl = (document.fileUrl || "").trim();
     const link = (document.link || "").trim();
+
+    if (document.deleted) {
+      normalized[categoryId] = {
+        mode,
+        fileName: "",
+        fileUrl: "",
+        link: "",
+        updatedAt: document.updatedAt || "",
+        deleted: true,
+      };
+      continue;
+    }
 
     if (!fileName && !fileUrl && !link) {
       continue;
@@ -113,7 +130,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       process.cwd(),
       "data",
       "brands",
-      `${brand}.json`
+      `${brand}.json`,
     );
 
     if (!fs.existsSync(filePath)) {
@@ -128,7 +145,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
   } catch {
     return NextResponse.json(
       { ok: false, error: "No se pudo guardar la marca" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -158,7 +175,7 @@ async function updateSupabaseBrand(brandSlug: string, brand: Brand) {
         ok: false,
         error: "No se encontro SUPABASE_SERVICE_ROLE_KEY en el servidor.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -183,14 +200,14 @@ async function updateSupabaseBrand(brandSlug: string, brand: Brand) {
   if (error) {
     return NextResponse.json(
       { ok: false, error: formatSupabaseError(error) },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
   if (!data || data.length === 0) {
     return NextResponse.json(
       { ok: false, error: "Marca no encontrada en Supabase" },
-      { status: 404 }
+      { status: 404 },
     );
   }
 
@@ -249,7 +266,7 @@ async function deleteSupabaseBrand(brand: string) {
         ok: false,
         error: "No se encontro SUPABASE_SERVICE_ROLE_KEY en el servidor.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -262,14 +279,14 @@ async function deleteSupabaseBrand(brand: string) {
   if (error) {
     return NextResponse.json(
       { ok: false, error: formatSupabaseError(error) },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
   if (!data || data.length === 0) {
     return NextResponse.json(
       { ok: false, error: "Marca no encontrada en Supabase" },
-      { status: 404 }
+      { status: 404 },
     );
   }
 
@@ -288,13 +305,13 @@ export async function DELETE(req: NextRequest, { params }: { params: Params }) {
       process.cwd(),
       "data",
       "brands",
-      `${brand}.json`
+      `${brand}.json`,
     );
 
     if (!fs.existsSync(filePath)) {
       return NextResponse.json(
         { ok: false, error: "Marca no encontrada" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -304,7 +321,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Params }) {
   } catch {
     return NextResponse.json(
       { ok: false, error: "No se pudo eliminar la marca" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

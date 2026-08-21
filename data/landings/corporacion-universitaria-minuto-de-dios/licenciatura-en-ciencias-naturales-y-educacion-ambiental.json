@@ -86,7 +86,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/hero-Licenciatura-en-Ciencias-Naturales-y-Educaci%C3%B3n-Ambiental-generated-image.jpg",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/hero-licenciatura-en-ciencias-naturales-y-educacion-ambiental-generated-image-e9808129c3c4.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -145,13 +145,13 @@
     "eyebrow": "",
     "title": "Presentación del programa",
     "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Ciencias%20Naturales%20y%20Educaci%C3%B3n%20Ambiental%202-Photoroom%20%281%29.png?itok=KbyubM-x",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-2-photoroom-1-ea464226ec07.png",
     "items": []
   },
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "https://cdn.uploadtourl.com/5046f33c-1b06-4beb-b607-9d79c9a947ae_data.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/career-images-licenciatura-en-ciencias-naturales-y-educacion-ambiental-2026-08-21T17-25-04-548Z.png",
     "items": [
       {
         "title": "",
@@ -268,17 +268,17 @@
     {
       "title": "Licenciatura en Diseño Tecnológico",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/licenciatura-en-diseno-tecnologico",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%201.png?itok=oC4UbKjk"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-diseno-tecnologico-1-58c378459d93.png"
     },
     {
       "title": "Maestría en Neuroeducación",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Imagen%20Banners.webp?itok=XXg9wi8v"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/imagen-banners-8159b40456d2.webp"
     },
     {
       "title": "Maestría en Didáctica de las Ciencias Sociales",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-didactica-de-las-ciencias-sociales",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
     }
   ],
   "contact": {
@@ -286,7 +286,7 @@
     "advisorTitle": "",
     "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
     "email": "admisiones@uniminuto.edu",
-    "image": ""
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
   },
   "cta": {
     "variant": "minimal",
@@ -294,7 +294,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -324,7 +324,7 @@
     "title": "",
     "subtitle": "",
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://cdn.uploadtourl.com/5046f33c-1b06-4beb-b607-9d79c9a947ae_data.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/5046f33c-1b06-4beb-b607-9d79c9a947ae-df62ac82a144.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

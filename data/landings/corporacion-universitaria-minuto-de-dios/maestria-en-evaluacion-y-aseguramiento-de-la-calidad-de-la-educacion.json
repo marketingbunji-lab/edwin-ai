@@ -86,7 +86,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/generated-hero-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-image.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/generated-hero-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-image-35e79f9ae645.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -145,13 +145,13 @@
     "eyebrow": "",
     "title": "Presentación del programa",
     "description": "La Maestría en Evaluación y Aseguramiento de la Calidad de la Educación forma líderes capaces de transformar los sistemas educativos mediante procesos innovadores de evaluación, gestión y mejora continua. Con una visión crítica, ética y estratégica, el programa fortalece competencias para diseñar e implementar modelos de calidad educativa, impactando instituciones, políticas y procesos formativos con estándares nacionales e internacionales. Una propuesta académica innovadora que impulsa la excelencia, la transformación educativa y el desarrollo social desde la educación de calidad.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Evaluaci%C3%B3n%20y%20Aseguramiento%20de%20la%20Calidad%20de%20la%20Educaci%C3%B3nEspecializacEspecializac.png?itok=HZEj1cl3",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/lifestyle-images-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-2026-08-21T18-09-55-611Z.png",
     "items": []
   },
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/asset-2026-08-21T18-07-48-135Z.png",
     "items": [
       {
         "title": "",
@@ -261,17 +261,17 @@
     {
       "title": "Maestría en Neuroeducación",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-neuroeducacion",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Imagen%20Banners.webp?itok=XXg9wi8v"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/imagen-banners-8159b40456d2.webp"
     },
     {
       "title": "Maestría en Gerencia Estratégica de Operaciones",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-gerencia-estrategica-de-operaciones",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Gerencia%20Estrat%C3%A9gica%20de%20Operaciones%201.png?itok=p805vPQf"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/1-maestria-en-gerencia-estrategica-de-operaciones-1-aea6a429295b.png"
     },
     {
       "title": "Maestría en Didáctica de las Ciencias Sociales",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-didactica-de-las-ciencias-sociales",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
     }
   ],
   "contact": {
@@ -279,7 +279,7 @@
     "advisorTitle": "",
     "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
     "email": "admisiones@uniminuto.edu",
-    "image": ""
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/1-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-6d2398c26257.png"
   },
   "cta": {
     "variant": "minimal",
@@ -287,7 +287,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -317,7 +317,7 @@
     "title": "",
     "subtitle": "",
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Evaluaci%C3%B3n%20y%20Aseguramiento%20de%20la%20Calidad%20de%20la%20Educaci%C3%B3nEspecializacEspecializac.png?itok=HZEj1cl3",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/hands-on-training-images-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-2026-08-21T18-10-32-292Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

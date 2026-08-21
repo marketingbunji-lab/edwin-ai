@@ -16,7 +16,7 @@ export const dashboardMessages = {
       docs: "Documentation",
       newBrand: "Add brand",
       activeBrands: "Active brands",
-      knowledgeBase: "Knowledge Base",
+      knowledgeBase: "My University",
       journey: "Journey",
       editBrand: "Edit brand",
       createWithAi: "Create with AI",
@@ -196,6 +196,7 @@ export const dashboardMessages = {
     },
     programDataEditor: {
       baseInfo: "Base information",
+      sourcesTitle: "Program sources",
       addProgram: "Add program",
       editProgram: "Edit program",
       createProgram: "Create program",
@@ -347,7 +348,7 @@ export const dashboardMessages = {
       landingActivationCta: "Go to landings",
     },
     knowledgeBasePage: {
-      title: "Knowledge Base",
+      title: "My University",
       description:
         "This layer brings together the institutional setup and core content that support the rest of the platform.",
       universityContentBaseTitle: "University Content Base",
@@ -365,7 +366,7 @@ export const dashboardMessages = {
           "Structure programs and core content that later feed landing copy, benefits, messaging, and conversion blocks.",
       structuredPrograms: "structured programs",
       goToContentBase: "Go to Program Content Base",
-      documentsTitle: "Documents",
+      documentsTitle: "Sources",
       documentsDescription:
         "Create the institutional document hub where teams will upload and organize PDFs that support content, admissions, and academic workflows.",
       documentsHelper: "PDF repository ready to configure",
@@ -388,9 +389,9 @@ export const dashboardMessages = {
       step04: "Step 04",
     },
     documentsPage: {
-      title: "Documents",
+      title: "Sources",
       context: "Institutional Documents",
-      backToKnowledgeBase: "Back to Knowledge Base",
+      backToKnowledgeBase: "Back to My University",
       save: "Save changes",
       saving: "Saving...",
       saved: "Changes saved for this document setup.",
@@ -407,6 +408,7 @@ export const dashboardMessages = {
       catalogsTab: "Catalogs",
       brandBookTab: "Brand book",
       curriculumTab: "Study plans",
+      websiteTab: "Website",
       uploadEyebrow: "Upload flow",
       uploadTitle: "PDF upload area",
       uploadDescription:
@@ -428,9 +430,9 @@ export const dashboardMessages = {
       libraryTitle: "No documents uploaded yet",
       libraryDescription:
         "The document hub is ready. In the next step, we can add upload, listing, tagging, and processing logic.",
-      emptyState: "Your institutional PDF library will appear here.",
+      emptyState: "Click to upload a document or add a link.",
       readyEyebrow: "Current setup",
-      readyTitle: "Categories ready to configure",
+      readyTitle: "Sources",
       readyDescription:
         "Use the tabs to define whether each category will be connected by uploaded PDF or external link.",
       sourceLabel: "Source",
@@ -442,7 +444,7 @@ export const dashboardMessages = {
         "This foundation is ready for drag and drop uploads, document metadata, and AI processing flows.",
     },
     universityPage: {
-      backToKnowledgeBase: "Back to Knowledge Base",
+      backToKnowledgeBase: "Back to My University",
       context: "University Content Base",
       edit: "Edit",
       configureSection: "Set up section",
@@ -459,16 +461,20 @@ export const dashboardMessages = {
     brandOverviewPage: {
       backToBrands: "Back to brands",
       controlRoom: "Control Room",
-      knowledgeBase: "Knowledge Base",
-      buildKnowledgeBase: "Build the Knowledge Base",
+      knowledgeBase: "My University",
+      buildKnowledgeBase: "Build My University",
       buildKnowledgeBaseDescription:
         "Organize programs, differentiators, students, historical context, experts, and competitors into a living backbone.",
-      knowledgeBaseCompletion: "Knowledge Base completion",
+      knowledgeBaseCompletion: "My University completion",
       buildKnowledge: "Build knowledge ->",
       deployEducationAgents: "Deploy Education Agents",
       deployEducationAgentsDescription:
         "Use phase-specific agents to turn knowledge into tasks, deliverables, and next actions.",
       nextAction: "Next action",
+      activeLandings: "Active landings",
+      publishedAndAvailable: "Published and available",
+      totalAssets: "Total assets",
+      brandAndProgramAssets: "Brand and program assets",
       viewJourneyAndAgents: "Open journey and agents ->",
       setupBrand: "Set up brand",
       setupBrandUnlock:
@@ -491,7 +497,7 @@ export const dashboardMessages = {
       visualAssets: "Visual Assets",
       landingActivation: "Landing Activation",
       universityContentBase: "University Content Base",
-      documents: "Documents",
+      documents: "Sources",
       goldenCircle: "Golden Circle",
       completed: "Completed",
       educationAgentsEyebrow: "Education Agents",
@@ -503,7 +509,7 @@ export const dashboardMessages = {
         "Track how the workspace moves across setup, knowledge, content, assets, and activation without mixing in institutional data.",
       stepsCompleted: "steps completed",
       recommendedMove: "Recommended next move",
-      knowledgeBaseTab: "Knowledge Base",
+      knowledgeBaseTab: "My University",
       educationAgentsTab: "Education Agents",
       completedList: "Completed",
       inProgressList: "In progress",
@@ -529,7 +535,7 @@ export const dashboardMessages = {
       docs: "Documentacion",
       newBrand: "Nueva universidad",
       activeBrands: "Universidades activas",
-      knowledgeBase: "Base de conocimiento",
+      knowledgeBase: "Mi Universidad",
       journey: "Acciones",
       editBrand: "Editar universidad",
       createWithAi: "Crear con AI",
@@ -712,6 +718,7 @@ export const dashboardMessages = {
     },
     programDataEditor: {
       baseInfo: "Informacion base",
+      sourcesTitle: "Fuentes del programa",
       addProgram: "Agregar programa",
       editProgram: "Editar programa",
       createProgram: "Crear programa",
@@ -866,7 +873,7 @@ export const dashboardMessages = {
       landingActivationCta: "Ir a landings",
     },
     knowledgeBasePage: {
-      title: "Knowledge Base",
+      title: "Mi Universidad",
       description:
         "Esta capa reune la configuracion institucional y el contenido base que alimentan el resto de la plataforma.",
       universityContentBaseTitle: "University Content Base",
@@ -884,7 +891,7 @@ export const dashboardMessages = {
           "Estructura programas y contenido central que luego alimentan copys, beneficios, mensajes y bloques de conversion.",
       structuredPrograms: "programas estructurados",
       goToContentBase: "Ir a Program Content Base",
-      documentsTitle: "Documents",
+      documentsTitle: "Fuentes",
       documentsDescription:
         "Crea el hub documental institucional donde el equipo podrá subir y organizar PDFs que apoyen contenido, admisiones y flujos académicos.",
       documentsHelper: "Repositorio PDF listo para configurar",
@@ -907,9 +914,9 @@ export const dashboardMessages = {
       step04: "Paso 04",
     },
     documentsPage: {
-      title: "Documents",
+      title: "Fuentes",
       context: "Institutional Documents",
-      backToKnowledgeBase: "Volver a Knowledge Base",
+      backToKnowledgeBase: "Volver a Mi Universidad",
       save: "Guardar cambios",
       saving: "Guardando...",
       saveError: "No pudimos guardar estos documentos. Intenta de nuevo.",
@@ -926,6 +933,7 @@ export const dashboardMessages = {
       catalogsTab: "Catálogos",
       brandBookTab: "Brand book",
       curriculumTab: "Planes de estudio",
+      websiteTab: "Website",
       uploadEyebrow: "Flujo de carga",
       uploadTitle: "Área de carga de PDFs",
       uploadDescription:
@@ -947,9 +955,9 @@ export const dashboardMessages = {
       libraryTitle: "Todavía no hay documentos cargados",
       libraryDescription:
         "El hub documental ya está listo. En el siguiente paso podemos sumar la lógica de carga, listado, etiquetas y procesamiento.",
-      emptyState: "Aquí aparecerá la biblioteca institucional de PDFs.",
+      emptyState: "Haz clic para subir un documento o agregar un enlace.",
       readyEyebrow: "Configuración actual",
-      readyTitle: "Categorías listas para configurar",
+      readyTitle: "Fuentes",
       readyDescription:
         "Usa las tabs para definir si cada categoría se conectará por PDF cargado o por link externo.",
       sourceLabel: "Origen",
@@ -961,7 +969,7 @@ export const dashboardMessages = {
         "Esta base ya queda lista para drag and drop, metadatos documentales y flujos de procesamiento con AI.",
     },
     universityPage: {
-      backToKnowledgeBase: "Volver a Knowledge Base",
+      backToKnowledgeBase: "Volver a Mi Universidad",
       context: "University Content Base",
       edit: "Editar",
       configureSection: "Configurar seccion",
@@ -978,16 +986,20 @@ export const dashboardMessages = {
     brandOverviewPage: {
       backToBrands: "Volver a marcas",
       controlRoom: "Control Room",
-      knowledgeBase: "Base de conocimiento",
-      buildKnowledgeBase: "Nutrir la Base de Conocimiento",
+      knowledgeBase: "Mi Universidad",
+      buildKnowledgeBase: "Construir Mi Universidad",
       buildKnowledgeBaseDescription:
         "Organiza programas, diferenciales, estudiantes, historicos, expertos y competidores en una columna vertebral viva.",
-      knowledgeBaseCompletion: "Porcentaje completado Base de Conocimiento",
+      knowledgeBaseCompletion: "Porcentaje completado de Mi Universidad",
       buildKnowledge: "Construir conocimiento ->",
       deployEducationAgents: "Desplegar Acciones",
       deployEducationAgentsDescription:
         "Usa agentes especializados por fase para convertir el conocimiento en tareas, entregables y siguientes acciones.",
       nextAction: "Siguiente accion",
+      activeLandings: "Landings activas",
+      publishedAndAvailable: "Publicadas y disponibles",
+      totalAssets: "Assets totales",
+      brandAndProgramAssets: "Assets de marca y programas",
       viewJourneyAndAgents: "Ver journey y agentes ->",
       setupBrand: "Configurar marca",
       setupBrandUnlock:
@@ -1010,7 +1022,7 @@ export const dashboardMessages = {
       visualAssets: "Visual Assets",
       landingActivation: "Landing Activation",
       universityContentBase: "University Content Base",
-      documents: "Documents",
+      documents: "Fuentes",
       goldenCircle: "Golden Circle",
       completed: "Completado",
       educationAgentsEyebrow: "Acciones",
@@ -1022,7 +1034,7 @@ export const dashboardMessages = {
         "Haz seguimiento al avance del workspace en configuracion, conocimiento, contenido, assets y activacion sin mezclar datos institucionales.",
       stepsCompleted: "etapas completadas",
       recommendedMove: "Siguiente paso recomendado",
-      knowledgeBaseTab: "Base de conocimiento",
+      knowledgeBaseTab: "Mi Universidad",
       educationAgentsTab: "Acciones",
       completedList: "Completado",
       inProgressList: "En progreso",

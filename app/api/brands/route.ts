@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { NextRequest, NextResponse } from "next/server";
-import type { Brand, BrandDocumentCategoryId, BrandDocuments } from "../../../lib/data";
+import type {
+  Brand,
+  BrandDocumentCategoryId,
+  BrandDocuments,
+} from "../../../lib/data";
 import { enrichBrandColorPalette } from "@/lib/brandColors";
 import { createAdminClient } from "../../../utils/supabase/admin";
 
@@ -11,6 +15,7 @@ const brandDocumentCategoryIds: BrandDocumentCategoryId[] = [
   "catalogs",
   "brandBook",
   "curriculum",
+  "website",
 ];
 
 function slugify(text: string) {
@@ -57,6 +62,18 @@ function normalizeDocuments(brand: Partial<Brand>) {
     const fileName = (document.fileName || "").trim();
     const fileUrl = (document.fileUrl || "").trim();
     const link = (document.link || "").trim();
+
+    if (document.deleted) {
+      normalized[categoryId] = {
+        mode,
+        fileName: "",
+        fileUrl: "",
+        link: "",
+        updatedAt: document.updatedAt || "",
+        deleted: true,
+      };
+      continue;
+    }
 
     if (!fileName && !fileUrl && !link) {
       continue;
@@ -140,7 +157,7 @@ export async function POST(req: NextRequest) {
     if (!name || !slug) {
       return NextResponse.json(
         { ok: false, error: "Nombre y slug son obligatorios" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -149,7 +166,7 @@ export async function POST(req: NextRequest) {
     if (fs.existsSync(filePath)) {
       return NextResponse.json(
         { ok: false, error: "Ya existe una marca con ese slug" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -196,7 +213,7 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json(
       { ok: false, error: "No se pudo crear la marca" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

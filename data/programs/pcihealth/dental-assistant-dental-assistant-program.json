@@ -58,7 +58,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg",
+    "backgroundImage": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/dental-assistant-hero-925d6953f6fe.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": ""
@@ -93,7 +93,7 @@
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/shutterstock_1646933860-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/shutterstock-1646933860-scaled-66dcd575d532.jpg",
     "items": [
       {
         "title": "Complete Quickly",
@@ -231,7 +231,7 @@
   "overview": {
     "title": "Program Overview",
     "description": "Offered only at the Richardson campus, PCI's Dental Assistant program is a comprehensive, immersive training that combines classroom instruction, hands-on lab work in dental procedures, and an off-site externship to prepare students to take dental X-rays, assist with dental procedures, and manage administrative tasks using dental software.",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Dental-Assistant-Hero.jpg"
+    "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/dental-assistant-hero-925d6953f6fe.jpg"
   },
   "curriculum": {
     "title": "What You Will Learn",
@@ -256,7 +256,7 @@
         "title": "Externship",
         "description": "Off-site externship at a dental office to gain real-world experience.",
         "url": "",
-        "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg"
+        "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/programs-inner-2-scaled-83965afc8ae2.jpg"
       }
     ]
   },
@@ -289,14 +289,14 @@
     "enabled": true,
     "title": "Supervised Clinical Externship",
     "description": "Complete your training with a structured placement at a local dental practice, where you'll practice chairside assisting, patient communication, and office workflows bridging classroom learning to real-world employment.",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/programs-inner-2-scaled-83965afc8ae2.jpg",
     "hours": "",
     "partners": []
   },
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/programs-inner-1-scaled-bf3286e8eba9.jpg",
     "items": [
       {
         "title": "Dental Assistant",
@@ -377,7 +377,7 @@
     {
       "title": "Medical Office Assistant",
       "url": "",
-      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Office-Hero.jpg"
+      "image": "/generated-assets/pcihealth/programs-assets/dental-assistant-dental-assistant-program/pci-medical-office-hero-scaled-1-1920x1080-9c2aadc63760.jpg"
     },
     {
       "title": "ECPP (Medical Training Plus GED)",

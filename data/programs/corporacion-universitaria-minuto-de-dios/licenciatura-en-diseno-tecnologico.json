@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%201.png?itok=oC4UbKjk",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/licenciatura-en-diseno-tecnologico-1-58c378459d93.png",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño. Su propuesta académica fortalece la investigación, la inclusión y el uso estratégico de tecnologías para responder a los desafíos de la educación actual y futura, promoviendo experiencias de aprendizaje dinámicas, humanas y de alta calidad.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/licenciatura-en-diseno-tecnologico-2-0-052a7391d7a3.png"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -196,7 +196,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -210,7 +210,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Licenciatura%20en%20Dise%C3%B1o%20Tecnol%C3%B3gico%202_0.png?itok=3i4DRip0",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/licenciatura-en-diseno-tecnologico-2-0-052a7391d7a3.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

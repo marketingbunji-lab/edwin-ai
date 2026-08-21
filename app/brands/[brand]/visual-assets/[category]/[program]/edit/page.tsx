@@ -59,10 +59,7 @@ export default async function EditVisualAssetPage({ params }: Props) {
         </Link>
 
         <section className="border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--bunji-primary)] dark:text-[var(--bunji-primary-muted)]">
-            {brand.shortName || brand.name}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold text-slate-950 dark:text-slate-50">
+          <h1 className="text-3xl font-semibold text-slate-950 dark:text-slate-50">
             Editar {category.title}
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400">
@@ -81,4 +78,3 @@ export default async function EditVisualAssetPage({ params }: Props) {
     </main>
   );
 }
-

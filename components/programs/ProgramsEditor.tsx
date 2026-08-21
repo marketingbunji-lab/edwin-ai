@@ -101,7 +101,6 @@ export default function ProgramsEditor({ brand, initialPrograms }: Props) {
           >
             <ArrowLeft className="h-4 w-4" />
           </Link>
-          <p className="admin-eyebrow">{brand.name}</p>
           <h1 className="admin-title">{t("programsEditor.title")}</h1>
         </div>
 

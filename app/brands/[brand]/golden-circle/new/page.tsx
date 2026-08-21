@@ -37,7 +37,6 @@ export default async function NewGoldenCirclePage({ params }: Props) {
         </div>
 
         <section className="admin-panel p-6 sm:p-8">
-          <p className="admin-eyebrow">{brand.name}</p>
           <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 dark:text-slate-50">
             Crear Golden Circle
           </h1>
@@ -65,4 +64,3 @@ export default async function NewGoldenCirclePage({ params }: Props) {
     </main>
   );
 }
-

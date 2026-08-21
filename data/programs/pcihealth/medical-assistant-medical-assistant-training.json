@@ -58,7 +58,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
+    "backgroundImage": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/programs-inner-2-scaled-83965afc8ae2.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": ""
@@ -93,7 +93,7 @@
   "whyStudy": {
     "title": "Why Study This Program",
     "description": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/shutterstock_1440454943-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/shutterstock-1440454943-scaled-a7e4b7321c49.jpg",
     "items": [
       {
         "title": "Accelerated pathway",
@@ -248,7 +248,7 @@
   "overview": {
     "title": "Program Overview",
     "description": "PCI's Medical Assistant program can train you for a career in healthcare in as little as nine months by teaching essential clinical and administrative skills; the program includes classroom instruction, hands-on lab practice, and a 200-hour externship, and allows students to pursue specializations such as Medical Administrative Office Assistant, Clinic Assistant, Clinic Technical Assistance, Medical Office Management, Phlebotomy, and Physical Therapy Aide.",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Med-Assistant-Hero.jpg"
+    "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/med-assistant-hero-87ef0d713aff.jpg"
   },
   "curriculum": {
     "title": "What You Will Learn",
@@ -330,14 +330,14 @@
     "enabled": true,
     "title": "Externship",
     "description": "A 200-hour, real-world externship placed with professional partners to apply clinical and administrative skills.",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-2-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/programs-inner-2-scaled-83965afc8ae2.jpg",
     "hours": "200",
     "partners": []
   },
   "careerOutcomes": {
     "title": "Career Opportunities",
     "subtitle": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/Programs-Inner-1-scaled.jpg",
+    "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/programs-inner-1-scaled-bf3286e8eba9.jpg",
     "items": [
       {
         "title": "Medical Assistant",
@@ -424,17 +424,17 @@
     {
       "title": "Medical Office Assistant",
       "url": "",
-      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Med-Office-Hero.jpg"
+      "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/pci-medical-office-hero-scaled-1-1920x1080-9c2aadc63760.jpg"
     },
     {
       "title": "Dental Assistant",
       "url": "",
-      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
+      "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/dental-assistant-hero-262ab6470108.jpg"
     },
     {
       "title": "Dental Assistant â€“ Hybrid",
       "url": "",
-      "image": "https://www.pcihealth.edu/wp-content/uploads/2021/12/Dental-Assistant-Hero.jpg"
+      "image": "/generated-assets/pcihealth/programs-assets/medical-assistant-medical-assistant-training/dental-assistant-hero-262ab6470108.jpg"
     },
     {
       "title": "ECPP (Medical Training Plus GED)",

@@ -8,7 +8,6 @@ import {
   Shapes,
   Users,
 } from "lucide-react";
-import WorkspaceProgressCard from "@/components/dashboard/WorkspaceProgressCard";
 import { getBrandAgentRecords } from "@/lib/brandAgentRecords";
 import {
   getDashboardTranslator,
@@ -21,10 +20,6 @@ import {
   getProgramsByBrand,
 } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
-import {
-  getUniversityProfileByBrand,
-  hasUniversityProfileContent,
-} from "@/lib/universityProfiles";
 
 
 type Props = {
@@ -55,16 +50,18 @@ export default async function BrandPage({ params }: Props) {
 
   const programs = getProgramsByBrand(brand.slug);
   const landings = getEditableLandingsByBrand(brand.slug);
-  const universityProfile = getUniversityProfileByBrand(brand.slug);
   const buyerPersonRecords = getBrandAgentRecords(brand.slug, "buyer-person");
   const visualAssets = getBrandAgentRecords(brand.slug, "visual-assets");
   const publishedLandings = landings.filter(
     (landing) => landing.status === "published",
   );
-  const hasDocuments = Object.values(brand.documents ?? {}).some((document) =>
-    Boolean(document?.fileName || document?.fileUrl || document?.link),
+  const uniqueProgramTypes = Array.from(
+    new Set(
+      landings
+        .map((program) => program.programType?.trim() || "")
+        .filter(Boolean),
+    ),
   );
-
   const brandSetupSignals = [
     brand.description,
     brand.officialWebsite,
@@ -78,11 +75,6 @@ export default async function BrandPage({ params }: Props) {
   const programsDone = programs.length > 0;
   const assetsDone = visualAssets.length > 0;
   const landingDone = publishedLandings.length > 0;
-  const universityContentBaseDone =
-    hasUniversityProfileContent(universityProfile);
-  const goldenCircleDone = false;
-  const documentsDone = hasDocuments;
-
   const stages: WorkflowStage[] = [
     {
       title: t("brandOverviewPage.brandSetup"),
@@ -121,14 +113,6 @@ export default async function BrandPage({ params }: Props) {
     },
   ];
 
-  const knowledgeBaseProgress = Math.round(
-    ((Number(brandSetupDone) +
-      Number(programsDone) +
-      Number(universityContentBaseDone) +
-      Number(documentsDone)) /
-      4) *
-      100,
-  );
   const nextStage =
     (!brandSetupDone && stages[0]) ||
     (!buyerPersonaDone && stages[1]) ||
@@ -152,30 +136,19 @@ export default async function BrandPage({ params }: Props) {
                 <ArrowLeft className="h-4 w-4" />
               </Link>
 
-              <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {t("brandOverviewPage.controlRoom")}
-                </p>
-                <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
-                  {brand.name}
-                </h1>
-              </div>
+              <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
+                {t("brandOverviewPage.controlRoom")}
+              </h1>
             </div>
-
-            <Link href={nextStage.href} className="admin-button-primary">
-              <NextStageIcon className="h-4 w-4" />
-              {nextStage.ctaLabel}
-            </Link>
           </div>
         </div>
 
         <section
           id="brand-orchestration-control-room"
-          className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.55fr)_minmax(360px,1fr)]"
+          className="mb-8 w-full max-w-[980px]"
         >
-          <div className="space-y-6">
-            <section className="admin-panel p-6 sm:p-8">
-              <div className="grid gap-5 xl:grid-cols-2">
+          <section className="admin-panel p-6 sm:p-8">
+            <div className="grid gap-5 xl:grid-cols-2">
                 <StrategicWorkflowCard
                   href={`/admin/brands/${brand.slug}/knowledge-base`}
                   eyebrow={t("brandOverviewPage.knowledgeBase")}
@@ -183,8 +156,8 @@ export default async function BrandPage({ params }: Props) {
                   description={t(
                     "brandOverviewPage.buildKnowledgeBaseDescription",
                   )}
-                  helperLabel={t("brandOverviewPage.knowledgeBaseCompletion")}
-                  helperValue={knowledgeBaseProgress}
+                  programCount={programs.length}
+                  programTypes={uniqueProgramTypes}
                   ctaLabel={t("brandOverviewPage.buildKnowledge")}
                   icon={FileStack}
                   tone="knowledge"
@@ -198,59 +171,17 @@ export default async function BrandPage({ params }: Props) {
                   description={t(
                     "brandOverviewPage.deployEducationAgentsDescription",
                   )}
-                  helperLabel={t("brandOverviewPage.nextAction")}
-                  helperValue={nextStage.title}
+                  activeLandingCount={publishedLandings.length}
+                  totalAssetCount={visualAssets.length}
+                  activeLandingsHref={`/admin/brands/${brand.slug}/landings`}
+                  assetsHref={`/admin/brands/${brand.slug}/visual-assets`}
                   ctaLabel={t("brandOverviewPage.viewJourneyAndAgents")}
                   icon={NextStageIcon}
                   tone="agents"
                   language={language}
                 />
-              </div>
-
-            </section>
-          </div>
-
-          <WorkspaceProgressCard
-            language={language}
-            nextActionLabel={nextStage.ctaLabel}
-            nextActionHref={nextStage.href}
-            knowledgeBaseItems={[
-              {
-                title: t("brandOverviewPage.universityContentBase"),
-                complete: universityContentBaseDone,
-              },
-              {
-                title: t("brandOverviewPage.brandSetup"),
-                complete: brandSetupDone,
-              },
-              {
-                title: t("brandOverviewPage.contentBase"),
-                complete: programsDone,
-              },
-              {
-                title: t("brandOverviewPage.documents"),
-                complete: documentsDone,
-              },
-            ]}
-            educationAgentItems={[
-              {
-                title: t("brandOverviewPage.buyerPersona"),
-                complete: buyerPersonaDone,
-              },
-              {
-                title: t("brandOverviewPage.visualAssets"),
-                complete: assetsDone,
-              },
-              {
-                title: t("brandOverviewPage.landingActivation"),
-                complete: landingDone,
-              },
-              {
-                title: t("brandOverviewPage.goldenCircle"),
-                complete: goldenCircleDone,
-              },
-            ]}
-          />
+            </div>
+          </section>
         </section>
       </div>
     </main>
@@ -262,8 +193,12 @@ function StrategicWorkflowCard({
   eyebrow,
   title,
   description,
-  helperLabel,
-  helperValue,
+  programCount,
+  programTypes,
+  activeLandingCount,
+  totalAssetCount,
+  activeLandingsHref,
+  assetsHref,
   ctaLabel,
   icon: Icon,
   tone,
@@ -273,19 +208,18 @@ function StrategicWorkflowCard({
   eyebrow: string;
   title: string;
   description: string;
-  helperLabel: string;
-  helperValue: string | number;
+  programCount?: number;
+  programTypes?: string[];
+  activeLandingCount?: number;
+  totalAssetCount?: number;
+  activeLandingsHref?: string;
+  assetsHref?: string;
   ctaLabel: string;
   icon: React.ComponentType<{ className?: string }>;
   tone: "knowledge" | "agents";
   language: DashboardLanguage;
 }) {
   const t = getDashboardTranslator(language);
-  const progressValue =
-    tone === "knowledge" && typeof helperValue === "number"
-      ? Math.max(0, Math.min(100, helperValue))
-      : null;
-
   const toneClasses =
     tone === "knowledge"
       ? {
@@ -304,9 +238,8 @@ function StrategicWorkflowCard({
         };
 
   return (
-    <Link
-      href={href}
-      className={`group relative overflow-hidden rounded-[28px] border p-7 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_64px_rgba(15,23,42,0.16)] dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(15,23,42,0.88),rgba(15,23,42,0.74))] ${toneClasses.shell}`}
+    <article
+      className={`relative overflow-hidden rounded-[28px] border p-7 dark:border-white/10 dark:bg-[linear-gradient(145deg,rgba(15,23,42,0.88),rgba(15,23,42,0.74))] ${toneClasses.shell}`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.22),transparent_55%)] dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_55%)]" />
       <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
@@ -332,45 +265,80 @@ function StrategicWorkflowCard({
           {description}
         </p>
 
-        <div className="mt-7 rounded-2xl border border-white/60 bg-white/72 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
-            {helperLabel}
-          </p>
-          {progressValue !== null ? (
-            <>
-              <div className="mt-3 flex items-end justify-between gap-4">
-                <p className="text-4xl font-bold leading-none tracking-tight text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)] sm:text-5xl">
-                  {progressValue}%
-                </p>
-                <span className="rounded-full border border-[color-mix(in_srgb,var(--bunji-cyan)_38%,white)] bg-[color-mix(in_srgb,var(--bunji-cyan-soft)_78%,white)] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--bunji-primary-dark)] dark:border-white/10 dark:bg-white/[0.05] dark:text-slate-200">
-                  {t("brandOverviewPage.completed")}
-                </span>
-              </div>
-              <div className="mt-4">
-                <div className="h-3 overflow-hidden rounded-full bg-[linear-gradient(90deg,rgba(62,57,137,0.08),rgba(125,227,234,0.12))] ring-1 ring-[color-mix(in_srgb,var(--bunji-primary-soft)_52%,white)] dark:bg-[linear-gradient(90deg,rgba(62,57,137,0.24),rgba(125,227,234,0.12))] dark:ring-white/10">
-                  <div
-                    className="h-full rounded-full bg-[linear-gradient(100deg,var(--bunji-cyan)_0%,var(--bunji-red)_38%,color-mix(in_srgb,var(--bunji-red)_42%,var(--bunji-primary)_58%)_62%,var(--bunji-primary)_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_0_24px_rgba(125,227,234,0.22),0_0_28px_rgba(255,11,46,0.12)] transition-all duration-500"
-                    style={{ width: `${progressValue}%` }}
-                  />
-                </div>
-              </div>
-            </>
-          ) : (
-            <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
-              {String(helperValue)}
-            </p>
-          )}
-        </div>
+        {tone === "knowledge" && programCount !== undefined ? (
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200/80 bg-white/72 p-4 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                {t("universityPage.programsLabel")}
+              </p>
+              <p className="mt-3 text-3xl font-bold leading-none text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)]">
+                {programCount}
+              </p>
+              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                {t("universityPage.goToProgramsBase")}
+              </p>
+            </div>
 
-        <div className="mt-7 flex items-center justify-between gap-3">
+            <div className="rounded-2xl border border-slate-200/80 bg-white/72 p-4 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                {t("universityPage.programTypesLabel")}
+              </p>
+              <p className="mt-3 text-lg font-bold leading-snug text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)]">
+                {programTypes?.length
+                  ? programTypes.join(", ")
+                  : t("universityPage.pendingStructure")}
+              </p>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                {t("universityPage.portfolioDetected")}
+              </p>
+            </div>
+          </div>
+        ) : activeLandingCount !== undefined && totalAssetCount !== undefined ? (
+          <div className="mt-7 grid gap-3 sm:grid-cols-2">
+            <Link
+              href={activeLandingsHref ?? href}
+              className="rounded-2xl border border-slate-200/80 bg-white/72 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bunji-cyan)_58%,white)] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bunji-primary)] dark:border-white/10 dark:bg-white/[0.04]"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                {t("brandOverviewPage.activeLandings")}
+              </p>
+              <p className="mt-3 text-3xl font-bold leading-none text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)]">
+                {activeLandingCount}
+              </p>
+              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                {t("brandOverviewPage.publishedAndAvailable")}
+              </p>
+            </Link>
+
+            <Link
+              href={assetsHref ?? href}
+              className="rounded-2xl border border-slate-200/80 bg-white/72 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--bunji-cyan)_58%,white)] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bunji-primary)] dark:border-white/10 dark:bg-white/[0.04]"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+                {t("brandOverviewPage.totalAssets")}
+              </p>
+              <p className="mt-3 text-3xl font-bold leading-none text-[var(--bunji-primary-dark)] dark:text-[var(--bunji-cyan)]">
+                {totalAssetCount}
+              </p>
+              <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
+                {t("brandOverviewPage.brandAndProgramAssets")}
+              </p>
+            </Link>
+          </div>
+        ) : null}
+
+        <Link
+          href={href}
+          className="group mt-7 flex items-center justify-between gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--bunji-primary)] focus-visible:ring-offset-4"
+        >
           <p
             className={`text-sm font-semibold transition group-hover:translate-x-0.5 ${toneClasses.accent}`}
           >
             {ctaLabel}
           </p>
           <div className="h-px flex-1 bg-[linear-gradient(90deg,rgba(62,57,137,0.22),transparent)] dark:bg-[linear-gradient(90deg,rgba(125,227,234,0.18),transparent)]" />
-        </div>
+        </Link>
       </div>
-    </Link>
+    </article>
   );
 }

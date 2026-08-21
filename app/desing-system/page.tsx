@@ -205,7 +205,7 @@ const shellBrandSpecs = [
     subtitle: "Corporación Universitaria Minuto d...",
     active: true,
     children: [
-      { label: "Base de conocimiento", icon: BookOpenText, active: true },
+      { label: "Mi Universidad", icon: BookOpenText, active: true },
       { label: "Acciones", icon: Sparkles, active: false },
     ],
   },
@@ -763,7 +763,7 @@ export default function DesingSystemPage() {
                   Barra de progreso para cards estratégicas
                 </h3>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
-                  Este patrón se usa dentro de `Knowledge Base` para representar
+                  Este patrón se usa dentro de `Mi Universidad` para representar
                   avance visible del workspace. Combina un track suave, un fill con
                   gradiente purple-cyan y un badge de estado para que el progreso
                   se lea rápido sin verse pesado.
@@ -775,7 +775,7 @@ export default function DesingSystemPage() {
                   <p className="admin-eyebrow">Anatomía</p>
                   <div className="mt-5 rounded-[28px] border border-[color-mix(in_srgb,var(--bunji-primary-soft)_70%,white)] bg-[radial-gradient(circle_at_12%_14%,rgba(125,227,234,0.16),transparent_32%),linear-gradient(145deg,rgba(255,255,255,0.99),rgba(241,244,255,0.97))] p-7 shadow-[0_24px_56px_rgba(62,57,137,0.12)]">
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                      Porcentaje completado base de conocimiento
+                      Porcentaje completado de Mi Universidad
                     </p>
                     <div className="mt-4 flex items-end justify-between gap-4">
                       <p className="text-5xl font-bold leading-none tracking-tight text-[var(--bunji-primary-dark)]">
@@ -826,7 +826,7 @@ export default function DesingSystemPage() {
               <div className="mb-6">
                 <p className="admin-eyebrow">Strategic cards</p>
                 <h3 className="mt-3 text-2xl font-semibold text-slate-950">
-                  Patrones especiales de Knowledge Base y Education Agents
+                  Patrones especiales de Mi Universidad y Education Agents
                 </h3>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
                   Estas cards son distintas a las superficies base. Aquí se
@@ -837,16 +837,16 @@ export default function DesingSystemPage() {
 
               <div className="grid gap-5 xl:grid-cols-2">
                 <StrategicCardShowcase
-                  accentLabel="Knowledge Base"
+                  accentLabel="Mi Universidad"
                   ctaLabel="Construir conocimiento ->"
                   description="Organiza programas, diferenciales, estudiantes, historicos, expertos y competidores en una columna vertebral viva."
-                  helperLabel="Porcentaje completado base de conocimiento"
+                  helperLabel="Porcentaje completado de Mi Universidad"
                   helperValue="50%"
                   icon={FileStack}
                   progressValue={50}
                   statusLabel="Completado"
                   tone="knowledge"
-                  title="Nutrir la Base de Conocimiento"
+                  title="Construir Mi Universidad"
                 />
                 <StrategicCardShowcase
                   accentLabel="Education Agents"

@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Gerencia%20Estrat%C3%A9gica%20de%20Operaciones%201.png?itok=p805vPQf",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/1-maestria-en-gerencia-estrategica-de-operaciones-1-aea6a429295b.png",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "La Maestría en Gerencia Estratégica de Operaciones es una propuesta innovadora que forma líderes capaces de transformar sistemas productivos y de servicios mediante estrategias operativas sostenibles, analíticas y orientadas a la innovación. A través de un enfoque interdisciplinario y apoyado en tecnologías emergentes, analítica de datos y transformación digital, el programa fortalece la toma de decisiones, la optimización de procesos y la generación de valor en organizaciones públicas y privadas, respondiendo a los desafíos de entornos dinámicos y competitivos.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Gerencia%20Estrat%C3%A9gica%20de%20Operaciones.png?itok=9Y6AMNKx"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -193,7 +193,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -207,7 +207,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Gerencia%20Estrat%C3%A9gica%20de%20Operaciones.png?itok=9Y6AMNKx",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

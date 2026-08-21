@@ -48,7 +48,6 @@ export default async function NewVisualAssetCategoryPage({ params }: Props) {
           visualAssetCategory={category.slug}
           buyerPersonRecords={buyerPersonRecords}
           showPreview
-          eyebrow={brand.shortName || brand.name}
           title={`Agregar ${category.title}`}
           description={category.description}
           backHref={`/admin/brands/${brand.slug}/visual-assets/${category.slug}`}
@@ -58,4 +57,3 @@ export default async function NewVisualAssetCategoryPage({ params }: Props) {
     </main>
   );
 }
-

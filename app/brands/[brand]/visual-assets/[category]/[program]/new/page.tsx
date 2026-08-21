@@ -62,7 +62,6 @@ export default async function NewProgramVisualAssetPage({ params }: Props) {
           showPreview
           backHref={`/admin/brands/${brand.slug}/visual-assets/${categorySlug}/${resolvedProgramId}`}
           backLabel="Volver a assets del programa"
-          eyebrow={brand.shortName || brand.name}
           title="Agregar asset del programa"
           description="Registra recursos visuales asociados a este programa academico."
         />

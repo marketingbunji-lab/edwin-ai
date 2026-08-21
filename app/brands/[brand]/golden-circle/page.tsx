@@ -33,22 +33,19 @@ export default async function BrandGoldenCirclePage({ params }: Props) {
                 className="admin-button-secondary admin-button-icon"
                 aria-label={
                   language === "en"
-                    ? "Back to Knowledge Base"
-                    : "Volver a Knowledge Base"
+                    ? "Back to My University"
+                    : "Volver a Mi Universidad"
                 }
                 title={
                   language === "en"
-                    ? "Back to Knowledge Base"
-                    : "Volver a Knowledge Base"
+                    ? "Back to My University"
+                    : "Volver a Mi Universidad"
                 }
               >
                 <ArrowLeft className="h-4 w-4" />
               </Link>
 
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {brand.name}
-                </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   Golden Circle
                 </h1>
@@ -160,4 +157,3 @@ function GoldenCirclePillar({
     </div>
   );
 }
-

@@ -25,7 +25,6 @@ export default async function NewBrandBuyerPersonPage({ params }: Props) {
           brand={brand}
           collection="buyer-person"
           showPreview
-          eyebrow={brand.name}
           title="Agregar buyer person"
           description="Crea la base del perfil de audiencia para que los agentes puedan ajustar mensajes, objeciones y oportunidades por segmento."
           backHref={`/admin/brands/${brand.slug}/buyer-person`}

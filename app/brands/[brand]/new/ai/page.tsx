@@ -25,7 +25,6 @@ export default async function NewLandingAiPage({ params }: Props) {
       <div className="w-full">
         <div className="mb-6 flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm text-gray-500 dark:text-slate-400">{brand.name}</p>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-50">Crear con AI</h1>
           </div>
 
@@ -44,4 +43,3 @@ export default async function NewLandingAiPage({ params }: Props) {
     </main>
   );
 }
-

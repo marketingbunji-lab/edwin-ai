@@ -65,9 +65,6 @@ export default async function ProgramVisualAssetsPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0">
-                <p className="admin-eyebrow truncate">
-                  {brand.shortName || brand.name}
-                </p>
                 <h1 className="mt-1 truncate text-2xl font-semibold leading-tight text-gray-950 dark:text-slate-50 md:text-3xl">
                   {title}
                 </h1>

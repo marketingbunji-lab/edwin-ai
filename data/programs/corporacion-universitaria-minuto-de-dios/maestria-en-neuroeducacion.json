@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/Imagen%20Banners.webp?itok=XXg9wi8v",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/imagen-banners-8159b40456d2.webp",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "La Maestría en Neuroeducación de UNIMINUTO es una propuesta innovadora que integra los avances de la neurociencia con los procesos educativos, fortaleciendo la enseñanza, el aprendizaje y la orientación desde una comprensión científica del cerebro, la mente y el desarrollo humano. A través de una formación virtual de profundización, el programa prepara profesionales capaces de diseñar estrategias pedagógicas innovadoras, abordar desafíos del aprendizaje y liderar transformaciones educativas con impacto social, investigativo y humano.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Maestr%C3%ADa%20en%20Neuroeducaci%C3%B3n%202.png?itok=w4IxYbbJ"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/maestria-en-neuroeducacion-2-afc52d02c535.png"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -193,7 +193,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -207,7 +207,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Maestr%C3%ADa%20en%20Neuroeducaci%C3%B3n%202.png?itok=w4IxYbbJ",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/maestria-en-neuroeducacion-2-afc52d02c535.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

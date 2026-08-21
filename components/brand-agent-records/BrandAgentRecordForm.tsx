@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import {
   ArrowLeft,
   Bot,
-  ImageIcon,
   Link2,
   Save,
   UploadCloud,
@@ -515,6 +514,8 @@ export default function BrandAgentRecordForm({
   );
   const [saving, setSaving] = useState(false);
   const [generating, setGenerating] = useState(false);
+  const [uploadingAsset, setUploadingAsset] = useState(false);
+  const [selectedAssetFile, setSelectedAssetFile] = useState<File | null>(null);
   const [assistantLoadingMessage, setAssistantLoadingMessage] = useState(
     () => getRandomEdwinAssistantMessage("loading"),
   );
@@ -527,6 +528,7 @@ export default function BrandAgentRecordForm({
     JSON.stringify(initialFormState),
   );
   const buyerPersonPdfInputRef = useRef<HTMLInputElement | null>(null);
+  const visualAssetInputRef = useRef<HTMLInputElement | null>(null);
 
   const isBuyerPerson =
     collection === "buyer-person" || collection === "buyer-person-program";
@@ -546,6 +548,79 @@ export default function BrandAgentRecordForm({
     }
 
     setBuyerPersonPdfName(file.name);
+  };
+
+  const handleVisualAssetSelection = (files: FileList | null) => {
+    const file = files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setSelectedAssetFile(null);
+      setMessage("Selecciona un archivo de imagen valido.");
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      setSelectedAssetFile(null);
+      setMessage("La imagen no puede superar los 10 MB.");
+      return;
+    }
+
+    setSelectedAssetFile(file);
+    setMessage("");
+  };
+
+  const uploadVisualAsset = async () => {
+    if (!selectedAssetFile || uploadingAsset) return;
+
+    try {
+      setUploadingAsset(true);
+      setMessage("Subiendo y registrando el visual asset...");
+
+      const uploadData = new FormData();
+      uploadData.append("file", selectedAssetFile);
+      uploadData.append("brandSlug", brand.slug);
+      uploadData.append("category", form.category);
+      uploadData.append("programId", form.programId);
+      uploadData.append("programName", form.programName);
+      uploadData.append("assetCategory", form.assetCategory);
+
+      const response = await fetch("/api/visual-assets-upload", {
+        method: "POST",
+        body: uploadData,
+      });
+      const data = (await response.json()) as {
+        ok?: boolean;
+        error?: string;
+        record?: BrandAgentRecord;
+      };
+
+      if (!response.ok || !data.ok || !data.record) {
+        throw new Error(data.error || "No se pudo cargar el visual asset");
+      }
+
+      const nextFormState = formStateFromRecord(data.record);
+      setForm(nextFormState);
+      setPreviewRecord(data.record);
+      setLastSavedSnapshot(JSON.stringify(nextFormState));
+      setSelectedAssetFile(null);
+
+      if (visualAssetInputRef.current) {
+        visualAssetInputRef.current.value = "";
+      }
+
+      setMessage("Visual asset cargado y guardado automaticamente.");
+      router.refresh();
+    } catch (error) {
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "No se pudo cargar el visual asset",
+      );
+    } finally {
+      setUploadingAsset(false);
+    }
   };
 
   const generateWithAi = async () => {
@@ -642,9 +717,44 @@ export default function BrandAgentRecordForm({
           );
         }
 
-        setForm(formStateFromRecord(buyerPersona));
+        const nextFormState = formStateFromRecord(buyerPersona);
+        setForm(nextFormState);
         setPreviewRecord(buyerPersona);
-        setMessage("Buyer persona generado. Revisa la preview y guarda.");
+        setMessage("Buyer persona generado. Guardando automaticamente...");
+
+        const saveResponse = await fetch(
+          isEditMode && initialRecord
+            ? `/api/brand-agent-records/${brand.slug}/${collection}/${initialRecord.id}`
+            : `/api/brand-agent-records/${brand.slug}/${collection}`,
+          {
+            method: isEditMode ? "PUT" : "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              record: buyerPersonFromForm(nextFormState, initialRecord),
+            }),
+          },
+        );
+        const savedData = (await saveResponse.json()) as {
+          ok?: boolean;
+          error?: string;
+          record?: BrandAgentRecord;
+        };
+
+        if (!saveResponse.ok || !savedData.ok || !savedData.record) {
+          throw new Error(
+            savedData.error ||
+              "El buyer persona fue generado, pero no se pudo guardar automaticamente",
+          );
+        }
+
+        const savedFormState = formStateFromRecord(savedData.record);
+        setForm(savedFormState);
+        setPreviewRecord(savedData.record);
+        setLastSavedSnapshot(JSON.stringify(savedFormState));
+        setMessage("Buyer persona generado y guardado automaticamente.");
+        router.refresh();
         return;
       }
 
@@ -663,12 +773,21 @@ export default function BrandAgentRecordForm({
         programId: form.programId,
         programName: form.programName,
         assetCategory:
-          (visualAsset.assetCategory as VisualAssetImageCategory | undefined) ||
+          ("assetCategory" in visualAsset
+            ? (visualAsset.assetCategory as
+                | VisualAssetImageCategory
+                | undefined)
+            : undefined) ||
           form.assetCategory,
         name:
           visualAsset.name ||
           (visualAsset as Record<string, unknown>).assetName?.toString() ||
-          form.assetName,
+          (visualAsset as Record<string, unknown>).title?.toString() ||
+          (visualAsset as Record<string, unknown>).alt?.toString() ||
+          `${getVisualAssetImageCategoryLabel(
+            form.category,
+            form.assetCategory,
+          )} - ${form.programName || brand.name}`,
         assetType: visualAsset.assetType || "Image",
         url:
           visualAsset.url ||
@@ -683,9 +802,44 @@ export default function BrandAgentRecordForm({
           : "",
       } satisfies VisualAssetRecord;
 
-      setForm(formStateFromRecord(nextRecord));
+      const nextFormState = formStateFromRecord(nextRecord);
+      setForm(nextFormState);
       setPreviewRecord(nextRecord);
-      setMessage("Visual asset generado. Revisa los campos y guarda.");
+      setMessage("Visual asset generado. Guardando automaticamente...");
+
+      const saveResponse = await fetch(
+        isEditMode && initialRecord
+          ? `/api/brand-agent-records/${brand.slug}/${collection}/${initialRecord.id}`
+          : `/api/brand-agent-records/${brand.slug}/${collection}`,
+        {
+          method: isEditMode ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            record: visualAssetFormPayload(nextFormState),
+          }),
+        },
+      );
+      const savedData = (await saveResponse.json()) as {
+        ok?: boolean;
+        error?: string;
+        record?: BrandAgentRecord;
+      };
+
+      if (!saveResponse.ok || !savedData.ok || !savedData.record) {
+        throw new Error(
+          savedData.error ||
+            "La imagen fue generada, pero no se pudo guardar como visual asset",
+        );
+      }
+
+      const savedFormState = formStateFromRecord(savedData.record);
+      setForm(savedFormState);
+      setPreviewRecord(savedData.record);
+      setLastSavedSnapshot(JSON.stringify(savedFormState));
+      setMessage("Visual asset generado y guardado automaticamente.");
+      router.refresh();
     } catch (error) {
       console.log(
         isBuyerPerson ? "edwin-agent-test error" : "edwin-brand-assets-agent error",
@@ -783,7 +937,7 @@ export default function BrandAgentRecordForm({
 
   const actionButtons = (
     <div className="flex flex-wrap gap-3">
-      {!isAutomaticBuyerPersonCreate ? (
+      {!isAutomaticBuyerPersonCreate && (!isVisualAsset || isEditMode) ? (
         <button
           type="button"
           onClick={generateWithAi}
@@ -795,15 +949,17 @@ export default function BrandAgentRecordForm({
         </button>
       ) : null}
 
-      <button
-        type="button"
-        onClick={saveRecord}
-        disabled={saveDisabled}
-        className="admin-button-dark px-5 disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        <Save className="h-4 w-4" />
-        {saving ? "Guardando..." : isEditMode ? "Guardar cambios" : "Guardar"}
-      </button>
+      {isEditMode ? (
+        <button
+          type="button"
+          onClick={saveRecord}
+          disabled={saveDisabled}
+          className="admin-button-dark px-5 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <Save className="h-4 w-4" />
+          {saving ? "Guardando..." : isEditMode ? "Guardar cambios" : "Guardar"}
+        </button>
+      ) : null}
     </div>
   );
 
@@ -812,7 +968,18 @@ export default function BrandAgentRecordForm({
       {isAutomaticBuyerPersonCreate ? null : isBuyerPerson ? (
         <BuyerPersonFields form={form} updateField={updateField} />
       ) : (
-        <VisualAssetFields form={form} updateField={updateField} />
+        <VisualAssetFields
+          form={form}
+          updateField={updateField}
+          generating={generating}
+          uploading={uploadingAsset}
+          selectedFile={selectedAssetFile}
+          fileInputRef={visualAssetInputRef}
+          onGenerate={generateWithAi}
+          onSelectFiles={handleVisualAssetSelection}
+          onUpload={uploadVisualAsset}
+          isEditMode={isEditMode}
+        />
       )}
 
       {showPreview ? null : <div className="mt-8">{actionButtons}</div>}
@@ -824,6 +991,12 @@ export default function BrandAgentRecordForm({
       ) : null}
     </>
   );
+
+  const shouldDisplayPreview =
+    showPreview &&
+    (!isVisualAsset ||
+      generating ||
+      Boolean((previewRecord as VisualAssetRecord | null)?.url));
 
   if (!showPreview) {
     return formContent;
@@ -863,7 +1036,13 @@ export default function BrandAgentRecordForm({
         </div>
       </div>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]">
+      <section
+        className={`grid gap-6 ${
+          shouldDisplayPreview
+            ? "xl:grid-cols-[minmax(0,1.4fr)_minmax(320px,0.6fr)]"
+            : "grid-cols-1"
+        }`}
+      >
         <div className="admin-panel p-6">
         {isAutomaticBuyerPersonCreate ? (
           <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
@@ -899,12 +1078,14 @@ export default function BrandAgentRecordForm({
         {formContent}
         </div>
 
-        <PreviewCard
-          collection={collection}
-          record={previewRecord}
-          isGenerating={generating}
-          loadingMessage={assistantLoadingMessage}
-        />
+        {shouldDisplayPreview ? (
+          <PreviewCard
+            collection={collection}
+            record={previewRecord}
+            isGenerating={generating}
+            loadingMessage={assistantLoadingMessage}
+          />
+        ) : null}
       </section>
     </div>
   );
@@ -1197,40 +1378,155 @@ function BuyerPersonFields({
 function VisualAssetFields({
   form,
   updateField,
+  generating,
+  uploading,
+  selectedFile,
+  fileInputRef,
+  onGenerate,
+  onSelectFiles,
+  onUpload,
+  isEditMode,
 }: {
   form: FormState;
   updateField: (field: keyof FormState, value: string) => void;
+  generating: boolean;
+  uploading: boolean;
+  selectedFile: File | null;
+  fileInputRef: RefObject<HTMLInputElement | null>;
+  onGenerate: () => void;
+  onSelectFiles: (files: FileList | null) => void;
+  onUpload: () => void;
+  isEditMode: boolean;
 }) {
+  const programField =
+    form.category === "programs-assets" && form.programName ? (
+      <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+          Programa
+        </p>
+        <p className="mt-1 font-semibold">{form.programName}</p>
+      </div>
+    ) : null;
+  const categoryField =
+    form.category === "brand-assets" || form.category === "programs-assets" ? (
+      <SelectField
+        label="Categoria del asset"
+        value={form.assetCategory}
+        onChange={(value) =>
+          updateField("assetCategory", value as VisualAssetImageCategory)
+        }
+        options={getVisualAssetImageCategories(form.category).map((item) => ({
+          value: item.value,
+          label: item.label,
+        }))}
+      />
+    ) : null;
+
+  if (isEditMode) {
+    return (
+      <div className="mt-8 grid gap-5 md:grid-cols-2">
+        {programField}
+        {categoryField}
+      </div>
+    );
+  }
+
   return (
-    <div className="mt-8 grid gap-5 md:grid-cols-2">
-      <Field label="Nombre del recurso *" value={form.assetName} placeholder="Ej. Hero campus principal" onChange={(value) => updateField("assetName", value)} />
+    <div className="mt-8 grid gap-5 lg:grid-cols-2 lg:items-stretch">
       <input type="hidden" value={form.category} readOnly />
       <input type="hidden" value={form.programId} readOnly />
       <input type="hidden" value={form.programName} readOnly />
-      {form.category === "programs-assets" && form.programName ? (
-        <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-            Programa
-          </p>
-          <p className="mt-1 font-semibold">{form.programName}</p>
+
+      <section className="admin-panel-soft flex h-full flex-col p-6">
+        <div className="flex items-start gap-4">
+          <div className="admin-icon-tile h-12 w-12 shrink-0">
+            <Bot className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+              Opcion 1
+            </p>
+            <h2 className="mt-2 text-lg font-bold text-slate-950 dark:text-slate-50">
+              Generar con AI
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+              Define el contexto y deja que Edwin cree, almacene y registre la
+              imagen automaticamente.
+            </p>
+          </div>
         </div>
-      ) : null}
-      {form.category === "brand-assets" || form.category === "programs-assets" ? (
-        <SelectField
-          label="Categoria del asset"
-          value={form.assetCategory}
-          onChange={(value) =>
-            updateField("assetCategory", value as VisualAssetImageCategory)
-          }
-          options={getVisualAssetImageCategories(form.category).map((item) => ({
-            value: item.value,
-            label: item.label,
-          }))}
-        />
-      ) : null}
-      <Field label="Tipo de recurso" value={form.assetType} placeholder="Ej. Imagen, logo, video" onChange={(value) => updateField("assetType", value)} />
-      <Field label="URL del recurso" value={form.url} placeholder="https://..." onChange={(value) => updateField("url", value)} className="md:col-span-2" />
-      <TextArea label="Notas de uso" value={form.notes} placeholder="Contexto, restricciones o recomendaciones para usar este recurso." onChange={(value) => updateField("notes", value)} />
+
+        <div className="mt-6 grid gap-4">
+          {programField}
+          {categoryField}
+        </div>
+
+        <button
+          type="button"
+          onClick={onGenerate}
+          disabled={generating || uploading}
+          className="admin-button-primary mt-6 w-full justify-center disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <Bot className="h-4 w-4" />
+          {generating ? "Generando y guardando..." : "Generar con AI"}
+        </button>
+      </section>
+
+      <section className="admin-panel-soft flex h-full flex-col p-6">
+        <div className="flex items-start gap-4">
+          <div className="admin-icon-tile h-12 w-12 shrink-0">
+            <UploadCloud className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400 dark:text-slate-500">
+              Opcion 2
+            </p>
+            <h2 className="mt-2 text-lg font-bold text-slate-950 dark:text-slate-50">
+              Cargar desde el computador
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+              Sube una imagen propia. Usaremos el programa y la categoria
+              seleccionados en la card de AI.
+            </p>
+          </div>
+        </div>
+
+        <label
+          className="mt-6 flex min-h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[color-mix(in_srgb,var(--bunji-primary-soft)_62%,white)] bg-white/75 p-5 text-center transition hover:border-[var(--bunji-primary)] hover:bg-white focus-within:ring-2 focus-within:ring-[var(--bunji-primary)] dark:border-white/10 dark:bg-white/[0.04] dark:hover:bg-white/[0.07]"
+          onDragOver={(event) => event.preventDefault()}
+          onDrop={(event) => {
+            event.preventDefault();
+            onSelectFiles(event.dataTransfer.files);
+          }}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif,image/avif"
+            className="sr-only"
+            onChange={(event) => onSelectFiles(event.target.files)}
+          />
+          <UploadCloud className="h-7 w-7 text-[var(--bunji-primary)]" />
+          <span className="mt-3 text-sm font-semibold text-slate-950 dark:text-slate-50">
+            {selectedFile ? selectedFile.name : "Arrastra o selecciona una imagen"}
+          </span>
+          <span className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+            {selectedFile
+              ? `${(selectedFile.size / 1024 / 1024).toFixed(2)} MB`
+              : "PNG, JPG, WEBP, GIF o AVIF · maximo 10 MB"}
+          </span>
+        </label>
+
+        <button
+          type="button"
+          onClick={onUpload}
+          disabled={!selectedFile || uploading || generating}
+          className="admin-button-dark mt-6 w-full justify-center disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <UploadCloud className="h-4 w-4" />
+          {uploading ? "Subiendo y guardando..." : "Subir asset"}
+        </button>
+      </section>
     </div>
   );
 }
@@ -1247,7 +1543,6 @@ function PreviewCard({
   loadingMessage: string;
 }) {
   const isBuyerPerson = collection === "buyer-person";
-  const Icon = isBuyerPerson ? Users : ImageIcon;
   const previewPrimary = "#3e3989";
   const previewSecondary = "#7de3ea";
   const previewAccent = "#ff0b2e";
@@ -1261,16 +1556,21 @@ function PreviewCard({
       <div className="pointer-events-none absolute -right-12 top-10 h-28 w-28 rounded-full bg-[rgba(255,11,46,0.06)] blur-3xl" />
       <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,227,234,0.9),transparent)] opacity-80" />
 
-      <div className="relative flex h-full min-h-[520px] flex-col">
-        <div className="admin-icon-tile">
-          <Icon className="h-5 w-5" />
-        </div>
-        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
-          Preview
-        </p>
-
+      <div
+        className={`relative flex h-full flex-col ${
+          isBuyerPerson || isGenerating ? "min-h-[520px]" : ""
+        }`}
+      >
         {isBuyerPerson ? (
-          <BuyerPersonPreview record={record as BuyerPersonRecord | null} />
+          <>
+            <div className="admin-icon-tile">
+              <Users className="h-5 w-5" />
+            </div>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-500">
+              Preview
+            </p>
+            <BuyerPersonPreview record={record as BuyerPersonRecord | null} />
+          </>
         ) : (
           <VisualAssetPreview record={record as VisualAssetRecord | null} />
         )}
@@ -1429,41 +1729,15 @@ function BuyerPersonPreview({ record }: { record: BuyerPersonRecord | null }) {
 }
 
 function VisualAssetPreview({ record }: { record: VisualAssetRecord | null }) {
+  if (!record?.url) return null;
+
   return (
-    <>
-      <h2 className="mt-3 text-2xl font-semibold text-slate-950 dark:text-slate-50">
-        {record?.name || "Preview del asset"}
-      </h2>
-      <div className="mt-6 space-y-5">
-        <PreviewField
-          label="Categoria"
-          value={
-            record?.assetCategory
-              ? getVisualAssetImageCategoryLabel(
-                  record.category,
-                  record.assetCategory,
-                )
-              : "Pendiente"
-          }
-        />
-        <PreviewField label="Tipo" value={record?.assetType || "Pendiente"} />
-        {record?.url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={record.url}
-            alt={record.name}
-            className="aspect-video w-full rounded-2xl border border-slate-200 object-cover shadow-sm dark:border-slate-800"
-          />
-        ) : null}
-        <PreviewField label="URL" value={record?.url || "Pendiente"} />
-        <PreviewField
-          label="Notas"
-          value={
-            record?.notes || "Aqui se mostraran las notas del asset visual."
-          }
-        />
-      </div>
-    </>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={record.url}
+      alt={record.name}
+      className="block h-auto w-full rounded-2xl object-contain"
+    />
   );
 }
 

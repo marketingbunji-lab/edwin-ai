@@ -52,7 +52,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/uniminuto/maestria-espiritualidad-hero-grupo.jpeg",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-espiritualidad-hero-grupo-32532aabd9c3.jpg",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -92,7 +92,7 @@
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "/uniminuto/maestria-en-espiritualidad-perfil.jpg",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-perfil-dd57f15b1f10.jpg",
     "items": [
       {
         "title": "",
@@ -173,7 +173,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita informacion",
@@ -272,7 +272,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
-    "image": "/uniminuto/maestria-en-espiritualidad-conoce.jpg",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-conoce-d6dc66c36ed2.jpg",
     "items": [
       {
         "title": "Un programa innovador y único en su modalidad",
@@ -334,32 +334,80 @@
           {
             "title": "Fundamentación",
             "items": [
-              { "label": "Introducción a la Experiencia Espiritual", "value": "2" },
-              { "label": "Antropología Subyacente a la Vida Espiritual", "value": "2" },
-              { "label": "Teología Espiritual", "value": "2" },
-              { "label": "La Oración en la Biblia", "value": "2" },
-              { "label": "La Biblia como Paradigma de la Vida Espiritual", "value": "2" }
+              {
+                "label": "Introducción a la Experiencia Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "Antropología Subyacente a la Vida Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "Teología Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "La Oración en la Biblia",
+                "value": "2"
+              },
+              {
+                "label": "La Biblia como Paradigma de la Vida Espiritual",
+                "value": "2"
+              }
             ]
           },
           {
             "title": "Profundización",
             "items": [
-              { "label": "Escuelas de Espiritualidad", "value": "2" },
-              { "label": "Desarrollo Espiritual", "value": "2" },
-              { "label": "Discernimiento", "value": "3" },
-              { "label": "Psicología y Vida Espiritual", "value": "3" },
-              { "label": "Estudios de Caso en la Vida Espiritual", "value": "2" },
-              { "label": "Nuevas Corrientes de Espiritualidad", "value": "3" },
-              { "label": "Crisis y Combate Espiritual", "value": "2" },
-              { "label": "Electiva", "value": "2" }
+              {
+                "label": "Escuelas de Espiritualidad",
+                "value": "2"
+              },
+              {
+                "label": "Desarrollo Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "Discernimiento",
+                "value": "3"
+              },
+              {
+                "label": "Psicología y Vida Espiritual",
+                "value": "3"
+              },
+              {
+                "label": "Estudios de Caso en la Vida Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "Nuevas Corrientes de Espiritualidad",
+                "value": "3"
+              },
+              {
+                "label": "Crisis y Combate Espiritual",
+                "value": "2"
+              },
+              {
+                "label": "Electiva",
+                "value": "2"
+              }
             ]
           },
           {
             "title": "Investigación",
             "items": [
-              { "label": "Metodologías de Investigación", "value": "3" },
-              { "label": "Proyecto de Investigación I", "value": "3" },
-              { "label": "Proyecto de Investigación II", "value": "3" }
+              {
+                "label": "Metodologías de Investigación",
+                "value": "3"
+              },
+              {
+                "label": "Proyecto de Investigación I",
+                "value": "3"
+              },
+              {
+                "label": "Proyecto de Investigación II",
+                "value": "3"
+              }
             ]
           }
         ]
@@ -549,7 +597,7 @@
     "title": "",
     "subtitle": "",
     "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador.",
-    "backgroundImage": "/uniminuto/maestria-en-espiritualidad-form-bg.jpg",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-form-bg-3cb7bbd73d62.jpg",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

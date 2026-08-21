@@ -2,11 +2,11 @@
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import BrandDocumentsWorkspace from "@/components/documents/BrandDocumentsWorkspace";
+import { getVisualAssetsByCategory } from "@/lib/brandAgentRecords";
 import { getDashboardTranslator } from "@/lib/dashboardI18n";
 import { getDashboardLanguage } from "@/lib/dashboardI18nServer";
-import { getBrandBySlug } from "@/lib/data";
+import { getBrandBySlug, getProgramDataByBrand } from "@/lib/data";
 import { getSupabaseBrandBySlug } from "@/lib/supabaseBrands";
-
 
 type Props = {
   params: Promise<{
@@ -26,6 +26,18 @@ export default async function BrandDocumentsPage({ params }: Props) {
   }
 
   const formId = `documents-form-${brand.slug}`;
+  const brandAssets = getVisualAssetsByCategory(brand.slug, "brand-assets");
+  const coverAsset = brandAssets.find((asset) => asset.url.trim());
+  const programs = getProgramDataByBrand(brand.slug);
+  const programTypes = Array.from(
+    new Set(
+      programs
+        .map((program) =>
+          (program.programType || program.degreeLevel || "").trim(),
+        )
+        .filter(Boolean),
+    ),
+  );
 
   return (
     <main className="admin-page">
@@ -43,16 +55,17 @@ export default async function BrandDocumentsPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {brand.name}
-                </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   {t("documentsPage.title")}
                 </h1>
               </div>
             </div>
 
-            <button type="submit" form={formId} className="admin-button-primary px-5">
+            <button
+              type="submit"
+              form={formId}
+              className="admin-button-primary px-5"
+            >
               {t("documentsPage.save")}
             </button>
           </div>
@@ -64,10 +77,20 @@ export default async function BrandDocumentsPage({ params }: Props) {
             brandSlug={brand.slug}
             initialDocuments={brand.documents}
             initialIdentityManual={brand.identityManual}
+            initialWebsite={brand.officialWebsite}
+            universityName={brand.name}
+            universityOfficialName={
+              brand.siteName || brand.shortName || brand.name
+            }
+            universitySummary={brand.description || brand.abstract || ""}
+            universityLogo={brand.logos?.light || brand.logo}
+            brandCoverImage={coverAsset?.url || ""}
+            brandAssetCount={brandAssets.length}
+            programCount={programs.length}
+            programTypes={programTypes}
           />
         </section>
       </div>
     </main>
   );
 }
-

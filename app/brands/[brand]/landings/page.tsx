@@ -49,10 +49,7 @@ export default async function BrandLandingsPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0 leading-none">
-                <p className="truncate text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-400 dark:text-slate-500">
-                  {brand.name}
-                </p>
-                <h1 className="mt-1 truncate text-[1rem] font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-[1.12rem]">
+                <h1 className="truncate text-[1rem] font-semibold leading-tight text-slate-950 dark:text-slate-50 sm:text-[1.12rem]">
                   {t("landingsPage.title")}
                 </h1>
               </div>

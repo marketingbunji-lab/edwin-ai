@@ -44,7 +44,6 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
       <main className="admin-page">
         <div className="admin-page-inner">
           <Header
-            brandName={brand.shortName || brand.name}
             brandSlug={brand.slug}
             title="Programs Assets"
             description={category.description}
@@ -73,7 +72,7 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
                 <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
                   {generalAssets.length} assets creados sin `programId`. Estos
                   recursos viven en `Programs Assets`, pero no aparecen dentro
-                  de una card especÃ­fica de programa.
+                  de un programa especifico.
                 </p>
               </div>
 
@@ -96,51 +95,80 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
               buttonLabel="Crear programa"
             />
           ) : (
-            <section className="grid gap-4">
-              {programs.map((program) => {
-                const count = assets.filter(
-                  (asset) => asset.programId === program.id,
-                ).length;
+            <section className="admin-table-shell" aria-label="Assets por programa">
+              <table className="w-full min-w-[820px] border-collapse text-left">
+                <thead className="admin-table-header">
+                  <tr>
+                    <th scope="col" className="px-5 py-3">Programa</th>
+                    <th scope="col" className="px-5 py-3">Identificador</th>
+                    <th scope="col" className="px-5 py-3">Assets</th>
+                    <th scope="col" className="px-5 py-3">Estado</th>
+                    <th scope="col" className="px-5 py-3 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {programs.map((program) => {
+                    const count = assets.filter(
+                      (asset) => asset.programId === program.id,
+                    ).length;
 
-                return (
-                  <article
-                    key={program.id}
-                    className="admin-panel grid gap-4 p-5 md:grid-cols-[minmax(0,1fr)_auto]"
-                  >
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500">
-                        Programa
-                      </p>
-                      <h2 className="mt-2 text-xl font-semibold text-slate-950 dark:text-slate-50">
-                        {program.programName}
-                      </h2>
-                      <p className="mt-1 font-mono text-xs text-slate-500">
-                        {program.id}
-                      </p>
-                      <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-                        {count} assets asociados
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2 md:justify-end">
-                      <Link
-                        href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}`}
-                        className="admin-button-secondary"
+                    return (
+                      <tr
+                        key={program.id}
+                        className="border-t border-slate-200/80 transition-colors hover:bg-slate-50/80 dark:border-white/10 dark:hover:bg-white/[0.03]"
                       >
-                        <Eye className="h-4 w-4" />
-                        Ver assets
-                      </Link>
-                      <Link
-                        href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}/new`}
-                        className="admin-button-primary"
-                      >
-                        <Plus className="h-4 w-4" />
-                        Agregar asset
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
+                        <td className="px-5 py-4">
+                          <Link
+                            href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}`}
+                            className="font-semibold text-slate-950 transition-colors hover:text-[var(--bunji-primary)] dark:text-slate-50"
+                          >
+                            {program.programName}
+                          </Link>
+                        </td>
+                        <td className="px-5 py-4">
+                          <span className="font-mono text-xs text-slate-500 dark:text-slate-400">
+                            {program.id}
+                          </span>
+                        </td>
+                        <td className="px-5 py-4">
+                          <span className="inline-flex min-w-9 justify-center rounded-full bg-[var(--bunji-primary-light)] px-2.5 py-1 text-xs font-bold text-[var(--bunji-primary-dark)]">
+                            {count}
+                          </span>
+                        </td>
+                        <td className="px-5 py-4">
+                          <span
+                            className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
+                              count > 0
+                                ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
+                                : "bg-slate-100 text-slate-500 dark:bg-white/[0.06] dark:text-slate-400"
+                            }`}
+                          >
+                            {count > 0 ? "Con assets" : "Sin assets"}
+                          </span>
+                        </td>
+                        <td className="px-5 py-4">
+                          <div className="flex justify-end gap-2">
+                            <Link
+                              href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}`}
+                              className="admin-button-secondary px-3 py-2 text-xs"
+                            >
+                              <Eye className="h-3.5 w-3.5" />
+                              Ver
+                            </Link>
+                            <Link
+                              href={`/admin/brands/${brand.slug}/visual-assets/${category.slug}/${program.id}/new`}
+                              className="admin-button-primary px-3 py-2 text-xs"
+                            >
+                              <Plus className="h-3.5 w-3.5" />
+                              Agregar
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </section>
           )}
         </div>
@@ -154,7 +182,6 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
     <main className="admin-page">
       <div className="admin-page-inner">
         <Header
-          brandName={brand.shortName || brand.name}
           brandSlug={brand.slug}
           title={category.title}
           description={category.description}
@@ -180,13 +207,11 @@ export default async function VisualAssetsCategoryPage({ params }: Props) {
 }
 
 function Header({
-  brandName,
   brandSlug,
   title,
   description,
   actionHref,
 }: {
-  brandName: string;
   brandSlug: string;
   title: string;
   description: string;
@@ -207,9 +232,6 @@ function Header({
             </Link>
 
             <div className="min-w-0">
-              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                {brandName}
-              </p>
               <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                 {title}
               </h1>

@@ -31,6 +31,12 @@ export default async function BrandJourneyPage({ params }: Props) {
   const publishedLandings = landings.filter(
     (landing) => landing.status === "published",
   );
+  const buyerPersonaAvatars = buyerPersonRecords
+    .filter((record) => "profileName" in record)
+    .map((record) => ({
+      name: record.profileName,
+      image: record.profileImage,
+    }));
 
   return (
     <main className="admin-page">
@@ -48,9 +54,6 @@ export default async function BrandJourneyPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {brand.name}
-                </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   {t("journeyPage.title")}
                 </h1>
@@ -71,6 +74,7 @@ export default async function BrandJourneyPage({ params }: Props) {
               })}
               ctaLabel={t("journeyPage.buyerPersonaCta")}
               icon={Users}
+              buyerPersonaAvatars={buyerPersonaAvatars}
             />
 
             <WorkspaceCard
@@ -118,6 +122,7 @@ function WorkspaceCard({
   helper,
   ctaLabel,
   icon: Icon,
+  buyerPersonaAvatars,
 }: {
   href: string;
   title: string;
@@ -125,15 +130,20 @@ function WorkspaceCard({
   helper: string;
   ctaLabel: string;
   icon: React.ComponentType<{ className?: string }>;
+  buyerPersonaAvatars?: Array<{ name: string; image: string }>;
 }) {
   return (
     <Link
       href={href}
       className="admin-panel-soft group block p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_46px_rgba(15,23,42,0.12)]"
     >
-      <div className="admin-icon-tile">
-        <Icon className="h-5 w-5" />
-      </div>
+      {buyerPersonaAvatars ? (
+        <BuyerPersonaAvatarGroup avatars={buyerPersonaAvatars} Icon={Icon} />
+      ) : (
+        <div className="admin-icon-tile">
+          <Icon className="h-5 w-5" />
+        </div>
+      )}
 
       <h2 className="mt-5 text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
         {title}
@@ -146,5 +156,52 @@ function WorkspaceCard({
         {ctaLabel}
       </p>
     </Link>
+  );
+}
+
+function BuyerPersonaAvatarGroup({
+  avatars,
+  Icon,
+}: {
+  avatars: Array<{ name: string; image: string }>;
+  Icon: React.ComponentType<{ className?: string }>;
+}) {
+  const visibleAvatars = avatars.slice(0, 3);
+  const remainingCount = Math.max(0, avatars.length - visibleAvatars.length);
+
+  return (
+    <div
+      className="flex items-center -space-x-2"
+      aria-label={`${avatars.length} buyer persona${avatars.length === 1 ? "" : "s"}`}
+    >
+      <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bunji-primary-light)_72%,white),color-mix(in_srgb,var(--bunji-cyan-soft)_85%,white))] text-[var(--bunji-primary-dark)] shadow-sm dark:border-slate-900">
+        <Icon className="h-5 w-5" />
+      </span>
+
+      {visibleAvatars.map((avatar, index) => (
+        <span
+          key={`${avatar.name}-${index}`}
+          className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-[var(--bunji-primary-soft)] text-sm font-bold text-[var(--bunji-primary-dark)] shadow-sm dark:border-slate-900"
+          title={avatar.name}
+        >
+          {avatar.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={avatar.image}
+              alt={avatar.name}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            avatar.name.trim().charAt(0).toUpperCase() || "B"
+          )}
+        </span>
+      ))}
+
+      {remainingCount > 0 ? (
+        <span className="relative flex h-12 min-w-12 shrink-0 items-center justify-center rounded-full border-2 border-white bg-[var(--bunji-red)] px-2 text-xs font-bold text-white shadow-sm dark:border-slate-900">
+          +{remainingCount}
+        </span>
+      ) : null}
+    </div>
   );
 }

@@ -70,7 +70,7 @@
       "label": "Solicita información",
       "url": "#form"
     },
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png",
     "overlayColor": "rgba(8,16,33,0.42)"
   },
   "summaryCards": [
@@ -126,7 +126,7 @@
   "overview": {
     "title": "Presentación del programa",
     "description": "La Maestría en Didáctica de las Ciencias Sociales forma profesionales capaces de transformar los procesos de enseñanza y aprendizaje desde una mirada crítica, interdisciplinaria e innovadora. El programa fortalece competencias pedagógicas, investigativas y sociales para promover la construcción de paz, la justicia social y la formación ciudadana en contextos educativos diversos y contemporáneos.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales%20%282%29.png?itok=C007h2gI"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/2-maestria-en-didactica-de-las-ciencias-sociales-2-c8fddd2ffc67.png"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -193,7 +193,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -207,7 +207,7 @@
   "formSection": {
     "enabled": true,
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/2%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales%20%282%29.png?itok=C007h2gI",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/2-maestria-en-didactica-de-las-ciencias-sociales-2-c8fddd2ffc67.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

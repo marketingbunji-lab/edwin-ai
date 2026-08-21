@@ -39,9 +39,6 @@ export default async function EditBrandPage({ params }: Props) {
               </Link>
 
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                  {brand.name}
-                </p>
                 <h1 className="truncate text-lg font-semibold text-slate-950 dark:text-slate-50 sm:text-xl">
                   {language === "en" ? "Edit brand" : "Editar marca"}
                 </h1>
@@ -78,4 +75,3 @@ export default async function EditBrandPage({ params }: Props) {
     </main>
   );
 }
-

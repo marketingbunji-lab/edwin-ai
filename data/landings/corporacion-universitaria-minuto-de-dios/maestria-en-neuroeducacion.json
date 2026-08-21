@@ -86,7 +86,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/hero-maestria-en-neuroeducacion-generated-image.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/hero-maestria-en-neuroeducacion-generated-image-bf6188f87451.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -145,13 +145,13 @@
     "eyebrow": "",
     "title": "Presentación del programa",
     "description": "La Maestría en Neuroeducación de UNIMINUTO es una propuesta innovadora que integra los avances de la neurociencia con los procesos educativos, fortaleciendo la enseñanza, el aprendizaje y la orientación desde una comprensión científica del cerebro, la mente y el desarrollo humano. A través de una formación virtual de profundización, el programa prepara profesionales capaces de diseñar estrategias pedagógicas innovadoras, abordar desafíos del aprendizaje y liderar transformaciones educativas con impacto social, investigativo y humano.",
-    "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Maestr%C3%ADa%20en%20Neuroeducaci%C3%B3n%202.png?itok=w4IxYbbJ",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/hands-on-training-images-maestria-en-neuroeducacion-2026-08-21T19-15-42-311Z.png",
     "items": []
   },
   "graduateProfile": {
     "eyebrow": "",
     "title": "Perfil del egresado",
-    "image": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/lifestyle-images-maestria-en-neuroeducacion-2026-08-21T19-15-12-695Z.png",
     "items": [
       {
         "title": "",
@@ -261,17 +261,17 @@
     {
       "title": "Maestría en Evaluación y Aseguramiento de la Calidad de la Educación",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Evaluaci%C3%B3n%20y%20Aseguramiento%20de%20la%20Calidad%20de%20la%20Educaci%C3%B3n.png?itok=L2keyMCr"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/1-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-6d2398c26257.png"
     },
     {
       "title": "Maestría en Didáctica de las Ciencias Sociales",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-didactica-de-las-ciencias-sociales",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Did%C3%A1ctica%20de%20las%20Ciencias%20Sociales.png?itok=2TAU577n"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
     },
     {
       "title": "Maestría en Gerencia Estratégica de Operaciones",
       "url": "/landings/corporacion-universitaria-minuto-de-dios/maestria-en-gerencia-estrategica-de-operaciones",
-      "image": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_650x600/public/2026-07/1%20Maestr%C3%ADa%20en%20Gerencia%20Estrat%C3%A9gica%20de%20Operaciones%201.png?itok=p805vPQf"
+      "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/1-maestria-en-gerencia-estrategica-de-operaciones-1-aea6a429295b.png"
     }
   ],
   "contact": {
@@ -279,7 +279,7 @@
     "advisorTitle": "",
     "phone": "01 8000 116 668 / Bogotá (601) 291 6520 / WhatsApp 313 833 0249",
     "email": "admisiones@uniminuto.edu",
-    "image": ""
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/1-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-6d2398c26257.png"
   },
   "cta": {
     "variant": "minimal",
@@ -287,7 +287,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/refs/heads/main/public/uniminuto/vitral-uniminuto.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/vitral-uniminuto-0242042edf99.png"
   },
   "form": {
     "title": "Solicita información",
@@ -317,7 +317,7 @@
     "title": "",
     "subtitle": "",
     "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
-    "backgroundImage": "https://www.uniminuto.edu/sites/default/files/styles/scale_and_crop_640x640/public/2026-07/Maestr%C3%ADa%20en%20Neuroeducaci%C3%B3n%202.png?itok=w4IxYbbJ",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/asset-2026-08-21T19-14-40-349Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

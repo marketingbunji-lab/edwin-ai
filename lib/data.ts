@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { getVisualAssetsByCategory, type VisualAssetRecord } from "./brandAgentRecords";
+import {
+  getVisualAssetsByCategory,
+  type VisualAssetRecord,
+} from "./brandAgentRecords";
 import {
   defaultLandingLanguageForBrand,
   getLandingTemplateCopy,
@@ -80,7 +83,8 @@ export type BrandDocumentCategoryId =
   | "legal"
   | "catalogs"
   | "brandBook"
-  | "curriculum";
+  | "curriculum"
+  | "website";
 
 export type BrandDocumentSourceMode = "file" | "link";
 
@@ -90,6 +94,7 @@ export type BrandDocumentCategory = {
   fileUrl?: string;
   link?: string;
   updatedAt?: string;
+  deleted?: boolean;
 };
 
 export type BrandDocuments = Partial<
@@ -489,9 +494,7 @@ function localizeGenericValue(
 }
 
 function hasOwnField<T extends object>(target: T | undefined, field: keyof T) {
-  return Boolean(
-    target && Object.prototype.hasOwnProperty.call(target, field),
-  );
+  return Boolean(target && Object.prototype.hasOwnProperty.call(target, field));
 }
 
 const brandsDir = path.join(process.cwd(), "data", "brands");
@@ -506,20 +509,20 @@ function toTitleDescriptionItems(
 
   return items
     .map((item) => {
-    if (typeof item === "string") {
-      return {
-        title: "",
-        description: item,
-      };
-    }
+      if (typeof item === "string") {
+        return {
+          title: "",
+          description: item,
+        };
+      }
 
-    return {
-      title: item.title || "",
-      description: item.description || item.content || item.text || "",
-      url: item.url || "",
-      image: item.image || "",
-      items: item.items ?? [],
-    };
+      return {
+        title: item.title || "",
+        description: item.description || item.content || item.text || "",
+        url: item.url || "",
+        image: item.image || "",
+        items: item.items ?? [],
+      };
     })
     .filter(
       (item) =>
@@ -549,8 +552,7 @@ function getMatchTokens(value?: string) {
       .map((token) => token.trim())
       .filter(
         (token) =>
-          token.length >= 3 &&
-          !["program", "training", "plus"].includes(token),
+          token.length >= 3 && !["program", "training", "plus"].includes(token),
       ),
   );
 }
@@ -593,7 +595,8 @@ function resolveRelatedProgramImage(
     const filePath = path.join(brandFolder, file);
     const content = fs.readFileSync(filePath, "utf8");
     const landing = JSON.parse(content) as Landing;
-    const slug = landing.slug?.trim().toLowerCase() || file.replace(/\.json$/i, "");
+    const slug =
+      landing.slug?.trim().toLowerCase() || file.replace(/\.json$/i, "");
     const title = normalizeTextMatch(landing.title);
     const fullTitle = normalizeTextMatch(landing.fullTitle);
     const sourceWebsite = normalizeTextMatch(landing.sourceWebsite);
@@ -643,10 +646,7 @@ function resolveRelatedProgramImage(
   return bestScore >= 2 ? bestImage : "";
 }
 
-function getProgramVisualAssetCandidates(
-  brandSlug: string,
-  landing: Landing,
-) {
+function getProgramVisualAssetCandidates(brandSlug: string, landing: Landing) {
   const assets = getVisualAssetsByCategory(brandSlug, "programs-assets");
   const targetSlug = landing.slug?.trim().toLowerCase() || "";
   const targetTitle = normalizeTextMatch(landing.title);
@@ -787,20 +787,20 @@ function toIconTextItems(items?: Array<string | IconTextItem>): IconTextItem[] {
 
   return items
     .map((item) => {
-    if (typeof item === "string") {
-      return {
-        title: "",
-        text: item,
-        description: item,
-      };
-    }
+      if (typeof item === "string") {
+        return {
+          title: "",
+          text: item,
+          description: item,
+        };
+      }
 
-    return {
-      title: item.title || "",
-      text: item.text || item.description || "",
-      description: item.description || item.text || "",
-      icon: item.icon || "",
-    };
+      return {
+        title: item.title || "",
+        text: item.text || item.description || "",
+        description: item.description || item.text || "",
+        icon: item.icon || "",
+      };
     })
     .filter(
       (item) =>
@@ -869,7 +869,8 @@ function toCertificationItems(
 
 export function normalizeLandingSchema(landing: Landing): Landing {
   const programInfo = toProgramInfoItems(landing.programInfo);
-  const careerSource = landing.careerOutcomes ?? landing.opportunityToWork ?? {};
+  const careerSource =
+    landing.careerOutcomes ?? landing.opportunityToWork ?? {};
   const supportSource = (landing.studentSupport ??
     landing.supportSection ??
     {}) as NonNullable<Landing["studentSupport"]>;
@@ -892,32 +893,33 @@ export function normalizeLandingSchema(landing: Landing): Landing {
   );
   const hasExplicitSectionImages = Boolean(
     landing.overview?.image ||
-      landing.graduateProfile?.image ||
-      landing.whyStudy?.image ||
-      landing.externship?.image ||
-      careerSource.image ||
-      landing.contact?.image,
+    landing.graduateProfile?.image ||
+    landing.whyStudy?.image ||
+    landing.externship?.image ||
+    careerSource.image ||
+    landing.contact?.image,
   );
   const hasExactProgramVisualAsset = programVisualAssets.some(
     (asset) =>
-      asset.programId?.trim().toLowerCase() === landing.slug?.trim().toLowerCase(),
+      asset.programId?.trim().toLowerCase() ===
+      landing.slug?.trim().toLowerCase(),
   );
   const heroUsesManagedAsset = Boolean(
     hero.backgroundImage?.includes("/edwin-ai-assets/"),
   );
   const heroSharesLegacyImageWithOverview = Boolean(
     hero.backgroundImage &&
-      landing.overview?.image &&
-      hero.backgroundImage === landing.overview.image &&
-      !hero.backgroundImage.includes("/edwin-ai-assets/"),
+    landing.overview?.image &&
+    hero.backgroundImage === landing.overview.image &&
+    !hero.backgroundImage.includes("/edwin-ai-assets/"),
   );
   const shouldPromoteProgramAssetToHero = Boolean(
     programVisualAssets.length > 0 &&
-      !heroUsesManagedAsset &&
-      (!hero.backgroundImage ||
-        (heroSharesLegacyImageWithOverview && hasExactProgramVisualAsset) ||
-        (!hasExplicitSectionImages &&
-          (hasExactProgramVisualAsset || programVisualAssets.length === 1))),
+    !heroUsesManagedAsset &&
+    (!hero.backgroundImage ||
+      (heroSharesLegacyImageWithOverview && hasExactProgramVisualAsset) ||
+      (!hasExplicitSectionImages &&
+        (hasExactProgramVisualAsset || programVisualAssets.length === 1))),
   );
   const usedProgramAssetIds = new Set<string>();
   const heroAsset = shouldPromoteProgramAssetToHero
@@ -997,58 +999,60 @@ export function normalizeLandingSchema(landing: Landing): Landing {
   const supportItems = toIconTextItems(supportSource.items);
   const benefitItems = toIconTextItems(landing.benefits?.items);
   const admissionsItems = toTitleDescriptionItems(landing.admissions?.items);
-  const financialAidItems = toTitleDescriptionItems(landing.financialAid?.items);
+  const financialAidItems = toTitleDescriptionItems(
+    landing.financialAid?.items,
+  );
   const hasOverviewContent = Boolean(
     overviewItems.title.trim() ||
-      overviewItems.description.trim() ||
-      overviewItems.image.trim() ||
-      overviewItems.items.length > 0,
+    overviewItems.description.trim() ||
+    overviewItems.image.trim() ||
+    overviewItems.items.length > 0,
   );
   const hasGraduateProfileContent = Boolean(
     landing.graduateProfile?.title?.trim() ||
-      landing.graduateProfile?.image?.trim() ||
-      graduateProfileItems.length > 0,
+    landing.graduateProfile?.image?.trim() ||
+    graduateProfileItems.length > 0,
   );
   const hasWhyStudyContent = Boolean(
     landing.whyStudy?.title?.trim() ||
-      landing.whyStudy?.description?.trim() ||
-      landing.whyStudy?.image?.trim() ||
-      whyStudyItems.length > 0,
+    landing.whyStudy?.description?.trim() ||
+    landing.whyStudy?.image?.trim() ||
+    whyStudyItems.length > 0,
   );
   const hasCurriculumContent = Boolean(
     landing.curriculum?.description?.trim() ||
-      landing.curriculum?.downloadUrl?.trim() ||
-      landing.curriculum?.buttonUrl?.trim() ||
-      curriculumItems.length > 0,
+    landing.curriculum?.downloadUrl?.trim() ||
+    landing.curriculum?.buttonUrl?.trim() ||
+    curriculumItems.length > 0,
   );
   const hasHandsOnTrainingContent = Boolean(
     landing.handsOnTraining?.enabled &&
-      (landing.handsOnTraining?.description?.trim() ||
-        handsOnTrainingItems.length > 0),
+    (landing.handsOnTraining?.description?.trim() ||
+      handsOnTrainingItems.length > 0),
   );
   const hasExternshipContent = Boolean(
     landing.externship?.enabled &&
-      (landing.externship?.description?.trim() ||
-        landing.externship?.image?.trim() ||
-        landing.externship?.hours?.trim() ||
-        externshipPartners.some((partner) => partner.trim())),
+    (landing.externship?.description?.trim() ||
+      landing.externship?.image?.trim() ||
+      landing.externship?.hours?.trim() ||
+      externshipPartners.some((partner) => partner.trim())),
   );
   const hasCareerContent = Boolean(
     careerSource.subtitle?.trim() ||
-      careerSource.image?.trim() ||
-      careerItems.length > 0,
+    careerSource.image?.trim() ||
+    careerItems.length > 0,
   );
   const hasSupportContent = Boolean(
     supportSource.description?.trim() ||
-      supportSource.videoUrl?.trim() ||
-      supportItems.length > 0,
+    supportSource.videoUrl?.trim() ||
+    supportItems.length > 0,
   );
   const hasAdmissionsContent = Boolean(
     landing.admissions?.description?.trim() || admissionsItems.length > 0,
   );
   const hasFinancialAidContent = Boolean(
     landing.financialAid?.enabled &&
-      (landing.financialAid?.description?.trim() || financialAidItems.length > 0),
+    (landing.financialAid?.description?.trim() || financialAidItems.length > 0),
   );
 
   return {
@@ -1123,10 +1127,11 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       discountPercentage: hero.discountPercentage || "",
       duration: hero.duration || durationDisplay,
       primaryCta: {
-        label: localizeGenericValue(hero.primaryCta?.label, copy.heroPrimaryCtaLabel, [
-          englishCopy.heroPrimaryCtaLabel,
-          spanishCopy.heroPrimaryCtaLabel,
-        ]),
+        label: localizeGenericValue(
+          hero.primaryCta?.label,
+          copy.heroPrimaryCtaLabel,
+          [englishCopy.heroPrimaryCtaLabel, spanishCopy.heroPrimaryCtaLabel],
+        ),
         url: hero.primaryCta?.url || "#form",
       },
       secondaryCta: {
@@ -1134,7 +1139,7 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         url: hero.secondaryCta?.url || "",
       },
       backgroundImage:
-        (heroAsset?.url?.trim() || "") || hero.backgroundImage || "",
+        heroAsset?.url?.trim() || "" || hero.backgroundImage || "",
       personImage: hero.personImage || "",
       videoUrl: hero.videoUrl || "",
       overlayColor: hero.overlayColor || "",
@@ -1149,7 +1154,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
             spanishCopy.overviewTitle,
           ])
         : "",
-      description: hasOverviewContent ? landing.overview?.description || "" : "",
+      description: hasOverviewContent
+        ? landing.overview?.description || ""
+        : "",
       image: hasOverviewContent
         ? landing.overview?.image || overviewAsset?.url?.trim() || ""
         : "",
@@ -1165,10 +1172,16 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       cards: landing.programExplorer?.cards ?? [],
     },
     graduateProfile: {
-      eyebrow: hasGraduateProfileContent ? landing.graduateProfile?.eyebrow || "" : "",
-      title: hasGraduateProfileContent ? landing.graduateProfile?.title || "" : "",
+      eyebrow: hasGraduateProfileContent
+        ? landing.graduateProfile?.eyebrow || ""
+        : "",
+      title: hasGraduateProfileContent
+        ? landing.graduateProfile?.title || ""
+        : "",
       image: hasGraduateProfileContent
-        ? landing.graduateProfile?.image || graduateProfileAsset?.url?.trim() || ""
+        ? landing.graduateProfile?.image ||
+          graduateProfileAsset?.url?.trim() ||
+          ""
         : "",
       items: hasGraduateProfileContent ? graduateProfileItems : [],
     },
@@ -1180,7 +1193,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
             spanishCopy.whyStudyTitle,
           ])
         : "",
-      description: hasWhyStudyContent ? landing.whyStudy?.description || "" : "",
+      description: hasWhyStudyContent
+        ? landing.whyStudy?.description || ""
+        : "",
       image: hasWhyStudyContent
         ? landing.whyStudy?.image || whyStudyAsset?.url?.trim() || ""
         : "",
@@ -1189,29 +1204,39 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     curriculum: {
       eyebrow: hasCurriculumContent ? landing.curriculum?.eyebrow || "" : "",
       title: hasCurriculumContent
-        ? localizeGenericValue(landing.curriculum?.title, copy.curriculumTitle, [
-            englishCopy.curriculumTitle,
-            spanishCopy.curriculumTitle,
-          ])
+        ? localizeGenericValue(
+            landing.curriculum?.title,
+            copy.curriculumTitle,
+            [englishCopy.curriculumTitle, spanishCopy.curriculumTitle],
+          )
         : "",
       description: hasCurriculumContent
         ? landing.curriculum?.description || ""
         : "",
-      downloadUrl: hasCurriculumContent ? landing.curriculum?.downloadUrl || "" : "",
+      downloadUrl: hasCurriculumContent
+        ? landing.curriculum?.downloadUrl || ""
+        : "",
       buttonUrl: hasCurriculumContent
         ? landing.curriculum?.buttonUrl || landing.curriculum?.downloadUrl || ""
         : "",
-      buttonTitle: hasCurriculumContent ? landing.curriculum?.buttonTitle || "" : "",
+      buttonTitle: hasCurriculumContent
+        ? landing.curriculum?.buttonTitle || ""
+        : "",
       items: hasCurriculumContent ? curriculumItems : [],
     },
     handsOnTraining: {
       enabled: Boolean(landing.handsOnTraining?.enabled),
-      eyebrow: hasHandsOnTrainingContent ? landing.handsOnTraining?.eyebrow || "" : "",
+      eyebrow: hasHandsOnTrainingContent
+        ? landing.handsOnTraining?.eyebrow || ""
+        : "",
       title: hasHandsOnTrainingContent
         ? localizeGenericValue(
             landing.handsOnTraining?.title,
             copy.handsOnTrainingTitle,
-            [englishCopy.handsOnTrainingTitle, spanishCopy.handsOnTrainingTitle],
+            [
+              englishCopy.handsOnTrainingTitle,
+              spanishCopy.handsOnTrainingTitle,
+            ],
           )
         : "",
       description: hasHandsOnTrainingContent
@@ -1223,12 +1248,15 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       enabled: Boolean(landing.externship?.enabled),
       eyebrow: hasExternshipContent ? landing.externship?.eyebrow || "" : "",
       title: hasExternshipContent
-        ? localizeGenericValue(landing.externship?.title, copy.externshipTitle, [
-            englishCopy.externshipTitle,
-            spanishCopy.externshipTitle,
-          ])
+        ? localizeGenericValue(
+            landing.externship?.title,
+            copy.externshipTitle,
+            [englishCopy.externshipTitle, spanishCopy.externshipTitle],
+          )
         : "",
-      description: hasExternshipContent ? landing.externship?.description || "" : "",
+      description: hasExternshipContent
+        ? landing.externship?.description || ""
+        : "",
       image: hasExternshipContent
         ? landing.externship?.image || handsOnAsset?.url?.trim() || ""
         : "",
@@ -1248,7 +1276,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
           )
         : "",
       subtitle: hasCareerContent ? careerSource.subtitle || "" : "",
-      image: hasCareerContent ? careerSource.image || careerAsset?.url?.trim() || "" : "",
+      image: hasCareerContent
+        ? careerSource.image || careerAsset?.url?.trim() || ""
+        : "",
       items: hasCareerContent ? careerItems : [],
     },
     opportunityToWork: {
@@ -1264,7 +1294,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
           )
         : "",
       subtitle: hasCareerContent ? careerSource.subtitle || "" : "",
-      image: hasCareerContent ? careerSource.image || careerAsset?.url?.trim() || "" : "",
+      image: hasCareerContent
+        ? careerSource.image || careerAsset?.url?.trim() || ""
+        : "",
       items: hasCareerContent ? careerItems : [],
     },
     studentSupport: {
@@ -1297,7 +1329,10 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         ? localizeGenericValue(
             landing.benefits?.title,
             copy.programBenefitsTitle,
-            [englishCopy.programBenefitsTitle, spanishCopy.programBenefitsTitle],
+            [
+              englishCopy.programBenefitsTitle,
+              spanishCopy.programBenefitsTitle,
+            ],
           )
         : "",
       items: benefitItems,
@@ -1305,18 +1340,24 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     admissions: {
       eyebrow: hasAdmissionsContent ? landing.admissions?.eyebrow || "" : "",
       title: hasAdmissionsContent
-        ? localizeGenericValue(landing.admissions?.title, copy.admissionsTitle, [
-            englishCopy.admissionsTitle,
-            spanishCopy.admissionsTitle,
-          ])
+        ? localizeGenericValue(
+            landing.admissions?.title,
+            copy.admissionsTitle,
+            [englishCopy.admissionsTitle, spanishCopy.admissionsTitle],
+          )
         : "",
-      description: hasAdmissionsContent ? landing.admissions?.description || "" : "",
+      description: hasAdmissionsContent
+        ? landing.admissions?.description || ""
+        : "",
       items: hasAdmissionsContent ? admissionsItems : [],
     },
     financialAid: {
       enabled: Boolean(landing.financialAid?.enabled),
-      variant: landing.financialAid?.variant === "option-b" ? "option-b" : "default",
-      eyebrow: hasFinancialAidContent ? landing.financialAid?.eyebrow || "" : "",
+      variant:
+        landing.financialAid?.variant === "option-b" ? "option-b" : "default",
+      eyebrow: hasFinancialAidContent
+        ? landing.financialAid?.eyebrow || ""
+        : "",
       title: hasFinancialAidContent
         ? localizeGenericValue(
             landing.financialAid?.title,
@@ -1383,14 +1424,16 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       scriptUrl: landing.form?.scriptUrl || "",
       scriptCode: landing.form?.scriptCode || "",
       formId: landing.form?.formId || "",
-      programName: landing.form?.programName || landing.fullTitle || landing.title,
+      programName:
+        landing.form?.programName || landing.fullTitle || landing.title,
       campus: landing.form?.campus || "",
       campusOptions: (landing.form?.campusOptions ?? []).map((option) => ({
         label: option?.label || "",
         campus: option?.campus || "",
         campaigntype: option?.campaigntype || "",
       })),
-      language: landing.form?.language || (language === "es" ? "Spanish" : "English"),
+      language:
+        landing.form?.language || (language === "es" ? "Spanish" : "English"),
       campaigntype: landing.form?.campaigntype || "",
       campaigncode: landing.form?.campaigncode || "",
       leadsource: landing.form?.leadsource || "",
@@ -1556,7 +1599,9 @@ export function getEditableLandingsByBrand(brandSlug: string): Landing[] {
 
 export function getLandingsByBrand(brandSlug: string): Landing[] {
   const editableLandings = getEditableLandingsByBrand(brandSlug);
-  const editableSlugs = new Set(editableLandings.map((landing) => landing.slug));
+  const editableSlugs = new Set(
+    editableLandings.map((landing) => landing.slug),
+  );
   const legacyProgramLandings = getProgramDataByBrand(brandSlug).filter(
     (landing) => !editableSlugs.has(landing.slug),
   );
@@ -1586,7 +1631,7 @@ export function getProgramsByBrand(brandSlug: string): Program[] {
 
 export function getLandingBySlug(
   brandSlug: string,
-  landingSlug: string
+  landingSlug: string,
 ): Landing | null {
   const filePath = getEditableLandingPath(brandSlug, landingSlug);
 

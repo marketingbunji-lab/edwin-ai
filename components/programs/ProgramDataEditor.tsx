@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Bot, Save } from "lucide-react";
+import { ArrowLeft, Bot, FileText, Globe2, Save, UploadCloud } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
@@ -141,6 +141,7 @@ export default function ProgramDataEditor({
   const [activeStep, setActiveStep] = useState(0);
   const [catalogInputMode, setCatalogInputMode] =
     useState<CatalogInputMode>("link");
+  const [curriculumFile, setCurriculumFile] = useState<File | null>(null);
   const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
     JSON.stringify(initialProgram),
   );
@@ -153,7 +154,10 @@ export default function ProgramDataEditor({
   const hasProgramName = Boolean(program.title.trim());
   const canCreateProgram = !isCreateMode || hasProgramName;
   const saveDisabled =
-    saving || !hasChanges || Boolean(jsonError) || !canCreateProgram;
+    saving ||
+    (!hasChanges && !curriculumFile) ||
+    Boolean(jsonError) ||
+    !canCreateProgram;
 
   const applyProgram = (nextProgram: Landing) => {
     setProgram(nextProgram);
@@ -188,6 +192,29 @@ export default function ProgramDataEditor({
     } catch {
       setJsonError(t("programDataEditor.jsonInvalid"));
     }
+  };
+
+  const handleCurriculumSelection = (file: File | null) => {
+    if (!file) return;
+
+    const isPdf =
+      file.type.toLowerCase() === "application/pdf" ||
+      file.name.toLowerCase().endsWith(".pdf");
+
+    if (!isPdf) {
+      setCurriculumFile(null);
+      setMessage("El plan de estudios debe ser un archivo PDF.");
+      return;
+    }
+
+    if (file.size > 15 * 1024 * 1024) {
+      setCurriculumFile(null);
+      setMessage("El plan de estudios no puede superar los 15 MB.");
+      return;
+    }
+
+    setCurriculumFile(file);
+    setMessage("");
   };
 
   const saveProgram = async () => {
@@ -245,22 +272,33 @@ export default function ProgramDataEditor({
         },
       };
 
-      const response = await fetch(
-        isCreateMode
-          ? `/api/programs/${brand.slug}`
-          : `/api/programs/${brand.slug}/${initialProgram.slug}`,
-        {
-          method: isCreateMode ? "POST" : "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(nextProgram),
-        },
-      );
+      const endpoint = isCreateMode
+        ? `/api/programs/${brand.slug}`
+        : `/api/programs/${brand.slug}/${initialProgram.slug}`;
+      const requestInit: RequestInit = isCreateMode || !curriculumFile
+        ? {
+            method: isCreateMode ? "POST" : "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(nextProgram),
+          }
+        : (() => {
+            const formData = new FormData();
+            formData.append("program", JSON.stringify(nextProgram));
+            formData.append("curriculumFile", curriculumFile);
+
+            return {
+              method: "PUT",
+              body: formData,
+            };
+          })();
+      const response = await fetch(endpoint, requestInit);
       const data = (await response.json()) as {
         ok?: boolean;
         error?: string;
         slug?: string;
+        program?: Landing;
       };
 
       if (!response.ok || !data.ok) {
@@ -283,8 +321,10 @@ export default function ProgramDataEditor({
         return;
       }
 
-      applyProgram(nextProgram);
-      setLastSavedSnapshot(JSON.stringify(nextProgram));
+      const savedProgram = data.program ?? nextProgram;
+      applyProgram(savedProgram);
+      setCurriculumFile(null);
+      setLastSavedSnapshot(JSON.stringify(savedProgram));
       setMessage(
         isCreateMode
           ? t("programDataEditor.messages.created")
@@ -444,9 +484,6 @@ export default function ProgramDataEditor({
 
             {isCreateMode ? (
               <div className="min-w-0">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--bunji-primary)]/70 dark:text-[var(--bunji-cyan)]/75">
-                  {brand.shortName || brand.name}
-                </p>
                 <h1 className="truncate text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
                   {t("programDataEditor.addProgram")}
                 </h1>
@@ -470,35 +507,20 @@ export default function ProgramDataEditor({
         </div>
       </div>
 
-      {!isCreateMode ? (
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="admin-eyebrow">
-            {brand.name}
-          </p>
-          <h1 className="admin-title">
-            {isCreateMode
-              ? t("programDataEditor.addProgram")
-              : t("programDataEditor.editProgram")}
-          </h1>
-          {isCreateMode ? (
-            <p className="admin-muted mt-2">
-              {t("programDataEditor.createDescription")}
-            </p>
-          ) : null}
-        </div>
-      </div>
-      ) : null}
-
       <div
         className={
           isCreateMode
             ? "grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)]"
-            : "block"
+            : "grid gap-6 xl:grid-cols-[minmax(0,1.28fr)_minmax(300px,0.72fr)] xl:items-start"
         }
       >
         <section className="admin-panel p-5">
-          <SectionTitle title={t("programDataEditor.baseInfo")} />
+          {!isCreateMode ? (
+            <h1 className="admin-title">{t("programDataEditor.editProgram")}</h1>
+          ) : null}
+          <div className={!isCreateMode ? "mt-6" : ""}>
+            <SectionTitle title={t("programDataEditor.baseInfo")} />
+          </div>
 
           {isCreateMode ? (
             <ProgramBaseStepForm
@@ -531,8 +553,6 @@ export default function ProgramDataEditor({
                   ]}
                 />
                 <Field label={t("programDataEditor.fields.slug")} value={generatedSlug} readOnly onChange={() => {}} />
-                <Field label={t("programDataEditor.fields.sourceWebsite")} value={program.sourceWebsite ?? ""} onChange={(value) => updateField("sourceWebsite", value)} />
-                <Field label={t("programDataEditor.fields.catalog")} value={program.catalog ?? ""} onChange={(value) => updateField("catalog", value)} />
               </div>
 
               <div className="mt-4 grid gap-4 md:grid-cols-2">
@@ -544,6 +564,15 @@ export default function ProgramDataEditor({
             </>
           )}
         </section>
+
+        {!isCreateMode ? (
+          <ProgramSourcesCard
+            curriculumFile={curriculumFile}
+            onCurriculumSelection={handleCurriculumSelection}
+            program={program}
+            updateSourceWebsite={(value) => updateField("sourceWebsite", value)}
+          />
+        ) : null}
 
         {isCreateMode ? (
           <ProgramPreviewCard
@@ -600,6 +629,97 @@ function SectionTitle({ title }: { title: string }) {
     <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-500 md:col-span-2">
       {title}
     </h2>
+  );
+}
+
+function ProgramSourcesCard({
+  curriculumFile,
+  onCurriculumSelection,
+  program,
+  updateSourceWebsite,
+}: {
+  curriculumFile: File | null;
+  onCurriculumSelection: (file: File | null) => void;
+  program: Landing;
+  updateSourceWebsite: (value: string) => void;
+}) {
+  const { t } = useDashboardLanguage();
+  const currentCurriculum = (program.catalog ?? "").trim();
+  const curriculumName = currentCurriculum
+    ? currentCurriculum.split("/").pop() || currentCurriculum
+    : "";
+
+  return (
+    <aside className="admin-panel p-5">
+      <h2 className="text-2xl font-bold tracking-tight text-slate-950 dark:text-slate-50">
+        {t("programDataEditor.sourcesTitle")}
+      </h2>
+
+      <div className="mt-5 space-y-3">
+        <section className="rounded-2xl border border-slate-200/80 bg-white/80 p-4 dark:border-white/10 dark:bg-white/[0.04]">
+          <div className="flex items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)]">
+              <Globe2 className="h-4 w-4" />
+            </span>
+            <h3 className="text-sm font-semibold text-slate-950 dark:text-slate-50">
+              {t("programDataEditor.fields.sourceWebsite")}
+            </h3>
+          </div>
+          <input
+            type="url"
+            value={program.sourceWebsite ?? ""}
+            onChange={(event) => updateSourceWebsite(event.target.value)}
+            className="admin-input mt-4"
+            placeholder="https://..."
+          />
+        </section>
+
+        <section className="rounded-2xl border border-slate-200/80 bg-white/80 p-4 dark:border-white/10 dark:bg-white/[0.04]">
+          <div className="flex items-center gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--bunji-primary-light)] text-[var(--bunji-primary-dark)]">
+              <FileText className="h-4 w-4" />
+            </span>
+            <h3 className="text-sm font-semibold text-slate-950 dark:text-slate-50">
+              {t("documentsPage.curriculumTab")}
+            </h3>
+          </div>
+
+          {curriculumFile || curriculumName ? (
+            <div className="mt-4 flex min-w-0 items-center gap-3 rounded-xl bg-slate-50 px-3 py-2.5 dark:bg-white/[0.04]">
+              <FileText className="h-4 w-4 shrink-0 text-[var(--bunji-primary)]" />
+              <p
+                className="min-w-0 flex-1 truncate text-sm font-medium text-slate-700 dark:text-slate-200"
+                title={curriculumFile?.name || curriculumName}
+              >
+                {curriculumFile?.name || curriculumName}
+              </p>
+            </div>
+          ) : (
+            <p className="admin-muted mt-4">
+              {t("documentsPage.noSource")}
+            </p>
+          )}
+
+          <label className="admin-button-secondary mt-4 inline-flex cursor-pointer">
+            <UploadCloud className="h-4 w-4" />
+            {curriculumFile || curriculumName
+              ? t("documentsPage.replaceFile")
+              : t("documentsPage.browseFile")}
+            <input
+              type="file"
+              accept="application/pdf,.pdf"
+              className="sr-only"
+              onChange={(event) =>
+                onCurriculumSelection(event.target.files?.[0] ?? null)
+              }
+            />
+          </label>
+          <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            PDF · máximo 15 MB
+          </p>
+        </section>
+      </div>
+    </aside>
   );
 }
 
