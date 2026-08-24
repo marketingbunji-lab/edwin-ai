@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBrandBySlug, getLandingBySlug } from "@/lib/data";
+import { buildLandingMetadata } from "@/lib/landingSeo";
 import { renderLandingTemplate } from "@/components/templates/renderLandingTemplate";
 
 type Props = {
@@ -19,24 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const favicon = brand.favicon?.trim() || "";
-
-  return {
-    title: landing.seo?.metaTitle?.trim() || landing.fullTitle || landing.title,
-    description:
-      landing.seo?.metaDescription?.trim() ||
-      landing.hero?.description?.trim() ||
-      landing.overview?.description?.trim() ||
-      brand.description?.trim() ||
-      "",
-    icons: favicon
-      ? {
-          icon: favicon,
-          shortcut: favicon,
-          apple: favicon,
-        }
-      : undefined,
-  };
+  return buildLandingMetadata({
+    brand,
+    landing,
+    pathname: `/landings/${brandSlug}/${landingSlug}`,
+  });
 }
 
 export default async function BrandLandingPage({ params }: Props) {
