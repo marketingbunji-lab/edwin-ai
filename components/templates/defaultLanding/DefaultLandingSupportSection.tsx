@@ -3,7 +3,7 @@ import type { IconTextItem } from "@/lib/data";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
 import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import LiveEditableText from "@/components/editor/LiveEditableText";
-import { Headphones } from "lucide-react";
+import { Headphones } from "../templateIcons";
 import {
   landingCardClass,
   landingCardTextClass,

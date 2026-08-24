@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import type { Brand, Landing } from "./data";
 import { exportLandingHtml } from "./exportLandingHtml";
 
@@ -7,6 +9,13 @@ type BundleFile = {
 };
 
 const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
+const htmlAttrPattern =
+  /<(img|source|script|link)\b[^>]+\b(?:src|href|srcset)=["']([^"']+)["']/gi;
+const assetUrlPattern =
+  /url\((['"]?)([^)'"]+)\1\)|@import\s+url\((['"]?)([^)'"]+)\3\)|@import\s+['"]([^'"]+)['"]/gi;
+const absoluteAssetPathPattern =
+  /\/[a-zA-Z0-9_./%+-]+\.(?:png|jpe?g|webp|svg|ico|css|js|mjs|ttf|woff2?)/gi;
 const crcTable = new Uint32Array(256).map((_, index) => {
   let crc = index;
 
@@ -107,9 +116,51 @@ function createStoredZip(files: BundleFile[]) {
   return Buffer.concat([localDirectory, centralDirectory, endRecord]);
 }
 
+function sanitizeFileStem(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase()
+    .slice(0, 64);
+}
+
+function getExtensionFromContentType(contentType = "") {
+  const normalized = contentType.split(";")[0].trim().toLowerCase();
+
+  switch (normalized) {
+    case "text/css":
+      return ".css";
+    case "text/javascript":
+    case "application/javascript":
+      return ".js";
+    case "image/png":
+      return ".png";
+    case "image/jpeg":
+      return ".jpg";
+    case "image/webp":
+      return ".webp";
+    case "image/svg+xml":
+      return ".svg";
+    case "image/x-icon":
+    case "image/vnd.microsoft.icon":
+      return ".ico";
+    case "font/ttf":
+    case "application/x-font-ttf":
+      return ".ttf";
+    case "font/woff":
+      return ".woff";
+    case "font/woff2":
+      return ".woff2";
+    default:
+      return "";
+  }
+}
+
 function getUrlExtension(url: string) {
   try {
-    const parsed = new URL(url);
+    const parsed = new URL(url, "https://bundle.local");
     const pathname = parsed.pathname.toLowerCase();
     const match = pathname.match(/\.([a-z0-9]{2,8})$/i);
 
@@ -119,56 +170,164 @@ function getUrlExtension(url: string) {
   }
 }
 
-function sanitizeFileStem(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-zA-Z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .toLowerCase()
-    .slice(0, 48);
+function shouldBundleUrl(url: string) {
+  const value = url.trim();
+
+  if (!value) return false;
+  if (value.startsWith("data:")) return false;
+  if (value.startsWith("#")) return false;
+
+  return (
+    value.startsWith("//") ||
+    value.startsWith("http://") ||
+    value.startsWith("https://") ||
+    value.startsWith("/")
+  );
 }
 
-function collectResourceUrls(html: string) {
-  const urls = new Set<string>();
-  const attrPattern =
-    /<(img|source|script|link)\b[^>]+\b(?:src|href|srcset)=["']([^"']+)["']/gi;
-  const cssUrlPattern = /url\(["']?(https?:\/\/[^)"']+)["']?\)/gi;
+function normalizeSourceUrl(url: string, baseUrl?: string) {
+  const value = url.trim();
 
-  for (const match of html.matchAll(attrPattern)) {
+  if (value.startsWith("http://") || value.startsWith("https://")) {
+    return value;
+  }
+
+  if (value.startsWith("//")) {
+    return `https:${value}`;
+  }
+
+  if (value.startsWith("/")) {
+    return value;
+  }
+
+  if (!baseUrl) {
+    return value;
+  }
+
+  if (baseUrl.startsWith("http://") || baseUrl.startsWith("https://")) {
+    return new URL(value, baseUrl).toString();
+  }
+
+  if (baseUrl.startsWith("/")) {
+    return path.posix.normalize(
+      path.posix.join(path.posix.dirname(baseUrl), value),
+    );
+  }
+
+  return value;
+}
+
+function buildAssetFileName(sourceUrl: string, index: number, contentType = "") {
+  const extension =
+    getUrlExtension(sourceUrl) || getExtensionFromContentType(contentType) || ".bin";
+
+  try {
+    const parsed = new URL(sourceUrl, "https://bundle.local");
+    const lastSegment = parsed.pathname.split("/").filter(Boolean).pop() || "asset";
+    const stem = sanitizeFileStem(lastSegment.replace(/\.[^.]+$/, "")) || "asset";
+
+    return `assets/${String(index + 1).padStart(2, "0")}-${stem}${extension}`;
+  } catch {
+    return `assets/${String(index + 1).padStart(2, "0")}-asset${extension}`;
+  }
+}
+
+function collectHtmlResourceUrls(html: string) {
+  const urls = new Set<string>();
+
+  for (const match of html.matchAll(htmlAttrPattern)) {
     const rawValue = match[2]?.trim() || "";
 
-    if (!rawValue.startsWith("http")) continue;
+    if (!rawValue) continue;
+
     if (rawValue.includes(",")) {
       for (const candidate of rawValue.split(",")) {
         const firstPart = candidate.trim().split(/\s+/)[0];
 
-        if (firstPart.startsWith("http")) {
+        if (shouldBundleUrl(firstPart)) {
           urls.add(firstPart);
         }
       }
       continue;
     }
 
-    urls.add(rawValue);
+    if (shouldBundleUrl(rawValue)) {
+      urls.add(rawValue);
+    }
   }
 
-  for (const match of html.matchAll(cssUrlPattern)) {
-    const url = match[1]?.trim() || "";
+  for (const match of html.matchAll(assetUrlPattern)) {
+    const rawValue = (match[2] || match[4] || match[5] || "").trim();
 
-    if (url.startsWith("http")) {
-      urls.add(url);
+    if (shouldBundleUrl(rawValue)) {
+      urls.add(rawValue);
+    }
+  }
+
+  for (const match of html.matchAll(absoluteAssetPathPattern)) {
+    const rawValue = match[0]?.trim() || "";
+
+    if (shouldBundleUrl(rawValue)) {
+      urls.add(rawValue);
     }
   }
 
   return Array.from(urls);
 }
 
-async function fetchAsset(url: string) {
-  const response = await fetch(url);
+function collectCssResourceUrls(css: string) {
+  const urls = new Set<string>();
+
+  for (const match of css.matchAll(assetUrlPattern)) {
+    const rawValue = (match[2] || match[4] || match[5] || "").trim();
+
+    if (shouldBundleUrl(rawValue)) {
+      urls.add(rawValue);
+    }
+  }
+
+  return Array.from(urls);
+}
+
+async function fetchAsset(sourceUrl: string) {
+  if (sourceUrl.startsWith("/")) {
+    const localPath = path.join(
+      process.cwd(),
+      "public",
+      decodeURIComponent(sourceUrl.replace(/^\//, "")),
+    );
+    const data = new Uint8Array(await readFile(localPath));
+    const extension = path.extname(localPath).toLowerCase();
+    const contentType =
+      extension === ".png"
+        ? "image/png"
+        : extension === ".jpg" || extension === ".jpeg"
+        ? "image/jpeg"
+        : extension === ".webp"
+        ? "image/webp"
+        : extension === ".svg"
+        ? "image/svg+xml"
+        : extension === ".ico"
+        ? "image/x-icon"
+        : extension === ".css"
+        ? "text/css"
+        : extension === ".js"
+        ? "application/javascript"
+        : extension === ".ttf"
+        ? "font/ttf"
+        : extension === ".woff"
+        ? "font/woff"
+        : extension === ".woff2"
+        ? "font/woff2"
+        : "application/octet-stream";
+
+    return { data, contentType };
+  }
+
+  const response = await fetch(sourceUrl);
 
   if (!response.ok) {
-    throw new Error(`No se pudo descargar ${url}`);
+    throw new Error(`No se pudo descargar ${sourceUrl}`);
   }
 
   const arrayBuffer = await response.arrayBuffer();
@@ -180,38 +339,71 @@ async function fetchAsset(url: string) {
   };
 }
 
-function buildAssetFileName(url: string, index: number) {
-  const extension = getUrlExtension(url) || ".bin";
-
-  try {
-    const parsed = new URL(url);
-    const lastSegment = parsed.pathname.split("/").filter(Boolean).pop() || "";
-    const stem = sanitizeFileStem(lastSegment.replace(/\.[^.]+$/, "")) || "asset";
-
-    return `assets/${String(index + 1).padStart(2, "0")}-${stem}${extension}`;
-  } catch {
-    return `assets/${String(index + 1).padStart(2, "0")}-asset${extension}`;
-  }
-}
-
 export async function exportLandingZip(brand: Brand, landing: Landing) {
   let html = await exportLandingHtml(brand, landing);
-  const resourceUrls = collectResourceUrls(html);
-  const assetFiles: BundleFile[] = [];
+  html = html.replace(/<link rel="preconnect"[^>]+>/gi, "");
 
-  for (const [index, url] of resourceUrls.entries()) {
+  const files: BundleFile[] = [];
+  const sourceToFileName = new Map<string, string>();
+  let bundledAssetCount = 0;
+
+  async function bundleAsset(sourceUrl: string, baseUrl?: string): Promise<string> {
+    const normalizedSourceUrl = normalizeSourceUrl(sourceUrl, baseUrl);
+
+    if (sourceToFileName.has(normalizedSourceUrl)) {
+      return sourceToFileName.get(normalizedSourceUrl)!;
+    }
+
+    const fetched = await fetchAsset(normalizedSourceUrl);
+    const fileName = buildAssetFileName(
+      normalizedSourceUrl,
+      bundledAssetCount,
+      fetched.contentType,
+    );
+    bundledAssetCount += 1;
+
+    sourceToFileName.set(normalizedSourceUrl, fileName);
+
+    let data = fetched.data;
+
+    if (
+      fetched.contentType.includes("text/css") ||
+      fileName.toLowerCase().endsWith(".css")
+    ) {
+      let css = textDecoder.decode(fetched.data);
+      const nestedUrls = collectCssResourceUrls(css);
+
+      for (const nestedUrl of nestedUrls) {
+        try {
+          const nestedFileName = await bundleAsset(nestedUrl, normalizedSourceUrl);
+          const rawValue = nestedUrl.trim();
+          css = css
+            .split(rawValue)
+            .join(`./${path.posix.basename(nestedFileName)}`);
+        } catch (error) {
+          console.warn("ZIP EXPORT CSS ASSET SKIPPED:", nestedUrl, error);
+        }
+      }
+
+      data = textEncoder.encode(css);
+    }
+
+    files.push({
+      name: fileName,
+      data,
+    });
+
+    return fileName;
+  }
+
+  const resourceUrls = collectHtmlResourceUrls(html);
+
+  for (const resourceUrl of resourceUrls) {
     try {
-      const asset = await fetchAsset(url);
-      const fileName = buildAssetFileName(url, index);
-
-      assetFiles.push({
-        name: fileName,
-        data: asset.data,
-      });
-
-      html = html.split(url).join(`./${fileName}`);
+      const fileName = await bundleAsset(resourceUrl);
+      html = html.split(resourceUrl).join(`./${fileName}`);
     } catch (error) {
-      console.warn("ZIP EXPORT ASSET SKIPPED:", url, error);
+      console.warn("ZIP EXPORT ASSET SKIPPED:", resourceUrl, error);
     }
   }
 
@@ -220,7 +412,7 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
       name: "index.html",
       data: textEncoder.encode(html),
     },
-    ...assetFiles,
+    ...files,
   ]);
 
   return zipBuffer;

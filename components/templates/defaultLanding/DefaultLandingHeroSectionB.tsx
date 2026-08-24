@@ -10,7 +10,7 @@ import {
   Clock,
   GraduationCap,
   Monitor,
-} from "lucide-react";
+} from "../templateIcons";
 
 type Props = {
   menuItems: Array<{

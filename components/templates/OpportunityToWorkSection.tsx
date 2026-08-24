@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Landing } from "@/lib/data";
-import { BriefcaseBusiness } from "lucide-react";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
 import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
+import { BriefcaseBusiness } from "./templateIcons";
 import {
   landingContainerClass,
   landingSectionDescriptionClass,

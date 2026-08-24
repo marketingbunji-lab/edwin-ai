@@ -10,7 +10,7 @@ import {
   Award,
   BriefcaseBusiness,
   Globe,
-} from "lucide-react";
+} from "../templateIcons";
 import { landingContainerClass, landingSectionClass } from "./classes";
 
 type Props = {

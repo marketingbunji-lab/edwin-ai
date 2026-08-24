@@ -12,7 +12,7 @@ import {
   GraduationCap,
   Languages,
   MapPin,
-} from "lucide-react";
+} from "../templateIcons";
 import {
   landingCardClass,
   landingContainerClass,

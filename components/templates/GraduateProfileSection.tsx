@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import { GraduationCap } from "lucide-react";
 import type { Landing } from "@/lib/data";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
 import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
+import { GraduationCap } from "./templateIcons";
 import {
   landingContainerClass,
   landingSectionKickerClass,

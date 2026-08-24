@@ -27,6 +27,7 @@ import DefaultLandingHeroSection from "./defaultLanding/DefaultLandingHeroSectio
 import DefaultLandingHeroSectionB from "./defaultLanding/DefaultLandingHeroSectionB";
 import DefaultLandingOverviewSection from "./defaultLanding/DefaultLandingOverviewSection";
 import DefaultLandingProgramExplorerSection from "./defaultLanding/DefaultLandingProgramExplorerSection";
+import DefaultLandingProgramExplorerSectionStatic from "./defaultLanding/DefaultLandingProgramExplorerSectionStatic";
 import DefaultLandingSupportSection from "./defaultLanding/DefaultLandingSupportSection";
 import DefaultLandingTestimonialsSection from "./defaultLanding/DefaultLandingTestimonialsSection";
 import DefaultLandingWhyStudySection from "./defaultLanding/DefaultLandingWhyStudySection";
@@ -776,7 +777,7 @@ export default function DefaultLanding({
                     <a
                       key={item.id}
                       href={`#${item.id}`}
-                      className="whitespace-nowrap text-sm font-semibold leading-snug text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                      className="landing-export-header-link whitespace-nowrap text-sm font-semibold leading-snug text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                     >
                       {item.label}
                     </a>
@@ -799,7 +800,7 @@ export default function DefaultLanding({
                       <a
                         key={item.id}
                         href={`#${item.id}`}
-                        className="rounded-xl px-4 py-3 text-sm font-semibold leading-snug text-white/90 no-underline transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="landing-export-mobile-link rounded-xl px-4 py-3 text-sm font-semibold leading-snug text-white/90 no-underline transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
                         {item.label}
                       </a>
@@ -811,7 +812,7 @@ export default function DefaultLanding({
               {ctaButton ? (
                 <a
                   href="#default-form"
-                  className="hidden min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:inline-flex lg:justify-self-end"
+                  className="landing-export-header-cta hidden min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:inline-flex lg:justify-self-end"
                 >
                   {landing.language === "en" ? "Enroll now" : "Inscríbete ahora"}
                 </a>
@@ -937,10 +938,17 @@ export default function DefaultLanding({
       ) : null}
 
       {hasProgramExplorerSection ? (
-        <DefaultLandingProgramExplorerSection
-          explorer={programExplorer}
-          liveEdit={liveEdit}
-        />
+        mode === "export" ? (
+          <DefaultLandingProgramExplorerSectionStatic
+            explorer={programExplorer}
+            liveEdit={liveEdit}
+          />
+        ) : (
+          <DefaultLandingProgramExplorerSection
+            explorer={programExplorer}
+            liveEdit={liveEdit}
+          />
+        )
       ) : null}
 
       {hasWhyStudySection ? (

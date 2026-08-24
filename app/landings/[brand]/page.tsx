@@ -77,20 +77,22 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
                       </span>
                     </td>
                     <td className="px-6 py-5 align-top text-right">
-                      <div className="flex flex-wrap justify-end gap-2">
+                      <div className="flex flex-nowrap items-center justify-end gap-2">
                         <Link
                           href={`/landings/${brand.slug}/${landing.slug}`}
-                          className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-950 text-white transition hover:bg-slate-800"
+                          aria-label="Ver landing"
+                          title="Ver landing"
                         >
                           <Eye className="h-4 w-4" />
-                          Ver landing
                         </Link>
                         <a
                           href={`/api/export-zip/${brand.slug}/${landing.slug}`}
                           className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                          title="Descargar ZIP"
                         >
                           <Download className="h-4 w-4" />
-                          Descargar ZIP
+                          ZIP
                         </a>
                       </div>
                     </td>
