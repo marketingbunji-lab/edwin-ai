@@ -1,8 +1,12 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Eye } from "lucide-react";
+import { Download, Eye } from "lucide-react";
 import { getBrandBySlug, getEditableLandingsByBrand } from "@/lib/data";
 
+function getPublicLandingName(title: string, fullTitle?: string) {
+  const candidate = (title || fullTitle || "").trim();
+  return candidate.split("|")[0]?.trim() || candidate;
+}
 
 type Props = {
   params: Promise<{
@@ -39,35 +43,62 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
           ) : null}
         </section>
 
-        <section className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {landings.map((landing) => (
-            <article
-              key={landing.slug}
-              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                {landing.programType || "Landing"}
-              </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-950">
-                {landing.title || landing.fullTitle}
-              </h2>
-              {landing.fullTitle && landing.fullTitle !== landing.title ? (
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {landing.fullTitle}
-                </p>
-              ) : null}
-
-              <div className="mt-6">
-                <Link
-                  href={`/landings/${brand.slug}/${landing.slug}`}
-                  className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-                >
-                  <Eye className="h-4 w-4" />
-                  Ver preview
-                </Link>
-              </div>
-            </article>
-          ))}
+        <section className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[760px] border-collapse text-left">
+              <thead className="bg-[linear-gradient(90deg,rgba(235,240,255,0.92),rgba(232,245,255,0.92))]">
+                <tr className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  <th className="px-6 py-4">Programa</th>
+                  <th className="px-6 py-4">Categoria</th>
+                  <th className="px-6 py-4">Modalidad</th>
+                  <th className="px-6 py-4 text-right">Acciones</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200">
+                {landings.map((landing) => (
+                  <tr
+                    key={landing.slug}
+                    className="transition hover:bg-slate-50/80"
+                  >
+                    <td className="px-6 py-5 align-top">
+                      <p className="text-sm font-semibold text-slate-950">
+                        {getPublicLandingName(
+                          landing.title || "",
+                          landing.fullTitle,
+                        )}
+                      </p>
+                    </td>
+                    <td className="px-6 py-5 align-top text-sm text-slate-700">
+                      {landing.programType || "Landing"}
+                    </td>
+                    <td className="px-6 py-5 align-top">
+                      <span className="inline-flex rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 ring-1 ring-sky-100">
+                        {landing.hero?.modality || "—"}
+                      </span>
+                    </td>
+                    <td className="px-6 py-5 align-top text-right">
+                      <div className="flex flex-wrap justify-end gap-2">
+                        <Link
+                          href={`/landings/${brand.slug}/${landing.slug}`}
+                          className="inline-flex items-center gap-2 rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+                        >
+                          <Eye className="h-4 w-4" />
+                          Ver landing
+                        </Link>
+                        <a
+                          href={`/api/export-zip/${brand.slug}/${landing.slug}`}
+                          className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                        >
+                          <Download className="h-4 w-4" />
+                          Descargar ZIP
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </main>

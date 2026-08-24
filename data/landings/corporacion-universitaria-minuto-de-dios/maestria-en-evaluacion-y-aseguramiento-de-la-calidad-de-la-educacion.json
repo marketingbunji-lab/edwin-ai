@@ -50,7 +50,7 @@
   "certifications": {
     "enabled": true,
     "title": "Acreditaciones y certificaciones",
-    "resolutionText": "SNIES 119410 - Resolución registro calificado: 14039 del 22/05/2026 - Vigencia 7 años",
+    "resolutionText": "",
     "items": [
       {
         "title": "Registro calificado",
@@ -143,7 +143,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Presentación del programa",
+    "title": "Conoce el programa",
     "description": "La Maestría en Evaluación y Aseguramiento de la Calidad de la Educación forma líderes capaces de transformar los sistemas educativos mediante procesos innovadores de evaluación, gestión y mejora continua. Con una visión crítica, ética y estratégica, el programa fortalece competencias para diseñar e implementar modelos de calidad educativa, impactando instituciones, políticas y procesos formativos con estándares nacionales e internacionales. Una propuesta académica innovadora que impulsa la excelencia, la transformación educativa y el desarrollo social desde la educación de calidad.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion/lifestyle-images-maestria-en-evaluacion-y-aseguramiento-de-la-calidad-de-la-educacion-2026-08-21T18-09-55-611Z.png",
     "items": []
@@ -202,7 +202,7 @@
   },
   "admissions": {
     "eyebrow": "",
-    "title": "Documentos de ingreso",
+    "title": "",
     "description": "",
     "items": []
   },

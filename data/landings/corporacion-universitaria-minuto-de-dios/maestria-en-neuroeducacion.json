@@ -50,7 +50,7 @@
   "certifications": {
     "enabled": true,
     "title": "Acreditaciones y certificaciones",
-    "resolutionText": "SNIES 119348 - Resolución registro calificado: 10644 del 22/04/2026 - Vigencia 7 años",
+    "resolutionText": "",
     "items": [
       {
         "title": "Registro calificado",
@@ -143,7 +143,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Presentación del programa",
+    "title": "Conoce el programa",
     "description": "La Maestría en Neuroeducación de UNIMINUTO es una propuesta innovadora que integra los avances de la neurociencia con los procesos educativos, fortaleciendo la enseñanza, el aprendizaje y la orientación desde una comprensión científica del cerebro, la mente y el desarrollo humano. A través de una formación virtual de profundización, el programa prepara profesionales capaces de diseñar estrategias pedagógicas innovadoras, abordar desafíos del aprendizaje y liderar transformaciones educativas con impacto social, investigativo y humano.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/hands-on-training-images-maestria-en-neuroeducacion-2026-08-21T19-15-42-311Z.png",
     "items": []
@@ -202,7 +202,7 @@
   },
   "admissions": {
     "eyebrow": "",
-    "title": "Documentos de ingreso",
+    "title": "",
     "description": "",
     "items": []
   },

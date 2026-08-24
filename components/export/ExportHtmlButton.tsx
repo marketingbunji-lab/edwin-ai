@@ -1,5 +1,6 @@
 "use client";
 
+import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -20,7 +21,10 @@ type WindowWithSavePicker = Window & {
   }) => Promise<FilePickerHandle>;
 };
 
-type Props = {
+type Props = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "children" | "style"
+> & {
   endpoint: string;
   filename: string;
   clientifyEndpoint?: string;
@@ -42,6 +46,7 @@ export default function ExportHtmlButton({
   icon,
   className = "rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700",
   style,
+  ...buttonProps
 }: Props) {
   const [exporting, setExporting] = useState(false);
   const [open, setOpen] = useState(false);
@@ -148,6 +153,7 @@ export default function ExportHtmlButton({
         disabled={exporting}
         className={`${className} inline-flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-60`}
         style={style}
+        {...buttonProps}
       >
         {icon}
         {exporting ? "Exportando..." : children}
@@ -172,6 +178,7 @@ export default function ExportHtmlButton({
         style={style}
         aria-haspopup="menu"
         aria-expanded={open}
+        {...buttonProps}
       >
         {icon}
         <span>{exporting ? "Exportando..." : children}</span>

@@ -50,7 +50,7 @@
   "certifications": {
     "enabled": true,
     "title": "Acreditaciones y certificaciones",
-    "resolutionText": "SNIES En proceso de asignación - Resolución registro calificado: 14041 del 22/05/2026 - Vigencia 7 años",
+    "resolutionText": "",
     "items": [
       {
         "title": "Registro calificado",
@@ -143,7 +143,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Presentación del programa",
+    "title": "Conoce el programa",
     "description": "La Maestría en Gerencia Estratégica de Operaciones es una propuesta innovadora que forma líderes capaces de transformar sistemas productivos y de servicios mediante estrategias operativas sostenibles, analíticas y orientadas a la innovación. A través de un enfoque interdisciplinario y apoyado en tecnologías emergentes, analítica de datos y transformación digital, el programa fortalece la toma de decisiones, la optimización de procesos y la generación de valor en organizaciones públicas y privadas, respondiendo a los desafíos de entornos dinámicos y competitivos.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/hero-images-maestria-en-gerencia-estrategica-de-operaciones-2026-08-21T18-17-05-885Z.png",
     "items": []
@@ -202,7 +202,7 @@
   },
   "admissions": {
     "eyebrow": "",
-    "title": "Documentos de ingreso",
+    "title": "",
     "description": "",
     "items": []
   },
