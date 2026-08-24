@@ -2,24 +2,13 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { createClient } from "@/utils/supabase/client";
 
 function getLoginErrorMessage(error: unknown) {
   if (error instanceof Error) {
-    const message = error.message.toLowerCase();
-
-    if (
-      message.includes("failed to fetch") ||
-      message.includes("network") ||
-      message.includes("fetch failed")
-    ) {
-      return "No pudimos conectar con Supabase. Revisa tu conexion, DNS o la URL del proyecto en .env.local.";
-    }
-
     return error.message;
   }
 
-  return "Could not sign in.";
+  return "No se pudo iniciar sesion.";
 }
 
 async function signInWithLocalAuth(email: string, password: string) {
@@ -31,10 +20,6 @@ async function signInWithLocalAuth(email: string, password: string) {
     body: JSON.stringify({ email, password }),
   });
 
-  if (response.status === 404) {
-    return false;
-  }
-
   const payload = (await response.json().catch(() => null)) as {
     error?: string;
   } | null;
@@ -43,7 +28,7 @@ async function signInWithLocalAuth(email: string, password: string) {
     throw new Error(payload?.error || "No se pudo iniciar sesion.");
   }
 
-  return true;
+  return payload ?? { ok: true };
 }
 
 export default function LoginForm() {
@@ -61,19 +46,7 @@ export default function LoginForm() {
       setLoading(true);
       setError("");
 
-      const localAuthHandled = await signInWithLocalAuth(email, password);
-
-      if (!localAuthHandled) {
-        const supabase = createClient();
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
-        if (signInError) {
-          throw signInError;
-        }
-      }
+      await signInWithLocalAuth(email, password);
 
       router.replace(searchParams.get("next") || "/admin");
       router.refresh();

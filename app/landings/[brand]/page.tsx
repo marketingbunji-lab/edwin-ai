@@ -30,17 +30,17 @@ export default async function PublicBrandLandingsPage({ params }: Props) {
     <main className="min-h-screen bg-[linear-gradient(180deg,#f8fbff,#eef4ff)] px-6 py-10">
       <div className="mx-auto w-full max-w-6xl">
         <section className="rounded-3xl border border-slate-200 bg-white/95 p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] backdrop-blur">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Landings publicas
-          </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-950">
             {brand.name}
           </h1>
-          {brand.description ? (
-            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
-              {brand.description}
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Landings publicas
             </p>
-          ) : null}
+            <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">
+              {landings.length} publicadas
+            </span>
+          </div>
         </section>
 
         <section className="mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)]">

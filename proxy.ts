@@ -1,8 +1,17 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { updateSession } from "@/utils/supabase/proxy";
+import {
+  LOCAL_AUTH_COOKIE,
+  isLocalAuthEnabled,
+  isValidLocalSession,
+} from "@/lib/localAuth";
+
+function isAuthProtectedPath(pathname: string) {
+  return pathname.startsWith("/admin");
+}
 
 export async function proxy(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
   const shortVisualAssetsMatch = request.nextUrl.pathname.match(
     /^\/([^/]+)\/visual-assets(\/.*)?$/,
   );
@@ -24,7 +33,37 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  return updateSession(request);
+  if (!isLocalAuthEnabled()) {
+    return NextResponse.next({
+      request,
+    });
+  }
+
+  const hasLocalSession = isValidLocalSession(
+    request.cookies.get(LOCAL_AUTH_COOKIE)?.value,
+  );
+
+  if (pathname === "/login" && hasLocalSession) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/admin";
+    redirectUrl.search = "";
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  if (isAuthProtectedPath(pathname) && !hasLocalSession) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/login";
+    redirectUrl.searchParams.set(
+      "next",
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+    );
+
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  return NextResponse.next({
+    request,
+  });
 }
 
 export const config = {

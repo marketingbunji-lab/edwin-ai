@@ -6,10 +6,7 @@ export type LocalAuthUser = {
 };
 
 function isDevLocalAuthBypassEnabled() {
-  return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.EDWIN_AUTH_MODE !== "supabase"
-  );
+  return false;
 }
 
 export function isLocalAuthEnabled() {

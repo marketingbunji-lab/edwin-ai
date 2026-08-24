@@ -4,7 +4,6 @@ import { Check, ChevronUp, Languages, LogOut, Moon, Sun, UserCircle } from "luci
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDashboardLanguage } from "@/components/dashboard/DashboardLanguageProvider";
-import { createClient } from "@/utils/supabase/client";
 
 type AdminUser = {
   name: string;
@@ -29,9 +28,6 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
   const [user, setUser] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [signingOut, setSigningOut] = useState(false);
-  const [authProvider, setAuthProvider] = useState<"local" | "supabase">(
-    "supabase",
-  );
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -45,34 +41,11 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
           const payload = (await localResponse.json()) as LocalUserResponse;
 
           if (payload.user && isMounted) {
-            setAuthProvider("local");
             setUser(payload.user);
             return;
           }
         }
-
-        const supabase = createClient();
-        const {
-          data: { user: authUser },
-        } = await supabase.auth.getUser();
-
-        if (!authUser) {
-          if (isMounted) setUser(null);
-          return;
-        }
-
-        if (isMounted) {
-          const profileName =
-            authUser.user_metadata?.full_name ||
-            authUser.user_metadata?.name ||
-            authUser.email ||
-            "User";
-
-          setUser({
-            name: profileName,
-            email: authUser.email || "",
-          });
-        }
+        if (isMounted) setUser(null);
       } finally {
             if (isMounted) setLoading(false);
       }
@@ -88,13 +61,7 @@ export default function AdminUserMenu({ theme, onThemeChange }: Props) {
   const handleSignOut = async () => {
     try {
       setSigningOut(true);
-
-      if (authProvider === "local") {
-        await fetch("/api/auth/local/logout", { method: "POST" });
-      } else {
-        const supabase = createClient();
-        await supabase.auth.signOut();
-      }
+      await fetch("/api/auth/local/logout", { method: "POST" });
 
       router.replace("/login");
       router.refresh();
