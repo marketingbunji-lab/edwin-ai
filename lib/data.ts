@@ -18,6 +18,7 @@ export type Brand = {
   name: string;
   shortName?: string;
   logo: string;
+  favicon?: string;
   logos?: {
     light?: string;
     dark?: string;
@@ -1540,6 +1541,7 @@ function normalizeBrand(brand: Brand): Brand {
   return enrichBrandColorPalette({
     ...brand,
     shortName: brand.shortName?.trim() || brand.name,
+    favicon: brand.favicon?.trim() || "",
     campuses: (brand.campuses ?? []).map((campus) => ({
       name: campus.name ?? "",
       location: campus.location ?? "",

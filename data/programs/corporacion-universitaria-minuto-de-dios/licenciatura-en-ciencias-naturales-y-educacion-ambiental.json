@@ -369,9 +369,67 @@
           "Obligatorio tener acceso a un PC o móvil con conexión a internet."
         ],
         "groups": []
+      },
+      {
+        "id": "ep-extranjeros",
+        "label": "Requisitos para extranjeros",
+        "title": "Requisitos de admisión para extranjeros",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
+          "Permiso de permanencia o cédula de extranjería.",
+          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-ruta",
+        "label": "Ruta de aprendizaje",
+        "title": "Ruta de aprendizaje",
+        "description": "",
+        "listStyle": "steps",
+        "items": [
+          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
+          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
+          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
+          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+        ],
+        "groups": []
       }
     ],
-    "cards": []
+    "cards": [
+      {
+        "title": "Docentes Calificados y Microcertificaciones",
+        "icon": "award",
+        "items": [
+          "Profesores con amplia experiencia profesional y académica.",
+          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
+          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+        ]
+      },
+      {
+        "title": "Convenios Internacionales",
+        "icon": "globe",
+        "items": [
+          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
+          "Sesiones virtuales con estudiantes y docentes de otros países.",
+          "Actividades de internacionalización y culturales en casa, sin salir del país.",
+          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
+          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
+        ]
+      },
+      {
+        "title": "Prácticas Profesionales",
+        "icon": "briefcase",
+        "items": [
+          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
+          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
+          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+        ]
+      }
+    ],
+    "cardsTitle": "Información importante del programa"
   },
   "graduateProfile": {
     "title": "Perfil del egresado",
@@ -388,24 +446,46 @@
     ]
   },
   "curriculum": {
-    "title": "Plan de estudios",
+    "title": "Ruta formativa",
     "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 144. Modalidad: Virtual.",
     "buttonTitle": "Descargar pensum",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
-    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf"
+    "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
+    "items": [
+      {
+        "title": "Básico",
+        "description": "Se fortalecen los fundamentos pedagógicos, curriculares, matemáticos, comunicativos y digitales que preparan al estudiante para comprender la enseñanza de las ciencias naturales en contextos educativos contemporáneos.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Profesional",
+        "description": "Se profundiza en biología, química, física, educación ambiental e investigación, integrando didácticas específicas y prácticas formativas para la enseñanza de las ciencias naturales con sentido crítico y territorial.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Minuto de Dios",
+        "description": "Se promueve una formación humana e integral desde el proyecto de vida, la responsabilidad social, la ética profesional, la ciudadanía y el emprendimiento, en coherencia con el sello institucional.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Profesional complementario",
+        "description": "Se articulan prácticas de profundización, electivas y opción de grado para consolidar la experiencia pedagógica, la capacidad investigativa y la proyección profesional del futuro licenciado.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
   },
   "admissions": {
     "title": "Documentos de ingreso",
-    "items": [
-      "Fotocopia del diploma o acta de grado de bachiller.",
-      "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-      "Fotocopia de documento de identidad al 150%.",
-      "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-      "Pago derechos de inscripción.",
-      "Contrato de matrícula.",
-      "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-      "Obligatorio tener acceso a un PC o móvil con conexión a internet."
-    ]
+    "items": [],
+    "description": ""
   },
   "financialAid": {
     "enabled": true,
@@ -415,6 +495,13 @@
       {
         "title": "Precio oficial $ 3.892.000",
         "description": "Precio de matrícula con subsidio otorgado por la sede: $ 2.296.300"
+      },
+      {
+        "title": "Financiación de hasta el 100% de tus estudios",
+        "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
+        "url": "",
+        "image": "",
+        "items": []
       }
     ]
   },

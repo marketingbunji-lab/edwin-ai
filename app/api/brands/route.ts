@@ -175,6 +175,7 @@ export async function POST(req: NextRequest) {
       name,
       shortName: (body.shortName || name).trim(),
       logo: body.logo || "",
+      favicon: body.favicon || "",
       logos: {
         light: body.logos?.light || "",
         dark: body.logos?.dark || "",

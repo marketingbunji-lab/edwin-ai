@@ -14,6 +14,7 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
   const title = landing.fullTitle || landing.title || "Programa";
   const brandName = brand.name || "Brand";
   const googleFontHref = brand.typography?.googleFontHref?.trim() || "";
+  const favicon = brand.favicon?.trim() || "";
   const { renderToStaticMarkup } = await import("react-dom/server.browser");
   const markup = renderToStaticMarkup(
     renderLandingTemplate({ brand, landing, mode: "export" }),
@@ -25,6 +26,7 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)} | ${escapeHtml(brandName)}</title>
+  ${favicon ? `<link rel="icon" href="${escapeHtml(favicon)}">` : ""}
   ${
     googleFontHref
       ? `<link rel="preconnect" href="https://fonts.googleapis.com">

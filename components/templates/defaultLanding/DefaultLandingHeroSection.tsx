@@ -2,6 +2,8 @@
 import Script from "next/script";
 import type { Landing } from "@/lib/data";
 import ClientifyFormEmbed from "@/components/forms/ClientifyFormEmbed";
+import EmbeddedFormConfigurator from "@/components/forms/EmbeddedFormConfigurator";
+import { buildEmbeddedFormConfiguratorScript } from "@/components/forms/embeddedFormConfiguratorScript";
 import FormHiddenFieldInjector from "@/components/forms/FormHiddenFieldInjector";
 import VerityLeadForm from "@/components/forms/VerityLeadForm";
 import GenericLeadForm from "@/components/templates/GenericLeadForm";
@@ -106,6 +108,12 @@ export default function DefaultLandingHeroSection({
   const hiddenFieldInjectionScript = hiddenFormFields.length
     ? `(function(){var fields=${JSON.stringify(hiddenFormFields)};var tries=0;var maxTries=20;function bindDataLayer(form){if(form.dataset.formSubmissionBound==="true"){return;}form.addEventListener("submit",function(){if(window.dataLayer&&Array.isArray(window.dataLayer)){window.dataLayer.push(Object.assign({event:"formSubmission",formId:form.id||""},Object.fromEntries(new FormData(form).entries())));}});form.dataset.formSubmissionBound="true";}function upsert(doc){var forms=Array.prototype.slice.call(doc.querySelectorAll('form'));forms.forEach(function(form){fields.forEach(function(field){var selector='input[type="hidden"][name="'+field.name.replace(/"/g,'\\"')+'"]';var hidden=form.querySelector(selector);if(!hidden){hidden=doc.createElement('input');hidden.type='hidden';hidden.name=field.name;form.appendChild(hidden);}hidden.value=field.value;});bindDataLayer(form);});return forms.length>0;}function apply(){var docs=[document];Array.prototype.forEach.call(document.querySelectorAll('iframe'),function(iframe){try{var idoc=iframe.contentDocument||(iframe.contentWindow&&iframe.contentWindow.document);if(idoc){docs.push(idoc);}}catch(e){}});var applied=false;docs.forEach(function(doc){applied=upsert(doc)||applied;});return applied;}apply();var interval=window.setInterval(function(){tries+=1;var applied=apply();if(applied||tries>=maxTries){window.clearInterval(interval);}},1000);}());`
     : "";
+  const embedConfiguratorScript = buildEmbeddedFormConfiguratorScript({
+    programName: hiddenProgramFieldValue,
+    campusValue,
+    hiddenProgramFieldName,
+    originValue: "google",
+  });
 
   return (
     <section
@@ -307,10 +315,21 @@ export default function DefaultLandingHeroSection({
                       }}
                     />
                   ) : null}
+                  <script
+                    type="text/javascript"
+                    dangerouslySetInnerHTML={{
+                      __html: embedConfiguratorScript,
+                    }}
+                  />
                 </>
               ) : hasConfiguredForm && form.scriptCode ? (
                 <>
                   <ClientifyFormEmbed code={form.scriptCode} />
+                  <EmbeddedFormConfigurator
+                    programName={hiddenProgramFieldValue}
+                    campusValue={campusValue}
+                    hiddenProgramFieldName={hiddenProgramFieldName}
+                  />
                   <FormHiddenFieldInjector
                     fieldName={hiddenProgramFieldName}
                     fieldValue={hiddenProgramFieldValue}
@@ -320,6 +339,11 @@ export default function DefaultLandingHeroSection({
               ) : hasConfiguredForm && form.scriptUrl ? (
                 <>
                   <Script src={form.scriptUrl} strategy="afterInteractive" />
+                  <EmbeddedFormConfigurator
+                    programName={hiddenProgramFieldValue}
+                    campusValue={campusValue}
+                    hiddenProgramFieldName={hiddenProgramFieldName}
+                  />
                   <FormHiddenFieldInjector
                     fieldName={hiddenProgramFieldName}
                     fieldValue={hiddenProgramFieldValue}

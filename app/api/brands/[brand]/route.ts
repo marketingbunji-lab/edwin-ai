@@ -100,6 +100,7 @@ export async function PUT(req: NextRequest, { params }: { params: Params }) {
       name: body.name || "",
       shortName: (body.shortName || body.name || brand).trim(),
       logo: body.logo || "",
+      favicon: body.favicon || "",
       logos: {
         light: body.logos?.light || "",
         dark: body.logos?.dark || "",

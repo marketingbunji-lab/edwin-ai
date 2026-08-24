@@ -50,7 +50,7 @@
   "certifications": {
     "enabled": true,
     "title": "Acreditaciones y certificaciones",
-    "resolutionText": "SNIES 119409 - Resolución registro calificado: 14037 del 22/05/2026 - Vigencia 7 años",
+    "resolutionText": "",
     "items": [
       {
         "title": "Registro calificado",
@@ -164,75 +164,40 @@
   },
   "curriculum": {
     "eyebrow": "",
-    "title": "Plan de estudios",
+    "title": "Ruta formativa",
     "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 24. Modalidad: Virtual.",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf",
     "buttonTitle": "Descargar pensum",
-    "items": []
-  },
-  "admissions": {
-    "eyebrow": "",
-    "title": "Documentos de ingreso",
-    "description": "",
     "items": [
       {
-        "title": "",
-        "description": "Fotocopia del diploma o acta de grado de bachiller.",
+        "title": "Fundamentación",
+        "description": "Se construyen las bases del programa desde la calidad en salud, la normatividad vigente y los marcos regulatorios que orientan la gestión y la auditoría en organizaciones del sector.",
         "url": "",
         "image": "",
         "items": []
       },
       {
-        "title": "",
-        "description": "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+        "title": "Profundización",
+        "description": "Se desarrollan capacidades para evaluar el desempeño, gestionar riesgos, auditar procesos y tomar decisiones estratégicas y financieras que fortalezcan la calidad en instituciones de salud.",
         "url": "",
         "image": "",
         "items": []
       },
       {
-        "title": "",
-        "description": "Fotocopia de documento de identidad al 150%.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Pago derechos de inscripción.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Contrato de matrícula.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Obligatorio tener acceso a un PC o móvil con conexión a internet.",
+        "title": "Investigación",
+        "description": "Se consolidan habilidades para formular, desarrollar y sustentar ejercicios de investigación aplicados al mejoramiento continuo y a la toma de decisiones en el ámbito de la calidad en salud.",
         "url": "",
         "image": "",
         "items": []
       }
     ]
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "Documentos de ingreso",
+    "description": "",
+    "items": []
   },
   "financialAid": {
     "enabled": true,
@@ -244,6 +209,13 @@
       {
         "title": "Precio oficial $ 6.192.100",
         "description": "Precio de matrícula con subsidio otorgado por la sede: $ 5.375.800",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Financiación de hasta el 100% de tus estudios",
+        "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
         "url": "",
         "image": "",
         "items": []
@@ -319,7 +291,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "",
+    "cardsTitle": "Información importante del programa",
     "tabs": [
       {
         "id": "ep-perfil",
@@ -410,9 +382,66 @@
           "Obligatorio tener acceso a un PC o móvil con conexión a internet."
         ],
         "groups": []
+      },
+      {
+        "id": "ep-extranjeros",
+        "label": "Requisitos para extranjeros",
+        "title": "Requisitos de admisión para extranjeros",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
+          "Permiso de permanencia o cédula de extranjería.",
+          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-ruta",
+        "label": "Ruta de aprendizaje",
+        "title": "Ruta de aprendizaje",
+        "description": "",
+        "listStyle": "steps",
+        "items": [
+          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
+          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
+          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
+          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+        ],
+        "groups": []
       }
     ],
-    "cards": []
+    "cards": [
+      {
+        "title": "Docentes Calificados y Microcertificaciones",
+        "icon": "award",
+        "items": [
+          "Profesores con amplia experiencia profesional y académica.",
+          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
+          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+        ]
+      },
+      {
+        "title": "Convenios Internacionales",
+        "icon": "globe",
+        "items": [
+          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
+          "Sesiones virtuales con estudiantes y docentes de otros países.",
+          "Actividades de internacionalización y culturales en casa, sin salir del país.",
+          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
+          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
+        ]
+      },
+      {
+        "title": "Prácticas Profesionales",
+        "icon": "briefcase",
+        "items": [
+          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
+          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
+          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+        ]
+      }
+    ]
   },
   "catalog": "",
   "faculty": "",

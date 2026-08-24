@@ -9,7 +9,7 @@
   "certifications": {
     "enabled": true,
     "title": "Acreditaciones y certificaciones",
-    "resolutionText": "Resolución registro calificado : 023380 del 28/11/25 - Vigencia 7 años",
+    "resolutionText": "",
     "items": [
       {
         "title": "Registro calificado",
@@ -248,7 +248,7 @@
   },
   "summaryCards": [
     {
-      "label": "Duración",
+      "label": "DURACIÓN",
       "value": "4 Semestres"
     },
     {
@@ -508,7 +508,7 @@
   },
   "admissions": {
     "eyebrow": "",
-    "title": "Documentos de admision",
+    "title": "",
     "description": "",
     "items": []
   },
@@ -521,12 +521,12 @@
     "items": [
       {
         "title": "Valor semestre oficial $7.583.800",
-        "description": "Valor primer semestre subsidiado (50% de descuento lanzamiento) $3.791.900",
+        "description": "Valor primer semestre subsidiado (50% de descuento) $3.791.900",
         "url": "",
         "image": "",
         "items": [
           "Valor primer semestre subsidiado",
-          "50% de descuento lanzamiento",
+          "50%",
           "$3.791.900"
         ]
       },

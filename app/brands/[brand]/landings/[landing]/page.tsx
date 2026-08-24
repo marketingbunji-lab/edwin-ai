@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBrandBySlug, getLandingBySlug } from "../../../../../lib/data";
 import LandingEditor, {
@@ -13,6 +14,31 @@ type Props = {
     landing: string;
   }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { brand: brandSlug, landing: landingSlug } = await params;
+
+  const brand =
+    getBrandBySlug(brandSlug) ?? (await getSupabaseBrandBySlug(brandSlug));
+  const landing = getLandingBySlug(brandSlug, landingSlug);
+
+  if (!brand || !landing) {
+    return {};
+  }
+
+  const favicon = brand.favicon?.trim() || "";
+
+  return {
+    title: landing.fullTitle || landing.title,
+    icons: favicon
+      ? {
+          icon: favicon,
+          shortcut: favicon,
+          apple: favicon,
+        }
+      : undefined,
+  };
+}
 
 export default async function LandingDetailPage({ params }: Props) {
   const { brand: brandSlug, landing: landingSlug } = await params;

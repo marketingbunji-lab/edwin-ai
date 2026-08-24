@@ -858,6 +858,12 @@ export default function BrandEditor({
                   value={brand.logos?.dark || ""}
                   onChange={(value) => updateField("logos.dark", value)}
                 />
+
+                <Field
+                  label={t("brandEditor.fields.favicon")}
+                  value={brand.favicon || ""}
+                  onChange={(value) => updateField("favicon", value)}
+                />
               </div>
             </div>
 

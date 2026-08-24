@@ -59,6 +59,33 @@ function splitLabelAndAmount(value = "") {
   };
 }
 
+function parseMoneyAmount(value = "") {
+  const match = value.match(/\$\s?[\d.,]+/);
+
+  if (!match) {
+    return null;
+  }
+
+  const numeric = Number(match[0].replace(/[^0-9]/g, ""));
+  return Number.isFinite(numeric) && numeric > 0 ? numeric : null;
+}
+
+function extractBadgeLabel(description = "", fallbackDiscount = "") {
+  const explicitDiscount = fallbackDiscount.trim();
+
+  if (explicitDiscount) {
+    return explicitDiscount.toUpperCase();
+  }
+
+  const parenthetical = description.match(/\(([^)]+)\)/)?.[1]?.trim();
+
+  if (parenthetical) {
+    return parenthetical.toUpperCase();
+  }
+
+  return "";
+}
+
 export default function DefaultLandingDetailCardsSection({
   eyebrow,
   eyebrowPath,
@@ -97,6 +124,8 @@ export default function DefaultLandingDetailCardsSection({
 
   const isSecondaryVariant = variant === "secondary" || variant === "secondary-b";
   const isSecondaryBVariant = variant === "secondary-b";
+  const secondaryBGridClass =
+    validItems.length <= 2 ? "grid gap-5 lg:grid-cols-2" : "grid gap-5 lg:grid-cols-3";
   const sectionClass = isSecondaryBVariant
     ? "relative overflow-hidden bg-[radial-gradient(circle_at_12%_12%,color-mix(in_srgb,var(--landing-secondary-light)_56%,transparent),transparent_32%),linear-gradient(135deg,var(--landing-secondary-lightest)_0%,#fff_54%,var(--landing-page-bg)_100%)] py-24 md:py-32"
     : isSecondaryVariant
@@ -154,40 +183,84 @@ export default function DefaultLandingDetailCardsSection({
         </div>
 
         {isSecondaryBVariant && validItems.length > 0 ? (
-          <div className="grid gap-5 lg:grid-cols-3">
+          <>
+          <div className={secondaryBGridClass}>
             {validItems.map((item, index) => {
               const titlePrice = splitLabelAndAmount(item.title);
               const descriptionPrice = splitLabelAndAmount(item.description);
+              const officialAmount = parseMoneyAmount(item.title);
+              const discountedAmount = parseMoneyAmount(item.description);
               const isPriceCard =
                 index === 0 && titlePrice.amount && descriptionPrice.amount;
+              const computedDiscountPercentage =
+                officialAmount && discountedAmount && officialAmount > discountedAmount
+                  ? `${Math.round(((officialAmount - discountedAmount) / officialAmount) * 100)}%`
+                  : "";
+              const badgeText = extractBadgeLabel(
+                descriptionPrice.label,
+                item.items?.[1] || computedDiscountPercentage,
+              );
+              const badgeCopy = badgeText
+                ? badgeText.startsWith("DESCUENTO")
+                  ? badgeText
+                  : `DESCUENTO DEL ${badgeText}`
+                : "";
+              const primaryPriceLabel =
+                item.items?.[0]?.trim() || descriptionPrice.label || "Valor con subsidio";
+              const primaryPriceAmount =
+                item.items?.[2]?.trim() || descriptionPrice.amount;
+              const officialPriceLabel = titlePrice.label || "Valor oficial";
+              const priceCardHref = item.url?.trim() || "#default-form";
+              const shouldCenterSecondaryCard = validItems.length <= 2;
 
               return (
                 <article
-                  className="rounded-2xl border border-[var(--landing-primary-light)] bg-white/88 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className={`rounded-2xl border border-[var(--landing-primary-light)] p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                    isPriceCard
+                      ? "bg-[linear-gradient(180deg,#ffc400_0%,#efb800_100%)] shadow-[0_24px_54px_color-mix(in_srgb,var(--landing-secondary)_36%,transparent)]"
+                      : "bg-white/88"
+                  }`}
                   key={`${item.title || "item"}-${index}`}
                 >
                   {isPriceCard ? (
-                    <div className="space-y-6">
-                      <div>
-                        <p className="text-2xl font-bold leading-tight tracking-tight text-slate-950">
-                          {descriptionPrice.label}
+                    <div className="flex min-h-[340px] flex-col items-center justify-center text-center">
+                      {badgeCopy ? (
+                        <span className="inline-flex rounded-full bg-[rgba(7,23,53,0.14)] px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--landing-primary-darkest)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]">
+                          {badgeCopy}
+                        </span>
+                      ) : null}
+                      <div className="mt-6">
+                        <p className="text-lg font-semibold leading-7 text-[var(--landing-primary-darkest)] md:text-2xl">
+                          {primaryPriceLabel}
                         </p>
-                        <p className="mt-2 text-4xl font-bold leading-tight tracking-tight text-slate-950">
-                          {descriptionPrice.amount}
+                        <p className="mt-2 text-5xl font-bold leading-none tracking-tight text-[var(--landing-primary-darkest)] md:text-6xl">
+                          {primaryPriceAmount}
                         </p>
                       </div>
-                      <div className="h-px bg-[var(--landing-primary-light)]" />
-                      <div>
-                        <p className="text-sm font-semibold leading-6 text-slate-600">
-                          {titlePrice.label}
-                        </p>
-                        <p className="mt-1 text-2xl font-bold leading-tight tracking-tight text-slate-500 line-through decoration-[var(--landing-secondary-dark)] decoration-2">
+                      <div className="mt-5 text-base leading-7 text-[var(--landing-primary-darkest)]/80 md:text-lg">
+                        <span>Antes </span>
+                        <span className="font-semibold line-through decoration-[var(--landing-primary-darkest)]/70 decoration-2">
                           {titlePrice.amount}
-                        </p>
+                        </span>
+                        <span>{` · ${officialPriceLabel.toLowerCase()}`}</span>
                       </div>
+                      <a
+                        href={priceCardHref}
+                        target={priceCardHref.startsWith("#") ? undefined : "_blank"}
+                        rel={priceCardHref.startsWith("#") ? undefined : "noreferrer"}
+                        className="mt-8 inline-flex min-h-12 items-center justify-center rounded-2xl bg-[var(--landing-primary-darkest)] px-8 py-3.5 text-lg font-extrabold text-white no-underline shadow-[0_18px_34px_rgba(15,23,42,0.22)] transition-all duration-300 hover:scale-[1.02] hover:opacity-95"
+                      >
+                        {item.url ? viewMoreLabel : "Quiero inscribirme"}
+                      </a>
                     </div>
                   ) : (
-                    <>
+                    <div
+                      className={
+                        shouldCenterSecondaryCard
+                          ? "flex min-h-[340px] flex-col items-center justify-center text-center"
+                          : ""
+                      }
+                    >
                       {item.title ? (
                         <h3 className="text-2xl font-bold leading-tight tracking-tight text-slate-950">
                           {item.titlePath ? (
@@ -217,7 +290,11 @@ export default function DefaultLandingDetailCardsSection({
                       ) : null}
 
                       {item.items?.length ? (
-                        <ul className="mt-5 space-y-3 text-left text-base leading-7 text-slate-700">
+                        <ul
+                          className={`mt-5 space-y-3 text-base leading-7 text-slate-700 ${
+                            shouldCenterSecondaryCard ? "text-left" : "text-left"
+                          }`}
+                        >
                           {item.items.map((bullet, bulletIndex) => (
                             <li
                               key={`${bullet}-${bulletIndex}`}
@@ -237,7 +314,7 @@ export default function DefaultLandingDetailCardsSection({
                           ))}
                         </ul>
                       ) : null}
-                    </>
+                    </div>
                   )}
 
                   {item.url ? (
@@ -253,11 +330,13 @@ export default function DefaultLandingDetailCardsSection({
                 </article>
               );
             })}
-            <div className="flex min-h-[220px] items-center justify-center empty:hidden">
+          </div>
+            <div className="mt-5 flex min-h-[56px] items-center justify-center empty:hidden">
               <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
             </div>
-          </div>
+          </>
         ) : validItems.length > 0 ? (
+          <>
           <div className={landingCardGridClass}>
             {validItems.map((item, index) => (
               <article
@@ -325,10 +404,11 @@ export default function DefaultLandingDetailCardsSection({
                 ) : null}
               </article>
             ))}
-            <div className="flex min-h-[220px] items-center justify-center empty:hidden">
+          </div>
+            <div className="mt-5 flex min-h-[56px] items-center justify-center empty:hidden">
               <LiveAddItemButton path={itemsPath} liveEdit={liveEdit} />
             </div>
-          </div>
+          </>
         ) : null}
 
         {resolvedButtonUrl || (liveEdit?.enabled && buttonUrlPath) ? (
