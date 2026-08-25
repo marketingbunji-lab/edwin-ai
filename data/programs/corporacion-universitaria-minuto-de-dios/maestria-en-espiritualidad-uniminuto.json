@@ -29,16 +29,17 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "highlight": "",
     "title": "Maestría en Espiritualidad",
     "subtitle": "",
     "description": "SNIES 118706 · Resolución de registro calificado: 023380 del 28/11/25 · Vigencia 7 años.",
-    "supportText": "Acreditación en Alta Calidad: Resolución 118706 · Vigencia 7 años.",
+    "supportText": "",
     "modality": "100% Virtual",
     "price": "$ 7.583.800",
     "discountedPrice": "$3.791.900",
@@ -90,10 +91,33 @@
   ],
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "items": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-form-bg-3cb7bbd73d62.jpg",
+    "items": [],
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una propuesta formativa única en modalidad 100% virtual.",
+          "Un programa interconfesional e interdenominacional.",
+          "Cuerpo docente con Maestría o Doctorado, integrado por académicos, investigadores y formadores con trayectoria en Sagrada Escritura y teología.",
+          "Posibilidad de fortalecer el perfil profesional mediante rutas de aprendizaje e insignias digitales ofrecidas por la Institución.",
+          "Una experiencia académica que desarrolla una mirada crítica y fortalece la vocación de servicio y el acompañamiento espiritual."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "benefits": {
     "eyebrow": "",
@@ -150,9 +174,7 @@
     "modality": "Online",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -203,7 +225,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "Una formación integral que combina excelencia académica con profundidad espiritual y transformación personal",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-conoce-d6dc66c36ed2.jpg",
     "items": [
@@ -242,11 +264,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "El perfil del egresado está representado en competencias que integran atributos, conocimientos, habilidades y actitudes que se proyectan en los egresados de la Maestría en Espiritualidad, así:",
         "listStyle": "bullets",
@@ -359,21 +381,8 @@
         "groups": []
       },
       {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
-        ],
-        "groups": []
-      },
-      {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
         "title": "Ruta de aprendizaje",
         "description": "",
         "listStyle": "steps",
@@ -386,37 +395,8 @@
         "groups": []
       }
     ],
-    "cards": [
-      {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
-        "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
-        ]
-      },
-      {
-        "title": "Convenios Internacionales",
-        "icon": "globe",
-        "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
-        ]
-      }
-    ]
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/b8d1f8ed-a461-4eaf-9327-5f57654be63a-836ac084e918.png"
   },
   "curriculum": {
     "eyebrow": "",
@@ -447,7 +427,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "handsOnTraining": {
     "enabled": false,
@@ -488,11 +469,7 @@
         "description": "Valor primer semestre subsidiado (50% de descuento) $3.791.900",
         "url": "",
         "image": "",
-        "items": [
-          "Valor primer semestre subsidiado",
-          "50%",
-          "$3.791.900"
-        ]
+        "items": ["Valor primer semestre subsidiado", "50%", "$3.791.900"]
       },
       {
         "title": "Para los semestres posteriores",
@@ -589,7 +566,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "formSection": {
     "enabled": true,

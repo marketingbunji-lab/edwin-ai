@@ -16,6 +16,8 @@
   "primaryColor": "#003085",
   "secondaryColor": "#FFD300",
   "description": "Somos la Corporación Universitaria Minuto de Dios -UNIMINUTO-, más de 300 programas académicos entre pregrado, posgrado y educación continua.",
+  "footerLegalText": "Todos los derechos Reservados. UNIMINUTO 2020 ©\nInstitución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación Nacional.\nPersonería jurídica: Resolución 10345 del 1 de agosto de 1990 MEN.\nCORPORACIÓN UNIVERSITARIA MINUTO DE DIOS",
+  "showFooterContact": false,
   "officialWebsite": "https://www.uniminuto.edu",
   "siteName": "Corporación Universitaria Minuto de Dios",
   "abstract": "",

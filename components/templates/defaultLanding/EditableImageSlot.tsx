@@ -3,6 +3,7 @@ type Props = {
   label: string;
   value?: string;
   className?: string;
+  variant?: "default" | "landscape";
 };
 
 export const editableImageClass =
@@ -13,14 +14,20 @@ export default function EditableImageSlot({
   label,
   value = "",
   className = "",
+  variant = "default",
 }: Props) {
+  const layoutClass =
+    variant === "landscape"
+      ? "aspect-video min-h-0 rounded-2xl p-5"
+      : "min-h-[320px] rounded-3xl p-8 lg:min-h-[520px]";
+
   return (
     <div
       data-live-image-path={path}
       data-live-image-label={label}
       data-live-image-value={value}
       title="Click para agregar o reemplazar esta imagen"
-      className={`${className} ${editableImageClass} flex min-h-[320px] cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-[var(--bunji-primary)]/40 bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))] p-8 text-center text-[var(--landing-primary-darkest)] shadow-xl ring-1 ring-slate-200 lg:min-h-[520px]`}
+      className={`${className} ${layoutClass} ${editableImageClass} flex cursor-pointer flex-col items-center justify-center gap-3 border border-dashed border-[var(--bunji-primary)]/40 bg-[linear-gradient(135deg,var(--landing-primary-lightest),var(--landing-secondary-lightest))] text-center text-[var(--landing-primary-darkest)] shadow-xl ring-1 ring-slate-200`}
     >
       <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/80 text-2xl shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
         +

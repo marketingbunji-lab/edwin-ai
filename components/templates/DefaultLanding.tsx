@@ -15,6 +15,7 @@ import { getLandingTemplateCopy } from "@/lib/landingLanguage";
 import GraduateProfileSection from "./GraduateProfileSection";
 import OpportunityToWorkSection from "./OpportunityToWorkSection";
 import DefaultLandingBenefitsSection from "./defaultLanding/DefaultLandingBenefitsSection";
+import DefaultLandingBackToTopButton from "./defaultLanding/DefaultLandingBackToTopButton";
 import DefaultLandingCampusesSection from "./defaultLanding/DefaultLandingCampusesSection";
 import DefaultLandingCertificationsSection from "./defaultLanding/DefaultLandingCertificationsSection";
 import DefaultLandingCtaSection from "./defaultLanding/DefaultLandingCtaSection";
@@ -204,35 +205,42 @@ function normalizeIconTextItems(
   if (!Array.isArray(items)) return [];
 
   return items
-    .map((item, index): (IconTextItem & {
-      titlePath: string;
-      textPath: string;
-    }) | null => {
-      if (typeof item === "string") {
-        const value = item.trim();
-        return value
+    .map(
+      (
+        item,
+        index,
+      ):
+        | (IconTextItem & {
+            titlePath: string;
+            textPath: string;
+          })
+        | null => {
+        if (typeof item === "string") {
+          const value = item.trim();
+          return value
+            ? {
+                title: "",
+                text: value,
+                titlePath: "",
+                textPath: `${arrayPath}.${index}`,
+              }
+            : null;
+        }
+
+        const title = item?.title?.trim() || "";
+        const text = item?.text?.trim() || item?.description?.trim() || "";
+
+        return title || text
           ? {
-              title: "",
-              text: value,
-              titlePath: "",
-              textPath: `${arrayPath}.${index}`,
+              ...item,
+              title,
+              text,
+              titlePath: `${arrayPath}.${index}.title`,
+              textPath: `${arrayPath}.${index}.text`,
             }
           : null;
-      }
-
-      const title = item?.title?.trim() || "";
-      const text = item?.text?.trim() || item?.description?.trim() || "";
-
-      return title || text
-        ? {
-            ...item,
-            title,
-            text,
-            titlePath: `${arrayPath}.${index}.title`,
-            textPath: `${arrayPath}.${index}.text`,
-          }
-        : null;
-    })
+      },
+    )
     .filter(
       (
         item,
@@ -363,11 +371,11 @@ function hasMeaningfulTitleDescriptionItems(
 
       return Boolean(
         item?.title?.trim() ||
-          item?.description?.trim() ||
-          item?.content?.trim() ||
-          item?.text?.trim() ||
-          item?.url?.trim() ||
-          item?.image?.trim(),
+        item?.description?.trim() ||
+        item?.content?.trim() ||
+        item?.text?.trim() ||
+        item?.url?.trim() ||
+        item?.image?.trim(),
       );
     }),
   );
@@ -376,22 +384,22 @@ function hasMeaningfulTitleDescriptionItems(
 function hasProgramExplorerContent(explorer?: Landing["programExplorer"]) {
   return Boolean(
     explorer?.enabled &&
-      ((explorer.tabs ?? []).some(
-        (tab) =>
-          tab.title?.trim() ||
-          tab.description?.trim() ||
-          tab.items?.some((item) => item.trim()) ||
-          tab.groups?.some(
-            (group) =>
-              group.title?.trim() ||
-              group.items?.some(
-                (item) => item.label?.trim() || item.value?.trim(),
-              ),
-          ),
-      ) ||
-        (explorer.cards ?? []).some(
-          (card) => card.title?.trim() || card.items?.some((item) => item.trim()),
-        )),
+    ((explorer.tabs ?? []).some(
+      (tab) =>
+        tab.title?.trim() ||
+        tab.description?.trim() ||
+        tab.items?.some((item) => item.trim()) ||
+        tab.groups?.some(
+          (group) =>
+            group.title?.trim() ||
+            group.items?.some(
+              (item) => item.label?.trim() || item.value?.trim(),
+            ),
+        ),
+    ) ||
+      (explorer.cards ?? []).some(
+        (card) => card.title?.trim() || card.items?.some((item) => item.trim()),
+      )),
   );
 }
 
@@ -417,7 +425,9 @@ export default function DefaultLanding({
   const hero = landing.hero ?? {};
   const whyStudy = landing.whyStudy ?? {};
   const supportSection = landing.supportSection ?? landing.studentSupport ?? {};
-  const supportSectionPath = landing.supportSection ? "supportSection" : "studentSupport";
+  const supportSectionPath = landing.supportSection
+    ? "supportSection"
+    : "studentSupport";
   const benefits = landing.benefits ?? {};
   const cta = landing.cta ?? {};
   const form = landing.form ?? {};
@@ -477,7 +487,8 @@ export default function DefaultLanding({
         items.find(
           (item) =>
             typeof item !== "string" &&
-            `${item.name || item.title || ""}|${item.url || ""}` === certificationKey,
+            `${item.name || item.title || ""}|${item.url || ""}` ===
+              certificationKey,
         ) ?? items[index];
 
       return {
@@ -559,48 +570,49 @@ export default function DefaultLanding({
   const heroVariant = hero.variant || "default";
   const hasOverviewSection = Boolean(
     overview.title?.trim() ||
-      overview.description?.trim() ||
-      overview.image?.trim() ||
-      overviewItems.length > 0,
+    overview.description?.trim() ||
+    overview.image?.trim() ||
+    overviewItems.length > 0,
   );
   const hasWhyStudySection = Boolean(
     whyStudy.title?.trim() ||
-      whyStudy.description?.trim() ||
-      whyStudy.image?.trim() ||
-      whyStudyItems.length > 0,
+    whyStudy.description?.trim() ||
+    whyStudy.image?.trim() ||
+    whyStudyItems.length > 0,
   );
   const hasGraduateProfileSection = Boolean(
     graduateProfile.title?.trim() ||
-      graduateProfile.image?.trim() ||
-      hasMeaningfulTitleDescriptionItems(graduateProfile.items),
+    graduateProfile.image?.trim() ||
+    hasMeaningfulTitleDescriptionItems(graduateProfile.items),
   );
   const careerSectionData = landing.opportunityToWork ?? landing.careerOutcomes;
   const hasCareerSection = Boolean(
     careerSectionData?.subtitle?.trim() ||
-      careerSectionData?.image?.trim() ||
-      hasMeaningfulTitleDescriptionItems(careerSectionData?.items),
+    careerSectionData?.image?.trim() ||
+    hasMeaningfulTitleDescriptionItems(careerSectionData?.items),
   );
   const hasCurriculumSection = Boolean(
-    curriculum.description?.trim() ||
+    curriculum.enabled !== false &&
+    (curriculum.description?.trim() ||
       curriculum.buttonUrl?.trim() ||
       curriculum.downloadUrl?.trim() ||
-      curriculumItems.length > 0,
+      curriculumItems.length > 0),
   );
   const hasHandsOnSection = Boolean(
     handsOnTraining.enabled &&
-      (handsOnTraining.description?.trim() || handsOnTrainingItems.length > 0),
+    (handsOnTraining.description?.trim() || handsOnTrainingItems.length > 0),
   );
   const hasExternshipSection = Boolean(
     externship.enabled &&
-      (externship.description?.trim() ||
-        externship.image?.trim() ||
-        externship.hours?.trim() ||
-        externship.partners?.some((partner) => partner.trim())),
+    (externship.description?.trim() ||
+      externship.image?.trim() ||
+      externship.hours?.trim() ||
+      externship.partners?.some((partner) => partner.trim())),
   );
   const hasBenefitsSection = benefitItems.length > 0;
   const hasFinancialAidSection = Boolean(
     financialAid.enabled &&
-      (financialAid.description?.trim() || financialAidItems.length > 0),
+    (financialAid.description?.trim() || financialAidItems.length > 0),
   );
   const hasTestimonialsSection = Boolean(
     (landing.testimonials ?? []).some(
@@ -614,11 +626,10 @@ export default function DefaultLanding({
   );
   const hasCampusesSection = Boolean(
     campuses.length > 0 &&
-      landing.delivery?.campuses?.some((campus) => campus.trim()),
+    landing.delivery?.campuses?.some((campus) => campus.trim()),
   );
   const configuredHeroMenuItems = hero.menuItems;
-  const shouldFilterHeroMenu =
-    Array.isArray(configuredHeroMenuItems);
+  const shouldFilterHeroMenu = Array.isArray(configuredHeroMenuItems);
   const heroMenuItems: HeroMenuItem[] = [
     hasOverviewSection
       ? {
@@ -626,10 +637,10 @@ export default function DefaultLanding({
           label: toMenuLabel(overview.title || copy.overviewTitle),
         }
       : null,
-    hasWhyStudySection
+    hasProgramExplorerSection
       ? {
-          id: "landing-why-study",
-          label: toMenuLabel(whyStudy.title || copy.whyStudyTitle),
+          id: "landing-program-explorer",
+          label: toMenuLabel(programExplorer.title || "Conoce el programa"),
         }
       : null,
     hasGraduateProfileSection
@@ -638,6 +649,12 @@ export default function DefaultLanding({
           label: toMenuLabel(
             graduateProfile.title || copy.graduateProfileEyebrow,
           ),
+        }
+      : null,
+    hasWhyStudySection
+      ? {
+          id: "landing-why-study",
+          label: toMenuLabel(whyStudy.title || copy.whyStudyTitle),
         }
       : null,
     hasCareerSection
@@ -738,163 +755,174 @@ export default function DefaultLanding({
           "--landing-secondary-dark": colorPalette.secondary?.dark,
           "--landing-secondary-darkest": colorPalette.secondary?.darkest,
           "--landing-page-bg": "#f8fbff",
-          "--landing-soft-bg": colorPalette.primary?.lightest || getSoftBackground(primaryColor),
-          "--landing-accent-bg": colorPalette.secondary?.lightest || getSoftBackground(secondaryColor),
+          "--landing-soft-bg":
+            colorPalette.primary?.lightest || getSoftBackground(primaryColor),
+          "--landing-accent-bg":
+            colorPalette.secondary?.lightest ||
+            getSoftBackground(secondaryColor),
         } as React.CSSProperties
       }
     >
-      {googleFontHref ? <style>{`@import url("${googleFontHref}");`}</style> : null}
+      {googleFontHref ? (
+        <style>{`@import url("${googleFontHref}");`}</style>
+      ) : null}
 
       {heroVariant === "option-b" && (heroMenuItems.length > 0 || ctaButton) ? (
         <>
-        <div
-          className={`z-50 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_88%,transparent)] shadow-[0_18px_48px_rgba(2,6,23,0.22)] backdrop-blur-xl ${
-            isPreviewMode ? "sticky top-0" : "fixed inset-x-0 top-0"
-          }`}
-        >
-          <div className={`${landingContainerClass} py-3`}>
-            <nav
-              aria-label="Navegación de secciones"
-              className="grid w-full grid-cols-[auto_auto] items-center justify-between gap-4 md:grid-cols-[auto_minmax(0,1fr)_auto]"
-            >
-              {heroLogo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={heroLogo}
-                  alt={brandName}
-                  data-landing-logo-mode-control={liveEdit?.enabled ? "true" : undefined}
-                  className={`h-12 w-auto max-w-[220px] rounded-lg object-contain object-left sm:h-[60px] sm:max-w-[260px] lg:h-[84px] lg:max-w-[340px] ${
-                    liveEdit?.enabled
-                      ? "outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-4 transition hover:bg-[var(--bunji-primary,#6d5dfc)]/10"
-                      : ""
-                  }`}
-                />
-              ) : null}
+          <div
+            className={`z-50 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_88%,transparent)] shadow-[0_18px_48px_rgba(2,6,23,0.22)] backdrop-blur-xl ${
+              isPreviewMode ? "sticky top-0" : "fixed inset-x-0 top-0"
+            }`}
+          >
+            <div className={`${landingContainerClass} py-3`}>
+              <nav
+                aria-label="Navegación de secciones"
+                className="grid w-full grid-cols-[auto_auto] items-center justify-between gap-4 md:grid-cols-[auto_minmax(0,1fr)_auto]"
+              >
+                {heroLogo ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={heroLogo}
+                    alt={brandName}
+                    data-landing-logo-mode-control={
+                      liveEdit?.enabled ? "true" : undefined
+                    }
+                    className={`h-12 w-auto max-w-[220px] rounded-lg object-contain object-left sm:h-[60px] sm:max-w-[260px] lg:h-[84px] lg:max-w-[340px] ${
+                      liveEdit?.enabled
+                        ? "outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-4 transition hover:bg-[var(--bunji-primary,#6d5dfc)]/10"
+                        : ""
+                    }`}
+                  />
+                ) : null}
 
-              {heroMenuItems.length > 0 ? (
-                <div className="hidden min-w-0 flex-wrap items-center gap-x-5 gap-y-2 md:flex lg:gap-x-5">
-                  {heroMenuItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="landing-export-header-link whitespace-nowrap text-sm font-semibold leading-snug text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              ) : null}
-
-              {heroMenuItems.length > 0 ? (
-                <details className="group relative z-20 block justify-self-end md:hidden">
-                  <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[var(--landing-secondary-light)] bg-[var(--landing-secondary)] text-[var(--landing-secondary-text)] shadow-[0_12px_28px_rgba(2,6,23,0.18)] transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [&::-webkit-details-marker]:hidden">
-                    <span className="sr-only">Abrir menú</span>
-                    <span className="grid gap-1.5">
-                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:translate-y-2 group-open:rotate-45" />
-                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:opacity-0" />
-                      <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:-translate-y-2 group-open:-rotate-45" />
-                    </span>
-                  </summary>
-                  <div className="absolute right-0 mt-3 grid w-[min(78vw,300px)] gap-1 rounded-2xl border border-white/18 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_94%,transparent)] p-2 shadow-2xl shadow-slate-950/35 backdrop-blur-xl">
+                {heroMenuItems.length > 0 ? (
+                  <div className="hidden min-w-0 flex-wrap items-center gap-x-5 gap-y-2 md:flex lg:gap-x-5">
                     {heroMenuItems.map((item) => (
                       <a
                         key={item.id}
                         href={`#${item.id}`}
-                        className="landing-export-mobile-link rounded-xl px-4 py-3 text-sm font-semibold leading-snug text-white/90 no-underline transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="landing-export-header-link whitespace-nowrap text-sm font-semibold leading-snug text-white/88 no-underline transition hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
                         {item.label}
                       </a>
                     ))}
                   </div>
-                </details>
-              ) : null}
+                ) : null}
 
-              {ctaButton ? (
-                <a
-                  href="#default-form"
-                  className="landing-export-header-cta hidden min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:inline-flex lg:justify-self-end"
-                >
-                  {landing.language === "en" ? "Enroll now" : "Inscríbete ahora"}
-                </a>
-              ) : null}
-            </nav>
+                {heroMenuItems.length > 0 ? (
+                  <details className="group relative z-20 block justify-self-end md:hidden">
+                    <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full border border-[var(--landing-secondary-light)] bg-[var(--landing-secondary)] text-[var(--landing-secondary-text)] shadow-[0_12px_28px_rgba(2,6,23,0.18)] transition hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white [&::-webkit-details-marker]:hidden">
+                      <span className="sr-only">Abrir menú</span>
+                      <span className="grid gap-1.5">
+                        <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:translate-y-2 group-open:rotate-45" />
+                        <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:opacity-0" />
+                        <span className="block h-0.5 w-5 rounded-full bg-current transition group-open:-translate-y-2 group-open:-rotate-45" />
+                      </span>
+                    </summary>
+                    <div className="absolute right-0 mt-3 grid w-[min(78vw,300px)] gap-1 rounded-2xl border border-white/18 bg-[color-mix(in_srgb,var(--landing-primary-darkest)_94%,transparent)] p-2 shadow-2xl shadow-slate-950/35 backdrop-blur-xl">
+                      {heroMenuItems.map((item) => (
+                        <a
+                          key={item.id}
+                          href={`#${item.id}`}
+                          className="landing-export-mobile-link rounded-xl px-4 py-3 text-sm font-semibold leading-snug text-white/90 no-underline transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </details>
+                ) : null}
+
+                {ctaButton ? (
+                  <a
+                    href="#default-form"
+                    className="landing-export-header-cta hidden min-h-11 items-center justify-center justify-self-start rounded-full border border-[var(--landing-secondary-light)] bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-extrabold text-[var(--landing-secondary-text)] no-underline shadow-[0_14px_34px_color-mix(in_srgb,var(--landing-secondary)_35%,transparent)] transition hover:scale-[1.02] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:inline-flex lg:justify-self-end"
+                  >
+                    {landing.language === "en"
+                      ? "Enroll now"
+                      : "Inscríbete ahora"}
+                  </a>
+                ) : null}
+              </nav>
+            </div>
           </div>
-        </div>
         </>
       ) : null}
 
       <div id="landing-hero" className="scroll-mt-24">
-      {heroVariant === "option-b" ? (
-        <DefaultLandingHeroSectionB
-        menuItems={heroMenuItems}
-        menuCtaLabel={landing.language === "en" ? "Enroll now" : "Inscribete ahora"}
-        logo={heroLogo}
-        brandName={brandName}
-        eyebrowText={eyebrowText}
-        heroTitle={heroTitle}
-        heroSubtitle={hero.subtitle || ""}
-        heroDescription={heroDescription}
-        heroSupportText={hero.supportText || ""}
-        price={hero.price || ""}
-        discountedPrice={hero.discountedPrice || ""}
-        discountPercentage={hero.discountPercentage || ""}
-        discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
-        resolutionText={heroResolutionText}
-        summaryItems={heroSummaryItems}
-        fullTitle={fullTitle}
-        title={title}
-        form={form}
-        ctaButton={ctaButton}
-        formTitle={formTitle}
-        formDescription={formDescription}
-        submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
-        fullNameLabel={copy.formFullNameLabel}
-        phoneLabel={copy.formPhoneLabel}
-        emailLabel={copy.formEmailLabel}
-        zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
-        primaryColor={primaryColor}
-        mode={mode}
-        hasConfiguredForm={hasConfiguredForm}
-        backgroundImage={hero.backgroundImage || ""}
-        heroOverlayColor={heroOverlayColor}
-        liveEdit={liveEdit}
-        showMenu={false}
-        />
-      ) : (
-        <DefaultLandingHeroSection
-          logo={heroLogo}
-          brandName={brandName}
-          eyebrowText={eyebrowText}
-          heroTitle={heroTitle}
-          heroSubtitle={hero.subtitle || ""}
-          heroDescription={heroDescription}
-          heroSupportText={hero.supportText || ""}
-          price={hero.price || ""}
-          discountedPrice={hero.discountedPrice || ""}
-          discountPercentage={hero.discountPercentage || ""}
-          discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
-          resolutionText={heroResolutionText}
-          summaryItems={heroSummaryItems}
-          fullTitle={fullTitle}
-          title={title}
-          form={form}
-          ctaButton={ctaButton}
-          formTitle={formTitle}
-          formDescription={formDescription}
-          submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
-          fullNameLabel={copy.formFullNameLabel}
-          phoneLabel={copy.formPhoneLabel}
-          emailLabel={copy.formEmailLabel}
-          zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
-          primaryColor={primaryColor}
-          mode={mode}
-          hasConfiguredForm={hasConfiguredForm}
-          backgroundImage={hero.backgroundImage || ""}
-          heroOverlayColor={heroOverlayColor}
-          liveEdit={liveEdit}
-          showForm={!hasStandaloneFormSection}
-        />
-      )}
+        {heroVariant === "option-b" ? (
+          <DefaultLandingHeroSectionB
+            menuItems={heroMenuItems}
+            menuCtaLabel={
+              landing.language === "en" ? "Enroll now" : "Inscribete ahora"
+            }
+            logo={heroLogo}
+            brandName={brandName}
+            eyebrowText={eyebrowText}
+            heroTitle={heroTitle}
+            heroSubtitle={hero.subtitle || ""}
+            heroDescription={heroDescription}
+            heroSupportText={hero.supportText || ""}
+            price={hero.price || ""}
+            discountedPrice={hero.discountedPrice || ""}
+            discountPercentage={hero.discountPercentage || ""}
+            discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
+            resolutionText={heroResolutionText}
+            summaryItems={heroSummaryItems}
+            fullTitle={fullTitle}
+            title={title}
+            form={form}
+            ctaButton={ctaButton}
+            formTitle={formTitle}
+            formDescription={formDescription}
+            submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
+            fullNameLabel={copy.formFullNameLabel}
+            phoneLabel={copy.formPhoneLabel}
+            emailLabel={copy.formEmailLabel}
+            zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
+            primaryColor={primaryColor}
+            mode={mode}
+            hasConfiguredForm={hasConfiguredForm}
+            backgroundImage={hero.backgroundImage || ""}
+            heroOverlayColor={heroOverlayColor}
+            liveEdit={liveEdit}
+            showMenu={false}
+          />
+        ) : (
+          <DefaultLandingHeroSection
+            logo={heroLogo}
+            brandName={brandName}
+            eyebrowText={eyebrowText}
+            heroTitle={heroTitle}
+            heroSubtitle={hero.subtitle || ""}
+            heroDescription={heroDescription}
+            heroSupportText={hero.supportText || ""}
+            price={hero.price || ""}
+            discountedPrice={hero.discountedPrice || ""}
+            discountPercentage={hero.discountPercentage || ""}
+            discountSuffix={landing.language === "en" ? "OFF" : "DTO"}
+            resolutionText={heroResolutionText}
+            summaryItems={heroSummaryItems}
+            fullTitle={fullTitle}
+            title={title}
+            form={form}
+            ctaButton={ctaButton}
+            formTitle={formTitle}
+            formDescription={formDescription}
+            submitLabel={form.submitLabel?.trim() || copy.formSubmitLabel}
+            fullNameLabel={copy.formFullNameLabel}
+            phoneLabel={copy.formPhoneLabel}
+            emailLabel={copy.formEmailLabel}
+            zipLabel={landing.language === "es" ? "Código postal" : "ZIP Code"}
+            primaryColor={primaryColor}
+            mode={mode}
+            hasConfiguredForm={hasConfiguredForm}
+            backgroundImage={hero.backgroundImage || ""}
+            heroOverlayColor={heroOverlayColor}
+            liveEdit={liveEdit}
+            showForm={!hasStandaloneFormSection}
+          />
+        )}
       </div>
 
       {hasStandaloneFormSection ? (
@@ -938,34 +966,24 @@ export default function DefaultLanding({
       ) : null}
 
       {hasProgramExplorerSection ? (
-        mode === "export" ? (
-          <DefaultLandingProgramExplorerSectionStatic
-            explorer={programExplorer}
-            liveEdit={liveEdit}
-          />
-        ) : (
-          <DefaultLandingProgramExplorerSection
-            explorer={programExplorer}
-            liveEdit={liveEdit}
-          />
-        )
-      ) : null}
-
-      {hasWhyStudySection ? (
-        <div id="landing-why-study" className="scroll-mt-24">
-          <DefaultLandingWhyStudySection
-            brandName={brandName}
-            eyebrow={whyStudy.eyebrow || ""}
-            sectionId={landing.slug}
-            title={whyStudy.title || ""}
-            description={whyStudy.description || ""}
-            image={whyStudy.image || ""}
-            logo={logo}
-            heroTitle={title}
-            items={whyStudyItems}
-            liveEdit={liveEdit}
-            eyebrowPath="whyStudy.eyebrow"
-          />
+        <div id="landing-program-explorer" className="scroll-mt-24">
+          {mode === "export" ? (
+            <DefaultLandingProgramExplorerSectionStatic
+              explorer={programExplorer}
+              planDownloadUrl={
+                curriculum.buttonUrl || curriculum.downloadUrl || ""
+              }
+              liveEdit={liveEdit}
+            />
+          ) : (
+            <DefaultLandingProgramExplorerSection
+              explorer={programExplorer}
+              planDownloadUrl={
+                curriculum.buttonUrl || curriculum.downloadUrl || ""
+              }
+              liveEdit={liveEdit}
+            />
+          )}
         </div>
       ) : null}
 
@@ -982,6 +1000,25 @@ export default function DefaultLanding({
         </div>
       ) : null}
 
+      {hasWhyStudySection ? (
+        <div id="landing-why-study" className="scroll-mt-24">
+          <DefaultLandingWhyStudySection
+            brandName={brandName}
+            eyebrow={whyStudy.eyebrow || ""}
+            sectionId={landing.slug}
+            title={whyStudy.title || ""}
+            description={whyStudy.description || ""}
+            image={whyStudy.image || ""}
+            logo={logo}
+            heroTitle={title}
+            items={whyStudyItems}
+            cards={whyStudy.cards ?? []}
+            liveEdit={liveEdit}
+            eyebrowPath="whyStudy.eyebrow"
+          />
+        </div>
+      ) : null}
+
       {hasCareerSection ? (
         <div id="landing-career-opportunities" className="scroll-mt-24">
           <OpportunityToWorkSection
@@ -990,7 +1027,9 @@ export default function DefaultLanding({
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             liveEdit={liveEdit}
-            basePath={landing.opportunityToWork ? "opportunityToWork" : "careerOutcomes"}
+            basePath={
+              landing.opportunityToWork ? "opportunityToWork" : "careerOutcomes"
+            }
           />
         </div>
       ) : null}
@@ -1105,7 +1144,9 @@ export default function DefaultLanding({
             title={financialAid.title || ""}
             description={financialAid.description || ""}
             items={financialAidItems}
-            variant={financialAid.variant === "option-b" ? "secondary-b" : "secondary"}
+            variant={
+              financialAid.variant === "option-b" ? "secondary-b" : "secondary"
+            }
             viewMoreLabel={copy.sectionViewMore}
             liveEdit={liveEdit}
             eyebrowPath="financialAid.eyebrow"
@@ -1171,15 +1212,22 @@ export default function DefaultLanding({
         logo={footerLogo}
         brandName={brandName}
         description={brand.description || ""}
-        advisorName={contact.advisorName || ""}
-        advisorTitle={contact.advisorTitle || ""}
-        phone={contact.phone || ""}
-        email={contact.email || ""}
+        legalText={brand.footerLegalText || ""}
+        advisorName={
+          brand.showFooterContact === false ? "" : contact.advisorName || ""
+        }
+        advisorTitle={
+          brand.showFooterContact === false ? "" : contact.advisorTitle || ""
+        }
+        phone={brand.showFooterContact === false ? "" : contact.phone || ""}
+        email={brand.showFooterContact === false ? "" : contact.email || ""}
         legalLinks={legalLinks}
         phoneLabel={copy.footerPhoneLabel}
         emailLabel={copy.footerEmailLabel}
         legalLinksAriaLabel={copy.legalLinksAriaLabel}
       />
+
+      <DefaultLandingBackToTopButton showWhatsApp={!liveEdit?.enabled} />
 
       {footerScripts.map((script, index) =>
         mode === "export" ? (

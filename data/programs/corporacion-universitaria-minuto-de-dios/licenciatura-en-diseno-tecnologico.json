@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true
   },
   "duration": {
@@ -57,14 +55,15 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "title": "Licenciatura en Diseño Tecnológico",
     "description": "SNIES 119435 · Resolución de registro calificado 14342 del 26/05/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Licenciado/a/e en Diseño Tecnológico.",
+    "supportText": "",
     "modality": "Virtual",
     "primaryCta": {
       "label": "Solicita información",
@@ -124,7 +123,7 @@
     }
   ],
   "overview": {
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño. Su propuesta académica fortalece la investigación, la inclusión y el uso estratégico de tecnologías para responder a los desafíos de la educación actual y futura, promoviendo experiencias de aprendizaje dinámicas, humanas y de alta calidad.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/licenciatura-en-diseno-tecnologico-2-0-052a7391d7a3.png"
   },
@@ -140,7 +139,8 @@
       {
         "description": "Explicar el desarrollo del área de Tecnología e Informática en el sistema educativo y su relación con otras áreas del conocimiento a partir del liderazgo pedagógico basado en la investigación formativa para el fortalecimiento de las habilidades del siglo XXI en las comunidades educativas."
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -177,7 +177,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "title": "Documentos de ingreso",
@@ -238,7 +239,7 @@
   },
   "formSection": {
     "enabled": true,
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como docente innovador en Diseño Tecnológico desarrollando capacidades para integrar pedagogía, tecnología e investigación, diseñar experiencias de aprendizaje inclusivas y transformar los procesos educativos frente a los desafíos del presente y el futuro.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/licenciatura-en-diseno-tecnologico-2-0-052a7391d7a3.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -248,11 +249,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "",
         "listStyle": "bullets",
@@ -472,73 +473,55 @@
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
-        ],
-        "groups": []
-      },
-      {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+          "Título de bachiller académico",
+          "Resultado de la prueba de estado para acceso a la educación superior (Pruebas ICFES)",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },
       {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
-        "title": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
+        "title": "Ruta de admisión",
         "description": "",
         "listStyle": "steps",
         "items": [
-          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
-          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
-          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
-          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
+          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
         ],
         "groups": []
       }
     ],
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/asset-2026-08-21T17-54-11-925Z.png"
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "¿Por qué estudiar con nosotros?",
+    "description": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/asset-2026-08-21T14-56-47-739Z.png",
+    "items": [],
     "cards": [
       {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
+        "title": "El programa",
+        "icon": "badge-check",
         "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+          "Una formación virtual que integra pedagogía, tecnología y diseño para transformar los procesos de enseñanza y aprendizaje.",
+          "Fortalece la creación de propuestas educativas innovadoras, dinámicas e inclusivas apoyadas en tecnologías.",
+          "Desarrolla capacidades para planear, analizar y mejorar experiencias de aprendizaje en diversos entornos educativos.",
+          "Promueve el liderazgo pedagógico y la investigación formativa para fortalecer las habilidades del siglo XXI."
         ]
       },
       {
-        "title": "Convenios Internacionales",
+        "title": "Información UNIMINUTO Virtual",
         "icon": "globe",
         "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
         ]
       }
     ]

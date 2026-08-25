@@ -51,6 +51,14 @@ type Props = {
   showMenu?: boolean;
 };
 
+function normalizeSummaryLabel(label?: string) {
+  return (label || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 export default function DefaultLandingHeroSectionB({
   eyebrowText,
   heroTitle,
@@ -73,7 +81,7 @@ export default function DefaultLandingHeroSectionB({
       : "pt-[108px] pb-24 sm:pt-[120px] lg:pt-[170px] md:pb-32";
   const highlightItem =
     summaryItems.find((item) =>
-      /titulo|degree|credential/i.test(item.label?.trim() || ""),
+      /titulo|degree|credential/.test(normalizeSummaryLabel(item.label)),
     ) ?? summaryItems[0];
   const detailItems = summaryItems
     .filter((item) => item !== highlightItem)
@@ -83,27 +91,35 @@ export default function DefaultLandingHeroSectionB({
   );
 
   const getItemIcon = (label?: string) => {
-    const normalizedLabel = label
-      ?.trim()
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+    const normalizedLabel = normalizeSummaryLabel(label);
 
     if (!normalizedLabel) return BookOpen;
-    if (/duracion|duration|semestre|semester|time/.test(normalizedLabel)) return Clock;
-    if (/credito|credit|snies|registro|acredit/.test(normalizedLabel)) return Award;
-    if (/modalidad|modality|format|virtual|online/.test(normalizedLabel)) return Monitor;
-    if (/area|knowledge|disciplina|field/.test(normalizedLabel)) return BookOpen;
+    if (/duracion|duration|semestre|semester|time/.test(normalizedLabel))
+      return Clock;
+    if (/credito|credit|snies|registro|acredit/.test(normalizedLabel))
+      return Award;
+    if (/modalidad|modality|format|virtual|online/.test(normalizedLabel))
+      return Monitor;
+    if (/area|knowledge|disciplina|field/.test(normalizedLabel))
+      return BookOpen;
     if (/titulo|degree|credential/.test(normalizedLabel)) return GraduationCap;
     return CalendarDays;
   };
 
   return (
     <section
-      data-live-image-path={liveEdit?.enabled && backgroundImage ? "hero.backgroundImage" : undefined}
+      data-live-image-path={
+        liveEdit?.enabled && backgroundImage
+          ? "hero.backgroundImage"
+          : undefined
+      }
       data-live-image-label="Imagen de fondo del hero"
       data-live-image-value={backgroundImage}
-      title={liveEdit?.enabled && backgroundImage ? "Click para reemplazar esta imagen" : undefined}
+      title={
+        liveEdit?.enabled && backgroundImage
+          ? "Click para reemplazar esta imagen"
+          : undefined
+      }
       className={`relative overflow-hidden text-[var(--landing-primary-text)] ${
         liveEdit?.enabled && backgroundImage
           ? "cursor-pointer outline outline-2 outline-dashed outline-[var(--bunji-primary,#6d5dfc)]/45 outline-offset-[-8px]"
@@ -206,7 +222,10 @@ export default function DefaultLandingHeroSectionB({
                       const itemIndex = summaryItems.indexOf(item);
 
                       return (
-                        <div key={`${item.label}-${itemIndex}`} className="flex gap-3">
+                        <div
+                          key={`${item.label}-${itemIndex}`}
+                          className="flex gap-3"
+                        >
                           <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[11px] border border-white/14 bg-white/10 text-white">
                             <Icon className="h-[18px] w-[18px]" />
                           </span>
@@ -246,7 +265,6 @@ export default function DefaultLandingHeroSectionB({
               </p>
             ) : null}
           </div>
-
         </div>
       </div>
     </section>

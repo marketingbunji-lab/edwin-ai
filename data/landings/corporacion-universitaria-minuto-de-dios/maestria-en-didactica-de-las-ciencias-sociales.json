@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -66,16 +64,17 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "highlight": "",
     "title": "Maestría en Didáctica de las Ciencias Sociales",
     "subtitle": "",
     "description": "SNIES 119433 · Resolución de registro calificado 14339 del 26/05/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Magister en Didáctica de las Ciencias Sociales.",
+    "supportText": "",
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
@@ -143,7 +142,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "La Maestría en Didáctica de las Ciencias Sociales forma profesionales capaces de transformar los procesos de enseñanza y aprendizaje desde una mirada crítica, interdisciplinaria e innovadora. El programa fortalece competencias pedagógicas, investigativas y sociales para promover la construcción de paz, la justicia social y la formación ciudadana en contextos educativos diversos y contemporáneos.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/asset-2026-08-21T17-57-26-337Z.png",
     "items": []
@@ -167,7 +166,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "eyebrow": "",
@@ -198,7 +198,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "eyebrow": "",
@@ -288,7 +289,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como profesional capaz de transformar la enseñanza de las Ciencias Sociales mediante propuestas pedagógicas críticas, interdisciplinarias e innovadoras que fortalezcan la formación ciudadana, la construcción de paz, la equidad y la justicia social en contextos educativos diversos.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/classroom-images-maestria-en-didactica-de-las-ciencias-sociales-2026-08-21T17-59-42-695Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -298,11 +299,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "",
         "listStyle": "bullets",
@@ -412,21 +413,8 @@
         "groups": []
       },
       {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
-        ],
-        "groups": []
-      },
-      {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
         "title": "Ruta de aprendizaje",
         "description": "",
         "listStyle": "steps",
@@ -439,47 +427,40 @@
         "groups": []
       }
     ],
-    "cards": [
-      {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
-        "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
-        ]
-      },
-      {
-        "title": "Convenios Internacionales",
-        "icon": "globe",
-        "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
-        ]
-      }
-    ]
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
   },
   "catalog": "",
   "faculty": "",
   "cipCode": "",
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "items": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/classroom-images-maestria-en-didactica-de-las-ciencias-sociales-2026-08-21T17-59-42-695Z.png",
+    "items": [],
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una propuesta virtual que articula las Ciencias Sociales con la pedagogía desde una mirada crítica e interdisciplinaria.",
+          "Fortalece el diseño de proyectos curriculares transversales y contextualizados para diversos ambientes de aprendizaje.",
+          "Desarrolla capacidades para impulsar la formación ciudadana, la construcción de paz, la equidad y la justicia social.",
+          "Integra perspectivas latinoamericanas para transformar la enseñanza y responder a los desafíos educativos contemporáneos."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

@@ -6,6 +6,7 @@ type Props = {
   logo: string;
   brandName: string;
   description: string;
+  legalText: string;
   advisorName: string;
   advisorTitle: string;
   phone: string;
@@ -20,6 +21,7 @@ export default function DefaultLandingFooterSection({
   logo,
   brandName,
   description,
+  legalText,
   advisorName,
   advisorTitle,
   phone,
@@ -37,12 +39,16 @@ export default function DefaultLandingFooterSection({
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
 
-    return normalizedLabel !== "sitio oficial" && normalizedLabel !== "official site";
+    return (
+      normalizedLabel !== "sitio oficial" && normalizedLabel !== "official site"
+    );
   });
 
   return (
     <footer className="bg-slate-900 py-16 text-white md:py-20">
-      <div className={`${landingContainerClass} flex flex-wrap items-start justify-between gap-8`}>
+      <div
+        className={`${landingContainerClass} flex flex-wrap items-start justify-between gap-8`}
+      >
         <div className="max-w-[420px]">
           {logo ? (
             <img
@@ -54,8 +60,13 @@ export default function DefaultLandingFooterSection({
             <strong>{brandName}</strong>
           )}
           {description ? (
-            <p className="mt-3 text-white/70 text-sm">
+            <p className="mt-3 text-sm leading-[1.5] text-white/70">
               {description}
+            </p>
+          ) : null}
+          {legalText ? (
+            <p className="mt-4 whitespace-pre-line text-xs leading-[1.65] text-white/70">
+              {legalText}
             </p>
           ) : null}
         </div>
@@ -68,8 +79,16 @@ export default function DefaultLandingFooterSection({
                   <p className="font-semibold text-white">{advisorName}</p>
                 ) : null}
                 {advisorTitle ? <p>{advisorTitle}</p> : null}
-                {phone ? <p>{phoneLabel}: {phone}</p> : null}
-                {email ? <p>{emailLabel}: {email}</p> : null}
+                {phone ? (
+                  <p>
+                    {phoneLabel}: {phone}
+                  </p>
+                ) : null}
+                {email ? (
+                  <p>
+                    {emailLabel}: {email}
+                  </p>
+                ) : null}
               </div>
             ) : null}
 

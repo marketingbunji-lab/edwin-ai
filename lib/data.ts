@@ -32,6 +32,8 @@ export type Brand = {
   secondaryColor: string;
   colorPalette?: BrandColorPalette;
   description?: string;
+  footerLegalText?: string;
+  showFooterContact?: boolean;
   officialWebsite?: string;
   siteName?: string;
   abstract?: string;
@@ -187,6 +189,7 @@ export type OpportunityToWork = {
 };
 
 export type GraduateProfile = {
+  enabled?: boolean;
   eyebrow?: string;
   title?: string;
   image?: string;
@@ -308,6 +311,7 @@ export type Landing = {
     eyebrow?: string;
     title?: string;
     description?: string;
+    image?: string;
     cardsTitle?: string;
     tabs?: ProgramExplorerTab[];
     cards?: ProgramExplorerCard[];
@@ -320,8 +324,14 @@ export type Landing = {
     description?: string;
     image?: string;
     items?: Array<string | AccordionItem>;
+    cards?: Array<{
+      title?: string;
+      icon?: "badge-check" | "globe";
+      items?: string[];
+    }>;
   };
   curriculum?: {
+    enabled?: boolean;
     eyebrow?: string;
     title?: string;
     description?: string;
@@ -1010,21 +1020,24 @@ export function normalizeLandingSchema(landing: Landing): Landing {
     overviewItems.items.length > 0,
   );
   const hasGraduateProfileContent = Boolean(
-    landing.graduateProfile?.title?.trim() ||
-    landing.graduateProfile?.image?.trim() ||
-    graduateProfileItems.length > 0,
+    landing.graduateProfile?.enabled !== false &&
+    (landing.graduateProfile?.title?.trim() ||
+      landing.graduateProfile?.image?.trim() ||
+      graduateProfileItems.length > 0),
   );
   const hasWhyStudyContent = Boolean(
     landing.whyStudy?.title?.trim() ||
     landing.whyStudy?.description?.trim() ||
     landing.whyStudy?.image?.trim() ||
-    whyStudyItems.length > 0,
+    whyStudyItems.length > 0 ||
+    (landing.whyStudy?.cards?.length ?? 0) > 0,
   );
   const hasCurriculumContent = Boolean(
-    landing.curriculum?.description?.trim() ||
-    landing.curriculum?.downloadUrl?.trim() ||
-    landing.curriculum?.buttonUrl?.trim() ||
-    curriculumItems.length > 0,
+    landing.curriculum?.enabled !== false &&
+    (landing.curriculum?.description?.trim() ||
+      landing.curriculum?.downloadUrl?.trim() ||
+      landing.curriculum?.buttonUrl?.trim() ||
+      curriculumItems.length > 0),
   );
   const hasHandsOnTrainingContent = Boolean(
     landing.handsOnTraining?.enabled &&
@@ -1168,11 +1181,13 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       eyebrow: landing.programExplorer?.eyebrow || "",
       title: landing.programExplorer?.title || "",
       description: landing.programExplorer?.description || "",
+      image: landing.programExplorer?.image || "",
       cardsTitle: landing.programExplorer?.cardsTitle || "",
       tabs: landing.programExplorer?.tabs ?? [],
       cards: landing.programExplorer?.cards ?? [],
     },
     graduateProfile: {
+      enabled: landing.graduateProfile?.enabled !== false,
       eyebrow: hasGraduateProfileContent
         ? landing.graduateProfile?.eyebrow || ""
         : "",
@@ -1201,8 +1216,10 @@ export function normalizeLandingSchema(landing: Landing): Landing {
         ? landing.whyStudy?.image || whyStudyAsset?.url?.trim() || ""
         : "",
       items: hasWhyStudyContent ? whyStudyItems : [],
+      cards: hasWhyStudyContent ? (landing.whyStudy?.cards ?? []) : [],
     },
     curriculum: {
+      enabled: landing.curriculum?.enabled !== false,
       eyebrow: hasCurriculumContent ? landing.curriculum?.eyebrow || "" : "",
       title: hasCurriculumContent
         ? localizeGenericValue(
@@ -1214,12 +1231,9 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       description: hasCurriculumContent
         ? landing.curriculum?.description || ""
         : "",
-      downloadUrl: hasCurriculumContent
-        ? landing.curriculum?.downloadUrl || ""
-        : "",
-      buttonUrl: hasCurriculumContent
-        ? landing.curriculum?.buttonUrl || landing.curriculum?.downloadUrl || ""
-        : "",
+      downloadUrl: landing.curriculum?.downloadUrl || "",
+      buttonUrl:
+        landing.curriculum?.buttonUrl || landing.curriculum?.downloadUrl || "",
       buttonTitle: hasCurriculumContent
         ? landing.curriculum?.buttonTitle || ""
         : "",

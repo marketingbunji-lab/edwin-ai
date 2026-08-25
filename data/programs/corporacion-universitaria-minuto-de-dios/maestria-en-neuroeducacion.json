@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true
   },
   "duration": {
@@ -57,14 +55,15 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "title": "Maestría en Neuroeducación",
     "description": "SNIES 119348 · Resolución de registro calificado 10644 del 22/04/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Magíster en Neuroeducación.",
+    "supportText": "",
     "modality": "Virtual",
     "primaryCta": {
       "label": "Solicita información",
@@ -124,7 +123,7 @@
     }
   ],
   "overview": {
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "La Maestría en Neuroeducación de UNIMINUTO es una propuesta innovadora que integra los avances de la neurociencia con los procesos educativos, fortaleciendo la enseñanza, el aprendizaje y la orientación desde una comprensión científica del cerebro, la mente y el desarrollo humano. A través de una formación virtual de profundización, el programa prepara profesionales capaces de diseñar estrategias pedagógicas innovadoras, abordar desafíos del aprendizaje y liderar transformaciones educativas con impacto social, investigativo y humano.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/maestria-en-neuroeducacion-2-afc52d02c535.png"
   },
@@ -137,7 +136,8 @@
       {
         "description": "Evaluar estrategias y acciones psicopedagógicas basadas en los aportes de la neuroeducación, para el abordaje de los desafíos relacionados con los problemas del aprendizaje y la enseñanza, en ámbitos escolares, comunitarios, empresariales y otros espacios formativos."
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -167,7 +167,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "title": "Documentos de ingreso",
@@ -228,7 +229,7 @@
   },
   "formSection": {
     "enabled": true,
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como profesional en Neuroeducación desarrollando capacidades para integrar la neurociencia a la enseñanza, diseñar estrategias psicopedagógicas innovadoras y responder a los desafíos del aprendizaje con una mirada científica, humana y transformadora.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/maestria-en-neuroeducacion-2-afc52d02c535.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -238,11 +239,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "",
         "listStyle": "bullets",
@@ -352,21 +353,8 @@
         "groups": []
       },
       {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
-        ],
-        "groups": []
-      },
-      {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
         "title": "Ruta de aprendizaje",
         "description": "",
         "listStyle": "steps",
@@ -379,34 +367,34 @@
         "groups": []
       }
     ],
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/lifestyle-images-maestria-en-neuroeducacion-2026-08-21T19-15-12-695Z.png"
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "¿Por qué estudiar con nosotros?",
+    "description": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-neuroeducacion/asset-2026-08-21T19-14-40-349Z.png",
+    "items": [],
     "cards": [
       {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
+        "title": "El programa",
+        "icon": "badge-check",
         "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+          "Una propuesta virtual que integra los avances de la neurociencia con los procesos de enseñanza, aprendizaje y orientación.",
+          "Fortalece la comprensión científica del cerebro, la mente y el desarrollo humano aplicada a contextos educativos.",
+          "Desarrolla capacidades para diseñar y evaluar estrategias psicopedagógicas frente a los desafíos del aprendizaje.",
+          "Promueve transformaciones educativas con impacto social, investigativo y humano en ámbitos escolares, comunitarios y organizacionales."
         ]
       },
       {
-        "title": "Convenios Internacionales",
+        "title": "Información UNIMINUTO Virtual",
         "icon": "globe",
         "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
         ]
       }
     ]

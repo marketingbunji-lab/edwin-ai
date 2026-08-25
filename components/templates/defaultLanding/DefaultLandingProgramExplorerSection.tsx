@@ -1,20 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import type { Landing, ProgramExplorerCard, ProgramExplorerTab } from "@/lib/data";
+import { ChevronDown } from "lucide-react";
+import type {
+  Landing,
+  ProgramExplorerCard,
+  ProgramExplorerTab,
+} from "@/lib/data";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import LiveEditableText, {
   type LandingLiveEditConfig,
 } from "@/components/editor/LiveEditableText";
-import {
-  Award,
-  BriefcaseBusiness,
-  Globe,
-} from "../templateIcons";
+import { Award, BriefcaseBusiness, Globe } from "../templateIcons";
 import { landingContainerClass, landingSectionClass } from "./classes";
+import DefaultLandingProgramExplorerItemText from "./DefaultLandingProgramExplorerItemText";
+import EditableImageSlot, { editableImageClass } from "./EditableImageSlot";
 
 type Props = {
   explorer: NonNullable<Landing["programExplorer"]>;
+  planDownloadUrl?: string;
   liveEdit?: LandingLiveEditConfig;
 };
 
@@ -27,13 +31,13 @@ const cardIcons = {
 function hasTabContent(tab?: ProgramExplorerTab) {
   return Boolean(
     tab?.title?.trim() ||
-      tab?.description?.trim() ||
-      tab?.items?.some((item) => item.trim()) ||
-      tab?.groups?.some(
-        (group) =>
-          group.title?.trim() ||
-          group.items?.some((item) => item.label?.trim() || item.value?.trim()),
-      ),
+    tab?.description?.trim() ||
+    tab?.items?.some((item) => item.trim()) ||
+    tab?.groups?.some(
+      (group) =>
+        group.title?.trim() ||
+        group.items?.some((item) => item.label?.trim() || item.value?.trim()),
+    ),
   );
 }
 
@@ -45,14 +49,19 @@ function hasCardContent(card?: ProgramExplorerCard) {
 
 export default function DefaultLandingProgramExplorerSection({
   explorer,
+  planDownloadUrl = "",
   liveEdit,
 }: Props) {
   const tabs = (explorer.tabs ?? []).filter(hasTabContent);
   const cards = (explorer.cards ?? []).filter(hasCardContent);
-  const [activeTab, setActiveTab] = useState(tabs[0]?.id || "program-explorer-tab-0");
+  const [activeTab, setActiveTab] = useState(
+    tabs[0]?.id || "program-explorer-tab-0",
+  );
+  const [openGroupIndex, setOpenGroupIndex] = useState<number | null>(0);
   const activeTabData =
-    tabs.find((tab, index) => (tab.id || `program-explorer-tab-${index}`) === activeTab) ??
-    tabs[0];
+    tabs.find(
+      (tab, index) => (tab.id || `program-explorer-tab-${index}`) === activeTab,
+    ) ?? tabs[0];
 
   if (!explorer.enabled || (!tabs.length && !cards.length)) {
     return null;
@@ -61,7 +70,7 @@ export default function DefaultLandingProgramExplorerSection({
   return (
     <section
       id="landing-menu"
-      className={`${landingSectionClass} relative overflow-hidden bg-[linear-gradient(180deg,#fff,var(--landing-page-bg))]`}
+      className={`${landingSectionClass} relative overflow-hidden bg-[linear-gradient(180deg,#fff,#fffae0)]`}
     >
       <div className={landingContainerClass}>
         <div className="mx-auto max-w-[760px]">
@@ -100,7 +109,12 @@ export default function DefaultLandingProgramExplorerSection({
                         ? "bg-white text-[var(--landing-primary-darkest)]"
                         : "text-slate-500 hover:text-[var(--landing-primary-darkest)]"
                     }`}
-                    onClick={() => setActiveTab(tabId)}
+                    onClickCapture={() => {
+                      if (!isActive) {
+                        setActiveTab(tabId);
+                        setOpenGroupIndex(0);
+                      }
+                    }}
                   >
                     <LiveEditableText
                       path={`programExplorer.tabs.${index}.label`}
@@ -117,7 +131,7 @@ export default function DefaultLandingProgramExplorerSection({
             </div>
 
             {activeTabData ? (
-              <div className="mt-8 rounded-2xl border border-[var(--landing-primary-light)] bg-white/95 p-6 shadow-[0_10px_30px_rgba(15,23,42,0.08)] md:p-8">
+              <div className="mt-6 rounded-2xl border border-[var(--landing-primary-light)] bg-white/95 p-4 shadow-[0_10px_30px_rgba(15,23,42,0.08)] md:p-6">
                 <div
                   id={`${activeTabData.id || "program-explorer"}-panel`}
                   role="tabpanel"
@@ -144,59 +158,133 @@ export default function DefaultLandingProgramExplorerSection({
                   ) : null}
 
                   {activeTabData.groups?.length ? (
-                    <div className="mt-5 grid items-start gap-4 lg:grid-cols-3">
-                      {activeTabData.groups.map((group, groupIndex) => (
-                        <div
-                          key={`${group.title || "group"}-${groupIndex}`}
-                          className="rounded-2xl border border-[var(--landing-primary-light)] bg-white p-5"
-                          style={{ borderTop: "4px solid var(--landing-secondary)" }}
-                        >
-                          {group.title ? (
-                            <p className="text-sm font-extrabold uppercase tracking-wide text-[var(--landing-primary-dark)]">
-                              <LiveEditableText
-                                path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.title`}
-                                value={group.title}
-                                liveEdit={liveEdit}
-                                singleLine
-                              />
-                            </p>
-                          ) : null}
+                    <div className="mt-4 grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.72fr)]">
+                      <div className="space-y-2">
+                        {activeTabData.groups.map((group, groupIndex) => {
+                          const isOpen = openGroupIndex === groupIndex;
+                          const panelId = `${activeTabData.id || "program-explorer"}-group-${groupIndex}`;
 
-                          <ul className="mt-3 text-sm leading-6 text-slate-700">
-                            {(group.items ?? []).map((item, itemIndex) => (
-                              <li
-                                key={`${item.label || "item"}-${itemIndex}`}
-                                className="flex items-start justify-between gap-3 border-b border-slate-100 py-1.5 last:border-0"
+                          return (
+                            <div
+                              key={`${group.title || "group"}-${groupIndex}`}
+                              className="overflow-hidden rounded-2xl border border-[var(--landing-primary-light)] bg-white"
+                              style={{
+                                borderTop: "4px solid var(--landing-secondary)",
+                              }}
+                            >
+                              <button
+                                type="button"
+                                className="flex min-h-11 w-full items-center justify-between gap-3 px-4 py-2.5 text-left"
+                                aria-expanded={isOpen}
+                                aria-controls={panelId}
+                                onClick={() =>
+                                  setOpenGroupIndex(isOpen ? null : groupIndex)
+                                }
                               >
-                                <span>
+                                <span className="text-sm font-extrabold uppercase tracking-wide text-[var(--landing-primary-dark)]">
                                   <LiveEditableText
-                                    path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.items.${itemIndex}.label`}
-                                    value={item.label || ""}
+                                    path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.title`}
+                                    value={
+                                      group.title || `Grupo ${groupIndex + 1}`
+                                    }
                                     liveEdit={liveEdit}
+                                    singleLine
                                   />
                                 </span>
-                                {item.value ? (
-                                  <span className="shrink-0 rounded-md bg-[color-mix(in_srgb,var(--landing-secondary)_18%,transparent)] px-2 text-xs font-bold text-[var(--landing-secondary-dark)]">
-                                    <LiveEditableText
-                                      path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.items.${itemIndex}.value`}
-                                      value={item.value}
-                                      liveEdit={liveEdit}
-                                      singleLine
-                                    />
-                                  </span>
-                                ) : null}
-                              </li>
-                            ))}
-                          </ul>
+                                <ChevronDown
+                                  aria-hidden="true"
+                                  className={`h-4 w-4 shrink-0 text-[var(--landing-primary-dark)] transition-transform ${isOpen ? "rotate-180" : ""}`}
+                                />
+                              </button>
+
+                              {isOpen ? (
+                                <div id={panelId} className="px-4 pb-3">
+                                  <ul className="border-t border-slate-100 pt-2 text-sm leading-5 text-slate-700">
+                                    {(group.items ?? []).map(
+                                      (item, itemIndex) => (
+                                        <li
+                                          key={`${item.label || "item"}-${itemIndex}`}
+                                          className="flex items-start justify-between gap-3 border-b border-slate-100 py-1 last:border-0"
+                                        >
+                                          <span>
+                                            <LiveEditableText
+                                              path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.items.${itemIndex}.label`}
+                                              value={item.label || ""}
+                                              liveEdit={liveEdit}
+                                            />
+                                          </span>
+                                          {item.value ? (
+                                            <span className="shrink-0 rounded-md bg-[color-mix(in_srgb,var(--landing-secondary)_18%,transparent)] px-2 text-xs font-bold text-[var(--landing-secondary-dark)]">
+                                              <LiveEditableText
+                                                path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.groups.${groupIndex}.items.${itemIndex}.value`}
+                                                value={item.value}
+                                                liveEdit={liveEdit}
+                                                singleLine
+                                              />
+                                            </span>
+                                          ) : null}
+                                        </li>
+                                      ),
+                                    )}
+                                  </ul>
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })}
+
+                        {planDownloadUrl ? (
+                          <a
+                            href={planDownloadUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--landing-secondary),var(--landing-secondary-dark))] px-5 py-2.5 text-sm font-bold text-[var(--landing-secondary-text)] shadow-[0_10px_24px_color-mix(in_srgb,var(--landing-secondary)_28%,transparent)] transition hover:-translate-y-0.5 hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--landing-secondary)]/35"
+                          >
+                            Descargar el plan de estudios
+                          </a>
+                        ) : null}
+                      </div>
+
+                      {explorer.image ? (
+                        <div
+                          data-live-image-path={
+                            liveEdit?.enabled
+                              ? "programExplorer.image"
+                              : undefined
+                          }
+                          data-live-image-label="Imagen del plan de estudios"
+                          data-live-image-value={explorer.image}
+                          title={
+                            liveEdit?.enabled
+                              ? "Click para reemplazar esta imagen"
+                              : undefined
+                          }
+                          className={`aspect-video self-start overflow-hidden rounded-2xl border border-[var(--landing-primary-light)] bg-slate-100 shadow-[0_10px_24px_rgba(15,23,42,0.08)] ${liveEdit?.enabled ? editableImageClass : ""}`}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={explorer.image}
+                            alt={`Recurso visual de ${explorer.title || "el programa"}`}
+                            className="h-full w-full object-cover"
+                          />
                         </div>
-                      ))}
+                      ) : liveEdit?.enabled ? (
+                        <EditableImageSlot
+                          path="programExplorer.image"
+                          label="Imagen del plan de estudios"
+                          variant="landscape"
+                          className="self-start"
+                        />
+                      ) : null}
                     </div>
                   ) : null}
 
                   {activeTabData.items?.length ? (
                     <ol
                       className={`mt-5 ${
-                        activeTabData.listStyle === "steps" ? "space-y-4" : "space-y-3"
+                        activeTabData.listStyle === "steps"
+                          ? "space-y-4"
+                          : "space-y-3"
                       }`}
                     >
                       {activeTabData.items.map((item, itemIndex) => {
@@ -223,9 +311,10 @@ export default function DefaultLandingProgramExplorerSection({
                                   : "text-base leading-7 text-slate-700"
                               }
                             >
-                              <LiveEditableText
+                              <DefaultLandingProgramExplorerItemText
+                                isSteps={isSteps}
+                                item={item}
                                 path={`programExplorer.tabs.${tabs.indexOf(activeTabData)}.items.${itemIndex}`}
-                                value={item}
                                 liveEdit={liveEdit}
                               />
                             </span>
@@ -248,9 +337,8 @@ export default function DefaultLandingProgramExplorerSection({
             <div className="grid gap-5 md:grid-cols-3">
               {cards.map((card, index) => {
                 const Icon =
-                  cardIcons[
-                    (card.icon as keyof typeof cardIcons) || "award"
-                  ] || Award;
+                  cardIcons[(card.icon as keyof typeof cardIcons) || "award"] ||
+                  Award;
 
                 return (
                   <article
@@ -272,7 +360,10 @@ export default function DefaultLandingProgramExplorerSection({
                     {(card.items ?? []).length > 0 ? (
                       <ul className="mt-4 space-y-2 text-left text-sm leading-6 text-slate-600">
                         {card.items?.map((item, itemIndex) => (
-                          <li key={`${item}-${itemIndex}`} className="flex gap-2">
+                          <li
+                            key={`${item}-${itemIndex}`}
+                            className="flex gap-2"
+                          >
                             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--landing-secondary-dark)]" />
                             <span>
                               <LiveEditableText

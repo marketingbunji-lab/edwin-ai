@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true
   },
   "duration": {
@@ -57,14 +55,15 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "title": "Maestría en Gerencia Estratégica de Operaciones",
     "description": "SNIES en proceso de asignación · Resolución de registro calificado 14041 del 22/05/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Magíster en Gerencia Estratégica de Operaciones.",
+    "supportText": "",
     "modality": "Virtual",
     "primaryCta": {
       "label": "Solicita información",
@@ -124,7 +123,7 @@
     }
   ],
   "overview": {
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "La Maestría en Gerencia Estratégica de Operaciones es una propuesta innovadora que forma líderes capaces de transformar sistemas productivos y de servicios mediante estrategias operativas sostenibles, analíticas y orientadas a la innovación. A través de un enfoque interdisciplinario y apoyado en tecnologías emergentes, analítica de datos y transformación digital, el programa fortalece la toma de decisiones, la optimización de procesos y la generación de valor en organizaciones públicas y privadas, respondiendo a los desafíos de entornos dinámicos y competitivos.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png"
   },
@@ -137,7 +136,8 @@
       {
         "description": "Formular métodos analíticos y computacionales avanzados mediante simulación, analítica predictiva, interoperabilidad digital y optimización multicriterio para la toma de decisiones operativas orientadas al desarrollo sostenible."
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -167,7 +167,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "title": "Documentos de ingreso",
@@ -228,7 +229,7 @@
   },
   "formSection": {
     "enabled": true,
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como líder estratégico de operaciones desarrollando capacidades para transformar cadenas de valor, optimizar procesos y tomar decisiones con analítica, tecnologías emergentes y criterios de sostenibilidad en organizaciones públicas y privadas.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -238,11 +239,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "",
         "listStyle": "bullets",
@@ -352,21 +353,8 @@
         "groups": []
       },
       {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
-        ],
-        "groups": []
-      },
-      {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
         "title": "Ruta de aprendizaje",
         "description": "",
         "listStyle": "steps",
@@ -379,34 +367,34 @@
         "groups": []
       }
     ],
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png"
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "¿Por qué estudiar con nosotros?",
+    "description": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/asset-2026-08-21T18-16-19-483Z.png",
+    "items": [],
     "cards": [
       {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
+        "title": "El programa",
+        "icon": "badge-check",
         "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+          "Una propuesta virtual para liderar la transformación estratégica de operaciones en entornos dinámicos y competitivos.",
+          "Integra sostenibilidad, gestión del cambio y tecnologías emergentes para fortalecer las cadenas de valor.",
+          "Desarrolla capacidades en simulación, analítica predictiva, interoperabilidad digital y optimización multicriterio.",
+          "Prepara para tomar decisiones operativas que generen valor y promuevan la mejora continua en organizaciones públicas y privadas."
         ]
       },
       {
-        "title": "Convenios Internacionales",
+        "title": "Información UNIMINUTO Virtual",
         "icon": "globe",
         "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
         ]
       }
     ]

@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -66,16 +64,17 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "highlight": "",
     "title": "Licenciatura en Ciencias Naturales y Educación Ambiental",
     "subtitle": "",
     "description": "SNIES 119434 · Resolución de registro calificado 14341 del 26/05/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Licenciado/a/e en Ciencias Naturales y Educación Ambiental.",
+    "supportText": "",
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
@@ -143,7 +142,7 @@
   ],
   "overview": {
     "eyebrow": "",
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-2-photoroom-1-ea464226ec07.png",
     "items": []
@@ -174,7 +173,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "eyebrow": "",
@@ -212,7 +212,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "eyebrow": "",
@@ -302,7 +303,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como docente de Ciencias Naturales y Educación Ambiental desarrollando capacidades para enseñar desde el pensamiento científico, la conciencia ecológica y la investigación, y transformar comunidades educativas con prácticas críticas, éticas y comprometidas con el cuidado del planeta.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/5046f33c-1b06-4beb-b607-9d79c9a947ae-df62ac82a144.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -315,11 +316,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "El egresado del programa desarrolla capacidades para integrar saberes disciplinares, pedagógicos y ambientales en contextos educativos diversos.",
         "listStyle": "bullets",
@@ -543,83 +544,58 @@
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
-        ],
-        "groups": []
-      },
-      {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
+          "Título de bachiller académico",
+          "Resultado de la prueba de estado para acceso a la educación superior (Pruebas ICFES)",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },
       {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
-        "title": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
+        "title": "Ruta de admisión",
         "description": "",
         "listStyle": "steps",
         "items": [
-          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
-          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
-          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
-          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
+          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
         ],
         "groups": []
       }
     ],
-    "cards": [
-      {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
-        "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
-        ]
-      },
-      {
-        "title": "Convenios Internacionales",
-        "icon": "globe",
-        "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
-        ]
-      }
-    ]
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/asset-2026-08-21T17-13-06-423Z.png"
   },
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "items": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/5046f33c-1b06-4beb-b607-9d79c9a947ae-df62ac82a144.png",
+    "items": [],
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una propuesta virtual que integra formación pedagógica, pensamiento científico y conciencia ambiental.",
+          "Articula biología, física, química y educación ambiental con las realidades de contextos locales y globales.",
+          "Fortalece el diseño de estrategias didácticas críticas y sostenibles para acercar el conocimiento científico a distintas comunidades.",
+          "Impulsa la investigación formativa como herramienta para comprender y transformar problemáticas educativas y ambientales."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

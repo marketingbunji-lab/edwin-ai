@@ -18,9 +18,7 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": [
-      "Virtual"
-    ],
+    "campuses": ["Virtual"],
     "onlineAvailable": true
   },
   "duration": {
@@ -57,14 +55,15 @@
     "variant": "option-b",
     "menuItems": [
       "landing-overview",
+      "landing-program-explorer",
       "landing-graduate-profile",
       "landing-curriculum",
       "landing-financial-aid"
     ],
-    "eyebrow": "Virtual",
+    "eyebrow": "",
     "title": "Especialización en Gerencia y Auditoría de la Calidad en Salud",
     "description": "SNIES 119409 · Resolución de registro calificado 14037 del 22/05/2026 · Vigencia 7 años.",
-    "supportText": "Título otorgado: Especialista en Gerencia y Auditoría de la Calidad en Salud.",
+    "supportText": "",
     "modality": "Virtual",
     "primaryCta": {
       "label": "Solicita información",
@@ -124,7 +123,7 @@
     }
   ],
   "overview": {
-    "title": "Conoce el programa",
+    "title": "Lo que aprenderás",
     "description": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud. A través de una formación innovadora, ética y orientada a resultados, el programa fortalece competencias en calidad, seguridad del paciente, normatividad y transformación digital, contribuyendo al desarrollo de servicios de salud más eficientes, humanizados y sostenibles.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-2-photoroom-1-556a1b031ee1.png"
   },
@@ -134,7 +133,8 @@
       {
         "description": "Verificar el cumplimiento de requisitos legales y reglamentarios en el sector salud a partir del proceso de auditoría como una herramienta de la gestión gerencial y de calidad, para la mejora del desempeño del sistema de salud y la atención centrada en el cliente."
       }
-    ]
+    ],
+    "enabled": false
   },
   "curriculum": {
     "title": "Ruta formativa",
@@ -164,7 +164,8 @@
         "image": "",
         "items": []
       }
-    ]
+    ],
+    "enabled": false
   },
   "admissions": {
     "title": "Documentos de ingreso",
@@ -225,7 +226,7 @@
   },
   "formSection": {
     "enabled": true,
-    "description": "Recibe acompañamiento de admisiones para conocer el proceso, resolver tus dudas y avanzar con tu inscripción.",
+    "description": "Fórmate como especialista capaz de liderar la gestión, la auditoría y el mejoramiento continuo de organizaciones de salud, integrando calidad, seguridad del paciente, normatividad y transformación digital para impulsar servicios más eficientes, humanizados y sostenibles.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-2-photoroom-1-556a1b031ee1.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -235,11 +236,11 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
-    "cardsTitle": "Información importante del programa",
+    "cardsTitle": "",
     "tabs": [
       {
         "id": "ep-perfil",
-        "label": "Perfil",
+        "label": "Perfil del egresado",
         "title": "Perfil del egresado",
         "description": "",
         "listStyle": "bullets",
@@ -328,21 +329,8 @@
         "groups": []
       },
       {
-        "id": "ep-extranjeros",
-        "label": "Requisitos para extranjeros",
-        "title": "Requisitos de admisión para extranjeros",
-        "description": "",
-        "listStyle": "bullets",
-        "items": [
-          "Título apostillado ante el Ministerio de Educación Nacional de Colombia.",
-          "Permiso de permanencia o cédula de extranjería.",
-          "Certificado de afiliación a EPS o Sisbén (No. mayor a 30 días)."
-        ],
-        "groups": []
-      },
-      {
         "id": "ep-ruta",
-        "label": "Ruta de aprendizaje",
+        "label": "Ruta de admisión",
         "title": "Ruta de aprendizaje",
         "description": "",
         "listStyle": "steps",
@@ -355,34 +343,34 @@
         "groups": []
       }
     ],
+    "cards": [],
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/6-especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-5c3b38c87537.webp"
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "¿Por qué estudiar con nosotros?",
+    "description": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/f8e53d02-bc03-4827-bfbe-902489f1ca5a-fae37a0d6fdf.png",
+    "items": [],
     "cards": [
       {
-        "title": "Docentes Calificados y Microcertificaciones",
-        "icon": "award",
+        "title": "El programa",
+        "icon": "badge-check",
         "items": [
-          "Profesores con amplia experiencia profesional y académica.",
-          "Certificaciones digitales de universidades extranjeras con la plataforma Coursera que validan conocimientos y competencias alineadas con los objetivos del programa.",
-          "Algunas certificaciones se integran en una ruta que conduce a una insignia digital que combina flexibilidad con credibilidad."
+          "Una formación virtual orientada a la gestión, la auditoría y el mejoramiento continuo de organizaciones del sector salud.",
+          "Integra calidad, seguridad del paciente, normatividad y transformación digital para responder a los retos actuales del sistema de salud.",
+          "Fortalece capacidades para verificar requisitos legales y evaluar el desempeño de servicios y procesos asistenciales.",
+          "Desarrolla una visión estratégica, ética y centrada en las personas para impulsar servicios más eficientes, humanizados y sostenibles."
         ]
       },
       {
-        "title": "Convenios Internacionales",
+        "title": "Información UNIMINUTO Virtual",
         "icon": "globe",
         "items": [
-          "Más de 160 convenios nacionales e internacionales para movilidad académica presencial y virtual.",
-          "Sesiones virtuales con estudiantes y docentes de otros países.",
-          "Actividades de internacionalización y culturales en casa, sin salir del país.",
-          "Programas internacionales de corta duración para enriquecer tu experiencia académica.",
-          "Enfoque global que fortalece tu perfil profesional y te conecta con el mundo."
-        ]
-      },
-      {
-        "title": "Prácticas Profesionales",
-        "icon": "briefcase",
-        "items": [
-          "Emprendimiento con acompañamiento real: de la idea a la empresa consolidada, con mentores y asesoría especializada.",
-          "Práctica como primer paso laboral: más de 600 convenios de práctica en escenarios reales.",
-          "Empleabilidad: intermediación con empresas aliadas a través de nuestra bolsa de empleo, con 60 empresas vinculadas."
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experiencia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
         ]
       }
     ]
