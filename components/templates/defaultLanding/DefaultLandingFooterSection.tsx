@@ -15,6 +15,7 @@ type Props = {
   phoneLabel: string;
   emailLabel: string;
   legalLinksAriaLabel: string;
+  mode: "preview" | "export";
 };
 
 export default function DefaultLandingFooterSection({
@@ -30,6 +31,7 @@ export default function DefaultLandingFooterSection({
   phoneLabel,
   emailLabel,
   legalLinksAriaLabel,
+  mode,
 }: Props) {
   const hasContactInfo = Boolean(advisorName || advisorTitle || phone || email);
   const visibleLegalLinks = legalLinks.filter((link) => {
@@ -65,7 +67,11 @@ export default function DefaultLandingFooterSection({
             </p>
           ) : null}
           {legalText ? (
-            <p className="mt-4 whitespace-pre-line text-xs leading-[1.65] text-white/70">
+            <p
+              className={`mt-4 text-xs leading-[1.65] text-white/70 ${
+                mode === "export" ? "" : "whitespace-pre-line"
+              }`}
+            >
               {legalText}
             </p>
           ) : null}

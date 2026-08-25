@@ -1,6 +1,44 @@
 import { renderLandingTemplate } from "@/components/templates/renderLandingTemplate";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import type { Brand, Landing } from "./data";
 import { formatHtmlDocument } from "./formatExportHtml";
+
+function decodeHtmlAttribute(value: string) {
+  return value
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+}
+
+function collectTailwindCandidates(markup: string) {
+  const candidates = new Set<string>();
+
+  for (const match of markup.matchAll(/\bclass="([^"]*)"/g)) {
+    const className = decodeHtmlAttribute(match[1] || "");
+
+    for (const candidate of className.split(/\s+/)) {
+      if (candidate) candidates.add(candidate);
+    }
+  }
+
+  return Array.from(candidates);
+}
+
+async function compileExportStyles(markup: string) {
+  const [{ compile }, tailwindSource] = await Promise.all([
+    import("tailwindcss"),
+    readFile(
+      path.join(process.cwd(), "node_modules", "tailwindcss", "index.css"),
+      "utf8",
+    ),
+  ]);
+  const compiler = await compile(tailwindSource);
+
+  return compiler.build(collectTailwindCandidates(markup));
+}
 
 function escapeHtml(value: unknown) {
   return String(value ?? "")
@@ -15,13 +53,28 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
   const brandName = brand.name || "Brand";
   const googleFontHref = brand.typography?.googleFontHref?.trim() || "";
   const favicon = brand.favicon?.trim() || "";
-  const tailwindCdnUrl = "https://cdn.tailwindcss.com";
   const { renderToStaticMarkup } = await import("react-dom/server");
   const markup = renderToStaticMarkup(
     renderLandingTemplate({ brand, landing, mode: "export" }),
   );
+  const compiledStyles = await compileExportStyles(markup);
   const exportTabsScript = `
   (function () {
+    function setupBackToTop() {
+      var button = document.querySelector('[data-export-back-to-top]');
+      if (!button) return;
+      function updateVisibility() {
+        var isVisible = window.scrollY > 320;
+        button.classList.toggle('hidden', !isVisible);
+        button.classList.toggle('grid', isVisible);
+      }
+      button.addEventListener('click', function () {
+        var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+      });
+      window.addEventListener('scroll', updateVisibility, { passive: true });
+      updateVisibility();
+    }
     function activateTab(panelId) {
       var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-export-tab-target]'));
       var panels = Array.prototype.slice.call(document.querySelectorAll('.landing-export-panel'));
@@ -60,7 +113,10 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
       }
     });
     window.addEventListener('hashchange', syncFromHash);
-    window.addEventListener('DOMContentLoaded', syncFromHash);
+    window.addEventListener('DOMContentLoaded', function () {
+      syncFromHash();
+      setupBackToTop();
+    });
   })();
   `;
 
@@ -71,7 +127,6 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escapeHtml(title)} | ${escapeHtml(brandName)}</title>
   ${favicon ? `<link rel="icon" href="${escapeHtml(favicon)}">` : ""}
-  <script src="${tailwindCdnUrl}"></script>
   ${
     googleFontHref
       ? `<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,6 +135,7 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
       : ""
   }
   <style>
+    ${compiledStyles}
     html { scroll-behavior: smooth; }
     *, *::before, *::after { box-sizing: border-box; }
     body {
@@ -132,6 +188,12 @@ export async function exportLandingHtml(brand: Brand, landing: Landing) {
     .landing-export-tab.is-active {
       color: var(--landing-primary-darkest) !important;
       background: rgba(255, 255, 255, 0.98);
+    }
+    .landing-export-tab-indicator {
+      display: none;
+    }
+    .landing-export-tab.is-active .landing-export-tab-indicator {
+      display: block;
     }
     .landing-export-panel {
       display: none;

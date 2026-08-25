@@ -16,6 +16,7 @@ import GraduateProfileSection from "./GraduateProfileSection";
 import OpportunityToWorkSection from "./OpportunityToWorkSection";
 import DefaultLandingBenefitsSection from "./defaultLanding/DefaultLandingBenefitsSection";
 import DefaultLandingBackToTopButton from "./defaultLanding/DefaultLandingBackToTopButton";
+import DefaultLandingFloatingActionsStatic from "./defaultLanding/DefaultLandingFloatingActionsStatic";
 import DefaultLandingCampusesSection from "./defaultLanding/DefaultLandingCampusesSection";
 import DefaultLandingCertificationsSection from "./defaultLanding/DefaultLandingCertificationsSection";
 import DefaultLandingCtaSection from "./defaultLanding/DefaultLandingCtaSection";
@@ -1225,9 +1226,14 @@ export default function DefaultLanding({
         phoneLabel={copy.footerPhoneLabel}
         emailLabel={copy.footerEmailLabel}
         legalLinksAriaLabel={copy.legalLinksAriaLabel}
+        mode={mode}
       />
 
-      <DefaultLandingBackToTopButton showWhatsApp={!liveEdit?.enabled} />
+      {mode === "export" ? (
+        <DefaultLandingFloatingActionsStatic />
+      ) : (
+        <DefaultLandingBackToTopButton showWhatsApp={!liveEdit?.enabled} />
+      )}
 
       {footerScripts.map((script, index) =>
         mode === "export" ? (

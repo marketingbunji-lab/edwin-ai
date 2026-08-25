@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp } from "lucide-react";
+import { ArrowUp } from "../templateIcons";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import LandingAccordion from "@/components/ui/LandingAccordion";
-import { BadgeCheck, Globe2 } from "lucide-react";
+import { BadgeCheck, Globe } from "../templateIcons";
 import {
   landingContainerClass,
   landingImageClass,
@@ -123,7 +123,7 @@ export default function DefaultLandingWhyStudySection({
 
             <div className="grid gap-5">
               {validCards.map((card, cardIndex) => {
-                const Icon = card.icon === "globe" ? Globe2 : BadgeCheck;
+                const Icon = card.icon === "globe" ? Globe : BadgeCheck;
                 const cardItems = (card.items ?? []).filter((item) =>
                   item.trim(),
                 );

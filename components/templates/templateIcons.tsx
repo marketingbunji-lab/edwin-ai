@@ -182,3 +182,29 @@ export function Headphones(props: IconProps) {
     </BaseIcon>
   );
 }
+
+export function BadgeCheck(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M12 3 14.2 5l3-.2.8 2.9 2.5 1.7-1.2 2.8 1.2 2.8-2.5 1.7-.8 2.9-3-.2L12 21l-2.2-2-3 .2-.8-2.9L3.5 15l1.2-2.8-1.2-2.8L6 7.7l.8-2.9 3 .2L12 3Z" />
+      <path d="m9 12 2 2 4-4" />
+    </BaseIcon>
+  );
+}
+
+export function ChevronDown(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="m6 9 6 6 6-6" />
+    </BaseIcon>
+  );
+}
+
+export function ArrowUp(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="m18 15-6-6-6 6" />
+      <path d="M12 9v12" />
+    </BaseIcon>
+  );
+}

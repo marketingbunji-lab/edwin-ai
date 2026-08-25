@@ -3,7 +3,7 @@ import type {
   ProgramExplorerCard,
   ProgramExplorerTab,
 } from "@/lib/data";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "../templateIcons";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import LiveEditableText, {
   type LandingLiveEditConfig,
@@ -255,9 +255,7 @@ export default function DefaultLandingProgramExplorerSectionStatic({
                       liveEdit={liveEdit}
                       singleLine
                     />
-                    {isActive ? (
-                      <span className="absolute inset-x-4 bottom-[-1px] h-[3px] rounded-full bg-[var(--landing-secondary)]" />
-                    ) : null}
+                    <span className="landing-export-tab-indicator absolute inset-x-4 bottom-[-1px] h-[3px] rounded-full bg-[var(--landing-secondary)]" />
                   </a>
                 );
               })}
