@@ -16,6 +16,10 @@ const assetUrlPattern =
   /url\((['"]?)([^)'"]+)\1\)|@import\s+url\((['"]?)([^)'"]+)\3\)|@import\s+['"]([^'"]+)['"]/gi;
 const absoluteAssetPathPattern =
   /\/[a-zA-Z0-9_./%+-]+\.(?:png|jpe?g|webp|svg|ico|css|js|mjs|ttf|woff2?)/gi;
+const styleTagPattern = /<style\b[^>]*>([\s\S]*?)<\/style>/gi;
+const inlineScriptPattern =
+  /<script\b((?:(?!\bsrc=)[^>])*)>([\s\S]*?)<\/script>/gi;
+const inlineSvgPattern = /<svg\b[^>]*>[\s\S]*?<\/svg>/gi;
 const crcTable = new Uint32Array(256).map((_, index) => {
   let crc = index;
 
@@ -289,6 +293,107 @@ function collectCssResourceUrls(css: string) {
   return Array.from(urls);
 }
 
+function collectStyleTags(html: string) {
+  const styles: string[] = [];
+
+  html.replace(styleTagPattern, (_, css: string) => {
+    if (css.trim()) {
+      styles.push(css.trim());
+    }
+
+    return "";
+  });
+
+  return styles;
+}
+
+function removeStyleTags(html: string) {
+  return html.replace(styleTagPattern, "");
+}
+
+function isJavaScriptType(typeValue: string) {
+  const normalized = typeValue.trim().toLowerCase();
+
+  return (
+    !normalized ||
+    normalized === "text/javascript" ||
+    normalized === "application/javascript" ||
+    normalized === "module"
+  );
+}
+
+function collectInlineScripts(html: string) {
+  const scripts: string[] = [];
+
+  html.replace(inlineScriptPattern, (fullMatch, attrs: string, content: string) => {
+    const typeMatch = attrs.match(/\btype=["']([^"']+)["']/i);
+    const typeValue = typeMatch?.[1] ?? "";
+
+    if (isJavaScriptType(typeValue) && content.trim()) {
+      scripts.push(content.trim());
+    }
+
+    return fullMatch;
+  });
+
+  return scripts;
+}
+
+function removeInlineScripts(html: string) {
+  return html.replace(
+    inlineScriptPattern,
+    (fullMatch, attrs: string, content: string) => {
+      const typeMatch = attrs.match(/\btype=["']([^"']+)["']/i);
+      const typeValue = typeMatch?.[1] ?? "";
+
+      if (isJavaScriptType(typeValue) && content.trim()) {
+        return "";
+      }
+
+      return fullMatch;
+    },
+  );
+}
+
+function extractSvgImgAttributes(svgMarkup: string) {
+  const openTagMatch = svgMarkup.match(/^<svg\b([^>]*)>/i);
+  const attrs = openTagMatch?.[1] ?? "";
+  const namesToKeep = [
+    "class",
+    "style",
+    "width",
+    "height",
+    "role",
+    "aria-hidden",
+    "aria-label",
+  ];
+
+  const keptAttributes: string[] = [];
+
+  for (const name of namesToKeep) {
+    const attrMatch = attrs.match(
+      new RegExp(`\\b${name}=["']([^"']*)["']`, "i"),
+    );
+
+    if (attrMatch?.[1] != null) {
+      keptAttributes.push(`${name}="${attrMatch[1]}"`);
+    }
+  }
+
+  if (!keptAttributes.some((attr) => attr.startsWith("alt="))) {
+    const ariaLabel = keptAttributes.find((attr) => attr.startsWith("aria-label="));
+    keptAttributes.push(
+      ariaLabel ? `alt=${ariaLabel.slice("aria-label=".length)}` : 'alt=""',
+    );
+  }
+
+  return keptAttributes.join(" ");
+}
+
+function usesCurrentColor(svgMarkup: string) {
+  return /\bcurrentColor\b/i.test(svgMarkup);
+}
+
 async function fetchAsset(sourceUrl: string) {
   if (sourceUrl.startsWith("/")) {
     const localPath = path.join(
@@ -406,6 +511,49 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
       console.warn("ZIP EXPORT ASSET SKIPPED:", resourceUrl, error);
     }
   }
+
+  const inlineStyles = collectStyleTags(html);
+  if (inlineStyles.length > 0) {
+    const styleFileName = "assets/styles.css";
+    files.push({
+      name: styleFileName,
+      data: textEncoder.encode(`${inlineStyles.join("\n\n")}\n`),
+    });
+    html = removeStyleTags(html).replace(
+      /<\/head>/i,
+      `  <link rel="stylesheet" href="./${styleFileName}">\n</head>`,
+    );
+  }
+
+  const inlineScripts = collectInlineScripts(html);
+  if (inlineScripts.length > 0) {
+    const scriptFileName = "assets/app.js";
+    files.push({
+      name: scriptFileName,
+      data: textEncoder.encode(`${inlineScripts.join("\n\n")}\n`),
+    });
+    html = removeInlineScripts(html).replace(
+      /<\/body>/i,
+      `  <script src="./${scriptFileName}"></script>\n</body>`,
+    );
+  }
+
+  let inlineSvgCount = 0;
+  html = html.replace(inlineSvgPattern, (svgMarkup) => {
+    if (usesCurrentColor(svgMarkup)) {
+      return svgMarkup;
+    }
+
+    inlineSvgCount += 1;
+    const fileName = `assets/${String(inlineSvgCount).padStart(2, "0")}-inline-graphic.svg`;
+    files.push({
+      name: fileName,
+      data: textEncoder.encode(svgMarkup),
+    });
+
+    const imgAttributes = extractSvgImgAttributes(svgMarkup);
+    return `<img src="./${fileName}" ${imgAttributes}>`;
+  });
 
   const zipBuffer = createStoredZip([
     {

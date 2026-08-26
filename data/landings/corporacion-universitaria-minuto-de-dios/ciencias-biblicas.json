@@ -67,7 +67,6 @@
     "menuItems": [
       "landing-overview",
       "landing-program-explorer",
-      "landing-why-study",
       "landing-financial-aid"
     ],
     "eyebrow": "",
@@ -88,7 +87,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_1_HERO.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ciencias-biblicas/banner-1-hero.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -273,7 +272,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_7_SOLICITA_INFO.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ciencias-biblicas/banner-7-solicita-info.png"
   },
   "form": {
     "title": "Solicita información",
@@ -303,7 +302,7 @@
     "title": "",
     "subtitle": "",
     "description": "Formarte en Ciencias Bíblicas es ir más allá de la lectura espiritual: es sumergirte en los textos desde sus raíces lingüísticas, históricas y culturales. A través de metodologías científicas y una mirada social, este programa te prepara para interpretar, enseñar y aplicar la palabra en contextos reales y diversos.",
-    "backgroundImage": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_2_FORMULARIO.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ciencias-biblicas/banner-2-formulario.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
