@@ -1,0 +1,489 @@
+{
+  "slug": "ciencias-biblicas",
+  "brand": "corporacion-universitaria-minuto-de-dios",
+  "language": "es",
+  "template": "DefaultLanding",
+  "status": "published",
+  "updatedAt": "2026-08-26",
+  "logoMode": "dark",
+  "title": "Ciencias Bíblicas | Uniminuto",
+  "fullTitle": "Pregrado en Ciencias Bíblicas",
+  "shortTitle": "Ciencias Bíblicas",
+  "sourceWebsite": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/index.html",
+  "programType": "Profesional Universitario",
+  "degreeLevel": "Profesional Universitario",
+  "academicArea": "Artes y Humanidades - Religión y Teología",
+  "snies": "SNIES 118025",
+  "delivery": {
+    "modality": "Virtual",
+    "schedule": "online",
+    "language": "es",
+    "campuses": [
+      "Virtual"
+    ],
+    "onlineAvailable": true,
+    "hybridAvailable": false,
+    "onCampusAvailable": false
+  },
+  "duration": {
+    "value": "10",
+    "unit": "cuatrimestres",
+    "display": "10 Cuatrimestres",
+    "credits": "143",
+    "semesters": "",
+    "hours": "",
+    "externshipHours": ""
+  },
+  "tuition": {
+    "amount": "3.892.500",
+    "currency": "",
+    "period": "",
+    "display": "Valor oficial del cuatrimestre $ 3.892.500. Primer cuatrimestre con subsidio: $ 2.257.700",
+    "financialAidAvailable": true,
+    "financialAidText": "Financiación de hasta el 100% de tus estudios."
+  },
+  "seo": {
+    "metaTitle": "Ciencias Bíblicas | Uniminuto",
+    "metaDescription": "El pregrado en Ciencias Bíblicas de UNIMINUTO te prepara para interpretar, enseñar y aplicar la palabra en contextos reales y diversos desde sus raíces lingüísticas, históricas y culturales.",
+    "keywords": []
+  },
+  "certifications": {
+    "enabled": true,
+    "title": "Acreditaciones y certificaciones",
+    "resolutionText": "SNIES 118025 - Resolución de registro calificado: 011547 del 11/06/2025 - Vigencia 7 años",
+    "items": [
+      {
+        "title": "Registro calificado",
+        "name": "Registro calificado",
+        "description": "Resolución 011547 del 11/06/2025 - Vigencia 7 años",
+        "url": "",
+        "enabled": true,
+        "resolutionText": ""
+      }
+    ]
+  },
+  "hero": {
+    "variant": "option-b",
+    "menuItems": [
+      "landing-overview",
+      "landing-program-explorer",
+      "landing-why-study",
+      "landing-financial-aid"
+    ],
+    "eyebrow": "",
+    "highlight": "",
+    "title": "Pregrado en Ciencias Bíblicas",
+    "subtitle": "",
+    "description": "SNIES 118025 · Resolución de registro calificado: 011547 del 11/06/2025 · Vigencia 7 años.",
+    "supportText": "",
+    "modality": "100% Virtual",
+    "price": "$ 3.892.500",
+    "discountedPrice": "$2.257.700",
+    "discountPercentage": "42%",
+    "primaryCta": {
+      "label": "Solicita información",
+      "url": "#form"
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "backgroundImage": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_1_HERO.png",
+    "personImage": "",
+    "videoUrl": "",
+    "overlayColor": "rgba(8,16,33,0.42)"
+  },
+  "summaryCards": [
+    {
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "label": "Modalidad",
+      "value": "100% Virtual"
+    },
+    {
+      "label": "Créditos",
+      "value": "143"
+    },
+    {
+      "label": "Área de conocimiento",
+      "value": "Artes y Humanidades - Religión y Teología"
+    },
+    {
+      "label": "Título otorgado",
+      "value": "Profesional en Ciencias Bíblicas"
+    }
+  ],
+  "programInfo": [
+    {
+      "key": "nivel",
+      "label": "Nivel de formación",
+      "value": "Profesional Universitario"
+    },
+    {
+      "key": "area",
+      "label": "Área del conocimiento",
+      "value": "Artes y Humanidades - Religión y Teología"
+    },
+    {
+      "key": "duracion",
+      "label": "Duración",
+      "value": "10 Cuatrimestres"
+    },
+    {
+      "key": "modalidad",
+      "label": "Modalidad",
+      "value": "Virtual"
+    },
+    {
+      "key": "creditos",
+      "label": "Créditos",
+      "value": "143"
+    },
+    {
+      "key": "registro",
+      "label": "Registro calificado",
+      "value": "Resolución 011547 del 11/06/2025 - Vigencia 7 años"
+    }
+  ],
+  "overview": {
+    "eyebrow": "",
+    "title": "Lo que aprenderás",
+    "description": "Es el único Pregrado en Ciencias Bíblicas virtual en Colombia e Iberoamérica.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ciencias-biblicas/banner-3-lo-que-aprenderas.png",
+    "items": [
+      {
+        "title": "Aprende hebreo bíblico y griego koiné",
+        "description": "Para acceder a los textos en sus lenguas originales.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Profundiza la dimensión contextual de los textos",
+        "description": "Desde la historia, las dinámicas socioculturales del mundo antiguo y las evidencias arqueológicas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Interpreta la Biblia con rigor académico",
+        "description": "Desde el aprendizaje de metodologías de investigación e interpretación bíblica para una lectura rigurosa, crítica y en diálogo con las realidades contemporáneas.",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Desarrolla competencias para liderar procesos de formación e investigación",
+        "description": "En Biblia y en animación bíblica de la pastoral que promuevan la transformación de las personas y las comunidades.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "graduateProfile": {
+    "eyebrow": "",
+    "title": "Perfil del egresado",
+    "image": "",
+    "items": [],
+    "enabled": false
+  },
+  "curriculum": {
+    "eyebrow": "",
+    "title": "Ruta formativa",
+    "description": "",
+    "downloadUrl": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Plan-de-estudios-Ciencias-Biblicas-Virtual.pdf",
+    "buttonUrl": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Plan-de-estudios-Ciencias-Biblicas-Virtual.pdf",
+    "buttonTitle": "Descargar pensum",
+    "items": [],
+    "enabled": false
+  },
+  "admissions": {
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "items": []
+  },
+  "whyStudy": {
+    "eyebrow": "",
+    "title": "¿Por qué estudiar con nosotros?",
+    "description": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ciencias-biblicas/banner-5-por-que-estudiar.png",
+    "items": [],
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una propuesta formativa única en modalidad 100% virtual.",
+          "Un programa interconfesional e interdenominacional.",
+          "Cuerpo docente con Maestría o Doctorado integrado por académicos, investigadores y formadores con amplia trayectoria en Sagrada Escritura y teología.",
+          "Posibilidad de fortalecer el perfil profesional mediante rutas de aprendizaje e insignias digitales ofrecidas por la Institución.",
+          "Una experiencia académica que desarrolla una mirada crítica y fortalece una vocación de servicio con responsabilidad, comunicación profunda y con conciencia en entornos comunitarios, educativos o eclesiales."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
+  },
+  "financialAid": {
+    "enabled": true,
+    "variant": "option-b",
+    "eyebrow": "",
+    "title": "Inversión y financiamiento",
+    "description": "",
+    "items": [
+      {
+        "title": "Valor oficial del cuatrimestre $ 3.892.500",
+        "description": "Primer cuatrimestre con subsidio del 42%: $ 2.257.700",
+        "url": "",
+        "image": "",
+        "items": []
+      },
+      {
+        "title": "Financiación de hasta el 100% de tus estudios",
+        "description": "Tenemos convenios con aliados como Cooperativa Minuto de Dios y Fincomercio que te ofrecen facilidades de pago.",
+        "url": "",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "relatedPrograms": [],
+  "contact": {
+    "advisorName": "",
+    "advisorTitle": "",
+    "phone": "",
+    "email": "",
+    "image": ""
+  },
+  "cta": {
+    "variant": "minimal",
+    "title": "Solicita información",
+    "description": "Completa el formulario y un asesor se contactará contigo.",
+    "button": "¡Inscríbete Gratis!",
+    "secondaryButton": "",
+    "image": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_7_SOLICITA_INFO.png"
+  },
+  "form": {
+    "title": "Solicita información",
+    "description": "Completa el formulario y nuestro equipo te contactará pronto.",
+    "scriptUrl": "",
+    "scriptCode": "<div class=\"contenedor-formulario-embebido\">\n  <div role=\"main\" id=\"ciencias-biblicas-virtual-c382f69dbc015b1369b3\"></div>\n  <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>\n</div>",
+    "formId": "",
+    "programName": "Pregrado en Ciencias Bíblicas",
+    "campus": "Uniminuto",
+    "campusOptions": [],
+    "language": "Spanish",
+    "campaigntype": "",
+    "campaigncode": "",
+    "leadsource": "",
+    "leadid": "",
+    "tenantid": "",
+    "schoolname": "",
+    "channel": "",
+    "veritySysKey": "",
+    "verityLeadPostUrl": "",
+    "hiddenProgramFieldName": "program",
+    "submitLabel": "Enviar"
+  },
+  "formSection": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "description": "Formarte en Ciencias Bíblicas es ir más allá de la lectura espiritual: es sumergirte en los textos desde sus raíces lingüísticas, históricas y culturales. A través de metodologías científicas y una mirada social, este programa te prepara para interpretar, enseñar y aplicar la palabra en contextos reales y diversos.",
+    "backgroundImage": "https://uvd.uniminuto.edu/boletin/ciencias-biblicas/assets/Banner_2_FORMULARIO.png",
+    "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
+    "textTheme": "light"
+  },
+  "catalog": "",
+  "faculty": "",
+  "cipCode": "",
+  "programExplorer": {
+    "enabled": true,
+    "eyebrow": "",
+    "title": "Conoce el programa",
+    "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "cardsTitle": "",
+    "tabs": [
+      {
+        "id": "ep-perfil",
+        "label": "Perfil del egresado",
+        "title": "Perfil del egresado",
+        "description": "El profesional en Ciencias Bíblicas está en capacidad de:",
+        "listStyle": "bullets",
+        "items": [
+          "Interpretar los textos bíblicos desde sus raíces lingüísticas, históricas y culturales, con herramientas de exégesis y hermenéutica.",
+          "Acompañar procesos formativos socio-eclesiales desde una mirada crítica de la realidad, con vocación de servicio y compromiso social.",
+          "Participar en proyectos de investigación y liderar procesos de formación bíblica en diversos contextos pastorales y sociales.",
+          "Contribuir a la producción editorial y cultural, y promover iniciativas que fortalezcan el diálogo entre la fe, la sociedad y una ciudadanía comprometida con el bien común."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-plan",
+        "label": "Plan de estudios",
+        "title": "Plan de estudios",
+        "description": "Total créditos académicos del programa: 143 · Modalidad: Virtual.",
+        "listStyle": "bullets",
+        "items": [],
+        "groups": [
+          {
+            "title": "I Cuatrimestre",
+            "items": [
+              { "label": "Habilidades Digitales", "value": "" },
+              { "label": "Introducción General a la Biblia", "value": "" },
+              { "label": "Lectura y Escritura en el Contexto Digital", "value": "" },
+              { "label": "Historia de Israel", "value": "" },
+              { "label": "Proyecto de Vida Bíblico", "value": "" }
+            ]
+          },
+          {
+            "title": "II Cuatrimestre",
+            "items": [
+              { "label": "Hebreo I", "value": "" },
+              { "label": "Pentateuco", "value": "" },
+              { "label": "Contextos del Nuevo Testamento", "value": "" },
+              { "label": "Cátedra Minuto de Dios", "value": "" },
+              { "label": "Antropología Bíblica", "value": "" }
+            ]
+          },
+          {
+            "title": "III Cuatrimestre",
+            "items": [
+              { "label": "Hebreo II", "value": "" },
+              { "label": "Narrativa Histórica", "value": "" },
+              { "label": "Constitución Política", "value": "" },
+              { "label": "Profetas Pre-exílicos", "value": "" },
+              { "label": "Introducción a los Evangelios y Evangelio de Marcos", "value": "" }
+            ]
+          },
+          {
+            "title": "IV Cuatrimestre",
+            "items": [
+              { "label": "Hebreo III", "value": "" },
+              { "label": "Profetas Post-exílicos", "value": "" },
+              { "label": "Literatura Poética", "value": "" },
+              { "label": "Evangelio de Mateo", "value": "" },
+              { "label": "Teoría de la Interpretación", "value": "" }
+            ]
+          },
+          {
+            "title": "V Cuatrimestre",
+            "items": [
+              { "label": "Griego I", "value": "" },
+              { "label": "Obra Lucana", "value": "" },
+              { "label": "Literatura Sapiencial", "value": "" },
+              { "label": "Fundamentos de Investigación", "value": "" },
+              { "label": "Electiva I", "value": "" }
+            ]
+          },
+          {
+            "title": "VI Cuatrimestre",
+            "items": [
+              { "label": "Griego II", "value": "" },
+              { "label": "Metodología de Investigación Exegética", "value": "" },
+              { "label": "Emprendimiento", "value": "" },
+              { "label": "Evangelio de Juan", "value": "" },
+              { "label": "Métodos de Investigación Exegéticos Diacrónicos", "value": "" }
+            ]
+          },
+          {
+            "title": "VII Cuatrimestre",
+            "items": [
+              { "label": "Griego III", "value": "" },
+              { "label": "Métodos de Investigación Exegéticos Sincrónicos", "value": "" },
+              { "label": "Cartas Protopaulinas", "value": "" },
+              { "label": "Ética Profesional", "value": "" },
+              { "label": "Aplicación Exegética", "value": "" }
+            ]
+          },
+          {
+            "title": "VIII Cuatrimestre",
+            "items": [
+              { "label": "Literatura Intertestamentaria y Rabínica", "value": "" },
+              { "label": "Cartas Deuteropaulinas", "value": "" },
+              { "label": "Práctica en Responsabilidad Social", "value": "" },
+              { "label": "Teoría y Práctica de la Animación Bíblica de la Pastoral", "value": "" },
+              { "label": "Electiva II", "value": "" }
+            ]
+          },
+          {
+            "title": "IX Cuatrimestre",
+            "items": [
+              { "label": "Teología del Antiguo Testamento", "value": "" },
+              { "label": "Práctica Profesional", "value": "" },
+              { "label": "Cartas Apostólicas", "value": "" },
+              { "label": "Hebreos", "value": "" }
+            ]
+          },
+          {
+            "title": "X Cuatrimestre",
+            "items": [
+              { "label": "Apocalipsis y Literatura Apocalíptica", "value": "" },
+              { "label": "Teología del Nuevo Testamento", "value": "" },
+              { "label": "Síntesis Bíblica", "value": "" },
+              { "label": "Electiva III", "value": "" },
+              { "label": "Opción de Grado", "value": "" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ep-requisitos",
+        "label": "Requisitos de admisión",
+        "title": "Requisitos de admisión",
+        "description": "",
+        "listStyle": "bullets",
+        "items": [
+          "Título de bachiller académico.",
+          "Resultado de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
+          "Fotocopia de documento de identidad ampliada al 150%.",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)."
+        ],
+        "groups": []
+      },
+      {
+        "id": "ep-ruta",
+        "label": "Ruta de admisión",
+        "title": "Ruta de admisión",
+        "description": "",
+        "listStyle": "steps",
+        "items": [
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
+          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
+        ],
+        "groups": []
+      }
+    ],
+    "cards": [],
+    "image": ""
+  },
+  "benefits": {
+    "eyebrow": "",
+    "title": "",
+    "items": []
+  },
+  "footerScripts": [],
+  "externship": {
+    "enabled": false,
+    "eyebrow": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "hours": "",
+    "partners": []
+  }
+}
