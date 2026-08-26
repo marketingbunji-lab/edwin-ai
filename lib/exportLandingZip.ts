@@ -355,6 +355,96 @@ function removeInlineScripts(html: string) {
   );
 }
 
+function hasRdStationEmbed(html: string) {
+  return /<script\b[^>]*\bsrc=["'][^"']*rdstation-forms[^"']*["'][^>]*><\/script>/i.test(
+    html,
+  );
+}
+
+function collectRdStationFormIds(html: string) {
+  const formIds = new Set<string>();
+
+  html.replace(
+    /<div\b[^>]*\brole=["']main["'][^>]*\bid=["']([^"']+)["'][^>]*><\/div>/gi,
+    (_fullMatch, formId: string) => {
+      const normalizedFormId = formId.trim();
+
+      if (normalizedFormId) {
+        formIds.add(normalizedFormId);
+      }
+
+      return _fullMatch;
+    },
+  );
+
+  return Array.from(formIds);
+}
+
+function buildRdStationAutoInitScript(html: string) {
+  if (!hasRdStationEmbed(html)) {
+    return "";
+  }
+
+  const formIds = collectRdStationFormIds(html);
+
+  if (formIds.length === 0) {
+    return "";
+  }
+
+  const rdStationToken = "UA-263596197-1";
+
+  return `(function () {
+  var formIds = ${JSON.stringify(formIds)};
+  function initialize() {
+    if (typeof window === "undefined" || typeof window.RDStationForms !== "function") {
+      return false;
+    }
+    formIds.forEach(function (formId) {
+      var element = document.getElementById(formId);
+      if (!element || element.dataset.rdStationBound === "true") {
+        return;
+      }
+      try {
+        new window.RDStationForms(formId, ${JSON.stringify(rdStationToken)}).createForm();
+        element.dataset.rdStationBound = "true";
+      } catch (error) {
+        console.error("RD Station form init failed", error);
+      }
+    });
+    return true;
+  }
+  if (initialize()) {
+    return;
+  }
+  var tries = 0;
+  var interval = window.setInterval(function () {
+    tries += 1;
+    if (initialize() || tries >= 20) {
+      window.clearInterval(interval);
+    }
+  }, 250);
+})();`;
+}
+
+function ensureRdStationInlineScripts(html: string, scripts: string[]) {
+  const hasExplicitInit = scripts.some(
+    (script) =>
+      script.includes("RDStationForms(") || script.includes(".createForm("),
+  );
+
+  if (hasExplicitInit) {
+    return scripts;
+  }
+
+  const fallbackScript = buildRdStationAutoInitScript(html);
+
+  if (!fallbackScript) {
+    return scripts;
+  }
+
+  return [fallbackScript, ...scripts];
+}
+
 function extractSvgImgAttributes(svgMarkup: string) {
   const openTagMatch = svgMarkup.match(/^<svg\b([^>]*)>/i);
   const attrs = openTagMatch?.[1] ?? "";
@@ -525,7 +615,10 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
     );
   }
 
-  const inlineScripts = collectInlineScripts(html);
+  const inlineScripts = ensureRdStationInlineScripts(
+    html,
+    collectInlineScripts(html),
+  );
   if (inlineScripts.length > 0) {
     const scriptFileName = "assets/app.js";
     files.push({

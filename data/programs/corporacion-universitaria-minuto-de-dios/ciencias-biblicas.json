@@ -278,7 +278,7 @@
     "title": "Solicita información",
     "description": "Completa el formulario y nuestro equipo te contactará pronto.",
     "scriptUrl": "",
-    "scriptCode": "<div class=\"contenedor-formulario-embebido\">\n  <div role=\"main\" id=\"ciencias-biblicas-virtual-c382f69dbc015b1369b3\"></div>\n  <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>\n</div>",
+    "scriptCode": "<div class=\"contenedor-formulario-embebido\">\n  <div role=\"main\" id=\"ciencias-biblicas-virtual-c382f69dbc015b1369b3\"></div>\n  <script type=\"text/javascript\" src=\"https://d335luupugsy2.cloudfront.net/js/rdstation-forms/stable/rdstation-forms.min.js\"></script>\n  <script>\n    new RDStationForms('ciencias-biblicas-virtual-c382f69dbc015b1369b3', 'UA-263596197-1').createForm();\n  </script>\n</div>",
     "formId": "",
     "programName": "Pregrado en Ciencias Bíblicas",
     "campus": "Uniminuto",

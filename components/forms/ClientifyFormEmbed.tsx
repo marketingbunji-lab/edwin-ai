@@ -13,10 +13,10 @@ type WindowWithRdStation = Window & {
   };
 };
 
-function getRdStationToken(formId: string) {
-  const parts = formId.split("-").filter(Boolean);
+const DEFAULT_RD_STATION_TOKEN = "UA-263596197-1";
 
-  return parts.at(-1) || formId;
+function getRdStationToken() {
+  return DEFAULT_RD_STATION_TOKEN;
 }
 
 function initializeRdStationForms(container: HTMLDivElement) {
