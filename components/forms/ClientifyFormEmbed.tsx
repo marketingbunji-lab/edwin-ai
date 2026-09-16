@@ -35,7 +35,7 @@ function initializeRdStationForms(container: HTMLDivElement) {
     try {
       new RDStationForms(
         element.id,
-        getRdStationToken(element.id),
+        getRdStationToken(),
       ).createForm();
       element.dataset.rdStationBound = "true";
     } catch (error) {
