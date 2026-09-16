@@ -18,7 +18,9 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": ["Virtual"],
+    "campuses": [
+      "Virtual"
+    ],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -73,12 +75,12 @@
     "highlight": "",
     "title": "Maestría en Gerencia Estratégica de Operaciones",
     "subtitle": "",
-    "description": "SNIES en proceso de asignación · Resolución de registro calificado 14041 del 22/05/2026 · Vigencia 7 años.",
+    "description": "SNIES 119412 · Resolución registro calificado 14041 del 22/05/2026 - Vigencia 7 años",
     "supportText": "",
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -152,58 +154,21 @@
     "items": []
   },
   "graduateProfile": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Perfil del egresado",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/classroom-images-maestria-en-gerencia-estrategica-de-operaciones-2026-08-21T18-17-55-872Z.png",
-    "items": [
-      {
-        "title": "",
-        "description": "Planear procesos de transformación estratégica de operaciones mediante sostenibilidad, gestión del cambio y tecnologías emergentes para la mejora continua en las cadenas de valor en contextos dinámicos.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Formular métodos analíticos y computacionales avanzados mediante simulación, analítica predictiva, interoperabilidad digital y optimización multicriterio para la toma de decisiones operativas orientadas al desarrollo sostenible.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "title": "",
+    "image": "",
+    "items": []
   },
   "curriculum": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Ruta formativa",
-    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 42. Modalidad: Virtual.",
+    "title": "",
+    "description": "",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Maestria_en_Gerencia_Estrategica_de_Operaciones.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Maestria_en_Gerencia_Estrategica_de_Operaciones.pdf",
-    "buttonTitle": "Descargar pensum",
-    "items": [
-      {
-        "title": "Fundamentación",
-        "description": "Se fortalecen las bases de la gerencia estratégica, la excelencia operativa, la resiliencia organizacional y el análisis de información como soporte para la toma de decisiones en operaciones.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profundización",
-        "description": "Se profundiza en prospectiva, gerencia de operaciones, optimización, digitalización, automatización y análisis de sistemas complejos para liderar procesos de transformación organizacional.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Investigación",
-        "description": "Se desarrollan habilidades investigativas para estructurar proyectos, analizar información y generar conocimiento aplicado a la mejora y evolución de las operaciones.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "buttonTitle": "",
+    "items": []
   },
   "admissions": {
     "eyebrow": "",
@@ -217,6 +182,16 @@
     "eyebrow": "",
     "title": "Inversión y financiamiento",
     "description": "",
+    "priceCard": {
+      "badge": "DESCUENTO DEL 12%",
+      "title": "",
+      "price": "",
+      "previousPricePrefix": "",
+      "previousPrice": "",
+      "previousPriceLabel": "",
+      "buttonLabel": "",
+      "buttonUrl": ""
+    },
     "items": [
       {
         "title": "Precio oficial $ 7.550.400",
@@ -260,7 +235,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -303,6 +278,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png",
     "cardsTitle": "",
     "tabs": [
       {
@@ -399,40 +375,32 @@
         ]
       },
       {
-        "id": "ep-admision",
+        "id": "ep-requisitos",
         "label": "Requisitos de admisión",
         "title": "Requisitos de admisión",
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+          "Título profesional en cualquier área del conocimiento",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },
       {
         "id": "ep-ruta",
         "label": "Ruta de admisión",
-        "title": "Ruta de aprendizaje",
+        "title": "Ruta de admisión",
         "description": "",
         "listStyle": "steps",
         "items": [
-          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
-          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
-          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
-          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }
     ],
-    "cards": [],
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-gerencia-estrategica-de-operaciones/2-maestria-en-gerencia-estrategica-de-operaciones-40966bd1a317.png"
+    "cards": []
   },
   "catalog": "",
   "faculty": "",

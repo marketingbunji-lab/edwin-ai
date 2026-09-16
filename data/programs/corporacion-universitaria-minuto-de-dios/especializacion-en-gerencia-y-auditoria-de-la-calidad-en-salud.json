@@ -18,7 +18,9 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": ["Virtual"],
+    "campuses": [
+      "Virtual"
+    ],
     "onlineAvailable": true
   },
   "duration": {
@@ -315,20 +317,15 @@
         ]
       },
       {
-        "id": "ep-admision",
+        "id": "ep-requisitos",
         "label": "Requisitos de admisión",
         "title": "Requisitos de admisión",
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+          "Título profesional en cualquier área del conocimiento",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },

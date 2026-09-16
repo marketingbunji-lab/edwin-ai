@@ -1145,6 +1145,7 @@ export default function DefaultLanding({
             title={financialAid.title || ""}
             description={financialAid.description || ""}
             items={financialAidItems}
+            priceCard={financialAid.priceCard}
             variant={
               financialAid.variant === "option-b" ? "secondary-b" : "secondary"
             }

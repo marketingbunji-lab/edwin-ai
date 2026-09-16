@@ -18,7 +18,9 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": ["Virtual"],
+    "campuses": [
+      "Virtual"
+    ],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -78,7 +80,7 @@
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -147,77 +149,26 @@
   "overview": {
     "eyebrow": "",
     "title": "Lo que aprenderás",
-    "description": "El programa de Licenciatura en Ciencias Naturales y Educación Ambiental forma docentes integrales capaces de comprender, enseñar y transformar el mundo desde el conocimiento científico, la conciencia ecológica y la innovación educativa. A través de una formación crítica, ética y sostenible, el programa prepara profesionales comprometidos con la protección del ambiente, la investigación y la construcción de una sociedad más responsable con el planeta.",
+    "description": "Comprende, enseña y transforma el mundo integrando conocimiento científico, innovación educativa y sostenibilidad. El programa te prepara para diseñar procesos de enseñanza que promuevan la protección ambiental y la construcción de una sociedad más responsable con el planeta.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/licenciatura-en-ciencias-naturales-y-educacion-ambiental-2-photoroom-1-ea464226ec07.png",
     "items": []
   },
   "graduateProfile": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Perfil del egresado",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/career-images-licenciatura-en-ciencias-naturales-y-educacion-ambiental-2026-08-21T17-25-04-548Z.png",
-    "items": [
-      {
-        "title": "",
-        "description": "Integrar los fundamentos disciplinares, didácticos y pedagógicos de los procesos asociados a los diferentes fenómenos naturales de la biología, la física, la química y la educación ambiental, a través de su articulación con el reconocimiento de los contextos locales y globales para el fomento del pensamiento científico en diferentes comunidades.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Diseñar estrategias de transposición didáctica propias del campo de las ciencias naturales y educación ambiental con base en principios epistemológicos, enfoque crítico y sostenible para la comprensión de las implicaciones sociales y éticas de diversos contextos.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Caracterizar escenarios de enseñanza y aprendizaje para las ciencias naturales y educación ambiental, mediante la vinculación de la investigación formativa como estrategia pedagógica y didáctica para el acercamiento al conocimiento científico, que responda a la solución de problemáticas educativas.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "title": "",
+    "image": "",
+    "items": []
   },
   "curriculum": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Ruta formativa",
-    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 144. Modalidad: Virtual.",
+    "title": "",
+    "description": "",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Licenciatura-en-Ciencias-Naturales-y-Educacion-Ambiental.pdf",
-    "buttonTitle": "Descargar pensum",
-    "items": [
-      {
-        "title": "Básico",
-        "description": "Se fortalecen los fundamentos pedagógicos, curriculares, matemáticos, comunicativos y digitales que preparan al estudiante para comprender la enseñanza de las ciencias naturales en contextos educativos contemporáneos.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profesional",
-        "description": "Se profundiza en biología, química, física, educación ambiental e investigación, integrando didácticas específicas y prácticas formativas para la enseñanza de las ciencias naturales con sentido crítico y territorial.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Minuto de Dios",
-        "description": "Se promueve una formación humana e integral desde el proyecto de vida, la responsabilidad social, la ética profesional, la ciudadanía y el emprendimiento, en coherencia con el sello institucional.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profesional complementario",
-        "description": "Se articulan prácticas de profundización, electivas y opción de grado para consolidar la experiencia pedagógica, la capacidad investigativa y la proyección profesional del futuro licenciado.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "buttonTitle": "",
+    "items": []
   },
   "admissions": {
     "eyebrow": "",
@@ -274,7 +225,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -307,7 +258,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Fórmate como docente de Ciencias Naturales y Educación Ambiental desarrollando capacidades para enseñar desde el pensamiento científico, la conciencia ecológica y la investigación, y transformar comunidades educativas con prácticas críticas, éticas y comprometidas con el cuidado del planeta.",
+    "description": "Fórmate como Licenciado en Ciencias Naturales y Educación Ambiental y desarrolla habilidades para enseñar con rigor científico, ética profesional y compromiso investigativo. Prepárate para liderar procesos pedagógicos críticos en el aula.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/5046f33c-1b06-4beb-b607-9d79c9a947ae-df62ac82a144.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -320,6 +271,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/asset-2026-08-21T17-13-06-423Z.png",
     "cardsTitle": "",
     "tabs": [
       {
@@ -563,14 +515,12 @@
         "listStyle": "steps",
         "items": [
           "Inscripción y admisión: Completa el formulario y carga tus documentos.",
-          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
-          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }
     ],
-    "cards": [],
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-ciencias-naturales-y-educacion-ambiental/asset-2026-08-21T17-13-06-423Z.png"
+    "cards": []
   },
   "whyStudy": {
     "eyebrow": "",

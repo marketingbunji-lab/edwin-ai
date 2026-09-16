@@ -18,7 +18,9 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": ["Virtual"],
+    "campuses": [
+      "Virtual"
+    ],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -78,7 +80,7 @@
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -147,60 +149,30 @@
   "overview": {
     "eyebrow": "",
     "title": "Lo que aprenderás",
-    "description": "La Especialización en Gerencia y Auditoría de la Calidad en Salud forma profesionales capaces de liderar procesos estratégicos de gestión, auditoría y mejoramiento continuo en organizaciones del sector salud. A través de una formación innovadora, ética y orientada a resultados, el programa fortalece competencias en calidad, seguridad del paciente, normatividad y transformación digital, contribuyendo al desarrollo de servicios de salud más eficientes, humanizados y sostenibles.",
+    "description": "Impulsa servicios de salud más eficientes, humanizados y sostenibles integrando calidad, seguridad del paciente y transformación digital. Este programa te prepara para responder a los retos actuales del sistema de salud con una visión centrada en las personas.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/7a3c911e-f7e2-47ba-ac03-bf354f18a9ec-45b0a5c616dd.png",
     "items": []
   },
   "graduateProfile": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Perfil del egresado",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/561459ca-ccd8-4060-8a9b-457906d066b5-431debdbbabd.png",
-    "items": [
-      {
-        "title": "",
-        "description": "Verificar el cumplimiento de requisitos legales y reglamentarios en el sector salud a partir del proceso de auditoría como una herramienta de la gestión gerencial y de calidad, para la mejora del desempeño del sistema de salud y la atención centrada en el cliente.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "title": "",
+    "image": "",
+    "items": []
   },
   "curriculum": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Ruta formativa",
-    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 24. Modalidad: Virtual.",
+    "title": "",
+    "description": "",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Especializacion-en-Gerencia-Auditoria-de%20la-Calidad-en-Salud-2.pdf",
-    "buttonTitle": "Descargar pensum",
-    "items": [
-      {
-        "title": "Fundamentación",
-        "description": "Se construyen las bases del programa desde la calidad en salud, la normatividad vigente y los marcos regulatorios que orientan la gestión y la auditoría en organizaciones del sector.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profundización",
-        "description": "Se desarrollan capacidades para evaluar el desempeño, gestionar riesgos, auditar procesos y tomar decisiones estratégicas y financieras que fortalezcan la calidad en instituciones de salud.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Investigación",
-        "description": "Se consolidan habilidades para formular, desarrollar y sustentar ejercicios de investigación aplicados al mejoramiento continuo y a la toma de decisiones en el ámbito de la calidad en salud.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "buttonTitle": "",
+    "items": []
   },
   "admissions": {
     "eyebrow": "",
-    "title": "Documentos de ingreso",
+    "title": "",
     "description": "",
     "items": []
   },
@@ -253,7 +225,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -286,7 +258,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Fórmate como especialista capaz de liderar la gestión, la auditoría y el mejoramiento continuo de organizaciones de salud, integrando calidad, seguridad del paciente, normatividad y transformación digital para impulsar servicios más eficientes, humanizados y sostenibles.",
+    "description": "Fórmate como especialista en Gerencia y Auditoría de la Calidad en Salud y desarrolla capacidades para gestionar, auditar y verificar el cumplimiento normativo en organizaciones del sector. Prepárate para liderar procesos con visión estratégica, ética y orientada a resultados.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/f8e53d02-bc03-4827-bfbe-902489f1ca5a-fae37a0d6fdf.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -296,6 +268,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/6-especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-5c3b38c87537.webp",
     "cardsTitle": "",
     "tabs": [
       {
@@ -371,40 +344,32 @@
         ]
       },
       {
-        "id": "ep-admision",
+        "id": "ep-requisitos",
         "label": "Requisitos de admisión",
         "title": "Requisitos de admisión",
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+          "Título profesional en cualquier área del conocimiento",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },
       {
         "id": "ep-ruta",
         "label": "Ruta de admisión",
-        "title": "Ruta de aprendizaje",
+        "title": "Ruta de admisión",
         "description": "",
         "listStyle": "steps",
         "items": [
-          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
-          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
-          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
-          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }
     ],
-    "cards": [],
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud/6-especializacion-en-gerencia-y-auditoria-de-la-calidad-en-salud-5c3b38c87537.webp"
+    "cards": []
   },
   "catalog": "",
   "faculty": "",

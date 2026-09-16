@@ -18,7 +18,9 @@
     "modality": "Virtual",
     "schedule": "online",
     "language": "es",
-    "campuses": ["Virtual"],
+    "campuses": [
+      "Virtual"
+    ],
     "onlineAvailable": true,
     "hybridAvailable": false,
     "onCampusAvailable": false
@@ -78,7 +80,7 @@
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -147,63 +149,26 @@
   "overview": {
     "eyebrow": "",
     "title": "Lo que aprenderás",
-    "description": "La Maestría en Didáctica de las Ciencias Sociales forma profesionales capaces de transformar los procesos de enseñanza y aprendizaje desde una mirada crítica, interdisciplinaria e innovadora. El programa fortalece competencias pedagógicas, investigativas y sociales para promover la construcción de paz, la justicia social y la formación ciudadana en contextos educativos diversos y contemporáneos.",
+    "description": "Desarrolla competencias pedagógicas e investigativas para transformar la enseñanza de las Ciencias Sociales desde una mirada innovadora, aplicable a diversos contextos educativos y contemporáneos.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/asset-2026-08-21T17-57-26-337Z.png",
     "items": []
   },
   "graduateProfile": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Perfil del egresado",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/classroom-images-maestria-en-didactica-de-las-ciencias-sociales-2026-08-21T17-59-42-695Z.png",
-    "items": [
-      {
-        "title": "",
-        "description": "Integrar los campos disciplinares, interdisciplinares y transdisciplinares de las ciencias sociales con el ejercicio pedagógico, por medio de diversos ambientes de aprendizaje para la formulación de proyectos curriculares transversales contextualizados.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Estructurar propuestas de formación ciudadana con base en la transposición didáctica de las ciencias sociales en perspectiva latinoamericana, para la construcción de paz, equidad y justicia social.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "title": "",
+    "image": "",
+    "items": []
   },
   "curriculum": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Ruta formativa",
-    "description": "Consulta el pensum oficial del programa. Total de créditos académicos: 42. Modalidad: Virtual.",
+    "title": "",
+    "description": "",
     "downloadUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Maestria-en-Didactica-de-las-Ciencias-Sociales-Editable.pdf",
     "buttonUrl": "https://www.uniminuto.edu/sites/default/files/programas/2026-07/Plan-de-Estudio-Maestria-en-Didactica-de-las-Ciencias-Sociales-Editable.pdf",
-    "buttonTitle": "Descargar pensum",
-    "items": [
-      {
-        "title": "Fundamentación",
-        "description": "Se estudian las trayectorias de las ciencias sociales, los debates contemporáneos sobre la didáctica y las mediaciones tecnológicas que enriquecen su enseñanza desde perspectivas latinoamericanas.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profundización",
-        "description": "Se abordan didácticas aplicadas a historia, geografía, medioambiente, paz y geopolítica para construir propuestas pedagógicas críticas, contextualizadas y pertinentes para distintos escenarios educativos.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Investigación",
-        "description": "Se fortalecen competencias investigativas para diseñar, analizar y producir conocimiento sobre la enseñanza de las ciencias sociales y sus transformaciones en contextos contemporáneos.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "buttonTitle": "",
+    "items": []
   },
   "admissions": {
     "eyebrow": "",
@@ -260,7 +225,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -293,7 +258,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Fórmate como profesional capaz de transformar la enseñanza de las Ciencias Sociales mediante propuestas pedagógicas críticas, interdisciplinarias e innovadoras que fortalezcan la formación ciudadana, la construcción de paz, la equidad y la justicia social en contextos educativos diversos.",
+    "description": "Fórmate como Magíster en Didáctica de las Ciencias Sociales y lidera proyectos pedagógicos críticos e interdisciplinarios que fortalezcan la formación ciudadana, la paz y la justicia social.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/classroom-images-maestria-en-didactica-de-las-ciencias-sociales-2026-08-21T17-59-42-695Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -303,6 +268,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png",
     "cardsTitle": "",
     "tabs": [
       {
@@ -399,40 +365,32 @@
         ]
       },
       {
-        "id": "ep-admision",
+        "id": "ep-requisitos",
         "label": "Requisitos de admisión",
         "title": "Requisitos de admisión",
         "description": "",
         "listStyle": "bullets",
         "items": [
-          "Fotocopia del diploma o acta de grado de bachiller.",
-          "Fotocopia de la prueba de estado para acceso a la educación superior (Pruebas ICFES).",
-          "Fotocopia de documento de identidad al 150%.",
-          "Afiliación a EPS, ARS o Sisben. (No mayor a 30 días).",
-          "Pago derechos de inscripción.",
-          "Contrato de matrícula.",
-          "Tener sensibilidad para trabajar con y para las personas. Tener aprendizaje autónomo. Trabajo en equipo.",
-          "Obligatorio tener acceso a un PC o móvil con conexión a internet."
+          "Título profesional en cualquier área del conocimiento",
+          "Fotocopia de documento de identidad ampliada al 150%",
+          "Certificado de afiliación a EPS o Sisbén (No mayor a 30 días)"
         ],
         "groups": []
       },
       {
         "id": "ep-ruta",
         "label": "Ruta de admisión",
-        "title": "Ruta de aprendizaje",
+        "title": "Ruta de admisión",
         "description": "",
         "listStyle": "steps",
         "items": [
-          "Inscripción y admisión: Completa el formulario y carga tus documentos con acompañamiento de un asesor.",
-          "Inducción virtual: Conoce la plataforma y el modelo de estudio asincrónico.",
-          "Formación por semestres: Avanza con contenidos disponibles 24/7 y acompañamiento docente.",
-          "Trabajo de grado y graduación: Integra lo aprendido y obtén tu título de Magíster en Espiritualidad."
+          "Inscripción y admisión: Completa el formulario y carga tus documentos.",
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }
     ],
-    "cards": [],
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-didactica-de-las-ciencias-sociales/1-maestria-en-didactica-de-las-ciencias-sociales-3fa1c14a40c2.png"
+    "cards": []
   },
   "catalog": "",
   "faculty": "",

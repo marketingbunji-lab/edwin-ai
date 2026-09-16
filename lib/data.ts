@@ -180,6 +180,17 @@ export type TitleDescriptionItem = {
   items?: string[];
 };
 
+export type FinancialAidPriceCard = {
+  badge?: string;
+  title?: string;
+  price?: string;
+  previousPricePrefix?: string;
+  previousPrice?: string;
+  previousPriceLabel?: string;
+  buttonLabel?: string;
+  buttonUrl?: string;
+};
+
 export type OpportunityToWork = {
   eyebrow?: string;
   title?: string;
@@ -394,6 +405,7 @@ export type Landing = {
     eyebrow?: string;
     title?: string;
     description?: string;
+    priceCard?: FinancialAidPriceCard;
     items?: Array<string | TitleDescriptionItem>;
   };
   testimonials?: Array<{
@@ -1383,6 +1395,20 @@ export function normalizeLandingSchema(landing: Landing): Landing {
       description: hasFinancialAidContent
         ? landing.financialAid?.description || ""
         : "",
+      priceCard: landing.financialAid?.priceCard
+        ? {
+            badge: landing.financialAid.priceCard.badge || "",
+            title: landing.financialAid.priceCard.title || "",
+            price: landing.financialAid.priceCard.price || "",
+            previousPricePrefix:
+              landing.financialAid.priceCard.previousPricePrefix || "",
+            previousPrice: landing.financialAid.priceCard.previousPrice || "",
+            previousPriceLabel:
+              landing.financialAid.priceCard.previousPriceLabel || "",
+            buttonLabel: landing.financialAid.priceCard.buttonLabel || "",
+            buttonUrl: landing.financialAid.priceCard.buttonUrl || "",
+          }
+        : undefined,
       items: hasFinancialAidContent ? financialAidItems : [],
     },
     testimonials: landing.testimonials ?? [],

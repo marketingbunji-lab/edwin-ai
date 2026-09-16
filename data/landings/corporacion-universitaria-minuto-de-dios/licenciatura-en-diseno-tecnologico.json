@@ -80,7 +80,7 @@
     "discountedPrice": "",
     "discountPercentage": "",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -149,7 +149,7 @@
   "overview": {
     "eyebrow": "",
     "title": "Lo que aprenderás",
-    "description": "El programa de Licenciatura en Diseño Tecnológico forma docentes innovadores capaces de transformar los entornos educativos mediante la integración de pedagogía, tecnología y diseño. Su propuesta académica fortalece la investigación, la inclusión y el uso estratégico de tecnologías para responder a los desafíos de la educación actual y futura, promoviendo experiencias de aprendizaje dinámicas, humanas y de alta calidad.",
+    "description": "Transforma entornos educativos mediante el uso estratégico de la tecnología y el diseño. Este programa te prepara para crear experiencias de aprendizaje dinámicas, inclusivas y de alta calidad, respondiendo a los desafíos educativos del presente y el futuro.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/asset-2026-08-21T14-56-47-739Z.png",
     "items": []
   },
@@ -225,7 +225,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -258,7 +258,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Fórmate como docente innovador en Diseño Tecnológico desarrollando capacidades para integrar pedagogía, tecnología e investigación, diseñar experiencias de aprendizaje inclusivas y transformar los procesos educativos frente a los desafíos del presente y el futuro.",
+    "description": "Fórmate como Licenciado en Diseño Tecnológico y desarrolla habilidades para integrar tecnología, diseño e investigación en la práctica docente. Prepárate para liderar procesos pedagógicos innovadores con criterio ético y profesional.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/licenciatura-en-diseno-tecnologico/asset-2026-08-21T14-56-47-739Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -508,8 +508,7 @@
         "listStyle": "steps",
         "items": [
           "Inscripción y admisión: Completa el formulario y carga tus documentos.",
-          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
-          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }

@@ -80,7 +80,7 @@
     "discountedPrice": "$2.257.700",
     "discountPercentage": "42%",
     "primaryCta": {
-      "label": "Solicita informacion",
+      "label": "Solicita información",
       "url": "#form"
     },
     "secondaryCta": {
@@ -268,7 +268,7 @@
   },
   "cta": {
     "variant": "minimal",
-    "title": "Solicita informacion",
+    "title": "Solicita información",
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
@@ -609,8 +609,7 @@
         "listStyle": "steps",
         "items": [
           "Inscripción y admisión: Completa el formulario y carga tus documentos.",
-          "Entrevista de admisión: Una vez verificados tus documentos, serás citado a una entrevista de admisión.",
-          "Respuesta y continuación: Tras la entrevista, recibirás la respuesta para continuar con tu proceso de inscripción."
+          "Respuesta y continuación: Una vez verificados tus documentos, recibirás respuesta para continuar con tu proceso de matrícula."
         ],
         "groups": []
       }

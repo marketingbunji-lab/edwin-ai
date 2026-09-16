@@ -8,6 +8,7 @@ import {
 } from "./classes";
 import DefaultLandingSectionHeader from "./DefaultLandingSectionHeader";
 import type { LandingLiveEditConfig } from "@/components/editor/LiveEditableText";
+import type { FinancialAidPriceCard } from "@/lib/data";
 import LiveAddItemButton from "@/components/editor/LiveAddItemButton";
 import LiveEditableText from "@/components/editor/LiveEditableText";
 import { Banknote, BookOpenCheck, Hammer } from "../templateIcons";
@@ -29,6 +30,7 @@ type Props = {
   title: string;
   description: string;
   items: SectionItem[];
+  priceCard?: FinancialAidPriceCard;
   soft?: boolean;
   variant?: "default" | "secondary" | "secondary-b";
   downloadUrl?: string;
@@ -92,6 +94,7 @@ export default function DefaultLandingDetailCardsSection({
   title,
   description,
   items,
+  priceCard,
   soft = false,
   variant = "default",
   downloadUrl = "",
@@ -190,27 +193,52 @@ export default function DefaultLandingDetailCardsSection({
               const descriptionPrice = splitLabelAndAmount(item.description);
               const officialAmount = parseMoneyAmount(item.title);
               const discountedAmount = parseMoneyAmount(item.description);
+              const hasPriceCardConfig = Boolean(
+                priceCard &&
+                  Object.values(priceCard).some((value) => value?.trim()),
+              );
               const isPriceCard =
-                index === 0 && titlePrice.amount && descriptionPrice.amount;
+                index === 0 &&
+                (hasPriceCardConfig ||
+                  (titlePrice.amount && descriptionPrice.amount));
               const computedDiscountPercentage =
                 officialAmount && discountedAmount && officialAmount > discountedAmount
                   ? `${Math.round(((officialAmount - discountedAmount) / officialAmount) * 100)}%`
                   : "";
-              const badgeText = extractBadgeLabel(
-                descriptionPrice.label,
-                item.items?.[1] || computedDiscountPercentage,
-              );
+              const badgeText =
+                priceCard?.badge?.trim() ||
+                extractBadgeLabel(
+                  descriptionPrice.label,
+                  item.items?.[1] || computedDiscountPercentage,
+                );
               const badgeCopy = badgeText
                 ? badgeText.startsWith("DESCUENTO")
                   ? badgeText
                   : `DESCUENTO DEL ${badgeText}`
                 : "";
               const primaryPriceLabel =
-                item.items?.[0]?.trim() || descriptionPrice.label || "Valor con subsidio";
+                priceCard?.title?.trim() ||
+                item.items?.[0]?.trim() ||
+                descriptionPrice.label ||
+                "Valor con subsidio";
               const primaryPriceAmount =
-                item.items?.[2]?.trim() || descriptionPrice.amount;
-              const officialPriceLabel = titlePrice.label || "Valor oficial";
-              const priceCardHref = item.url?.trim() || "#default-form";
+                priceCard?.price?.trim() ||
+                item.items?.[2]?.trim() ||
+                descriptionPrice.amount;
+              const previousPricePrefix =
+                priceCard?.previousPricePrefix?.trim() || "Antes";
+              const previousPrice =
+                priceCard?.previousPrice?.trim() || titlePrice.amount;
+              const officialPriceLabel =
+                priceCard?.previousPriceLabel?.trim() ||
+                titlePrice.label ||
+                "Valor oficial";
+              const priceCardButtonLabel =
+                priceCard?.buttonLabel?.trim() ||
+                (item.url ? viewMoreLabel : "Quiero inscribirme");
+              const priceCardHref =
+                priceCard?.buttonUrl?.trim() || item.url?.trim() || "#default-form";
+              const priceCardPath = "financialAid.priceCard";
               const shouldCenterSecondaryCard = validItems.length <= 2;
 
               return (
@@ -226,23 +254,53 @@ export default function DefaultLandingDetailCardsSection({
                     <div className="flex min-h-[340px] flex-col items-center justify-center text-center">
                       {badgeCopy ? (
                         <span className="inline-flex rounded-full bg-[rgba(7,23,53,0.14)] px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[var(--landing-primary-darkest)] shadow-[inset_0_1px_0_rgba(255,255,255,0.24)]">
-                          {badgeCopy}
+                          <LiveEditableText
+                            path={`${priceCardPath}.badge`}
+                            value={badgeCopy}
+                            liveEdit={liveEdit}
+                            singleLine
+                          />
                         </span>
                       ) : null}
                       <div className="mt-6">
                         <p className="text-lg font-semibold leading-7 text-[var(--landing-primary-darkest)] md:text-2xl">
-                          {primaryPriceLabel}
+                          <LiveEditableText
+                            path={`${priceCardPath}.title`}
+                            value={primaryPriceLabel}
+                            liveEdit={liveEdit}
+                          />
                         </p>
                         <p className="mt-2 text-5xl font-bold leading-none tracking-tight text-[var(--landing-primary-darkest)] md:text-6xl">
-                          {primaryPriceAmount}
+                          <LiveEditableText
+                            path={`${priceCardPath}.price`}
+                            value={primaryPriceAmount}
+                            liveEdit={liveEdit}
+                            singleLine
+                          />
                         </p>
                       </div>
                       <div className="mt-5 text-base leading-7 text-[var(--landing-primary-darkest)]/80 md:text-lg">
-                        <span>Antes </span>
+                        <LiveEditableText
+                          path={`${priceCardPath}.previousPricePrefix`}
+                          value={previousPricePrefix}
+                          liveEdit={liveEdit}
+                          singleLine
+                        />{" "}
                         <span className="font-semibold line-through decoration-[var(--landing-primary-darkest)]/70 decoration-2">
-                          {titlePrice.amount}
+                          <LiveEditableText
+                            path={`${priceCardPath}.previousPrice`}
+                            value={previousPrice}
+                            liveEdit={liveEdit}
+                            singleLine
+                          />
                         </span>
-                        <span>{` · ${officialPriceLabel.toLowerCase()}`}</span>
+                        <span>{" · "}</span>
+                        <LiveEditableText
+                          path={`${priceCardPath}.previousPriceLabel`}
+                          value={officialPriceLabel}
+                          liveEdit={liveEdit}
+                          singleLine
+                        />
                       </div>
                       <a
                         href={priceCardHref}
@@ -250,7 +308,12 @@ export default function DefaultLandingDetailCardsSection({
                         rel={priceCardHref.startsWith("#") ? undefined : "noreferrer"}
                         className="mt-8 inline-flex min-h-12 items-center justify-center rounded-2xl bg-[var(--landing-primary-darkest)] px-8 py-3.5 text-lg font-extrabold text-white no-underline shadow-[0_18px_34px_rgba(15,23,42,0.22)] transition-all duration-300 hover:scale-[1.02] hover:opacity-95"
                       >
-                        {item.url ? viewMoreLabel : "Quiero inscribirme"}
+                        <LiveEditableText
+                          path={`${priceCardPath}.buttonLabel`}
+                          value={priceCardButtonLabel}
+                          liveEdit={liveEdit}
+                          singleLine
+                        />
                       </a>
                     </div>
                   ) : (
@@ -317,7 +380,7 @@ export default function DefaultLandingDetailCardsSection({
                     </div>
                   )}
 
-                  {item.url ? (
+                  {!isPriceCard && item.url ? (
                     <a
                       href={item.url}
                       target="_blank"

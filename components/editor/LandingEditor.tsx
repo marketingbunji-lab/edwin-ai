@@ -21,6 +21,7 @@ import {
 import type {
   Brand,
   BrandCertification,
+  FinancialAidPriceCard,
   Landing,
   LandingCertificationItem,
   ProgramInfoItem,
@@ -100,7 +101,13 @@ export type LandingImageAsset = {
   notes?: string;
 };
 
-type AssetSourceTab = "url" | "program" | "brand";
+type AssetSourceTab = "url" | "program" | "brand" | "upload";
+
+type ProgramImageUploadContext = {
+  brandSlug: string;
+  programId: string;
+  programName: string;
+};
 
 const HERO_MENU_OPTIONS: HeroMenuOption[] = [
   { id: "landing-overview", label: "Conoce el programa" },
@@ -267,6 +274,45 @@ function normalizeProgramInfoEditorItem(
   };
 }
 
+function splitPriceText(value = "") {
+  const match = value.match(/\$\s?[\d.,]+/);
+
+  return {
+    label: match
+      ? value.replace(match[0], "").replace(/\s+/g, " ").trim()
+      : value.trim(),
+    amount: match?.[0]?.replace(/\s+/g, "") || "",
+  };
+}
+
+function getPriceCardEditorValues(
+  financialAid?: Landing["financialAid"],
+): Required<FinancialAidPriceCard> {
+  const firstItem = financialAid?.items?.[0];
+  const item = typeof firstItem === "string" ? undefined : firstItem;
+  const official = splitPriceText(item?.title);
+  const subsidized = splitPriceText(item?.description);
+  const configured = financialAid?.priceCard;
+  const badge = item?.items?.[1]?.trim() || "";
+
+  return {
+    badge: configured?.badge ?? (badge ? `DESCUENTO DEL ${badge}` : ""),
+    title:
+      configured?.title ??
+      item?.items?.[0]?.trim() ??
+      subsidized.label ??
+      "",
+    price:
+      configured?.price ?? item?.items?.[2]?.trim() ?? subsidized.amount ?? "",
+    previousPricePrefix: configured?.previousPricePrefix ?? "Antes",
+    previousPrice: configured?.previousPrice ?? official.amount ?? "",
+    previousPriceLabel:
+      configured?.previousPriceLabel ?? official.label ?? "Precio oficial",
+    buttonLabel: configured?.buttonLabel ?? "Quiero inscribirme",
+    buttonUrl: configured?.buttonUrl ?? item?.url ?? "#default-form",
+  };
+}
+
 export default function LandingEditor({
   brand,
   initialLanding,
@@ -274,6 +320,7 @@ export default function LandingEditor({
   imageAssets = [],
 }: Props) {
   const [landing, setLanding] = useState<Landing>(initialLanding);
+  const [availableImageAssets, setAvailableImageAssets] = useState(imageAssets);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
   const [lastSavedSnapshot, setLastSavedSnapshot] = useState(() =>
@@ -306,6 +353,25 @@ export default function LandingEditor({
   const currentSnapshot = JSON.stringify(landing);
   const hasChanges = currentSnapshot !== lastSavedSnapshot;
   const saveDisabled = saving || !hasChanges;
+  const priceCardEditorValues = getPriceCardEditorValues(landing.financialAid);
+  const programImageUploadContext: ProgramImageUploadContext = {
+    brandSlug: brand.slug,
+    programId:
+      landing.sourceProgramId || landing.sourceProgramSlug || landing.slug,
+    programName:
+      landing.form?.programName || landing.fullTitle || landing.title || landing.slug,
+  };
+
+  useEffect(() => {
+    setAvailableImageAssets(imageAssets);
+  }, [imageAssets]);
+
+  const addUploadedImageAsset = (asset: LandingImageAsset) => {
+    setAvailableImageAssets((currentAssets) => [
+      asset,
+      ...currentAssets.filter((currentAsset) => currentAsset.id !== asset.id),
+    ]);
+  };
   const variantControls = useMemo<VariantControlConfig[]>(
     () => [
       {
@@ -1905,6 +1971,94 @@ ${accordionBootstrapScript}
                   ]}
                 />
 
+                {landing.financialAid?.variant === "option-b" ? (
+                  <div className="admin-panel-soft space-y-4 p-4">
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900 dark:text-slate-100">
+                        Tarjeta de precio
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-gray-500 dark:text-slate-400">
+                        Personaliza todos los textos, valores y el enlace del
+                        botón de la tarjeta destacada.
+                      </p>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <Field
+                        label="Texto del descuento"
+                        value={priceCardEditorValues.badge}
+                        onChange={(value) =>
+                          updateField("financialAid.priceCard.badge", value)
+                        }
+                      />
+                      <Field
+                        label="Precio con subsidio"
+                        value={priceCardEditorValues.price}
+                        onChange={(value) =>
+                          updateField("financialAid.priceCard.price", value)
+                        }
+                      />
+                      <Field
+                        label="Título del precio"
+                        value={priceCardEditorValues.title}
+                        onChange={(value) =>
+                          updateField("financialAid.priceCard.title", value)
+                        }
+                      />
+                      <Field
+                        label="Texto antes del precio oficial"
+                        value={priceCardEditorValues.previousPricePrefix}
+                        onChange={(value) =>
+                          updateField(
+                            "financialAid.priceCard.previousPricePrefix",
+                            value,
+                          )
+                        }
+                      />
+                      <Field
+                        label="Precio oficial anterior"
+                        value={priceCardEditorValues.previousPrice}
+                        onChange={(value) =>
+                          updateField(
+                            "financialAid.priceCard.previousPrice",
+                            value,
+                          )
+                        }
+                      />
+                      <Field
+                        label="Texto junto al precio oficial"
+                        value={priceCardEditorValues.previousPriceLabel}
+                        onChange={(value) =>
+                          updateField(
+                            "financialAid.priceCard.previousPriceLabel",
+                            value,
+                          )
+                        }
+                      />
+                      <Field
+                        label="Texto del botón"
+                        value={priceCardEditorValues.buttonLabel}
+                        onChange={(value) =>
+                          updateField(
+                            "financialAid.priceCard.buttonLabel",
+                            value,
+                          )
+                        }
+                      />
+                      <Field
+                        label="Enlace del botón"
+                        value={priceCardEditorValues.buttonUrl}
+                        onChange={(value) =>
+                          updateField(
+                            "financialAid.priceCard.buttonUrl",
+                            value,
+                          )
+                        }
+                      />
+                    </div>
+                  </div>
+                ) : null}
+
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h4 className="text-sm font-semibold text-gray-900 dark:text-slate-100">
@@ -1953,6 +2107,38 @@ ${accordionBootstrapScript}
                         </div>
 
                         <div className="space-y-3">
+
+                          <Field
+                            label="Título"
+                            value={
+                              typeof item === "string" ? "" : item?.title || ""
+                            }
+                            onChange={(value) =>
+                              updateArrayItem(
+                                "financialAid.items",
+                                index,
+                                "title",
+                                value,
+                              )
+                            }
+                          />
+
+                          <TextareaField
+                            label="Descripción"
+                            value={
+                              typeof item === "string"
+                                ? item
+                                : item?.description || ""
+                            }
+                            onChange={(value) =>
+                              updateArrayItem(
+                                "financialAid.items",
+                                index,
+                                "description",
+                                value,
+                              )
+                            }
+                          />
 
                           <Field
                             label="URL"
@@ -2248,8 +2434,10 @@ ${accordionBootstrapScript}
         <ImageUrlModal
           target={imageEditTarget}
           value={imageUrlDraft}
-          imageAssets={imageAssets}
+          imageAssets={availableImageAssets}
+          uploadContext={programImageUploadContext}
           onChange={setImageUrlDraft}
+          onUploaded={addUploadedImageAsset}
           onClose={closeImageEditor}
           onSave={saveImageUrl}
         />
@@ -2291,8 +2479,10 @@ ${accordionBootstrapScript}
       {heroSettingsModalOpen ? (
         <HeroBackgroundSettingsModal
           imageUrl={landing.hero?.backgroundImage || ""}
-          imageAssets={imageAssets}
+          imageAssets={availableImageAssets}
+          uploadContext={programImageUploadContext}
           onChangeField={updateField}
+          onUploaded={addUploadedImageAsset}
           onClose={() => setHeroSettingsModalOpen(false)}
         />
       ) : null}
@@ -2753,12 +2943,16 @@ function FormSettingsModal({
 function HeroBackgroundSettingsModal({
   imageUrl,
   imageAssets,
+  uploadContext,
   onChangeField,
+  onUploaded,
   onClose,
 }: {
   imageUrl: string;
   imageAssets: LandingImageAsset[];
+  uploadContext: ProgramImageUploadContext;
   onChangeField: (path: string, value: string) => void;
+  onUploaded: (asset: LandingImageAsset) => void;
   onClose: () => void;
 }) {
   const [activeTab, setActiveTab] = useState<AssetSourceTab>("url");
@@ -2802,7 +2996,17 @@ function HeroBackgroundSettingsModal({
             onChangeTab={setActiveTab}
           />
 
-          {activeTab === "url" ? (
+          {activeTab === "upload" ? (
+            <ProgramImageUpload
+              context={uploadContext}
+              assetCategory="heroImages"
+              onUploaded={(asset) => {
+                onUploaded(asset);
+                onChangeField("hero.backgroundImage", asset.url);
+                setActiveTab("program");
+              }}
+            />
+          ) : activeTab === "url" ? (
             <label className="grid gap-2">
               <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                 URL de imagen de fondo
@@ -2897,6 +3101,7 @@ function ImageAssetTabs({
     { id: "url", label: "URL manual" },
     { id: "program", label: "Assets del programa", count: programAssetsCount },
     { id: "brand", label: "Assets universidad", count: brandAssetsCount },
+    { id: "upload", label: "Cargar imagen" },
   ];
 
   return (
@@ -2996,14 +3201,18 @@ function ImageUrlModal({
   target,
   value,
   imageAssets,
+  uploadContext,
   onChange,
+  onUploaded,
   onClose,
   onSave,
 }: {
   target: ImageEditTarget;
   value: string;
   imageAssets: LandingImageAsset[];
+  uploadContext: ProgramImageUploadContext;
   onChange: (value: string) => void;
+  onUploaded: (asset: LandingImageAsset) => void;
   onClose: () => void;
   onSave: () => void;
 }) {
@@ -3048,7 +3257,17 @@ function ImageUrlModal({
             onChangeTab={setActiveTab}
           />
 
-          {activeTab === "url" ? (
+          {activeTab === "upload" ? (
+            <ProgramImageUpload
+              context={uploadContext}
+              assetCategory={getImageAssetCategory(target.path)}
+              onUploaded={(asset) => {
+                onUploaded(asset);
+                onChange(asset.url);
+                setActiveTab("program");
+              }}
+            />
+          ) : activeTab === "url" ? (
             <label className="grid gap-2">
               <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                 URL de la imagen
@@ -3104,6 +3323,131 @@ function ImageUrlModal({
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function getImageAssetCategory(path: string) {
+  if (path === "hero.backgroundImage") return "heroImages";
+
+  if (path.includes("handsOnTraining") || path.includes("externship")) {
+    return "handsOnTrainingImages";
+  }
+
+  if (path.includes("testimonial")) return "testimonialImages";
+  if (path.includes("career")) return "careerImages";
+  if (path.includes("gallery")) return "galleryImages";
+
+  return "lifestyleImages";
+}
+
+function ProgramImageUpload({
+  context,
+  assetCategory,
+  onUploaded,
+}: {
+  context: ProgramImageUploadContext;
+  assetCategory: string;
+  onUploaded: (asset: LandingImageAsset) => void;
+}) {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState("");
+
+  const uploadImage = async (file: File) => {
+    setUploading(true);
+    setError("");
+
+    try {
+      const formData = new FormData();
+      formData.set("file", file);
+      formData.set("brandSlug", context.brandSlug);
+      formData.set("category", "programs-assets");
+      formData.set("programId", context.programId);
+      formData.set("programName", context.programName);
+      formData.set("assetCategory", assetCategory);
+
+      const response = await fetch("/api/visual-assets-upload", {
+        method: "POST",
+        body: formData,
+      });
+      const result = (await response.json()) as {
+        ok?: boolean;
+        error?: string;
+        record?: {
+          id: string;
+          name: string;
+          url: string;
+          notes?: string;
+        };
+      };
+
+      if (!response.ok || !result.ok || !result.record) {
+        throw new Error(result.error || "No se pudo cargar la imagen");
+      }
+
+      onUploaded({
+        id: result.record.id,
+        name: result.record.name,
+        url: result.record.url,
+        source: "program",
+        categoryLabel: "Imagen cargada",
+        notes: result.record.notes,
+      });
+    } catch (uploadError) {
+      setError(
+        uploadError instanceof Error
+          ? uploadError.message
+          : "No se pudo cargar la imagen",
+      );
+    } finally {
+      setUploading(false);
+
+      if (inputRef.current) {
+        inputRef.current.value = "";
+      }
+    }
+  };
+
+  return (
+    <div className="rounded-2xl border border-dashed border-[var(--bunji-primary)]/35 bg-[var(--bunji-primary)]/[0.04] p-4 dark:bg-[var(--bunji-primary)]/[0.08]">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-slate-950 dark:text-slate-50">
+            Cargar desde tu computador
+          </p>
+          <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">
+            PNG, JPG, WEBP, GIF o AVIF. Máximo 10 MB.
+          </p>
+        </div>
+        <input
+          ref={inputRef}
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/gif,image/avif"
+          className="sr-only"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+
+            if (file) {
+              void uploadImage(file);
+            }
+          }}
+        />
+        <button
+          type="button"
+          disabled={uploading}
+          onClick={() => inputRef.current?.click()}
+          className="inline-flex items-center gap-2 rounded-xl border border-[var(--bunji-primary)]/30 bg-white px-3 py-2 text-sm font-semibold text-[var(--bunji-primary)] transition hover:bg-[var(--bunji-primary)] hover:text-white disabled:cursor-wait disabled:opacity-60 dark:bg-slate-950"
+        >
+          <ImagePlus className="h-4 w-4" />
+          {uploading ? "Cargando..." : "Buscar imagen"}
+        </button>
+      </div>
+      {error ? (
+        <p className="mt-3 text-xs font-medium text-red-600 dark:text-red-300">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
