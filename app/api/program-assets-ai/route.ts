@@ -3,7 +3,7 @@ import { requireAuthenticatedUser } from "@/lib/serverAuth";
 import { persistVisualAssetResponseImages } from "@/lib/supabaseAssetStorage";
 
 const programAssetsWebhookUrl =
-  "https://n8n.crisnnino.com/webhook/edwin-program-assets-agent";
+  "https://n8n-home.crisnnino.com/webhook-test/edwin-program-assets-agent";
 
 export const dynamic = "force-dynamic";
 

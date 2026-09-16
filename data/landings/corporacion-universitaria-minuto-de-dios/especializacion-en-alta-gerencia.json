@@ -85,7 +85,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/especializacion-en-alta-gerencia-banner-home-2026-09-16T18-37-51-026Z.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -148,7 +148,7 @@
     "eyebrow": "",
     "title": "Lo que aprenderás",
     "description": "La Especialización en Alta Gerencia es un programa de posgrado de nivel de especialización universitaria, cuyo propósito es formar líderes estratégicos, éticos e innovadores, capaces de dirigir organizaciones y tomar decisiones fundamentadas que contribuyan a la generación de valor y al desarrollo sostenible. En modalidad virtual, el programa integra competencias en liderazgo, pensamiento estratégico, gestión del cambio, dirección de personas, analítica de datos, gestión financiera e innovación, preparando a los profesionales para afrontar los desafíos de entornos organizacionales dinámicos, competitivos y globalizados, con un firme compromiso con la responsabilidad social, la sostenibilidad y la transformación de las organizaciones.",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/programa.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/especializacion-alta-gerencia-01-2026-09-16T20-34-27-537Z.png",
     "items": []
   },
   "graduateProfile": {
@@ -221,7 +221,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/hero.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
@@ -251,7 +251,7 @@
     "title": "",
     "subtitle": "",
     "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/especializacion-alta-gerencia-02-2026-09-16T20-36-50-778Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
@@ -361,17 +361,18 @@
         ],
         "groups": []
       }
-    ]
+    ],
+    "cards": []
   },
   "catalog": "",
   "faculty": "",
   "cipCode": "",
   "whyStudy": {
-    "enabled": false,
     "eyebrow": "",
     "title": "",
     "description": "",
     "image": "",
+    "items": [],
     "cards": []
   },
   "handsOnTraining": {

@@ -85,7 +85,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/pregrado-en-contaduria-publica-banner-hero-2026-09-16T18-26-49-945Z.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -148,7 +148,7 @@
     "eyebrow": "",
     "title": "Lo que aprenderás",
     "description": "El programa de Contaduría Pública es un programa de nivel profesional universitario, cuyo propósito es formar profesionales íntegros, éticos e innovadores, capaces de generar información financiera, tributaria y estratégica que fortalezca la toma de decisiones y contribuya al desarrollo sostenible de las organizaciones. En modalidad virtual, el programa integra una sólida formación contable con el uso de tecnologías emergentes, analítica de datos, inteligencia artificial, sostenibilidad y auditoría, preparando a sus estudiantes para responder a los desafíos de un entorno empresarial cada vez más dinámico, digital y globalizado, con un firme compromiso con la confianza pública y la transformación social.",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/programa.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/pregrado-contaduria-publica-02-2026-09-16T20-27-54-436Z.png",
     "items": []
   },
   "graduateProfile": {
@@ -221,7 +221,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/hero.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
@@ -251,7 +251,7 @@
     "title": "",
     "subtitle": "",
     "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/pregrado-contaduria-publica-01-2026-09-16T20-24-15-513Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
@@ -535,14 +535,15 @@
         ],
         "groups": []
       }
-    ]
+    ],
+    "cards": []
   },
   "whyStudy": {
-    "enabled": false,
     "eyebrow": "",
     "title": "",
     "description": "",
     "image": "",
+    "items": [],
     "cards": []
   },
   "handsOnTraining": {

@@ -148,7 +148,7 @@
     "eyebrow": "",
     "title": "Lo que aprenderás",
     "description": "El programa de Ingeniería Mecatrónica es un programa de nivel profesional universitario, cuyo propósito es formar profesionales capaces de diseñar, integrar e implementar soluciones tecnológicas innovadoras mediante la articulación de la mecánica, la electrónica, la informática, el control, la inteligencia artificial y la robótica. En modalidad virtual, el programa desarrolla competencias para responder a los retos de la Industria 4.0 y la transformación digital, promoviendo la innovación, la sostenibilidad, el pensamiento crítico y el compromiso ético con el desarrollo del país.",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/programa.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-02-2026-09-16T19-45-12-603Z.png",
     "items": []
   },
   "graduateProfile": {
@@ -221,7 +221,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/hero.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
@@ -251,7 +251,7 @@
     "title": "",
     "subtitle": "",
     "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-01-2026-09-16T19-38-37-577Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },

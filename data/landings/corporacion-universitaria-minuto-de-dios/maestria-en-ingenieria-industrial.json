@@ -85,7 +85,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/maestria-en-ingeniera-industrial-banner-hero-2026-09-16T18-45-40-576Z.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -148,7 +148,7 @@
     "eyebrow": "",
     "title": "Lo que aprenderás",
     "description": "El programa de la Maestría en Ingeniería Industrial es un programa cuyo propósito es formar profesionales capaces de liderar procesos de transformación, innovación y mejora continua en organizaciones de bienes y servicios. En modalidad virtual, el programa desarrolla competencias para optimizar la gestión de operaciones, la cadena de suministro y los procesos productivos mediante el uso de tecnologías emergentes, análisis de datos y estrategias sostenibles, contribuyendo al fortalecimiento de la productividad, la competitividad y el desarrollo responsable de las organizaciones.",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/programa.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/maestria-en-ingenieria-industrial-02-2026-09-16T20-56-12-093Z.png",
     "items": []
   },
   "graduateProfile": {
@@ -221,7 +221,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/hero.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
@@ -251,7 +251,7 @@
     "title": "",
     "subtitle": "",
     "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/maestria-en-ingenieria-industrial-01-2026-09-16T20-52-23-921Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
@@ -309,17 +309,18 @@
         ],
         "groups": []
       }
-    ]
+    ],
+    "cards": []
   },
   "catalog": "",
   "faculty": "",
   "cipCode": "",
   "whyStudy": {
-    "enabled": false,
     "eyebrow": "",
     "title": "",
     "description": "",
     "image": "",
+    "items": [],
     "cards": []
   },
   "handsOnTraining": {

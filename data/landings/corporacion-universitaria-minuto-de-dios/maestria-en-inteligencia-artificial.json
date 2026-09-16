@@ -85,7 +85,7 @@
       "label": "",
       "url": ""
     },
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/maestria-en-inteligencia-artificial-banner-hero-2026-09-16T18-41-38-796Z.png",
     "personImage": "",
     "videoUrl": "",
     "overlayColor": "rgba(8,16,33,0.42)"
@@ -148,7 +148,7 @@
     "eyebrow": "",
     "title": "Lo que aprenderás",
     "description": "El programa de Maestría en Inteligencia Artificial es un programa cuyo propósito es formar profesionales capaces de diseñar, desarrollar e implementar soluciones inteligentes que respondan a los desafíos de la transformación digital en diversos sectores. En modalidad virtual, el programa integra conocimientos avanzados en aprendizaje automático, inteligencia artificial generativa, visión por computador, procesamiento del lenguaje natural y MLOps, con una sólida formación ética, investigativa e interdisciplinaria. Su enfoque promueve la innovación, el liderazgo y el desarrollo de tecnologías responsables que contribuyan al progreso social, económico y sostenible.",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/programa.png",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/maestria-en-inteligencia-artificial-02-2026-09-16T20-45-15-921Z.png",
     "items": []
   },
   "graduateProfile": {
@@ -221,7 +221,7 @@
     "description": "Completa el formulario y un asesor se contactará contigo.",
     "button": "¡Inscríbete Gratis!",
     "secondaryButton": "",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/hero.png"
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/vitral-uniminuto.png"
   },
   "form": {
     "title": "Solicita información",
@@ -251,7 +251,7 @@
     "title": "",
     "subtitle": "",
     "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/hero.png",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/maestria-en-inteligencia-artificial-01-2026-09-16T20-42-45-891Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
@@ -381,17 +381,18 @@
         ],
         "groups": []
       }
-    ]
+    ],
+    "cards": []
   },
   "catalog": "",
   "faculty": "",
   "cipCode": "",
   "whyStudy": {
-    "enabled": false,
     "eyebrow": "",
     "title": "",
     "description": "",
     "image": "",
+    "items": [],
     "cards": []
   },
   "handsOnTraining": {
