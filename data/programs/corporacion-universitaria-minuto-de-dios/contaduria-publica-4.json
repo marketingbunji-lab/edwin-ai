@@ -538,12 +538,34 @@
     ]
   },
   "whyStudy": {
-    "enabled": false,
+    "enabled": true,
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "cards": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/contaduria-publica-4/pregrado-contaduria-publica-01-2026-09-16T20-24-15-513Z.png",
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una formación contable sólida para generar información financiera, tributaria y estratégica que apoye la toma de decisiones.",
+          "Integración de tecnologías emergentes, analítica de datos e inteligencia artificial aplicadas a la gestión contable.",
+          "Competencias en auditoría, control interno, gestión financiera, tributaria y de costos.",
+          "Preparación para actuar con ética, responsabilidad social y compromiso con la confianza pública.",
+          "Enfoque en sostenibilidad, innovación y generación de valor en entornos empresariales digitales y globalizados."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

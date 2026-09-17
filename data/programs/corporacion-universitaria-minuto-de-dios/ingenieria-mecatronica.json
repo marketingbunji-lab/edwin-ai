@@ -542,12 +542,34 @@
     ]
   },
   "whyStudy": {
-    "enabled": false,
+    "enabled": true,
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "cards": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-01-2026-09-16T19-38-37-577Z.png",
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una formación interdisciplinaria que integra mecánica, electrónica, informática, control, inteligencia artificial y robótica.",
+          "Desarrollo de competencias para diseñar, integrar e implementar sistemas mecatrónicos automatizados.",
+          "Preparación para responder a los retos de la Industria 4.0 y la transformación digital.",
+          "Enfoque en innovación tecnológica, sostenibilidad y eficiencia energética para resolver necesidades del sector productivo.",
+          "Formación ética, pensamiento crítico y trabajo colaborativo en ecosistemas industriales."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

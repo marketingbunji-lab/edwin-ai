@@ -369,11 +369,33 @@
   "cipCode": "",
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/especializacion-en-alta-gerencia/especializacion-alta-gerencia-01-2026-09-16T20-34-27-537Z.png",
     "items": [],
-    "cards": []
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Formación para liderar organizaciones y tomar decisiones estratégicas orientadas a la generación de valor.",
+          "Desarrollo de competencias en liderazgo, pensamiento estratégico, gestión del cambio y dirección de personas.",
+          "Integración de analítica de datos, gestión financiera e innovación para afrontar escenarios competitivos.",
+          "Preparación para dirigir organizaciones en entornos dinámicos y globalizados.",
+          "Enfoque ético, sostenible y socialmente responsable para impulsar la transformación organizacional."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

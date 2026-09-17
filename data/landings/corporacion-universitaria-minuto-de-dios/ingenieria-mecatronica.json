@@ -147,7 +147,7 @@
   "overview": {
     "eyebrow": "",
     "title": "Lo que aprenderás",
-    "description": "El programa de Ingeniería Mecatrónica es un programa de nivel profesional universitario, cuyo propósito es formar profesionales capaces de diseñar, integrar e implementar soluciones tecnológicas innovadoras mediante la articulación de la mecánica, la electrónica, la informática, el control, la inteligencia artificial y la robótica. En modalidad virtual, el programa desarrolla competencias para responder a los retos de la Industria 4.0 y la transformación digital, promoviendo la innovación, la sostenibilidad, el pensamiento crítico y el compromiso ético con el desarrollo del país.",
+    "description": "Aprende a implementar inteligencia artificial y sistemas automatizados con un enfoque sostenible y ético. Este programa te forma para liderar procesos de transformación digital, aportando soluciones reales al desarrollo del país.",
     "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-02-2026-09-16T19-45-12-603Z.png",
     "items": []
   },
@@ -250,7 +250,7 @@
     "eyebrow": "",
     "title": "",
     "subtitle": "",
-    "description": "Completa el formulario y un asesor se contactará contigo para acompañarte en tu proceso de admisión.",
+    "description": "Fórmate como Ingeniero Mecatrónico y desarrolla capacidades para diseñar e integrar soluciones tecnológicas articulando mecánica, electrónica, control y robótica. Prepárate para responder a los retos de la Industria 4.0 con innovación y pensamiento crítico.",
     "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-01-2026-09-16T19-38-37-577Z.png",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
@@ -544,11 +544,33 @@
   },
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/ingenieria-mecatronica/pregrado-en-ingeniera-mecatronica-01-2026-09-16T19-38-37-577Z.png",
     "items": [],
-    "cards": []
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Una formación interdisciplinaria que integra mecánica, electrónica, informática, control, inteligencia artificial y robótica.",
+          "Desarrollo de competencias para diseñar, integrar e implementar sistemas mecatrónicos automatizados.",
+          "Preparación para responder a los retos de la Industria 4.0 y la transformación digital.",
+          "Enfoque en innovación tecnológica, sostenibilidad y eficiencia energética para resolver necesidades del sector productivo.",
+          "Formación ética, pensamiento crítico y trabajo colaborativo en ecosistemas industriales."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

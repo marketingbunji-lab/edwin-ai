@@ -317,11 +317,33 @@
   "cipCode": "",
   "whyStudy": {
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-ingenieria-industrial/maestria-en-ingenieria-industrial-01-2026-09-16T20-52-23-921Z.png",
     "items": [],
-    "cards": []
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Formación para liderar procesos de transformación, innovación y mejora continua en organizaciones de bienes y servicios.",
+          "Competencias para optimizar operaciones, cadenas de suministro y procesos productivos.",
+          "Uso estratégico de tecnologías emergentes y análisis de datos para fortalecer la toma de decisiones.",
+          "Enfoque en productividad, competitividad y generación de valor.",
+          "Gestión responsable y sostenible de los sistemas organizacionales y productivos."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,

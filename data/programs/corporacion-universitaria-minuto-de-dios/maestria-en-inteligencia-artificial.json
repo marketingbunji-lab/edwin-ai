@@ -387,12 +387,34 @@
   "faculty": "",
   "cipCode": "",
   "whyStudy": {
-    "enabled": false,
+    "enabled": true,
     "eyebrow": "",
-    "title": "",
+    "title": "¿Por qué estudiar con nosotros?",
     "description": "",
-    "image": "",
-    "cards": []
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-inteligencia-artificial/maestria-en-inteligencia-artificial-01-2026-09-16T20-42-45-891Z.png",
+    "cards": [
+      {
+        "title": "El programa",
+        "icon": "badge-check",
+        "items": [
+          "Formación avanzada para diseñar, desarrollar e implementar soluciones inteligentes en diferentes sectores.",
+          "Profundización en aprendizaje automático, inteligencia artificial generativa, visión por computador y procesamiento del lenguaje natural.",
+          "Competencias para implementar, validar y optimizar modelos predictivos y prescriptivos.",
+          "Integración de MLOps, investigación e innovación para llevar soluciones de inteligencia artificial a condiciones reales.",
+          "Enfoque ético e interdisciplinario para desarrollar tecnologías responsables con impacto social, económico y sostenible."
+        ]
+      },
+      {
+        "title": "Información UNIMINUTO Virtual",
+        "icon": "globe",
+        "items": [
+          "Somos una Institución acreditada en Alta Calidad por el Ministerio de Educación Nacional.",
+          "Más de 160 convenios nacionales e internacionales del sistema UNIMINUTO.",
+          "Experticia en transformación social y pastoral de la obra Minuto de Dios.",
+          "Internacionalización en casa, sin salir del país."
+        ]
+      }
+    ]
   },
   "handsOnTraining": {
     "enabled": false,
