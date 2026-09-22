@@ -224,16 +224,61 @@ function normalizeSourceUrl(url: string, baseUrl?: string) {
 function buildAssetFileName(sourceUrl: string, index: number, contentType = "") {
   const extension =
     getUrlExtension(sourceUrl) || getExtensionFromContentType(contentType) || ".bin";
+  const directory = getAssetDirectory(extension, contentType);
 
   try {
     const parsed = new URL(sourceUrl, "https://bundle.local");
     const lastSegment = parsed.pathname.split("/").filter(Boolean).pop() || "asset";
     const stem = sanitizeFileStem(lastSegment.replace(/\.[^.]+$/, "")) || "asset";
 
-    return `assets/${String(index + 1).padStart(2, "0")}-${stem}${extension}`;
+    return `${directory}/${String(index + 1).padStart(2, "0")}-${stem}${extension}`;
   } catch {
-    return `assets/${String(index + 1).padStart(2, "0")}-asset${extension}`;
+    return `${directory}/${String(index + 1).padStart(2, "0")}-asset${extension}`;
   }
+}
+
+function getAssetDirectory(extension: string, contentType: string) {
+  const normalizedExtension = extension.toLowerCase();
+  const normalizedContentType = contentType.toLowerCase();
+
+  if (normalizedExtension === ".css" || normalizedContentType.includes("text/css")) {
+    return "css";
+  }
+
+  if (
+    normalizedExtension === ".js" ||
+    normalizedExtension === ".mjs" ||
+    normalizedContentType.includes("javascript")
+  ) {
+    return "js";
+  }
+
+  return "img";
+}
+
+function getRelativeBundlePath(fromFile: string, toFile: string) {
+  const relativePath = path.posix.relative(path.posix.dirname(fromFile), toFile);
+
+  return relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
+}
+
+function rewriteBundledReferences(
+  content: string,
+  fromFile: string,
+  bundledFiles: Iterable<string>,
+) {
+  let nextContent = content;
+
+  for (const fileName of bundledFiles) {
+    const indexReference = getRelativeBundlePath("index.html", fileName);
+    const bundledReference = getRelativeBundlePath(fromFile, fileName);
+
+    if (indexReference !== bundledReference) {
+      nextContent = nextContent.split(indexReference).join(bundledReference);
+    }
+  }
+
+  return nextContent;
 }
 
 function collectHtmlResourceUrls(html: string) {
@@ -574,7 +619,7 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
           const rawValue = nestedUrl.trim();
           css = css
             .split(rawValue)
-            .join(`./${path.posix.basename(nestedFileName)}`);
+            .join(getRelativeBundlePath(fileName, nestedFileName));
         } catch (error) {
           console.warn("ZIP EXPORT CSS ASSET SKIPPED:", nestedUrl, error);
         }
@@ -596,7 +641,9 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
   for (const resourceUrl of resourceUrls) {
     try {
       const fileName = await bundleAsset(resourceUrl);
-      html = html.split(resourceUrl).join(`./${fileName}`);
+      html = html
+        .split(resourceUrl)
+        .join(getRelativeBundlePath("index.html", fileName));
     } catch (error) {
       console.warn("ZIP EXPORT ASSET SKIPPED:", resourceUrl, error);
     }
@@ -604,14 +651,24 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
 
   const inlineStyles = collectStyleTags(html);
   if (inlineStyles.length > 0) {
-    const styleFileName = "assets/styles.css";
+    const styleFileName = "css/styles.css";
     files.push({
       name: styleFileName,
-      data: textEncoder.encode(`${inlineStyles.join("\n\n")}\n`),
+      data: textEncoder.encode(
+        `${inlineStyles
+          .map((style) =>
+            rewriteBundledReferences(
+              style,
+              styleFileName,
+              sourceToFileName.values(),
+            ),
+          )
+          .join("\n\n")}\n`,
+      ),
     });
     html = removeStyleTags(html).replace(
       /<\/head>/i,
-      `  <link rel="stylesheet" href="./${styleFileName}">\n</head>`,
+      `  <link rel="stylesheet" href="${getRelativeBundlePath("index.html", styleFileName)}">\n</head>`,
     );
   }
 
@@ -620,14 +677,24 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
     collectInlineScripts(html),
   );
   if (inlineScripts.length > 0) {
-    const scriptFileName = "assets/app.js";
+    const scriptFileName = "js/app.js";
     files.push({
       name: scriptFileName,
-      data: textEncoder.encode(`${inlineScripts.join("\n\n")}\n`),
+      data: textEncoder.encode(
+        `${inlineScripts
+          .map((script) =>
+            rewriteBundledReferences(
+              script,
+              scriptFileName,
+              sourceToFileName.values(),
+            ),
+          )
+          .join("\n\n")}\n`,
+      ),
     });
     html = removeInlineScripts(html).replace(
       /<\/body>/i,
-      `  <script src="./${scriptFileName}"></script>\n</body>`,
+      `  <script src="${getRelativeBundlePath("index.html", scriptFileName)}"></script>\n</body>`,
     );
   }
 
@@ -638,14 +705,14 @@ export async function exportLandingZip(brand: Brand, landing: Landing) {
     }
 
     inlineSvgCount += 1;
-    const fileName = `assets/${String(inlineSvgCount).padStart(2, "0")}-inline-graphic.svg`;
+    const fileName = `img/${String(inlineSvgCount).padStart(2, "0")}-inline-graphic.svg`;
     files.push({
       name: fileName,
       data: textEncoder.encode(svgMarkup),
     });
 
     const imgAttributes = extractSvgImgAttributes(svgMarkup);
-    return `<img src="./${fileName}" ${imgAttributes}>`;
+    return `<img src="${getRelativeBundlePath("index.html", fileName)}" ${imgAttributes}>`;
   });
 
   const zipBuffer = createStoredZip([

@@ -11,6 +11,18 @@ type Params = Promise<{
   landing: string;
 }>;
 
+function getZipFilename(landingSlug: string) {
+  const safeStem = landingSlug
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\d+/g, "")
+    .replace(/[^a-zA-Z]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+
+  return `${safeStem || "landing"}.zip`;
+}
+
 async function resolveLanding(
   request: Request,
   brandSlug: string,
@@ -45,7 +57,7 @@ async function handleExport(request: Request, params: Params) {
     }
 
     const zip = await exportLandingZip(brand, landing);
-    const filename = `${brandSlug}-${landingSlug}.zip`;
+    const filename = getZipFilename(landingSlug);
 
     return new NextResponse(zip, {
       status: 200,
