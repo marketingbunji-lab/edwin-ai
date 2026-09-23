@@ -91,40 +91,11 @@
     }
   ],
   "graduateProfile": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Perfil del egresado",
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-perfil-dd57f15b1f10.jpg",
-    "items": [
-      {
-        "title": "",
-        "description": "Caracterizar los elementos constitutivos de la vida espiritual cristiana con sus dinámicas particulares y problemáticas.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Acompañar procesos de discernimiento y maduración de la experiencia de Dios en personas y comunidades.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Construir procesos de acompañamiento sólidos y renovadores orientados al crecimiento espiritual.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "",
-        "description": "Responder a los requerimientos de los tiempos actuales con criterio, sensibilidad social y vocación clara.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "title": "",
+    "image": "",
+    "items": []
   },
   "whyStudy": {
     "eyebrow": "",
@@ -157,36 +128,14 @@
     ]
   },
   "curriculum": {
+    "enabled": false,
     "eyebrow": "",
-    "title": "Ruta formativa",
+    "title": "",
     "description": "",
     "downloadUrl": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/5cad346d21cb50cd1a315311752eda1381df51da/public/uniminuto/Cuadro-Plan-de-Estudios.pdf",
     "buttonUrl": "https://raw.githubusercontent.com/marketingbunji-lab/edwin-ai/5cad346d21cb50cd1a315311752eda1381df51da/public/uniminuto/Cuadro-Plan-de-Estudios.pdf",
-    "buttonTitle": "Descarga el Plan de Estudios",
-    "items": [
-      {
-        "title": "Fundamentación",
-        "description": "Se afirman los tres pilares de la Sagrada Escritura, la Antropología y la Teología Mística.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Profundización",
-        "description": "Se aprende la historia, el desarrollo, las formas de vivencia y los recursos de apoyo para la vida espiritual, en diálogo interdisciplinar con la Biblia y la sicología aplicada a la vida espiritual.",
-        "url": "",
-        "image": "",
-        "items": []
-      },
-      {
-        "title": "Investigación",
-        "description": "Se afinan las habilidades para el acompañamiento espiritual y la producción de investigaciones que aporten al campo de estudio.",
-        "url": "",
-        "image": "",
-        "items": []
-      }
-    ],
-    "enabled": false
+    "buttonTitle": "",
+    "items": []
   },
   "benefits": {
     "eyebrow": "",
@@ -335,6 +284,7 @@
     "eyebrow": "",
     "title": "Conoce el programa",
     "description": "Toda la información primordial del programa, sin salir de esta página.",
+    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/b8d1f8ed-a461-4eaf-9327-5f57654be63a-836ac084e918.png",
     "cardsTitle": "",
     "tabs": [
       {
@@ -464,8 +414,7 @@
         "groups": []
       }
     ],
-    "cards": [],
-    "image": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/b8d1f8ed-a461-4eaf-9327-5f57654be63a-836ac084e918.png"
+    "cards": []
   },
   "handsOnTraining": {
     "enabled": false,
@@ -579,7 +528,7 @@
     "title": "",
     "subtitle": "",
     "description": "Fórmate como maestro de vida espiritual desarrollando capacidades para transmitir la fe desde experiencias reales de encuentro con Dios, a partir de la Biblia y también desde la historia del cristianismo, con un acompañamiento espiritual transformador.",
-    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-form-bg-3cb7bbd73d62.jpg",
+    "backgroundImage": "/generated-assets/corporacion-universitaria-minuto-de-dios/programs-assets/maestria-en-espiritualidad-uniminuto/maestria-en-espiritualidad-form-bg-3cb7bbd73d62-2026-09-23T13-39-59-834Z.jpg",
     "overlayColor": "linear-gradient(90deg,rgba(8,16,33,0.88),rgba(8,16,33,0.60) 52%,rgba(8,16,33,0.34))",
     "textTheme": "light"
   },
